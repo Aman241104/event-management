@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Colors */
+  --color-primary: #064E3B; /* Deep Forest / Emerald */
+  --color-secondary: #D4AF37; /* Metallic Gold */
+  --color-accent-gold: #FDE047; /* Champagne Gold */
+  --color-bg-main: #020617; /* Obsidian Black */
+  --color-bg-surface: #022C22; /* Dark Moss */
+  --color-border-subtle: #854D0E; /* Muted Gold */
+  --color-text-primary: #FDFCF0; /* Ivory / Champagne */
+  --color-text-secondary: #A7F3D0; /* Moss Muted */
+  --color-accent-whatsapp: #22C55E; /* WhatsApp Green */
+
+  /* Fonts */
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --primary: #064E3B;
+    --secondary: #D4AF37;
+    --bg-main: #020617;
+    --bg-surface: #022C22;
+    --border-subtle: #854D0E;
+    --text-primary: #FDFCF0;
+    --text-secondary: #A7F3D0;
+  }
+
+  body {
+    @apply bg-bg-main text-text-primary antialiased font-sans;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-normal text-text-primary;
+  }
+
+  p {
+    @apply text-text-secondary font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .glass {
+    @apply bg-bg-main/80 backdrop-blur-xl border-b border-border-subtle;
+  }
+
+  .container {
+    @apply mx-auto;
+  }
+
+  .noise {
+    position: relative;
+  }
+
+  .noise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
 }
