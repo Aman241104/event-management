@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'gold' | 'emerald' | 'whatsapp' | 'outline' | 'ghost';
+  variant?: 'solid' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg' | 'icon';
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
@@ -12,7 +12,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function Button({
   className,
-  variant = 'gold',
+  variant = 'solid',
   size = 'md',
   isLoading = false,
   leftIcon,
@@ -22,24 +22,22 @@ export function Button({
   ...props
 }: ButtonProps) {
   const variants = {
-    gold: 'bg-secondary text-bg-main font-serif font-bold hover:bg-accent-gold shadow-[0_0_15px_rgba(212,175,55,0.2)]',
-    emerald: 'bg-primary text-text-primary hover:bg-bg-surface border border-primary',
-    whatsapp: 'bg-[#22C55E] text-white hover:bg-[#16a34a]',
-    outline: 'bg-transparent border border-secondary text-secondary hover:bg-secondary/10',
-    ghost: 'bg-transparent text-text-secondary hover:text-secondary hover:bg-secondary/5',
+    solid: 'bg-secondary text-bg-surface hover:bg-primary hover:text-white',
+    outline: 'bg-transparent border border-border-subtle text-text-primary hover:border-secondary',
+    ghost: 'bg-transparent text-text-secondary hover:text-text-primary',
   };
 
   const sizes = {
-    sm: 'px-4 py-2 text-xs',
-    md: 'px-6 py-3 text-sm',
-    lg: 'px-10 py-4 text-base tracking-wide',
+    sm: 'px-6 py-3 text-[10px]',
+    md: 'px-8 py-4 text-[11px]',
+    lg: 'px-12 py-5 text-xs',
     icon: 'p-3',
   };
 
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center rounded-none sm:rounded-[4px] transition-all duration-500 ease-out active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none',
+        'inline-flex items-center justify-center transition-colors duration-500 ease-out font-sans uppercase tracking-[0.2em] font-medium rounded-none disabled:opacity-50 disabled:pointer-events-none',
         variants[variant],
         sizes[size],
         className

@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { Card } from '@/components/atoms/Card';
 import { cn } from '@/lib/utils';
 import { ExternalLink, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -24,19 +23,19 @@ export function Gallery({ items, className }: GalleryProps) {
 
   const selectedItem = selectedItemIndex !== null ? items[selectedItemIndex] : null;
 
-  const handleNext = (e?: React.MouseEvent) => {
+  const handleNext = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (selectedItemIndex !== null) {
       setSelectedItemIndex((selectedItemIndex + 1) % items.length);
     }
-  };
+  }, [selectedItemIndex, items.length]);
 
-  const handlePrev = (e?: React.MouseEvent) => {
+  const handlePrev = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (selectedItemIndex !== null) {
       setSelectedItemIndex((selectedItemIndex - 1 + items.length) % items.length);
     }
-  };
+  }, [selectedItemIndex, items.length]);
 
   // Close on Escape key
   useEffect(() => {
@@ -58,7 +57,7 @@ export function Gallery({ items, className }: GalleryProps) {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'auto';
     };
-  }, [selectedItemIndex]);
+  }, [selectedItemIndex, handleNext, handlePrev]);
 
   return (
     <>
@@ -68,7 +67,7 @@ export function Gallery({ items, className }: GalleryProps) {
             key={item.id} 
             onClick={() => setSelectedItemIndex(index)}
             className={cn(
-              "group relative overflow-hidden rounded-3xl cursor-pointer bg-bg-surface",
+              "group relative overflow-hidden bg-bg-surface cursor-pointer",
               item.size === 'large' ? "col-span-2 row-span-2 h-[500px]" : "h-[240px]",
               item.size === 'medium' ? "col-span-2 h-[240px]" : ""
             )}
@@ -77,18 +76,18 @@ export function Gallery({ items, className }: GalleryProps) {
               src={item.image} 
               alt={item.title} 
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              className="object-cover transition-transform duration-[10s] group-hover:scale-110 grayscale-[0.3]"
               sizes="(max-width: 768px) 50vw, 25vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-main/90 via-bg-main/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary mb-1">{item.category}</span>
-              <h4 className="text-xl font-bold text-white mb-4">{item.title}</h4>
-              <div className="flex gap-2">
-                <div className="p-2 rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-primary transition-colors">
-                  <Maximize2 size={18} />
+            <div className="absolute inset-0 bg-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-center items-center p-6 text-center">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-text-secondary mb-3">{item.category}</span>
+              <h4 className="text-2xl font-serif font-light text-text-primary mb-6">{item.title}</h4>
+              <div className="flex gap-4">
+                <div className="p-3 border border-border-subtle rounded-full text-text-primary hover:bg-primary hover:text-white transition-colors duration-500">
+                  <Maximize2 size={16} strokeWidth={1} />
                 </div>
-                <div className="p-2 rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-primary transition-colors">
-                  <ExternalLink size={18} />
+                <div className="p-3 border border-border-subtle rounded-full text-text-primary hover:bg-primary hover:text-white transition-colors duration-500">
+                  <ExternalLink size={16} strokeWidth={1} />
                 </div>
               </div>
             </div>
@@ -99,32 +98,32 @@ export function Gallery({ items, className }: GalleryProps) {
       {/* Lightbox Modal */}
       {selectedItem && (
         <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-bg-main/95 backdrop-blur-2xl p-4 transition-all duration-300 animate-fade-in"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-white/95 backdrop-blur-xl p-4 transition-all duration-500 animate-fade-in"
           onClick={() => setSelectedItemIndex(null)}
         >
           <button 
-            className="absolute top-8 right-8 p-3 bg-white/5 text-white hover:bg-primary transition-colors rounded-full z-[110]"
+            className="absolute top-8 right-8 p-3 text-text-primary hover:text-primary transition-colors z-[110]"
             onClick={() => setSelectedItemIndex(null)}
           >
-            <X size={32} />
+            <X size={32} strokeWidth={1} />
           </button>
 
           <button 
-            className="absolute left-8 top-1/2 -translate-y-1/2 p-4 bg-white/5 text-white hover:bg-primary transition-colors rounded-full z-[110]"
+            className="absolute left-8 top-1/2 -translate-y-1/2 p-4 text-text-primary hover:text-primary transition-colors z-[110]"
             onClick={handlePrev}
           >
-            <ChevronLeft size={32} />
+            <ChevronLeft size={32} strokeWidth={1} />
           </button>
 
           <button 
-            className="absolute right-8 top-1/2 -translate-y-1/2 p-4 bg-white/5 text-white hover:bg-primary transition-colors rounded-full z-[110]"
+            className="absolute right-8 top-1/2 -translate-y-1/2 p-4 text-text-primary hover:text-primary transition-colors z-[110]"
             onClick={handleNext}
           >
-            <ChevronRight size={32} />
+            <ChevronRight size={32} strokeWidth={1} />
           </button>
 
           <div 
-            className="relative max-w-6xl w-full h-full max-h-[85vh] flex flex-col items-center justify-center space-y-6"
+            className="relative max-w-5xl w-full h-full max-h-[80vh] flex flex-col items-center justify-center space-y-8"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative w-full h-full">
@@ -132,14 +131,14 @@ export function Gallery({ items, className }: GalleryProps) {
                 src={selectedItem.image} 
                 alt={selectedItem.title} 
                 fill
-                className="object-contain rounded-2xl shadow-2xl shadow-primary/10"
+                className="object-contain"
                 sizes="90vw"
                 priority
               />
             </div>
-            <div className="text-center space-y-2 pb-4">
-              <span className="text-sm font-bold uppercase tracking-widest text-primary">{selectedItem.category}</span>
-              <h2 className="text-3xl font-extrabold text-white">{selectedItem.title}</h2>
+            <div className="text-center space-y-3 pb-4">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-text-secondary">{selectedItem.category}</span>
+              <h2 className="text-4xl font-serif font-light text-text-primary">{selectedItem.title}</h2>
             </div>
           </div>
         </div>

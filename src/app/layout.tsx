@@ -23,9 +23,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Prestige Event Management",
-  description: "High-fidelity, luxury event management platform",
+  title: "Zing Bliss | Fine Art Event Architecture",
+  description: "A bespoke event design and production agency orchestrating understated luxury and profound elegance for life's most defining moments.",
 };
+
+import { SmoothScroll } from "@/components/atoms/SmoothScroll";
+import { SectionNavigator } from "@/components/molecules/SectionNavigator";
 
 export default function RootLayout({
   children,
@@ -35,16 +38,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} antialiased font-sans min-h-screen flex flex-col`}
+        className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} antialiased font-sans min-h-screen flex flex-col relative`}
       >
-        <Preloader />
-        <CustomCursor />
-        <Navbar />
-        <div className="flex-grow main-content">
-          {children}
-        </div>
-        <Footer />
-        <ConciergeBar />
+        <SmoothScroll>
+          <div className="noise-overlay" />
+          <Preloader />
+          <SectionNavigator />
+          <CustomCursor />
+          <Navbar />
+          <div className="flex-grow main-content relative z-10">
+            {children}
+          </div>
+          <Footer />
+          <ConciergeBar />
+        </SmoothScroll>
       </body>
     </html>
   );

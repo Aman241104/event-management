@@ -1,77 +1,188 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-primary: #064E3B; /* Deep Forest / Emerald */
-  --color-secondary: #D4AF37; /* Metallic Gold */
-  --color-accent-gold: #FDE047; /* Champagne Gold */
-  --color-bg-main: #020617; /* Obsidian Black */
-  --color-bg-surface: #022C22; /* Dark Moss */
-  --color-border-subtle: #854D0E; /* Muted Gold */
-  --color-text-primary: #FDFCF0; /* Ivory / Champagne */
-  --color-text-secondary: #A7F3D0; /* Moss Muted */
-  --color-accent-whatsapp: #22C55E; /* WhatsApp Green */
+  /* Fine Art Pro Palette - Refined */
+  --color-primary: #8C7A6B; 
+  --color-secondary: #2C362A;
+  --color-accent-peach: #F5EAE6;
+  --color-accent-sand: #E8E3DF;
+  
+  --color-bg-main: #FAFAF8;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-surface-light: #F3F1EC;
+  
+  --color-border-subtle: #E2DFD8;
+  --color-border-dark: #2C362A;
+  
+  --color-text-primary: #1C1917;
+  --color-text-secondary: #57534E;
+  --color-text-light: #A8A29E;
+  
+  --color-accent-whatsapp: #2C362A;
 
-  /* Fonts */
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
 
-  /* Radius */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-2xl: 32px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
 }
 
 @layer base {
   :root {
-    --primary: #064E3B;
-    --secondary: #D4AF37;
-    --bg-main: #020617;
-    --bg-surface: #022C22;
-    --border-subtle: #854D0E;
-    --text-primary: #FDFCF0;
-    --text-secondary: #A7F3D0;
+    --primary: #8C7A6B;
+    --secondary: #2C362A;
+    --bg-main: #FAFAF8;
+    --bg-surface: #FFFFFF;
+    --border-subtle: #E2DFD8;
+    --text-primary: #1C1917;
+    --text-secondary: #57534E;
   }
 
   body {
-    @apply bg-bg-main text-text-primary antialiased font-sans;
+    @apply bg-bg-main text-text-primary antialiased font-sans overflow-x-hidden selection:bg-primary selection:text-white;
     background-color: var(--bg-main);
     color: var(--text-primary);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-normal text-text-primary;
+    @apply font-serif tracking-normal text-text-primary font-normal;
   }
 
   p {
-    @apply text-text-secondary font-sans;
+    @apply text-text-secondary font-sans leading-[1.8] font-light;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-bg-main/80 backdrop-blur-xl border-b border-border-subtle;
+    @apply bg-bg-surface/80 backdrop-blur-xl border-b border-border-subtle;
+  }
+  
+  .glass-card {
+    @apply bg-bg-surface border border-border-subtle transition-all duration-700 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)];
+  }
+
+  .text-gold {
+    @apply text-primary;
   }
 
   .container {
-    @apply mx-auto;
+    @apply mx-auto px-6 md:px-12 max-w-[1600px];
   }
 
-  .noise {
+  /* Decorative Elements */
+  .fine-line {
+    @apply w-full h-[1px] bg-border-subtle;
+  }
+
+  .vertical-line {
+    @apply w-[1px] h-full bg-border-subtle;
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(var(--color-border-subtle) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .side-label {
+    @apply fixed left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-left text-[8px] uppercase tracking-[0.6em] text-text-light whitespace-nowrap pointer-events-none z-40 hidden xl:block opacity-40;
+  }
+
+  .side-label-right {
+    @apply fixed right-8 top-1/2 translate-y-1/2 rotate-90 origin-right text-[8px] uppercase tracking-[0.6em] text-text-light whitespace-nowrap pointer-events-none z-40 hidden xl:block opacity-40;
+  }
+
+  .meta-tag {
+    @apply text-[8px] font-mono text-text-light uppercase tracking-widest flex items-center gap-2;
+  }
+
+  /* Fine art button styles */
+  .btn-royal {
+    @apply relative overflow-hidden bg-secondary text-white border border-secondary hover:bg-transparent hover:text-secondary transition-colors duration-500 rounded-none tracking-widest font-sans font-light uppercase text-xs;
+  }
+
+  .btn-outline-royal {
+    @apply border border-border-subtle text-text-primary hover:border-secondary hover:bg-secondary hover:text-white transition-colors duration-500 rounded-none tracking-widest font-sans font-light uppercase text-xs;
+  }
+
+  /* Image masking for organic shapes */
+  .arch-mask {
+    border-radius: 1000px 1000px 0 0;
+  }
+
+  .perspective-lg {
+    perspective: 2000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Page Transitions / Animations */
+  .reveal-image {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .reveal-image.active {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .grainy-gradient {
+    background: linear-gradient(to bottom, transparent, var(--color-bg-surface-light));
     position: relative;
   }
 
-  .noise::before {
+  .grainy-gradient::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.03;
+    opacity: 0.4;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-main);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-subtle);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+  }
+
+  .section-dot {
+    @apply w-1.5 h-1.5 rounded-full border border-primary transition-all duration-500;
+  }
+
+  .section-dot.active {
+    @apply bg-primary scale-150;
   }
 }

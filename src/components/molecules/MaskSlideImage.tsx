@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
 import { cn } from '@/lib/utils';
 
 // Register ScrollTrigger
@@ -25,26 +24,31 @@ export function MaskSlideImage({ src, alt, className, aspectRatio = 'aspect-[3/4
   const imageWrapperRef = useRef<HTMLDivElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
+  useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: 'top 80%',
+        start: 'top 85%',
       }
     });
 
+    // Animate the mask to slide up and reveal the image
     tl.to(maskRef.current, {
-      yPercent: 100,
-      duration: 1.5,
-      ease: 'expo.inOut',
+      yPercent: -100,
+      duration: 1.8,
+      ease: 'power4.inOut',
     });
 
-    tl.from(imageWrapperRef.current, {
-      scale: 1.2,
-      duration: 2,
-      ease: 'power3.out',
-    }, 0);
-  }, { scope: containerRef });
+    // Scale the image down from 1.3 to 1 slightly overlapping the mask animation
+    tl.fromTo(imageWrapperRef.current, 
+      { scale: 1.3 },
+      {
+        scale: 1,
+        duration: 2.2,
+        ease: 'power3.out',
+      }, 0.2
+    );
+  }, []);
 
   return (
     <div 
@@ -57,20 +61,20 @@ export function MaskSlideImage({ src, alt, className, aspectRatio = 'aspect-[3/4
           src={src} 
           alt={alt} 
           fill
-          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" 
+          className="object-cover transition-all duration-[10s] group-hover:scale-105" 
           priority={priority}
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
       
-      {/* The Reveal Mask */}
+      {/* The Reveal Mask - Matches the background color */}
       <div 
         ref={maskRef}
-        className="absolute inset-0 bg-bg-main z-20 pointer-events-none"
+        className="absolute inset-0 bg-bg-surface z-20 pointer-events-none origin-bottom"
       />
 
-      {/* Decorative Overlay */}
-      <div className="absolute inset-0 bg-primary/10 mix-blend-overlay z-10 pointer-events-none" />
+      {/* Very Subtle Decorative Overlay */}
+      <div className="absolute inset-0 bg-primary/5 mix-blend-multiply z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-1000" />
     </div>
   );
 }
