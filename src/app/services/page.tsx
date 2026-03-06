@@ -62,17 +62,38 @@ export default function ServicesPage() {
     });
 
     // Horizontal Scroll for Process
-    const sections = gsap.utils.toArray('.process-card');
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: 'none',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        pin: true,
-        scrub: 1,
-        snap: 1 / (sections.length - 1),
-        end: () => "+=" + horizontalRef.current?.offsetWidth
+    const mm = gsap.matchMedia();
+    
+    mm.add("(min-width: 768px)", () => {
+      if (horizontalRef.current && sectionRef.current) {
+        gsap.to(horizontalRef.current, {
+          x: () => -(horizontalRef.current!.scrollWidth - window.innerWidth),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            pin: true,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            end: () => "+=" + horizontalRef.current!.scrollWidth,
+          }
+        });
       }
+    });
+
+    // Vertical version for mobile
+    mm.add("(max-width: 767px)", () => {
+      gsap.utils.toArray<HTMLElement>('.process-card').forEach((card) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 80%',
+          },
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: 'power2.out'
+        });
+      });
     });
 
     gsap.utils.toArray<HTMLElement>('.service-item').forEach((item) => {
@@ -164,25 +185,25 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Journey (Horizontal Scroll) */}
-      <section id="process" ref={sectionRef} className="h-screen bg-bg-surface overflow-hidden border-y border-border-gold relative">
-        <div className="absolute top-12 left-12 z-20">
+      <section id="process" ref={sectionRef} className="relative bg-bg-surface md:h-screen md:overflow-hidden border-y border-border-gold overflow-x-hidden">
+        <div className="md:absolute top-12 left-12 z-20 p-6 md:p-0">
           <Badge variant="outline" className="text-secondary border-secondary">The Journey</Badge>
           <h2 className="text-4xl font-serif text-white mt-4">Our Creative <span className="text-secondary italic font-light">Workflow</span></h2>
         </div>
         
-        <div ref={horizontalRef} className="flex h-full w-[400vw] items-center">
+        <div ref={horizontalRef} className="flex flex-col md:flex-row h-full md:w-[400vw] items-center">
           {[
             { step: '01', title: 'Discovery Dialogue', desc: 'An intimate consultation to understand your unique narrative and aesthetic vision.' },
             { step: '02', title: 'Architectural Planning', desc: 'Bespoke design renders and rigorous logistical mapping of your event landscape.' },
             { step: '03', title: 'Curation & Sourcing', desc: 'Selecting the finest artisans and global vendors to manifest every detail.' },
             { step: '04', title: 'The Masterful Reveal', desc: 'Onsite orchestration where vision meets reality in a flawless execution.' },
           ].map((item, i) => (
-            <div key={i} className="process-card w-screen h-full flex items-center justify-center px-24">
-              <div className="max-w-4xl space-y-12">
-                <span className="text-[10rem] font-serif font-bold text-secondary/10 leading-none">{item.step}</span>
-                <div className="space-y-6">
-                  <h3 className="text-6xl md:text-8xl font-serif text-white font-bold">{item.title}</h3>
-                  <p className="text-xl md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-2xl">{item.desc}</p>
+            <div key={i} className="process-card w-full md:w-screen h-screen md:h-full flex items-center justify-center px-6 md:px-24 py-24 md:py-0 border-b md:border-b-0 border-border-gold/20 last:border-b-0">
+              <div className="max-w-4xl space-y-8 md:space-y-12">
+                <span className="text-6xl md:text-[10rem] font-serif font-bold text-secondary/10 leading-none">{item.step}</span>
+                <div className="space-y-4 md:space-y-6">
+                  <h3 className="text-4xl md:text-8xl font-serif text-white font-bold">{item.title}</h3>
+                  <p className="text-lg md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-2xl">{item.desc}</p>
                 </div>
               </div>
             </div>

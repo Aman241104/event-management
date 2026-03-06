@@ -20,6 +20,11 @@
     - **Gallery Page:** Darkened and refined the lightbox modal, added a "Featured" section.
     - **Contact Page:** Styled HQ map, improved form contrast, and refined direct line info.
     - **Event Detail Page:** Dynamic side labels, improved typography, and "Next Project" navigator.
+  - Fixed bugs in the "Process Journey" section on the Services page:
+    - Implemented a responsive approach using `matchMedia` for GSAP.
+    - Optimized horizontal scrolling on desktop by translating the container instead of individual elements for better performance and stability.
+    - Switched to a standard vertical layout with scroll-triggered fade-up animations on mobile for superior UX.
+    - Added `invalidateOnRefresh: true` to prevent layout shifts during window resizing.
   - Successfully verified the build (`npm run build`).
 - **Current Branch:** `main` (clean working tree).
 
