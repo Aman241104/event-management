@@ -9,6 +9,7 @@ import { MaskSlideImage } from '@/components/molecules/MaskSlideImage';
 import { Button } from '@/components/atoms/Button';
 import { Magnetic } from '@/components/atoms/Magnetic';
 import { TextReveal } from '@/components/atoms/TextReveal';
+import { InfiniteMarquee } from '@/components/atoms/InfiniteMarquee';
 import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -28,6 +29,18 @@ export default function AboutPage() {
       duration: 1.2,
       stagger: 0.1,
       ease: 'power2.out',
+    });
+
+    // Parallax for Philosophy Image
+    gsap.to('.parallax-img', {
+      scrollTrigger: {
+        trigger: '.parallax-img',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
+      y: -100,
+      ease: 'none'
     });
 
     gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
@@ -62,17 +75,27 @@ export default function AboutPage() {
         </p>
       </section>
 
+      {/* Press Marquee */}
+      <section className="py-12 md:py-24">
+        <InfiniteMarquee 
+          items={["Vogue Weddings", "Harper's Bazaar", "The Knot Luxe", "Brides Magazine", "Luxury Daily", "Elite Traveler"]} 
+          speed={40}
+        />
+      </section>
+
       {/* Philosophy Section */}
       <section id="philosophy" className="container mx-auto px-6 space-y-32 py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
           <div className="lg:col-span-7 fade-up relative">
             <div className="relative overflow-hidden arch-mask h-[60vh] md:h-[80vh] w-full shadow-2xl border border-border-gold">
-              <Image 
-                src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=2000" 
-                alt="Behind the Scenes Process" 
-                fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-[10s] ease-linear"
-              />
+              <div className="parallax-img absolute inset-0 -top-24 -bottom-24">
+                <Image 
+                  src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=2000" 
+                  alt="Behind the Scenes Process" 
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-[1s] ease-linear"
+                />
+              </div>
             </div>
           </div>
           <div className="lg:col-span-5 space-y-12 fade-up">
@@ -133,6 +156,32 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Visionaries Section */}
+      <section id="visionaries" className="py-32 container px-6 space-y-24">
+        <div className="text-center space-y-6 max-w-3xl mx-auto fade-up">
+          <Badge variant="outline" className="text-secondary border-secondary">The Collective</Badge>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold text-white">Meet The <br/><span className="text-secondary italic font-light">Architects</span></h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 max-w-5xl mx-auto">
+          {[
+            { name: "Aryan Sharma", role: "Creative Director", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" },
+            { name: "Sonia Kapoor", role: "Lead Strategist", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" }
+          ].map((v, i) => (
+            <div key={i} className="fade-up space-y-8 group">
+              <div className="relative aspect-[4/5] overflow-hidden arch-mask border border-border-gold">
+                <Image src={v.img} alt={v.name} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2s] group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg-main to-transparent opacity-60" />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-3xl font-serif font-bold text-white">{v.name}</h4>
+                <p className="text-sm font-sans uppercase tracking-[0.3em] text-secondary">{v.role}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

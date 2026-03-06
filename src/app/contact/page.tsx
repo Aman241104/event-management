@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import { Badge } from '@/components/atoms/Badge';
 import { Button } from '@/components/atoms/Button';
 import { Input } from '@/components/atoms/Input';
@@ -39,15 +40,15 @@ export default function ContactPage() {
       {/* Header */}
       <section id="header" className="container mx-auto px-6 py-24 md:py-32 text-center space-y-8">
         <div className="header-fade">
-          <Badge variant="solid" dot className="px-6 py-2 bg-secondary/10 text-secondary uppercase tracking-[0.3em] font-bold">Get In Touch</Badge>
+          <Badge variant="solid" dot className="px-6 py-2 bg-secondary/10 text-secondary uppercase tracking-[0.3em] font-bold">The Dialogue</Badge>
         </div>
         <TextReveal
           as="h1"
-          text="Connect With Our team."
+          text="Private Discovery Call."
           className="text-5xl md:text-[8rem] font-serif tracking-tighter text-text-primary leading-[1.1] font-bold"
         />
         <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-3xl mx-auto pt-6">
-          Ready to turn your vision into a well-curated event with exceptional attention to detail? Reach out to our specialist team today.
+          Ready to turn your vision into a well-curated event with exceptional attention to detail? Reach out to our specialist team today for an initial discovery call.
         </p>
       </section>
 
@@ -57,47 +58,59 @@ export default function ContactPage() {
 
           {/* Info Side */}
           <div className="lg:col-span-4 space-y-16 header-fade">
-            <div className="space-y-8">
-              <h3 className="text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-secondary">Our Office</h3>
-              <p className="text-2xl font-serif text-text-primary font-bold leading-relaxed">
+            <div className="space-y-8 p-12 bg-bg-surface/30 border border-border-gold shadow-2xl">
+              <h3 className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-secondary">Global HQ</h3>
+              <p className="text-2xl font-serif text-white font-bold leading-relaxed">
                 Zing Bliss Events HQ<br />
                 Bandra West, Mumbai<br />
                 Maharashtra, India
               </p>
+              <div className="pt-4">
+                <a href="#" className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold border-b border-secondary/30 pb-1 hover:text-white hover:border-white transition-colors">Open in Map</a>
+              </div>
             </div>
 
-            <div className="space-y-8">
-              <h3 className="text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-secondary">Direct Channels</h3>
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-full border border-border-gold flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-bg-main transition-all duration-500">
-                    <Phone size={20} />
+            <div className="space-y-12">
+              <h3 className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-secondary">The Private Line</h3>
+              <div className="space-y-8">
+                <div className="flex items-center gap-6 group">
+                  <div className="w-14 h-14 rounded-none border border-border-gold flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-bg-main transition-all duration-700">
+                    <Phone size={24} strokeWidth={1} />
                   </div>
-                  <a href="tel:+919876543210" className="text-xl font-serif text-text-primary hover:text-secondary transition-colors font-bold">+91 98765 43210</a>
+                  <div className="space-y-1">
+                    <span className="text-[8px] uppercase tracking-widest text-text-secondary">Voice Discovery</span>
+                    <a href="tel:+919876543210" className="text-xl md:text-2xl font-serif text-white hover:text-secondary transition-colors font-bold block">+91 98765 43210</a>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-full border border-border-gold flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-bg-main transition-all duration-500">
-                    <Mail size={20} />
+                <div className="flex items-center gap-6 group">
+                  <div className="w-14 h-14 rounded-none border border-border-gold flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-bg-main transition-all duration-700">
+                    <Mail size={24} strokeWidth={1} />
                   </div>
-                  <a href="mailto:hello@zingblissevents.com" className="text-xl font-serif text-text-primary hover:text-secondary transition-colors font-bold">hello@zingblissevents.com</a>
+                  <div className="space-y-1">
+                    <span className="text-[8px] uppercase tracking-widest text-text-secondary">Narrative Inquiry</span>
+                    <a href="mailto:hello@zingblissevents.com" className="text-xl md:text-2xl font-serif text-white hover:text-secondary transition-colors font-bold block">hello@zingblissevents.com</a>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-full border border-border-gold flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-bg-main transition-all duration-500">
-                    <Instagram size={20} />
+                <div className="flex items-center gap-6 group">
+                  <div className="w-14 h-14 rounded-none border border-border-gold flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-bg-main transition-all duration-700">
+                    <Instagram size={24} strokeWidth={1} />
                   </div>
-                  <a href="https://www.instagram.com/zingblissevents/" target="_blank" rel="noopener noreferrer" className="text-xl font-serif text-text-primary hover:text-secondary transition-colors font-bold">@zingblissevents</a>
+                  <div className="space-y-1">
+                    <span className="text-[8px] uppercase tracking-widest text-text-secondary">Social Record</span>
+                    <a href="https://www.instagram.com/zingblissevents/" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-serif text-white hover:text-secondary transition-colors font-bold block">@zingblissevents</a>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-12">
+            <div className="pt-8">
               <Magnetic strength={0.2}>
                 <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                  <Button variant="solid" className="btn-royal w-full py-6 flex items-center justify-center gap-4">
-                    <MessageCircle size={20} />
-                    WhatsApp Concierge
+                  <Button variant="solid" className="btn-royal w-full py-8 flex items-center justify-center gap-4 text-sm">
+                    <MessageCircle size={24} />
+                    Instant WhatsApp Concierge
                   </Button>
                 </a>
               </Magnetic>
@@ -174,6 +187,26 @@ export default function ContactPage() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* Map Section - The Coordinates */}
+      <section id="map" className="container mx-auto px-6 py-24">
+        <div className="relative w-full h-[60vh] overflow-hidden arch-mask border border-border-gold group shadow-2xl">
+          <div className="absolute inset-0 bg-bg-surface/50 backdrop-blur-sm z-10 flex items-center justify-center">
+             <div className="text-center space-y-6 fade-up">
+               <MapPin size={64} className="text-secondary mx-auto" strokeWidth={1} />
+               <h3 className="text-4xl font-serif text-white font-bold italic">The Coordinates</h3>
+               <p className="text-text-secondary uppercase tracking-[0.5em] text-xs">Bandra West, Mumbai — Private View Only</p>
+               <Button variant="outline" className="btn-outline-royal px-12 h-16 rounded-none mt-8">Request Access</Button>
+             </div>
+          </div>
+          <Image 
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=2000" 
+            alt="Mumbai Map" 
+            fill
+            className="object-cover grayscale blur-sm scale-110"
+          />
         </div>
       </section>
 

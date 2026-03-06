@@ -49,6 +49,8 @@ const serviceCategories = [
 
 export default function ServicesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const horizontalRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     gsap.from('.header-fade', {
@@ -57,6 +59,20 @@ export default function ServicesPage() {
       duration: 1.2,
       stagger: 0.1,
       ease: 'power2.out',
+    });
+
+    // Horizontal Scroll for Process
+    const sections = gsap.utils.toArray('.process-card');
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        pin: true,
+        scrub: 1,
+        snap: 1 / (sections.length - 1),
+        end: () => "+=" + horizontalRef.current?.offsetWidth
+      }
     });
 
     gsap.utils.toArray<HTMLElement>('.service-item').forEach((item) => {
@@ -92,21 +108,18 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Spectrum List */}
-      <section id="list" className="container mx-auto px-6 space-y-32 md:space-y-48">
+      <section id="list" className="container mx-auto px-6 space-y-32 md:space-y-48 pb-32">
         {serviceCategories.map((service, index) => (
           <div 
             key={service.id} 
             className={`service-item grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
           >
             <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2' : ''} relative`}>
-              <div className="relative overflow-hidden arch-mask h-[60vh] md:h-[80vh] w-full shadow-2xl border border-border-gold">
-                <Image 
-                  src={service.image} 
-                  alt={service.title} 
-                  fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-[10s] ease-linear"
-                />
-              </div>
+              <MaskSlideImage 
+                src={service.image} 
+                alt={service.title}
+                aspectRatio="aspect-[4/5] md:aspect-[16/10]"
+              />
             </div>
             
             <div className={`lg:col-span-5 space-y-10 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
@@ -132,6 +145,11 @@ export default function ServicesPage() {
                   ))}
                 </ul>
               </div>
+
+              {/* Service Quote */}
+              <div className="py-6 border-y border-border-subtle italic text-text-secondary/80 font-serif text-sm">
+                "Their attention to detail in {service.title.toLowerCase()} is simply unmatched in the luxury tier."
+              </div>
               
               <div className="pt-8">
                 <a href={generateWhatsAppLink(service.title, 'Booking')} target="_blank" rel="noopener noreferrer">
@@ -143,6 +161,33 @@ export default function ServicesPage() {
             </div>
           </div>
         ))}
+      </section>
+
+      {/* Process Journey (Horizontal Scroll) */}
+      <section id="process" ref={sectionRef} className="h-screen bg-bg-surface overflow-hidden border-y border-border-gold relative">
+        <div className="absolute top-12 left-12 z-20">
+          <Badge variant="outline" className="text-secondary border-secondary">The Journey</Badge>
+          <h2 className="text-4xl font-serif text-white mt-4">Our Creative <span className="text-secondary italic font-light">Workflow</span></h2>
+        </div>
+        
+        <div ref={horizontalRef} className="flex h-full w-[400vw] items-center">
+          {[
+            { step: '01', title: 'Discovery Dialogue', desc: 'An intimate consultation to understand your unique narrative and aesthetic vision.' },
+            { step: '02', title: 'Architectural Planning', desc: 'Bespoke design renders and rigorous logistical mapping of your event landscape.' },
+            { step: '03', title: 'Curation & Sourcing', desc: 'Selecting the finest artisans and global vendors to manifest every detail.' },
+            { step: '04', title: 'The Masterful Reveal', desc: 'Onsite orchestration where vision meets reality in a flawless execution.' },
+          ].map((item, i) => (
+            <div key={i} className="process-card w-screen h-full flex items-center justify-center px-24">
+              <div className="max-w-4xl space-y-12">
+                <span className="text-[10rem] font-serif font-bold text-secondary/10 leading-none">{item.step}</span>
+                <div className="space-y-6">
+                  <h3 className="text-6xl md:text-8xl font-serif text-white font-bold">{item.title}</h3>
+                  <p className="text-xl md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-2xl">{item.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* FAQ / Experience Section */}

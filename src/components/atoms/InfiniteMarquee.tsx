@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
+import { cn } from '@/lib/utils';
 
 interface InfiniteMarqueeProps {
   items: string[];
@@ -11,34 +12,46 @@ interface InfiniteMarqueeProps {
 }
 
 export function InfiniteMarquee({ items, direction = 'left', speed = 50, className }: InfiniteMarqueeProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = marqueeRef.current;
     if (!el) return;
 
-    const width = el.offsetWidth / 2;
+    // Use GSAP to create a smooth, infinite loop
+    const width = el.children[0].clientWidth;
     
     gsap.to(el, {
       x: direction === 'left' ? -width : 0,
-      initial: direction === 'left' ? 0 : -width,
       duration: speed,
       ease: 'none',
       repeat: -1,
     });
-  }, [speed, direction]);
-
-  const marqueeItems = [...items, ...items];
+  }, [speed, direction, items]);
 
   return (
-    <div ref={containerRef} className={`overflow-hidden whitespace-nowrap ${className}`}>
+    <div className={cn("overflow-hidden whitespace-nowrap border-y border-border-gold/30 py-8 bg-bg-surface/20 backdrop-blur-sm", className)}>
       <div ref={marqueeRef} className="inline-block">
-        {marqueeItems.map((item, i) => (
-          <span key={i} className="inline-block px-6 md:px-12 text-sm md:text-lg font-serif italic text-text-light/40">
-            {item} <span className="mx-4 md:mx-8 text-primary/30 ml-6 md:ml-12">/</span>
-          </span>
-        ))}
+        <div className="inline-flex items-center">
+          {/* First set */}
+          {items.map((item, i) => (
+            <div key={`first-${i}`} className="inline-flex items-center px-12">
+              <span className="text-xl md:text-3xl font-serif italic text-secondary/40 hover:text-secondary/80 transition-colors duration-500 cursor-default uppercase tracking-widest font-light">
+                {item}
+              </span>
+              <span className="mx-12 w-2 h-2 rounded-full bg-secondary/20" />
+            </div>
+          ))}
+          {/* Duplicate set for seamless loop */}
+          {items.map((item, i) => (
+            <div key={`second-${i}`} className="inline-flex items-center px-12">
+              <span className="text-xl md:text-3xl font-serif italic text-secondary/40 hover:text-secondary/80 transition-colors duration-500 cursor-default uppercase tracking-widest font-light">
+                {item}
+              </span>
+              <span className="mx-12 w-2 h-2 rounded-full bg-secondary/20" />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

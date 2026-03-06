@@ -33,6 +33,7 @@ export function SectionNavigator() {
           { id: 'header', label: 'Story' },
           { id: 'philosophy', label: 'Vision' },
           { id: 'vision', label: 'Mission' },
+          { id: 'visionaries', label: 'Architects' },
           { id: 'stats', label: 'Metrics' },
           { id: 'why-choose-us', label: 'The Edge' },
           { id: 'cta', label: 'Begin' },
@@ -41,14 +42,16 @@ export function SectionNavigator() {
         return [
           { id: 'header', label: 'Offerings' },
           { id: 'list', label: 'Disciplines' },
+          { id: 'process', label: 'Journey' },
           { id: 'faq', label: 'FAQ' },
           { id: 'cta', label: 'Inquire' },
         ];
       case '/gallery':
         return [
           { id: 'header', label: 'Gallery' },
-          { id: 'filter', label: 'Filter' },
-          { id: 'grid', label: 'Record' },
+          { id: 'highlights', label: 'Featured' },
+          { id: 'filter', label: 'Collections' },
+          { id: 'grid', label: 'Archives' },
           { id: 'cta', label: 'Booking' },
         ];
       case '/contact':

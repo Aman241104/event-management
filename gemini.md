@@ -14,6 +14,12 @@
     - Standardized `ScrollTrigger` start points to `top 92%` (triggered earlier).
     - Reduced animation durations across `fade-up`, `TextReveal`, and `MaskSlideImage` by ~20% for a snappier feel.
     - Optimized Preloader and hero animations for a faster initial load experience.
+  - Comprehensive upgrade of all internal pages (About, Services, Gallery, Contact, Event Detail) for a high-fidelity "Emerald & Obsidian" luxury experience.
+    - **About Page:** Added press marquee, "Visionaries" section, and parallax images.
+    - **Services Page:** Implemented horizontal scroll for "Process Journey", mask reveals, and testimonials.
+    - **Gallery Page:** Darkened and refined the lightbox modal, added a "Featured" section.
+    - **Contact Page:** Styled HQ map, improved form contrast, and refined direct line info.
+    - **Event Detail Page:** Dynamic side labels, improved typography, and "Next Project" navigator.
   - Successfully verified the build (`npm run build`).
 - **Current Branch:** `main` (clean working tree).
 
