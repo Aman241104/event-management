@@ -136,6 +136,25 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Metrics Section */}
+      <section className="py-24 bg-bg-main border-b border-border-subtle relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center fade-up">
+            {[
+              { num: '500+', label: 'Events Executed' },
+              { num: '15+', label: 'Global Destinations' },
+              { num: '50+', label: 'Industry Awards' },
+              { num: '100%', label: 'Client Satisfaction' },
+            ].map((stat, i) => (
+              <div key={i} className="space-y-4">
+                <h4 className="text-4xl md:text-6xl font-serif font-bold text-secondary">{stat.num}</h4>
+                <p className="text-xs md:text-sm font-sans uppercase tracking-widest text-text-secondary">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us - Competitor Inspired */}
       <section className="py-32 container px-6 space-y-24">
         <div className="text-center space-y-6 max-w-3xl mx-auto fade-up">

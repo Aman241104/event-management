@@ -136,6 +136,26 @@ export default function ContactPage() {
                   </div>
                 </div>
 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="space-y-4">
+                    <label className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold">Guest Count</label>
+                    <select className="w-full bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light appearance-none">
+                      <option className="bg-bg-main" value="intimate">Intimate (Up to 50)</option>
+                      <option className="bg-bg-main" value="medium">Medium (50 - 200)</option>
+                      <option className="bg-bg-main" value="large">Large (200 - 500)</option>
+                      <option className="bg-bg-main" value="grand">Grand (500+)</option>
+                    </select>
+                  </div>
+                  <div className="space-y-4">
+                    <label className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold">Estimated Budget</label>
+                    <select className="w-full bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light appearance-none">
+                      <option className="bg-bg-main" value="tier1">Standard Luxury</option>
+                      <option className="bg-bg-main" value="tier2">Premium Experience</option>
+                      <option className="bg-bg-main" value="tier3">Ultra Luxury (Bespoke)</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div className="space-y-4">
                   <label className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold">Event Vision</label>
                   <textarea 

@@ -145,6 +145,30 @@ export default function ServicesPage() {
         ))}
       </section>
 
+      {/* FAQ / Experience Section */}
+      <section className="py-32 container mx-auto px-6">
+        <div className="max-w-4xl mx-auto space-y-16">
+          <div className="text-center space-y-6 fade-up">
+            <Badge variant="outline" className="border-secondary text-secondary">The Experience</Badge>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">Frequently Asked <span className="text-secondary italic font-light">Questions</span></h2>
+          </div>
+
+          <div className="space-y-6 fade-up">
+            {[
+              { q: 'Do you manage destination weddings outside India?', a: 'Yes, we are a global agency. We have extensive experience executing high-end destination weddings and corporate events across Dubai, London, and exclusive European venues.' },
+              { q: 'How far in advance should we commission your services?', a: 'For large-scale weddings and corporate galas, we recommend securing your date 8 to 12 months in advance to ensure the availability of premier venues and top-tier artists.' },
+              { q: 'Do you handle artist and celebrity management?', a: 'Absolutely. We have direct networks to source international DJs, live symphonies, and celebrity appearances, managing all contracts, riders, and hospitality.' },
+              { q: 'Are your services customizable?', a: 'Every event we design is completely bespoke. We do not offer rigid packages; instead, we build a custom architectural plan based on your exact vision and scale.' },
+            ].map((faq, i) => (
+              <div key={i} className="group border border-border-subtle hover:border-secondary transition-all duration-500 bg-bg-surface/30 p-8 cursor-pointer">
+                <h4 className="text-xl font-serif font-bold text-white group-hover:text-secondary transition-colors">{faq.q}</h4>
+                <p className="mt-4 text-text-secondary font-sans font-light leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-32 mt-32 bg-bg-surface border-t border-border-gold relative overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-[0.05] pointer-events-none" />

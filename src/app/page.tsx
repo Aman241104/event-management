@@ -283,6 +283,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Featured In / Press Section */}
+      <section className="py-24 border-t border-border-subtle overflow-hidden">
+        <div className="container px-6 text-center space-y-12 fade-up">
+          <p className="text-[10px] uppercase tracking-[0.4em] text-text-secondary font-bold">Featured In & Trusted By</p>
+          <div className="flex flex-wrap justify-center gap-12 md:gap-24 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+            <span className="text-2xl md:text-4xl font-serif italic text-text-primary">VOGUE</span>
+            <span className="text-2xl md:text-4xl font-sans font-bold tracking-tighter text-text-primary">Forbes</span>
+            <span className="text-2xl md:text-4xl font-serif text-text-primary">The Knot</span>
+            <span className="text-2xl md:text-4xl font-sans tracking-widest uppercase text-text-primary">Bazaar</span>
+            <span className="text-2xl md:text-4xl font-serif italic text-text-primary">Brides</span>
+          </div>
+        </div>
+      </section>
+
       {/* Global Concierge CTA */}
       <section className="relative py-48 bg-bg-main border-t border-border-gold overflow-hidden">
         <div className="absolute inset-0 bg-secondary/5" />
