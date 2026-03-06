@@ -22,7 +22,7 @@ export default function ContactPage() {
       stagger: 0.2,
       ease: 'power2.out',
     });
-    
+
     gsap.from('.form-fade', {
       y: 40,
       opacity: 0,
@@ -35,16 +35,16 @@ export default function ContactPage() {
   return (
     <main ref={containerRef} className="min-h-screen bg-bg-main pt-32 pb-24 selection:bg-secondary selection:text-bg-main relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/5 blur-[200px] rounded-full pointer-events-none -z-10" />
-      
+
       {/* Header */}
       <section id="header" className="container mx-auto px-6 py-24 md:py-32 text-center space-y-8">
         <div className="header-fade">
           <Badge variant="solid" dot className="px-6 py-2 bg-secondary/10 text-secondary uppercase tracking-[0.3em] font-bold">Get In Touch</Badge>
         </div>
-        <TextReveal 
-          as="h1" 
-          text="Connect With Our team." 
-          className="text-5xl md:text-[8rem] font-serif tracking-tighter text-text-primary leading-[1.1] font-bold" 
+        <TextReveal
+          as="h1"
+          text="Connect With Our team."
+          className="text-5xl md:text-[8rem] font-serif tracking-tighter text-text-primary leading-[1.1] font-bold"
         />
         <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-3xl mx-auto pt-6">
           Ready to turn your vision into a well-curated event with exceptional attention to detail? Reach out to our specialist team today.
@@ -54,14 +54,14 @@ export default function ContactPage() {
       {/* Contact Content */}
       <section id="content" className="container mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
-          
+
           {/* Info Side */}
           <div className="lg:col-span-4 space-y-16 header-fade">
             <div className="space-y-8">
               <h3 className="text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-secondary">Our Office</h3>
               <p className="text-2xl font-serif text-text-primary font-bold leading-relaxed">
-                Zing Bliss Events HQ<br/>
-                Bandra West, Mumbai<br/>
+                Zing Bliss Events HQ<br />
+                Bandra West, Mumbai<br />
                 Maharashtra, India
               </p>
             </div>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                   </div>
                   <a href="tel:+919876543210" className="text-xl font-serif text-text-primary hover:text-secondary transition-colors font-bold">+91 98765 43210</a>
                 </div>
-                
+
                 <div className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-full border border-border-gold flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-bg-main transition-all duration-500">
                     <Mail size={20} />
@@ -91,7 +91,7 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="pt-12">
               <Magnetic strength={0.2}>
                 <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
@@ -111,11 +111,11 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div className="space-y-4">
                     <label className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold">Full Name</label>
-                    <input type="text" placeholder="Your Name" className="w-full bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light placeholder:text-text-secondary/30" />
+                    <input type="text" placeholder="Your Name" className="w-full bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light placeholder:text-text-primary/50" />
                   </div>
                   <div className="space-y-4">
                     <label className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold">Email Address</label>
-                    <input type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light placeholder:text-text-secondary/30" />
+                    <input type="email" placeholder="email@example.com" className="w-full bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light placeholder:text-text-primary/50" />
                   </div>
                 </div>
 
@@ -132,7 +132,7 @@ export default function ContactPage() {
                   </div>
                   <div className="space-y-4">
                     <label className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold">Tentative Date</label>
-                    <input type="text" placeholder="DD/MM/YYYY" className="w-full bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light placeholder:text-text-secondary/30" />
+                    <input type="text" placeholder="DD/MM/YYYY" className="w-full bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light placeholder:text-text-primary/50" />
                   </div>
                 </div>
 
@@ -158,9 +158,9 @@ export default function ContactPage() {
 
                 <div className="space-y-4">
                   <label className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold">Event Vision</label>
-                  <textarea 
+                  <textarea
                     placeholder="Tell us about the magical moment you want to create..."
-                    className="w-full min-h-[150px] bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light resize-none placeholder:text-text-secondary/30"
+                    className="w-full min-h-[150px] bg-transparent border-b border-border-gold focus:border-secondary py-4 text-text-primary outline-none transition-colors font-light resize-none placeholder:text-text-primary/50"
                   />
                 </div>
 

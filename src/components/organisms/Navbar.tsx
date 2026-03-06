@@ -59,7 +59,7 @@ export function Navbar() {
                   className="text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-text-secondary hover:text-secondary transition-colors duration-500 relative group py-2"
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-secondary transition-all duration-500 group-hover:w-full" />
+                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-secondary transition-all duration-500 group-hover:w-full" />
                 </Link>
               </Magnetic>
             ))}
@@ -93,7 +93,7 @@ export function Navbar() {
         )}
       >
         <div className="absolute inset-0 dot-pattern opacity-[0.03]" />
-        
+
         <div className="flex flex-col h-full px-8 pt-32 pb-12 justify-between relative z-10">
           <div className="flex flex-col space-y-8">
             {navLinks.map((link, i) => (

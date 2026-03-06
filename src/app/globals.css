@@ -2,23 +2,32 @@
 
 @theme {
   /* Ultra-Premium Luxury Wedding Planner Palette - Dark Green & Gold */
-  --color-primary: #064E3B; /* Deep Forest Green */
-  --color-secondary: #D4AF37; /* Metallic Gold */
-  --color-accent-gold: #FDE047; /* Champagne Gold */
-  --color-accent-cream: #FDFCF0; /* Luxury Cream */
-  
-  --color-bg-main: #022C22; /* Darkest Emerald Green */
-  --color-bg-surface: #064E3B; /* Deep Forest Surface */
-  --color-bg-surface-light: #065F46; /* Lighter Emerald */
-  
+  --color-primary: #064E3B;
+  /* Deep Forest Green */
+  --color-secondary: #D4AF37;
+  /* Metallic Gold */
+  --color-accent-gold: #FDE047;
+  /* Champagne Gold */
+  --color-accent-cream: #FDFCF0;
+  /* Luxury Cream */
+
+  --color-bg-main: #022C22;
+  /* Darkest Emerald Green */
+  --color-bg-surface: #064E3B;
+  /* Deep Forest Surface */
+  --color-bg-surface-light: #065F46;
+  /* Lighter Emerald */
+
   --color-border-gold: rgba(212, 175, 55, 0.3);
   --color-border-subtle: rgba(253, 252, 240, 0.1);
-  
-  --color-text-primary: #FDFCF0; /* Champagne Cream */
-  --color-text-secondary: #A7F3D0; /* Muted Mint */
+
+  --color-text-primary: #FDFCF0;
+  /* Champagne Cream */
+  --color-text-secondary: #A7F3D0;
+  /* Muted Mint */
   --color-text-gold: #D4AF37;
-  
-  --color-accent-whatsapp: #22C55E; 
+
+  --color-accent-whatsapp: #22C55E;
 
   /* Fonts */
   --font-sans: var(--font-sans);
@@ -49,9 +58,20 @@
     @apply bg-bg-main text-text-primary antialiased font-sans overflow-x-hidden selection:bg-secondary selection:text-bg-main;
     background-color: var(--bg-main);
     color: var(--text-primary);
+    cursor: none !important;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* Ensure all interactive elements also hide the cursor */
+  a, button, input, select, textarea, [role="button"] {
+    cursor: none !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-serif tracking-tight text-text-primary font-bold;
   }
 
@@ -64,11 +84,11 @@
   .glass {
     @apply bg-bg-main/80 backdrop-blur-xl border-b border-border-gold;
   }
-  
+
   .glass-card {
     @apply bg-bg-surface/40 backdrop-blur-xl border border-border-gold shadow-2xl transition-all duration-500;
   }
-  
+
   .text-gold {
     @apply text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FDE047] to-[#D4AF37];
   }
@@ -128,6 +148,7 @@
   }
 
   .section-dot.active {
-    @apply bg-secondary scale-150 shadow-[0_0_10px_rgba(212,175,55,0.8)];
+    @apply bg-secondary scale-150;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
   }
 }

@@ -21,25 +21,27 @@ export function SectionNavigator() {
           { id: 'about', label: 'Agency' },
           { id: 'services', label: 'Pillars' },
           { id: 'event-types', label: 'Expertise' },
-          { id: 'how-it-works', label: 'Process' },
+          { id: 'stats', label: 'Impact' },
           { id: 'archives', label: 'Portfolio' },
           { id: 'testimonials', label: 'Reviews' },
+          { id: 'how-it-works', label: 'Process' },
           { id: 'instagram', label: 'Feed' },
           { id: 'cta', label: 'Contact' },
         ];
       case '/about':
         return [
-          { id: 'header', label: 'About' },
-          { id: 'philosophy', label: 'Philosophy' },
-          { id: 'vision', label: 'Vision' },
-          { id: 'why-choose-us', label: 'The Edge' },
+          { id: 'header', label: 'Story' },
+          { id: 'philosophy', label: 'Vision' },
+          { id: 'vision', label: 'Mission' },
           { id: 'stats', label: 'Metrics' },
+          { id: 'why-choose-us', label: 'The Edge' },
           { id: 'cta', label: 'Begin' },
         ];
       case '/services':
         return [
           { id: 'header', label: 'Offerings' },
           { id: 'list', label: 'Disciplines' },
+          { id: 'faq', label: 'FAQ' },
           { id: 'cta', label: 'Inquire' },
         ];
       case '/gallery':

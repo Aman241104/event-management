@@ -326,7 +326,7 @@ export default function Home() {
       </section>
 
       {/* 9. Instagram Section */}
-      <section className="py-32 bg-bg-surface border-y border-border-subtle relative overflow-hidden">
+      <section id="instagram" className="py-32 bg-bg-surface border-y border-border-subtle relative overflow-hidden">
         <div className="container px-6 space-y-16 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 fade-up">
             <div className="space-y-4">

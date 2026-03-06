@@ -146,7 +146,7 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ / Experience Section */}
-      <section className="py-32 container mx-auto px-6">
+      <section id="faq" className="py-32 container mx-auto px-6">
         <div className="max-w-4xl mx-auto space-y-16">
           <div className="text-center space-y-6 fade-up">
             <Badge variant="outline" className="border-secondary text-secondary">The Experience</Badge>

@@ -25,7 +25,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             type={type}
             className={cn(
-              'w-full bg-transparent border-b border-border-subtle p-3 text-base text-text-primary focus:outline-none focus:border-text-primary transition-all duration-500 ease-out placeholder:text-text-secondary/60 disabled:opacity-50 rounded-none',
+              'w-full bg-transparent border-b border-border-subtle p-3 text-base text-text-primary focus:outline-none focus:border-text-primary transition-all duration-500 ease-out placeholder:text-text-primary/50 disabled:opacity-50 rounded-none',
               icon ? 'pl-10' : 'pl-0',
               error ? 'border-red-500 focus:border-red-500' : '',
               className

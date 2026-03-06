@@ -9,7 +9,7 @@ export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const followerRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
-  
+
   const [cursorText, setCursorText] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -53,16 +53,16 @@ export function CustomCursor() {
       const text = target.getAttribute('data-cursor');
       if (text) {
         setCursorText(text);
-        gsap.to(follower, { scale: 3, backgroundColor: 'var(--color-primary)', border: 'none', duration: 0.5 });
+        gsap.to(follower, { scale: 3, backgroundColor: 'var(--color-secondary)', border: 'none', duration: 0.5 });
         gsap.to(label, { opacity: 1, duration: 0.3 });
       } else {
-        gsap.to(follower, { scale: 1.5, borderColor: 'var(--color-primary)', duration: 0.5 });
+        gsap.to(follower, { scale: 1.5, borderColor: 'var(--color-secondary)', duration: 0.5 });
       }
     };
 
     const onMouseLeaveActive = () => {
       setCursorText('');
-      gsap.to(follower, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(140, 122, 107, 0.3)', border: '1px solid', duration: 0.5 });
+      gsap.to(follower, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(212, 175, 55, 0.3)', border: '1px solid', duration: 0.5 });
       gsap.to(label, { opacity: 0, duration: 0.3 });
     };
 
@@ -70,7 +70,7 @@ export function CustomCursor() {
     document.documentElement.addEventListener('mouseleave', onDocumentMouseLeave);
     document.documentElement.addEventListener('mouseenter', onDocumentMouseEnter);
 
-    const interactiveElements = document.querySelectorAll('button, a, input, .cursor-pointer, [data-cursor]');
+    const interactiveElements = document.querySelectorAll('button, a, input, select, textarea, .cursor-pointer, [data-cursor]');
     interactiveElements.forEach((el) => {
       el.addEventListener('mouseenter', onMouseEnterActive);
       el.addEventListener('mouseleave', onMouseLeaveActive);
@@ -95,20 +95,20 @@ export function CustomCursor() {
       <div
         ref={cursorRef}
         className={cn(
-          "fixed top-0 left-0 w-1.5 h-1.5 bg-primary rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
+          "fixed top-0 left-0 w-1.5 h-1.5 bg-secondary rounded-full pointer-events-none z-[10002] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
           isVisible ? "opacity-100" : "opacity-0"
         )}
       />
       <div
         ref={followerRef}
         className={cn(
-          "fixed top-0 left-0 w-8 h-8 border border-primary/30 rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
+          "fixed top-0 left-0 w-8 h-8 border border-secondary/30 rounded-full pointer-events-none z-[10001] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
           isVisible ? "opacity-100" : "opacity-0"
         )}
       />
-      <div 
+      <div
         ref={labelRef}
-        className="fixed top-0 left-0 pointer-events-none z-[10001] -translate-x-1/2 -translate-y-1/2 opacity-0"
+        className="fixed top-0 left-0 pointer-events-none z-[10003] -translate-x-1/2 -translate-y-1/2 opacity-0"
         style={{ left: 0, top: 0 }}
       >
         <div className="transform translate-x-6 translate-y-6">
