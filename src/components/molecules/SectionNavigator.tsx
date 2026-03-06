@@ -17,11 +17,11 @@ export function SectionNavigator() {
     switch (pathname) {
       case '/':
         return [
-          { id: 'hero', label: 'Journal' },
-          { id: 'methodology', label: 'Disciplines' },
-          { id: 'archives', label: 'Archives' },
-          { id: 'instagram', label: 'Narratives' },
-          { id: 'cta', label: 'Commission' },
+          { id: 'hero', label: 'Home' },
+          { id: 'methodology', label: 'Services' },
+          { id: 'archives', label: 'Gallery' },
+          { id: 'instagram', label: 'Feed' },
+          { id: 'cta', label: 'Contact' },
         ];
       case '/about':
         return [

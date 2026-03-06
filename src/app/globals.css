@@ -1,29 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* Fine Art Pro Palette - Refined */
-  --color-primary: #8C7A6B; 
-  --color-secondary: #2C362A;
-  --color-accent-peach: #F5EAE6;
-  --color-accent-sand: #E8E3DF;
+  /* Premium Luxury Wedding Planner Palette */
+  --color-primary: #022C22; /* Very Dark Emerald Green */
+  --color-secondary: #D4AF37; /* Metallic Gold */
+  --color-accent-gold: #FDE047; /* Champagne Gold */
+  --color-accent-emerald: #064E3B; /* Brand Green */
   
-  --color-bg-main: #FAFAF8;
-  --color-bg-surface: #FFFFFF;
-  --color-bg-surface-light: #F3F1EC;
+  --color-bg-main: #011611; /* Deepest Forest Green (Dark Mode) */
+  --color-bg-surface: #022C22; /* Dark Emerald Surface */
+  --color-bg-surface-light: #064E3B; /* Emerald Accent */
   
-  --color-border-subtle: #E2DFD8;
-  --color-border-dark: #2C362A;
+  --color-border-subtle: #1E3A2F; /* Muted Green Border */
+  --color-border-gold: rgba(212, 175, 55, 0.3);
   
-  --color-text-primary: #1C1917;
-  --color-text-secondary: #57534E;
-  --color-text-light: #A8A29E;
+  --color-text-primary: #FDFCF0; /* Champagne Ivory */
+  --color-text-secondary: #A7F3D0; /* Muted Mint */
+  --color-text-gold: #D4AF37;
   
-  --color-accent-whatsapp: #2C362A;
+  --color-accent-whatsapp: #22C55E; /* WhatsApp Green */
 
+  /* Fonts - Sophisticated Serif & Sans */
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
 
+  /* Radius */
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -35,59 +37,45 @@
 
 @layer base {
   :root {
-    --primary: #8C7A6B;
-    --secondary: #2C362A;
-    --bg-main: #FAFAF8;
-    --bg-surface: #FFFFFF;
-    --border-subtle: #E2DFD8;
-    --text-primary: #1C1917;
-    --text-secondary: #57534E;
+    --primary: #022C22;
+    --secondary: #D4AF37;
+    --bg-main: #011611;
+    --bg-surface: #022C22;
+    --border-subtle: #1E3A2F;
+    --text-primary: #FDFCF0;
+    --text-secondary: #A7F3D0;
   }
 
   body {
-    @apply bg-bg-main text-text-primary antialiased font-sans overflow-x-hidden selection:bg-primary selection:text-white;
+    @apply bg-bg-main text-text-primary antialiased font-sans overflow-x-hidden selection:bg-secondary selection:text-bg-main;
     background-color: var(--bg-main);
     color: var(--text-primary);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-normal text-text-primary font-normal;
+    @apply font-serif tracking-tight text-text-primary font-bold;
   }
 
   p {
-    @apply text-text-secondary font-sans leading-[1.8] font-light;
+    @apply text-text-secondary font-sans leading-relaxed;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-bg-surface/80 backdrop-blur-xl border-b border-border-subtle;
+    @apply bg-bg-main/80 backdrop-blur-xl border-b border-border-gold;
   }
   
   .glass-card {
-    @apply bg-bg-surface border border-border-subtle transition-all duration-700 hover:shadow-[0_20px_40px_rgba(0,0,0,0.03)];
+    @apply bg-bg-surface/40 backdrop-blur-xl border border-border-gold shadow-2xl transition-all duration-500;
   }
-
+  
   .text-gold {
-    @apply text-primary;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FDE047] to-[#D4AF37];
   }
 
   .container {
-    @apply mx-auto px-6 md:px-12 max-w-[1600px];
-  }
-
-  /* Decorative Elements */
-  .fine-line {
-    @apply w-full h-[1px] bg-border-subtle;
-  }
-
-  .vertical-line {
-    @apply w-[1px] h-full bg-border-subtle;
-  }
-
-  .dot-pattern {
-    background-image: radial-gradient(var(--color-border-subtle) 1px, transparent 1px);
-    background-size: 48px 48px;
+    @apply mx-auto px-6 md:px-12 max-w-[1440px];
   }
 
   .noise-overlay {
@@ -98,91 +86,19 @@
     height: 100vh;
     z-index: 9999;
     pointer-events: none;
-    opacity: 0.04;
+    opacity: 0.03;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  .side-label {
-    @apply fixed left-8 top-1/2 -translate-y-1/2 -rotate-90 origin-left text-[8px] uppercase tracking-[0.6em] text-text-light whitespace-nowrap pointer-events-none z-40 hidden xl:block opacity-40;
-  }
-
-  .side-label-right {
-    @apply fixed right-8 top-1/2 translate-y-1/2 rotate-90 origin-right text-[8px] uppercase tracking-[0.6em] text-text-light whitespace-nowrap pointer-events-none z-40 hidden xl:block opacity-40;
-  }
-
-  .meta-tag {
-    @apply text-[8px] font-mono text-text-light uppercase tracking-widest flex items-center gap-2;
-  }
-
-  /* Fine art button styles */
   .btn-royal {
-    @apply relative overflow-hidden bg-secondary text-white border border-secondary hover:bg-transparent hover:text-secondary transition-colors duration-500 rounded-none tracking-widest font-sans font-light uppercase text-xs;
+    @apply bg-secondary text-bg-main hover:bg-accent-gold border-0 font-bold shadow-xl transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs;
   }
 
   .btn-outline-royal {
-    @apply border border-border-subtle text-text-primary hover:border-secondary hover:bg-secondary hover:text-white transition-colors duration-500 rounded-none tracking-widest font-sans font-light uppercase text-xs;
+    @apply border border-secondary/50 text-secondary hover:bg-secondary hover:text-bg-main transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs;
   }
 
-  /* Image masking for organic shapes */
   .arch-mask {
     border-radius: 1000px 1000px 0 0;
-  }
-
-  .perspective-lg {
-    perspective: 2000px;
-  }
-
-  .preserve-3d {
-    transform-style: preserve-3d;
-  }
-
-  /* Page Transitions / Animations */
-  .reveal-image {
-    clip-path: inset(0 100% 0 0);
-    transition: clip-path 1.5s cubic-bezier(0.77, 0, 0.175, 1);
-  }
-
-  .reveal-image.active {
-    clip-path: inset(0 0 0 0);
-  }
-
-  .grainy-gradient {
-    background: linear-gradient(to bottom, transparent, var(--color-bg-surface-light));
-    position: relative;
-  }
-
-  .grainy-gradient::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.4;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    pointer-events: none;
-  }
-
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--color-bg-main);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-border-subtle);
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-primary);
-  }
-
-  .section-dot {
-    @apply w-1.5 h-1.5 rounded-full border border-primary transition-all duration-500;
-  }
-
-  .section-dot.active {
-    @apply bg-primary scale-150;
   }
 }

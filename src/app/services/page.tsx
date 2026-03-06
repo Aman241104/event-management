@@ -2,9 +2,13 @@
 
 import React, { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/atoms/Button';
 import { MaskSlideImage } from '@/components/molecules/MaskSlideImage';
 import { TextReveal } from '@/components/atoms/TextReveal';
+import { Badge } from '@/components/atoms/Badge';
+import { ArrowRight, MessageCircle, Star, Music, Zap, CheckCircle2 } from 'lucide-react';
+import { generateWhatsAppLink, getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -13,30 +17,33 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const services = [
+const serviceCategories = [
   {
     id: '01',
     title: 'Event Management',
-    subtitle: 'The Architecture of Celebration',
-    description: 'We approach event management with the meticulousness of an architect. From high-end destination weddings to milestone corporate summits, we handle venue sourcing, intricate logistics, and seamless execution. Our goal is to ensure you remain entirely present in your moment, unburdened by details.',
+    subtitle: 'Seamless Execution',
+    icon: <Star size={24} />,
+    description: 'Our team ensures seamless execution from concept to completion, delivering high-quality experiences for every type of event. We handle all logistics, vendor management, and onsite coordination.',
     image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Destination Weddings', 'Corporate Summits', 'Private Galas', 'Timeline Curation']
+    tags: ['Weddings', 'Corporate Events', 'Birthday Celebrations', 'Baby Showers', 'Festivals & Cultural Events', 'House Parties', 'Private Celebrations']
   },
   {
     id: '02',
     title: 'Entertainment Services',
-    subtitle: 'The Soul of the Evening',
-    description: 'The atmosphere of an event is defined by its sound and energy. We curate bespoke entertainment experiences tailored to the emotional arc of your celebration. Whether it requires a gentle acoustic ensemble, a dramatic international symphony, or a high-energy DJ to close the night, we source world-class artistry.',
+    subtitle: 'Vibrant & Engaging',
+    icon: <Music size={24} />,
+    description: 'To make every event lively and engaging, we provide a wide range of entertainment solutions. We source the finest talent to match the vibe of your celebration.',
     image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1200',
-    tags: ['International Artists', 'Live Symphonies', 'Celebrity Talent', 'Ambient Acoustics']
+    tags: ['International Artists', 'DJs', 'Hosts / MCs', 'Live Musicians', 'Bands', 'Celebrity Appearances', 'Kids Entertainment', 'Activity Artists']
   },
   {
     id: '03',
-    title: 'Production & Setup',
-    subtitle: 'Crafting the Canvas',
-    description: 'We transform spaces. Our production team blends technical precision with fine art design. This involves custom stage architecture, complex lighting design that flatters and inspires, and immersive decor that transports your guests the moment they arrive.',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200',
-    tags: ['Custom Architecture', 'Lighting Design', 'Floral Artistry', 'Technical Logistics']
+    title: 'Event Production & Setup',
+    subtitle: 'Precision & Creativity',
+    icon: <Zap size={24} />,
+    description: 'Our team manages the entire event production process with precision and creativity. From stage design to final execution, every detail is carefully managed.',
+    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=1200',
+    tags: ['Event Setup & Decorations', 'Lighting & Sound Management', 'Catering Coordination', 'Concert Production', 'Videography & Photography', 'Photo Booth Experiences']
   }
 ];
 
@@ -50,7 +57,6 @@ export default function ServicesPage() {
       duration: 1.5,
       stagger: 0.2,
       ease: 'power2.out',
-      delay: 0.2
     });
 
     gsap.utils.toArray<HTMLElement>('.service-item').forEach((item) => {
@@ -70,73 +76,57 @@ export default function ServicesPage() {
   return (
     <main ref={containerRef} className="min-h-screen bg-bg-main pt-32 pb-24 relative overflow-hidden">
       
-      {/* Side Labels */}
-      <div className="side-label">Zing Bliss Events — Expertise / Disciplines</div>
-      <div className="side-label-right">Curated Experience Architecture</div>
-
       {/* Header */}
-      <section id="header" className="container mx-auto px-6 py-24 md:py-32 relative">
-        <div className="absolute top-0 right-0 opacity-[0.02] pointer-events-none -translate-y-1/4">
-          <span className="text-[25rem] font-serif font-light">EXPERT</span>
+      <section className="container mx-auto px-6 py-24 md:py-32 relative text-center space-y-8">
+        <div className="header-fade">
+          <Badge variant="solid" dot className="px-6 py-2 bg-secondary/10 text-secondary uppercase tracking-[0.3em] font-bold">Our Expertise</Badge>
         </div>
-
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="header-fade">
-            <span className="meta-tag justify-center">Services Spectrum / Vol. 01</span>
-          </div>
-          <TextReveal 
-            as="h1" 
-            text="Our Disciplines." 
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] font-serif tracking-tight text-text-primary leading-[1.1] font-light" 
-          />
-          <p className="header-fade text-lg md:text-xl text-text-secondary font-light leading-relaxed max-w-2xl mx-auto pt-6">
-            A refined spectrum of event production and design services, tailored for those who appreciate understated elegance and flawless execution.
-          </p>
-        </div>
+        <TextReveal 
+          as="h1" 
+          text="Bespoke Event Solutions." 
+          className="text-5xl md:text-[8rem] font-serif tracking-tighter text-text-primary leading-[1.1] font-bold" 
+        />
+        <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-3xl mx-auto pt-6">
+          Comprehensive event management and production services tailored for high-end celebrations and professional corporate gatherings.
+        </p>
       </section>
 
-      {/* Services List */}
-      <section id="list" className="container mx-auto px-6 space-y-32 md:space-y-48 relative">
-        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-border-subtle opacity-10 hidden lg:block" />
-
-        {services.map((service, index) => (
+      {/* Services Spectrum List */}
+      <section className="container mx-auto px-6 space-y-32 md:space-y-48">
+        {serviceCategories.map((service, index) => (
           <div 
             key={service.id} 
             className={`service-item grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
           >
             <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2' : ''} relative`}>
-              {/* Utilized white space: meta-tag next to image */}
-              <div className={`absolute top-0 ${index % 2 !== 0 ? 'right-full translate-x-[-2rem]' : 'left-full translate-x-[2rem]'} hidden xl:block text-right`}>
-                <span className="meta-tag whitespace-nowrap">Service Ref: {service.id}</span>
-              </div>
-
-              <div className="relative overflow-hidden arch-mask h-[60vh] md:h-[80vh] w-full shadow-2xl">
-                <MaskSlideImage 
+              <div className="relative overflow-hidden arch-mask h-[60vh] md:h-[80vh] w-full shadow-2xl border border-border-gold">
+                <Image 
                   src={service.image} 
                   alt={service.title} 
-                  className="w-full h-full object-cover grayscale-[0.2]"
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-[10s] ease-linear"
                 />
               </div>
             </div>
             
             <div className={`lg:col-span-5 space-y-10 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
               <div className="space-y-4">
-                <span className="text-sm font-serif text-primary/60 italic">{service.id}</span>
-                <h2 className="text-4xl md:text-5xl font-serif text-text-primary font-light leading-[1.2]">
+                <span className="text-sm font-serif text-secondary/60 italic">{service.id} — {service.subtitle}</span>
+                <h2 className="text-4xl md:text-6xl font-serif text-text-primary font-bold leading-[1.2]">
                   {service.title}
                 </h2>
-                <div className="meta-tag">{service.subtitle}</div>
               </div>
               
-              <p className="text-base text-text-secondary font-light leading-[1.8]">
+              <p className="text-lg text-text-secondary font-sans font-light leading-relaxed">
                 {service.description}
               </p>
               
-              <div className="pt-4 border-t border-border-subtle">
-                <ul className="grid grid-cols-2 gap-y-3">
+              <div className="pt-6 border-t border-border-gold">
+                <h4 className="text-[10px] uppercase tracking-[0.3em] text-secondary font-bold mb-6">Expertise Includes:</h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
                   {service.tags.map((tag) => (
-                    <li key={tag} className="text-[10px] font-sans uppercase tracking-widest text-text-primary font-light flex items-center gap-2">
-                      <span className="w-1 h-1 rounded-full bg-primary" />
+                    <li key={tag} className="text-xs font-sans uppercase tracking-widest text-text-primary font-light flex items-center gap-3">
+                      <CheckCircle2 size={14} className="text-secondary" />
                       {tag}
                     </li>
                   ))}
@@ -144,11 +134,11 @@ export default function ServicesPage() {
               </div>
               
               <div className="pt-8">
-                <Link href="/contact">
-                  <Button variant="outline" className="btn-outline-royal">
-                    Request Details
+                <a href={generateWhatsAppLink(service.title, 'Booking')} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="btn-outline-royal px-12 h-16 rounded-none font-bold">
+                    Inquire Details
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
           </div>
@@ -156,16 +146,24 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section id="cta" className="py-32 mt-32 bg-bg-surface border-t border-border-subtle relative">
-        <div className="absolute inset-0 dot-pattern opacity-[0.02]" />
-        <div className="container mx-auto text-center space-y-10 relative z-10">
-          <h2 className="text-3xl md:text-5xl font-serif text-text-primary font-light">
-            Ready to <i className="text-primary">Commission</i> us?
+      <section className="py-32 mt-32 bg-bg-surface border-t border-border-gold relative overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-[0.05] pointer-events-none" />
+        <div className="container mx-auto text-center space-y-12 relative z-10">
+          <h2 className="text-4xl md:text-7xl font-serif text-text-primary font-bold">
+            Ready to <span className="text-secondary italic font-light">Orchestrate</span> Your Event?
           </h2>
-          <Link href="/contact" className="inline-block meta-tag group cursor-pointer border-b border-transparent hover:border-primary transition-all pb-1">
-            <span className="w-8 h-[1px] bg-primary group-hover:w-12 transition-all" />
-            Connect With Our Architects
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-8">
+            <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="h-20 px-16 text-xl btn-royal rounded-none font-bold shadow-2xl" leftIcon={<MessageCircle size={24} />}>
+                WhatsApp Us
+              </Button>
+            </a>
+            <Link href="/contact">
+              <Button variant="outline" size="lg" className="h-20 px-16 text-xl btn-outline-royal rounded-none font-bold">
+                Contact Form
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
