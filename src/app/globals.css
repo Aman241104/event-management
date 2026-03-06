@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  /* Premium Luxury Wedding Planner Palette */
+  /* Premium Luxury Wedding & Festival Planner Palette */
   --color-primary: #022C22; /* Very Dark Emerald Green */
   --color-secondary: #D4AF37; /* Metallic Gold */
   --color-accent-gold: #FDE047; /* Champagne Gold */
   --color-accent-emerald: #064E3B; /* Brand Green */
+  --color-accent-festive: #BE185D; /* Deep Rose / Festive Pink */
+  --color-accent-saffron: #F59E0B; /* Saffron for warmth */
   
   --color-bg-main: #011611; /* Deepest Forest Green (Dark Mode) */
   --color-bg-surface: #022C22; /* Dark Emerald Surface */
@@ -13,10 +15,12 @@
   
   --color-border-subtle: #1E3A2F; /* Muted Green Border */
   --color-border-gold: rgba(212, 175, 55, 0.3);
+  --color-border-festive: rgba(190, 24, 93, 0.3);
   
   --color-text-primary: #FDFCF0; /* Champagne Ivory */
   --color-text-secondary: #A7F3D0; /* Muted Mint */
   --color-text-gold: #D4AF37;
+  --color-text-festive: #F472B6;
   
   --color-accent-whatsapp: #22C55E; /* WhatsApp Green */
 
@@ -39,6 +43,7 @@
   :root {
     --primary: #022C22;
     --secondary: #D4AF37;
+    --festive: #BE185D;
     --bg-main: #011611;
     --bg-surface: #022C22;
     --border-subtle: #1E3A2F;
@@ -69,9 +74,21 @@
   .glass-card {
     @apply bg-bg-surface/40 backdrop-blur-xl border border-border-gold shadow-2xl transition-all duration-500;
   }
+
+  .festive-glow {
+    @apply shadow-[0_0_30px_rgba(190,24,93,0.2)];
+  }
+
+  .gold-glow {
+    @apply shadow-[0_0_30px_rgba(212,175,55,0.2)];
+  }
   
   .text-gold {
     @apply text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FDE047] to-[#D4AF37];
+  }
+
+  .text-festive {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#BE185D] via-[#F472B6] to-[#BE185D];
   }
 
   .container {
@@ -92,6 +109,10 @@
 
   .btn-royal {
     @apply bg-secondary text-bg-main hover:bg-accent-gold border-0 font-bold shadow-xl transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs;
+  }
+
+  .btn-festive {
+    @apply bg-accent-festive text-white hover:bg-accent-festive/90 border-0 font-bold shadow-xl transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs;
   }
 
   .btn-outline-royal {

@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Target, Compass, Sparkles, ShieldCheck, Zap, ArrowRight } from 'lucide-react';
+import { Target, Compass, Sparkles, ShieldCheck, Zap, ArrowRight, CheckCircle2, Star, Award } from 'lucide-react';
 import { Badge } from '@/components/atoms/Badge';
 import { MaskSlideImage } from '@/components/molecules/MaskSlideImage';
 import { Button } from '@/components/atoms/Button';
@@ -39,7 +39,7 @@ export default function AboutPage() {
         y: 40,
         opacity: 0,
         duration: 1.5,
-        ease: 'power2.out'
+        ease: 'power3.out'
       });
     });
   }, { scope: containerRef });
@@ -77,7 +77,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:col-span-5 space-y-12 fade-up">
             <div className="space-y-6">
-              <Badge variant="outline" className="border-secondary text-secondary">Who We Are</Badge>
+              <Badge variant="outline" className="border-secondary text-secondary">Our Perspective</Badge>
               <h2 className="text-5xl md:text-6xl font-serif text-text-primary font-bold leading-[1.2]">
                 Architects of <br /><span className="text-secondary italic font-light">Magic.</span>
               </h2>
@@ -133,6 +133,31 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us - Competitor Inspired */}
+      <section className="py-32 container px-6 space-y-24">
+        <div className="text-center space-y-6 max-w-3xl mx-auto fade-up">
+          <Badge variant="outline" className="text-secondary border-secondary">The Zing Bliss Advantage</Badge>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold text-white">Why We Are The <br/><span className="text-secondary italic font-light">Best Choice</span></h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { title: 'Unmatched Expertise', desc: 'Years of professional experience in high-end wedding and event planning.', icon: <Award size={28} /> },
+            { title: 'Detail Oriented', desc: 'We handle every nuance with absolute precision to ensure a stress-free day.', icon: <CheckCircle2 size={28} /> },
+            { title: 'Value for Money', desc: 'Optimizing resources to deliver premium quality within your desired scale.', icon: <Star size={28} /> },
+            { title: 'Transparent Dealings', desc: 'Clear communication and ethical business practices in every collaboration.', icon: <ShieldCheck size={28} /> },
+          ].map((item, i) => (
+            <div key={i} className="glass-card p-10 text-center space-y-6 hover:border-secondary transition-all group fade-up">
+              <div className="mx-auto w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+                {item.icon}
+              </div>
+              <h3 className="text-2xl font-serif font-bold text-white">{item.title}</h3>
+              <p className="text-sm text-text-secondary font-sans font-light leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 

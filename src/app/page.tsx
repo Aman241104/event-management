@@ -14,7 +14,9 @@ import {
   MoveRight,
   ShieldCheck,
   Zap,
-  Users
+  Users,
+  Tent,
+  Glasses
 } from 'lucide-react';
 import { Button } from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
@@ -42,6 +44,12 @@ const testimonials = [
   { id: 1, content: "Zing Bliss turned our vision into reality. Every detail was beautifully executed and our guests loved the experience.", author: "Sonia & Aryan", role: "Wedding Celebration", event: "Private Event", rating: 5, avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" },
   { id: 2, content: "The team handled everything so professionally. From decor to entertainment, the event was flawless.", author: "Rajesh Khanna", role: "Corporate Gala", event: "Annual Summit", rating: 5, avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" },
   { id: 3, content: "Their creativity and execution truly set them apart. Highly recommended for any celebration.", author: "Happy Client", role: "Special Occasion", event: "Birthday Bash", rating: 5, avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200" },
+];
+
+const planningProcess = [
+  { step: '01', title: 'Consultation', desc: 'We begin by understanding your vision, preferences, and the emotional narrative you want to convey.' },
+  { step: '02', title: 'Design & Curation', desc: 'Our creative team crafts bespoke mood boards, selecting every element from venue to the smallest decor detail.' },
+  { step: '03', title: 'Flawless Execution', desc: 'Our production leads manage the entire setup and logistics, leaving you to enjoy your magical moment.' },
 ];
 
 export default function Home() {
@@ -84,14 +92,14 @@ export default function Home() {
 
         <div className="container relative z-20 text-center space-y-8 max-w-5xl px-4">
           <div className="hero-badge">
-            <Badge variant="solid" dot className="bg-bg-main/40 border-secondary/50 text-secondary">Premium Wedding & Event Planning</Badge>
+            <Badge variant="solid" dot className="bg-bg-main/40 border-secondary/50 text-secondary">Premium Wedding & Event Architects</Badge>
           </div>
           <h1 className="hero-title text-6xl md:text-[8rem] font-serif font-bold tracking-tight text-text-primary leading-[0.9]">
             <span className="block">Crafting Magical</span>
             <span className="block text-gold italic font-light mt-2">Moments.</span>
           </h1>
           <p className="hero-desc text-lg md:text-2xl text-text-primary/80 max-w-3xl mx-auto leading-relaxed font-sans font-light">
-            We plan and execute your most cherished celebrations with creativity, precision, and professional grandeur.
+            We plan and execute your most cherished celebrations—from royal weddings to grand festivals—with creativity and precision.
           </p>
           <div className="hero-btns pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
             <Magnetic strength={0.2}>
@@ -150,8 +158,8 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
-            { title: 'Event Management', icon: <Star size={32} />, desc: 'Seamless execution from concept to completion, delivering high-quality experiences for every event.' },
-            { title: 'Entertainment Services', icon: <Music size={32} />, desc: 'Vibrant and engaging entertainment solutions to make every event lively and memorable.' },
+            { title: 'Event Management', icon: <Star size={32} />, desc: 'Seamless execution from concept to completion, delivering high-quality planning for every event.' },
+            { title: 'Entertainment Services', icon: <Music size={32} />, desc: 'Vibrant and engaging entertainment solutions to make every celebration lively and memorable.' },
             { title: 'Production & Setup', icon: <Zap size={32} />, desc: 'Managing the entire event production process with technical precision and creative flair.' },
           ].map((service, i) => (
             <div key={i} className="glass-card p-12 text-center space-y-8 hover:border-secondary transition-all group fade-up">
@@ -166,7 +174,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Event Types Section */}
+      {/* The Planning Process - "Event Planner Centric" */}
+      <section className="py-32 bg-bg-main relative">
+        <div className="container px-6 space-y-24">
+          <div className="text-center space-y-6 max-w-3xl mx-auto fade-up">
+            <Badge variant="outline" className="text-secondary border-secondary">The Blueprint of Bliss</Badge>
+            <h2 className="text-5xl md:text-6xl font-serif font-bold text-white">How We <span className="text-secondary italic font-light">Create Magic</span></h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+            {/* Connecting Line */}
+            <div className="absolute top-1/2 left-0 w-full h-px bg-border-gold hidden md:block" />
+            
+            {planningProcess.map((item, i) => (
+              <div key={i} className="relative z-10 space-y-8 text-center fade-up">
+                <div className="mx-auto w-16 h-16 rounded-full bg-bg-main border-2 border-secondary flex items-center justify-center text-secondary font-serif text-2xl font-bold">
+                  {item.step}
+                </div>
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-serif font-bold text-white">{item.title}</h3>
+                  <p className="text-text-secondary font-sans font-light leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Event Types Section - "More Festive Friendly" */}
       <section className="py-32 bg-bg-surface border-y border-border-subtle overflow-hidden relative">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/4 text-[20rem] font-serif text-secondary/5 opacity-10 whitespace-nowrap pointer-events-none select-none">
           CELEBRATIONS
@@ -174,25 +209,26 @@ export default function Home() {
         <div className="container px-6 relative z-10 space-y-20">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 fade-up">
             <div className="space-y-6">
-              <Badge variant="outline" className="border-secondary text-secondary">Event Categories</Badge>
-              <h2 className="text-5xl md:text-7xl font-serif font-bold text-white">Specialized in <span className="text-secondary italic font-light">Every Excellence</span>.</h2>
+              <Badge variant="outline" className="border-festive text-festive">Festive & Celebratory</Badge>
+              <h2 className="text-5xl md:text-7xl font-serif font-bold text-white">Bespoke Planning for <br/><span className="text-festive italic font-light">Every Occasion</span>.</h2>
             </div>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 fade-up">
             {[
-              { title: 'Weddings', icon: <Heart size={24} /> },
-              { title: 'Corporate Events', icon: <Sparkles size={24} /> },
-              { title: 'Birthday Celebrations', icon: <PartyPopper size={24} /> },
-              { title: 'Baby Showers', icon: <Star size={24} /> },
-              { title: 'Festivals & Culture', icon: <Music size={24} /> },
-              { title: 'House Parties', icon: <Users size={24} /> },
-              { title: 'Private Bashes', icon: <ShieldCheck size={24} /> },
-              { title: 'Gala Dinners', icon: <Camera size={24} /> },
+              { title: 'Weddings', icon: <Heart size={24} />, color: 'text-secondary' },
+              { title: 'Festivals', icon: <Tent size={24} />, color: 'text-festive' },
+              { title: 'Birthday Events', icon: <PartyPopper size={24} />, color: 'text-festive' },
+              { title: 'House Parties', icon: <Users size={24} />, color: 'text-secondary' },
+              { title: 'Corporate Events', icon: <Star size={24} />, color: 'text-secondary' },
+              { title: 'Baby Showers', icon: <Sparkles size={24} />, color: 'text-festive' },
+              { title: 'Cultural Fairs', icon: <Music size={24} />, color: 'text-festive' },
+              { title: 'VIP Galas', icon: <Glasses size={24} />, color: 'text-secondary' },
             ].map((item, i) => (
-              <div key={i} className="group p-8 border border-border-subtle hover:border-secondary transition-all duration-500 bg-bg-main/30 flex flex-col items-center justify-center text-center gap-6">
-                <div className="text-secondary group-hover:scale-125 transition-transform duration-500">{item.icon}</div>
-                <h4 className="text-lg font-serif font-bold text-white tracking-wide">{item.title}</h4>
+              <div key={i} className="group p-10 border border-border-subtle hover:border-secondary transition-all duration-500 bg-bg-main/30 flex flex-col items-center justify-center text-center gap-6 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className={`${item.color} group-hover:scale-125 transition-transform duration-500 relative z-10`}>{item.icon}</div>
+                <h4 className="text-lg font-serif font-bold text-white tracking-wide relative z-10">{item.title}</h4>
               </div>
             ))}
           </div>
