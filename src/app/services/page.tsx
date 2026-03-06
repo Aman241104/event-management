@@ -49,8 +49,6 @@ const serviceCategories = [
 
 export default function ServicesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const horizontalRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     // Header fade in
@@ -62,41 +60,17 @@ export default function ServicesPage() {
       ease: 'power2.out',
     });
 
-    const mm = gsap.matchMedia();
-    
-    // Desktop: Horizontal Scroll for Process
-    mm.add("(min-width: 768px)", () => {
-      if (horizontalRef.current && sectionRef.current) {
-        const steps = 4;
-        gsap.to(horizontalRef.current, {
-          xPercent: -100 * (steps - 1) / steps,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            pin: true,
-            scrub: 1,
-            start: "top top",
-            end: () => `+=${window.innerWidth * (steps - 1)}`,
-            invalidateOnRefresh: true,
-            anticipatePin: 1,
-          }
-        });
-      }
-    });
-
-    // Mobile: Vertical fade-up for process cards
-    mm.add("(max-width: 767px)", () => {
-      gsap.utils.toArray<HTMLElement>('.process-card').forEach((card) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 80%',
-          },
-          y: 50,
-          opacity: 0,
-          duration: 1,
-          ease: 'power2.out'
-        });
+    // Fade-up for process cards (static vertical version)
+    gsap.utils.toArray<HTMLElement>('.process-card').forEach((card) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 90%',
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'power3.out'
       });
     });
 
@@ -114,7 +88,6 @@ export default function ServicesPage() {
       });
     });
 
-    // Cleanup and Refresh
     setTimeout(() => ScrollTrigger.refresh(), 200);
   }, { scope: containerRef });
 
@@ -192,27 +165,27 @@ export default function ServicesPage() {
         ))}
       </section>
 
-      {/* Process Journey (Horizontal Scroll) */}
-      <section id="process" ref={sectionRef} className="relative bg-bg-surface md:h-screen border-y border-border-gold overflow-hidden">
-        <div className="md:absolute top-12 left-12 z-20 p-6 md:p-0">
+      {/* Process Journey (Static Vertical Stack) */}
+      <section id="process" className="relative bg-bg-surface border-y border-border-gold py-32 md:py-48">
+        <div className="container mx-auto px-6 mb-24 text-center">
           <Badge variant="outline" className="text-secondary border-secondary">The Journey</Badge>
-          <h2 className="text-4xl font-serif text-white mt-4">Our Creative <span className="text-secondary italic font-light">Workflow</span></h2>
+          <h2 className="text-5xl md:text-7xl font-serif text-white mt-6">Our Creative <span className="text-secondary italic font-light">Workflow</span></h2>
         </div>
         
-        <div ref={horizontalRef} className="flex flex-col md:flex-row h-full md:flex-nowrap md:w-[400vw] items-center will-change-transform">
+        <div className="container mx-auto px-6 space-y-24 md:space-y-48">
           {[
             { step: '01', title: 'Discovery Dialogue', desc: 'An intimate consultation to understand your unique narrative and aesthetic vision.' },
             { step: '02', title: 'Architectural Planning', desc: 'Bespoke design renders and rigorous logistical mapping of your event landscape.' },
             { step: '03', title: 'Curation & Sourcing', desc: 'Selecting the finest artisans and global vendors to manifest every detail.' },
             { step: '04', title: 'The Masterful Reveal', desc: 'Onsite orchestration where vision meets reality in a flawless execution.' },
           ].map((item, i) => (
-            <div key={i} className="process-card w-full md:w-screen h-full flex-shrink-0 flex items-center justify-center px-6 md:px-24 py-24 md:py-0 border-b md:border-b-0 border-border-gold/20 last:border-b-0 relative z-10">
-              <div className="max-w-4xl space-y-8 md:space-y-12">
-                <span className="text-6xl md:text-[10rem] font-serif font-bold text-secondary/10 leading-none">{item.step}</span>
-                <div className="space-y-4 md:space-y-6">
-                  <h3 className="text-4xl md:text-8xl font-serif text-white font-bold">{item.title}</h3>
-                  <p className="text-lg md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-2xl">{item.desc}</p>
-                </div>
+            <div key={i} className="process-card grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+              <div className="md:col-span-4">
+                <span className="text-8xl md:text-[12rem] font-serif font-bold text-secondary/10 leading-none">{item.step}</span>
+              </div>
+              <div className="md:col-span-8 space-y-6">
+                <h3 className="text-4xl md:text-7xl font-serif text-white font-bold tracking-tight">{item.title}</h3>
+                <p className="text-xl md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-3xl">{item.desc}</p>
               </div>
             </div>
           ))}
