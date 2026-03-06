@@ -93,8 +93,16 @@
     @apply bg-gradient-to-r from-[#B45309] to-[#D4AF37] text-bg-main hover:from-[#D4AF37] hover:to-[#FDE047] border-0 font-bold shadow-xl transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs;
   }
 
+  .btn-royal:hover {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+  }
+
   .btn-outline-royal {
     @apply border border-secondary text-secondary hover:bg-secondary hover:text-bg-main transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs;
+  }
+
+  .hover-zoom {
+    @apply transition-transform duration-[10s] ease-out hover:scale-110;
   }
 
   .arch-mask {
