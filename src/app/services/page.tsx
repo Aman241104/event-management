@@ -65,16 +65,19 @@ export default function ServicesPage() {
     const mm = gsap.matchMedia();
     
     mm.add("(min-width: 768px)", () => {
-      if (horizontalRef.current && sectionRef.current) {
-        gsap.to(horizontalRef.current, {
-          x: () => -(horizontalRef.current!.scrollWidth - window.innerWidth),
+      const sections = gsap.utils.toArray<HTMLElement>('.process-card');
+      if (sections.length > 0 && sectionRef.current) {
+        gsap.to(sections, {
+          xPercent: -100 * (sections.length - 1),
           ease: 'none',
           scrollTrigger: {
             trigger: sectionRef.current,
             pin: true,
             scrub: 1,
+            anticipatePin: 1,
             invalidateOnRefresh: true,
-            end: () => "+=" + horizontalRef.current!.scrollWidth,
+            // Calculate end based on the total width of cards
+            end: () => "+=" + (sectionRef.current!.offsetWidth * (sections.length - 1)),
           }
         });
       }
@@ -191,14 +194,14 @@ export default function ServicesPage() {
           <h2 className="text-4xl font-serif text-white mt-4">Our Creative <span className="text-secondary italic font-light">Workflow</span></h2>
         </div>
         
-        <div ref={horizontalRef} className="flex flex-col md:flex-row h-full md:w-[400vw] items-center">
+        <div ref={horizontalRef} className="flex flex-col md:flex-row h-full md:flex-nowrap items-center">
           {[
             { step: '01', title: 'Discovery Dialogue', desc: 'An intimate consultation to understand your unique narrative and aesthetic vision.' },
             { step: '02', title: 'Architectural Planning', desc: 'Bespoke design renders and rigorous logistical mapping of your event landscape.' },
             { step: '03', title: 'Curation & Sourcing', desc: 'Selecting the finest artisans and global vendors to manifest every detail.' },
             { step: '04', title: 'The Masterful Reveal', desc: 'Onsite orchestration where vision meets reality in a flawless execution.' },
           ].map((item, i) => (
-            <div key={i} className="process-card w-full md:w-screen h-screen md:h-full flex items-center justify-center px-6 md:px-24 py-24 md:py-0 border-b md:border-b-0 border-border-gold/20 last:border-b-0">
+            <div key={i} className="process-card w-full md:w-screen h-screen md:h-full flex-shrink-0 flex items-center justify-center px-6 md:px-24 py-24 md:py-0 border-b md:border-b-0 border-border-gold/20 last:border-b-0 relative z-10">
               <div className="max-w-4xl space-y-8 md:space-y-12">
                 <span className="text-6xl md:text-[10rem] font-serif font-bold text-secondary/10 leading-none">{item.step}</span>
                 <div className="space-y-4 md:space-y-6">
