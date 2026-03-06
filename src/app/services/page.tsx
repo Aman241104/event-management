@@ -65,19 +65,18 @@ export default function ServicesPage() {
     const mm = gsap.matchMedia();
     
     mm.add("(min-width: 768px)", () => {
-      const sections = gsap.utils.toArray<HTMLElement>('.process-card');
-      if (sections.length > 0 && sectionRef.current) {
-        gsap.to(sections, {
-          xPercent: -100 * (sections.length - 1),
+      if (horizontalRef.current && sectionRef.current) {
+        gsap.to(horizontalRef.current, {
+          x: () => -(horizontalRef.current!.scrollWidth - window.innerWidth),
           ease: 'none',
           scrollTrigger: {
             trigger: sectionRef.current,
             pin: true,
             scrub: 1,
-            anticipatePin: 1,
             invalidateOnRefresh: true,
-            // Calculate end based on the total width of cards
-            end: () => "+=" + (sectionRef.current!.offsetWidth * (sections.length - 1)),
+            anticipatePin: 1,
+            // The scroll distance should match the amount we translate
+            end: () => "+=" + (horizontalRef.current!.scrollWidth - window.innerWidth),
           }
         });
       }
@@ -194,7 +193,7 @@ export default function ServicesPage() {
           <h2 className="text-4xl font-serif text-white mt-4">Our Creative <span className="text-secondary italic font-light">Workflow</span></h2>
         </div>
         
-        <div ref={horizontalRef} className="flex flex-col md:flex-row h-full md:flex-nowrap items-center">
+        <div ref={horizontalRef} className="flex flex-col md:flex-row h-full md:flex-nowrap md:w-max items-center will-change-transform">
           {[
             { step: '01', title: 'Discovery Dialogue', desc: 'An intimate consultation to understand your unique narrative and aesthetic vision.' },
             { step: '02', title: 'Architectural Planning', desc: 'Bespoke design renders and rigorous logistical mapping of your event landscape.' },
