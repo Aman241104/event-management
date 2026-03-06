@@ -146,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* 2. About Preview */}
-      <section className="py-32 bg-bg-surface relative overflow-hidden border-y border-border-subtle">
+      <section id="about" className="py-32 bg-bg-surface relative overflow-hidden border-y border-border-subtle">
         <div className="container px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="fade-up space-y-10">
             <div className="space-y-6">
@@ -210,7 +210,7 @@ export default function Home() {
       </section>
 
       {/* 4. Events We Specialize In */}
-      <section className="py-32 bg-bg-surface border-y border-border-subtle relative overflow-hidden">
+      <section id="event-types" className="py-32 bg-bg-surface border-y border-border-subtle relative overflow-hidden">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/4 text-[20rem] font-serif text-secondary/5 opacity-[0.03] whitespace-nowrap pointer-events-none select-none">
           EXPERIENCE
         </div>
@@ -238,7 +238,7 @@ export default function Home() {
       </section>
 
       {/* 5. Statistics Section */}
-      <section className="py-24 bg-bg-main border-b border-border-subtle">
+      <section id="stats" className="py-24 bg-bg-main border-b border-border-subtle">
         <div className="container px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center fade-up">
             {stats.map((stat, i) => (
@@ -269,7 +269,7 @@ export default function Home() {
       </section>
 
       {/* 7. Testimonials Section */}
-      <section className="py-32 bg-bg-surface relative overflow-hidden border-y border-border-subtle">
+      <section id="testimonials" className="py-32 bg-bg-surface relative overflow-hidden border-y border-border-subtle">
         <div className="container px-6 space-y-24 relative z-10">
           <div className="text-center space-y-6 fade-up">
             <Badge variant="solid" className="bg-secondary/10 text-secondary uppercase tracking-widest">Reviews</Badge>
@@ -302,7 +302,7 @@ export default function Home() {
       </section>
 
       {/* 8. How We Work Section */}
-      <section className="py-32 container px-6 space-y-24">
+      <section id="how-it-works" className="py-32 container px-6 space-y-24">
         <div className="text-center space-y-6 max-w-3xl mx-auto fade-up">
           <Badge variant="outline" className="text-secondary border-secondary uppercase tracking-widest">Workflow</Badge>
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-white">How We Plan <br/><span className="text-secondary italic font-light">Your Legacy</span></h2>

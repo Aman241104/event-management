@@ -37,7 +37,7 @@ export default function ContactPage() {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/5 blur-[200px] rounded-full pointer-events-none -z-10" />
       
       {/* Header */}
-      <section className="container mx-auto px-6 py-24 md:py-32 text-center space-y-8">
+      <section id="header" className="container mx-auto px-6 py-24 md:py-32 text-center space-y-8">
         <div className="header-fade">
           <Badge variant="solid" dot className="px-6 py-2 bg-secondary/10 text-secondary uppercase tracking-[0.3em] font-bold">Get In Touch</Badge>
         </div>
@@ -52,7 +52,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="container mx-auto px-6 py-24">
+      <section id="content" className="container mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
           
           {/* Info Side */}

@@ -77,7 +77,7 @@ export default function ServicesPage() {
     <main ref={containerRef} className="min-h-screen bg-bg-main pt-32 pb-24 relative overflow-hidden">
       
       {/* Header */}
-      <section className="container mx-auto px-6 py-24 md:py-32 relative text-center space-y-8">
+      <section id="header" className="container mx-auto px-6 py-24 md:py-32 relative text-center space-y-8">
         <div className="header-fade">
           <Badge variant="solid" dot className="px-6 py-2 bg-secondary/10 text-secondary uppercase tracking-[0.3em] font-bold">Our Expertise</Badge>
         </div>
@@ -92,7 +92,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Spectrum List */}
-      <section className="container mx-auto px-6 space-y-32 md:space-y-48">
+      <section id="list" className="container mx-auto px-6 space-y-32 md:space-y-48">
         {serviceCategories.map((service, index) => (
           <div 
             key={service.id} 
@@ -170,7 +170,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 mt-32 bg-bg-surface border-t border-border-gold relative overflow-hidden">
+      <section id="cta" className="py-32 mt-32 bg-bg-surface border-t border-border-gold relative overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-[0.05] pointer-events-none" />
         <div className="container mx-auto text-center space-y-12 relative z-10">
           <h2 className="text-4xl md:text-7xl font-serif text-text-primary font-bold">

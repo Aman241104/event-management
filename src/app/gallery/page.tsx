@@ -59,7 +59,7 @@ export default function GalleryPage() {
     <main ref={containerRef} className="min-h-screen bg-bg-main pt-32 pb-24 selection:bg-secondary selection:text-bg-main">
       
       {/* Header */}
-      <section className="container mx-auto px-6 py-24 md:py-32 text-center space-y-10">
+      <section id="header" className="container mx-auto px-6 py-24 md:py-32 text-center space-y-10">
         <div className="header-fade">
           <Badge variant="solid" dot className="px-6 py-2 bg-secondary/10 text-secondary uppercase tracking-[0.3em] font-bold">Our Portfolio</Badge>
         </div>
@@ -74,7 +74,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Filter Navigation */}
-      <section className="container mx-auto px-6 pb-16">
+      <section id="filter" className="container mx-auto px-6 pb-16">
         <div className="flex flex-wrap justify-center gap-4 md:gap-8 border-b border-border-gold pb-8">
           {categories.map((category) => (
             <button
@@ -93,12 +93,12 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="container mx-auto px-6 min-h-[50vh]">
+      <section id="grid" className="container mx-auto px-6 min-h-[50vh]">
         <Gallery items={filteredItems} />
       </section>
 
       {/* CTA */}
-      <section className="py-32 mt-32 bg-bg-surface border-t border-border-gold relative overflow-hidden text-center space-y-12">
+      <section id="cta" className="py-32 mt-32 bg-bg-surface border-t border-border-gold relative overflow-hidden text-center space-y-12">
         <div className="absolute inset-0 dot-pattern opacity-[0.05] pointer-events-none" />
         <h2 className="text-4xl md:text-7xl font-serif font-bold text-text-primary">
           Want a <span className="text-secondary italic font-light">Fairytale</span> Celebration?

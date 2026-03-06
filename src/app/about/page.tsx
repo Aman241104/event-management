@@ -48,7 +48,7 @@ export default function AboutPage() {
     <main ref={containerRef} className="min-h-screen bg-bg-main pt-32 pb-24 selection:bg-secondary selection:text-bg-main">
       
       {/* Editorial Header */}
-      <section className="container mx-auto px-6 py-24 md:py-32 relative text-center space-y-10">
+      <section id="header" className="container mx-auto px-6 py-24 md:py-32 relative text-center space-y-10">
         <div className="header-fade">
           <Badge variant="solid" dot className="px-6 py-2 bg-secondary/10 text-secondary">The Agency Story</Badge>
         </div>
@@ -63,7 +63,7 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy Section */}
-      <section className="container mx-auto px-6 space-y-32 py-32">
+      <section id="philosophy" className="container mx-auto px-6 space-y-32 py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
           <div className="lg:col-span-7 fade-up relative">
             <div className="relative overflow-hidden arch-mask h-[60vh] md:h-[80vh] w-full shadow-2xl border border-border-gold">
@@ -108,7 +108,7 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission (Exactly from PDF) */}
-      <section className="py-32 bg-bg-surface border-y border-border-gold dot-pattern relative">
+      <section id="vision" className="py-32 bg-bg-surface border-y border-border-gold dot-pattern relative">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24 max-w-5xl mx-auto relative">
             <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-border-gold hidden md:block" />
@@ -137,7 +137,7 @@ export default function AboutPage() {
       </section>
 
       {/* Metrics Section */}
-      <section className="py-24 bg-bg-main border-b border-border-subtle relative overflow-hidden">
+      <section id="stats" className="py-24 bg-bg-main border-b border-border-subtle relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center fade-up">
             {[
@@ -156,7 +156,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why Choose Us - Competitor Inspired */}
-      <section className="py-32 container px-6 space-y-24">
+      <section id="why-choose-us" className="py-32 container px-6 space-y-24">
         <div className="text-center space-y-6 max-w-3xl mx-auto fade-up">
           <Badge variant="outline" className="text-secondary border-secondary">The Zing Bliss Advantage</Badge>
           <h2 className="text-5xl md:text-6xl font-serif font-bold text-white">Why We Are The <br/><span className="text-secondary italic font-light">Best Choice</span></h2>
@@ -181,7 +181,7 @@ export default function AboutPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 md:py-64 container mx-auto text-center space-y-16">
+      <section id="cta" className="py-32 md:py-64 container mx-auto text-center space-y-16">
         <div className="fade-up relative">
           <h2 className="text-6xl md:text-[10rem] font-serif text-text-primary font-bold tracking-tighter leading-[0.85]">
             Start Your <br/><span className="text-secondary italic font-light">Legacy.</span>

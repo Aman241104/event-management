@@ -17,36 +17,42 @@ export function SectionNavigator() {
     switch (pathname) {
       case '/':
         return [
-          { id: 'hero', label: 'Home' },
-          { id: 'methodology', label: 'Services' },
-          { id: 'archives', label: 'Gallery' },
+          { id: 'hero', label: 'Start' },
+          { id: 'about', label: 'Agency' },
+          { id: 'services', label: 'Pillars' },
+          { id: 'event-types', label: 'Expertise' },
+          { id: 'how-it-works', label: 'Process' },
+          { id: 'archives', label: 'Portfolio' },
+          { id: 'testimonials', label: 'Reviews' },
           { id: 'instagram', label: 'Feed' },
           { id: 'cta', label: 'Contact' },
         ];
       case '/about':
         return [
-          { id: 'header', label: 'Story' },
-          { id: 'process', label: 'Architecture' },
-          { id: 'vision', label: 'Foundation' },
-          { id: 'cta', label: 'Legacy' },
+          { id: 'header', label: 'About' },
+          { id: 'philosophy', label: 'Philosophy' },
+          { id: 'vision', label: 'Vision' },
+          { id: 'why-choose-us', label: 'The Edge' },
+          { id: 'stats', label: 'Metrics' },
+          { id: 'cta', label: 'Begin' },
         ];
       case '/services':
         return [
-          { id: 'header', label: 'Disciplines' },
-          { id: 'list', label: 'Categories' },
-          { id: 'cta', label: 'Commission' },
+          { id: 'header', label: 'Offerings' },
+          { id: 'list', label: 'Disciplines' },
+          { id: 'cta', label: 'Inquire' },
         ];
       case '/gallery':
         return [
-          { id: 'header', label: 'Archives' },
+          { id: 'header', label: 'Gallery' },
           { id: 'filter', label: 'Filter' },
-          { id: 'grid', label: 'Journal' },
-          { id: 'cta', label: 'Masterpiece' },
+          { id: 'grid', label: 'Record' },
+          { id: 'cta', label: 'Booking' },
         ];
       case '/contact':
         return [
-          { id: 'header', label: 'Commission' },
-          { id: 'content', label: 'Channels' },
+          { id: 'header', label: 'Connect' },
+          { id: 'content', label: 'Inquiry' },
         ];
       default:
         if (pathname.startsWith('/events/')) {
@@ -74,7 +80,7 @@ export function SectionNavigator() {
             setActiveSection(section.id);
           }
         },
-        { threshold: 0.3 }
+        { threshold: 0.2 }
       );
 
       observer.observe(el);
@@ -89,7 +95,7 @@ export function SectionNavigator() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      const offset = 100;
+      const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = el.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -105,7 +111,7 @@ export function SectionNavigator() {
   if (sections.length === 0) return null;
 
   return (
-    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-40 hidden 2xl:flex flex-col gap-8 items-center">
+    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-40 hidden 2xl:flex flex-col gap-6 items-center">
       {sections.map((section) => (
         <button 
           key={section.id}
