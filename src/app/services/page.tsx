@@ -54,8 +54,8 @@ export default function ServicesPage() {
     gsap.from('.header-fade', {
       y: 30,
       opacity: 0,
-      duration: 1.5,
-      stagger: 0.2,
+      duration: 1.2,
+      stagger: 0.1,
       ease: 'power2.out',
     });
 
@@ -63,11 +63,11 @@ export default function ServicesPage() {
       gsap.from(item, {
         scrollTrigger: {
           trigger: item,
-          start: 'top 80%',
+          start: 'top 92%',
         },
         y: 50,
         opacity: 0,
-        duration: 1.5,
+        duration: 1.2,
         ease: 'power2.out'
       });
     });

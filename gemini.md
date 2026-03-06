@@ -10,8 +10,11 @@
     - **Custom Cursor:** Hidden system cursor globally, fixed follower border color to Gold, and raised z-index above noise overlay.
     - **Navbar:** Repositioned and improved visibility of the gold hover underline.
     - **Forms:** Increased placeholder contrast for better readability on dark backgrounds.
+  - Improved animation responsiveness:
+    - Standardized `ScrollTrigger` start points to `top 92%` (triggered earlier).
+    - Reduced animation durations across `fade-up`, `TextReveal`, and `MaskSlideImage` by ~20% for a snappier feel.
+    - Optimized Preloader and hero animations for a faster initial load experience.
   - Successfully verified the build (`npm run build`).
-  - Fixed Tailwind @apply error in `globals.css` for `section-dot.active` shadow.
 - **Current Branch:** `main` (clean working tree).
 
 ## Context Summary

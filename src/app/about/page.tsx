@@ -25,8 +25,8 @@ export default function AboutPage() {
     gsap.from('.header-fade', {
       y: 30,
       opacity: 0,
-      duration: 1.5,
-      stagger: 0.2,
+      duration: 1.2,
+      stagger: 0.1,
       ease: 'power2.out',
     });
 
@@ -34,11 +34,11 @@ export default function AboutPage() {
       gsap.from(el, {
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
+          start: 'top 92%',
         },
         y: 40,
         opacity: 0,
-        duration: 1.5,
+        duration: 1.2,
         ease: 'power3.out'
       });
     });

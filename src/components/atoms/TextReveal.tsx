@@ -23,7 +23,7 @@ export function TextReveal({
   className, 
   as: Component = 'h2', 
   delay = 0, 
-  duration = 1.5,
+  duration = 1.2,
   once = true
 }: TextRevealProps) {
   const textRef = useRef<HTMLHeadingElement>(null);
@@ -45,7 +45,7 @@ export function TextReveal({
     gsap.to(children, {
       scrollTrigger: {
         trigger: el,
-        start: 'top 90%',
+        start: 'top 92%',
         toggleActions: once ? 'play none none none' : 'play none none reverse',
       },
       y: 0,

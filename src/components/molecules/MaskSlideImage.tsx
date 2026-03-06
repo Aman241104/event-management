@@ -28,14 +28,14 @@ export function MaskSlideImage({ src, alt, className, aspectRatio = 'aspect-[3/4
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: 'top 85%',
+        start: 'top 92%',
       }
     });
 
     // Animate the mask to slide up and reveal the image
     tl.to(maskRef.current, {
       yPercent: -100,
-      duration: 1.8,
+      duration: 1.4,
       ease: 'power4.inOut',
     });
 
@@ -44,7 +44,7 @@ export function MaskSlideImage({ src, alt, className, aspectRatio = 'aspect-[3/4
       { scale: 1.3 },
       {
         scale: 1,
-        duration: 2.2,
+        duration: 1.8,
         ease: 'power3.out',
       }, 0.2
     );

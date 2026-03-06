@@ -84,20 +84,20 @@ export default function Home() {
 
   useGSAP(() => {
     const tl = gsap.timeline();
-    tl.from('.hero-badge', { y: 20, opacity: 0, duration: 1, ease: 'power3.out' })
-      .from('.hero-title span', { y: 40, opacity: 0, duration: 1.2, stagger: 0.1, ease: 'power3.out' }, '-=0.8')
-      .from('.hero-desc', { y: 30, opacity: 0, duration: 1, ease: 'power3.out' }, '-=1')
-      .from('.hero-btns', { y: 30, opacity: 0, duration: 1, ease: 'power3.out' }, '-=1');
+    tl.from('.hero-badge', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' })
+      .from('.hero-title span', { y: 40, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }, '-=0.6')
+      .from('.hero-desc', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.8')
+      .from('.hero-btns', { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.8');
 
     gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
       gsap.from(el, {
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
+          start: 'top 92%',
         },
         y: 60,
         opacity: 0,
-        duration: 1.5,
+        duration: 1.2,
         ease: 'power3.out'
       });
     });

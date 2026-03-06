@@ -16,7 +16,7 @@ export function Preloader() {
       {
         y: 0,
         opacity: 1,
-        duration: 1.5,
+        duration: 1.2,
         stagger: 0.1,
         ease: 'power4.out'
       }
@@ -24,22 +24,22 @@ export function Preloader() {
     .to('.preloader-text', {
       opacity: 0,
       y: -20,
-      duration: 1,
+      duration: 0.8,
       ease: 'power3.inOut',
       delay: 0.5
     })
     .to('.preloader-panel', {
       yPercent: -100,
-      duration: 1.5,
+      duration: 1.2,
       stagger: 0.1,
       ease: 'expo.inOut'
     })
     .from('.main-content', {
-      y: 100,
+      y: 60,
       opacity: 0,
-      duration: 2,
+      duration: 1.2,
       ease: 'power4.out'
-    }, '-=1');
+    }, '-=0.8');
 
   }, []);
 
