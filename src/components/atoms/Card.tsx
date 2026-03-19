@@ -16,13 +16,13 @@ export function Card({
   ...props
 }: CardProps) {
   const variants = {
-    default: 'bg-bg-main border-border-subtle relative before:absolute before:inset-0 before:bg-[url("/grain.png")] before:opacity-5 before:pointer-events-none',
-    outline: 'bg-transparent border border-border-subtle',
+    default: 'bg-canvas border-linen relative before:absolute before:inset-0 before:bg-[url("/grain.png")] before:opacity-5 before:pointer-events-none',
+    outline: 'bg-transparent border border-linen',
     ghost: 'bg-transparent border-transparent',
   };
 
   const hoverable = isHoverable
-    ? 'hover:border-secondary hover:-translate-y-1 transition-all duration-500 ease-out'
+    ? 'hover:border-burnished hover:-translate-y-1 transition-all duration-500 ease-out'
     : '';
 
   return (

@@ -3,12 +3,8 @@
 import React, { useRef } from 'react';
 import { useParams } from 'next/navigation';
 import { 
-  Calendar, 
-  MapPin, 
-  Users, 
   ArrowLeft, 
   Share2, 
-  Sparkles,
   MoveRight
 } from 'lucide-react';
 import Link from 'next/link';
@@ -18,6 +14,7 @@ import { Badge } from '@/components/atoms/Badge';
 import { Gallery } from '@/components/molecules/Gallery';
 import { TextReveal } from '@/components/atoms/TextReveal';
 import { Magnetic } from '@/components/atoms/Magnetic';
+import { ParallaxImage } from '@/components/atoms/ParallaxImage';
 import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -76,31 +73,31 @@ export default function EventDetailPage() {
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-bg-main pt-32 pb-24 selection:bg-secondary selection:text-bg-main relative">
-      <div className="side-label text-secondary/30">Project Record — 2026 / {event.category}</div>
-      <div className="side-label-right text-secondary/30">{event.location} / Coordinates {id}</div>
+    <main ref={containerRef} className="min-h-screen bg-canvas pt-32 pb-24 selection:bg-heritage selection:text-canvas relative">
+      <div className="side-label text-heritage/30">Project Record — 2026 / {event.category}</div>
+      <div className="side-label-right text-heritage/30">{event.location} / Coordinates {id}</div>
 
       {/* Editorial Header */}
       <section id="header" className="container mx-auto px-6 mb-24">
         <div className="flex flex-col space-y-12">
-          <Link href="/gallery" className="header-fade text-[10px] uppercase tracking-[0.5em] text-secondary hover:text-white transition-colors group inline-flex items-center gap-4">
+          <Link href="/gallery" className="header-fade text-[11px] uppercase tracking-[0.5em] text-heritage hover:text-text-primary transition-colors group inline-flex items-center gap-4">
             <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform" />
             Return to Archive
           </Link>
           
           <div className="space-y-6">
             <div className="header-fade flex items-center gap-4">
-              <Badge variant="solid" dot className="bg-secondary/10 text-secondary border-secondary/20">Commissioned Archive</Badge>
-              <span className="text-[10px] font-mono text-secondary/40">REF: ZB_PRJ_{id}</span>
+              <Badge variant="solid" dot className="bg-heritage/10 text-heritage border-heritage/20">Commissioned Archive</Badge>
+              <span className="text-[11px] font-mono text-heritage/40">REF: ZB_PRJ_{id}</span>
             </div>
             
             <TextReveal 
               as="h1" 
               text={event.title} 
-              className="text-6xl md:text-[9.5rem] font-serif tracking-tighter text-white leading-[0.85] font-bold" 
+              className="text-6xl md:text-[9.5rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" 
             />
             
-            <p className="header-fade text-xl md:text-3xl font-serif italic text-secondary/60 max-w-3xl">
+            <p className="header-fade text-xl md:text-3xl font-serif italic text-heritage/60 max-w-3xl">
               {event.subtitle}
             </p>
           </div>
@@ -108,13 +105,16 @@ export default function EventDetailPage() {
       </section>
 
       {/* Main Image */}
-      <section id="image" className="container mx-auto px-6 mb-32 fade-up">
-        <div className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden arch-mask shadow-2xl border border-border-gold">
-          <Image 
+      <section id="image" className="container mx-auto px-6 mb-32 fade-up relative group">
+        <div className="absolute -inset-20 bg-heritage/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+        <div className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden arch-mask shadow-sm border border-linen z-10">
+          <ParallaxImage 
             src={event.image} 
             alt={event.title} 
-            fill
-            className="object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-[20s] ease-linear"
+            speed={0.25}
+            aspectRatio="aspect-auto"
+            containerClassName="h-full w-full"
+            className="grayscale-[0.2] hover:grayscale-0 transition-all duration-[1s] ease-linear"
             priority
           />
         </div>
@@ -128,14 +128,14 @@ export default function EventDetailPage() {
             {/* The Narrative */}
             <div className="space-y-12 fade-up">
               <div className="flex items-center gap-6">
-                <span className="w-16 h-[1px] bg-secondary"></span>
-                <span className="text-secondary font-bold uppercase tracking-[0.4em] text-[10px]">The Narrative</span>
+                <span className="w-16 h-[1px] bg-heritage"></span>
+                <span className="text-heritage font-bold uppercase tracking-[0.4em] text-[11px]">The Narrative</span>
               </div>
               <div className="space-y-10">
-                <p className="text-2xl md:text-5xl font-serif text-white font-bold leading-tight tracking-tight">
+                <p className="text-2xl md:text-5xl font-serif text-text-primary font-bold leading-tight tracking-tight">
                   {event.description}
                 </p>
-                <div className="w-full h-px bg-border-gold opacity-30" />
+                <div className="w-full h-px bg-linen opacity-30" />
                 <p className="text-lg text-text-secondary font-sans font-light leading-relaxed max-w-2xl whitespace-pre-line">
                   {event.fullDescription}
                 </p>
@@ -145,18 +145,18 @@ export default function EventDetailPage() {
             {/* Highlights */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 fade-up">
               {event.highlights.map((h, i) => (
-                <div key={i} className="p-10 border border-border-gold bg-bg-surface/20 group hover:border-secondary transition-all duration-700">
-                  <span className="text-[10px] font-mono text-secondary/40 block mb-6 uppercase tracking-widest">Highlight 0{i+1}</span>
-                  <span className="text-xl font-serif text-white font-bold">{h}</span>
+                <div key={i} className="p-10 border border-linen bg-surface/20 group hover:border-heritage transition-all duration-700">
+                  <span className="text-[11px] font-mono text-heritage/40 block mb-6 uppercase tracking-widest">Highlight 0{i+1}</span>
+                  <span className="text-xl font-serif text-text-primary font-bold">{h}</span>
                 </div>
               ))}
             </div>
 
             {/* Gallery */}
-            <div className="space-y-16 pt-32 border-t border-border-gold fade-up">
+            <div className="space-y-16 pt-32 border-t border-linen fade-up">
               <div className="flex items-center gap-6">
-                <span className="text-[10px] uppercase tracking-[0.5em] text-secondary">Visual Record</span>
-                <h3 className="text-4xl font-serif font-bold text-white tracking-tight">Captured <span className="text-secondary italic font-light">Moments</span></h3>
+                <span className="text-[11px] uppercase tracking-[0.5em] text-heritage">Visual Record</span>
+                <h3 className="text-4xl font-serif font-bold text-text-primary tracking-tight">Captured <span className="text-heritage italic font-light">Moments</span></h3>
               </div>
               <Gallery items={event.gallery} />
             </div>
@@ -164,41 +164,41 @@ export default function EventDetailPage() {
 
           {/* Sidebar Info */}
           <div className="lg:col-span-4 fade-up">
-            <div className="sticky top-40 space-y-16 p-12 border border-border-gold bg-bg-surface/40 backdrop-blur-2xl shadow-2xl">
+            <div className="sticky top-40 space-y-16 p-12 border border-linen bg-surface/40 backdrop-blur-2xl shadow-sm">
               <div className="space-y-10">
-                <h4 className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-secondary pb-4 border-b border-border-gold">Specifications</h4>
+                <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage pb-4 border-b border-linen">Specifications</h4>
                 
                 <div className="space-y-8">
                   <div className="space-y-2">
-                    <span className="text-[8px] uppercase tracking-widest text-text-secondary">Commission Date</span>
-                    <p className="text-xl font-serif text-white font-bold">{event.date}</p>
+                    <span className="text-[10px] uppercase tracking-widest text-text-secondary">Commission Date</span>
+                    <p className="text-xl font-serif text-text-primary font-bold">{event.date}</p>
                   </div>
                   <div className="space-y-2">
-                    <span className="text-[8px] uppercase tracking-widest text-text-secondary">Primary Coordinates</span>
-                    <p className="text-xl font-serif text-white font-bold">{event.location}</p>
+                    <span className="text-[10px] uppercase tracking-widest text-text-secondary">Primary Coordinates</span>
+                    <p className="text-xl font-serif text-text-primary font-bold">{event.location}</p>
                   </div>
                   <div className="space-y-2">
-                    <span className="text-[8px] uppercase tracking-widest text-text-secondary">Scale of Inquiry</span>
-                    <p className="text-xl font-serif text-white font-bold">{event.attendees}</p>
+                    <span className="text-[10px] uppercase tracking-widest text-text-secondary">Scale of Inquiry</span>
+                    <p className="text-xl font-serif text-text-primary font-bold">{event.attendees}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-10 pt-10 border-t border-border-gold">
+              <div className="space-y-10 pt-10 border-t border-linen">
                 <p className="text-xs text-text-secondary font-sans font-light leading-relaxed">
                   Every commission is a unique dialogue between our architects and our clients. To discuss a new project, please connect with our private line.
                 </p>
                 <div className="flex flex-col gap-6">
                   <Magnetic strength={0.2}>
                     <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                      <Button variant="solid" className="btn-royal w-full h-16 group">
+                      <Button variant="solid" className="btn-prestige w-full h-16 group">
                         Inquiry Call
                         <MoveRight className="ml-4 w-4 h-4 transform group-hover:translate-x-2 transition-transform" />
                       </Button>
                     </a>
                   </Magnetic>
-                  <button className="text-[8px] uppercase tracking-[0.4em] text-secondary font-bold flex items-center justify-center gap-4 group">
-                    <span className="w-8 h-px bg-secondary/30 group-hover:bg-secondary transition-all" />
+                  <button className="text-[10px] uppercase tracking-[0.4em] text-heritage font-bold flex items-center justify-center gap-4 group">
+                    <span className="w-8 h-px bg-heritage/30 group-hover:bg-heritage transition-all" />
                     Share Project Record
                     <Share2 size={12} className="ml-2" />
                   </button>
@@ -216,17 +216,17 @@ export default function EventDetailPage() {
 
 function NextProjectLink() {
   return (
-    <section id="next-project" className="py-48 bg-bg-surface border-y border-border-gold overflow-hidden group">
+    <section id="next-project" className="py-48 bg-surface border-y border-linen overflow-hidden group">
       <div className="container px-6 text-center space-y-8">
-        <span className="text-[10px] font-mono text-secondary uppercase tracking-[0.5em]">Upcoming Narrative</span>
+        <span className="text-[11px] font-mono text-heritage uppercase tracking-[0.5em]">Upcoming Narrative</span>
         <Link href="/events/1" className="block">
-          <h2 className="text-6xl md:text-[10rem] font-serif font-bold text-white tracking-tighter leading-none group-hover:text-secondary transition-colors duration-700">
+          <h2 className="text-6xl md:text-[10rem] font-serif font-bold text-text-primary tracking-tighter leading-none group-hover:text-heritage transition-colors duration-700">
             Next <span className="italic font-light">Legacy.</span>
           </h2>
         </Link>
         <div className="pt-12">
            <Link href="/gallery">
-             <Button variant="outline" className="btn-outline-royal px-16 h-16">Return to Archive</Button>
+             <Button variant="outline" className="btn-outline-prestige px-16 h-16">Return to Archive</Button>
            </Link>
         </div>
       </div>

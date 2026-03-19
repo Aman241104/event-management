@@ -29,6 +29,9 @@ export const metadata: Metadata = {
 
 import { SmoothScroll } from "@/components/atoms/SmoothScroll";
 import { SectionNavigator } from "@/components/molecules/SectionNavigator";
+import { AudioToggle } from "@/components/atoms/AudioToggle";
+
+import { BackToTop } from "@/components/atoms/BackToTop";
 
 export default function RootLayout({
   children,
@@ -45,6 +48,8 @@ export default function RootLayout({
           <Preloader />
           <SectionNavigator />
           <CustomCursor />
+          <AudioToggle />
+          <BackToTop />
           <Navbar />
           <div className="flex-grow main-content relative z-10">
             {children}

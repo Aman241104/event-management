@@ -22,13 +22,13 @@ export function Button({
   ...props
 }: ButtonProps) {
   const variants = {
-    solid: 'bg-secondary text-bg-surface hover:bg-primary hover:text-white',
-    outline: 'bg-transparent border border-border-subtle text-text-primary hover:border-secondary',
+    solid: 'btn-prestige',
+    outline: 'btn-outline-prestige',
     ghost: 'bg-transparent text-text-secondary hover:text-text-primary',
   };
 
   const sizes = {
-    sm: 'px-6 py-3 text-[10px]',
+    sm: 'px-6 py-3 text-[11px]',
     md: 'px-8 py-4 text-[11px]',
     lg: 'px-12 py-5 text-xs',
     icon: 'p-3',

@@ -4,11 +4,6 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
-interface Section {
-  id: string;
-  label: string;
-}
-
 export function SectionNavigator() {
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState('');
@@ -116,7 +111,7 @@ export function SectionNavigator() {
   if (sections.length === 0) return null;
 
   return (
-    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-40 hidden 2xl:flex flex-col gap-6 items-center">
+    <div className="fixed left-8 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-6 items-center">
       {sections.map((section) => (
         <button 
           key={section.id}
@@ -128,8 +123,8 @@ export function SectionNavigator() {
             activeSection === section.id && "active"
           )} />
           <span className={cn(
-            "absolute left-6 text-[8px] uppercase tracking-[0.3em] font-bold transition-all duration-500 opacity-0 -translate-x-2 pointer-events-none whitespace-nowrap",
-            activeSection === section.id ? "opacity-40 translate-x-0" : "group-hover:opacity-100 group-hover:translate-x-0"
+            "absolute left-6 text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 opacity-0 -translate-x-2 pointer-events-none whitespace-nowrap",
+            activeSection === section.id ? "opacity-70 translate-x-0" : "group-hover:opacity-100 group-hover:translate-x-0"
           )}>
             {section.label}
           </span>

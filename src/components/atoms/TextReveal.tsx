@@ -23,7 +23,7 @@ export function TextReveal({
   className, 
   as: Component = 'h2', 
   delay = 0, 
-  duration = 1.2,
+  duration = 0.8,
   once = true
 }: TextRevealProps) {
   const textRef = useRef<HTMLHeadingElement>(null);
@@ -36,7 +36,7 @@ export function TextReveal({
     const words = text.split(' ');
     el.innerHTML = words.map(word => 
       `<span class="inline-block overflow-hidden pb-[0.1em] mb-[-0.1em]">
-        <span class="inline-block transform translate-y-full">${word}&nbsp;</span>
+        <span class="inline-block transform translate-y-[110%] rotate-[5deg] origin-left">${word}&nbsp;</span>
       </span>`
     ).join('');
 
@@ -49,10 +49,11 @@ export function TextReveal({
         toggleActions: once ? 'play none none none' : 'play none none reverse',
       },
       y: 0,
+      rotate: 0,
       duration: duration,
       delay: delay,
-      stagger: 0.1,
-      ease: 'power4.out'
+      stagger: 0.08,
+      ease: 'power3.out'
     });
   }, [text, delay, duration, once]);
 

@@ -48,21 +48,21 @@ export function CustomCursor() {
     const onDocumentMouseLeave = () => setIsVisible(false);
     const onDocumentMouseEnter = () => setIsVisible(true);
 
-    const onMouseEnterActive = (e: any) => {
-      const target = e.currentTarget;
+    const onMouseEnterActive = (e: Event) => {
+      const target = e.currentTarget as HTMLElement;
       const text = target.getAttribute('data-cursor');
       if (text) {
         setCursorText(text);
-        gsap.to(follower, { scale: 3, backgroundColor: 'var(--color-secondary)', border: 'none', duration: 0.5 });
+        gsap.to(follower, { scale: 3, backgroundColor: 'var(--color-heritage)', border: 'none', duration: 0.5 });
         gsap.to(label, { opacity: 1, duration: 0.3 });
       } else {
-        gsap.to(follower, { scale: 1.5, borderColor: 'var(--color-secondary)', duration: 0.5 });
+        gsap.to(follower, { scale: 1.5, borderColor: 'var(--color-heritage)', duration: 0.5 });
       }
     };
 
     const onMouseLeaveActive = () => {
       setCursorText('');
-      gsap.to(follower, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(212, 175, 55, 0.3)', border: '1px solid', duration: 0.5 });
+      gsap.to(follower, { scale: 1, backgroundColor: 'transparent', borderColor: 'rgba(42, 77, 55, 0.3)', border: '1px solid', duration: 0.5 });
       gsap.to(label, { opacity: 0, duration: 0.3 });
     };
 
@@ -95,14 +95,14 @@ export function CustomCursor() {
       <div
         ref={cursorRef}
         className={cn(
-          "fixed top-0 left-0 w-1.5 h-1.5 bg-secondary rounded-full pointer-events-none z-[10002] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
+          "fixed top-0 left-0 w-1.5 h-1.5 bg-heritage rounded-full pointer-events-none z-[10002] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
           isVisible ? "opacity-100" : "opacity-0"
         )}
       />
       <div
         ref={followerRef}
         className={cn(
-          "fixed top-0 left-0 w-8 h-8 border border-secondary/30 rounded-full pointer-events-none z-[10001] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
+          "fixed top-0 left-0 w-8 h-8 border border-heritage/30 rounded-full pointer-events-none z-[10001] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
           isVisible ? "opacity-100" : "opacity-0"
         )}
       />
@@ -112,7 +112,7 @@ export function CustomCursor() {
         style={{ left: 0, top: 0 }}
       >
         <div className="transform translate-x-6 translate-y-6">
-          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-white whitespace-nowrap">
+          <span className="text-[11px] font-sans font-bold uppercase tracking-[0.2em] text-text-primary whitespace-nowrap">
             {cursorText}
           </span>
         </div>

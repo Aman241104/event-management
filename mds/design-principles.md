@@ -1,45 +1,40 @@
-# Design Principles (Prestige Edition)
+# Design Principles (Prestige Edition — Ivory & Verdant)
 
-These principles guide the transformation of the Event Manager platform into a luxury agency experience.
+These principles guide the transformation of the Zing Bliss Events platform into a light, airy luxury agency experience.
 
 ---
 
-## 1. Minimalist Opulence
-Luxury is found in what is *not* there. We prioritize extreme whitespace and remove all unnecessary UI noise (borders, shadows, gradients) unless they serve a functional or prestige purpose.
-- **Action:** Remove "standard" card shadows; use 1px Gold borders instead.
-- **Goal:** To feel like a high-end printed editorial magazine.
+## 1. Minimalist Opulence (Light Edition)
+Luxury is found in breathing room. We prioritize extreme whitespace and remove all heavy UI elements (dark backgrounds, shadows, deep gradients) in favor of a clean, editorial layout.
+- **Action:** Use thin, surgical 1px lines (Gold or Sage) instead of shadows to define structure.
+- **Goal:** To feel like a high-end, bespoke printed invitation or luxury magazine.
 
 ## 2. Emotional Storytelling
-We don't sell logistics; we sell the *feeling* of a successful event.
-- **Action:** Use full-screen, high-resolution immersive visuals and serif typography to evoke emotion.
-- **Goal:** Users should feel the "prestige" of the agency within 2 seconds.
+We sell the *grace* and *elegance* of a successful event.
+- **Action:** Use high-resolution, airy visuals and sophisticated serif typography to evoke a sense of calm and competence.
+- **Goal:** Users should feel the "bespoke" nature of the agency within 2 seconds.
 
-## 3. The "Obsidian" Canvas
-Black and Deep Moss Green represent authority and timelessness.
-- **Action:** Use `#020617` as the foundational background to make Gold accents and Ivory text appear "illuminated."
-- **Goal:** Create a high-contrast, premium dark-mode environment.
+## 3. The Paper Canvas
+Warm Ivory and Soft Linen represent organic luxury and legacy.
+- **Action:** Use `#FCFBF7` (Bone/Paper) as the foundational background to make Heritage Green and Burnished Gold accents feel grounded.
+- **Goal:** Create a high-contrast, premium "light-mode" environment that is easy on the eyes and feels timeless.
 
 ## 4. Sophisticated Interaction
 Animations must be slow, smooth, and intentional—mimicking the movement of a luxury brand.
-- **Action:** Use longer transition times (400ms - 600ms) with `ease-out` curves.
-- **Goal:** Avoid "snappy" or "jumpy" animations that feel too "techy."
+- **Action:** Use longer transition times (600ms - 1s) with `power2.out` or `expo.out` easing.
+- **Goal:** Avoid "snappy" animations; favor "fades" and "ink reveals."
 
 ## 5. Exclusivity & Trust
-The platform should feel like an "invitation" rather than a public tool.
-- **Action:** Use prestige markers (Badges, Awards, Testimonials) and a direct WhatsApp connection for "Personal Concierge" service.
-- **Goal:** Build trust through direct human-to-human communication.
+The platform should feel like a private consultation room.
+- **Action:** Use prestige markers and a direct WhatsApp connection for "Personal Concierge" service.
+- **Goal:** Build trust through direct, white-glove human-to-human communication.
 
 ## 6. Typography as Art
-Headings are not just information; they are design elements.
-- **Action:** Utilize large-scale Serif fonts for all primary messaging.
-- **Goal:** Establish a distinct, editorial brand voice.
+Headings are the visual anchor.
+- **Action:** Utilize large-scale Serif fonts (**Playfair Display**) for all primary narrative messaging.
+- **Goal:** Establish a distinct, editorial brand voice that feels authoritative yet approachable.
 
 ## 7. Performance is Luxury
-A slow website is never premium.
+Speed is a feature of prestige.
 - **Action:** Optimize all high-res assets and utilize Next.js Image components for sub-second loads.
-- **Goal:** Immediate response to user interaction.
-
-## 8. Mobile "Concierge" Experience
-Mobile users are the priority for WhatsApp booking.
-- **Action:** Implement a sticky, bottom-aligned "Concierge" bar for instant WhatsApp access.
-- **Goal:** Make the booking process feel like a private message to an expert.
+- **Goal:** Immediate response to user interaction without layout shift.

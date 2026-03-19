@@ -10,18 +10,18 @@ interface BadgeProps {
 
 export function Badge({ children, variant = 'solid', dot, className }: BadgeProps) {
   const variants = {
-    solid: 'bg-primary/10 text-primary border border-primary/20',
-    outline: 'border border-border-subtle text-text-secondary',
+    solid: 'bg-heritage/10 text-heritage-dark border border-heritage/20',
+    outline: 'border border-linen text-text-secondary',
     ghost: 'bg-transparent text-text-secondary',
   };
 
   return (
     <div className={cn(
-      "inline-flex items-center gap-2 px-4 py-1.5 text-[10px] uppercase tracking-[0.2em] font-sans font-medium rounded-full",
+      "inline-flex items-center gap-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-sans font-medium rounded-full",
       variants[variant],
       className
     )}>
-      {dot && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
+      {dot && <div className="w-1.5 h-1.5 rounded-full bg-heritage/80" />}
       {children}
     </div>
   );

@@ -70,11 +70,11 @@ export function MaskSlideImage({ src, alt, className, aspectRatio = 'aspect-[3/4
       {/* The Reveal Mask - Matches the background color */}
       <div 
         ref={maskRef}
-        className="absolute inset-0 bg-bg-surface z-20 pointer-events-none origin-bottom"
+        className="absolute inset-0 bg-canvas z-20 pointer-events-none origin-bottom"
       />
 
       {/* Very Subtle Decorative Overlay */}
-      <div className="absolute inset-0 bg-primary/5 mix-blend-multiply z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-1000" />
+      <div className="absolute inset-0 bg-heritage/5 mix-blend-multiply z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-1000" />
     </div>
   );
 }

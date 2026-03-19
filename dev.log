@@ -1,0 +1,26 @@
+
+> event-manager@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.138.72.63:3000
+
+✓ Starting...
+✓ Ready in 904ms
+○ Compiling / ...
+ GET / 200 in 4.0s (compile: 3.5s, render: 496ms)
+ GET / 200 in 203ms (compile: 7ms, render: 196ms)
+⨯ upstream image response failed for https://images.unsplash.com/photo-1540039155732-6781b0e1cca1?auto=format&fit=crop&q=80&w=600 404
+⨯ upstream image response failed for https://images.unsplash.com/photo-1540039155732-6781b0e1cca1?auto=format&fit=crop&q=80&w=600 404
+ GET / 200 in 145ms (compile: 9ms, render: 136ms)
+✓ Compiled in 339ms
+✓ Compiled in 372ms
+✓ Compiled in 83ms
+✓ Compiled in 212ms
+⨯ upstream image response failed for https://images.unsplash.com/photo-1540039155732-6781b0e1cca1?auto=format&fit=crop&q=80&w=600 404
+ GET / 200 in 120ms (compile: 83ms, render: 37ms)
+ GET /about 200 in 318ms (compile: 299ms, render: 19ms)
+ GET /services 200 in 239ms (compile: 220ms, render: 19ms)
+ GET /gallery 200 in 131ms (compile: 112ms, render: 19ms)
+ GET /contact 200 in 197ms (compile: 168ms, render: 29ms)

@@ -1,33 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  /* Ultra-Premium Luxury Wedding Planner Palette - Dark Green & Gold */
-  --color-primary: #064E3B;
-  /* Deep Forest Green */
-  --color-secondary: #D4AF37;
-  /* Metallic Gold */
-  --color-accent-gold: #FDE047;
-  /* Champagne Gold */
-  --color-accent-cream: #FDFCF0;
-  /* Luxury Cream */
+  /* Ivory & Verdant Collection - Light Editorial Luxury */
+  --color-canvas: #FCFBF7;
+  /* Warm Bone Paper */
+  --color-surface: #F4F1EA;
+  /* Dusty Ivory */
+  --color-surface-light: #FDFCF0;
+  /* Soft Linen */
 
-  --color-bg-main: #022C22;
-  /* Darkest Emerald Green */
-  --color-bg-surface: #064E3B;
-  /* Deep Forest Surface */
-  --color-bg-surface-light: #065F46;
-  /* Lighter Emerald */
+  --color-heritage: #2A4D37;
+  /* Heritage Green */
+  --color-heritage-dark: #1B3325;
+  /* Deep Forest */
+  
+  --color-burnished: #C5A059;
+  /* Burnished Gold */
+  --color-burnished-light: #E8E4D9;
+  /* Soft Sand */
 
-  --color-border-gold: rgba(212, 175, 55, 0.3);
-  --color-border-subtle: rgba(253, 252, 240, 0.1);
+  /* Luxury Event Accents */
+  --color-accent-rose: #F2D5D5;
+  /* Soft Petal */
+  --color-accent-azure: #D5E6F2;
+  /* Cloud Blue */
+  --color-accent-gold-vibrant: #FFD700;
+  /* Pure Gold */
 
-  --color-text-primary: #FDFCF0;
-  /* Champagne Cream */
-  --color-text-secondary: #A7F3D0;
-  /* Muted Mint */
-  --color-text-gold: #D4AF37;
+  --color-linen: #D9D4C7;
+  /* Subtle Linen Border */
+  --color-prestige-gold: rgba(197, 160, 89, 0.4);
 
-  --color-accent-whatsapp: #22C55E;
+  --color-text-primary: #1C1C1C;
+  /* Ebonized Wood */
+  --color-text-secondary: #4A4A4A;
+  /* Stone Gray */
+  --color-text-muted: #AFAFAF;
+  /* Linen Gray */
+  --color-text-heritage: #2A4D37;
+
+  --color-accent-whatsapp: #25D366;
 
   /* Fonts */
   --font-sans: var(--font-sans);
@@ -46,24 +58,41 @@
 
 @layer base {
   :root {
-    --primary: #064E3B;
-    --secondary: #D4AF37;
-    --bg-main: #022C22;
-    --bg-surface: #064E3B;
-    --text-primary: #FDFCF0;
-    --text-secondary: #A7F3D0;
+    --canvas: #FCFBF7;
+    --heritage: #2A4D37;
+    --surface: #F4F1EA;
+    --text-primary: #1C1C1C;
+    --text-secondary: #4A4A4A;
   }
 
   body {
-    @apply bg-bg-main text-text-primary antialiased font-sans overflow-x-hidden selection:bg-secondary selection:text-bg-main;
-    background-color: var(--bg-main);
+    @apply bg-canvas text-text-primary antialiased font-sans overflow-x-hidden selection:bg-heritage selection:text-canvas;
+    background-color: var(--canvas);
     color: var(--text-primary);
-    cursor: none !important;
+    scroll-behavior: smooth;
   }
 
-  /* Ensure all interactive elements also hide the cursor */
-  a, button, input, select, textarea, [role="button"] {
-    cursor: none !important;
+  /* Sophisticated Grain Texture */
+  .noise-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Only hide native cursor on devices with a mouse/pointer and hover capability */
+  @media (hover: hover) and (pointer: fine) {
+    body,
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    [role="button"] {
+      cursor: none !important;
+    }
   }
 
   h1,
@@ -73,24 +102,31 @@
   h5,
   h6 {
     @apply font-serif tracking-tight text-text-primary font-bold;
+    line-height: 1.1;
   }
 
   p {
-    @apply text-text-secondary font-sans leading-relaxed;
+    @apply text-text-secondary font-sans;
+    line-height: 1.8;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-bg-main/80 backdrop-blur-xl border-b border-border-gold;
+    @apply bg-canvas/80 backdrop-blur-2xl border-b border-linen shadow-[0_4px_30px_rgba(0,0,0,0.03)];
   }
 
   .glass-card {
-    @apply bg-bg-surface/40 backdrop-blur-xl border border-border-gold shadow-2xl transition-all duration-500;
+    @apply bg-surface/40 backdrop-blur-xl border border-linen shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-700 hover:shadow-[0_12px_40px_rgba(42,77,55,0.06)];
   }
 
-  .text-gold {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FDE047] to-[#D4AF37];
+  .glass-colorful {
+    @apply backdrop-blur-2xl border border-linen/30 shadow-xl transition-all duration-700;
+  }
+
+  .text-burnished {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#C5A059] animate-[shimmer_8s_linear_infinite];
+    background-size: 200% auto;
   }
 
   .container {
@@ -106,19 +142,35 @@
     z-index: 9999;
     pointer-events: none;
     opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  .btn-royal {
-    @apply bg-gradient-to-r from-[#B45309] to-[#D4AF37] text-bg-main hover:from-[#D4AF37] hover:to-[#FDE047] border-0 font-bold shadow-xl transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs;
+  .btn-prestige {
+    @apply bg-heritage text-canvas hover:bg-heritage-dark border border-heritage hover:border-heritage-dark font-bold shadow-md transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs relative overflow-hidden;
   }
 
-  .btn-royal:hover {
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+  .btn-prestige::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-canvas/20 to-transparent -translate-x-full;
+    transition: transform 0.8s ease-in-out;
   }
 
-  .btn-outline-royal {
-    @apply border border-secondary text-secondary hover:bg-secondary hover:text-bg-main transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs;
+  .btn-prestige:hover::after {
+    @apply translate-x-full;
+  }
+
+  .btn-prestige:hover {
+    box-shadow: 0 8px 25px rgba(42, 77, 55, 0.25);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline-prestige {
+    @apply border border-burnished text-heritage hover:bg-heritage hover:text-canvas transition-all duration-500 rounded-none tracking-widest font-sans uppercase text-xs shadow-sm relative overflow-hidden;
+  }
+
+  .btn-outline-prestige:hover {
+    box-shadow: 0 8px 25px rgba(197, 160, 89, 0.15);
+    transform: translateY(-2px);
   }
 
   .hover-zoom {
@@ -127,6 +179,12 @@
 
   .arch-mask {
     border-radius: 1000px 1000px 0 0;
+    @apply border border-linen overflow-hidden relative;
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(var(--heritage) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 
   /* Custom Scrollbar */
@@ -135,20 +193,35 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--color-bg-main);
+    background: var(--canvas);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--color-secondary);
+    background: var(--heritage);
     border-radius: 10px;
   }
 
   .section-dot {
-    @apply w-2 h-2 rounded-full border border-secondary transition-all duration-500;
+    @apply w-2 h-2 rounded-full border border-heritage transition-all duration-500;
   }
 
   .section-dot.active {
-    @apply bg-secondary scale-150;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+    @apply bg-heritage scale-150;
+    box-shadow: 0 0 10px rgba(42, 77, 55, 0.4);
+  }
+
+  @keyframes sound-wave {
+    0%, 100% { transform: scaleY(0.5); }
+    50% { transform: scaleY(1.5); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  @keyframes ken-burns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15) translate(1%, 1%); }
   }
 }

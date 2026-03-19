@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -10,21 +10,19 @@ import {
   PartyPopper, 
   Music, 
   Star, 
-  Camera, 
   MoveRight,
-  ShieldCheck,
   Zap,
   Users,
   MessageCircle,
   Tent,
-  Instagram as InstagramIcon,
-  CheckCircle2
+  Instagram as InstagramIcon
 } from 'lucide-react';
 import { Button } from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
 import { Gallery } from '@/components/molecules/Gallery';
 import { Magnetic } from '@/components/atoms/Magnetic';
-import { TextReveal } from '@/components/atoms/TextReveal';
+import { FloatingDecor } from '@/components/atoms/FloatingDecor';
+import { ParallaxImage } from '@/components/atoms/ParallaxImage';
 import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -55,12 +53,12 @@ const steps = [
 ];
 
 const eventTypes = [
-  { title: 'Weddings', icon: <Heart size={24} />, image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600', desc: 'Royal palace & destination celebrations.' },
-  { title: 'Corporate Events', icon: <Sparkles size={24} />, image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=600', desc: 'Bespoke summits & high-profile galas.' },
-  { title: 'Birthday Celebrations', icon: <PartyPopper size={24} />, image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=600', desc: 'Milestone events curated with flair.' },
-  { title: 'Baby Showers', icon: <Star size={24} />, image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600', desc: 'Celebrating new life with elegance.' },
-  { title: 'Festivals', icon: <Tent size={24} />, image: 'https://images.unsplash.com/photo-1540039155732-6781b0e1cca1?auto=format&fit=crop&q=80&w=600', desc: 'High-energy cultural & musical fairs.' },
-  { title: 'Private Parties', icon: <Users size={24} />, image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=600', desc: 'Intimate house parties & VIP bashes.' },
+  { title: 'Weddings', icon: <Heart size={24} />, image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600', desc: 'Royal palace & destination celebrations.', color: 'var(--color-accent-rose)' },
+  { title: 'Corporate Events', icon: <Sparkles size={24} />, image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=600', desc: 'Bespoke summits & high-profile galas.', color: 'var(--color-accent-azure)' },
+  { title: 'Birthday Celebrations', icon: <PartyPopper size={24} />, image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=600', desc: 'Milestone events curated with flair.', color: '#FDFCF0' },
+  { title: 'Baby Showers', icon: <Star size={24} />, image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600', desc: 'Celebrating new life with elegance.', color: 'var(--color-accent-rose)' },
+  { title: 'Festivals', icon: <Tent size={24} />, image: 'https://images.unsplash.com/photo-1540039155732-6781b0e1cca1?auto=format&fit=crop&q=80&w=600', desc: 'High-energy cultural & musical fairs.', color: 'var(--color-accent-azure)' },
+  { title: 'Private Parties', icon: <Users size={24} />, image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=600', desc: 'Intimate house parties & VIP bashes.', color: '#F4F1EA' },
 ];
 
 const stats = [
@@ -101,43 +99,63 @@ export default function Home() {
         ease: 'power3.out'
       });
     });
+
+    // Dynamic color shift for event types
+    gsap.to('.event-types-bg', {
+      scrollTrigger: {
+        trigger: '#event-types',
+        start: 'top center',
+        end: 'bottom center',
+        scrub: true,
+      },
+      backgroundColor: '#F2D5D5', // Faint Rose
+      opacity: 0.3,
+    });
+
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-bg-main flex flex-col overflow-x-hidden">
+    <main ref={containerRef} className="min-h-screen bg-canvas flex flex-col overflow-x-hidden relative">
+      <FloatingDecor />
       
       {/* 1. Hero Section */}
       <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-main/60 via-bg-main/40 to-bg-main z-10" />
-        <Image
-          src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=2000"
-          alt="Luxury Wedding Setup"
-          fill
-          className="object-cover brightness-75 scale-105"
-          priority
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-canvas/80 via-canvas/20 to-canvas z-10" />
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=2000"
+            alt="Luxury Wedding Setup"
+            fill
+            className="object-cover brightness-90 animate-[ken-burns_30s_ease-in-out_infinite_alternate]"
+            priority
+            sizes="100vw"
+          />
+        </div>
 
         <div className="container relative z-20 text-center space-y-10 max-w-5xl px-4">
           <div className="hero-badge">
-            <Badge variant="solid" dot className="bg-bg-main/40 border-secondary/50 text-secondary uppercase tracking-[0.3em] py-2 px-6">Bespoke Celebration Architects</Badge>
+            <Badge variant="solid" dot className="bg-canvas/60 border-burnished/50 text-heritage-dark uppercase tracking-[0.3em] py-2 px-6 backdrop-blur-sm">Bespoke Celebration Architects</Badge>
           </div>
-          <h1 className="hero-title text-6xl md:text-[8rem] font-serif font-bold tracking-tight text-text-primary leading-[0.85]">
+          <h1 className="hero-title text-6xl md:text-[8rem] font-serif font-bold tracking-tight text-text-primary leading-[0.85] drop-shadow-md">
             <span className="block">Crafting Magical</span>
-            <span className="block text-gold italic font-light mt-2">Moments.</span>
+            <span className="block text-burnished italic font-light mt-2 relative inline-block">
+              Moments.
+              <span className="absolute -right-8 -top-8 w-16 h-16 bg-accent-rose/30 blur-3xl rounded-full animate-pulse" />
+            </span>
           </h1>
-          <p className="hero-desc text-lg md:text-2xl text-text-primary/90 max-w-3xl mx-auto leading-relaxed font-sans font-light">
+          <p className="hero-desc text-lg md:text-2xl text-text-primary max-w-3xl mx-auto leading-relaxed font-sans font-medium drop-shadow-sm">
             Luxury weddings, corporate events, and private celebrations planned with creativity and professional precision.
           </p>
           <div className="hero-btns pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
             <Magnetic strength={0.2}>
               <Link href="/contact">
-                <Button size="lg" className="h-20 px-16 text-xl btn-royal rounded-none font-bold" rightIcon={<ArrowRight size={24} />}>
+                <Button size="lg" className="h-20 px-16 text-xl btn-prestige rounded-none font-bold" rightIcon={<ArrowRight size={24} />}>
                   Plan Your Event
                 </Button>
               </Link>
             </Magnetic>
             <Link href="/gallery">
-              <Button variant="outline" size="lg" className="h-20 px-16 text-xl btn-outline-royal rounded-none">
+              <Button variant="outline" size="lg" className="h-20 px-16 text-xl btn-outline-prestige rounded-none font-bold">
                 View Our Events
               </Button>
             </Link>
@@ -146,31 +164,34 @@ export default function Home() {
       </section>
 
       {/* 2. About Preview */}
-      <section id="about" className="py-32 bg-bg-surface relative overflow-hidden border-y border-border-subtle">
+      <section id="about" className="py-32 bg-surface relative overflow-hidden border-y border-linen">
         <div className="container px-6 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="fade-up space-y-10">
             <div className="space-y-6">
-              <Badge variant="outline" className="border-secondary text-secondary uppercase tracking-widest">Our Story</Badge>
-              <h2 className="text-5xl md:text-7xl font-serif font-bold text-white tracking-tight leading-tight">Turning Vision <br/><span className="text-secondary italic font-light">Into Reality</span>.</h2>
+              <Badge variant="outline" className="border-heritage text-heritage-dark uppercase tracking-widest font-bold">Our Story</Badge>
+              <h2 className="text-5xl md:text-7xl font-serif font-bold text-text-primary tracking-tight leading-tight">Turning Vision <br/><span className="text-heritage italic font-light">Into Reality</span>.</h2>
             </div>
             <p className="text-xl text-text-secondary leading-relaxed font-sans font-light">
               Zing Bliss Events is dedicated to turning life&apos;s special moments into unforgettable experiences. We specialize in planning, designing, and executing events with creativity, precision, and professionalism.
             </p>
             <div className="pt-4">
-              <Link href="/about" className="inline-flex items-center gap-4 text-secondary hover:text-white transition-colors uppercase tracking-[0.2em] text-xs font-bold group">
+              <Link href="/about" className="inline-flex items-center gap-4 text-heritage hover:text-heritage-dark transition-colors uppercase tracking-[0.2em] text-xs font-bold group">
                 Discover Our Agency <MoveRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform" />
               </Link>
             </div>
           </div>
-          <div className="relative fade-up lg:aspect-square aspect-video">
-            <div className="absolute -inset-4 border border-secondary/20 rounded-[40px] pointer-events-none" />
-            <div className="relative w-full h-full overflow-hidden rounded-[32px] arch-mask shadow-2xl">
-              <Image 
+          <div className="relative fade-up lg:aspect-square aspect-video group">
+            <div className="absolute -inset-10 bg-accent-rose/10 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            <div className="absolute -inset-4 border border-heritage/20 rounded-[40px] pointer-events-none z-10" />
+            <div className="relative w-full h-full overflow-hidden rounded-[32px] arch-mask shadow-sm z-0">
+              <ParallaxImage 
                 src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200" 
                 alt="Luxury Event Decor" 
-                fill 
-                className="object-cover hover-zoom"
+                speed={0.2}
+                aspectRatio="aspect-square"
+                className="transition-transform duration-[10s]"
               />
+              <div className="absolute inset-0 bg-heritage/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 z-10 pointer-events-none" />
             </div>
           </div>
         </div>
@@ -179,28 +200,37 @@ export default function Home() {
       {/* 3. Services Section - Premium Cards */}
       <section id="services" className="py-32 container px-6 space-y-24">
         <div className="text-center space-y-6 max-w-3xl mx-auto fade-up">
-          <Badge variant="solid" dot className="bg-secondary/10 text-secondary uppercase tracking-widest">Expertise</Badge>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold text-white tracking-tight">Our Premium <span className="text-secondary italic font-light">Services</span></h2>
+          <Badge variant="solid" dot className="bg-heritage/10 text-heritage-dark uppercase tracking-widest font-bold">Expertise</Badge>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold text-text-primary tracking-tight">Our Premium <span className="text-heritage italic font-light">Services</span></h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
-            { title: 'Event Management', icon: <Star size={32} />, desc: 'Full planning and coordination from concept to execution. We handle every logistical detail.', img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800' },
-            { title: 'Entertainment Services', icon: <Music size={32} />, desc: 'DJs, international artists, hosts, bands and live performances to set the perfect vibe.', img: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800' },
-            { title: 'Production & Setup', icon: <Zap size={32} />, desc: 'Bespoke decor, lighting, catering coordination and full end-to-end event production.', img: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800' },
+            { title: 'Event Management', icon: <Star size={32} />, desc: 'Full planning and coordination from concept to execution. We handle every logistical detail.', img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800', accent: 'bg-accent-rose/20' },
+            { title: 'Entertainment Services', icon: <Music size={32} />, desc: 'DJs, international artists, hosts, bands and live performances to set the perfect vibe.', img: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800', accent: 'bg-accent-azure/20' },
+            { title: 'Production & Setup', icon: <Zap size={32} />, desc: 'Bespoke decor, lighting, catering coordination and full end-to-end event production.', img: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800', accent: 'bg-surface-light' },
           ].map((service, i) => (
-            <div key={i} className="glass-card overflow-hidden group fade-up border-border-gold hover:border-secondary">
-              <div className="relative h-72 overflow-hidden">
-                <Image src={service.img} alt={service.title} fill className="object-cover group-hover:scale-110 transition-transform duration-[5s] ease-out grayscale-[0.3] group-hover:grayscale-0" />
-                <div className="absolute inset-0 bg-bg-main/40 group-hover:bg-bg-main/10 transition-colors" />
-                <div className="absolute top-6 left-6 w-14 h-14 rounded-full bg-secondary text-bg-main flex items-center justify-center shadow-2xl">
+            <div key={i} className="glass-card overflow-hidden group fade-up border-linen hover:border-heritage relative">
+              <div className="absolute -inset-10 bg-accent-azure/10 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className={`absolute inset-0 ${service.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+              <div className="relative h-72 overflow-hidden z-10">
+                <ParallaxImage 
+                  src={service.img} 
+                  alt={service.title} 
+                  speed={0.1}
+                  aspectRatio="aspect-auto"
+                  containerClassName="h-full w-full"
+                  className="group-hover:scale-110 transition-transform duration-[5s] ease-out grayscale-[0.3] group-hover:grayscale-0" 
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
+                <div className="absolute top-6 left-6 w-14 h-14 rounded-full bg-heritage text-canvas flex items-center justify-center shadow-md border border-canvas/20 z-20">
                   {service.icon}
                 </div>
               </div>
-              <div className="p-12 space-y-6 text-center">
-                <h3 className="text-2xl font-serif font-bold text-white">{service.title}</h3>
-                <p className="text-text-secondary font-sans font-light text-sm leading-relaxed">{service.desc}</p>
-                <Link href="/services" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-secondary border-b border-secondary/30 pb-1 hover:text-white hover:border-white transition-all group/link">
+              <div className="p-12 space-y-6 text-center relative z-10">
+                <h3 className="text-2xl font-serif font-bold text-text-primary">{service.title}</h3>
+                <p className="text-text-secondary font-sans font-medium text-sm leading-relaxed">{service.desc}</p>
+                <Link href="/services" className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] text-heritage border-b border-heritage/30 pb-1 hover:text-text-primary hover:border-text-primary transition-all group/link font-bold">
                   Learn More <ArrowRight size={12} className="group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -210,27 +240,43 @@ export default function Home() {
       </section>
 
       {/* 4. Events We Specialize In */}
-      <section id="event-types" className="py-32 bg-bg-surface border-y border-border-subtle relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/4 text-[20rem] font-serif text-secondary/5 opacity-[0.03] whitespace-nowrap pointer-events-none select-none">
+      <section id="event-types" className="py-32 bg-surface border-y border-linen relative overflow-hidden">
+        <div className="event-types-bg absolute inset-0 bg-canvas pointer-events-none" />
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/4 text-[20rem] font-serif text-heritage/5 opacity-[0.03] whitespace-nowrap pointer-events-none select-none">
           EXPERIENCE
         </div>
         <div className="container px-6 relative z-10 space-y-24">
           <div className="text-center space-y-6 max-w-3xl mx-auto fade-up">
-            <Badge variant="outline" className="border-secondary text-secondary uppercase tracking-widest">Our Range</Badge>
-            <h2 className="text-5xl md:text-7xl font-serif font-bold text-white">Events We <span className="text-secondary italic font-light">Plan</span>.</h2>
+            <Badge variant="outline" className="border-heritage text-heritage-dark uppercase tracking-widest font-bold">Our Range</Badge>
+            <h2 className="text-5xl md:text-7xl font-serif font-bold text-text-primary">Events We <span className="text-heritage italic font-light">Plan</span>.</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-up">
             {eventTypes.map((item, i) => (
-              <div key={i} className="group relative aspect-[4/3] overflow-hidden border border-border-gold cursor-pointer">
-                <Image src={item.image} alt={item.title} fill className="object-cover grayscale transition-all duration-[10s] group-hover:grayscale-0 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-main/95 via-bg-main/20 to-transparent flex flex-col justify-end p-10 space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-secondary/20 text-secondary flex items-center justify-center border border-secondary/30 backdrop-blur-md group-hover:bg-secondary group-hover:text-bg-main transition-colors duration-500">
+              <div key={i} className="group relative aspect-[4/3] overflow-hidden border border-linen cursor-pointer bg-canvas">
+                <div className="absolute -inset-10 bg-accent-rose/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                <ParallaxImage 
+                  src={item.image} 
+                  alt={item.title} 
+                  speed={0.15}
+                  aspectRatio="aspect-[4/3]"
+                  className="grayscale transition-all duration-[1s] group-hover:grayscale-0"
+                />
+                <div 
+                  className="absolute inset-0 flex flex-col justify-end p-10 space-y-4 transition-colors duration-700 z-10" 
+                  style={{ backgroundColor: 'rgba(252, 251, 247, 0.85)' }}
+                >
+                  <div className="w-12 h-12 rounded-full bg-heritage text-canvas flex items-center justify-center border border-heritage/30 shadow-lg group-hover:scale-110 transition-transform duration-500">
                     {item.icon}
                   </div>
-                  <h4 className="text-3xl font-serif font-bold text-white tracking-wide">{item.title}</h4>
-                  <p className="text-xs text-text-secondary opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0 uppercase tracking-widest">{item.desc}</p>
+                  <h3 className="text-3xl font-serif font-bold text-text-primary tracking-wide">{item.title}</h3>
+                  <p className="text-[11px] text-heritage-dark font-bold opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0 uppercase tracking-widest">{item.desc}</p>
                 </div>
+                {/* Colorful Hover Layer */}
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none z-20" 
+                  style={{ backgroundColor: item.color }}
+                />
               </div>
             ))}
           </div>
@@ -238,13 +284,13 @@ export default function Home() {
       </section>
 
       {/* 5. Statistics Section */}
-      <section id="stats" className="py-24 bg-bg-main border-b border-border-subtle">
+      <section id="stats" className="py-24 bg-canvas border-b border-linen">
         <div className="container px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center fade-up">
             {stats.map((stat, i) => (
               <div key={i} className="space-y-4">
-                <h4 className="text-5xl md:text-7xl font-serif font-bold text-gold">{stat.value}</h4>
-                <p className="text-xs md:text-sm font-sans uppercase tracking-[0.3em] text-text-secondary">{stat.label}</p>
+                <h3 className="text-5xl md:text-7xl font-serif font-bold text-heritage-dark">{stat.value}</h3>
+                <p className="text-[11px] md:text-xs font-sans font-bold uppercase tracking-[0.4em] text-text-secondary">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -255,11 +301,11 @@ export default function Home() {
       <section id="archives" className="py-32 container px-6 space-y-20">
         <div className="flex flex-col md:flex-row justify-between items-end gap-12 fade-up">
           <div className="space-y-6 max-w-2xl">
-            <Badge variant="solid" dot className="bg-secondary/10 text-secondary uppercase tracking-widest">Portfolio</Badge>
-            <h2 className="text-5xl md:text-7xl font-serif font-bold text-white leading-tight">Our Recent <br/><span className="text-secondary italic font-light">Excellence</span>.</h2>
+            <Badge variant="solid" dot className="bg-heritage/10 text-heritage-dark uppercase tracking-widest font-bold">Portfolio</Badge>
+            <h2 className="text-5xl md:text-7xl font-serif font-bold text-text-primary leading-tight">Our Recent <br/><span className="text-heritage italic font-light">Excellence</span>.</h2>
           </div>
           <Link href="/gallery">
-            <Button variant="outline" className="btn-outline-royal px-12 h-16 rounded-none font-bold">View Our Gallery</Button>
+            <Button variant="outline" className="btn-outline-prestige px-12 h-16 rounded-none font-bold">View Our Gallery</Button>
           </Link>
         </div>
         
@@ -269,30 +315,30 @@ export default function Home() {
       </section>
 
       {/* 7. Testimonials Section */}
-      <section id="testimonials" className="py-32 bg-bg-surface relative overflow-hidden border-y border-border-subtle">
+      <section id="testimonials" className="py-32 bg-surface relative overflow-hidden border-y border-linen">
         <div className="container px-6 space-y-24 relative z-10">
           <div className="text-center space-y-6 fade-up">
-            <Badge variant="solid" className="bg-secondary/10 text-secondary uppercase tracking-widest">Reviews</Badge>
-            <h2 className="text-5xl md:text-6xl font-serif font-bold tracking-tight text-white leading-tight">What Our <span className="text-secondary italic font-light">Clients Say</span></h2>
+            <Badge variant="solid" className="bg-heritage/10 text-heritage-dark uppercase tracking-widest font-bold">Reviews</Badge>
+            <h2 className="text-5xl md:text-6xl font-serif font-bold tracking-tight text-text-primary leading-tight">What Our <span className="text-heritage italic font-light">Clients Say</span></h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <div key={t.id} className="glass-card p-12 rounded-none border border-border-gold space-y-8 fade-up text-center relative group">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-bg-main border border-border-gold flex items-center justify-center text-secondary shadow-2xl">
+              <div key={t.id} className="glass-card p-12 rounded-none border border-linen space-y-8 fade-up text-center relative group">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-canvas border border-linen flex items-center justify-center text-heritage shadow-md">
                   <Star size={24} fill="currentColor" />
                 </div>
-                <div className="flex justify-center gap-1 text-secondary">
+                <div className="flex justify-center gap-1 text-burnished">
                   {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
                 </div>
-                <p className="text-xl text-text-primary italic leading-relaxed font-sans font-light">"{t.content}"</p>
-                <div className="pt-8 border-t border-border-subtle flex flex-col items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border border-secondary/30">
-                    <Image src={t.avatar} alt={t.author} fill className="object-cover" />
+                <p className="text-xl text-text-primary italic leading-relaxed font-sans font-medium">&quot;{t.content}&quot;</p>
+                <div className="pt-8 border-t border-linen flex flex-col items-center gap-4">
+                  <div className="relative w-14 h-14 rounded-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 border border-heritage/30">
+                    <Image src={t.avatar} alt={t.author} fill className="object-cover" sizes="56px" />
                   </div>
                   <div>
                     <h4 className="text-text-primary font-bold text-sm tracking-widest uppercase">{t.author}</h4>
-                    <p className="text-[10px] text-secondary font-medium tracking-[0.3em] uppercase mt-1">{t.event}</p>
+                    <p className="text-[11px] text-heritage-dark font-bold tracking-[0.3em] uppercase mt-1">{t.event}</p>
                   </div>
                 </div>
               </div>
@@ -304,21 +350,21 @@ export default function Home() {
       {/* 8. How We Work Section */}
       <section id="how-it-works" className="py-32 container px-6 space-y-24">
         <div className="text-center space-y-6 max-w-3xl mx-auto fade-up">
-          <Badge variant="outline" className="text-secondary border-secondary uppercase tracking-widest">Workflow</Badge>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold text-white">How We Plan <br/><span className="text-secondary italic font-light">Your Legacy</span></h2>
+          <Badge variant="outline" className="text-heritage-dark border-heritage uppercase tracking-widest font-bold">Workflow</Badge>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold text-text-primary">How We Plan <br/><span className="text-heritage italic font-light">Your Legacy</span></h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-          <div className="absolute top-[40px] left-0 w-full h-[1px] bg-border-gold hidden md:block opacity-30" />
+          <div className="absolute top-[40px] left-0 w-full h-[1px] bg-linen hidden md:block opacity-30" />
           {steps.map((step, i) => (
             <div key={i} className="relative z-10 space-y-8 text-center fade-up group">
-              <div className="mx-auto w-20 h-20 rounded-full bg-bg-main border-2 border-secondary flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-bg-main transition-all duration-700 shadow-2xl relative">
-                <div className="absolute -top-2 -right-2 text-[10px] font-mono text-secondary bg-bg-main px-1">0{i+1}</div>
+              <div className="mx-auto w-20 h-20 rounded-full bg-canvas border-2 border-heritage flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-700 shadow-sm relative">
+                <div className="absolute -top-2 -right-2 text-[11px] font-mono text-heritage-dark bg-canvas px-1 font-bold">0{i+1}</div>
                 {step.icon}
               </div>
               <div className="space-y-4">
-                <h3 className="text-2xl font-serif font-bold text-white">{step.title}</h3>
-                <p className="text-sm text-text-secondary font-sans font-light leading-relaxed max-w-[200px] mx-auto">{step.desc}</p>
+                <h3 className="text-2xl font-serif font-bold text-text-primary">{step.title}</h3>
+                <p className="text-sm text-text-secondary font-sans font-medium leading-relaxed max-w-[200px] mx-auto">{step.desc}</p>
               </div>
             </div>
           ))}
@@ -326,27 +372,27 @@ export default function Home() {
       </section>
 
       {/* 9. Instagram Section */}
-      <section id="instagram" className="py-32 bg-bg-surface border-y border-border-subtle relative overflow-hidden">
+      <section id="instagram" className="py-32 bg-surface border-y border-linen relative overflow-hidden">
         <div className="container px-6 space-y-16 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 fade-up">
             <div className="space-y-4">
-              <div className="flex items-center gap-4 text-secondary">
+              <div className="flex items-center gap-4 text-heritage">
                 <InstagramIcon size={24} />
-                <span className="text-[10px] uppercase tracking-[0.4em] font-bold">@zingblissevents</span>
+                <span className="text-[11px] uppercase tracking-[0.4em] font-bold">@zingblissevents</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-serif font-bold text-white">Follow Our <span className="text-secondary italic font-light">Journey</span></h2>
+              <h2 className="text-4xl md:text-6xl font-serif font-bold text-text-primary">Follow Our <span className="text-heritage italic font-light">Journey</span></h2>
             </div>
             <a href="https://www.instagram.com/zingblissevents/" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="btn-outline-royal rounded-none border-secondary text-secondary">Follow Us</Button>
+              <Button variant="outline" className="btn-outline-prestige rounded-none border-burnished text-heritage font-bold">Follow Us</Button>
             </a>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 fade-up">
             {instaPhotos.map((photo, i) => (
-              <div key={i} className="relative aspect-square overflow-hidden group border border-border-subtle">
-                <Image src={photo} alt={`Instagram ${i}`} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <InstagramIcon size={24} className="text-white" />
+              <div key={i} className="relative aspect-square overflow-hidden group border border-linen">
+                <Image src={photo} alt={`Instagram ${i}`} fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw" />
+                <div className="absolute inset-0 bg-heritage/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <InstagramIcon size={24} className="text-canvas" />
                 </div>
               </div>
             ))}
@@ -355,27 +401,27 @@ export default function Home() {
       </section>
 
       {/* 10. Contact CTA Section */}
-      <section id="cta" className="relative py-48 bg-bg-main overflow-hidden grainy-gradient">
-        <div className="absolute inset-0 bg-secondary/5" />
+      <section id="cta" className="relative py-48 bg-heritage overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-[0.05] invert" />
         
         <div className="container relative z-10 max-w-5xl text-center space-y-12 px-4">
-          <Badge variant="solid" dot className="bg-secondary/10 text-secondary uppercase tracking-[0.3em] font-bold">Inquire</Badge>
-          <h2 className="text-6xl md:text-[9rem] font-serif font-bold tracking-tight text-white leading-[0.85] drop-shadow-2xl">
-            To Love, Laughs, and <br/><span className="text-gold italic font-light">Happily Ever After.</span>
+          <Badge variant="solid" dot className="bg-canvas/10 text-canvas border-canvas/20 uppercase tracking-[0.3em] font-bold">Inquire</Badge>
+          <h2 className="text-6xl md:text-[9rem] font-serif font-bold tracking-tight text-canvas leading-[0.85] drop-shadow-lg">
+            To Love, Laughs, and <br/><span className="text-burnished italic font-light">Happily Ever After.</span>
           </h2>
-          <p className="text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-3xl mx-auto">
+          <p className="text-2xl text-canvas/80 font-sans font-light leading-relaxed max-w-3xl mx-auto">
             Ready to plan your dream event today? Our team is dedicated to handling every detail for a stress-free experience.
           </p>
           <div className="pt-12 flex flex-col sm:flex-row items-center justify-center gap-8">
             <Magnetic strength={0.2}>
               <Link href="/contact">
-                <Button size="lg" className="h-24 px-20 text-2xl rounded-none btn-royal font-bold shadow-2xl" rightIcon={<ArrowRight size={32} />}>
+                <Button size="lg" className="h-24 px-20 text-2xl rounded-none bg-canvas text-heritage hover:bg-burnished-light border-0 font-bold shadow-xl" rightIcon={<ArrowRight size={32} />}>
                   Plan Your Event Today
                 </Button>
               </Link>
             </Magnetic>
             <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg" className="h-24 px-20 text-2xl rounded-none btn-outline-royal border-secondary flex items-center gap-4">
+              <Button variant="outline" size="lg" className="h-24 px-20 text-2xl rounded-none border-canvas/30 text-canvas hover:bg-canvas/10 flex items-center gap-4 font-bold">
                 <MessageCircle size={32} /> WhatsApp Us
               </Button>
             </a>
