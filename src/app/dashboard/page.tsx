@@ -105,7 +105,7 @@ export default function DashboardPage() {
             <div className="relative z-10 flex flex-col h-full justify-between">
               <div>
                 <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.3em] text-heritage">Audience Reach</h4>
-                <p className="text-xs text-text-secondary mt-2 italic font-serif">Historical analytics for "The Archive" views.</p>
+                <p className="text-xs text-text-secondary mt-2 italic font-serif">Historical analytics for &quot;The Archive&quot; views.</p>
               </div>
               <div className="flex items-end gap-2 h-32">
                 {[40, 70, 45, 90, 65, 80, 50, 95, 75, 60, 85, 100].map((h, i) => (
@@ -138,7 +138,7 @@ export default function DashboardPage() {
           <div className="bento-item md:col-span-2 lg:col-span-2 bg-canvas border border-linen p-8 flex flex-col justify-between group cursor-pointer hover:border-heritage transition-colors">
             <Calendar size={24} className="text-heritage" />
             <div>
-              <h4 className="text-lg font-serif font-bold text-text-primary">Today's Schedule</h4>
+              <h4 className="text-lg font-serif font-bold text-text-primary">Today&apos;s Schedule</h4>
               <p className="text-xs text-text-secondary mt-1">3 site walkthroughs</p>
             </div>
             <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-heritage">

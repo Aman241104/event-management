@@ -39,7 +39,7 @@ export function TestimonialCard({ testimonial, className }: TestimonialProps) {
               src={testimonial.avatar} 
               alt={testimonial.author} 
               fill
-              className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0"
+              className="object-cover transition-all duration-1000"
               sizes="64px"
             />
           </div>

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Search, ArrowRight } from 'lucide-react';
+import { Search, ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/atoms/Logo';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
@@ -49,58 +49,57 @@ export function Navbar() {
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       <header className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-1000 ease-in-out border-b",
-        scrolled ? "bg-canvas/95 backdrop-blur-xl border-linen/50 py-2 shadow-[0_2px_20px_rgba(0,0,0,0.02)]" : "bg-gradient-to-b from-canvas/60 to-transparent border-transparent py-6",
+        "fixed top-0 w-full z-50 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] border-b",
+        scrolled ? "bg-canvas/90 backdrop-blur-md border-linen/30 py-4 shadow-[0_1px_10px_rgba(0,0,0,0.01)]" : "bg-transparent border-transparent py-8",
         (isOpen || isSearchOpen) && "border-transparent bg-transparent backdrop-blur-0"
       )}>
-        <nav className="container mx-auto px-6 md:px-8 h-16 md:h-24 flex items-center justify-between">
-          <Magnetic strength={0.1}>
+        <nav className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+          <Magnetic strength={0.05}>
             <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[60]">
               <Logo />
             </Link>
           </Magnetic>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center space-x-12">
-            {navLinks.map((link, i) => (
-              <Magnetic key={link.label} strength={0.2}>
+          <div className="hidden lg:flex items-center space-x-16">
+            {navLinks.map((link) => (
+              <Magnetic key={link.label} strength={0.1}>
                 <Link
                   href={link.href}
                   className={cn(
-                    "text-[11px] font-sans font-bold uppercase tracking-[0.3em] transition-colors duration-500 relative group py-2",
+                    "text-[10px] font-sans font-bold uppercase tracking-[0.4em] transition-colors duration-700 relative group py-2",
                     scrolled ? "text-text-secondary hover:text-heritage" : "text-text-primary hover:text-heritage"
                   )}
                 >
                   {link.label}
                   <span 
                     className={cn(
-                      "absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1.5px] transition-all duration-500 group-hover:w-full",
-                      i % 3 === 0 ? "bg-accent-rose" : i % 3 === 1 ? "bg-accent-azure" : "bg-burnished"
+                      "absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-1000 cubic-bezier(0.19,1,0.22,1) group-hover:w-full bg-heritage/40"
                     )} 
                   />
                 </Link>
               </Magnetic>
             ))}
             
-            <div className="flex items-center space-x-8 pl-8 border-l border-linen">
-              <Magnetic strength={0.3}>
+            <div className="flex items-center space-x-12 pl-12 border-l border-linen/30">
+              <Magnetic strength={0.2}>
                 <button 
                   onClick={openSearch}
                   className={cn(
-                    "transition-colors duration-500 flex items-center gap-2 group",
+                    "transition-colors duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] flex items-center gap-3 group relative overflow-hidden py-2",
                     scrolled ? "text-text-secondary hover:text-heritage" : "text-text-primary hover:text-heritage"
                   )}
                   aria-label="Search"
                 >
-                  <Search size={18} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">Search</span>
+                  <Search size={16} strokeWidth={1} className="group-hover:scale-110 transition-transform duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]" />
+                  <span className="text-[9px] font-bold uppercase tracking-widest translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]">Search</span>
                 </button>
               </Magnetic>
 
-              <Magnetic strength={0.3}>
+              <Magnetic strength={0.2}>
                 <Link href="/contact">
-                  <Button variant="solid" size="sm" className="btn-prestige rounded-none px-10 h-12">
-                    Plan Event
+                  <Button variant="outline" size="sm" className="btn-outline-prestige rounded-none px-12 h-14 border-linen/50 text-heritage hover:border-heritage transition-all duration-1000">
+                    INQUIRE
                   </Button>
                 </Link>
               </Magnetic>

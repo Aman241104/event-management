@@ -56,7 +56,7 @@ export function ParallaxImage({
     >
       <div 
         ref={imageRef} 
-        className="absolute -top-[10%] left-0 w-full h-[120%] relative"
+        className="absolute -top-[20%] left-0 w-full h-[140%]"
       >
         <Image 
           src={src} 

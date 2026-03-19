@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { VolumeX } from 'lucide-react';
 import { Magnetic } from './Magnetic';
 
 export function AudioToggle() {
@@ -10,7 +9,10 @@ export function AudioToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   if (!mounted) return null;

@@ -17,9 +17,17 @@ interface MaskSlideImageProps {
   className?: string;
   aspectRatio?: string;
   priority?: boolean;
+  maskColor?: string;
 }
 
-export function MaskSlideImage({ src, alt, className, aspectRatio = 'aspect-[3/4]', priority = false }: MaskSlideImageProps) {
+export function MaskSlideImage({ 
+  src, 
+  alt, 
+  className, 
+  aspectRatio = 'aspect-[3/4]', 
+  priority = false,
+  maskColor = 'bg-canvas'
+}: MaskSlideImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageWrapperRef = useRef<HTMLDivElement>(null);
   const maskRef = useRef<HTMLDivElement>(null);
@@ -70,7 +78,7 @@ export function MaskSlideImage({ src, alt, className, aspectRatio = 'aspect-[3/4
       {/* The Reveal Mask - Matches the background color */}
       <div 
         ref={maskRef}
-        className="absolute inset-0 bg-canvas z-20 pointer-events-none origin-bottom"
+        className={cn("absolute inset-0 z-20 pointer-events-none origin-bottom", maskColor)}
       />
 
       {/* Very Subtle Decorative Overlay */}

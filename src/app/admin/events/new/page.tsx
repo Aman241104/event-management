@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Badge } from '@/components/atoms/Badge';
 import { Button } from '@/components/atoms/Button';
-import { ArrowLeft, Save, Eye, Camera, Plus, Trash2 } from 'lucide-react';
+import { ArrowLeft, Save, Eye, Camera, Trash2 } from 'lucide-react';
 import { Input } from '@/components/atoms/Input';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -88,7 +88,7 @@ export default function NewEventPage() {
                       src={`https://images.unsplash.com/photo-${i === 1 ? '1511795409834-ef04bbd61622' : '1583939003579-730e3918a45a'}?auto=format&fit=crop&q=80&w=400`}
                       alt="Thumbnail"
                       fill
-                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                      className="object-cover transition-all duration-500"
                     />
                     <button className="absolute top-2 right-2 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
                       <Trash2 size={14} />
@@ -109,7 +109,7 @@ export default function NewEventPage() {
                     src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200" 
                     alt="Preview" 
                     fill 
-                    className="object-cover grayscale" 
+                    className="object-cover" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-12 left-12 right-12 text-canvas space-y-4">
@@ -118,7 +118,7 @@ export default function NewEventPage() {
                   </div>
                 </div>
                 <div className="px-8 pb-8 space-y-6 text-center">
-                   <p className="text-sm font-sans italic text-text-secondary">"A dialogue between tradition and modern luxury."</p>
+                   <p className="text-sm font-sans italic text-text-secondary">&quot;A dialogue between tradition and modern luxury.&quot;</p>
                    <div className="flex justify-center gap-4">
                      {[1, 2, 3].map(d => <div key={d} className="w-1.5 h-1.5 rounded-full bg-linen" />)}
                    </div>

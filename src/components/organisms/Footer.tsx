@@ -2,12 +2,17 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Twitter, Linkedin, Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Twitter, Linkedin, Facebook, Instagram, Mail, Phone, MapPin, ArrowRight, MessageCircle } from 'lucide-react';
 import { Logo } from '@/components/atoms/Logo';
 import { Magnetic } from '@/components/atoms/Magnetic';
+import { Button } from '@/components/atoms/Button';
+import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+  const hideCTA = pathname === '/' || pathname === '/services';
 
   const navigation = [
     { label: 'Home', href: '/' },
@@ -22,27 +27,53 @@ export function Footer() {
       <div className="absolute inset-0 dot-pattern opacity-[0.02]" />
       
       <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-32">
+        {/* Mad Libs CTA - Hidden on pages that already have a primary CTA */}
+        {!hideCTA && (
+          <div className="max-w-5xl mx-auto text-center mb-48 space-y-16">
+            <div className="flex items-center justify-center gap-6 mb-12">
+              <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">Global Inquiry</span>
+              <div className="h-px w-12 bg-linen" />
+            </div>
+            <p className="text-3xl md:text-5xl text-text-primary font-serif italic font-light leading-relaxed">
+              Hello, I&apos;m planning a <span className="border-b border-heritage/30 text-heritage font-medium px-4 inline-block not-italic">bespoke event</span> in <span className="border-b border-heritage/30 text-heritage font-medium px-4 inline-block not-italic">India</span> and I&apos;d love to connect.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-12 pt-8">
+              <Magnetic strength={0.2}>
+                <Link href="/contact">
+                  <Button size="lg" className="h-20 px-16 text-xl btn-prestige rounded-none font-bold" rightIcon={<ArrowRight size={24} />}>
+                    Plan Your Event
+                  </Button>
+                </Link>
+              </Magnetic>
+              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-heritage hover:text-text-primary transition-colors flex items-center gap-4 text-xs uppercase tracking-[0.4em] font-bold border-b border-transparent hover:border-text-primary pb-2">
+                <MessageCircle size={20} /> Personal Concierge
+              </a>
+            </div>
+          </div>
+        )}
+
+        <div className={`grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-32 ${!hideCTA ? 'pt-32 border-t border-linen/50' : ''}`}>
           
           {/* Brand Col */}
           <div className="md:col-span-4 space-y-12">
-            <Magnetic strength={0.1}>
+            <Magnetic strength={0.05}>
               <Link href="/">
                 <Logo />
               </Link>
             </Magnetic>
-            <p className="text-base text-text-secondary leading-[2] max-w-sm font-sans font-light">
-              Zing Bliss Events is dedicated to turning life&apos;s special moments into unforgettable experiences with creativity, precision, and professionalism.
+            <p className="text-sm text-text-secondary leading-[2] max-w-sm font-sans font-light">
+              Architects of magic, dedicated to turning life&apos;s special moments into unforgettable experiences with quiet precision.
             </p>
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-10">
               {[
-                { icon: <Instagram size={20} />, href: 'https://www.instagram.com/zingblissevents/' },
-                { icon: <Twitter size={20} />, href: '#' },
-                { icon: <Facebook size={20} />, href: '#' },
-                { icon: <Linkedin size={20} />, href: '#' },
+                { icon: <Instagram size={18} />, href: 'https://www.instagram.com/zingblissevents/' },
+                { icon: <Twitter size={18} />, href: '#' },
+                { icon: <Facebook size={18} />, href: '#' },
+                { icon: <Linkedin size={18} />, href: '#' },
               ].map((social, i) => (
-                <Magnetic key={i} strength={0.4}>
-                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="text-heritage hover:text-heritage-dark transition-colors duration-500">
+                <Magnetic key={i} strength={0.3}>
+                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="text-heritage/60 hover:text-heritage transition-colors duration-500">
                     {social.icon}
                   </a>
                 </Magnetic>

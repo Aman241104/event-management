@@ -1,21 +1,52 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Badge } from '@/components/atoms/Badge';
 import { Button } from '@/components/atoms/Button';
-import { MessageCircle, Mail, MapPin, ArrowRight, Instagram, Phone } from 'lucide-react';
+import { MessageCircle, Mail, MapPin, ArrowRight, Instagram, Phone, Globe, Clock } from 'lucide-react';
 import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 import { TextReveal } from '@/components/atoms/TextReveal';
 import { Magnetic } from '@/components/atoms/Magnetic';
-import { Input } from '@/components/atoms/Input';
+import { FloatingDecor } from '@/components/atoms/FloatingDecor';
+import { BackgroundFlourish } from '@/components/atoms/BackgroundFlourish';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+function MumbaiClock() {
+  const [time, setTime] = useState<string>('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const mumbaiTime = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+      }).format(now);
+      setTime(mumbaiTime);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return <span>{time} IST</span>;
+}
 
 export default function ContactPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    // Header Animation
     gsap.from('.header-fade', {
       y: 30,
       opacity: 0,
@@ -24,21 +55,46 @@ export default function ContactPage() {
       ease: 'power2.out',
     });
 
+    // Background Color Shift
+    gsap.to(containerRef.current, {
+      scrollTrigger: {
+        trigger: '#form-section',
+        start: 'top 50%',
+        end: 'bottom 50%',
+        toggleActions: 'play reverse play reverse',
+      },
+      backgroundColor: '#F4F1EA', // Surface color
+      duration: 1.5,
+      ease: 'power2.inOut',
+    });
+
+    // Form Animation
     gsap.from('.form-fade', {
       y: 40,
       opacity: 0,
       duration: 1.5,
       ease: 'power2.out',
-      delay: 0.6
+      scrollTrigger: {
+        trigger: '.form-fade',
+        start: 'top 80%',
+      }
     });
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-canvas pt-32 pb-24 selection:bg-heritage selection:text-canvas relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-heritage/5 blur-[200px] rounded-full pointer-events-none -z-10" />
+    <main ref={containerRef} className="min-h-screen bg-canvas pt-32 pb-24 selection:bg-heritage selection:text-canvas relative transition-colors duration-1000 overflow-hidden">
+      <FloatingDecor />
+      <BackgroundFlourish type="floral" className="top-[5%] left-[2%] w-[30rem] h-[30rem]" opacity={0.02} />
+      <BackgroundFlourish type="architectural" className="bottom-0 right-0 w-[40rem] h-[40rem]" opacity={0.03} />
+      <FloatingDecor seed={1} />
+      <FloatingDecor seed={2} />
+      
+      {/* Metadata Labels */}
+      <div className="side-label text-heritage/30">05 / INQUIRE — CONTACT THE ARCHIVE</div>
+      <div className="side-label-right text-heritage/30">MUMBAI / 19.0760° N, 72.8777° E</div>
 
       {/* Header */}
-      <section id="header" className="container mx-auto px-6 py-24 md:py-32 text-center space-y-8">
+      <section id="header" className="container mx-auto px-6 py-24 md:py-32 text-center space-y-8 relative z-10">
         <div className="header-fade">
           <Badge variant="solid" dot className="px-6 py-2 bg-heritage/10 text-heritage uppercase tracking-[0.3em] font-bold">The Dialogue</Badge>
         </div>
@@ -53,128 +109,151 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section id="content" className="container mx-auto px-6 py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
+      <section id="content" className="container mx-auto px-6 py-24 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
 
-          {/* Info Side */}
-          <div className="lg:col-span-4 space-y-16 header-fade">
-            <div className="space-y-8 p-12 bg-surface border border-linen shadow-sm relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 dot-pattern opacity-[0.05] pointer-events-none" />
-              <h3 className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage">Global HQ</h3>
-              <p className="text-2xl font-serif text-text-primary font-bold leading-relaxed">
-                Zing Bliss Events HQ<br />
-                Bandra West, Mumbai<br />
-                Maharashtra, India
-              </p>
+          {/* Archival Sidebar */}
+          <div className="lg:col-span-4 space-y-16 header-fade sticky top-32">
+            <div className="space-y-12 p-10 border border-linen bg-surface/40 backdrop-blur-xl">
+              <div className="space-y-6">
+                <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.5em] text-heritage/40 pb-4 border-b border-linen">Archive Logistics</h3>
+                
+                <div className="space-y-8">
+                  <div className="flex items-start gap-4">
+                    <Globe size={16} className="text-heritage mt-1" strokeWidth={1} />
+                    <div className="space-y-1">
+                      <span className="text-[9px] uppercase tracking-widest text-text-secondary font-bold">HQ Coordinates</span>
+                      <p className="text-sm font-mono text-text-primary">19.0760° N, 72.8777° E<br />Bandra West, Mumbai</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <Clock size={16} className="text-heritage mt-1" strokeWidth={1} />
+                    <div className="space-y-1">
+                      <span className="text-[9px] uppercase tracking-widest text-text-secondary font-bold">Current Archive Time</span>
+                      <p className="text-sm font-mono text-text-primary"><MumbaiClock /></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-8 pt-6 border-t border-linen">
+                <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.5em] text-heritage/40">Direct Channels</h3>
+                <div className="space-y-6">
+                  <a href="tel:+919876543210" className="flex items-center gap-4 group">
+                    <div className="w-10 h-10 border border-linen flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-500">
+                      <Phone size={16} strokeWidth={1} />
+                    </div>
+                    <span className="text-sm font-serif font-bold text-text-primary group-hover:text-heritage transition-colors">+91 98765 43210</span>
+                  </a>
+
+                  <a href="mailto:hello@zingblissevents.com" className="flex items-center gap-4 group">
+                    <div className="w-10 h-10 border border-linen flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-500">
+                      <Mail size={16} strokeWidth={1} />
+                    </div>
+                    <span className="text-sm font-serif font-bold text-text-primary group-hover:text-heritage transition-colors">hello@zingblissevents.com</span>
+                  </a>
+
+                  <a href="https://www.instagram.com/zingblissevents/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                    <div className="w-10 h-10 border border-linen flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-500">
+                      <Instagram size={16} strokeWidth={1} />
+                    </div>
+                    <span className="text-sm font-serif font-bold text-text-primary group-hover:text-heritage transition-colors">@zingblissevents</span>
+                  </a>
+                </div>
+              </div>
+
               <div className="pt-4">
-                <a href="#" className="text-[11px] uppercase tracking-[0.3em] text-heritage font-bold border-b border-heritage/30 pb-1 hover:text-text-primary hover:border-text-primary transition-colors">Open in Map</a>
+                <Magnetic strength={0.2}>
+                  <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                    <Button variant="solid" className="btn-prestige w-full py-6 flex items-center justify-center gap-4 text-[10px] tracking-[0.3em]">
+                      <MessageCircle size={18} />
+                      WHATSAPP CONCIERGE
+                    </Button>
+                  </a>
+                </Magnetic>
               </div>
-            </div>
-
-            <div className="space-y-12">
-              <h3 className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage">The Private Line</h3>
-              <div className="space-y-8">
-                <div className="flex items-center gap-6 group">
-                  <div className="w-14 h-14 rounded-none border border-linen flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-700">
-                    <Phone size={24} strokeWidth={1} />
-                  </div>
-                  <div className="space-y-1">
-                    <span className="text-[10px] uppercase tracking-widest text-text-secondary">Voice Discovery</span>
-                    <a href="tel:+919876543210" className="text-xl md:text-2xl font-serif text-text-primary hover:text-heritage transition-colors font-bold block">+91 98765 43210</a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-6 group">
-                  <div className="w-14 h-14 rounded-none border border-linen flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-700">
-                    <Mail size={24} strokeWidth={1} />
-                  </div>
-                  <div className="space-y-1">
-                    <span className="text-[10px] uppercase tracking-widest text-text-secondary">Narrative Inquiry</span>
-                    <a href="mailto:hello@zingblissevents.com" className="text-xl md:text-2xl font-serif text-text-primary hover:text-heritage transition-colors font-bold block">hello@zingblissevents.com</a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-6 group">
-                  <div className="w-14 h-14 rounded-none border border-linen flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-700">
-                    <Instagram size={24} strokeWidth={1} />
-                  </div>
-                  <div className="space-y-1">
-                    <span className="text-[10px] uppercase tracking-widest text-text-secondary">Social Record</span>
-                    <a href="https://www.instagram.com/zingblissevents/" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl font-serif text-text-primary hover:text-heritage transition-colors font-bold block">@zingblissevents</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-8">
-              <Magnetic strength={0.2}>
-                <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                  <Button variant="solid" className="btn-prestige w-full py-8 flex items-center justify-center gap-4 text-sm tracking-[0.3em]">
-                    <MessageCircle size={24} />
-                    WHATSAPP CONCIERGE
-                  </Button>
-                </a>
-              </Magnetic>
             </div>
           </div>
 
-          {/* Form Side */}
-          <div className="lg:col-span-8 form-fade">
-            <div className="p-12 border border-linen bg-surface/20 backdrop-blur-md relative overflow-hidden">
+          {/* Mad Libs Form Side */}
+          <div id="form-section" className="lg:col-span-8 form-fade">
+            <div className="p-12 md:p-20 border border-linen bg-surface/10 backdrop-blur-md relative overflow-hidden group hover:border-heritage/30 transition-colors duration-1000 shadow-[0_20px_50px_rgba(0,0,0,0.02)]">
               <div className="absolute top-0 right-0 w-64 h-64 dot-pattern opacity-[0.03] pointer-events-none" />
               
-              <form className="space-y-16 relative z-10" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                  <Input label="Full Name" placeholder="Your Name" />
-                  <Input label="Email Address" type="email" placeholder="email@example.com" />
+              <form className="relative z-10" onSubmit={(e) => e.preventDefault()}>
+                <div className="text-2xl md:text-4xl lg:text-5xl font-serif text-text-primary leading-[1.8] md:leading-[2.2]">
+                  Hello, my name is{' '}
+                  <span className="inline-block relative group/input">
+                    <input 
+                      type="text" 
+                      placeholder="YOUR FULL NAME" 
+                      className="bg-transparent border-none focus:outline-none px-2 w-[240px] md:w-[350px] placeholder:text-heritage/30 transition-colors uppercase font-bold text-xl md:text-3xl text-heritage"
+                    />
+                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                  </span>
+                  {' '}and I&apos;m envisioning a{' '}
+                  <span className="inline-block relative group/input">
+                    <select className="bg-transparent border-none focus:outline-none px-2 cursor-none appearance-none uppercase font-bold text-xl md:text-3xl text-heritage">
+                      <option value="wedding">Wedding</option>
+                      <option value="corporate">Corporate Event</option>
+                      <option value="birthday">Birthday Celebration</option>
+                      <option value="private">Private Party</option>
+                    </select>
+                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                  </span>
+                  {' '}on{' '}
+                  <span className="inline-block relative group/input">
+                    <input 
+                      type="text" 
+                      placeholder="DD / MM / YYYY" 
+                      className="bg-transparent border-none focus:outline-none px-2 w-[180px] md:w-[250px] placeholder:text-heritage/30 transition-colors uppercase font-bold text-xl md:text-3xl text-heritage"
+                    />
+                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                  </span>
+                  . We are expecting around{' '}
+                  <span className="inline-block relative group/input">
+                    <select className="bg-transparent border-none focus:outline-none px-2 cursor-none appearance-none uppercase font-bold text-xl md:text-3xl text-heritage">
+                      <option value="intimate">50 Guest</option>
+                      <option value="medium">200 Guest</option>
+                      <option value="large">500 Guest</option>
+                      <option value="grand">1000+ Guest</option>
+                    </select>
+                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                  </span>
+                  {' '}and our budget is{' '}
+                  <span className="inline-block relative group/input">
+                    <select className="bg-transparent border-none focus:outline-none px-2 cursor-none appearance-none uppercase font-bold text-xl md:text-3xl text-heritage">
+                      <option value="tier1">Standard Luxury</option>
+                      <option value="tier2">Premium Experience</option>
+                      <option value="tier3">Ultra Luxury</option>
+                    </select>
+                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                  </span>
+                  . My vision is{' '}
+                  <span className="inline-block relative w-full mt-4 group/input">
+                    <textarea 
+                      placeholder="A MAGICAL MOMENT OF..." 
+                      rows={2}
+                      className="bg-transparent border-none focus:outline-none w-full placeholder:text-heritage/30 transition-colors uppercase font-bold text-xl md:text-3xl resize-none py-2 text-heritage"
+                    />
+                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                  </span>
+                  {' '}You can reach me at{' '}
+                  <span className="inline-block relative group/input">
+                    <input 
+                      type="email" 
+                      placeholder="EMAIL@EXAMPLE.COM" 
+                      className="bg-transparent border-none focus:outline-none px-2 w-[280px] md:w-[450px] placeholder:text-heritage/30 transition-colors uppercase font-bold text-xl md:text-3xl text-heritage"
+                    />
+                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                  </span>
+                  .
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                  <Input 
-                    as="select" 
-                    label="Event Category" 
-                    options={[
-                      { label: 'Wedding', value: 'wedding' },
-                      { label: 'Corporate Event', value: 'corporate' },
-                      { label: 'Birthday Celebration', value: 'birthday' },
-                      { label: 'Private Party', value: 'private' },
-                      { label: 'Festival / Cultural', value: 'festival' },
-                    ]}
-                  />
-                  <Input label="Tentative Date" placeholder="DD/MM/YYYY" />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                  <Input 
-                    as="select" 
-                    label="Guest Count" 
-                    options={[
-                      { label: 'Intimate (Up to 50)', value: 'intimate' },
-                      { label: 'Medium (50 - 200)', value: 'medium' },
-                      { label: 'Large (200 - 500)', value: 'large' },
-                      { label: 'Grand (500+)', value: 'grand' },
-                    ]}
-                  />
-                  <Input 
-                    as="select" 
-                    label="Estimated Budget" 
-                    options={[
-                      { label: 'Standard Luxury', value: 'tier1' },
-                      { label: 'Premium Experience', value: 'tier2' },
-                      { label: 'Ultra Luxury (Bespoke)', value: 'tier3' },
-                    ]}
-                  />
-                </div>
-
-                <Input 
-                  as="textarea" 
-                  label="Event Vision" 
-                  placeholder="Tell us about the magical moment you want to create..."
-                />
-
-                <div className="pt-8">
+                <div className="pt-20">
                   <Button variant="solid" className="w-full md:w-auto btn-prestige px-20 py-8 text-sm group tracking-[0.3em]">
-                    SEND INQUIRY
+                    SEND ARCHIVE INQUIRY
                     <ArrowRight size={18} className="ml-4 transform group-hover:translate-x-2 transition-transform" />
                   </Button>
                 </div>
@@ -186,21 +265,21 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section - The Coordinates */}
-      <section id="map" className="container mx-auto px-6 py-24">
+      <section id="map" className="container mx-auto px-6 py-24 relative z-10">
         <div className="relative w-full h-[60vh] overflow-hidden arch-mask border border-linen group shadow-sm">
-          <div className="absolute inset-0 bg-surface/50 backdrop-blur-sm z-10 flex items-center justify-center">
+          <div className="absolute inset-0 bg-heritage/40 backdrop-blur-none group-hover:backdrop-blur-sm transition-all duration-1000 z-10 flex items-center justify-center">
              <div className="text-center space-y-6 fade-up">
-               <MapPin size={64} className="text-heritage mx-auto" strokeWidth={1} />
-               <h3 className="text-4xl font-serif text-text-primary font-bold italic">The Coordinates</h3>
-               <p className="text-text-secondary uppercase tracking-[0.5em] text-xs">Bandra West, Mumbai — Private View Only</p>
-               <Button variant="outline" className="btn-outline-prestige px-12 h-16 rounded-none mt-8">Request Access</Button>
+               <MapPin size={64} className="text-canvas mx-auto" strokeWidth={1} />
+               <h3 className="text-4xl font-serif text-canvas font-bold italic">The Coordinates</h3>
+               <p className="text-canvas/80 uppercase tracking-[0.5em] text-xs">Bandra West, Mumbai — Private View Only</p>
+               <Button variant="outline" className="border-canvas text-canvas hover:bg-canvas hover:text-heritage transition-all duration-500 px-12 h-16 rounded-none mt-8 tracking-widest text-[10px]">REQUEST ACCESS</Button>
              </div>
           </div>
           <Image 
             src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=2000" 
             alt="Mumbai Map" 
             fill
-            className="object-cover grayscale blur-sm scale-110"
+            className="object-cover scale-110 group-hover:scale-100 transition-transform duration-[10s]"
           />
         </div>
       </section>

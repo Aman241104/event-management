@@ -45,6 +45,7 @@ export default function RootLayout({
       >
         <SmoothScroll>
           <div className="noise-overlay" />
+          <div className="ink-bleed" />
           <Preloader />
           <SectionNavigator />
           <CustomCursor />
@@ -56,8 +57,15 @@ export default function RootLayout({
           </div>
           <Footer />
           <ConciergeBar />
+          <InkBleedScroll />
         </SmoothScroll>
       </body>
     </html>
+  );
+}
+
+function InkBleedScroll() {
+  return (
+    <div className="hidden" /> // Component to handle GSAP logic for ink-bleed if needed, but we can do it in layout with useGSAP
   );
 }

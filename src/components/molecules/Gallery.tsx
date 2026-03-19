@@ -3,22 +3,23 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface GalleryItem {
   id: number;
   image: string;
   title: string;
   category: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'tall';
 }
 
 interface GalleryProps {
   items: GalleryItem[];
   className?: string;
+  hasCursorLabel?: boolean;
 }
 
-export function Gallery({ items, className }: GalleryProps) {
+export function Gallery({ items, className, hasCursorLabel = true }: GalleryProps) {
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
 
   const selectedItem = selectedItemIndex !== null ? items[selectedItemIndex] : null;
@@ -61,35 +62,47 @@ export function Gallery({ items, className }: GalleryProps) {
 
   return (
     <>
-      <div className={cn("grid grid-cols-2 md:grid-cols-4 gap-4", className)}>
-        {items.map((item, index) => (
-          <div 
-            key={item.id} 
-            onClick={() => setSelectedItemIndex(index)}
-            className={cn(
-              "group relative overflow-hidden bg-surface cursor-pointer",
-              item.size === 'large' ? "col-span-2 row-span-2 h-[350px] md:h-[500px]" : "h-[180px] md:h-[240px]",
-              item.size === 'medium' ? "col-span-2 h-[180px] md:h-[240px]" : ""
-            )}
-          >
-            <Image 
-              src={item.image} 
-              alt={item.title} 
-              fill
-              className="object-cover transition-transform duration-[10s] group-hover:scale-110 grayscale-[0.3]"
-              sizes="(max-width: 768px) 50vw, 25vw"
-            />
-            <div className="absolute inset-0 bg-heritage/80 opacity-0 lg:group-hover:opacity-100 transition-all duration-700 flex flex-col justify-center items-center p-8 text-center backdrop-blur-sm transform translate-y-4 lg:group-hover:translate-y-0 pointer-events-none lg:pointer-events-auto">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-canvas/60 mb-4 transform translate-y-4 opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 transition-all duration-700 delay-100">{item.category}</span>
-              <h4 className="text-2xl md:text-3xl font-serif font-bold text-canvas mb-8 transform translate-y-4 opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 transition-all duration-700 delay-200">{item.title}</h4>
-              <div className="transform translate-y-4 opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 transition-all duration-700 delay-300">
-                <div className="p-4 border border-canvas/20 rounded-none text-canvas hover:bg-canvas hover:text-heritage transition-all duration-500">
-                  <Maximize2 className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1} />
+      <div className={cn("grid grid-cols-1 md:grid-cols-12 gap-y-16 md:gap-y-32 gap-x-8", className)}>
+        {items.map((item, index) => {
+          // Deterministic asymmetry based on index
+          const offset = index % 3 === 0 ? 'md:mt-0' : index % 3 === 1 ? 'md:-mt-12' : 'md:mt-12';
+          const zIndex = index % 2 === 0 ? 'z-10' : 'z-20';
+          const horizontalShift = index % 4 === 0 ? 'md:translate-x-0' : index % 4 === 1 ? 'md:-translate-x-4' : index % 4 === 2 ? 'md:translate-x-4' : 'md:translate-x-0';
+
+          return (
+            <div 
+              key={item.id} 
+              onClick={() => setSelectedItemIndex(index)}
+              className={cn(
+                "group relative overflow-hidden bg-surface cursor-pointer arch-mask border border-linen transition-all duration-1000",
+                item.size === 'large' ? "md:col-span-8 md:row-span-2 h-[400px] md:h-[700px]" : "h-[300px] md:h-[340px]",
+                item.size === 'medium' ? "md:col-span-6 h-[300px] md:h-[400px]" : "md:col-span-4",
+                item.size === 'tall' ? "md:col-span-4 md:row-span-2 h-[400px] md:h-[700px]" : "",
+                offset,
+                zIndex,
+                horizontalShift,
+                "hover:z-30 hover:scale-[1.02] shadow-sm hover:shadow-2xl"
+              )}
+              data-cursor={hasCursorLabel ? "VIEW" : undefined}
+            >
+              <Image 
+                src={item.image} 
+                alt={item.title} 
+                fill
+                className="object-cover transition-transform duration-[10s] group-hover:scale-110"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-heritage/90 via-heritage/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] flex flex-col justify-end p-12 transform translate-y-8 group-hover:translate-y-0">
+                <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-canvas/60 mb-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-1000 delay-100">{item.category}</span>
+                <h4 className="text-3xl md:text-5xl font-serif font-bold text-canvas transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-1000 delay-200">{item.title}</h4>
+                <div className="mt-8 flex items-center gap-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-1000 delay-300">
+                   <div className="w-12 h-px bg-canvas/40" />
+                   <span className="text-[10px] text-canvas/60 uppercase tracking-[0.4em]">Archive Reference</span>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Lightbox Modal */}

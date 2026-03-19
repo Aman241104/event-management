@@ -14,7 +14,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement | HTMLSe
 
 export const Input = forwardRef<HTMLInputElement & HTMLSelectElement & HTMLTextAreaElement, InputProps>(
   ({ className, label, error, icon, type = 'text', as = 'input', options, children, ...props }, ref) => {
-    const Component = as as any;
+    const Component = as as React.ElementType;
     
     return (
       <div className="w-full space-y-3">

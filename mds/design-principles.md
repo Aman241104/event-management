@@ -6,10 +6,20 @@ These principles guide the transformation of the Zing Bliss Events platform into
 
 ## 1. Minimalist Opulence (Light Edition)
 Luxury is found in breathing room. We prioritize extreme whitespace and remove all heavy UI elements (dark backgrounds, shadows, deep gradients) in favor of a clean, editorial layout.
-- **Action:** Use thin, surgical 1px lines (Gold or Sage) instead of shadows to define structure.
+- **Action:** Use thin, surgical 1px lines (Gold or Sage) instead of shadows to define structure. Use asymmetrical grids for visual interest.
 - **Goal:** To feel like a high-end, bespoke printed invitation or luxury magazine.
 
-## 2. Emotional Storytelling
+## 2. Editorial Precision
+Our language and layout should feel curated, not generic.
+- **Action:** Use authoritative headlines ("Precision Planning", "Flawless Execution") and editorial markers (e.g., "01 / ARCHIVE").
+- **Goal:** Establish a distinct, high-end brand voice.
+
+## 3. Conversational Concierge
+We replace standard, cold interactions with human-centric, conversational experiences.
+- **Action:** Implement "Mad Libs" style booking forms to mimic a personalized consultation.
+- **Goal:** Humanize the digital experience and build elite credibility.
+
+## 4. Emotional Storytelling
 We sell the *grace* and *elegance* of a successful event.
 - **Action:** Use high-resolution, airy visuals and sophisticated serif typography to evoke a sense of calm and competence.
 - **Goal:** Users should feel the "bespoke" nature of the agency within 2 seconds.

@@ -5,10 +5,15 @@ import { useParams } from 'next/navigation';
 import { 
   ArrowLeft, 
   Share2, 
-  MoveRight
+  MoveRight,
+  MapPin,
+  Cpu,
+  Users,
+  Calendar,
+  Layers,
+  Zap
 } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
 import { Gallery } from '@/components/molecules/Gallery';
@@ -18,6 +23,11 @@ import { ParallaxImage } from '@/components/atoms/ParallaxImage';
 import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const eventDetails = {
   "1": {
@@ -25,8 +35,11 @@ const eventDetails = {
     subtitle: "Innovation & Excellence",
     date: "March 15-17, 2026",
     location: "San Francisco, CA",
+    coordinates: "37.7749° N, 122.4194° W",
     attendees: "1,200 Delegates",
     category: "Corporate",
+    gear: ["L-Acoustics K2", "Blackmagic 12K", "Holographic Mesh"],
+    vendors: ["Aero Production", "Lumina Design", "Gourmet Lab"],
     image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=2000",
     description: "The premier event for technology leaders and innovators. Future Tech Summit 2026 brings together the brightest minds in AI, Edge Computing, and Sustainable Design.",
     fullDescription: `
@@ -58,6 +71,18 @@ export default function EventDetailPage() {
       ease: 'power2.out',
     });
 
+    // Background Color Shift
+    gsap.to(containerRef.current, {
+      scrollTrigger: {
+        trigger: '#content',
+        start: 'top 50%',
+        end: 'bottom 50%',
+        toggleActions: 'play reverse play reverse',
+      },
+      backgroundColor: '#F4F1EA', // Surface color
+      duration: 1,
+    });
+
     gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
       gsap.from(el, {
         scrollTrigger: {
@@ -73,9 +98,9 @@ export default function EventDetailPage() {
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-canvas pt-32 pb-24 selection:bg-heritage selection:text-canvas relative">
-      <div className="side-label text-heritage/30">Project Record — 2026 / {event.category}</div>
-      <div className="side-label-right text-heritage/30">{event.location} / Coordinates {id}</div>
+    <main ref={containerRef} className="min-h-screen bg-canvas pt-32 pb-24 selection:bg-heritage selection:text-canvas relative transition-colors duration-1000">
+      <div className="side-label text-heritage/30">0{id} / PROJECT RECORD — {event.category}</div>
+      <div className="side-label-right text-heritage/30">{event.location} / {event.coordinates}</div>
 
       {/* Editorial Header */}
       <section id="header" className="container mx-auto px-6 mb-24">
@@ -88,7 +113,7 @@ export default function EventDetailPage() {
           <div className="space-y-6">
             <div className="header-fade flex items-center gap-4">
               <Badge variant="solid" dot className="bg-heritage/10 text-heritage border-heritage/20">Commissioned Archive</Badge>
-              <span className="text-[11px] font-mono text-heritage/40">REF: ZB_PRJ_{id}</span>
+              <span className="text-[11px] font-mono text-heritage/40">REF: ZB_PRJ_{id.padStart(3, '0')}</span>
             </div>
             
             <TextReveal 
@@ -107,21 +132,26 @@ export default function EventDetailPage() {
       {/* Main Image */}
       <section id="image" className="container mx-auto px-6 mb-32 fade-up relative group">
         <div className="absolute -inset-20 bg-heritage/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-        <div className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden arch-mask shadow-sm border border-linen z-10">
+        <div className="relative w-full h-[60vh] md:h-[90vh] overflow-hidden arch-mask shadow-2xl border border-linen z-10">
           <ParallaxImage 
             src={event.image} 
             alt={event.title} 
-            speed={0.25}
+            speed={0.15}
             aspectRatio="aspect-auto"
             containerClassName="h-full w-full"
-            className="grayscale-[0.2] hover:grayscale-0 transition-all duration-[1s] ease-linear"
             priority
           />
+          <div className="absolute bottom-10 left-10 z-20 hidden md:block">
+            <div className="bg-canvas/80 backdrop-blur-md p-6 border border-linen shadow-sm space-y-2">
+              <p className="text-[10px] font-mono uppercase tracking-widest text-heritage/40">Primary Capture</p>
+              <p className="text-xs font-bold text-text-primary uppercase tracking-[0.2em]">{event.location} — Archive 2026</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Content Grid */}
-      <section id="content" className="container mx-auto px-6 py-24">
+      <section id="content" className="container mx-auto px-6 py-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
           
           <div className="lg:col-span-8 space-y-32">
@@ -131,29 +161,53 @@ export default function EventDetailPage() {
                 <span className="w-16 h-[1px] bg-heritage"></span>
                 <span className="text-heritage font-bold uppercase tracking-[0.4em] text-[11px]">The Narrative</span>
               </div>
-              <div className="space-y-10">
-                <p className="text-2xl md:text-5xl font-serif text-text-primary font-bold leading-tight tracking-tight">
-                  {event.description}
-                </p>
+              <div className="space-y-12">
+                <TextReveal
+                  as="h2"
+                  text={event.description}
+                  className="text-2xl md:text-5xl font-serif text-text-primary font-bold leading-tight tracking-tight"
+                />
                 <div className="w-full h-px bg-linen opacity-30" />
-                <p className="text-lg text-text-secondary font-sans font-light leading-relaxed max-w-2xl whitespace-pre-line">
+                <p className="text-lg text-text-secondary font-sans font-light leading-relaxed max-w-3xl whitespace-pre-line first-letter:text-5xl first-letter:font-serif first-letter:float-left first-letter:mr-4 first-letter:text-heritage">
                   {event.fullDescription}
                 </p>
               </div>
             </div>
 
-            {/* Highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 fade-up">
-              {event.highlights.map((h, i) => (
-                <div key={i} className="p-10 border border-linen bg-surface/20 group hover:border-heritage transition-all duration-700">
-                  <span className="text-[11px] font-mono text-heritage/40 block mb-6 uppercase tracking-widest">Highlight 0{i+1}</span>
-                  <span className="text-xl font-serif text-text-primary font-bold">{h}</span>
+            {/* Technical Record Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 py-24 border-y border-linen fade-up">
+              <div className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <Cpu size={20} className="text-heritage" strokeWidth={1} />
+                  <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-heritage/60">Gear Specifications</h4>
                 </div>
-              ))}
+                <ul className="space-y-4">
+                  {event.gear?.map((item, i) => (
+                    <li key={i} className="flex items-center justify-between group">
+                      <span className="text-sm font-sans text-text-secondary">{item}</span>
+                      <span className="w-8 h-[1px] bg-linen group-hover:bg-heritage transition-colors"></span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <Users size={20} className="text-heritage" strokeWidth={1} />
+                  <h4 className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-heritage/60">Vendor Partners</h4>
+                </div>
+                <ul className="space-y-4">
+                  {event.vendors?.map((item, i) => (
+                    <li key={i} className="flex items-center justify-between group">
+                      <span className="text-sm font-sans text-text-secondary">{item}</span>
+                      <span className="w-8 h-[1px] bg-linen group-hover:bg-heritage transition-colors"></span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             {/* Gallery */}
-            <div className="space-y-16 pt-32 border-t border-linen fade-up">
+            <div className="space-y-16 pt-32 fade-up">
               <div className="flex items-center gap-6">
                 <span className="text-[11px] uppercase tracking-[0.5em] text-heritage">Visual Record</span>
                 <h3 className="text-4xl font-serif font-bold text-text-primary tracking-tight">Captured <span className="text-heritage italic font-light">Moments</span></h3>
@@ -162,37 +216,59 @@ export default function EventDetailPage() {
             </div>
           </div>
 
-          {/* Sidebar Info */}
+          {/* Sidebar Info - Technical Metadata */}
           <div className="lg:col-span-4 fade-up">
-            <div className="sticky top-40 space-y-16 p-12 border border-linen bg-surface/40 backdrop-blur-2xl shadow-sm">
-              <div className="space-y-10">
-                <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage pb-4 border-b border-linen">Specifications</h4>
+            <div className="sticky top-40 space-y-16 p-12 border border-linen bg-surface/40 backdrop-blur-2xl shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 dot-pattern opacity-[0.05]" />
+              
+              <div className="space-y-10 relative z-10">
+                <h4 className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage pb-4 border-b border-linen">Project Specifications</h4>
                 
-                <div className="space-y-8">
-                  <div className="space-y-2">
-                    <span className="text-[10px] uppercase tracking-widest text-text-secondary">Commission Date</span>
-                    <p className="text-xl font-serif text-text-primary font-bold">{event.date}</p>
+                <div className="space-y-10">
+                  <div className="flex items-start gap-4">
+                    <Calendar size={18} className="text-heritage mt-1" strokeWidth={1} />
+                    <div className="space-y-2">
+                      <span className="text-[9px] uppercase tracking-widest text-text-secondary font-bold">Commission Date</span>
+                      <p className="text-xl font-serif text-text-primary font-bold">{event.date}</p>
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <span className="text-[10px] uppercase tracking-widest text-text-secondary">Primary Coordinates</span>
-                    <p className="text-xl font-serif text-text-primary font-bold">{event.location}</p>
+
+                  <div className="flex items-start gap-4">
+                    <MapPin size={18} className="text-heritage mt-1" strokeWidth={1} />
+                    <div className="space-y-2">
+                      <span className="text-[9px] uppercase tracking-widest text-text-secondary font-bold">Primary Coordinates</span>
+                      <p className="text-xl font-serif text-text-primary font-bold">{event.location}</p>
+                      <p className="text-[10px] font-mono text-heritage/60">{event.coordinates}</p>
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <span className="text-[10px] uppercase tracking-widest text-text-secondary">Scale of Inquiry</span>
-                    <p className="text-xl font-serif text-text-primary font-bold">{event.attendees}</p>
+
+                  <div className="flex items-start gap-4">
+                    <Layers size={18} className="text-heritage mt-1" strokeWidth={1} />
+                    <div className="space-y-2">
+                      <span className="text-[9px] uppercase tracking-widest text-text-secondary font-bold">Scale of Inquiry</span>
+                      <p className="text-xl font-serif text-text-primary font-bold">{event.attendees}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <Zap size={18} className="text-heritage mt-1" strokeWidth={1} />
+                    <div className="space-y-2">
+                      <span className="text-[9px] uppercase tracking-widest text-text-secondary font-bold">Ref No.</span>
+                      <p className="text-xl font-serif text-text-primary font-bold">ZB_PRJ_{id.padStart(3, '0')}</p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-10 pt-10 border-t border-linen">
-                <p className="text-xs text-text-secondary font-sans font-light leading-relaxed">
-                  Every commission is a unique dialogue between our architects and our clients. To discuss a new project, please connect with our private line.
+              <div className="space-y-10 pt-10 border-t border-linen relative z-10">
+                <p className="text-xs text-text-secondary font-sans font-light leading-relaxed italic">
+                  &quot;The architecture of an event is built on the silent orchestration of details.&quot;
                 </p>
                 <div className="flex flex-col gap-6">
                   <Magnetic strength={0.2}>
                     <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
                       <Button variant="solid" className="btn-prestige w-full h-16 group">
-                        Inquiry Call
+                        Archive Inquiry
                         <MoveRight className="ml-4 w-4 h-4 transform group-hover:translate-x-2 transition-transform" />
                       </Button>
                     </a>
@@ -216,7 +292,7 @@ export default function EventDetailPage() {
 
 function NextProjectLink() {
   return (
-    <section id="next-project" className="py-48 bg-surface border-y border-linen overflow-hidden group">
+    <section id="next-project" className="py-48 bg-surface border-y border-linen overflow-hidden group relative z-10">
       <div className="container px-6 text-center space-y-8">
         <span className="text-[11px] font-mono text-heritage uppercase tracking-[0.5em]">Upcoming Narrative</span>
         <Link href="/events/1" className="block">
