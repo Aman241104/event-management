@@ -481,7 +481,7 @@ export default function Home() {
 
         {/* 10. Contact CTA Section */}
         <section id="cta" className="relative py-72 bg-heritage overflow-hidden" data-bg="var(--color-heritage)">
-          <BackgroundFlourish type="floral" className="bottom-0 right-0 w-[50rem] h-[50rem]" opacity={0.05} className="text-canvas" />
+          <BackgroundFlourish type="floral" className="bottom-0 right-0 w-[50rem] h-[50rem] text-canvas" opacity={0.05} />
           <div className="absolute inset-0 dot-pattern opacity-[0.05] invert" />
           
           <div className="container relative z-10 max-w-6xl text-center space-y-20 px-4">
