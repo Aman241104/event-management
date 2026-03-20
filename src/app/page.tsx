@@ -60,7 +60,7 @@ const eventTypes = [
   { title: 'Corporate Events', icon: <Sparkles size={24} />, image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=600', desc: 'Bespoke summits & high-profile galas.', color: 'var(--color-accent-azure)' },
   { title: 'Birthday Celebrations', icon: <PartyPopper size={24} />, image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=600', desc: 'Milestone events curated with flair.', color: '#FDFCF0' },
   { title: 'Baby Showers', icon: <Star size={24} />, image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600', desc: 'Celebrating new life with elegance.', color: 'var(--color-accent-rose)' },
-  { title: 'Festivals', icon: <Tent size={24} />, image: 'https://images.unsplash.com/photo-1540039155732-6781b0e1cca1?auto=format&fit=crop&q=80&w=600', desc: 'High-energy cultural & musical fairs.', color: 'var(--color-accent-azure)' },
+  { title: 'Festivals', icon: <Tent size={24} />, image: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80&w=600', desc: 'High-energy cultural & musical fairs.', color: 'var(--color-accent-azure)' },
   { title: 'Private Parties', icon: <Users size={24} />, image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=600', desc: 'Intimate house parties & VIP bashes.', color: '#F4F1EA' },
 ];
 
@@ -76,7 +76,7 @@ const instaPhotos = [
   'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=400',
   'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=400',
   'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=400',
-  'https://images.unsplash.com/photo-1540039155732-6781b0e1cca1?auto=format&fit=crop&q=80&w=400',
+  'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80&w=400',
   'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=400',
 ];
 
@@ -306,36 +306,40 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 fade-up">
               {eventTypes.map((item, i) => (
-                <div key={i} className="group relative aspect-[4/3] overflow-hidden border border-linen cursor-pointer bg-canvas">
-                  <div className="absolute top-6 left-6 z-30 text-[9px] font-mono text-heritage/30 group-hover:text-heritage-dark transition-colors font-bold uppercase tracking-widest">
+                <div key={i} className="group relative aspect-[4/3] overflow-hidden border border-linen cursor-pointer bg-heritage/5 rounded-sm">
+                  <div className="absolute top-6 left-6 z-30 text-[9px] font-mono text-canvas/70 group-hover:text-canvas transition-colors font-bold uppercase tracking-widest">
                     REF: ARCHIVE-0{i + 1}
                   </div>
-                  <div className="absolute -inset-10 bg-accent-rose/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                  <ParallaxImage 
-                    src={item.image} 
-                    alt={item.title} 
-                    speed={0.25}
-                    aspectRatio="aspect-[4/3]"
-                    className="transition-all duration-[1s]"
+                  <div className="absolute inset-0 z-0">
+                    <ParallaxImage
+                      src={item.image}
+                      alt={item.title}
+                      speed={0.15}
+                      containerClassName="w-full h-full"
+                      aspectRatio="aspect-auto h-full"
+                      className="transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                    />
+                  </div>
+                  {/* Dark Gradient Overlay for text readability */}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10 opacity-80 group-hover:opacity-100 transition-opacity duration-700 z-10"
                   />
-                  <div 
-                    className="absolute inset-0 flex flex-col justify-end p-10 space-y-4 transition-colors duration-700 z-10" 
-                    style={{ backgroundColor: 'rgba(252, 251, 247, 0.7)' }}
+                  <div
+                    className="absolute inset-0 flex flex-col justify-end p-8 sm:p-10 space-y-4 z-20"
                   >
-                    <div className="w-12 h-12 rounded-full bg-heritage text-canvas flex items-center justify-center border border-heritage/30 shadow-lg group-hover:scale-110 transition-transform duration-500">
+                    <div className="w-14 h-14 rounded-full bg-canvas/10 backdrop-blur-md text-canvas flex items-center justify-center border border-canvas/20 shadow-lg group-hover:bg-canvas group-hover:text-heritage group-hover:scale-110 transition-all duration-500">
                       {item.icon}
                     </div>
-                    <h3 className="text-3xl font-serif font-bold text-text-primary tracking-wide">{item.title}</h3>
-                    <p className="text-[11px] text-heritage-dark font-bold opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0 uppercase tracking-widest">{item.desc}</p>
+                    <h3 className="text-3xl font-serif font-bold text-canvas tracking-wide drop-shadow-md">{item.title}</h3>
+                    <p className="text-[11px] text-canvas/80 font-bold opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0 uppercase tracking-widest leading-relaxed max-w-[90%]">{item.desc}</p>
                   </div>
                   {/* Colorful Hover Layer */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none z-20" 
+                  <div
+                    className="absolute inset-0 mix-blend-overlay opacity-0 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none z-20"
                     style={{ backgroundColor: item.color }}
                   />
                 </div>
-              ))}
-            </div>
+              ))}            </div>
           </div>
         </section>
 
