@@ -62,6 +62,22 @@
 }
 
 @layer utilities {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 1440px;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
   .btn-prestige {
     @apply bg-text-primary text-canvas hover:bg-heritage transition-all duration-1000 rounded-none tracking-[0.5em] font-sans uppercase text-[10px] font-bold relative overflow-hidden;
     transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
@@ -100,8 +116,8 @@
   }
 
   .dot-pattern {
-    background-image: radial-gradient(var(--burnished) 0.5px, transparent 0.5px);
-    background-size: 60px 60px;
+    background-image: radial-gradient(var(--heritage) 1px, transparent 1px);
+    background-size: 40px 40px;
     opacity: 0.15;
   }
 
@@ -111,11 +127,6 @@
 
   .side-label-right {
     @apply fixed right-10 top-1/2 translate-y-1/2 rotate-90 origin-right text-[11px] font-mono uppercase tracking-[0.5em] z-50 pointer-events-none hidden lg:block;
-  }
-
-  .dot-pattern {
-    background-image: radial-gradient(var(--heritage) 1px, transparent 1px);
-    background-size: 40px 40px;
   }
 
   /* Custom Scrollbar */
