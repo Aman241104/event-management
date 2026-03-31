@@ -29,31 +29,31 @@ export function Footer() {
       <div className="container mx-auto relative z-10">
         {/* Mad Libs CTA - Hidden on pages that already have a primary CTA */}
         {!hideCTA && (
-          <div className="max-w-5xl mx-auto text-center mb-48 space-y-16">
+          <div className="max-w-6xl mx-auto text-center mb-48 space-y-20">
             <div className="flex items-center justify-center gap-6 mb-12">
-              <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">Global Inquiry</span>
-              <div className="h-px w-12 bg-linen" />
+              <span className="text-[10px] font-mono text-burnished uppercase tracking-[0.8em]">CONTINUE THE NARRATIVE</span>
+              <div className="h-px w-20 bg-linen/50" />
             </div>
-            <p className="text-3xl md:text-5xl text-text-primary font-serif italic font-light leading-relaxed">
-              Hello, I&apos;m planning a <span className="border-b border-heritage/30 text-heritage font-medium px-4 inline-block not-italic">bespoke event</span> in <span className="border-b border-heritage/30 text-heritage font-medium px-4 inline-block not-italic">India</span> and I&apos;d love to connect.
+            <p className="text-4xl md:text-6xl text-text-primary font-serif italic font-light leading-relaxed">
+              I&apos;m planning an exquisite <span className="border-b border-burnished/40 text-text-primary font-medium px-4 inline-block not-italic">celebration</span> and I&apos;d love to <span className="text-burnished italic">connect.</span>
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-12 pt-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-16 pt-12">
               <Magnetic strength={0.2}>
                 <Link href="/contact">
-                  <Button size="lg" className="h-20 px-16 text-xl btn-prestige rounded-none font-bold" rightIcon={<ArrowRight size={24} />}>
-                    Plan Your Event
+                  <Button size="lg" className="h-24 px-24 text-[10px] btn-prestige shadow-2xl transition-transform hover:scale-105" rightIcon={<ArrowRight size={20} />}>
+                    Inquire Concierge
                   </Button>
                 </Link>
               </Magnetic>
-              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-heritage hover:text-text-primary transition-colors flex items-center gap-4 text-xs uppercase tracking-[0.4em] font-bold border-b border-transparent hover:border-text-primary pb-2">
-                <MessageCircle size={20} /> Personal Concierge
+              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-burnished transition-colors flex items-center gap-4 text-[10px] uppercase tracking-[0.4em] font-bold">
+                <MessageCircle size={20} className="text-heritage" /> Private WhatsApp
               </a>
             </div>
           </div>
         )}
 
-        <div className={`grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 mb-32 ${!hideCTA ? 'pt-32 border-t border-linen/50' : ''}`}>
+        <div className={`grid grid-cols-1 md:grid-cols-12 gap-24 md:gap-12 mb-32 ${!hideCTA ? 'pt-40 border-t border-linen/30' : ''}`}>
           
           {/* Brand Col */}
           <div className="md:col-span-4 space-y-12">
@@ -62,18 +62,18 @@ export function Footer() {
                 <Logo />
               </Link>
             </Magnetic>
-            <p className="text-sm text-text-secondary leading-[2] max-w-sm font-sans font-light">
-              Architects of magic, dedicated to turning life&apos;s special moments into unforgettable experiences with quiet precision.
+            <p className="text-[13px] text-text-secondary leading-[2] max-w-sm font-sans font-light">
+              Architects of magic, dedicated to turning life&apos;s special moments into unforgettable experiences with quiet precision and refined energy.
             </p>
-            <div className="flex items-center space-x-10">
+            <div className="flex items-center space-x-12">
               {[
-                { icon: <Instagram size={18} />, href: 'https://www.instagram.com/zingblissevents/' },
-                { icon: <Twitter size={18} />, href: '#' },
-                { icon: <Facebook size={18} />, href: '#' },
-                { icon: <Linkedin size={18} />, href: '#' },
+                { icon: <Instagram size={18} strokeWidth={1.5} />, href: 'https://www.instagram.com/zingblissevents/' },
+                { icon: <Twitter size={18} strokeWidth={1.5} />, href: '#' },
+                { icon: <Facebook size={18} strokeWidth={1.5} />, href: '#' },
+                { icon: <Linkedin size={18} strokeWidth={1.5} />, href: '#' },
               ].map((social, i) => (
                 <Magnetic key={i} strength={0.3}>
-                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="text-heritage/60 hover:text-heritage transition-colors duration-500">
+                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-burnished transition-colors duration-700">
                     {social.icon}
                   </a>
                 </Magnetic>
@@ -83,11 +83,11 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="md:col-span-2">
-            <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-heritage mb-10">Navigation</h4>
+            <h4 className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-burnished mb-12">Archive</h4>
             <ul className="space-y-6">
               {navigation.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="text-sm font-serif font-bold text-text-primary hover:text-heritage transition-colors duration-500">{item.label}</Link>
+                  <Link href={item.href} className="text-[11px] font-sans uppercase tracking-widest font-bold text-text-primary hover:text-heritage transition-colors duration-500">{item.label}</Link>
                 </li>
               ))}
             </ul>
@@ -95,16 +95,16 @@ export function Footer() {
 
           {/* Exclusives */}
           <div className="md:col-span-3">
-            <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-heritage mb-10">Exclusives</h4>
+            <h4 className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-burnished mb-12">Exclusives</h4>
             <ul className="space-y-6">
               <li>
-                <Link href="/vault" className="text-sm font-serif font-bold text-text-primary hover:text-heritage transition-colors duration-500 flex items-center gap-2">
-                  Client Vault <span className="text-[8px] font-sans font-bold uppercase tracking-widest text-heritage px-2 py-0.5 border border-heritage/30 rounded-full">Private</span>
+                <Link href="/vault" className="text-[11px] font-sans uppercase tracking-widest font-bold text-text-primary hover:text-heritage transition-colors duration-500 flex items-center gap-4 group">
+                  Client Vault <span className="text-[7px] font-sans font-bold uppercase tracking-widest text-heritage px-3 py-1 border border-heritage/20 rounded-full group-hover:border-heritage transition-colors">Private</span>
                 </Link>
               </li>
               <li>
-                <Link href="/quiz" className="text-sm font-serif font-bold text-text-primary hover:text-heritage transition-colors duration-500 flex items-center gap-2">
-                  Aesthetic Quiz <span className="text-[8px] font-sans font-bold uppercase tracking-widest text-heritage px-2 py-0.5 border border-heritage/30 rounded-full">AI</span>
+                <Link href="/quiz" className="text-[11px] font-sans uppercase tracking-widest font-bold text-text-primary hover:text-heritage transition-colors duration-500 flex items-center gap-4 group">
+                  Aesthetic Quiz <span className="text-[7px] font-sans font-bold uppercase tracking-widest text-burnished px-3 py-1 border border-burnished/20 rounded-full group-hover:border-burnished transition-colors">AI</span>
                 </Link>
               </li>
             </ul>
@@ -112,19 +112,19 @@ export function Footer() {
 
           {/* Contact Info */}
           <div className="md:col-span-3">
-            <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.4em] text-heritage mb-10">Get In Touch</h4>
+            <h4 className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-burnished mb-12">Coordinates</h4>
             <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <MapPin size={18} className="text-heritage shrink-0" />
-                <p className="text-sm text-text-secondary leading-relaxed">Bandra West, Mumbai, Maharashtra, India</p>
+              <div className="flex items-start gap-6">
+                <MapPin size={16} className="text-heritage shrink-0 mt-1" />
+                <p className="text-[13px] text-text-secondary leading-relaxed font-light">Bandra West, Mumbai, MH <br/> India — 400050</p>
               </div>
-              <div className="flex items-center gap-4">
-                <Phone size={18} className="text-heritage shrink-0" />
-                <a href="tel:+919876543210" className="text-sm text-text-primary font-bold">+91 98765 43210</a>
+              <div className="flex items-center gap-6">
+                <Phone size={16} className="text-heritage shrink-0" />
+                <a href="tel:+919876543210" className="text-[13px] text-text-primary font-bold tracking-tight">+91 98765 43210</a>
               </div>
-              <div className="flex items-center gap-4">
-                <Mail size={18} className="text-heritage shrink-0" />
-                <a href="mailto:hello@zingblissevents.com" className="text-sm text-text-primary font-bold">hello@zingblissevents.com</a>
+              <div className="flex items-center gap-6">
+                <Mail size={16} className="text-heritage shrink-0" />
+                <a href="mailto:hello@zingblissevents.com" className="text-[13px] text-text-primary font-bold tracking-tight">hello@zingblissevents.com</a>
               </div>
             </div>
           </div>
@@ -132,14 +132,14 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-12 border-t border-linen flex flex-col md:flex-row items-center justify-between gap-8">
-          <p className="text-[11px] font-sans uppercase text-text-secondary tracking-[0.2em]">
-            &copy; {currentYear} Zing Bliss Events. <span className="text-heritage">Premier Event Planning.</span>
+        <div className="pt-16 border-t border-linen/30 flex flex-col md:flex-row items-center justify-between gap-8">
+          <p className="text-[9px] font-mono uppercase text-text-muted tracking-[0.4em]">
+            &copy; {currentYear} Zing Bliss. <span className="text-burnished">Fine Art Event Architecture.</span>
           </p>
-          <div className="flex space-x-12 text-[11px] font-sans uppercase text-text-secondary tracking-[0.2em]">
-            <Link href="/contact" className="hover:text-heritage transition-colors">Privacy</Link>
-            <Link href="/contact" className="hover:text-heritage transition-colors">Terms</Link>
-            <Link href="/contact" className="hover:text-heritage transition-colors">Press</Link>
+          <div className="flex space-x-12 text-[9px] font-mono uppercase text-text-muted tracking-[0.4em]">
+            <Link href="/contact" className="hover:text-text-primary transition-colors">Privacy</Link>
+            <Link href="/contact" className="hover:text-text-primary transition-colors">Terms</Link>
+            <Link href="/contact" className="hover:text-text-primary transition-colors">Press</Link>
           </div>
         </div>
       </div>

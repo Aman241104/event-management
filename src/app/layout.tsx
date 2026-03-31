@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
+import { Montserrat, JetBrains_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/organisms/Navbar";
 import { Footer } from "@/components/organisms/Footer";
@@ -7,14 +7,16 @@ import { ConciergeBar } from "@/components/molecules/ConciergeBar";
 import { CustomCursor } from "@/components/atoms/CustomCursor";
 import { Preloader } from "@/components/molecules/Preloader";
 
-const inter = Inter({
+const montserrat = Montserrat({
   variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
   subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -41,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} antialiased font-sans min-h-screen flex flex-col relative`}
+        className={`${montserrat.variable} ${cormorant.variable} ${jetbrainsMono.variable} antialiased font-sans min-h-screen flex flex-col relative`}
       >
         <SmoothScroll>
           <div className="noise-overlay" />

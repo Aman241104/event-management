@@ -56,7 +56,7 @@ export function Navbar() {
         <nav className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <Magnetic strength={0.05}>
             <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[60]">
-              <Logo />
+              <Logo scrolled={scrolled} />
             </Link>
           </Magnetic>
 
@@ -68,13 +68,14 @@ export function Navbar() {
                   href={link.href}
                   className={cn(
                     "text-[10px] font-sans font-bold uppercase tracking-[0.4em] transition-colors duration-700 relative group py-2",
-                    scrolled ? "text-text-secondary hover:text-heritage" : "text-text-primary hover:text-heritage"
+                    scrolled ? "text-text-secondary hover:text-heritage" : "text-white/90 hover:text-burnished"
                   )}
                 >
                   {link.label}
                   <span 
                     className={cn(
-                      "absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-1000 cubic-bezier(0.19,1,0.22,1) group-hover:w-full bg-heritage/40"
+                      "absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-1000 cubic-bezier(0.19,1,0.22,1) group-hover:w-full",
+                      scrolled ? "bg-heritage/40" : "bg-burnished/60"
                     )} 
                   />
                 </Link>
@@ -87,7 +88,7 @@ export function Navbar() {
                   onClick={openSearch}
                   className={cn(
                     "transition-colors duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] flex items-center gap-3 group relative overflow-hidden py-2",
-                    scrolled ? "text-text-secondary hover:text-heritage" : "text-text-primary hover:text-heritage"
+                    scrolled ? "text-text-secondary hover:text-heritage" : "text-white/90 hover:text-burnished"
                   )}
                   aria-label="Search"
                 >
@@ -98,7 +99,10 @@ export function Navbar() {
 
               <Magnetic strength={0.2}>
                 <Link href="/contact">
-                  <Button variant="outline" size="sm" className="btn-outline-prestige rounded-none px-12 h-14 border-linen/50 text-heritage hover:border-heritage transition-all duration-1000">
+                  <Button variant="outline" size="sm" className={cn(
+                    "btn-outline-prestige rounded-none px-12 h-14 transition-all duration-1000 font-bold",
+                    scrolled ? "text-heritage border-heritage/30 hover:border-heritage" : "text-white border-white/40 hover:border-burnished hover:text-white"
+                  )}>
                     INQUIRE
                   </Button>
                 </Link>
@@ -110,14 +114,20 @@ export function Navbar() {
           <div className="flex items-center space-x-1 md:hidden relative z-[60]">
             <button 
               onClick={openSearch}
-              className="p-3 text-text-primary hover:text-heritage transition-colors"
+              className={cn(
+                "p-3 transition-colors",
+                scrolled ? "text-text-primary hover:text-heritage" : "text-white hover:text-burnished"
+              )}
               aria-label="Search"
             >
               <Search size={20} strokeWidth={1.5} />
             </button>
             
             <button
-              className="p-3 text-text-primary hover:text-heritage transition-colors focus:outline-none"
+              className={cn(
+                "p-3 focus:outline-none transition-colors",
+                scrolled ? "text-text-primary hover:text-heritage" : "text-white hover:text-burnished"
+              )}
               onClick={toggleMobileMenu}
               aria-label="Toggle Menu"
             >
