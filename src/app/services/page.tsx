@@ -56,6 +56,26 @@ const serviceCategories = [
   }
 ];
 
+const FloatingMetric = ({ label, value, className }: { label: string, value: string, className?: string }) => (
+  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-20 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
+    <span className="text-[9px] font-mono uppercase tracking-[0.5em] text-heritage/60 group-hover:text-heritage transition-colors">{label}</span>
+    <div className="h-px w-8 bg-burnished/30 group-hover:w-12 transition-all" />
+    <span className="text-3xl font-serif text-text-primary italic group-hover:text-burnished transition-colors">{value}</span>
+  </div>
+);
+
+const SectionDivider = ({ className }: { className?: string }) => (
+  <div className={cn("flex flex-col items-center gap-10 py-12 relative z-10", className)}>
+    <div className="h-24 w-[1px] bg-heritage/10" />
+    <div className="flex items-center gap-4">
+      <Sparkles size={8} className="text-burnished/30" />
+      <Star size={10} className="text-burnished/40" />
+      <Sparkles size={8} className="text-burnished/30" />
+    </div>
+    <div className="h-24 w-[1px] bg-heritage/10" />
+  </div>
+);
+
 export default function ServicesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -102,14 +122,19 @@ export default function ServicesPage() {
   return (
     <main ref={containerRef} className="min-h-screen pt-32 pb-24 relative overflow-hidden transition-colors duration-1000">
       <div className="absolute top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
-      <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.1} />
+      <SVGSpine height="8000px" viewBox="0 0 20 8000" pathD="M 10 0 L 10 8000" opacity={0.1} />
       <BackgroundFlourish type="floral" className="top-[5%] right-0 w-[40rem] h-[40rem]" opacity={0.02} />
       <BackgroundFlourish type="geometric" className="top-[25%] left-0 w-64 h-64" opacity={0.01} />
       <BackgroundFlourish type="architectural" className="top-[50%] right-[2%] w-96 h-96" opacity={0.02} />
       <BackgroundFlourish type="floral" className="top-[75%] left-[2%] w-[30rem] h-[30rem]" opacity={0.02} />
       
+      {/* Large Decorative Text */}
+      <div className="absolute top-[100vh] left-[2%] text-[18vw] font-serif text-heritage/2 pointer-events-none select-none italic -rotate-12 z-0">Expertise</div>
+      <div className="absolute top-[350vh] right-[2%] text-[20vw] font-serif text-burnished/2 pointer-events-none select-none italic rotate-12 z-0">Production</div>
+      <div className="absolute top-[600vh] left-[5%] text-[15vw] font-serif text-heritage/2 pointer-events-none select-none italic -rotate-6 z-0">Workflow</div>
+
       {/* Header */}
-      <section id="header" className="container py-48 md:py-72 relative text-center space-y-12">
+      <section id="header" className="container py-32 md:py-48 relative text-center space-y-12">
         <div className="header-fade">
           <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">03 / EXPERTISE</span>
         </div>
@@ -123,71 +148,78 @@ export default function ServicesPage() {
         </p>
       </section>
 
+      <SectionDivider className="bg-canvas" />
+
       {/* Services Spectrum List */}
       <div id="list">
         {serviceCategories.map((service, index) => (
-          <section 
-            key={service.id} 
-            data-bg={service.bgColor}
-            className="service-section min-h-screen flex items-center py-48 md:py-72 relative overflow-hidden"
-          >
-            <div className="container grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-center relative z-10">
-              <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2 lg:ml-auto' : 'lg:mr-auto'} relative w-full`}>
-                <div className="absolute -top-12 -left-12 text-[10rem] font-serif font-bold text-heritage/5 pointer-events-none select-none">
-                  {service.id}
-                </div>
-                <MaskSlideImage 
-                  src={service.image} 
-                  alt={service.title}
-                  aspectRatio="aspect-[4/5] md:aspect-[16/10]"
-                  className="shadow-2xl grayscale-0"
-                  maskColor={service.maskClass}
-                />
-              </div>
-              
-              <div className={`lg:col-span-5 space-y-12 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                <div className="space-y-8">
-                  <div className="flex flex-col gap-4">
-                    <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage">{service.label}</span>
-                    <TextReveal 
-                      as="h2" 
-                      text={service.title} 
-                      className="text-5xl md:text-8xl font-serif text-text-primary font-bold leading-[1.1]" 
-                    />
+          <React.Fragment key={service.id}>
+            <section 
+              data-bg={service.bgColor}
+              className="service-section min-h-screen flex items-center py-32 md:py-48 relative overflow-hidden"
+            >
+              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-center relative z-10">
+                <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2 lg:ml-auto' : 'lg:mr-auto'} relative w-full`}>
+                  <div className="absolute -top-12 -left-12 text-[10rem] font-serif font-bold text-heritage/5 pointer-events-none select-none">
+                    {service.id}
                   </div>
-                  
-                  <p className="text-xl text-text-secondary font-sans font-light leading-relaxed">
-                    {service.description}
-                  </p>
+                  <MaskSlideImage 
+                    src={service.image} 
+                    alt={service.title}
+                    aspectRatio="aspect-[4/5] md:aspect-[16/10]"
+                    className="shadow-2xl grayscale-0"
+                    maskColor={service.maskClass}
+                  />
                 </div>
                 
-                <div className="pt-10 border-t border-linen/50">
-                  <h4 className="text-[11px] uppercase tracking-[0.4em] text-heritage font-bold mb-8">Expertise Includes:</h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12">
-                    {service.tags.map((tag) => (
-                      <li key={tag} className="text-[11px] font-sans uppercase tracking-[0.2em] text-text-primary font-light flex items-center gap-4 group">
-                        <div className="w-1.5 h-1.5 rounded-full bg-heritage/30 group-hover:bg-heritage transition-colors" />
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <div className={`lg:col-span-5 space-y-12 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
+                  <div className="space-y-8">
+                    <div className="flex flex-col gap-4">
+                      <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage">{service.label}</span>
+                      <TextReveal 
+                        as="h2" 
+                        text={service.title} 
+                        className="text-5xl md:text-8xl font-serif text-text-primary font-bold leading-[1.1]" 
+                      />
+                    </div>
+                    
+                    <p className="text-xl text-text-secondary font-sans font-light leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                  
+                  <div className="pt-10 border-t border-linen/50">
+                    <h4 className="text-[11px] uppercase tracking-[0.4em] text-heritage font-bold mb-8">Expertise Includes:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12">
+                      {service.tags.map((tag) => (
+                        <li key={tag} className="text-[11px] font-sans uppercase tracking-[0.2em] text-text-primary font-light flex items-center gap-4 group">
+                          <div className="w-1.5 h-1.5 rounded-full bg-heritage/30 group-hover:bg-heritage transition-colors" />
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                <div className="pt-12">
-                  <a href={generateWhatsAppLink(service.title, 'Booking')} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="btn-outline-prestige px-16 h-20 text-sm tracking-[0.3em] font-bold">
-                      Inquire Details
-                    </Button>
-                  </a>
+                  <div className="pt-12">
+                    <a href={generateWhatsAppLink(service.title, 'Booking')} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" className="btn-outline-prestige px-16 h-20 text-sm tracking-[0.3em] font-bold">
+                        Inquire Details
+                      </Button>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+            <SectionDivider className={cn(index % 2 === 0 ? "bg-surface" : "bg-canvas")} />
+          </React.Fragment>
         ))}
       </div>
 
+      <FloatingMetric label="Strategy" value="Analytical" className="top-[250vh] left-[15%]" />
+      <FloatingMetric label="Execution" value="Flawless" className="top-[500vh] right-[15%]" />
+
       {/* Process Journey */}
-      <section id="process" className="relative py-48 md:py-72">
+      <section id="process" className="relative py-32 md:py-48">
         <div className="container mb-32 text-center space-y-8">
           <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">06 / METHODOLOGY</span>
           <TextReveal 
@@ -218,8 +250,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <SectionDivider className="bg-surface" />
+
       {/* FAQ */}
-      <section id="faq" className="py-48 md:py-72 container">
+      <section id="faq" className="py-32 md:py-48 container">
         <div className="max-w-5xl mx-auto space-y-24">
           <div className="text-center space-y-8">
             <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">07 / CLARITY</span>
@@ -246,8 +280,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <SectionDivider className="bg-canvas" />
+
       {/* CTA */}
-      <section id="cta" className="py-48 md:py-72 relative overflow-hidden">
+      <section id="cta" className="py-32 md:py-48 relative overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
         <div className="container text-center space-y-16 relative z-10">
           <TextReveal 

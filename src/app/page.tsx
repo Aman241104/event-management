@@ -89,6 +89,26 @@ const heroImages = [
   '/hero-5.jpg',
 ];
 
+const FloatingMetric = ({ label, value, className }: { label: string, value: string, className?: string }) => (
+  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-20 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
+    <span className="text-[9px] font-mono uppercase tracking-[0.5em] text-heritage/60 group-hover:text-heritage transition-colors">{label}</span>
+    <div className="h-px w-8 bg-burnished/30 group-hover:w-12 transition-all" />
+    <span className="text-3xl font-serif text-text-primary italic group-hover:text-burnished transition-colors">{value}</span>
+  </div>
+);
+
+const SectionDivider = ({ className }: { className?: string }) => (
+  <div className={cn("flex flex-col items-center gap-10 py-12 relative z-10", className)}>
+    <div className="h-32 w-[1px] bg-heritage/10" />
+    <div className="flex items-center gap-4">
+      <Sparkles size={10} className="text-burnished/30" />
+      <Star size={12} className="text-burnished/40" />
+      <Sparkles size={10} className="text-burnished/30" />
+    </div>
+    <div className="h-32 w-[1px] bg-heritage/10" />
+  </div>
+);
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
@@ -121,6 +141,10 @@ export default function Home() {
       });
     });
 
+    // Side label animations
+    gsap.from('.side-label', { x: -50, opacity: 0, duration: 1.5, ease: 'expo.out', delay: 2 });
+    gsap.from('.side-label-right', { x: 50, opacity: 0, duration: 1.5, ease: 'expo.out', delay: 2 });
+
     // Background color shifts
     const sections = gsap.utils.toArray<HTMLElement>('section');
     sections.forEach((section, i) => {
@@ -138,12 +162,26 @@ export default function Home() {
   }, { scope: containerRef });
 
   return (
-    <main ref={mainRef} className="min-h-screen bg-canvas flex flex-col overflow-x-hidden relative transition-colors duration-1000">
+    <main ref={mainRef} className="min-h-screen bg-canvas flex flex-col overflow-x-hidden relative transition-colors duration-1000 pb-24">
       <div ref={containerRef} className="relative w-full">
+        {/* Fixed Side Labels */}
+        <div className="side-label text-heritage/30">EST. MMXXVI — ORCHESTRATING GRANDEUR</div>
+        <div className="side-label-right text-heritage/30">MUMBAI — PRIVATE EVENTS ARCHIVE</div>
+
         <FloatingDecor />
+        <SVGSpine height="8000px" viewBox="0 0 20 8000" pathD="M 10 0 L 10 8000" className="opacity-10" />
+        
         <BackgroundFlourish type="floral" className="top-[10%] left-[5%] w-64 h-64 text-heritage/5" parallaxSpeed={0.05} />
-        <BackgroundFlourish type="architectural" className="top-[40%] right-[2%] w-96 h-96 text-burnished/5" parallaxSpeed={0.08} />
-        <BackgroundFlourish type="geometric" className="top-[70%] left-[-5%] w-80 h-80 rotate-12 text-heritage/5" parallaxSpeed={0.03} />
+        <BackgroundFlourish type="architectural" className="top-[25%] right-[2%] w-96 h-96 text-burnished/5" parallaxSpeed={0.08} />
+        <BackgroundFlourish type="geometric" className="top-[45%] left-[-5%] w-80 h-80 rotate-12 text-heritage/5" parallaxSpeed={0.03} />
+        <BackgroundFlourish type="floral" className="top-[65%] right-[10%] w-72 h-72 text-burnished/5" parallaxSpeed={0.06} />
+        <BackgroundFlourish type="architectural" className="top-[85%] left-[2%] w-96 h-96 text-heritage/5" parallaxSpeed={0.04} />
+
+        {/* Large Decorative Text - Layered in background */}
+        <div className="absolute top-[120vh] left-[5%] text-[20vw] font-serif text-heritage/2 pointer-events-none select-none italic -rotate-12 z-0">Refined</div>
+        <div className="absolute top-[300vh] right-[2%] text-[22vw] font-serif text-burnished/2 pointer-events-none select-none italic rotate-12 z-0">Legacy</div>
+        <div className="absolute top-[500vh] left-0 text-[18vw] font-serif text-heritage/2 pointer-events-none select-none italic -rotate-6 z-0">Bespoke</div>
+        <div className="absolute top-[700vh] right-[5%] text-[25vw] font-serif text-burnished/2 pointer-events-none select-none italic rotate-6 z-0">Grandeur</div>
         
         {/* 1. Hero Section */}
         <section id="hero" className="relative h-[110vh] flex items-center overflow-hidden" data-bg="var(--color-canvas)">
@@ -205,8 +243,12 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionDivider className="bg-canvas" />
+        <FloatingMetric label="Philosophy" value="Presence" className="top-[140vh] left-[15%]" />
+        <FloatingMetric label="Architecture" value="Precision" className="top-[180vh] right-[15%]" />
+
         {/* 2. About Preview - Centered Editorial */}
-        <section id="about" className="py-72 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
+        <section id="about" className="py-48 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
           <div className="container flex flex-col items-center relative z-10">
             <div className="max-w-5xl text-center space-y-16 mb-32 fade-up">
               <div className="space-y-10">
@@ -252,8 +294,12 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionDivider className="bg-surface" />
+        <FloatingMetric label="Expertise" value="Fine Art" className="top-[320vh] left-[10%]" />
+        <FloatingMetric label="Design" value="Atmospheric" className="top-[360vh] right-[10%]" />
+
         {/* 3. Services Section - Editorial Grid */}
-        <section id="services" className="py-72 bg-surface relative overflow-hidden" data-bg="var(--color-surface)">
+        <section id="services" className="py-48 bg-surface relative overflow-hidden" data-bg="var(--color-surface)">
           <div className="container space-y-40">
             <div className="flex flex-col items-center text-center space-y-12 fade-up relative z-10">
               <div className="flex flex-col items-center gap-6">
@@ -292,8 +338,12 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionDivider className="bg-canvas" />
+        <FloatingMetric label="Collection" value="Milestones" className="top-[520vh] left-[12%]" />
+        <FloatingMetric label="Archive" value="Legacy" className="top-[560vh] right-[12%]" />
+
         {/* 4. Specialization - Centered Festive */}
-        <section id="specialization" className="py-72 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
+        <section id="specialization" className="py-48 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
           <div className="container space-y-40 relative z-10">
             <div className="flex flex-col items-center text-center space-y-12 fade-up">
               <div className="flex flex-col items-center gap-6">
@@ -346,7 +396,7 @@ export default function Home() {
         </section>
 
         {/* 6. Gallery - Editorial Masonry */}
-        <section id="gallery" className="py-72 bg-canvas" data-bg="var(--color-canvas)">
+        <section id="gallery" className="py-48 bg-canvas" data-bg="var(--color-canvas)">
           <div className="container space-y-32">
             <div className="text-center space-y-10 fade-up">
               <span className="text-[10px] font-mono text-burnished uppercase tracking-[0.6em]">04 / ARCHIVE</span>
@@ -363,8 +413,12 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionDivider className="bg-surface" />
+        <FloatingMetric label="Voices" value="Authentic" className="top-[720vh] left-[15%]" />
+        <FloatingMetric label="Success" value="Miracles" className="top-[760vh] right-[15%]" />
+
         {/* 7. Testimonials - Centered Refined Editorial */}
-        <section id="testimonials" className="py-72 bg-surface border-y border-linen" data-bg="var(--color-surface)">
+        <section id="testimonials" className="py-48 bg-surface border-y border-linen" data-bg="var(--color-surface)">
           <div className="container space-y-40">
             <div className="flex flex-col items-center text-center space-y-12 fade-up">
               <div className="flex flex-col items-center gap-6">
@@ -403,8 +457,12 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionDivider className="bg-canvas" />
+        <FloatingMetric label="Method" value="Architecture" className="top-[880vh] left-[10%]" />
+        <FloatingMetric label="Process" value="Dialogue" className="top-[920vh] right-[10%]" />
+
         {/* 8. Process - Human-Centric */}
-        <section id="process" className="py-72 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
+        <section id="process" className="py-48 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
           <div className="container space-y-40 relative z-10">
             <div className="flex flex-col items-center text-center space-y-12 fade-up">
               <div className="flex flex-col items-center gap-6">
@@ -431,8 +489,10 @@ export default function Home() {
           </div>
         </section>
 
+        <SectionDivider className="bg-canvas" />
+
         {/* 10. Final CTA - Pure Luxury */}
-        <section id="cta" className="relative py-80 bg-canvas overflow-hidden" data-bg="var(--color-canvas)">
+        <section id="cta" className="relative py-48 bg-canvas overflow-hidden" data-bg="var(--color-canvas)">
           <div className="absolute inset-0 z-0">
              <Image 
                 src="/hero10.jpg"

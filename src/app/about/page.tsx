@@ -20,6 +20,26 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const FloatingMetric = ({ label, value, className }: { label: string, value: string, className?: string }) => (
+  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-20 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
+    <span className="text-[9px] font-mono uppercase tracking-[0.5em] text-heritage/60 group-hover:text-heritage transition-colors">{label}</span>
+    <div className="h-px w-8 bg-burnished/30 group-hover:w-12 transition-all" />
+    <span className="text-3xl font-serif text-text-primary italic group-hover:text-burnished transition-colors">{value}</span>
+  </div>
+);
+
+const SectionDivider = ({ className }: { className?: string }) => (
+  <div className={cn("flex flex-col items-center gap-10 py-12 relative z-10", className)}>
+    <div className="h-24 w-[1px] bg-heritage/10" />
+    <div className="flex items-center gap-4">
+      <Sparkles size={8} className="text-burnished/30" />
+      <Star size={10} className="text-burnished/40" />
+      <Sparkles size={8} className="text-burnished/30" />
+    </div>
+    <div className="h-24 w-[1px] bg-heritage/10" />
+  </div>
+);
+
 export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
@@ -66,15 +86,20 @@ export default function AboutPage() {
   }, { scope: containerRef });
 
   return (
-    <main ref={mainRef} className="min-h-screen bg-canvas selection:bg-heritage selection:text-canvas relative overflow-hidden transition-colors duration-1000">
+    <main ref={mainRef} className="min-h-screen bg-canvas selection:bg-heritage selection:text-canvas relative overflow-hidden transition-colors duration-1000 pb-24">
       <div ref={containerRef} className="relative">
-        <SVGSpine height="100%" viewBox="0 0 20 100" pathD="M 10 0 L 10 100" className="opacity-10" />
+        <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" className="opacity-10" />
         <BackgroundFlourish type="floral" className="top-[5%] left-0 w-96 h-96" opacity={0.02} />
         <BackgroundFlourish type="geometric" className="top-[30%] right-[5%] w-64 h-64" opacity={0.02} />
         <BackgroundFlourish type="architectural" className="top-[60%] left-[2%] w-[30rem] h-[30rem]" opacity={0.03} />
         
+        {/* Large Decorative Text */}
+        <div className="absolute top-[100vh] right-[5%] text-[15vw] font-serif text-heritage/2 pointer-events-none select-none italic -rotate-6 z-0">Vision</div>
+        <div className="absolute top-[250vh] left-[2%] text-[18vw] font-serif text-burnished/2 pointer-events-none select-none italic rotate-6 z-0">Mission</div>
+        <div className="absolute top-[400vh] right-0 text-[20vw] font-serif text-heritage/2 pointer-events-none select-none italic -rotate-12 z-0">Collective</div>
+
         {/* Editorial Header */}
-        <section id="header" className="container py-48 md:py-64 relative text-center space-y-12" data-bg="var(--color-canvas)">
+        <section id="header" className="container py-32 md:py-48 relative text-center space-y-12" data-bg="var(--color-canvas)">
           <div className="header-fade flex flex-col items-center gap-6">
             <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">01 / STORY</span>
             <Badge variant="solid" dot className="px-8 py-3 bg-heritage/5 text-heritage-dark uppercase tracking-widest font-bold border border-heritage/10 backdrop-blur-sm">The Agency Narrative</Badge>
@@ -89,16 +114,21 @@ export default function AboutPage() {
           </p>
         </section>
 
+        <SectionDivider className="bg-canvas" />
+
         {/* Press Marquee */}
-        <section className="py-24 border-y border-linen/50 bg-surface/30" data-bg="var(--color-surface)">
+        <section className="py-16 border-y border-linen/50 bg-surface/30" data-bg="var(--color-surface)">
           <InfiniteMarquee 
             items={["Vogue Weddings", "Harper's Bazaar", "The Knot Luxe", "Brides Magazine", "Luxury Daily", "Elite Traveler"]} 
             speed={35}
           />
         </section>
 
+        <SectionDivider className="bg-canvas" />
+        <FloatingMetric label="Perspective" value="Human Centric" className="top-[180vh] left-[15%]" />
+
         {/* Philosophy Section - Asymmetrical */}
-        <section id="philosophy" className="container py-48 md:py-64" data-bg="var(--color-canvas)">
+        <section id="philosophy" className="container py-32 md:py-48" data-bg="var(--color-canvas)">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-32 items-center">
             <div className="lg:col-span-7 fade-up relative group">
               <div className="absolute -inset-20 bg-accent-rose/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
@@ -149,8 +179,11 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <SectionDivider className="bg-surface" />
+        <FloatingMetric label="Commitment" value="Excellence" className="top-[320vh] right-[15%]" />
+
         {/* Vision & Mission - Symmetrical but Elevated */}
-        <section id="vision" className="py-48 md:py-64 bg-surface border-y border-linen dot-pattern relative overflow-hidden" data-bg="var(--color-surface)">
+        <section id="vision" className="py-32 md:py-48 bg-surface border-y border-linen dot-pattern relative overflow-hidden" data-bg="var(--color-surface)">
           <div className="absolute top-0 left-0 w-full h-full bg-heritage/5 opacity-30 pointer-events-none" />
           <div className="container relative z-10">
             <div className="flex flex-col items-center gap-6 mb-24 fade-up">
@@ -183,8 +216,11 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <SectionDivider className="bg-canvas" />
+        <FloatingMetric label="Team" value="Collective" className="top-[480vh] left-[10%]" />
+
         {/* Visionaries Section - Asymmetrical Grid */}
-        <section id="visionaries" className="pt-64 pb-48 md:pt-80 md:pb-64 container space-y-32" data-bg="var(--color-canvas)">
+        <section id="visionaries" className="pt-32 pb-24 md:pt-48 md:pb-32 container space-y-32" data-bg="var(--color-canvas)">
           <div className="flex flex-col md:flex-row justify-between items-end gap-12 fade-up">
             <div className="space-y-10">
               <div className="flex items-center gap-6">
@@ -232,7 +268,7 @@ export default function AboutPage() {
         </section>
 
         {/* Metrics Section */}
-        <section id="stats" className="py-32 bg-heritage relative overflow-hidden" data-bg="var(--color-heritage)">
+        <section id="stats" className="py-24 bg-heritage relative overflow-hidden" data-bg="var(--color-heritage)">
           <div className="absolute inset-0 dot-pattern opacity-[0.05] invert" />
           <div className="container relative z-10">
             <div className="flex flex-col items-center gap-6 mb-24 fade-up">
@@ -256,7 +292,7 @@ export default function AboutPage() {
         </section>
 
         {/* Why Choose Us */}
-        <section id="why-choose-us" className="py-48 md:py-64 container space-y-32" data-bg="var(--color-canvas)">
+        <section id="why-choose-us" className="py-32 md:py-48 container space-y-32" data-bg="var(--color-canvas)">
           <div className="text-center space-y-10 max-w-4xl mx-auto fade-up">
             <div className="flex flex-col items-center gap-6 mb-4">
               <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">06 / ADVANTAGE</span>
@@ -288,7 +324,7 @@ export default function AboutPage() {
         </section>
 
         {/* Final CTA */}
-        <section id="cta" className="py-48 md:py-72 container text-center space-y-20" data-bg="var(--color-surface)">
+        <section id="cta" className="py-32 md:py-48 container text-center space-y-20" data-bg="var(--color-surface)">
           <div className="fade-up flex flex-col items-center gap-8">
             <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">07 / CONNECT</span>
             <h2 className="text-7xl md:text-[12rem] font-serif text-text-primary font-bold tracking-tighter leading-[0.8] drop-shadow-sm">

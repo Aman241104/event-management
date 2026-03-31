@@ -17,6 +17,26 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const FloatingMetric = ({ label, value, className }: { label: string, value: string, className?: string }) => (
+  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-20 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
+    <span className="text-[9px] font-mono uppercase tracking-[0.5em] text-heritage/60 group-hover:text-heritage transition-colors">{label}</span>
+    <div className="h-px w-8 bg-burnished/30 group-hover:w-12 transition-all" />
+    <span className="text-3xl font-serif text-text-primary italic group-hover:text-burnished transition-colors">{value}</span>
+  </div>
+);
+
+const SectionDivider = ({ className }: { className?: string }) => (
+  <div className={cn("flex flex-col items-center gap-10 py-12 relative z-10", className)}>
+    <div className="h-24 w-[1px] bg-heritage/10" />
+    <div className="flex items-center gap-4">
+      <Sparkles size={8} className="text-burnished/30" />
+      <Star size={10} className="text-burnished/40" />
+      <Sparkles size={8} className="text-burnished/30" />
+    </div>
+    <div className="h-24 w-[1px] bg-heritage/10" />
+  </div>
+);
+
 const galleryItems = [
   // Weddings
   { id: 1, title: 'Royal Palace Wedding', category: 'Weddings', image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200', size: 'large' as const },
@@ -87,13 +107,19 @@ function GalleryContent() {
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-32 pb-24 transition-colors duration-1000 relative overflow-hidden">
+    <main ref={containerRef} className="min-h-screen pt-32 pb-24 transition-colors duration-1000 relative overflow-hidden pb-24">
+      <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.1} />
       <BackgroundFlourish type="floral" className="top-[10%] right-[5%] w-96 h-96" opacity={0.02} />
       <BackgroundFlourish type="geometric" className="top-[40%] left-[-5%] w-[30rem] h-[30rem]" opacity={0.015} />
       <BackgroundFlourish type="architectural" className="bottom-[10%] right-[2%] w-80 h-80" opacity={0.02} />
       
+      {/* Large Decorative Text */}
+      <div className="absolute top-[100vh] right-[5%] text-[18vw] font-serif text-heritage/2 pointer-events-none select-none italic rotate-6 z-0">Archive</div>
+      <div className="absolute top-[300vh] left-[2%] text-[20vw] font-serif text-burnished/2 pointer-events-none select-none italic -rotate-12 z-0">Portfolio</div>
+      <div className="absolute top-[500vh] right-[2%] text-[15vw] font-serif text-heritage/2 pointer-events-none select-none italic rotate-6 z-0">Visuals</div>
+
       {/* Header */}
-      <section id="header" className="container py-48 md:py-72 text-center space-y-12">
+      <section id="header" className="container py-32 md:py-48 text-center space-y-12">
         <div className="header-fade">
           <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">06 / PORTFOLIO</span>
         </div>
@@ -107,8 +133,10 @@ function GalleryContent() {
         </p>
       </section>
 
+      <SectionDivider className="bg-canvas" />
+
       {/* Highlights */}
-      <section id="highlights" className="py-48 md:py-72 border-y border-linen/30 overflow-hidden relative">
+      <section id="highlights" className="py-32 md:py-48 border-y border-linen/30 overflow-hidden relative">
         <div className="container grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10">
           <div className="fade-up space-y-12 order-2 md:order-1">
             <div className="space-y-6">
@@ -139,8 +167,11 @@ function GalleryContent() {
         </div>
       </section>
 
+      <SectionDivider className="bg-canvas" />
+      <FloatingMetric label="Curation" value="Bespoke" className="top-[250vh] right-[15%]" />
+
       {/* Filter Navigation */}
-      <section id="filter" className="container py-48 md:py-72">
+      <section id="filter" className="container py-32 md:py-48">
         <div className="flex flex-col gap-24">
           <div className="flex flex-col md:flex-row justify-between items-end gap-12 border-b border-linen/50 pb-12">
             <div className="space-y-6 text-left">
@@ -179,8 +210,11 @@ function GalleryContent() {
         </div>
       </section>
 
+      <SectionDivider className="bg-canvas" />
+      <FloatingMetric label="Archive" value="Legacy" className="top-[450vh] left-[15%]" />
+
       {/* Gallery Grid */}
-      <section id="grid" className="container min-h-[50vh] pb-48 md:pb-72">
+      <section id="grid" className="container min-h-[50vh] pb-32 md:pb-48">
         {filteredItems.length > 0 ? (
           <Gallery items={filteredItems} className="gap-12 md:gap-16" />
         ) : (
@@ -196,8 +230,10 @@ function GalleryContent() {
         )}
       </section>
 
+      <SectionDivider className="bg-canvas" />
+
       {/* CTA */}
-      <section id="cta" className="py-48 md:py-72 relative overflow-hidden text-center space-y-24">
+      <section id="cta" className="py-32 md:py-48 relative overflow-hidden text-center space-y-24">
         <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
         <TextReveal 
           as="h2" 
