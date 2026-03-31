@@ -93,7 +93,7 @@ function GalleryContent() {
       <BackgroundFlourish type="architectural" className="bottom-[10%] right-[2%] w-80 h-80" opacity={0.02} />
       
       {/* Header */}
-      <section id="header" className="container mx-auto px-6 py-48 md:py-72 text-center space-y-12">
+      <section id="header" className="container py-48 md:py-72 text-center space-y-12">
         <div className="header-fade">
           <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">06 / PORTFOLIO</span>
         </div>
@@ -109,7 +109,7 @@ function GalleryContent() {
 
       {/* Highlights */}
       <section id="highlights" className="py-48 md:py-72 border-y border-linen/30 overflow-hidden relative">
-        <div className="container px-6 grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10">
+        <div className="container grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10">
           <div className="fade-up space-y-12 order-2 md:order-1">
             <div className="space-y-6">
               <span className="text-[11px] font-sans font-bold text-heritage uppercase tracking-[0.5em]">Featured Orchestration</span>
@@ -140,7 +140,7 @@ function GalleryContent() {
       </section>
 
       {/* Filter Navigation */}
-      <section id="filter" className="container mx-auto px-6 py-48 md:py-72">
+      <section id="filter" className="container py-48 md:py-72">
         <div className="flex flex-col gap-24">
           <div className="flex flex-col md:flex-row justify-between items-end gap-12 border-b border-linen/50 pb-12">
             <div className="space-y-6 text-left">
@@ -180,7 +180,7 @@ function GalleryContent() {
       </section>
 
       {/* Gallery Grid */}
-      <section id="grid" className="container mx-auto px-6 min-h-[50vh] pb-48 md:pb-72">
+      <section id="grid" className="container min-h-[50vh] pb-48 md:pb-72">
         {filteredItems.length > 0 ? (
           <Gallery items={filteredItems} className="gap-12 md:gap-16" />
         ) : (

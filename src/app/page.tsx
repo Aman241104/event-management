@@ -172,7 +172,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="container relative z-20 px-6 lg:px-12 text-center flex flex-col items-center pt-20">
+          <div className="container relative z-20 text-center flex flex-col items-center pt-20">
             <div className="hero-badge flex flex-col items-center gap-6 mb-12">
               <span className="text-[10px] font-mono text-burnished uppercase tracking-[0.6em] drop-shadow-lg">Established MMXXVI</span>
               <div className="h-12 w-[1px] bg-burnished/50 shadow-lg" />
@@ -207,7 +207,7 @@ export default function Home() {
 
         {/* 2. About Preview - Centered Editorial */}
         <section id="about" className="py-72 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
-          <div className="container px-6 flex flex-col items-center relative z-10">
+          <div className="container flex flex-col items-center relative z-10">
             <div className="max-w-5xl text-center space-y-16 mb-32 fade-up">
               <div className="space-y-10">
                 <div className="flex flex-col items-center gap-6">
@@ -254,9 +254,12 @@ export default function Home() {
 
         {/* 3. Services Section - Editorial Grid */}
         <section id="services" className="py-72 bg-surface relative overflow-hidden" data-bg="var(--color-surface)">
-          <div className="container px-6 space-y-40">
+          <div className="container space-y-40">
             <div className="flex flex-col items-center text-center space-y-12 fade-up relative z-10">
-              <span className="text-[10px] font-mono text-heritage uppercase tracking-[0.6em]">02 / EXPERTISE</span>
+              <div className="flex flex-col items-center gap-6">
+                <span className="text-[10px] font-mono text-heritage uppercase tracking-[0.6em]">02 / EXPERTISE</span>
+                <div className="h-12 w-[1px] bg-heritage/20" />
+              </div>
               <TextReveal 
                 text="Composed Clarity." 
                 className="text-6xl md:text-[10rem] font-serif font-medium text-text-primary tracking-tighter leading-[0.8]"
@@ -268,17 +271,17 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-linen border border-linen relative z-10">
               {[
-                { title: 'Fine Art Planning', desc: 'Comprehensive coordination that honors your vision with architectural precision.', img: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800' },
-                { title: 'Atmospheric Design', desc: 'Crafting immersive environments through light, texture, and floral artistry.', img: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800' },
-                { title: 'Global Production', desc: 'Seamless execution across borders, managing every technical and logistical nuance.', img: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800' },
+                { title: 'Fine Art Planning', desc: 'Comprehensive coordination that honors your vision with architectural precision.', img: '/decor-1.jpg' },
+                { title: 'Atmospheric Design', desc: 'Crafting immersive environments through light, texture, and floral artistry.', img: '/decor-2.jpg' },
+                { title: 'Global Production', desc: 'Seamless execution across borders, managing every technical and logistical nuance.', img: '/decor-3.jpg' },
               ].map((service, i) => (
-                <div key={i} className="bg-surface p-16 space-y-12 group hover:bg-canvas transition-colors duration-700">
-                  <div className="aspect-[4/5] overflow-hidden grayscale hover:grayscale-0 transition-all duration-[2s]">
+                <div key={i} className="bg-surface p-16 space-y-12 group hover:bg-canvas transition-colors duration-700 flex flex-col items-center text-center">
+                  <div className="aspect-[4/5] w-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-[2s] border border-linen/30">
                     <Image src={service.img} alt={service.title} width={600} height={800} className="object-cover h-full w-full transition-transform duration-[5s] group-hover:scale-105" />
                   </div>
-                  <div className="space-y-6">
+                  <div className="space-y-6 flex flex-col items-center">
                     <h3 className="text-3xl font-serif font-medium text-text-primary italic">{service.title}</h3>
-                    <p className="text-sm text-text-secondary leading-relaxed font-light">{service.desc}</p>
+                    <p className="text-sm text-text-secondary leading-relaxed font-light max-w-[80%]">{service.desc}</p>
                     <Link href="/services" className="inline-block text-[9px] uppercase tracking-[0.4em] font-bold text-heritage border-b border-heritage/20 pb-1 hover:border-burnished transition-all">
                       Details
                     </Link>
@@ -291,7 +294,7 @@ export default function Home() {
 
         {/* 4. Specialization - Centered Festive */}
         <section id="specialization" className="py-72 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
-          <div className="container px-6 space-y-40 relative z-10">
+          <div className="container space-y-40 relative z-10">
             <div className="flex flex-col items-center text-center space-y-12 fade-up">
               <div className="flex flex-col items-center gap-6">
                 <span className="text-[10px] font-mono text-burnished uppercase tracking-[0.6em]">03 / COLLECTION</span>
@@ -330,7 +333,7 @@ export default function Home() {
         {/* 5. Statistics - Clean & Bold */}
         <section id="stats" className="py-40 bg-heritage relative overflow-hidden" data-bg="var(--color-heritage)">
           <div className="absolute inset-0 dot-pattern opacity-[0.03] invert" />
-          <div className="container px-6 relative z-10">
+          <div className="container relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-20 text-center fade-up">
               {stats.map((stat, i) => (
                 <div key={stat.label} className="space-y-4 group">
@@ -344,7 +347,7 @@ export default function Home() {
 
         {/* 6. Gallery - Editorial Masonry */}
         <section id="gallery" className="py-72 bg-canvas" data-bg="var(--color-canvas)">
-          <div className="container px-6 space-y-32">
+          <div className="container space-y-32">
             <div className="text-center space-y-10 fade-up">
               <span className="text-[10px] font-mono text-burnished uppercase tracking-[0.6em]">04 / ARCHIVE</span>
               <TextReveal text="Recent Masterpieces" className="text-6xl md:text-[10rem] font-serif font-medium tracking-tighter" />
@@ -362,7 +365,7 @@ export default function Home() {
 
         {/* 7. Testimonials - Centered Refined Editorial */}
         <section id="testimonials" className="py-72 bg-surface border-y border-linen" data-bg="var(--color-surface)">
-          <div className="container px-6 space-y-40">
+          <div className="container space-y-40">
             <div className="flex flex-col items-center text-center space-y-12 fade-up">
               <div className="flex flex-col items-center gap-6">
                 <span className="text-[10px] font-mono text-heritage uppercase tracking-[0.6em]">05 / VOICES</span>
@@ -402,22 +405,25 @@ export default function Home() {
 
         {/* 8. Process - Human-Centric */}
         <section id="process" className="py-72 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
-          <div className="container px-6 space-y-40 relative z-10">
+          <div className="container space-y-40 relative z-10">
             <div className="flex flex-col items-center text-center space-y-12 fade-up">
-              <span className="text-[10px] font-mono text-burnished uppercase tracking-[0.6em]">06 / METHOD</span>
+              <div className="flex flex-col items-center gap-6">
+                <span className="text-[10px] font-mono text-burnished uppercase tracking-[0.6em]">06 / METHOD</span>
+                <div className="h-12 w-[1px] bg-burnished/20" />
+              </div>
               <TextReveal text="The Architecture of Planning." className="text-6xl md:text-[8rem] font-serif font-medium tracking-tighter" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-20">
               {steps.map((step, i) => (
-                <div key={i} className="space-y-10 group fade-up">
-                  <div className="text-[10px] font-mono text-text-muted mb-8">STEP / 0{i+1}</div>
-                  <div className="w-12 h-12 text-heritage group-hover:text-burnished transition-colors duration-700">
+                <div key={i} className="space-y-10 group fade-up flex flex-col items-center text-center">
+                  <div className="text-[10px] font-mono text-text-muted mb-8 tracking-widest">STEP / 0{i+1}</div>
+                  <div className="w-16 h-16 rounded-full bg-surface border border-linen flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-700">
                     {step.icon}
                   </div>
                   <div className="space-y-6">
                     <h3 className="text-2xl font-serif font-medium text-text-primary italic">{step.title}</h3>
-                    <p className="text-sm text-text-secondary leading-relaxed font-light">{step.desc}</p>
+                    <p className="text-sm text-text-secondary leading-relaxed font-light max-w-[240px]">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -436,7 +442,7 @@ export default function Home() {
              />
           </div>
           
-          <div className="container relative z-10 text-center space-y-24 px-4">
+          <div className="container relative z-10 text-center space-y-24">
             <div className="space-y-12">
               <span className="text-[10px] font-mono text-heritage uppercase tracking-[0.8em]">COMMENCE</span>
               <h2 className="text-7xl md:text-[12rem] font-serif font-medium tracking-tighter text-text-primary leading-[0.8]">

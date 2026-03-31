@@ -53,7 +53,7 @@ export function Navbar() {
         scrolled ? "bg-canvas/90 backdrop-blur-md border-linen/30 py-4 shadow-[0_1px_10px_rgba(0,0,0,0.01)]" : "bg-transparent border-transparent py-8",
         (isOpen || isSearchOpen) && "border-transparent bg-transparent backdrop-blur-0"
       )}>
-        <nav className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+        <nav className="container flex items-center justify-between">
           <Magnetic strength={0.05}>
             <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[60]">
               <Logo scrolled={scrolled} />

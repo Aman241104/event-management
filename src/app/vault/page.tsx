@@ -94,7 +94,7 @@ export default function VaultPage() {
         <SVGSpine height="100%" viewBox="0 0 20 100" pathD="M 10 0 L 10 100" className="opacity-10" />
 
         <section className="py-48 md:py-72" data-bg="var(--color-surface)">
-          <div className="container mx-auto px-6 space-y-24">
+          <div className="container space-y-24">
             
             {/* Header */}
             <header className="flex flex-col md:flex-row justify-between items-end gap-12 border-b border-linen pb-16 fade-up">

@@ -14,7 +14,7 @@ export default function NewEventPage() {
 
   return (
     <main className="min-h-screen bg-canvas pt-32 pb-24 selection:bg-heritage selection:text-canvas">
-      <div className="container mx-auto px-6">
+      <div className="container">
         
         {/* Top Bar */}
         <div className="flex items-center justify-between mb-16 border-b border-linen pb-8">

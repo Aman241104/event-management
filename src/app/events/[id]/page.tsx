@@ -103,7 +103,7 @@ export default function EventDetailPage() {
       <div className="side-label-right text-heritage/30">{event.location} / {event.coordinates}</div>
 
       {/* Editorial Header */}
-      <section id="header" className="container mx-auto px-6 mb-24">
+      <section id="header" className="container mb-24">
         <div className="flex flex-col space-y-12">
           <Link href="/gallery" className="header-fade text-[11px] uppercase tracking-[0.5em] text-heritage hover:text-text-primary transition-colors group inline-flex items-center gap-4">
             <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform" />
@@ -130,7 +130,7 @@ export default function EventDetailPage() {
       </section>
 
       {/* Main Image */}
-      <section id="image" className="container mx-auto px-6 mb-32 fade-up relative group">
+      <section id="image" className="container mb-32 fade-up relative group">
         <div className="absolute -inset-20 bg-heritage/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
         <div className="relative w-full h-[60vh] md:h-[90vh] overflow-hidden arch-mask shadow-2xl border border-linen z-10">
           <ParallaxImage 
@@ -151,7 +151,7 @@ export default function EventDetailPage() {
       </section>
 
       {/* Content Grid */}
-      <section id="content" className="container mx-auto px-6 py-24 relative z-10">
+      <section id="content" className="container py-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24">
           
           <div className="lg:col-span-8 space-y-32">
@@ -293,7 +293,7 @@ export default function EventDetailPage() {
 function NextProjectLink() {
   return (
     <section id="next-project" className="py-48 bg-surface border-y border-linen overflow-hidden group relative z-10">
-      <div className="container px-6 text-center space-y-8">
+      <div className="container text-center space-y-8">
         <span className="text-[11px] font-mono text-heritage uppercase tracking-[0.5em]">Upcoming Narrative</span>
         <Link href="/events/1" className="block">
           <h2 className="text-6xl md:text-[10rem] font-serif font-bold text-text-primary tracking-tighter leading-none group-hover:text-heritage transition-colors duration-700">

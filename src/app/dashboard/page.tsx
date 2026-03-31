@@ -31,7 +31,7 @@ export default function DashboardPage() {
 
   return (
     <main ref={containerRef} className="min-h-screen bg-canvas pt-32 pb-24 selection:bg-heritage selection:text-canvas">
-      <div className="container mx-auto px-6 space-y-12">
+      <div className="container space-y-12">
         
         {/* Header */}
         <header className="flex flex-col md:flex-row justify-between items-end gap-8 border-b border-linen pb-12">

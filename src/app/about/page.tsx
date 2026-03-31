@@ -74,7 +74,7 @@ export default function AboutPage() {
         <BackgroundFlourish type="architectural" className="top-[60%] left-[2%] w-[30rem] h-[30rem]" opacity={0.03} />
         
         {/* Editorial Header */}
-        <section id="header" className="container mx-auto px-6 py-48 md:py-64 relative text-center space-y-12" data-bg="var(--color-canvas)">
+        <section id="header" className="container py-48 md:py-64 relative text-center space-y-12" data-bg="var(--color-canvas)">
           <div className="header-fade flex flex-col items-center gap-6">
             <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">01 / STORY</span>
             <Badge variant="solid" dot className="px-8 py-3 bg-heritage/5 text-heritage-dark uppercase tracking-widest font-bold border border-heritage/10 backdrop-blur-sm">The Agency Narrative</Badge>
@@ -98,7 +98,7 @@ export default function AboutPage() {
         </section>
 
         {/* Philosophy Section - Asymmetrical */}
-        <section id="philosophy" className="container mx-auto px-6 py-48 md:py-64" data-bg="var(--color-canvas)">
+        <section id="philosophy" className="container py-48 md:py-64" data-bg="var(--color-canvas)">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-32 items-center">
             <div className="lg:col-span-7 fade-up relative group">
               <div className="absolute -inset-20 bg-accent-rose/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
@@ -152,7 +152,7 @@ export default function AboutPage() {
         {/* Vision & Mission - Symmetrical but Elevated */}
         <section id="vision" className="py-48 md:py-64 bg-surface border-y border-linen dot-pattern relative overflow-hidden" data-bg="var(--color-surface)">
           <div className="absolute top-0 left-0 w-full h-full bg-heritage/5 opacity-30 pointer-events-none" />
-          <div className="container mx-auto px-6 relative z-10">
+          <div className="container relative z-10">
             <div className="flex flex-col items-center gap-6 mb-24 fade-up">
               <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">03 / VISION</span>
               <div className="h-px w-24 bg-linen" />
@@ -184,7 +184,7 @@ export default function AboutPage() {
         </section>
 
         {/* Visionaries Section - Asymmetrical Grid */}
-        <section id="visionaries" className="pt-64 pb-48 md:pt-80 md:pb-64 container px-6 space-y-32" data-bg="var(--color-canvas)">
+        <section id="visionaries" className="pt-64 pb-48 md:pt-80 md:pb-64 container space-y-32" data-bg="var(--color-canvas)">
           <div className="flex flex-col md:flex-row justify-between items-end gap-12 fade-up">
             <div className="space-y-10">
               <div className="flex items-center gap-6">
@@ -234,7 +234,7 @@ export default function AboutPage() {
         {/* Metrics Section */}
         <section id="stats" className="py-32 bg-heritage relative overflow-hidden" data-bg="var(--color-heritage)">
           <div className="absolute inset-0 dot-pattern opacity-[0.05] invert" />
-          <div className="container mx-auto px-6 relative z-10">
+          <div className="container relative z-10">
             <div className="flex flex-col items-center gap-6 mb-24 fade-up">
               <span className="text-[10px] font-mono text-canvas/40 uppercase tracking-[0.5em]">05 / METRICS</span>
               <div className="h-px w-24 bg-canvas/20" />
@@ -256,7 +256,7 @@ export default function AboutPage() {
         </section>
 
         {/* Why Choose Us */}
-        <section id="why-choose-us" className="py-48 md:py-64 container px-6 space-y-32" data-bg="var(--color-canvas)">
+        <section id="why-choose-us" className="py-48 md:py-64 container space-y-32" data-bg="var(--color-canvas)">
           <div className="text-center space-y-10 max-w-4xl mx-auto fade-up">
             <div className="flex flex-col items-center gap-6 mb-4">
               <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">06 / ADVANTAGE</span>
@@ -288,7 +288,7 @@ export default function AboutPage() {
         </section>
 
         {/* Final CTA */}
-        <section id="cta" className="py-48 md:py-72 container mx-auto text-center space-y-20" data-bg="var(--color-surface)">
+        <section id="cta" className="py-48 md:py-72 container text-center space-y-20" data-bg="var(--color-surface)">
           <div className="fade-up flex flex-col items-center gap-8">
             <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">07 / CONNECT</span>
             <h2 className="text-7xl md:text-[12rem] font-serif text-text-primary font-bold tracking-tighter leading-[0.8] drop-shadow-sm">

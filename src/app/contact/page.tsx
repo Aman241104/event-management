@@ -94,7 +94,7 @@ export default function ContactPage() {
       <div className="side-label-right text-heritage/30">MUMBAI / 19.0760° N, 72.8777° E</div>
 
       {/* Header */}
-      <section id="header" className="container mx-auto px-6 py-24 md:py-32 text-center space-y-8 relative z-10">
+      <section id="header" className="container py-24 md:py-32 text-center space-y-8 relative z-10">
         <div className="header-fade">
           <Badge variant="solid" dot className="px-6 py-2 bg-heritage/10 text-heritage uppercase tracking-[0.3em] font-bold">The Dialogue</Badge>
         </div>
@@ -109,7 +109,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section id="content" className="container mx-auto px-6 py-24 relative z-10">
+      <section id="content" className="container py-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
 
           {/* Archival Sidebar */}
@@ -265,7 +265,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section - The Coordinates */}
-      <section id="map" className="container mx-auto px-6 py-24 relative z-10">
+      <section id="map" className="container py-24 relative z-10">
         <div className="relative w-full h-[60vh] overflow-hidden arch-mask border border-linen group shadow-sm">
           <div className="absolute inset-0 bg-heritage/40 backdrop-blur-none group-hover:backdrop-blur-sm transition-all duration-1000 z-10 flex items-center justify-center">
              <div className="text-center space-y-6 fade-up">

@@ -147,7 +147,7 @@ export default function QuizPage() {
       <div ref={containerRef} className="relative">
 
         <section className="min-h-screen flex flex-col justify-center py-48 md:py-72" data-bg="var(--color-canvas)">
-          <div className="container mx-auto px-6 max-w-5xl flex-1 flex flex-col justify-center">
+          <div className="container max-w-5xl flex-1 flex flex-col justify-center">
             
             <div className="space-y-10 mb-24 quiz-element text-center md:text-left">
               <div className="flex flex-col md:flex-row md:items-center gap-6">

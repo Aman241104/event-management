@@ -105,6 +105,22 @@
     @apply inline-block translate-y-full;
   }
 
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 1440px;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
   .hover-zoom {
     @apply transition-transform duration-[10s] ease-out hover:scale-110;
   }

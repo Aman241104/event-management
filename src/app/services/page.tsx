@@ -109,7 +109,7 @@ export default function ServicesPage() {
       <BackgroundFlourish type="floral" className="top-[75%] left-[2%] w-[30rem] h-[30rem]" opacity={0.02} />
       
       {/* Header */}
-      <section id="header" className="container mx-auto px-6 py-48 md:py-72 relative text-center space-y-12">
+      <section id="header" className="container py-48 md:py-72 relative text-center space-y-12">
         <div className="header-fade">
           <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">03 / EXPERTISE</span>
         </div>
@@ -131,7 +131,7 @@ export default function ServicesPage() {
             data-bg={service.bgColor}
             className="service-section min-h-screen flex items-center py-48 md:py-72 relative overflow-hidden"
           >
-            <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-center relative z-10">
+            <div className="container grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-center relative z-10">
               <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2 lg:ml-auto' : 'lg:mr-auto'} relative w-full`}>
                 <div className="absolute -top-12 -left-12 text-[10rem] font-serif font-bold text-heritage/5 pointer-events-none select-none">
                   {service.id}
@@ -188,7 +188,7 @@ export default function ServicesPage() {
 
       {/* Process Journey */}
       <section id="process" className="relative py-48 md:py-72">
-        <div className="container mx-auto px-6 mb-32 text-center space-y-8">
+        <div className="container mb-32 text-center space-y-8">
           <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">06 / METHODOLOGY</span>
           <TextReveal 
             as="h2" 
@@ -197,7 +197,7 @@ export default function ServicesPage() {
           />
         </div>
         
-        <div className="container mx-auto px-6 space-y-48">
+        <div className="container space-y-48">
           {[
             { step: '01', title: 'Discovery Dialogue', desc: 'An intimate consultation to understand your unique narrative and aesthetic vision.' },
             { step: '02', title: 'Architectural Planning', desc: 'Bespoke design renders and rigorous logistical mapping of your event landscape.' },
@@ -219,7 +219,7 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-48 md:py-72 container mx-auto px-6">
+      <section id="faq" className="py-48 md:py-72 container">
         <div className="max-w-5xl mx-auto space-y-24">
           <div className="text-center space-y-8">
             <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">07 / CLARITY</span>
@@ -249,7 +249,7 @@ export default function ServicesPage() {
       {/* CTA */}
       <section id="cta" className="py-48 md:py-72 relative overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
-        <div className="container mx-auto text-center space-y-16 relative z-10">
+        <div className="container text-center space-y-16 relative z-10">
           <TextReveal 
             as="h2" 
             text="Ready to Orchestrate Your Event?" 

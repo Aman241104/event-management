@@ -56,7 +56,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
         <X size={32} strokeWidth={1} className="group-hover:rotate-90 transition-transform duration-500" />
       </button>
 
-      <div className="container mx-auto px-6 h-full flex flex-col justify-center max-w-5xl relative z-10">
+      <div className="container h-full flex flex-col justify-center max-w-5xl relative z-10">
         <div className={cn(
           "space-y-16 transition-all duration-1000 delay-300 transform",
           isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"

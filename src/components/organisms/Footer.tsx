@@ -26,7 +26,7 @@ export function Footer() {
     <footer className="w-full bg-canvas pt-32 pb-12 px-8 mt-auto border-t border-linen relative overflow-hidden">
       <div className="absolute inset-0 dot-pattern opacity-[0.02]" />
       
-      <div className="container mx-auto relative z-10">
+      <div className="container relative z-10">
         {/* Mad Libs CTA - Hidden on pages that already have a primary CTA */}
         {!hideCTA && (
           <div className="max-w-6xl mx-auto text-center mb-48 space-y-20">
