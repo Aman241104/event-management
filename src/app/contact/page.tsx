@@ -178,83 +178,83 @@ export default function ContactPage() {
 
           {/* Mad Libs Form Side */}
           <div id="form-section" className="lg:col-span-8 form-fade">
-            <div className="p-12 md:p-20 border border-linen bg-surface/10 backdrop-blur-md relative overflow-hidden group hover:border-heritage/30 transition-colors duration-1000 shadow-[0_20px_50px_rgba(0,0,0,0.02)]">
-              <div className="absolute top-0 right-0 w-64 h-64 dot-pattern opacity-[0.03] pointer-events-none" />
+            <div className="p-12 md:p-24 glass-card relative overflow-hidden group hover:border-burnished/30 transition-colors duration-1000 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)]">
+              <div className="absolute top-0 right-0 w-96 h-96 dot-pattern opacity-[0.05] pointer-events-none" />
               
               <form className="relative z-10" onSubmit={(e) => e.preventDefault()}>
-                <div className="text-2xl md:text-4xl lg:text-5xl font-serif text-text-primary leading-[1.8] md:leading-[2.2]">
+                <div className="text-2xl md:text-4xl lg:text-5xl font-serif text-text-primary leading-[1.8] md:leading-[2.2] font-light">
                   Hello, my name is{' '}
                   <span className="inline-block relative group/input">
                     <input 
                       type="text" 
                       placeholder="YOUR FULL NAME" 
-                      className="bg-transparent border-none focus:outline-none px-2 w-[240px] md:w-[350px] placeholder:text-heritage/30 transition-colors uppercase font-bold text-xl md:text-3xl text-heritage"
+                      className="bg-transparent border-none focus:outline-none px-2 w-[240px] md:w-[350px] placeholder:text-burnished/20 transition-colors uppercase font-medium text-xl md:text-3xl text-heritage"
                     />
-                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                    <div className="absolute bottom-2 left-0 w-full h-[0.5px] bg-burnished/20 group-focus-within/input:h-[1px] group-focus-within/input:bg-heritage transition-all duration-1000" />
                   </span>
                   {' '}and I&apos;m envisioning a{' '}
                   <span className="inline-block relative group/input">
-                    <select className="bg-transparent border-none focus:outline-none px-2 cursor-none appearance-none uppercase font-bold text-xl md:text-3xl text-heritage">
+                    <select className="bg-transparent border-none focus:outline-none px-2 cursor-none appearance-none uppercase font-medium text-xl md:text-3xl text-heritage">
                       <option value="wedding">Wedding</option>
                       <option value="corporate">Corporate Event</option>
                       <option value="birthday">Birthday Celebration</option>
                       <option value="private">Private Party</option>
                     </select>
-                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                    <div className="absolute bottom-2 left-0 w-full h-[0.5px] bg-burnished/20 group-focus-within/input:h-[1px] group-focus-within/input:bg-heritage transition-all duration-1000" />
                   </span>
                   {' '}on{' '}
                   <span className="inline-block relative group/input">
                     <input 
                       type="text" 
                       placeholder="DD / MM / YYYY" 
-                      className="bg-transparent border-none focus:outline-none px-2 w-[180px] md:w-[250px] placeholder:text-heritage/30 transition-colors uppercase font-bold text-xl md:text-3xl text-heritage"
+                      className="bg-transparent border-none focus:outline-none px-2 w-[180px] md:w-[250px] placeholder:text-burnished/20 transition-colors uppercase font-medium text-xl md:text-3xl text-heritage"
                     />
-                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                    <div className="absolute bottom-2 left-0 w-full h-[0.5px] bg-burnished/20 group-focus-within/input:h-[1px] group-focus-within/input:bg-heritage transition-all duration-1000" />
                   </span>
                   . We are expecting around{' '}
                   <span className="inline-block relative group/input">
-                    <select className="bg-transparent border-none focus:outline-none px-2 cursor-none appearance-none uppercase font-bold text-xl md:text-3xl text-heritage">
+                    <select className="bg-transparent border-none focus:outline-none px-2 cursor-none appearance-none uppercase font-medium text-xl md:text-3xl text-heritage">
                       <option value="intimate">50 Guest</option>
                       <option value="medium">200 Guest</option>
                       <option value="large">500 Guest</option>
                       <option value="grand">1000+ Guest</option>
                     </select>
-                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                    <div className="absolute bottom-2 left-0 w-full h-[0.5px] bg-burnished/20 group-focus-within/input:h-[1px] group-focus-within/input:bg-heritage transition-all duration-1000" />
                   </span>
                   {' '}and our budget is{' '}
                   <span className="inline-block relative group/input">
-                    <select className="bg-transparent border-none focus:outline-none px-2 cursor-none appearance-none uppercase font-bold text-xl md:text-3xl text-heritage">
+                    <select className="bg-transparent border-none focus:outline-none px-2 cursor-none appearance-none uppercase font-medium text-xl md:text-3xl text-heritage">
                       <option value="tier1">Standard Luxury</option>
                       <option value="tier2">Premium Experience</option>
                       <option value="tier3">Ultra Luxury</option>
                     </select>
-                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                    <div className="absolute bottom-2 left-0 w-full h-[0.5px] bg-burnished/20 group-focus-within/input:h-[1px] group-focus-within/input:bg-heritage transition-all duration-1000" />
                   </span>
                   . My vision is{' '}
                   <span className="inline-block relative w-full mt-4 group/input">
                     <textarea 
                       placeholder="A MAGICAL MOMENT OF..." 
                       rows={2}
-                      className="bg-transparent border-none focus:outline-none w-full placeholder:text-heritage/30 transition-colors uppercase font-bold text-xl md:text-3xl resize-none py-2 text-heritage"
+                      className="bg-transparent border-none focus:outline-none w-full placeholder:text-burnished/20 transition-colors uppercase font-medium text-xl md:text-3xl resize-none py-2 text-heritage"
                     />
-                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                    <div className="absolute bottom-2 left-0 w-full h-[0.5px] bg-burnished/20 group-focus-within/input:h-[1px] group-focus-within/input:bg-heritage transition-all duration-1000" />
                   </span>
                   {' '}You can reach me at{' '}
                   <span className="inline-block relative group/input">
                     <input 
                       type="email" 
                       placeholder="EMAIL@EXAMPLE.COM" 
-                      className="bg-transparent border-none focus:outline-none px-2 w-[280px] md:w-[450px] placeholder:text-heritage/30 transition-colors uppercase font-bold text-xl md:text-3xl text-heritage"
+                      className="bg-transparent border-none focus:outline-none px-2 w-[280px] md:w-[450px] placeholder:text-burnished/20 transition-colors uppercase font-medium text-xl md:text-3xl text-heritage"
                     />
-                    <div className="absolute bottom-2 left-0 w-full h-[1px] bg-heritage/20 group-focus-within/input:h-[2px] group-focus-within/input:bg-heritage transition-all duration-700" />
+                    <div className="absolute bottom-2 left-0 w-full h-[0.5px] bg-burnished/20 group-focus-within/input:h-[1px] group-focus-within/input:bg-heritage transition-all duration-1000" />
                   </span>
                   .
                 </div>
 
-                <div className="pt-20">
-                  <Button variant="solid" className="w-full md:w-auto btn-prestige px-20 py-8 text-sm group tracking-[0.3em]">
-                    SEND ARCHIVE INQUIRY
-                    <ArrowRight size={18} className="ml-4 transform group-hover:translate-x-2 transition-transform" />
+                <div className="pt-24 flex justify-start">
+                  <Button variant="solid" className="w-full md:w-auto btn-prestige px-24 py-8 text-[10px] group tracking-[0.5em] shadow-xl">
+                    COMMENCE THE DIALOGUE
+                    <ArrowRight size={16} className="ml-6 transform group-hover:translate-x-2 transition-transform duration-700" />
                   </Button>
                 </div>
               </form>
@@ -276,7 +276,7 @@ export default function ContactPage() {
              </div>
           </div>
           <Image 
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=2000" 
+            src="/hero-8.jpg" 
             alt="Mumbai Map" 
             fill
             className="object-cover scale-110 group-hover:scale-100 transition-transform duration-[10s]"

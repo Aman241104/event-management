@@ -2,12 +2,13 @@
 
 import React, { useRef } from 'react';
 import Link from 'next/link';
+import { Star, Sparkles, Music, Zap, MessageCircle } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
 import { MaskSlideImage } from '@/components/molecules/MaskSlideImage';
 import { TextReveal } from '@/components/atoms/TextReveal';
 import { SVGSpine } from '@/components/atoms/SVGSpine';
 import { BackgroundFlourish } from '@/components/atoms/BackgroundFlourish';
-import { MessageCircle, Star, Music, Zap } from 'lucide-react';
 import { generateWhatsAppLink, getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -24,10 +25,10 @@ const serviceCategories = [
     title: 'Event Management',
     subtitle: 'Seamless Execution',
     icon: <Star size={24} />,
-    description: 'Our team ensures seamless execution from concept to completion, delivering high-quality experiences for every type of event. We handle all logistics, vendor management, and onsite coordination.',
-    image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200',
+    description: 'Our team ensures seamless execution from concept to completion, delivering high-quality experiences for every type of event. We handle all logistics, vendor management, and onsite coordination with analytical precision.',
+    image: '/decor-1.jpg',
     tags: ['Weddings', 'Corporate Events', 'Birthday Celebrations', 'Baby Showers', 'Festivals & Cultural Events', 'House Parties', 'Private Celebrations'],
-    bgColor: '#FCFBF7', // canvas
+    bgColor: '#FDFCFB', // canvas
     maskClass: 'bg-canvas'
   },
   {
@@ -36,10 +37,10 @@ const serviceCategories = [
     title: 'Entertainment Services',
     subtitle: 'Vibrant & Engaging',
     icon: <Music size={24} />,
-    description: 'To make every event lively and engaging, we provide a wide range of entertainment solutions. We source the finest talent to match the vibe of your celebration.',
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1200',
+    description: 'To make every event lively and engaging, we provide a wide range of entertainment solutions. We source the finest global talent to match the unique energy of your celebration.',
+    image: '/decor-2.jpg',
     tags: ['International Artists', 'DJs', 'Hosts / MCs', 'Live Musicians', 'Bands', 'Celebrity Appearances', 'Kids Entertainment', 'Activity Artists'],
-    bgColor: '#F4F1EA', // surface
+    bgColor: '#F9F8F6', // surface
     maskClass: 'bg-surface'
   },
   {
@@ -48,11 +49,11 @@ const serviceCategories = [
     title: 'Event Production & Setup',
     subtitle: 'Precision & Creativity',
     icon: <Zap size={24} />,
-    description: 'Our team manages the entire event production process with precision and creativity. From stage design to final execution, every detail is carefully managed.',
-    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=1200',
+    description: 'Our team manages the entire event production process with surgical precision and creative flair. From stage design to final execution, every detail is carefully orchestrated.',
+    image: '/decor-3.jpg',
     tags: ['Event Setup & Decorations', 'Lighting & Sound Management', 'Catering Coordination', 'Concert Production', 'Videography & Photography', 'Photo Booth Experiences'],
-    bgColor: '#FDFCF0', // surface-light
-    maskClass: 'bg-surface-light'
+    bgColor: '#FFFFFF', // pure white
+    maskClass: 'bg-white'
   }
 ];
 

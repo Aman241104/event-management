@@ -37,19 +37,19 @@ if (typeof window !== 'undefined') {
 }
 
 const galleryItems = [
-  { id: 1, title: 'Royal Palace Udaipur', category: 'Weddings', image: '/decor-1.jpg', size: 'large' as const },
-  { id: 2, title: 'Floral Mandap Design', category: 'Design', image: '/decor-2.jpg', size: 'tall' as const },
-  { id: 3, title: 'Grand Mehendi Setup', category: 'Weddings', image: '/decor-3.jpg', size: 'medium' as const },
-  { id: 4, title: 'Corporate Luxury Gala', category: 'Production', image: '/decor-4.jpg', size: 'medium' as const },
+  { id: 1, title: 'Royal Palace Architecture', category: 'Weddings', image: '/decor-1.jpg', size: 'large' as const },
+  { id: 2, title: 'Heritage Fusion Gala', category: 'Design', image: '/decor-2.jpg', size: 'tall' as const },
+  { id: 3, title: 'Celestial Sangeet', category: 'Weddings', image: '/decor-3.jpg', size: 'medium' as const },
+  { id: 4, title: 'Tropical Royal Decor', category: 'Production', image: '/decor-4.jpg', size: 'medium' as const },
 ];
 
 const eventTypes = [
-  { title: 'Weddings', icon: <Heart size={24} />, image: '/hero-2.jpg', desc: 'Royal palace & destination celebrations.', color: 'var(--color-burnished)' },
-  { title: 'Corporate Events', icon: <Sparkles size={24} />, image: '/hero-3.jpg', desc: 'Bespoke summits & high-profile galas.', color: 'var(--color-heritage)' },
-  { title: 'Birthday Celebrations', icon: <PartyPopper size={24} />, image: '/hero-4.jpg', desc: 'Milestone events curated with flair.', color: '#FDFCF0' },
-  { title: 'Baby Showers', icon: <Star size={24} />, image: '/hero-5.jpg', desc: 'Celebrating new life with elegance.', color: 'var(--color-burnished-light)' },
-  { title: 'Festivals', icon: <Tent size={24} />, image: '/hero-6.jpg', desc: 'High-energy cultural & musical fairs.', color: 'var(--color-heritage-soft)' },
-  { title: 'Private Parties', icon: <Users size={24} />, image: '/hero-7.jpg', desc: 'Intimate house parties & VIP bashes.', color: '#F9F7F2' },
+  { title: 'Weddings', icon: <Heart size={24} />, image: '/hero-2.jpg', desc: 'Bespoke destination celebrations where tradition meets modern grace.', color: 'var(--color-burnished)' },
+  { title: 'Corporate Events', icon: <Sparkles size={24} />, image: '/hero-3.jpg', desc: 'High-profile summits and galas planned with analytical precision.', color: 'var(--color-heritage)' },
+  { title: 'Birthday Celebrations', icon: <PartyPopper size={24} />, image: '/hero-4.jpg', desc: 'Milestone events curated with infectious energy.', color: '#FDFCF0' },
+  { title: 'Baby Showers', icon: <Star size={24} />, image: '/hero-5.jpg', desc: 'Pure and elegant beginnings for your family\'s next chapter.', color: 'var(--color-burnished-light)' },
+  { title: 'Festivals', icon: <Tent size={24} />, image: '/hero-6.jpg', desc: 'Large-scale cultural experiences that pulse with life.', color: 'var(--color-heritage-soft)' },
+  { title: 'Private Parties', icon: <Users size={24} />, image: '/hero-7.jpg', desc: 'Intimate soirées and VIP bashes for your inner circle.', color: '#F9F7F2' },
 ];
 
 const instaPhotos = [
@@ -62,23 +62,23 @@ const instaPhotos = [
 ];
 
 const testimonials = [
-  { id: 1, content: "Zing Bliss turned our vision into reality. Every detail was beautifully executed and our guests loved the experience.", author: "Sonia & Aryan", role: "Wedding Celebration", event: "Private Event", rating: 5, avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200" },
-  { id: 2, content: "The team handled everything so professionally. From decor to entertainment, the event was flawless.", author: "Rajesh Khanna", role: "Corporate Gala", event: "Annual Summit", rating: 5, avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" },
-  { id: 3, content: "Their creativity and execution truly set them apart. Highly recommended for any celebration.", author: "Happy Client", role: "Special Occasion", event: "Birthday Bash", rating: 5, avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200" },
+  { id: 1, content: "Zing Bliss turned our wildest dreams into a breathtaking reality. Their energy is contagious, and their precision is unmatched.", author: "Sonia & Aryan", role: "Royal Udaipur Wedding", event: "Private Celebration", rating: 5, avatar: "/logo.jpeg" },
+  { id: 2, content: "The level of refined detail and the profound sense of calm they bring to complex productions is truly remarkable.", author: "Rajesh Khanna", role: "Global Tech Summit", event: "Annual Gala", rating: 5, avatar: "/logo.jpeg" },
+  { id: 3, content: "Passionate, professional, and pure magic. They are the only team I trust with our family's milestones.", author: "Anjali Mehta", role: "Milestone Birthday", event: "Private Soirée", rating: 5, avatar: "/logo.jpeg" },
 ];
 
 const steps = [
-  { title: 'Consultation', desc: 'Understanding your vision and preferences.', icon: <Users size={24} /> },
-  { title: 'Planning & Design', desc: 'Crafting bespoke concepts and logistics.', icon: <Sparkles size={24} /> },
-  { title: 'Event Production', desc: 'Managing setup, decor, and technicals.', icon: <Zap size={24} /> },
-  { title: 'Execution', desc: 'Onsite coordination for a flawless day.', icon: <Star size={24} /> },
+  { title: 'Spark The Vision', desc: 'We dive deep into your narrative to find the unique spark of your celebration.', icon: <Sparkles size={24} /> },
+  { title: 'Architectural Blueprint', desc: 'Meticulous planning where every logistical nuance is refined to perfection.', icon: <Zap size={24} /> },
+  { title: 'Artisanal Curation', desc: 'Selecting the world\'s finest vendors to bring the aesthetic to life.', icon: <Users size={24} /> },
+  { title: 'Pure Orchestration', desc: 'Flawless execution on the day, so you can fully live the moment.', icon: <Star size={24} /> },
 ];
 
 const stats = [
-  { value: '100+', label: 'Events Planned' },
-  { value: '50+', label: 'Happy Clients' },
-  { value: '20+', label: 'Premium Vendors' },
-  { value: '5+', label: 'Years Experience' },
+  { value: '500+', label: 'Orchestrated Events' },
+  { value: '100%', label: 'Joy & Satisfaction' },
+  { value: '25+', label: 'Global Destinations' },
+  { value: '15+', label: 'Years of Magic' },
 ];
 
 const heroImages = [
@@ -218,8 +218,9 @@ export default function Home() {
             
             <h1 className="hero-title text-6xl md:text-[10rem] font-serif font-medium tracking-tight text-white leading-[0.85] drop-shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
               <span className="block header-fade">Orchestrating</span>
-              <span className="block header-fade text-burnished italic font-light mt-4 mb-4 drop-shadow-[0_0_20px_rgba(212,175,55,0.5)]">
+              <span className="block header-fade text-burnished italic font-light mt-4 mb-4 drop-shadow-[0_0_20px_rgba(197,160,89,0.3)] relative overflow-hidden">
                 Grandeur.
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_4s_infinite] pointer-events-none" />
               </span>
               <span className="block header-fade">Pure <span className="text-burnished-light italic font-light">&</span> Refined.</span>
             </h1>

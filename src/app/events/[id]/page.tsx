@@ -40,7 +40,7 @@ const eventDetails = {
     category: "Corporate",
     gear: ["L-Acoustics K2", "Blackmagic 12K", "Holographic Mesh"],
     vendors: ["Aero Production", "Lumina Design", "Gourmet Lab"],
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=2000",
+    image: "/hero-1.jpg",
     description: "The premier event for technology leaders and innovators. Future Tech Summit 2026 brings together the brightest minds in AI, Edge Computing, and Sustainable Design.",
     fullDescription: `
       A masterclass in technical production and high-fidelity orchestration. This year's summit explored the intersection of human-centric design and the rapid evolution of artificial intelligence.
@@ -49,9 +49,9 @@ const eventDetails = {
     `,
     highlights: ["Global Keynotes", "Immersive Renders", "Sensory Mapping"],
     gallery: [
-      { id: 1, title: 'Main Stage Reveal', category: 'Production', image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=1200', size: 'large' as const },
-      { id: 2, title: 'Breakout Session', category: 'Design', image: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=800' },
-      { id: 3, title: 'Networking Hub', category: 'Lounge', image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&q=80&w=800' },
+      { id: 1, title: 'Main Stage Reveal', category: 'Production', image: '/decor-1.jpg', size: 'large' as const },
+      { id: 2, title: 'Breakout Session', category: 'Design', image: '/decor-2.jpg' },
+      { id: 3, title: 'Networking Hub', category: 'Lounge', image: '/decor-3.jpg' },
     ],
   }
 };

@@ -3,11 +3,13 @@
 import React, { useRef, useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 import { Gallery } from '@/components/molecules/Gallery';
 import { TextReveal } from '@/components/atoms/TextReveal';
 import { Button } from '@/components/atoms/Button';
 import { BackgroundFlourish } from '@/components/atoms/BackgroundFlourish';
-import { ArrowRight, Search } from 'lucide-react';
+import { SVGSpine } from '@/components/atoms/SVGSpine';
+import { ArrowRight, Search, Sparkles, Star } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -39,21 +41,21 @@ const SectionDivider = ({ className }: { className?: string }) => (
 
 const galleryItems = [
   // Weddings
-  { id: 1, title: 'Royal Palace Wedding', category: 'Weddings', image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200', size: 'large' as const },
-  { id: 2, title: 'Grand Mandap Design', category: 'Weddings', image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800', size: 'tall' as const },
-  { id: 3, title: 'Traditional Ceremonies', category: 'Weddings', image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800', size: 'medium' as const },
+  { id: 1, title: 'Grand Mandap Architecture', category: 'Weddings', image: '/decor-1.jpg', size: 'large' as const },
+  { id: 2, title: 'Heritage Fusion Gala', category: 'Weddings', image: '/decor-2.jpg', size: 'tall' as const },
+  { id: 3, title: 'Traditional Ceremonies', category: 'Weddings', image: '/decor-3.jpg', size: 'medium' as const },
   
   // Birthdays
-  { id: 4, title: 'Luxury 1st Birthday', category: 'Birthdays', image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800', size: 'medium' as const },
-  { id: 5, title: 'Milestone Celebration', category: 'Birthdays', image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800', size: 'tall' as const },
+  { id: 4, title: 'Vibrant Sangeet Energy', category: 'Weddings', image: '/decor-4.jpg', size: 'medium' as const },
+  { id: 5, title: 'Milestone Celebration', category: 'Birthdays', image: '/decor-5.jpg', size: 'tall' as const },
   
   // Corporate
-  { id: 6, title: 'Global Tech Summit', category: 'Corporate', image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=1200', size: 'large' as const },
-  { id: 7, title: 'Gala Dinner Evening', category: 'Corporate', image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800', size: 'medium' as const },
+  { id: 6, title: 'Global Tech Summit', category: 'Corporate', image: '/hero-1.jpg', size: 'large' as const },
+  { id: 7, title: 'Tropical Royal Decor', category: 'Design', image: '/hero-2.jpg', size: 'medium' as const },
   
   // Festivals
-  { id: 8, title: 'Cultural Heritage Festival', category: 'Festivals', image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800', size: 'tall' as const },
-  { id: 9, title: 'Community Flea Market', category: 'Festivals', image: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80&w=800', size: 'medium' as const },
+  { id: 8, title: 'Cultural Heritage', category: 'Festivals', image: '/hero-3.jpg', size: 'tall' as const },
+  { id: 9, title: 'Vibrant Rituals', category: 'Festivals', image: '/hero-4.jpg', size: 'medium' as const },
 ];
 
 const categories = ['All', 'Weddings', 'Birthdays', 'Corporate', 'Festivals', 'Private'];
@@ -157,7 +159,7 @@ function GalleryContent() {
           <div className="fade-up order-1 md:order-2">
             <div className="relative aspect-[4/5] md:aspect-square overflow-hidden arch-mask border border-linen shadow-2xl group grayscale-0">
               <Image 
-                src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200" 
+                src="/hero-1.jpg" 
                 alt="Highlight Image" 
                 fill 
                 className="object-cover transition-all duration-[3s] group-hover:scale-110" 

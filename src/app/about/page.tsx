@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { Target, Compass, Sparkles, ShieldCheck, Zap, CheckCircle2, Star, Award, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/atoms/Badge';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
 import { Magnetic } from '@/components/atoms/Magnetic';
 import { TextReveal } from '@/components/atoms/TextReveal';
@@ -131,10 +132,10 @@ export default function AboutPage() {
         <section id="philosophy" className="container py-32 md:py-48" data-bg="var(--color-canvas)">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-32 items-center">
             <div className="lg:col-span-7 fade-up relative group">
-              <div className="absolute -inset-20 bg-accent-rose/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className="absolute -inset-20 bg-burnished/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               <div className="relative overflow-hidden arch-mask h-[70vh] md:h-[90vh] w-full shadow-2xl border border-linen z-10 transition-transform duration-1000 group-hover:scale-[1.02]">
                 <ParallaxImage 
-                  src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=2000" 
+                  src="/hero-9.jpg" 
                   alt="Behind the Scenes Process" 
                   speed={0.2}
                   aspectRatio="aspect-auto"
@@ -150,16 +151,16 @@ export default function AboutPage() {
                   <Badge variant="outline" className="border-heritage/30 text-heritage uppercase tracking-widest font-bold">Our Perspective</Badge>
                 </div>
                 <TextReveal 
-                  text="Architects of Magic." 
+                  text="Architects of Pure Magic." 
                   className="text-6xl md:text-8xl font-serif text-text-primary font-bold leading-[0.9] tracking-tighter" 
                 />
               </div>
               <div className="space-y-10 text-xl text-text-secondary font-sans font-light leading-relaxed">
                 <p>
-                  Zing Bliss Events specializes in planning, designing, and executing events with creativity, precision, and professionalism. The team works closely with clients to understand their vision and transform it into a well-curated event with exceptional attention to detail.
+                  Zing Bliss Events specializes in planning, designing, and executing events with a rare blend of infectious energy and analytical precision. We transform your wildest dreams into refined reality.
                 </p>
                 <p>
-                  From intimate celebrations to large-scale events, Zing Bliss ensures every element is thoughtfully managed to create magical moments and lasting memories.
+                  From intimate family moments to grand-scale global productions, we ensure every heartbeat of your celebration is felt with profound clarity and joy.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-8 pt-12">
@@ -239,8 +240,8 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-32 items-start">
             {[
-              { name: "Aryan Sharma", role: "Creative Director", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1200", col: "md:col-span-7", aspect: "aspect-[16/10] h-[400px] md:h-[600px]" },
-              { name: "Sonia Kapoor", role: "Lead Strategist", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=1200", col: "md:col-span-5", aspect: "aspect-[4/5] h-[400px] md:h-[600px]" }
+              { name: "Aryan Sharma", role: "Creative Director", img: "/hero-1.jpg", col: "md:col-span-7", aspect: "aspect-[16/10] h-[400px] md:h-[600px]" },
+              { name: "Sonia Kapoor", role: "Lead Strategist", img: "/hero-2.jpg", col: "md:col-span-5", aspect: "aspect-[4/5] h-[400px] md:h-[600px]" }
             ].map((v, i) => (
               <div key={i} className={`${v.col} fade-up space-y-10 group`}>
                 <div className={`relative ${v.aspect} overflow-hidden arch-mask border border-linen group transition-transform duration-1000 group-hover:scale-[1.01] shadow-xl`}>

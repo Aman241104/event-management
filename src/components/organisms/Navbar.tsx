@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Search, ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/atoms/Logo';
 import { cn } from '@/lib/utils';
@@ -18,6 +19,8 @@ const navLinks = [
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -44,19 +47,21 @@ export function Navbar() {
     setIsSearchOpen(true);
   };
 
+  const isScrolled = scrolled || !isHome;
+
   return (
     <>
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       <header className={cn(
         "fixed top-0 w-full z-50 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] border-b",
-        scrolled ? "bg-canvas/90 backdrop-blur-md border-linen/30 py-4 shadow-[0_1px_10px_rgba(0,0,0,0.01)]" : "bg-transparent border-transparent py-8",
+        isScrolled ? "bg-canvas/90 backdrop-blur-md border-linen/30 py-4 shadow-[0_1px_10px_rgba(0,0,0,0.01)]" : "bg-transparent border-transparent py-8",
         (isOpen || isSearchOpen) && "border-transparent bg-transparent backdrop-blur-0"
       )}>
         <nav className="container flex items-center justify-between">
           <Magnetic strength={0.05}>
             <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[60]">
-              <Logo scrolled={scrolled} />
+              <Logo scrolled={isScrolled} />
             </Link>
           </Magnetic>
 
@@ -68,14 +73,14 @@ export function Navbar() {
                   href={link.href}
                   className={cn(
                     "text-[10px] font-sans font-bold uppercase tracking-[0.4em] transition-colors duration-700 relative group py-2",
-                    scrolled ? "text-text-secondary hover:text-heritage" : "text-white/90 hover:text-burnished"
+                    isScrolled ? "text-text-secondary hover:text-heritage" : "text-white/90 hover:text-burnished"
                   )}
                 >
                   {link.label}
                   <span 
                     className={cn(
                       "absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-1000 cubic-bezier(0.19,1,0.22,1) group-hover:w-full",
-                      scrolled ? "bg-heritage/40" : "bg-burnished/60"
+                      isScrolled ? "bg-heritage/40" : "bg-burnished/60"
                     )} 
                   />
                 </Link>
@@ -88,7 +93,7 @@ export function Navbar() {
                   onClick={openSearch}
                   className={cn(
                     "transition-colors duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] flex items-center gap-3 group relative overflow-hidden py-2",
-                    scrolled ? "text-text-secondary hover:text-heritage" : "text-white/90 hover:text-burnished"
+                    isScrolled ? "text-text-secondary hover:text-heritage" : "text-white/90 hover:text-burnished"
                   )}
                   aria-label="Search"
                 >
@@ -101,7 +106,7 @@ export function Navbar() {
                 <Link href="/contact">
                   <Button variant="outline" size="sm" className={cn(
                     "btn-outline-prestige rounded-none px-12 h-14 transition-all duration-1000 font-bold",
-                    scrolled ? "text-heritage border-heritage/30 hover:border-heritage" : "text-white border-white/40 hover:border-burnished hover:text-white"
+                    isScrolled ? "text-heritage border-heritage/30 hover:border-heritage" : "!text-white border-white/40 hover:border-burnished hover:text-white"
                   )}>
                     INQUIRE
                   </Button>
@@ -116,7 +121,7 @@ export function Navbar() {
               onClick={openSearch}
               className={cn(
                 "p-3 transition-colors",
-                scrolled ? "text-text-primary hover:text-heritage" : "text-white hover:text-burnished"
+                isScrolled ? "text-text-primary hover:text-heritage" : "text-white hover:text-burnished"
               )}
               aria-label="Search"
             >
@@ -126,7 +131,7 @@ export function Navbar() {
             <button
               className={cn(
                 "p-3 focus:outline-none transition-colors",
-                scrolled ? "text-text-primary hover:text-heritage" : "text-white hover:text-burnished"
+                isScrolled ? "text-text-primary hover:text-heritage" : "text-white hover:text-burnished"
               )}
               onClick={toggleMobileMenu}
               aria-label="Toggle Menu"

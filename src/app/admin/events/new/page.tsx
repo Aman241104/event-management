@@ -85,7 +85,7 @@ export default function NewEventPage() {
                 {[1, 2].map((i) => (
                   <div key={i} className="aspect-square bg-surface border border-linen relative group overflow-hidden arch-mask rounded-none">
                     <Image 
-                      src={`https://images.unsplash.com/photo-${i === 1 ? '1511795409834-ef04bbd61622' : '1583939003579-730e3918a45a'}?auto=format&fit=crop&q=80&w=400`}
+                      src={i === 1 ? '/decor-1.jpg' : '/decor-2.jpg'}
                       alt="Thumbnail"
                       fill
                       className="object-cover transition-all duration-500"
@@ -106,7 +106,7 @@ export default function NewEventPage() {
               <div className="bg-white border border-linen p-4 shadow-2xl rotate-1 group hover:rotate-0 transition-transform duration-700">
                 <div className="relative aspect-[4/5] overflow-hidden arch-mask mb-8">
                   <Image 
-                    src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200" 
+                    src="/hero-1.jpg" 
                     alt="Preview" 
                     fill 
                     className="object-cover" 

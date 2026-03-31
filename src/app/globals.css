@@ -1,31 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* Ivory & Verdant Collection - Refined Editorial Luxury */
-  --color-canvas: #FCFBF7; /* Warm Bone Paper */
-  --color-surface: #F9F7F2; /* Lighter Soft Bone */
-  --color-surface-light: #FDFCF8; /* Very Light Linen */
+  /* Purer & More Refined Collection - Editorial Ultra-Luxury */
+  --color-canvas: #FDFCFB; /* Purer Soft Bone */
+  --color-surface: #F9F8F6; /* Minimalist Light Gray-Beige */
+  --color-surface-light: #FFFFFF; /* Pure White */
 
-  /* Heritage Green - Now used as a sophisticated accent */
+  /* Heritage Green - Strictly as a Sophisticated Accent */
   --color-heritage: #2D4C39; /* Deep Evergreen */
   --color-heritage-dark: #1E3326; 
-  --color-heritage-soft: rgba(45, 76, 57, 0.08);
+  --color-heritage-soft: rgba(45, 76, 57, 0.05);
 
-  /* Burnished Gold - Warm and Shimmering */
-  --color-burnished: #D4AF37; /* Royal Gold */
+  /* Royal Gold - Warm Accents */
+  --color-burnished: #C5A059; /* More Refined Champagne Gold */
   --color-burnished-light: #EBD694;
-  --color-gold-glint: rgba(212, 175, 55, 0.3);
+  --color-gold-glint: rgba(197, 160, 89, 0.2);
 
-  /* Accents for energy */
-  --color-energetic-orange: #E67E22; /* Saffron Hint */
-  --color-pure-ivory: #FFFFFF;
+  /* UI Accents */
+  --color-linen: #F0EDE4; /* Very Subtle Border */
+  --color-prestige-gold: rgba(197, 160, 89, 0.15);
 
-  --color-linen: #E8E4D9; /* Lighter Linen Border */
-  --color-prestige-gold: rgba(212, 175, 55, 0.2);
-
-  --color-text-primary: #121212; /* Richer Black */
-  --color-text-secondary: #555555; /* Slightly softer for readability */
-  --color-text-muted: #9E9E9E;
+  --color-text-primary: #1A1A1A; /* Refined Black */
+  --color-text-secondary: #666666; /* Editorial Gray */
+  --color-text-muted: #A0A0A0;
   --color-text-heritage: #2D4C39;
 
   --color-accent-whatsapp: #25D366;
@@ -38,58 +35,54 @@
 
 @layer base {
   :root {
-    --canvas: #FCFBF7;
+    --canvas: #FDFCFB;
     --heritage: #2D4C39;
-    --surface: #F9F7F2;
-    --text-primary: #121212;
-    --text-secondary: #555555;
-    --burnished: #D4AF37;
+    --surface: #F9F8F6;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --burnished: #C5A059;
   }
 
   body {
-    @apply bg-canvas text-text-primary antialiased font-sans overflow-x-hidden selection:bg-burnished/30 selection:text-text-primary;
+    @apply bg-canvas text-text-primary antialiased font-sans overflow-x-hidden selection:bg-burnished/20 selection:text-text-primary;
     background-color: var(--canvas);
     color: var(--text-primary);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight text-text-primary font-medium;
-    line-height: 1.05;
+    @apply font-serif tracking-tight text-text-primary font-light; /* Thinner for editorial feel */
+    line-height: 1.1;
   }
 
   p {
     @apply text-text-secondary font-sans font-light;
     line-height: 1.8;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
   }
 }
 
 @layer utilities {
   .btn-prestige {
-    @apply bg-text-primary text-canvas hover:bg-heritage transition-all duration-700 rounded-none tracking-[0.4em] font-sans uppercase text-[10px] font-bold relative overflow-hidden;
+    @apply bg-text-primary text-canvas hover:bg-heritage transition-all duration-1000 rounded-none tracking-[0.5em] font-sans uppercase text-[10px] font-bold relative overflow-hidden;
     transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .btn-prestige::before {
     content: '';
-    @apply absolute inset-0 bg-burnished/20 -translate-x-full transition-transform duration-700;
+    @apply absolute inset-0 bg-burnished/30 -translate-x-full transition-transform duration-1000;
   }
 
   .btn-prestige:hover::before {
     @apply translate-x-0;
   }
 
-  .btn-gold {
-    @apply bg-burnished text-canvas hover:bg-heritage-dark transition-all duration-700 rounded-none tracking-[0.4em] font-sans uppercase text-[10px] font-bold;
-  }
-
   .btn-outline-prestige {
-    @apply border border-linen text-text-primary hover:text-canvas transition-all duration-700 rounded-none tracking-[0.4em] font-sans uppercase text-[9px] font-bold relative overflow-hidden bg-transparent;
+    @apply border border-linen text-text-primary hover:text-canvas transition-all duration-1000 rounded-none tracking-[0.5em] font-sans uppercase text-[9px] font-bold relative overflow-hidden bg-transparent;
   }
 
   .btn-outline-prestige::after {
     content: '';
-    @apply absolute inset-0 bg-text-primary scale-x-0 origin-right transition-transform duration-700;
+    @apply absolute inset-0 bg-text-primary scale-x-0 origin-right transition-transform duration-1000;
     z-index: -1;
   }
 
@@ -97,37 +90,19 @@
     @apply scale-x-100 origin-left;
   }
 
-  .text-reveal-stagger {
-    @apply overflow-hidden inline-block;
-  }
-  
-  .text-reveal-stagger span {
-    @apply inline-block translate-y-full;
-  }
-
-  .container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    max-width: 1440px;
-    width: 100%;
-  }
-
-  @media (min-width: 768px) {
-    .container {
-      padding-left: 3rem;
-      padding-right: 3rem;
-    }
-  }
-
-  .hover-zoom {
-    @apply transition-transform duration-[10s] ease-out hover:scale-110;
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.03)];
   }
 
   .arch-mask {
     border-radius: 1000px 1000px 0 0;
-    @apply border border-linen overflow-hidden relative;
+    @apply border border-linen/50 overflow-hidden relative transition-all duration-1000;
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(var(--burnished) 0.5px, transparent 0.5px);
+    background-size: 60px 60px;
+    opacity: 0.15;
   }
 
   .side-label {
