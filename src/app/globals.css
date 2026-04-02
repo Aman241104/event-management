@@ -64,7 +64,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight text-text-primary font-medium; /* Slightly bolder for presence */
+    @apply font-serif tracking-tight text-text-primary font-medium;
     line-height: 1.1;
   }
 
@@ -92,13 +92,13 @@
 
   @media (min-width: 768px) {
     .container {
-      padding-left: 3.5rem; /* Slightly wider side padding for editorial feel */
+      padding-left: 3.5rem;
       padding-right: 3.5rem;
     }
   }
 
   .section-padding {
-    @apply py-16 md:py-24; /* Even tighter for "less scroll" */
+    @apply py-16 md:py-24;
   }
 
   .btn-prestige {
@@ -130,12 +130,7 @@
   }
 
   .glass-card {
-    @apply bg-white/40 backdrop-blur-md border border-linen/50 shadow-sm transition-all duration-700 hover:shadow-xl hover:border-heritage/20;
-  }
-}
-
-  .glass-card {
-    @apply bg-white/40 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.03)];
+    @apply bg-white/40 backdrop-blur-md border border-linen/50 shadow-[0_8px_32px_0_rgba(45,76,57,0.03)] transition-all duration-700 hover:shadow-xl hover:border-heritage/20;
   }
 
   .arch-mask {

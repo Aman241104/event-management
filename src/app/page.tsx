@@ -68,10 +68,10 @@ const testimonials = [
 ];
 
 const steps = [
-  { title: 'Spark The Vision', desc: 'We dive deep into your narrative to find the unique spark of your celebration.', icon: <Sparkles size={24} /> },
-  { title: 'Architectural Blueprint', desc: 'Meticulous planning where every logistical nuance is refined to perfection.', icon: <Zap size={24} /> },
-  { title: 'Artisanal Curation', desc: 'Selecting the world\'s finest vendors to bring the aesthetic to life.', icon: <Users size={24} /> },
-  { title: 'Pure Orchestration', desc: 'Flawless execution on the day, so you can fully live the moment.', icon: <Star size={24} /> },
+  { title: 'Spark The Vision', desc: 'We dive deep into your narrative to find the unique spark of your celebration.', icon: <Sparkles size={20} /> },
+  { title: 'Architectural Blueprint', desc: 'Meticulous planning where every logistical nuance is refined to perfection.', icon: <Zap size={20} /> },
+  { title: 'Artisanal Curation', desc: 'Selecting the world\'s finest vendors to bring the aesthetic to life.', icon: <Users size={20} /> },
+  { title: 'Pure Orchestration', desc: 'Flawless execution on the day, so you can fully live the moment.', icon: <Star size={20} /> },
 ];
 
 const stats = [
@@ -90,22 +90,22 @@ const heroImages = [
 ];
 
 const FloatingMetric = ({ label, value, className }: { label: string, value: string, className?: string }) => (
-  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-30 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
-    <span className="text-[9px] font-mono uppercase tracking-[0.5em] text-heritage/60 group-hover:text-heritage transition-colors">{label}</span>
-    <div className="h-px w-8 bg-heritage/20 group-hover:w-12 transition-all" />
-    <span className="text-2xl font-serif text-text-primary italic group-hover:text-heritage transition-colors">{value}</span>
+  <div className={cn("absolute hidden lg:flex flex-col gap-1 items-center text-center opacity-40 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
+    <span className="text-[8px] font-mono uppercase tracking-[0.4em] text-heritage/60 group-hover:text-heritage transition-colors small-caps">{label}</span>
+    <div className="h-px w-6 bg-heritage/20 group-hover:w-10 transition-all" />
+    <span className="text-xl font-serif text-text-primary italic group-hover:text-heritage transition-colors">{value}</span>
   </div>
 );
 
 const SectionDivider = ({ className }: { className?: string }) => (
-  <div className={cn("flex flex-col items-center gap-6 py-8 relative z-10", className)}>
-    <div className="h-20 w-[1px] bg-heritage/10" />
-    <div className="flex items-center gap-4">
-      <Sparkles size={8} className="text-heritage/20" />
-      <Star size={10} className="text-heritage/30" />
-      <Sparkles size={8} className="text-heritage/20" />
+  <div className={cn("flex flex-col items-center gap-4 py-6 relative z-10", className)}>
+    <div className="h-16 w-[1px] bg-heritage/10" />
+    <div className="flex items-center gap-3">
+      <Sparkles size={6} className="text-heritage/20" />
+      <Star size={8} className="text-heritage/30" />
+      <Sparkles size={6} className="text-heritage/20" />
     </div>
-    <div className="h-20 w-[1px] bg-heritage/10" />
+    <div className="h-16 w-[1px] bg-heritage/10" />
   </div>
 );
 
@@ -299,37 +299,37 @@ export default function Home() {
         <FloatingMetric label="Design" value="Atmospheric" className="top-[250vh] right-[10%]" />
 
         {/* 3. Services Section - Editorial Grid */}
-        <section id="services" className="py-24 bg-heritage-soft relative overflow-hidden" data-bg="var(--color-heritage-soft)">
-          <div className="container space-y-24">
-            <div className="flex flex-col items-center text-center space-y-8 fade-up relative z-10">
-              <div className="flex flex-col items-center gap-4">
-                <span className="text-[9px] font-mono text-heritage/60 uppercase tracking-[0.6em]">02 / EXPERTISE</span>
-                <div className="h-8 w-[1px] bg-heritage/10" />
+        <section id="services" className="py-20 bg-heritage-soft/50 relative overflow-hidden" data-bg="var(--color-heritage-soft)">
+          <div className="container space-y-20">
+            <div className="flex flex-col items-center text-center space-y-6 fade-up relative z-10">
+              <div className="flex flex-col items-center gap-3">
+                <span className="text-[9px] font-mono text-heritage uppercase tracking-[0.6em] small-caps">02 / EXPERTISE</span>
+                <div className="h-6 w-[1px] bg-heritage/20" />
               </div>
               <TextReveal 
                 text="Composed Clarity." 
-                className="text-5xl md:text-8xl font-serif font-medium text-text-primary tracking-tighter leading-[0.9]"
+                className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-text-primary tracking-tighter leading-[0.9]"
               />
-              <p className="text-base text-text-secondary font-sans font-light max-w-lg">
-                Our services are designed to bring a sense of calm and sophistication to the most complex celebrations.
+              <p className="text-sm text-text-secondary font-sans font-light max-w-md leading-relaxed">
+                Refined event architecture designed to bring a sense of calm and sophisticated energy to the most complex celebrations.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-heritage/10 border border-heritage/10 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-heritage/5 border border-heritage/5 relative z-10 shadow-2xl">
               {[
-                { title: 'Fine Art Planning', desc: 'Comprehensive coordination that honors your vision with architectural precision.', img: '/decor-1.jpg' },
-                { title: 'Atmospheric Design', desc: 'Crafting immersive environments through light, texture, and floral artistry.', img: '/decor-2.jpg' },
-                { title: 'Global Production', desc: 'Seamless execution across borders, managing every technical and logistical nuance.', img: '/decor-3.jpg' },
+                { title: 'Fine Art Planning', desc: 'Logistical mapping that honors your vision with architectural precision.', img: '/decor-1.jpg' },
+                { title: 'Atmospheric Design', desc: 'Immersive environments crafted through light, texture, and artistry.', img: '/decor-2.jpg' },
+                { title: 'Global Production', desc: 'Seamless execution across borders, managing every technical nuance.', img: '/decor-3.jpg' },
               ].map((service, i) => (
-                <div key={i} className="bg-canvas p-10 space-y-8 group hover:bg-surface transition-colors duration-700 flex flex-col items-center text-center">
-                  <div className="aspect-[4/5] w-full overflow-hidden grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-[2s] border border-heritage/5">
+                <div key={i} className="bg-canvas p-8 md:p-12 space-y-6 group hover:bg-white transition-all duration-700 flex flex-col items-center text-center border border-transparent hover:border-heritage/10">
+                  <div className="aspect-[4/5] w-full overflow-hidden grayscale-[0.5] opacity-90 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-[1.5s] arch-mask shadow-sm">
                     <Image src={service.img} alt={service.title} width={600} height={800} className="object-cover h-full w-full transition-transform duration-[5s] group-hover:scale-105" />
                   </div>
-                  <div className="space-y-4 flex flex-col items-center">
-                    <h3 className="text-2xl font-serif font-medium text-text-primary italic">{service.title}</h3>
-                    <p className="text-[13px] text-text-secondary leading-relaxed font-light max-w-[85%]">{service.desc}</p>
-                    <Link href="/services" className="inline-block text-[8px] uppercase tracking-[0.4em] font-bold text-heritage border-b border-heritage/20 pb-1 hover:border-heritage transition-all">
-                      Details
+                  <div className="space-y-3 flex flex-col items-center">
+                    <h3 className="text-xl md:text-2xl font-serif font-bold text-text-primary italic group-hover:text-heritage transition-colors">{service.title}</h3>
+                    <p className="text-[12px] text-text-secondary leading-relaxed font-light max-w-[90%]">{service.desc}</p>
+                    <Link href="/services" className="mt-2 inline-block text-[8px] uppercase tracking-[0.4em] font-bold text-heritage border-b border-heritage/10 pb-1 hover:border-heritage transition-all small-caps">
+                      View Details
                     </Link>
                   </div>
                 </div>
@@ -475,9 +475,9 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
               {steps.map((step, i) => (
                 <div key={i} className="space-y-6 group fade-up flex flex-col items-center text-center">
-                  <div className="text-[9px] font-mono text-text-muted mb-4 tracking-widest uppercase">Step / 0{i+1}</div>
+                  <div className="text-[9px] font-mono text-text-muted mb-4 tracking-widest uppercase small-caps">Step / 0{i+1}</div>
                   <div className="w-14 h-14 rounded-full bg-heritage-soft border border-heritage/10 flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-700">
-                    {React.cloneElement(step.icon as React.ReactElement, { size: 20 })}
+                    {step.icon}
                   </div>
                   <div className="space-y-3">
                     <h3 className="text-xl font-serif font-medium text-text-primary italic">{step.title}</h3>
