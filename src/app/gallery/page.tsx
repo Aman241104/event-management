@@ -41,21 +41,21 @@ const SectionDivider = ({ className }: { className?: string }) => (
 
 const galleryItems = [
   // Weddings
-  { id: 1, title: 'Grand Mandap Architecture', category: 'Weddings', image: '/decor-1.jpg', size: 'large' as const },
-  { id: 2, title: 'Heritage Fusion Gala', category: 'Weddings', image: '/decor-2.jpg', size: 'tall' as const },
-  { id: 3, title: 'Traditional Ceremonies', category: 'Weddings', image: '/decor-3.jpg', size: 'medium' as const },
-  
+  { id: 1, title: 'Palace Grand Mandap', category: 'Weddings', image: '/decor-1.jpg', size: 'large' as const },
+  { id: 2, title: 'Heritage Fusion Gala', category: 'Weddings', image: '/decor-2.jpg', size: 'medium' as const },
+  { id: 3, title: 'Traditional Ceremonies', category: 'Weddings', image: '/decor-3.jpg', size: 'small' as const },
+
   // Birthdays
   { id: 4, title: 'Vibrant Sangeet Energy', category: 'Weddings', image: '/decor-4.jpg', size: 'medium' as const },
   { id: 5, title: 'Milestone Celebration', category: 'Birthdays', image: '/decor-5.jpg', size: 'tall' as const },
-  
+
   // Corporate
   { id: 6, title: 'Global Tech Summit', category: 'Corporate', image: '/hero-1.jpg', size: 'large' as const },
-  { id: 7, title: 'Tropical Royal Decor', category: 'Design', image: '/hero-2.jpg', size: 'medium' as const },
-  
-  // Festivals
-  { id: 8, title: 'Cultural Heritage', category: 'Festivals', image: '/hero-3.jpg', size: 'tall' as const },
-  { id: 9, title: 'Vibrant Rituals', category: 'Festivals', image: '/hero-4.jpg', size: 'medium' as const },
+
+  // Design / Festivals
+  { id: 7, title: 'Tropical Royal Decor', category: 'Design', image: '/hero-2.jpg', size: 'small' as const },
+  { id: 8, title: 'Cultural Heritage', category: 'Festivals', image: '/hero-3.jpg', size: 'medium' as const },
+  { id: 9, title: 'Vibrant Rituals', category: 'Festivals', image: '/hero-4.jpg', size: 'small' as const },
 ];
 
 const categories = ['All', 'Weddings', 'Birthdays', 'Corporate', 'Festivals', 'Private'];

@@ -51,15 +51,32 @@
     color: var(--text-primary);
   }
 
+  body::after {
+    content: "";
+    @apply fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .main-content::before {
+    content: "";
+    @apply fixed inset-0 pointer-events-none z-[5] opacity-[0.4];
+    background: radial-gradient(circle at center, transparent 0%, rgba(45, 76, 57, 0.05) 100%);
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight text-text-primary font-light; /* Thinner for editorial feel */
+    @apply font-serif tracking-tight text-text-primary font-medium; /* Slightly bolder for presence */
     line-height: 1.1;
   }
 
   p {
     @apply text-text-secondary font-sans font-light;
-    line-height: 1.7; /* Slightly tighter than 1.8 */
+    line-height: 1.7;
     letter-spacing: 0.01em;
+  }
+
+  .small-caps {
+    font-variant: small-caps;
+    @apply tracking-[0.3em] font-bold;
   }
 }
 
@@ -75,17 +92,17 @@
 
   @media (min-width: 768px) {
     .container {
-      padding-left: 3rem;
-      padding-right: 3rem;
+      padding-left: 3.5rem; /* Slightly wider side padding for editorial feel */
+      padding-right: 3.5rem;
     }
   }
 
   .section-padding {
-    @apply py-20 md:py-32; /* Tighter than before */
+    @apply py-16 md:py-24; /* Even tighter for "less scroll" */
   }
 
   .btn-prestige {
-    @apply bg-text-primary text-canvas hover:bg-heritage transition-all duration-700 rounded-none tracking-[0.4em] font-sans uppercase text-[10px] font-bold relative overflow-hidden;
+    @apply bg-text-primary text-canvas hover:bg-heritage transition-all duration-700 rounded-none tracking-[0.4em] font-sans uppercase text-[9px] font-bold relative overflow-hidden;
     transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
   }
 
@@ -111,6 +128,11 @@
   .btn-outline-prestige:hover::after {
     @apply scale-x-100 origin-left;
   }
+
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md border border-linen/50 shadow-sm transition-all duration-700 hover:shadow-xl hover:border-heritage/20;
+  }
+}
 
   .glass-card {
     @apply bg-white/40 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.03)];
