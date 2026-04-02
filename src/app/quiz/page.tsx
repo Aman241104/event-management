@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
+import Link from 'next/link';
 import { Badge } from '@/components/atoms/Badge';
 import { Button } from '@/components/atoms/Button';
 import { TextReveal } from '@/components/atoms/TextReveal';
@@ -15,30 +16,30 @@ if (typeof window !== 'undefined') {
 
 const questions = [
   {
-    question: "How would you describe your ideal atmosphere?",
+    question: "What kind of feel do you want?",
     options: [
-      { id: 'classic', label: 'Classic & Heritage', desc: 'Palatial, grand, and timeless.' },
-      { id: 'modern', label: 'Modern & Minimal', desc: 'Sleek lines and understated luxury.' },
-      { id: 'botanical', label: 'Organic & Botanical', desc: 'Lush greenery and natural light.' },
-      { id: 'avantgarde', label: 'Avant-Garde', desc: 'Bold, artistic, and unconventional.' },
+      { id: 'classic', label: 'Classic', desc: 'Grand, traditional, and timeless.' },
+      { id: 'modern', label: 'Modern', desc: 'Sleek, simple, and clean.' },
+      { id: 'botanical', label: 'Natural', desc: 'Lots of greenery and flowers.' },
+      { id: 'avantgarde', label: 'Artistic', desc: 'Bold, creative, and unique.' },
     ]
   },
   {
-    question: "Select a color palette that speaks to you.",
+    question: "Pick your favorite colors.",
     options: [
-      { id: 'jewel', label: 'Jewel Tones', desc: 'Emerald, Sapphire, Ruby.' },
-      { id: 'neutral', label: 'Earthy Neutrals', desc: 'Ivory, Sand, Warm Stone.' },
-      { id: 'monochrome', label: 'High Contrast', desc: 'Obsidian Black & Pure White.' },
-      { id: 'pastel', label: 'Soft Pastels', desc: 'Dusty Rose, Mint, Lavender.' },
+      { id: 'jewel', label: 'Rich Colors', desc: 'Deep reds, greens, and blues.' },
+      { id: 'neutral', label: 'Soft Neutrals', desc: 'White, cream, and warm wood.' },
+      { id: 'monochrome', label: 'Black & White', desc: 'High contrast and sharp.' },
+      { id: 'pastel', label: 'Pastels', desc: 'Soft pinks, blues, and purples.' },
     ]
   },
   {
-    question: "What is the primary focus of the event?",
+    question: "What matters most to you?",
     options: [
-      { id: 'experience', label: 'Guest Experience', desc: 'Immersive activities and flow.' },
-      { id: 'aesthetic', label: 'Visual Impact', desc: 'Breathtaking decor and design.' },
-      { id: 'culinary', label: 'Culinary Journey', desc: 'Gastronomic excellence.' },
-      { id: 'entertainment', label: 'Entertainment', desc: 'World-class performances.' },
+      { id: 'experience', label: 'Guest Fun', desc: 'Great activities and flow.' },
+      { id: 'aesthetic', label: 'Look & Style', desc: 'Amazing decor and design.' },
+      { id: 'culinary', label: 'Great Food', desc: 'A focus on the best dining.' },
+      { id: 'entertainment', label: 'The Show', desc: 'Music and performances.' },
     ]
   }
 ];
@@ -51,29 +52,7 @@ export default function QuizPage() {
   const [isGenerating, setIsGenerating] = useState(false);
 
   useGSAP(() => {
-    // Initial reveal
-    gsap.from('.quiz-element', {
-      y: 30,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.1,
-      ease: 'power3.out',
-    });
-
-    // Background color shifts
-    const sections = gsap.utils.toArray<HTMLElement>('section[data-bg]');
-    sections.forEach((section) => {
-      const bgColor = section.getAttribute('data-bg');
-      if (bgColor) {
-        ScrollTrigger.create({
-          trigger: section,
-          start: 'top 50%',
-          end: 'bottom 50%',
-          onEnter: () => gsap.to(mainRef.current, { backgroundColor: bgColor, duration: 1.2, ease: 'power2.inOut' }),
-          onEnterBack: () => gsap.to(mainRef.current, { backgroundColor: bgColor, duration: 1.2, ease: 'power2.inOut' }),
-        });
-      }
-    });
+    gsap.from('.quiz-element', { y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out' });
   }, { scope: containerRef, dependencies: [currentStep, isGenerating] });
 
   const handleSelect = (optionId: string) => {
@@ -85,24 +64,22 @@ export default function QuizPage() {
       setCurrentStep(prev => prev + 1);
     } else {
       setIsGenerating(true);
-      // Simulate AI generation
       setTimeout(() => {
         setIsGenerating(false);
-        setCurrentStep(questions.length); // Show result state
-      }, 3000);
+        setCurrentStep(questions.length);
+      }, 2000);
     }
   };
 
   if (isGenerating) {
     return (
-      <main ref={mainRef} className="min-h-screen bg-canvas flex flex-col items-center justify-center text-center space-y-8 px-6 transition-colors duration-1000">
-        <div className="w-24 h-24 rounded-full border border-linen flex items-center justify-center animate-pulse shadow-inner relative">
-          <div className="absolute inset-0 bg-heritage/5 rounded-full blur-xl animate-pulse" />
-          <Wand2 size={36} className="text-heritage animate-spin-slow relative z-10" />
+      <main ref={mainRef} className="min-h-screen bg-canvas flex flex-col items-center justify-center text-center space-y-6 px-6">
+        <div className="w-20 h-20 rounded-full border border-linen flex items-center justify-center animate-pulse">
+          <Wand2 size={32} className="text-heritage animate-spin-slow" />
         </div>
-        <div className="space-y-4">
-          <h2 className="text-3xl md:text-5xl font-serif text-text-primary italic">Distilling Your <span className="text-heritage">Aesthetic...</span></h2>
-          <p className="text-text-secondary font-sans font-light uppercase tracking-[0.4em] text-[9px]">Our AI is curating your bespoke Event DNA.</p>
+        <div className="space-y-2">
+          <h2 className="text-3xl md:text-4xl font-serif text-text-primary italic">Finding Your <span className="text-heritage">Style...</span></h2>
+          <p className="text-text-secondary font-sans font-light uppercase tracking-[0.4em] text-[9px]">We are creating your custom event plan.</p>
         </div>
       </main>
     );
@@ -110,31 +87,20 @@ export default function QuizPage() {
 
   if (currentStep >= questions.length) {
     return (
-      <main ref={mainRef} className="min-h-screen bg-surface selection:bg-heritage selection:text-canvas relative transition-colors duration-1000">
-        <div ref={containerRef} className="relative">
-          
-          <section className="min-h-screen flex items-center justify-center py-24 md:py-32" data-bg="var(--color-surface)">
-            <div className="max-w-3xl w-full px-6 space-y-12 text-center quiz-element">
-              <div className="flex flex-col items-center gap-6">
-                <span className="text-[9px] font-mono text-heritage/40 uppercase tracking-[0.5em]">ANALYSIS COMPLETE — BESPOKE PROFILE</span>
-                <div className="mx-auto w-20 h-20 bg-heritage/10 rounded-full flex items-center justify-center text-heritage shadow-inner">
-                  <Sparkles size={32} />
-                </div>
-              </div>
-              <div className="space-y-6">
-                <Badge variant="solid" className="bg-heritage/10 text-heritage uppercase tracking-widest font-bold px-6 py-2 text-[10px]">Event DNA Unlocked</Badge>
-                <h1 className="text-5xl md:text-7xl lg:text-[8rem] font-serif text-text-primary font-bold leading-[0.9] tracking-tighter">Your Aesthetic is <br/><span className="text-heritage italic font-light">Heritage Modern</span></h1>
-                <p className="text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed max-w-2xl mx-auto pt-4">
-                  Based on your selections, your ideal event balances palatial grandeur with sleek, understated luxury. A bespoke Vision PDF has been curated for you.
-                </p>
-              </div>
-              <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Button variant="solid" className="btn-prestige py-6 px-12 text-sm font-bold">Download Vision Board</Button>
-                <Button variant="outline" className="btn-outline-prestige py-6 px-12 text-sm font-bold">Book Discovery Call</Button>
-              </div>
-            </div>
-          </section>
-        </div>
+      <main ref={mainRef} className="min-h-screen bg-surface flex items-center justify-center">
+        <section className="container max-w-3xl text-center space-y-10 quiz-element">
+          <div className="space-y-4">
+            <Badge variant="solid" className="bg-heritage/10 text-heritage uppercase tracking-widest font-bold px-6 py-2 text-[10px]">Result Ready</Badge>
+            <h1 className="text-5xl md:text-7xl font-serif text-text-primary font-bold tracking-tighter">Your style is <br/><span className="text-heritage italic font-light">Heritage Modern</span></h1>
+            <p className="text-lg text-text-secondary font-sans font-light max-w-2xl mx-auto">
+              Based on your answers, you like a mix of traditional grandeur and clean, modern luxury. Let's start planning!
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Button variant="solid" className="btn-prestige py-5 px-10 text-sm">Download Ideas</Button>
+            <Link href="/contact"><Button variant="outline" className="btn-outline-prestige py-5 px-10 text-sm">Talk to Us</Button></Link>
+          </div>
+        </section>
       </main>
     );
   }
@@ -143,73 +109,33 @@ export default function QuizPage() {
   const hasAnswered = !!answers[currentStep];
 
   return (
-    <main ref={mainRef} className="min-h-screen bg-canvas selection:bg-heritage selection:text-canvas relative transition-colors duration-1000">
-      <div ref={containerRef} className="relative">
-
-        <section className="min-h-screen flex flex-col justify-center py-24 md:py-32" data-bg="var(--color-canvas)">
-          <div className="container max-w-5xl flex-1 flex flex-col justify-center">
-            
-            <div className="space-y-8 mb-16 quiz-element text-center md:text-left">
-              <div className="flex flex-col md:flex-row md:items-center gap-4">
-                <span className="text-[9px] font-mono text-heritage/40 uppercase tracking-[0.5em]">10 / ASSESSMENT — EVENT PROFILE</span>
-                <div className="h-px w-16 bg-heritage/10 hidden md:block" />
-                <span className="text-[10px] font-mono text-heritage uppercase tracking-widest font-bold">Step {currentStep + 1} of {questions.length}</span>
-              </div>
-              <TextReveal 
-                as="h1"
-                text={currentQ.question}
-                className="text-4xl md:text-6xl font-serif text-text-primary font-bold leading-tight tracking-tight italic"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 quiz-element">
-              {currentQ.options.map((opt) => {
-                const isSelected = answers[currentStep] === opt.id;
-                return (
-                  <button
-                    key={opt.id}
-                    onClick={() => handleSelect(opt.id)}
-                    className={`text-left p-10 border transition-all duration-700 group relative overflow-hidden shadow-sm
-                      ${isSelected ? 'border-heritage bg-heritage-soft/20 shadow-xl' : 'border-linen hover:border-heritage/30 hover:bg-surface/40'}`}
-                  >
-                    <div className="flex justify-between items-start mb-4 relative z-10">
-                      <h3 className={`text-xl font-serif font-bold ${isSelected ? 'text-heritage' : 'text-text-primary'} transition-colors duration-500 italic`}>{opt.label}</h3>
-                      <div className={`w-7 h-7 rounded-full border flex items-center justify-center transition-all duration-500 ${isSelected ? 'bg-heritage border-heritage text-canvas' : 'border-linen text-transparent group-hover:border-heritage/30'}`}>
-                        <Check size={14} />
-                      </div>
-                    </div>
-                    <p className="text-[13px] font-sans font-light text-text-secondary relative z-10 leading-relaxed transition-colors duration-500">{opt.desc}</p>
-                    {isSelected && <div className="absolute inset-x-0 bottom-0 h-1 bg-heritage pointer-events-none" />}
-                    <div className="absolute -inset-10 bg-heritage/5 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="mt-16 flex justify-between items-center quiz-element border-t border-linen pt-10">
-              <button 
-                onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))}
-                className={`text-[10px] uppercase tracking-[0.4em] font-bold text-text-secondary hover:text-heritage transition-all duration-500 flex items-center gap-3 ${currentStep === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-              >
-                <span className="w-6 h-px bg-text-secondary/30 group-hover:bg-heritage/30" />
-                Previous Step
+    <main ref={mainRef} className="min-h-screen bg-canvas flex flex-col justify-center py-12">
+      <div ref={containerRef} className="container max-w-4xl">
+        <div className="space-y-6 mb-12 quiz-element text-center md:text-left">
+          <span className="text-[10px] font-mono text-heritage uppercase tracking-widest font-bold">Step {currentStep + 1} of {questions.length}</span>
+          <TextReveal as="h1" text={currentQ.question} className="text-4xl md:text-6xl font-serif text-text-primary font-bold tracking-tight italic" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 quiz-element">
+          {currentQ.options.map((opt) => {
+            const isSelected = answers[currentStep] === opt.id;
+            return (
+              <button key={opt.id} onClick={() => handleSelect(opt.id)} className={`text-left p-8 border transition-all duration-500 group relative overflow-hidden ${isSelected ? 'border-heritage bg-heritage-soft/10' : 'border-linen hover:border-heritage/20'}`}>
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className={`text-xl font-serif font-bold ${isSelected ? 'text-heritage' : 'text-text-primary'} italic`}>{opt.label}</h3>
+                  {isSelected && <Check size={16} className="text-heritage" />}
+                </div>
+                <p className="text-[13px] text-text-secondary font-light">{opt.desc}</p>
               </button>
-              
-              <Button 
-                variant="solid" 
-                className="btn-prestige px-12 py-5 text-sm font-bold"
-                disabled={!hasAnswered}
-                onClick={handleNext}
-                rightIcon={<ArrowRight size={18} />}
-              >
-                {currentStep === questions.length - 1 ? 'Reveal DNA' : 'Next Step'}
-              </Button>
-            </div>
-
-          </div>
-        </section>
+            );
+          })}
+        </div>
+        <div className="mt-12 flex justify-between items-center quiz-element pt-8 border-t border-linen">
+          <button onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))} className={`text-[10px] uppercase tracking-[0.4em] font-bold text-text-secondary hover:text-heritage transition-all ${currentStep === 0 ? 'opacity-0 pointer-events-none' : ''}`}>Back</button>
+          <Button variant="solid" className="btn-prestige px-10 py-4 text-sm" disabled={!hasAnswered} onClick={handleNext} rightIcon={<ArrowRight size={16} />}>
+            {currentStep === questions.length - 1 ? 'Finish' : 'Next'}
+          </Button>
+        </div>
       </div>
     </main>
   );
 }
-
