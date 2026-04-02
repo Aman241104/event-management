@@ -17,11 +17,11 @@ export function Badge({ children, variant = 'solid', dot, className }: BadgeProp
 
   return (
     <div className={cn(
-      "inline-flex items-center gap-2 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-sans font-medium rounded-full",
+      "inline-flex items-center gap-1.5 px-3 py-1 text-[9px] uppercase tracking-[0.15em] font-sans font-bold rounded-full",
       variants[variant],
       className
     )}>
-      {dot && <div className="w-1.5 h-1.5 rounded-full bg-heritage/80" />}
+      {dot && <div className="w-1 h-1 rounded-full bg-heritage/60" />}
       {children}
     </div>
   );

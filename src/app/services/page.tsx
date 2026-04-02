@@ -58,22 +58,22 @@ const serviceCategories = [
 ];
 
 const FloatingMetric = ({ label, value, className }: { label: string, value: string, className?: string }) => (
-  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-20 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
+  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-30 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
     <span className="text-[9px] font-mono uppercase tracking-[0.5em] text-heritage/60 group-hover:text-heritage transition-colors">{label}</span>
-    <div className="h-px w-8 bg-burnished/30 group-hover:w-12 transition-all" />
-    <span className="text-3xl font-serif text-text-primary italic group-hover:text-burnished transition-colors">{value}</span>
+    <div className="h-px w-8 bg-heritage/20 group-hover:w-12 transition-all" />
+    <span className="text-2xl font-serif text-text-primary italic group-hover:text-heritage transition-colors">{value}</span>
   </div>
 );
 
 const SectionDivider = ({ className }: { className?: string }) => (
-  <div className={cn("flex flex-col items-center gap-10 py-12 relative z-10", className)}>
-    <div className="h-24 w-[1px] bg-heritage/10" />
+  <div className={cn("flex flex-col items-center gap-6 py-8 relative z-10", className)}>
+    <div className="h-20 w-[1px] bg-heritage/10" />
     <div className="flex items-center gap-4">
-      <Sparkles size={8} className="text-burnished/30" />
-      <Star size={10} className="text-burnished/40" />
-      <Sparkles size={8} className="text-burnished/30" />
+      <Sparkles size={8} className="text-heritage/20" />
+      <Star size={10} className="text-heritage/30" />
+      <Sparkles size={8} className="text-heritage/20" />
     </div>
-    <div className="h-24 w-[1px] bg-heritage/10" />
+    <div className="h-20 w-[1px] bg-heritage/10" />
   </div>
 );
 
@@ -121,30 +121,30 @@ export default function ServicesPage() {
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-32 pb-24 relative overflow-hidden transition-colors duration-1000">
-      <div className="absolute top-0 left-0 w-full h-[50vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
-      <SVGSpine height="8000px" viewBox="0 0 20 8000" pathD="M 10 0 L 10 8000" opacity={0.1} />
-      <BackgroundFlourish type="floral" className="top-[5%] right-0 w-[40rem] h-[40rem]" opacity={0.02} />
+    <main ref={containerRef} className="min-h-screen pt-20 pb-16 relative overflow-hidden transition-colors duration-1000">
+      <div className="absolute top-0 left-0 w-full h-[40vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
+      <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.07} />
+      <BackgroundFlourish type="floral" className="top-[5%] right-0 w-[30rem] h-[30rem]" opacity={0.02} />
       <BackgroundFlourish type="geometric" className="top-[25%] left-0 w-64 h-64" opacity={0.01} />
       <BackgroundFlourish type="architectural" className="top-[50%] right-[2%] w-96 h-96" opacity={0.02} />
-      <BackgroundFlourish type="floral" className="top-[75%] left-[2%] w-[30rem] h-[30rem]" opacity={0.02} />
+      <BackgroundFlourish type="floral" className="top-[75%] left-[2%] w-[25rem] h-[25rem]" opacity={0.02} />
       
       {/* Large Decorative Text */}
-      <div className="absolute top-[100vh] left-[2%] text-[18vw] font-serif text-heritage/2 pointer-events-none select-none italic -rotate-12 z-0">Expertise</div>
-      <div className="absolute top-[350vh] right-[2%] text-[20vw] font-serif text-burnished/2 pointer-events-none select-none italic rotate-12 z-0">Production</div>
-      <div className="absolute top-[600vh] left-[5%] text-[15vw] font-serif text-heritage/2 pointer-events-none select-none italic -rotate-6 z-0">Workflow</div>
+      <div className="absolute top-[100vh] left-[2%] text-[15vw] font-serif text-heritage/[0.03] pointer-events-none select-none italic -rotate-12 z-0">Expertise</div>
+      <div className="absolute top-[350vh] right-[2%] text-[18vw] font-serif text-heritage/[0.03] pointer-events-none select-none italic rotate-12 z-0">Production</div>
+      <div className="absolute top-[600vh] left-[5%] text-[12vw] font-serif text-heritage/[0.03] pointer-events-none select-none italic -rotate-6 z-0">Workflow</div>
 
       {/* Header */}
-      <section id="header" className="container py-32 md:py-48 relative text-center space-y-12">
+      <section id="header" className="container py-24 md:py-32 relative text-center space-y-10">
         <div className="header-fade">
-          <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">03 / EXPERTISE</span>
+          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">03 / EXPERTISE</span>
         </div>
         <TextReveal 
           as="h1" 
           text="Bespoke Event Solutions." 
-          className="text-6xl md:text-[10rem] font-serif tracking-tighter text-text-primary leading-[0.9] font-bold" 
+          className="text-5xl md:text-[8rem] lg:text-[9rem] font-serif tracking-tighter text-text-primary leading-[0.9] font-bold" 
         />
-        <p className="header-fade text-xl md:text-3xl text-text-secondary font-sans font-light leading-relaxed max-w-4xl mx-auto pt-8">
+        <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-3xl mx-auto pt-6">
           Comprehensive event management and production services tailored for high-end celebrations and professional corporate gatherings.
         </p>
       </section>
@@ -157,11 +157,11 @@ export default function ServicesPage() {
           <React.Fragment key={service.id}>
             <section 
               data-bg={service.bgColor}
-              className="service-section min-h-screen flex items-center py-32 md:py-48 relative overflow-hidden"
+              className="service-section py-24 md:py-32 relative overflow-hidden"
             >
-              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-32 items-center relative z-10">
+              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-24 items-center relative z-10">
                 <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2 lg:ml-auto' : 'lg:mr-auto'} relative w-full`}>
-                  <div className="absolute -top-12 -left-12 text-[10rem] font-serif font-bold text-heritage/5 pointer-events-none select-none">
+                  <div className="absolute -top-10 -left-10 text-[8rem] font-serif font-bold text-heritage/[0.03] pointer-events-none select-none">
                     {service.id}
                   </div>
                   <MaskSlideImage 
@@ -173,37 +173,37 @@ export default function ServicesPage() {
                   />
                 </div>
                 
-                <div className={`lg:col-span-5 space-y-12 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                  <div className="space-y-8">
-                    <div className="flex flex-col gap-4">
-                      <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage">{service.label}</span>
+                <div className={`lg:col-span-5 space-y-10 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
+                  <div className="space-y-6">
+                    <div className="flex flex-col gap-3">
+                      <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage">{service.label}</span>
                       <TextReveal 
                         as="h2" 
                         text={service.title} 
-                        className="text-5xl md:text-8xl font-serif text-text-primary font-bold leading-[1.1]" 
+                        className="text-4xl md:text-7xl font-serif text-text-primary font-bold leading-[1.1]" 
                       />
                     </div>
                     
-                    <p className="text-xl text-text-secondary font-sans font-light leading-relaxed">
+                    <p className="text-lg text-text-secondary font-sans font-light leading-relaxed">
                       {service.description}
                     </p>
                   </div>
                   
-                  <div className="pt-10 border-t border-linen/50">
-                    <h4 className="text-[11px] uppercase tracking-[0.4em] text-heritage font-bold mb-8">Expertise Includes:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12">
+                  <div className="pt-8 border-t border-linen/50">
+                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-heritage font-bold mb-6">Expertise Includes:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-10">
                       {service.tags.map((tag) => (
-                        <li key={tag} className="text-[11px] font-sans uppercase tracking-[0.2em] text-text-primary font-light flex items-center gap-4 group">
-                          <div className="w-1.5 h-1.5 rounded-full bg-heritage/30 group-hover:bg-heritage transition-colors" />
+                        <li key={tag} className="text-[10px] font-sans uppercase tracking-[0.2em] text-text-primary font-light flex items-center gap-3 group">
+                          <div className="w-1 h-1 rounded-full bg-heritage/30 group-hover:bg-heritage transition-colors" />
                           {tag}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="pt-12">
+                  <div className="pt-8">
                     <a href={generateWhatsAppLink(service.title, 'Booking')} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="btn-outline-prestige px-16 h-20 text-sm tracking-[0.3em] font-bold">
+                      <Button variant="outline" className="btn-outline-prestige px-12 h-16 text-[10px] tracking-[0.3em] font-bold">
                         Inquire Details
                       </Button>
                     </a>
@@ -211,70 +211,70 @@ export default function ServicesPage() {
                 </div>
               </div>
             </section>
-            <SectionDivider className={cn(index % 2 === 0 ? "bg-surface" : "bg-canvas")} />
+            <SectionDivider className={cn(index % 2 === 0 ? "bg-heritage-soft" : "bg-canvas")} />
           </React.Fragment>
         ))}
       </div>
 
-      <FloatingMetric label="Strategy" value="Analytical" className="top-[250vh] left-[15%]" />
-      <FloatingMetric label="Execution" value="Flawless" className="top-[500vh] right-[15%]" />
+      <FloatingMetric label="Strategy" value="Analytical" className="top-[220vh] left-[15%]" />
+      <FloatingMetric label="Execution" value="Flawless" className="top-[450vh] right-[15%]" />
 
       {/* Process Journey */}
-      <section id="process" className="relative py-32 md:py-48">
-        <div className="container mb-32 text-center space-y-8">
-          <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">06 / METHODOLOGY</span>
+      <section id="process" className="relative py-24 md:py-32">
+        <div className="container mb-24 text-center space-y-6">
+          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">06 / METHODOLOGY</span>
           <TextReveal 
             as="h2" 
             text="Our Creative Workflow" 
-            className="text-5xl md:text-9xl font-serif text-text-primary font-bold" 
+            className="text-5xl md:text-8xl font-serif text-text-primary font-bold" 
           />
         </div>
         
-        <div className="container space-y-48">
+        <div className="container space-y-32">
           {[
             { step: '01', title: 'Discovery Dialogue', desc: 'An intimate consultation to understand your unique narrative and aesthetic vision.' },
             { step: '02', title: 'Architectural Planning', desc: 'Bespoke design renders and rigorous logistical mapping of your event landscape.' },
             { step: '03', title: 'Curation & Sourcing', desc: 'Selecting the finest artisans and global vendors to manifest every detail.' },
             { step: '04', title: 'The Masterful Reveal', desc: 'Onsite orchestration where vision meets reality in a flawless execution.' },
           ].map((item, i) => (
-            <div key={i} className="process-card grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-32 items-center">
+            <div key={i} className="process-card grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center">
               <div className="md:col-span-5 relative">
-                <span className="text-[15rem] md:text-[25rem] font-serif font-bold text-heritage/5 leading-none select-none">{item.step}</span>
-                <div className="absolute top-1/2 left-0 w-24 h-px bg-heritage/20" />
+                <span className="text-[10rem] md:text-[15rem] font-serif font-bold text-heritage/[0.03] leading-none select-none">{item.step}</span>
+                <div className="absolute top-1/2 left-0 w-16 h-px bg-heritage/20" />
               </div>
-              <div className="md:col-span-7 space-y-8">
-                <h3 className="text-4xl md:text-8xl font-serif text-text-primary font-bold tracking-tight">{item.title}</h3>
-                <p className="text-xl md:text-3xl text-text-secondary font-sans font-light leading-relaxed max-w-2xl">{item.desc}</p>
+              <div className="md:col-span-7 space-y-6">
+                <h3 className="text-3xl md:text-6xl font-serif text-text-primary font-bold tracking-tight italic">{item.title}</h3>
+                <p className="text-lg md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-xl">{item.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      <SectionDivider className="bg-surface" />
+      <SectionDivider className="bg-heritage-soft" />
 
       {/* FAQ */}
-      <section id="faq" className="py-32 md:py-48 container">
-        <div className="max-w-5xl mx-auto space-y-24">
-          <div className="text-center space-y-8">
-            <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">07 / CLARITY</span>
+      <section id="faq" className="py-24 md:py-32 container">
+        <div className="max-w-4xl mx-auto space-y-16">
+          <div className="text-center space-y-6">
+            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">07 / CLARITY</span>
             <TextReveal 
               as="h2" 
               text="Frequently Asked Questions" 
-              className="text-4xl md:text-7xl font-serif font-bold text-text-primary" 
+              className="text-4xl md:text-6xl font-serif font-bold text-text-primary" 
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               { q: 'Do you manage destination weddings outside India?', a: 'Yes, we are a global agency. We have extensive experience executing high-end destination weddings and corporate events across Dubai, London, and exclusive European venues.' },
               { q: 'How far in advance should we commission your services?', a: 'For large-scale weddings and corporate galas, we recommend securing your date 8 to 12 months in advance to ensure the availability of premier venues and top-tier artists.' },
               { q: 'Do you handle artist and celebrity management?', a: 'Absolutely. We have direct networks to source international DJs, live symphonies, and celebrity appearances, managing all contracts, riders, and hospitality.' },
               { q: 'Are your services customizable?', a: 'Every event we design is completely bespoke. We do not offer rigid packages; instead, we build a custom architectural plan based on your exact vision and scale.' },
             ].map((faq, i) => (
-              <div key={i} className="group border border-linen/50 hover:border-heritage/30 transition-all duration-700 bg-surface/10 p-12 cursor-pointer">
-                <h4 className="text-2xl font-serif font-bold text-text-primary group-hover:text-heritage transition-colors duration-500">{faq.q}</h4>
-                <p className="mt-6 text-lg text-text-secondary font-sans font-light leading-relaxed">{faq.a}</p>
+              <div key={i} className="group border border-linen/50 hover:border-heritage/20 transition-all duration-700 bg-heritage-soft/10 p-10 cursor-pointer">
+                <h4 className="text-xl font-serif font-bold text-text-primary group-hover:text-heritage transition-colors duration-500 italic">{faq.q}</h4>
+                <p className="mt-4 text-base text-text-secondary font-sans font-light leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -284,22 +284,22 @@ export default function ServicesPage() {
       <SectionDivider className="bg-canvas" />
 
       {/* CTA */}
-      <section id="cta" className="py-32 md:py-48 relative overflow-hidden">
+      <section id="cta" className="py-24 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
-        <div className="container text-center space-y-16 relative z-10">
+        <div className="container text-center space-y-12 relative z-10">
           <TextReveal 
             as="h2" 
             text="Ready to Orchestrate Your Event?" 
-            className="text-5xl md:text-9xl font-serif text-text-primary font-bold" 
+            className="text-5xl md:text-8xl lg:text-9xl font-serif text-text-primary font-bold tracking-tighter" 
           />
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-12 pt-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-8">
             <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" magnetic className="h-24 px-20 text-sm tracking-[0.4em] btn-prestige shadow-2xl" leftIcon={<MessageCircle size={20} />}>
+              <Button size="lg" magnetic className="h-20 px-16 text-[10px] tracking-[0.4em] btn-prestige shadow-2xl" leftIcon={<MessageCircle size={18} />}>
                 WhatsApp Us
               </Button>
             </a>
             <Link href="/contact">
-              <Button variant="outline" magnetic size="lg" className="h-24 px-20 text-sm tracking-[0.4em] btn-outline-prestige">
+              <Button variant="outline" magnetic size="lg" className="h-20 px-16 text-[10px] tracking-[0.4em] btn-outline-prestige">
                 Contact Form
               </Button>
             </Link>

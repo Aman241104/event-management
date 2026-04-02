@@ -17,9 +17,9 @@ export const Input = forwardRef<HTMLInputElement & HTMLSelectElement & HTMLTextA
     const Component = as as React.ElementType;
     
     return (
-      <div className="w-full space-y-3">
+      <div className="w-full space-y-2">
         {label && (
-          <label className="text-[10px] font-bold uppercase tracking-[0.4em] text-heritage/60">
+          <label className="text-[9px] font-bold uppercase tracking-[0.4em] text-heritage/50">
             {label}
           </label>
         )}
@@ -33,9 +33,9 @@ export const Input = forwardRef<HTMLInputElement & HTMLSelectElement & HTMLTextA
           <Component
             type={as === 'input' ? type : undefined}
             className={cn(
-              'w-full bg-transparent border-b border-linen py-4 text-base text-text-primary focus:outline-none focus:border-heritage transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] placeholder:text-text-secondary/20 disabled:opacity-50 rounded-none appearance-none',
-              icon ? 'pl-10' : 'pl-0',
-              as === 'textarea' ? 'min-h-[120px] resize-none' : '',
+              'w-full bg-transparent border-b border-linen py-3 text-sm text-text-primary focus:outline-none focus:border-heritage transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] placeholder:text-text-secondary/20 disabled:opacity-50 rounded-none appearance-none',
+              icon ? 'pl-8' : 'pl-0',
+              as === 'textarea' ? 'min-h-[100px] resize-none' : '',
               error ? 'border-red-500 focus:border-red-500' : '',
               className
             )}
@@ -44,7 +44,7 @@ export const Input = forwardRef<HTMLInputElement & HTMLSelectElement & HTMLTextA
           >
             {as === 'select' && options ? (
               options.map((opt) => (
-                <option key={opt.value} value={opt.value} className="bg-canvas text-text-primary">
+                <option key={opt.value} value={opt.value} className="bg-canvas text-text-primary text-sm">
                   {opt.label}
                 </option>
               ))
@@ -52,13 +52,13 @@ export const Input = forwardRef<HTMLInputElement & HTMLSelectElement & HTMLTextA
           </Component>
 
           {as === 'select' && (
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-heritage/40 group-focus-within:text-heritage transition-colors duration-500">
-              <ChevronDown size={16} strokeWidth={1.5} />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-heritage/30 group-focus-within:text-heritage transition-colors duration-500">
+              <ChevronDown size={14} strokeWidth={1.5} />
             </div>
           )}
         </div>
         {error && (
-          <p className="text-xs text-red-500 uppercase tracking-widest mt-2">
+          <p className="text-[10px] text-red-500 uppercase tracking-widest mt-1">
             {error}
           </p>
         )}

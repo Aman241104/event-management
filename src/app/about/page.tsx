@@ -22,22 +22,22 @@ if (typeof window !== 'undefined') {
 }
 
 const FloatingMetric = ({ label, value, className }: { label: string, value: string, className?: string }) => (
-  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-20 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
+  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-30 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
     <span className="text-[9px] font-mono uppercase tracking-[0.5em] text-heritage/60 group-hover:text-heritage transition-colors">{label}</span>
-    <div className="h-px w-8 bg-burnished/30 group-hover:w-12 transition-all" />
-    <span className="text-3xl font-serif text-text-primary italic group-hover:text-burnished transition-colors">{value}</span>
+    <div className="h-px w-8 bg-heritage/20 group-hover:w-12 transition-all" />
+    <span className="text-2xl font-serif text-text-primary italic group-hover:text-heritage transition-colors">{value}</span>
   </div>
 );
 
 const SectionDivider = ({ className }: { className?: string }) => (
-  <div className={cn("flex flex-col items-center gap-10 py-12 relative z-10", className)}>
-    <div className="h-24 w-[1px] bg-heritage/10" />
+  <div className={cn("flex flex-col items-center gap-6 py-8 relative z-10", className)}>
+    <div className="h-20 w-[1px] bg-heritage/10" />
     <div className="flex items-center gap-4">
-      <Sparkles size={8} className="text-burnished/30" />
-      <Star size={10} className="text-burnished/40" />
-      <Sparkles size={8} className="text-burnished/30" />
+      <Sparkles size={8} className="text-heritage/20" />
+      <Star size={10} className="text-heritage/30" />
+      <Sparkles size={8} className="text-heritage/20" />
     </div>
-    <div className="h-24 w-[1px] bg-heritage/10" />
+    <div className="h-20 w-[1px] bg-heritage/10" />
   </div>
 );
 
@@ -100,17 +100,17 @@ export default function AboutPage() {
         <div className="absolute top-[400vh] right-0 text-[20vw] font-serif text-heritage/2 pointer-events-none select-none italic -rotate-12 z-0">Collective</div>
 
         {/* Editorial Header */}
-        <section id="header" className="container py-32 md:py-48 relative text-center space-y-12" data-bg="var(--color-canvas)">
-          <div className="header-fade flex flex-col items-center gap-6">
-            <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">01 / STORY</span>
-            <Badge variant="solid" dot className="px-8 py-3 bg-heritage/5 text-heritage-dark uppercase tracking-widest font-bold border border-heritage/10 backdrop-blur-sm">The Agency Narrative</Badge>
+        <section id="header" className="container py-24 md:py-32 relative text-center space-y-10" data-bg="var(--color-canvas)">
+          <div className="header-fade flex flex-col items-center gap-4">
+            <span className="text-[9px] font-mono text-heritage/50 uppercase tracking-[0.5em]">01 / STORY</span>
+            <Badge variant="solid" dot className="px-6 py-2 bg-heritage/5 text-heritage-dark uppercase tracking-widest font-bold border border-heritage/10 backdrop-blur-sm">The Agency Narrative</Badge>
           </div>
           <TextReveal 
             as="h1" 
             text="About Zing Bliss Events." 
-            className="text-6xl md:text-[10rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" 
+            className="text-5xl md:text-[8rem] lg:text-[9rem] font-serif tracking-tighter text-text-primary leading-[0.9] font-bold" 
           />
-          <p className="header-fade text-xl md:text-3xl text-text-secondary font-sans font-light max-w-4xl mx-auto leading-relaxed pt-8 drop-shadow-sm">
+          <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light max-w-3xl mx-auto leading-relaxed pt-6 drop-shadow-sm">
             Dedicated to turning life&apos;s special moments into unforgettable experiences through creativity, precision, and professionalism.
           </p>
         </section>
@@ -118,7 +118,7 @@ export default function AboutPage() {
         <SectionDivider className="bg-canvas" />
 
         {/* Press Marquee */}
-        <section className="py-16 border-y border-linen/50 bg-surface/30" data-bg="var(--color-surface)">
+        <section className="py-12 border-y border-linen/50 bg-heritage-soft" data-bg="var(--color-heritage-soft)">
           <InfiniteMarquee 
             items={["Vogue Weddings", "Harper's Bazaar", "The Knot Luxe", "Brides Magazine", "Luxury Daily", "Elite Traveler"]} 
             speed={35}
@@ -126,14 +126,14 @@ export default function AboutPage() {
         </section>
 
         <SectionDivider className="bg-canvas" />
-        <FloatingMetric label="Perspective" value="Human Centric" className="top-[180vh] left-[15%]" />
+        <FloatingMetric label="Perspective" value="Human Centric" className="top-[160vh] left-[15%]" />
 
         {/* Philosophy Section - Asymmetrical */}
-        <section id="philosophy" className="container py-32 md:py-48" data-bg="var(--color-canvas)">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-32 items-center">
+        <section id="philosophy" className="container py-24 md:py-32" data-bg="var(--color-canvas)">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center">
             <div className="lg:col-span-7 fade-up relative group">
-              <div className="absolute -inset-20 bg-burnished/5 blur-[120px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-              <div className="relative overflow-hidden arch-mask h-[70vh] md:h-[90vh] w-full shadow-2xl border border-linen z-10 transition-transform duration-1000 group-hover:scale-[1.02]">
+              <div className="absolute -inset-16 bg-heritage/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className="relative overflow-hidden arch-mask h-[60vh] md:h-[80vh] w-full shadow-2xl border border-linen z-10 transition-transform duration-1000 group-hover:scale-[1.015]">
                 <ParallaxImage 
                   src="/hero-9.jpg" 
                   alt="Behind the Scenes Process" 
@@ -144,18 +144,18 @@ export default function AboutPage() {
                 />
               </div>
             </div>
-            <div className="lg:col-span-5 space-y-16 fade-up">
-              <div className="space-y-10">
-                <div className="flex items-center gap-6">
-                  <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">02 / PHILOSOPHY</span>
+            <div className="lg:col-span-5 space-y-12 fade-up">
+              <div className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <span className="text-[9px] font-mono text-heritage/50 uppercase tracking-[0.5em]">02 / PHILOSOPHY</span>
                   <Badge variant="outline" className="border-heritage/30 text-heritage uppercase tracking-widest font-bold">Our Perspective</Badge>
                 </div>
                 <TextReveal 
                   text="Architects of Pure Magic." 
-                  className="text-6xl md:text-8xl font-serif text-text-primary font-bold leading-[0.9] tracking-tighter" 
+                  className="text-5xl md:text-7xl font-serif text-text-primary font-bold leading-[0.95] tracking-tighter" 
                 />
               </div>
-              <div className="space-y-10 text-xl text-text-secondary font-sans font-light leading-relaxed">
+              <div className="space-y-8 text-lg text-text-secondary font-sans font-light leading-relaxed">
                 <p>
                   Zing Bliss Events specializes in planning, designing, and executing events with a rare blend of infectious energy and analytical precision. We transform your wildest dreams into refined reality.
                 </p>
@@ -163,16 +163,16 @@ export default function AboutPage() {
                   From intimate family moments to grand-scale global productions, we ensure every heartbeat of your celebration is felt with profound clarity and joy.
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-8 pt-12">
+              <div className="grid grid-cols-2 gap-6 pt-8">
                 {[
-                  { title: 'Creativity', icon: <Sparkles size={24} /> },
-                  { title: 'Precision', icon: <Target size={24} /> },
-                  { title: 'Reliability', icon: <ShieldCheck size={24} /> },
-                  { title: 'Ethics', icon: <Zap size={24} /> },
+                  { title: 'Creativity', icon: <Sparkles size={20} /> },
+                  { title: 'Precision', icon: <Target size={20} /> },
+                  { title: 'Reliability', icon: <ShieldCheck size={20} /> },
+                  { title: 'Ethics', icon: <Zap size={20} /> },
                 ].map((item, i) => (
-                  <div key={i} className="flex flex-col gap-6 p-10 border border-linen bg-surface/50 hover:border-heritage/30 transition-colors group">
-                    <div className="text-heritage group-hover:scale-110 transition-transform">{item.icon}</div>
-                    <span className="font-sans font-bold uppercase tracking-[0.3em] text-[10px] text-text-primary">{item.title}</span>
+                  <div key={i} className="flex flex-col gap-4 p-8 border border-linen bg-surface/50 hover:border-heritage/40 transition-colors group">
+                    <div className="text-heritage/80 group-hover:text-heritage group-hover:scale-110 transition-all">{item.icon}</div>
+                    <span className="font-sans font-bold uppercase tracking-[0.3em] text-[9px] text-text-primary">{item.title}</span>
                   </div>
                 ))}
               </div>
@@ -180,36 +180,36 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <SectionDivider className="bg-surface" />
-        <FloatingMetric label="Commitment" value="Excellence" className="top-[320vh] right-[15%]" />
+        <SectionDivider className="bg-heritage-soft" />
+        <FloatingMetric label="Commitment" value="Excellence" className="top-[300vh] right-[15%]" />
 
         {/* Vision & Mission - Symmetrical but Elevated */}
-        <section id="vision" className="py-32 md:py-48 bg-surface border-y border-linen dot-pattern relative overflow-hidden" data-bg="var(--color-surface)">
-          <div className="absolute top-0 left-0 w-full h-full bg-heritage/5 opacity-30 pointer-events-none" />
+        <section id="vision" className="py-24 md:py-32 bg-heritage-soft border-y border-linen dot-pattern relative overflow-hidden" data-bg="var(--color-heritage-soft)">
+          <div className="absolute top-0 left-0 w-full h-full bg-heritage/5 opacity-20 pointer-events-none" />
           <div className="container relative z-10">
-            <div className="flex flex-col items-center gap-6 mb-24 fade-up">
-              <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">03 / VISION</span>
-              <div className="h-px w-24 bg-linen" />
+            <div className="flex flex-col items-center gap-4 mb-16 fade-up">
+              <span className="text-[9px] font-mono text-heritage/50 uppercase tracking-[0.5em]">03 / VISION</span>
+              <div className="h-px w-16 bg-heritage/10" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-32 max-w-6xl mx-auto relative">
-              <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-linen/50 hidden md:block" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-5xl mx-auto relative">
+              <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-heritage/10 hidden md:block" />
 
-              <div className="space-y-12 fade-up md:pr-16">
-                <div className="w-20 h-20 rounded-full bg-heritage/10 flex items-center justify-center text-heritage shadow-inner">
-                  <Target size={36} />
+              <div className="space-y-10 fade-up md:pr-12">
+                <div className="w-16 h-16 rounded-full bg-heritage/5 flex items-center justify-center text-heritage shadow-inner">
+                  <Target size={28} />
                 </div>
-                <h3 className="text-5xl md:text-6xl font-serif text-text-primary font-bold leading-tight">Our <span className="text-heritage italic font-light">Vision.</span></h3>
-                <p className="text-text-secondary font-sans font-light leading-relaxed text-2xl italic border-l-4 border-heritage/30 pl-10">
+                <h3 className="text-4xl md:text-5xl font-serif text-text-primary font-bold leading-tight">Our <span className="text-heritage italic font-light">Vision.</span></h3>
+                <p className="text-text-secondary font-sans font-light leading-relaxed text-xl italic border-l-4 border-heritage/20 pl-8">
                   To achieve excellence in event management through reliability, creativity, and strong business ethics.
                 </p>
               </div>
 
-              <div className="space-y-12 fade-up md:pl-16">
-                <div className="w-20 h-20 rounded-full bg-heritage/10 flex items-center justify-center text-heritage shadow-inner">
-                  <Compass size={36} />
+              <div className="space-y-10 fade-up md:pl-12">
+                <div className="w-16 h-16 rounded-full bg-heritage/5 flex items-center justify-center text-heritage shadow-inner">
+                  <Compass size={28} />
                 </div>
-                <h3 className="text-5xl md:text-6xl font-serif text-text-primary font-bold leading-tight">Our <span className="text-heritage italic font-light">Mission.</span></h3>
-                <p className="text-text-secondary font-sans font-light leading-relaxed text-2xl italic border-l-4 border-heritage/30 pl-10">
+                <h3 className="text-4xl md:text-5xl font-serif text-text-primary font-bold leading-tight">Our <span className="text-heritage italic font-light">Mission.</span></h3>
+                <p className="text-text-secondary font-sans font-light leading-relaxed text-xl italic border-l-4 border-heritage/20 pl-8">
                   To inspire, create, and deliver remarkable experiences that leave a lasting impression on every client and guest.
                 </p>
               </div>
@@ -218,32 +218,32 @@ export default function AboutPage() {
         </section>
 
         <SectionDivider className="bg-canvas" />
-        <FloatingMetric label="Team" value="Collective" className="top-[480vh] left-[10%]" />
+        <FloatingMetric label="Team" value="Collective" className="top-[440vh] left-[10%]" />
 
         {/* Visionaries Section - Asymmetrical Grid */}
-        <section id="visionaries" className="pt-32 pb-24 md:pt-48 md:pb-32 container space-y-32" data-bg="var(--color-canvas)">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-12 fade-up">
-            <div className="space-y-10">
-              <div className="flex items-center gap-6">
-                <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">04 / ARCHITECTS</span>
+        <section id="visionaries" className="pt-20 pb-20 container space-y-24" data-bg="var(--color-canvas)">
+          <div className="flex flex-col md:flex-row justify-between items-end gap-10 fade-up">
+            <div className="space-y-8">
+              <div className="flex items-center gap-4">
+                <span className="text-[9px] font-mono text-heritage/50 uppercase tracking-[0.5em]">04 / ARCHITECTS</span>
                 <Badge variant="outline" className="text-heritage border-heritage/30 uppercase tracking-widest font-bold">The Collective</Badge>
               </div>
               <TextReveal 
                 text="Meet The Architects." 
-                className="text-6xl md:text-[8rem] font-serif font-bold text-text-primary leading-[0.9] tracking-tighter" 
+                className="text-5xl md:text-7xl font-serif font-bold text-text-primary leading-[0.95] tracking-tighter" 
               />
             </div>
-            <p className="text-lg text-text-secondary font-sans font-light max-w-sm mb-4 leading-relaxed">
+            <p className="text-base text-text-secondary font-sans font-light max-w-sm mb-2 leading-relaxed">
               A curated team of visionaries dedicated to the art of bespoke celebration and meticulous production.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-32 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start">
             {[
-              { name: "Aryan Sharma", role: "Creative Director", img: "/hero-1.jpg", col: "md:col-span-7", aspect: "aspect-[16/10] h-[400px] md:h-[600px]" },
-              { name: "Sonia Kapoor", role: "Lead Strategist", img: "/hero-2.jpg", col: "md:col-span-5", aspect: "aspect-[4/5] h-[400px] md:h-[600px]" }
+              { name: "Aryan Sharma", role: "Creative Director", img: "/hero-1.jpg", col: "md:col-span-7", aspect: "aspect-[16/10] h-[350px] md:h-[500px]" },
+              { name: "Sonia Kapoor", role: "Lead Strategist", img: "/hero-2.jpg", col: "md:col-span-5", aspect: "aspect-[4/5] h-[350px] md:h-[500px]" }
             ].map((v, i) => (
-              <div key={i} className={`${v.col} fade-up space-y-10 group`}>
+              <div key={i} className={`${v.col} fade-up space-y-8 group`}>
                 <div className={`relative ${v.aspect} overflow-hidden arch-mask border border-linen group transition-transform duration-1000 group-hover:scale-[1.01] shadow-xl`}>
                   <div className="absolute -inset-10 bg-heritage/5 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                   <ParallaxImage 
@@ -254,13 +254,13 @@ export default function AboutPage() {
                     containerClassName="h-full w-full"
                     className="transition-all duration-[3s]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-canvas/40 to-transparent opacity-60 z-10 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-canvas/30 to-transparent opacity-50 z-10 pointer-events-none" />
                 </div>
-                <div className="space-y-4">
-                  <h4 className="text-4xl font-serif font-bold text-text-primary tracking-tight">{v.name}</h4>
-                  <div className="flex items-center gap-4">
-                    <div className="w-8 h-px bg-heritage/30" />
-                    <p className="text-xs font-sans uppercase tracking-[0.4em] text-heritage font-bold">{v.role}</p>
+                <div className="space-y-3">
+                  <h4 className="text-3xl font-serif font-bold text-text-primary tracking-tight">{v.name}</h4>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-px bg-heritage/30" />
+                    <p className="text-[9px] font-sans uppercase tracking-[0.4em] text-heritage font-bold">{v.role}</p>
                   </div>
                 </div>
               </div>
@@ -269,23 +269,23 @@ export default function AboutPage() {
         </section>
 
         {/* Metrics Section */}
-        <section id="stats" className="py-24 bg-heritage relative overflow-hidden" data-bg="var(--color-heritage)">
+        <section id="stats" className="py-20 bg-heritage relative overflow-hidden" data-bg="var(--color-heritage)">
           <div className="absolute inset-0 dot-pattern opacity-[0.05] invert" />
           <div className="container relative z-10">
-            <div className="flex flex-col items-center gap-6 mb-24 fade-up">
-              <span className="text-[10px] font-mono text-canvas/40 uppercase tracking-[0.5em]">05 / METRICS</span>
-              <div className="h-px w-24 bg-canvas/20" />
+            <div className="flex flex-col items-center gap-4 mb-16 fade-up">
+              <span className="text-[9px] font-mono text-canvas/40 uppercase tracking-[0.5em]">05 / METRICS</span>
+              <div className="h-px w-16 bg-canvas/20" />
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-16 text-center fade-up">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center fade-up">
               {[
                 { num: '500+', label: 'Events Executed' },
                 { num: '15+', label: 'Global Destinations' },
                 { num: '50+', label: 'Industry Awards' },
                 { num: '100%', label: 'Client Satisfaction' },
               ].map((stat, i) => (
-                <div key={i} className="space-y-6">
-                  <h4 className="text-5xl md:text-8xl font-serif font-bold text-canvas drop-shadow-lg">{stat.num}</h4>
-                  <p className="text-[10px] md:text-xs font-sans font-bold uppercase tracking-[0.4em] text-canvas/60">{stat.label}</p>
+                <div key={i} className="space-y-4">
+                  <h4 className="text-4xl md:text-7xl font-serif font-bold text-canvas drop-shadow-lg">{stat.num}</h4>
+                  <p className="text-[9px] md:text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-canvas/60">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -293,56 +293,56 @@ export default function AboutPage() {
         </section>
 
         {/* Why Choose Us */}
-        <section id="why-choose-us" className="py-32 md:py-48 container space-y-32" data-bg="var(--color-canvas)">
-          <div className="text-center space-y-10 max-w-4xl mx-auto fade-up">
-            <div className="flex flex-col items-center gap-6 mb-4">
-              <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">06 / ADVANTAGE</span>
+        <section id="why-choose-us" className="py-24 md:py-32 container space-y-24" data-bg="var(--color-canvas)">
+          <div className="text-center space-y-8 max-w-4xl mx-auto fade-up">
+            <div className="flex flex-col items-center gap-4 mb-2">
+              <span className="text-[9px] font-mono text-heritage/50 uppercase tracking-[0.5em]">06 / ADVANTAGE</span>
               <Badge variant="outline" className="text-heritage-dark border-heritage/30 uppercase tracking-widest font-bold">The Zing Bliss Standard</Badge>
             </div>
             <TextReveal 
               text="Why We Are The Best Choice." 
-              className="text-6xl md:text-[9rem] font-serif font-bold text-text-primary tracking-tighter leading-[0.85]"
+              className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-text-primary tracking-tighter leading-[0.9]"
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: 'Unmatched Expertise', desc: 'Years of professional experience in high-end wedding and event planning.', icon: <Award size={32} /> },
-              { title: 'Detail Oriented', desc: 'We handle every nuance with absolute precision to ensure a stress-free day.', icon: <CheckCircle2 size={32} /> },
-              { title: 'Value for Money', desc: 'Optimizing resources to deliver premium quality within your desired scale.', icon: <Star size={32} /> },
-              { title: 'Transparent Dealings', desc: 'Clear communication and ethical business practices in every collaboration.', icon: <ShieldCheck size={32} /> },
+              { title: 'Unmatched Expertise', desc: 'Years of professional experience in high-end wedding and event planning.', icon: <Award size={28} /> },
+              { title: 'Detail Oriented', desc: 'We handle every nuance with absolute precision to ensure a stress-free day.', icon: <CheckCircle2 size={28} /> },
+              { title: 'Value for Money', desc: 'Optimizing resources to deliver premium quality within your desired scale.', icon: <Star size={28} /> },
+              { title: 'Transparent Dealings', desc: 'Clear communication and ethical business practices in every collaboration.', icon: <ShieldCheck size={28} /> },
             ].map((item, i) => (
-              <div key={i} className="glass-card p-16 text-center space-y-8 hover:border-heritage transition-all group fade-up relative overflow-hidden">
+              <div key={i} className="glass-card p-12 text-center space-y-6 hover:border-heritage transition-all group fade-up relative overflow-hidden">
                 <div className="absolute -inset-10 bg-heritage/5 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="relative mx-auto w-20 h-20 rounded-full bg-heritage/5 flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-500 shadow-sm">
+                <div className="relative mx-auto w-16 h-16 rounded-full bg-heritage/5 flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-canvas transition-all duration-500 shadow-sm">
                   {item.icon}
                 </div>
-                <h3 className="text-3xl font-serif font-bold text-text-primary relative z-10 tracking-tight">{item.title}</h3>
-                <p className="text-base text-text-secondary font-sans font-light leading-relaxed relative z-10">{item.desc}</p>
+                <h3 className="text-2xl font-serif font-bold text-text-primary relative z-10 tracking-tight italic">{item.title}</h3>
+                <p className="text-sm text-text-secondary font-sans font-light leading-relaxed relative z-10">{item.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* Final CTA */}
-        <section id="cta" className="py-32 md:py-48 container text-center space-y-20" data-bg="var(--color-surface)">
-          <div className="fade-up flex flex-col items-center gap-8">
-            <span className="text-[10px] font-mono text-heritage/40 uppercase tracking-[0.5em]">07 / CONNECT</span>
-            <h2 className="text-7xl md:text-[12rem] font-serif text-text-primary font-bold tracking-tighter leading-[0.8] drop-shadow-sm">
+        <section id="cta" className="py-24 md:py-32 container text-center space-y-16" data-bg="var(--color-heritage-soft)">
+          <div className="fade-up flex flex-col items-center gap-6">
+            <span className="text-[9px] font-mono text-heritage/50 uppercase tracking-[0.5em]">07 / CONNECT</span>
+            <h2 className="text-6xl md:text-9xl font-serif text-text-primary font-bold tracking-tighter leading-[0.85] drop-shadow-sm">
               Start Your <br/><span className="text-heritage italic font-light">Legacy.</span>
             </h2>
           </div>
-          <div className="pt-12 flex flex-col items-center gap-16 fade-up">
+          <div className="pt-8 flex flex-col items-center gap-12 fade-up">
             <Magnetic strength={0.2}>
               <Link href="/contact">
-                <Button size="lg" magnetic className="h-28 px-24 text-2xl btn-prestige rounded-none font-bold shadow-2xl transition-transform hover:scale-105 active:scale-95" rightIcon={<ArrowRight size={32} />}>
+                <Button size="lg" magnetic className="h-20 px-16 text-[10px] btn-prestige rounded-none font-bold shadow-2xl transition-transform hover:scale-105 active:scale-95" rightIcon={<ArrowRight size={20} />}>
                   Secure Your Date
                 </Button>
               </Link>
             </Magnetic>
-            <div className="flex flex-col items-center gap-6">
-              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-sm font-sans uppercase tracking-[0.5em] text-heritage font-bold border-b-2 border-heritage/20 pb-2 hover:text-text-primary hover:border-text-primary transition-all duration-500">Private Consultation</a>
-              <p className="text-[10px] font-mono text-text-secondary/50 uppercase tracking-[0.2em]">Bespoke Planning — Global Execution</p>
+            <div className="flex flex-col items-center gap-4">
+              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-[10px] font-sans uppercase tracking-[0.5em] text-heritage font-bold border-b border-heritage/20 pb-1 hover:text-text-primary hover:border-heritage transition-all duration-500">Private Consultation</a>
+              <p className="text-[9px] font-mono text-text-secondary/40 uppercase tracking-[0.2em]">Bespoke Planning — Global Execution</p>
             </div>
           </div>
         </section>
