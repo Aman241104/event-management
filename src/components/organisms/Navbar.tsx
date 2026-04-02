@@ -116,7 +116,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Right Side */}
-          <div className="flex items-center space-x-1 md:hidden relative z-[60]">
+          <div className="flex items-center space-x-1 lg:hidden relative z-[60]">
             <button 
               onClick={openSearch}
               className={cn(
@@ -149,8 +149,8 @@ export function Navbar() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'fixed inset-0 z-50 w-full h-screen bg-canvas md:hidden transition-all duration-1000 ease-[cubic-bezier(0.85,0,0.15,1)] transform',
-          isOpen ? 'translate-y-0' : '-translate-y-full'
+          'fixed inset-0 z-50 w-full h-screen bg-canvas lg:hidden transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] transform',
+          isOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
         )}
       >
         <div className="absolute inset-0 dot-pattern opacity-[0.03]" />
