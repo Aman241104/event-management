@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Star, Sparkles, Music, Zap, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
@@ -21,59 +22,51 @@ if (typeof window !== 'undefined') {
 const serviceCategories = [
   {
     id: '01',
-    label: '03 / EXPERTISE',
+    label: '01 / PLANNING',
     title: 'Event Management',
-    subtitle: 'Seamless Execution',
-    icon: <Star size={24} />,
-    description: 'Our team ensures seamless execution from concept to completion, delivering high-quality experiences for every type of event. We handle all logistics, vendor management, and onsite coordination with analytical precision.',
+    description: 'We handle everything from start to finish. Our team manages all the vendors and details so your event runs perfectly.',
     image: '/decor-1.jpg',
-    tags: ['Weddings', 'Corporate Events', 'Birthday Celebrations', 'Baby Showers', 'Festivals & Cultural Events', 'House Parties', 'Private Celebrations'],
-    bgColor: '#FDFCFB', // canvas
+    tags: ['Weddings', 'Business Events', 'Birthdays', 'Family Parties', 'Festivals'],
+    bgColor: '#FDFCFB',
     maskClass: 'bg-canvas'
   },
   {
     id: '02',
-    label: '04 / TALENT',
-    title: 'Entertainment Services',
-    subtitle: 'Vibrant & Engaging',
-    icon: <Music size={24} />,
-    description: 'To make every event lively and engaging, we provide a wide range of entertainment solutions. We source the finest global talent to match the unique energy of your celebration.',
+    label: '02 / TALENT',
+    title: 'Entertainment',
+    description: 'We bring the best music and performers to your event. From DJs to live bands, we make sure everyone has a great time.',
     image: '/decor-2.jpg',
-    tags: ['International Artists', 'DJs', 'Hosts / MCs', 'Live Musicians', 'Bands', 'Celebrity Appearances', 'Kids Entertainment', 'Activity Artists'],
-    bgColor: '#F9F8F6', // surface
+    tags: ['DJs', 'Live Bands', 'Celebrity Guests', 'Kids Fun', 'Hosts'],
+    bgColor: '#F9F8F6',
     maskClass: 'bg-surface'
   },
   {
     id: '03',
-    label: '05 / PRODUCTION',
-    title: 'Event Production & Setup',
-    subtitle: 'Precision & Creativity',
-    icon: <Zap size={24} />,
-    description: 'Our team manages the entire event production process with surgical precision and creative flair. From stage design to final execution, every detail is carefully orchestrated.',
+    label: '03 / STYLE',
+    title: 'Design & Setup',
+    description: 'We create beautiful spaces with great lighting and decor. We make sure every corner looks amazing for your guests.',
     image: '/decor-3.jpg',
-    tags: ['Event Setup & Decorations', 'Lighting & Sound Management', 'Catering Coordination', 'Concert Production', 'Videography & Photography', 'Photo Booth Experiences'],
-    bgColor: '#FFFFFF', // pure white
+    tags: ['Decorations', 'Lighting & Sound', 'Stage Design', 'Catering', 'Photos & Video'],
+    bgColor: '#FFFFFF',
     maskClass: 'bg-white'
   }
 ];
 
 const FloatingMetric = ({ label, value, className }: { label: string, value: string, className?: string }) => (
-  <div className={cn("absolute hidden lg:flex flex-col gap-2 items-center text-center opacity-30 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
-    <span className="text-[9px] font-mono uppercase tracking-[0.5em] text-heritage/60 group-hover:text-heritage transition-colors">{label}</span>
-    <div className="h-px w-8 bg-heritage/20 group-hover:w-12 transition-all" />
-    <span className="text-2xl font-serif text-text-primary italic group-hover:text-heritage transition-colors">{value}</span>
+  <div className={cn("absolute hidden lg:flex flex-col gap-1 items-center text-center opacity-40 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
+    <span className="text-[8px] font-mono uppercase tracking-[0.4em] text-heritage/60 group-hover:text-heritage transition-colors small-caps">{label}</span>
+    <div className="h-px w-6 bg-heritage/20 group-hover:w-10 transition-all" />
+    <span className="text-xl font-serif text-text-primary italic group-hover:text-heritage transition-colors">{value}</span>
   </div>
 );
 
 const SectionDivider = ({ className }: { className?: string }) => (
-  <div className={cn("flex flex-col items-center gap-6 py-8 relative z-10", className)}>
-    <div className="h-20 w-[1px] bg-heritage/10" />
-    <div className="flex items-center gap-4">
-      <Sparkles size={8} className="text-heritage/20" />
-      <Star size={10} className="text-heritage/30" />
-      <Sparkles size={8} className="text-heritage/20" />
+  <div className={cn("flex flex-col items-center gap-2 py-4 relative z-10", className)}>
+    <div className="flex items-center gap-3">
+      <Sparkles size={6} className="text-heritage/20" />
+      <Star size={8} className="text-heritage/30" />
+      <Sparkles size={6} className="text-heritage/20" />
     </div>
-    <div className="h-20 w-[1px] bg-heritage/10" />
   </div>
 );
 
@@ -81,16 +74,7 @@ export default function ServicesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Header fade in
-    gsap.from('.header-fade', {
-      y: 30,
-      opacity: 0,
-      duration: 1.2,
-      stagger: 0.1,
-      ease: 'power2.out',
-    });
-
-    // Background color shifts
+    gsap.from('.header-fade', { y: 30, opacity: 0, duration: 1.2, stagger: 0.1, ease: 'power2.out' });
     const sections = gsap.utils.toArray<HTMLElement>('.service-section');
     sections.forEach((section) => {
       const bgColor = section.dataset.bg;
@@ -102,211 +86,144 @@ export default function ServicesPage() {
         onEnterBack: () => gsap.to(containerRef.current, { backgroundColor: bgColor, duration: 1.2, ease: 'power2.inOut' }),
       });
     });
-
-    // Fade-up for process cards
     gsap.utils.toArray<HTMLElement>('.process-card').forEach((card) => {
       gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 90%',
-        },
-        y: 50,
+        scrollTrigger: { trigger: card, start: 'top 90%' },
+        y: 40,
         opacity: 0,
-        duration: 1.2,
+        duration: 1,
         ease: 'power3.out'
       });
     });
-
     setTimeout(() => ScrollTrigger.refresh(), 200);
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-20 pb-16 relative overflow-hidden transition-colors duration-1000">
-      <div className="absolute top-0 left-0 w-full h-[40vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
-      <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.07} />
-      <BackgroundFlourish type="floral" className="top-[5%] right-0 w-[30rem] h-[30rem]" opacity={0.02} />
-      <BackgroundFlourish type="geometric" className="top-[25%] left-0 w-64 h-64" opacity={0.01} />
-      <BackgroundFlourish type="architectural" className="top-[50%] right-[2%] w-96 h-96" opacity={0.02} />
-      <BackgroundFlourish type="floral" className="top-[75%] left-[2%] w-[25rem] h-[25rem]" opacity={0.02} />
+    <main ref={containerRef} className="min-h-screen pt-16 pb-12 relative overflow-hidden transition-colors duration-1000">
+      <div className="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
+      <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.05} />
       
-      {/* Large Decorative Text */}
-      <div className="absolute top-[100vh] left-[2%] text-[15vw] font-serif text-heritage/[0.03] pointer-events-none select-none italic -rotate-12 z-0">Expertise</div>
-      <div className="absolute top-[350vh] right-[2%] text-[18vw] font-serif text-heritage/[0.03] pointer-events-none select-none italic rotate-12 z-0">Production</div>
-      <div className="absolute top-[600vh] left-[5%] text-[12vw] font-serif text-heritage/[0.03] pointer-events-none select-none italic -rotate-6 z-0">Workflow</div>
-
       {/* Header */}
-      <section id="header" className="container py-24 md:py-32 relative text-center space-y-10">
+      <section id="header" className="container py-16 md:py-24 relative text-center space-y-8">
         <div className="header-fade">
-          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">03 / EXPERTISE</span>
+          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">03 / WHAT WE DO</span>
         </div>
-        <TextReveal 
-          as="h1" 
-          text="Bespoke Event Solutions." 
-          className="text-5xl md:text-[8rem] lg:text-[9rem] font-serif tracking-tighter text-text-primary leading-[0.9] font-bold" 
-        />
-        <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-3xl mx-auto pt-6">
-          Comprehensive event management and production services tailored for high-end celebrations and professional corporate gatherings.
+        <TextReveal as="h1" text="Our Services." className="text-5xl md:text-[8rem] lg:text-[9rem] font-serif tracking-tighter text-text-primary leading-[0.9] font-bold" />
+        <p className="header-fade text-lg md:text-xl text-text-secondary font-sans font-light max-w-3xl mx-auto pt-4">
+          We offer complete event planning and design services for weddings, business events, and private parties.
         </p>
       </section>
 
-      <SectionDivider className="bg-canvas" />
+      <SectionDivider />
 
       {/* Services Spectrum List */}
       <div id="list">
         {serviceCategories.map((service, index) => (
           <React.Fragment key={service.id}>
-            <section 
-              data-bg={service.bgColor}
-              className="service-section py-24 md:py-32 relative overflow-hidden"
-            >
-              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-24 items-center relative z-10">
-                <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2 lg:ml-auto' : 'lg:mr-auto'} relative w-full`}>
-                  <div className="absolute -top-10 -left-10 text-[8rem] font-serif font-bold text-heritage/[0.03] pointer-events-none select-none">
-                    {service.id}
-                  </div>
-                  <MaskSlideImage 
-                    src={service.image} 
-                    alt={service.title}
-                    aspectRatio="aspect-[4/5] md:aspect-[16/10]"
-                    className="shadow-2xl grayscale-0"
-                    maskColor={service.maskClass}
-                  />
+            <section data-bg={service.bgColor} className="service-section py-16 md:py-24 relative overflow-hidden">
+              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center relative z-10">
+                <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2' : ''} relative w-full`}>
+                  <MaskSlideImage src={service.image} alt={service.title} aspectRatio="aspect-[4/5] md:aspect-[16/10]" className="shadow-lg grayscale-0" maskColor={service.maskClass} />
                 </div>
-                
-                <div className={`lg:col-span-5 space-y-10 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                  <div className="space-y-6">
-                    <div className="flex flex-col gap-3">
-                      <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage">{service.label}</span>
-                      <TextReveal 
-                        as="h2" 
-                        text={service.title} 
-                        className="text-4xl md:text-7xl font-serif text-text-primary font-bold leading-[1.1]" 
-                      />
-                    </div>
-                    
-                    <p className="text-lg text-text-secondary font-sans font-light leading-relaxed">
-                      {service.description}
-                    </p>
+                <div className={`lg:col-span-5 space-y-8 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
+                  <div className="space-y-4">
+                    <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage small-caps">{service.label}</span>
+                    <TextReveal as="h2" text={service.title} className="text-4xl md:text-7xl font-serif text-text-primary font-bold leading-[1.1]" />
+                    <p className="text-lg text-text-secondary font-sans font-light leading-relaxed">{service.description}</p>
                   </div>
-                  
-                  <div className="pt-8 border-t border-linen/50">
-                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-heritage font-bold mb-6">Expertise Includes:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-10">
+                  <div className="pt-6 border-t border-linen/50">
+                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-heritage font-bold mb-4 small-caps">Services Include:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3">
                       {service.tags.map((tag) => (
-                        <li key={tag} className="text-[10px] font-sans uppercase tracking-[0.2em] text-text-primary font-light flex items-center gap-3 group">
-                          <div className="w-1 h-1 rounded-full bg-heritage/30 group-hover:bg-heritage transition-colors" />
+                        <li key={tag} className="text-[10px] font-sans uppercase tracking-[0.2em] text-text-primary font-light flex items-center gap-2">
+                          <div className="w-1 h-1 rounded-full bg-heritage/30" />
                           {tag}
                         </li>
                       ))}
                     </ul>
                   </div>
-
-                  <div className="pt-8">
+                  <div className="pt-4">
                     <a href={generateWhatsAppLink(service.title, 'Booking')} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="btn-outline-prestige px-12 h-16 text-[10px] tracking-[0.3em] font-bold">
-                        Inquire Details
-                      </Button>
+                      <Button variant="outline" className="btn-outline-prestige px-10 h-14 text-[10px] tracking-[0.3em] font-bold">Ask Us Anything</Button>
                     </a>
                   </div>
                 </div>
               </div>
             </section>
-            <SectionDivider className={cn(index % 2 === 0 ? "bg-heritage-soft" : "bg-canvas")} />
+            <SectionDivider />
           </React.Fragment>
         ))}
       </div>
 
-      <FloatingMetric label="Strategy" value="Analytical" className="top-[220vh] left-[15%]" />
-      <FloatingMetric label="Execution" value="Flawless" className="top-[450vh] right-[15%]" />
+      <FloatingMetric label="Our Promise" value="Smooth Events" className="top-[200vh] left-[15%]" />
 
       {/* Process Journey */}
-      <section id="process" className="relative py-24 md:py-32">
-        <div className="container mb-24 text-center space-y-6">
-          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">06 / METHODOLOGY</span>
-          <TextReveal 
-            as="h2" 
-            text="Our Creative Workflow" 
-            className="text-5xl md:text-8xl font-serif text-text-primary font-bold" 
-          />
+      <section id="process" className="relative py-16 md:py-24">
+        <div className="container mb-16 text-center space-y-4">
+          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">06 / THE PROCESS</span>
+          <TextReveal as="h2" text="How It Works." className="text-5xl md:text-8xl font-serif text-text-primary font-bold" />
         </div>
-        
-        <div className="container space-y-32">
+        <div className="container space-y-16">
           {[
-            { step: '01', title: 'Discovery Dialogue', desc: 'An intimate consultation to understand your unique narrative and aesthetic vision.' },
-            { step: '02', title: 'Architectural Planning', desc: 'Bespoke design renders and rigorous logistical mapping of your event landscape.' },
-            { step: '03', title: 'Curation & Sourcing', desc: 'Selecting the finest artisans and global vendors to manifest every detail.' },
-            { step: '04', title: 'The Masterful Reveal', desc: 'Onsite orchestration where vision meets reality in a flawless execution.' },
+            { step: '01', title: 'First Talk', desc: 'We meet to understand your ideas and what you want for your big day.' },
+            { step: '02', title: 'The Plan', desc: 'We create a careful plan and design so you can see how it will look.' },
+            { step: '03', title: 'Choosing Details', desc: 'We help you pick the best vendors and items to match your style.' },
+            { step: '04', title: 'The Event', desc: 'We are there on the day to make sure everything runs perfectly.' },
           ].map((item, i) => (
-            <div key={i} className="process-card grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center">
-              <div className="md:col-span-5 relative">
-                <span className="text-[10rem] md:text-[15rem] font-serif font-bold text-heritage/[0.03] leading-none select-none">{item.step}</span>
-                <div className="absolute top-1/2 left-0 w-16 h-px bg-heritage/20" />
+            <div key={i} className="process-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
+              <div className="md:col-span-5 relative text-center md:text-left">
+                <span className="text-[8rem] md:text-[12rem] font-serif font-bold text-heritage/[0.03] leading-none">{item.step}</span>
               </div>
-              <div className="md:col-span-7 space-y-6">
-                <h3 className="text-3xl md:text-6xl font-serif text-text-primary font-bold tracking-tight italic">{item.title}</h3>
-                <p className="text-lg md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-xl">{item.desc}</p>
+              <div className="md:col-span-7 space-y-4">
+                <h3 className="text-3xl md:text-5xl font-serif text-text-primary font-bold italic">{item.title}</h3>
+                <p className="text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed max-w-xl">{item.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      <SectionDivider className="bg-heritage-soft" />
+      <SectionDivider />
 
       {/* FAQ */}
-      <section id="faq" className="py-24 md:py-32 container">
-        <div className="max-w-4xl mx-auto space-y-16">
-          <div className="text-center space-y-6">
-            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">07 / CLARITY</span>
-            <TextReveal 
-              as="h2" 
-              text="Frequently Asked Questions" 
-              className="text-4xl md:text-6xl font-serif font-bold text-text-primary" 
-            />
+      <section id="faq" className="py-16 md:py-24 container">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <div className="text-center space-y-4">
+            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">07 / QUESTIONS</span>
+            <TextReveal as="h2" text="Common Questions." className="text-4xl md:text-6xl font-serif font-bold text-text-primary" />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              { q: 'Do you manage destination weddings outside India?', a: 'Yes, we are a global agency. We have extensive experience executing high-end destination weddings and corporate events across Dubai, London, and exclusive European venues.' },
-              { q: 'How far in advance should we commission your services?', a: 'For large-scale weddings and corporate galas, we recommend securing your date 8 to 12 months in advance to ensure the availability of premier venues and top-tier artists.' },
-              { q: 'Do you handle artist and celebrity management?', a: 'Absolutely. We have direct networks to source international DJs, live symphonies, and celebrity appearances, managing all contracts, riders, and hospitality.' },
-              { q: 'Are your services customizable?', a: 'Every event we design is completely bespoke. We do not offer rigid packages; instead, we build a custom architectural plan based on your exact vision and scale.' },
+              { q: 'Do you plan events in other cities?', a: 'Yes, we plan events all over India and in other countries too.' },
+              { q: 'When should we book your services?', a: 'For big events, it is best to book 8 to 12 months in advance.' },
+              { q: 'Can you help with music and artists?', a: 'Yes, we have a large network of DJs, bands, and performers.' },
+              { q: 'Is every event custom?', a: 'Yes, we plan every event specifically for you and your vision.' },
             ].map((faq, i) => (
-              <div key={i} className="group border border-linen/50 hover:border-heritage/20 transition-all duration-700 bg-heritage-soft/10 p-10 cursor-pointer">
-                <h4 className="text-xl font-serif font-bold text-text-primary group-hover:text-heritage transition-colors duration-500 italic">{faq.q}</h4>
-                <p className="mt-4 text-base text-text-secondary font-sans font-light leading-relaxed">{faq.a}</p>
+              <div key={i} className="group border border-linen/50 hover:border-heritage/20 transition-all bg-heritage-soft/5 p-8">
+                <h4 className="text-xl font-serif font-bold text-text-primary group-hover:text-heritage transition-colors italic">{faq.q}</h4>
+                <p className="mt-3 text-base text-text-secondary font-sans font-light leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <SectionDivider className="bg-canvas" />
+      <SectionDivider />
 
       {/* CTA */}
-      <section id="cta" className="py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
-        <div className="container text-center space-y-12 relative z-10">
-          <TextReveal 
-            as="h2" 
-            text="Ready to Orchestrate Your Event?" 
-            className="text-5xl md:text-8xl lg:text-9xl font-serif text-text-primary font-bold tracking-tighter" 
-          />
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-8">
+      <section id="cta" className="py-16 md:py-24 relative overflow-hidden">
+        <div className="container text-center space-y-8 relative z-10">
+          <TextReveal as="h2" text="Ready to start?" className="text-5xl md:text-8xl lg:text-9xl font-serif text-text-primary font-bold tracking-tighter" />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-4">
             <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" magnetic className="h-20 px-16 text-[10px] tracking-[0.4em] btn-prestige shadow-2xl" leftIcon={<MessageCircle size={18} />}>
-                WhatsApp Us
-              </Button>
+              <Button size="lg" className="h-16 px-16 text-[10px] btn-prestige shadow-2xl" leftIcon={<MessageCircle size={18} />}>WhatsApp Us</Button>
             </a>
             <Link href="/contact">
-              <Button variant="outline" magnetic size="lg" className="h-20 px-16 text-[10px] tracking-[0.4em] btn-outline-prestige">
-                Contact Form
-              </Button>
+              <Button variant="outline" size="lg" className="h-16 px-16 text-[10px] btn-outline-prestige">Send a Message</Button>
             </Link>
           </div>
         </div>
       </section>
-
     </main>
   );
 }
