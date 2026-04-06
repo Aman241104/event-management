@@ -135,7 +135,35 @@
 
   .arch-mask {
     border-radius: 1000px 1000px 0 0;
-    @apply border-none overflow-hidden relative transition-all duration-1000;
+    @apply overflow-hidden relative transition-all duration-1000 border border-linen/50 bg-surface shadow-sm;
+  }
+
+  .arch-mask::after {
+    content: "";
+    @apply absolute inset-0 border border-white/20 pointer-events-none rounded-[inherit] z-20;
+  }
+
+  .frame-editorial {
+    @apply relative p-4 bg-white border border-linen/30 shadow-xl transition-all duration-700 hover:shadow-2xl hover:border-heritage/10;
+  }
+
+  .frame-editorial::before {
+    content: "";
+    @apply absolute inset-0 border-[0.5px] border-heritage/5 pointer-events-none z-20 m-1;
+  }
+
+  .frame-editorial .image-container {
+    @apply overflow-hidden relative w-full h-full rounded-[2px];
+  }
+
+  .frame-arch-luxury {
+    border-radius: 1000px 1000px 0 0;
+    @apply relative p-3 bg-white border border-linen/50 shadow-md transition-all duration-1000 overflow-hidden;
+  }
+
+  .frame-arch-luxury .image-container {
+    border-radius: 1000px 1000px 0 0;
+    @apply overflow-hidden relative w-full h-full;
   }
 
   .dot-pattern {

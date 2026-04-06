@@ -223,8 +223,10 @@ export default function Home() {
             </div>
             
             <div className="w-full max-w-5xl relative fade-up">
-              <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden arch-mask shadow-sm bg-surface">
-                <Image src="/hero-9.jpg" alt="Event Decor" fill className="object-cover" />
+              <div className="relative aspect-[16/9] md:aspect-[21/9] frame-arch-luxury shadow-xl">
+                <div className="image-container">
+                  <Image src="/hero-9.jpg" alt="Event Decor" fill className="object-cover" />
+                </div>
               </div>
             </div>
           </div>
@@ -243,15 +245,17 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-heritage/5 border border-heritage/5 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-px md:bg-heritage/5 border border-heritage/5 relative z-10">
               {[
                 { title: 'Planning', desc: 'We manage everything so you can relax.', img: '/decor-1.jpg' },
                 { title: 'Design', desc: 'Beautiful spaces created just for you.', img: '/decor-2.jpg' },
                 { title: 'Execution', desc: 'We make sure everything works perfectly.', img: '/decor-3.jpg' },
               ].map((service, i) => (
                 <div key={i} className="bg-canvas p-8 space-y-6 group hover:bg-white transition-all duration-700 flex flex-col items-center text-center border border-transparent hover:border-heritage/10">
-                  <div className="aspect-[4/5] w-full overflow-hidden arch-mask shadow-sm">
-                    <Image src={service.img} alt={service.title} width={600} height={800} className="object-cover h-full w-full grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000" />
+                  <div className="aspect-[4/5] w-full frame-arch-luxury shadow-sm">
+                    <div className="image-container">
+                      <Image src={service.img} alt={service.title} width={600} height={800} className="object-cover h-full w-full grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000" />
+                    </div>
                   </div>
                   <div className="space-y-2 flex flex-col items-center">
                     <h3 className="text-xl font-serif font-bold text-text-primary italic">{service.title}</h3>
@@ -275,15 +279,17 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {eventTypes.map((type, i) => (
-                <div key={i} className="group relative aspect-square overflow-hidden cursor-pointer bg-surface arch-mask shadow-sm">
-                  <Image src={type.image} alt={type.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-heritage/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <div className="absolute inset-x-4 bottom-4 p-6 bg-canvas/90 backdrop-blur-md border border-linen translate-y-2 group-hover:translate-y-0 transition-transform duration-700 flex flex-col items-center text-center">
-                    <span className="text-heritage/70 mb-2">{type.icon}</span>
-                    <h4 className="text-xl font-serif font-bold text-text-primary italic">{type.title}</h4>
-                    <p className="text-[11px] text-text-secondary font-light mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700">{type.desc}</p>
+                <div key={i} className="group relative aspect-square cursor-pointer frame-editorial shadow-md hover:-translate-y-2 transition-all duration-700">
+                  <div className="image-container">
+                    <Image src={type.image} alt={type.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-heritage/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    <div className="absolute inset-x-4 bottom-4 p-6 bg-canvas/90 backdrop-blur-md border border-linen translate-y-2 group-hover:translate-y-0 transition-transform duration-700 flex flex-col items-center text-center rounded-[2px] z-10">
+                      <span className="text-heritage/70 mb-2">{type.icon}</span>
+                      <h4 className="text-xl font-serif font-bold text-text-primary italic">{type.title}</h4>
+                      <p className="text-[11px] text-text-secondary font-light mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700">{type.desc}</p>
+                    </div>
                   </div>
                 </div>
               ))}

@@ -61,28 +61,32 @@ export function MaskSlideImage({
   return (
     <div 
       ref={containerRef}
-      className={cn("relative overflow-hidden group", aspectRatio, className)}
+      className={cn("relative group", aspectRatio, className)}
     >
-      {/* The Actual Image Wrapper */}
-      <div ref={imageWrapperRef} className="w-full h-full relative">
-        <Image 
-          src={src} 
-          alt={alt} 
-          fill
-          className="object-cover transition-all duration-[10s] group-hover:scale-105" 
-          priority={priority}
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
+      {/* The Frame and Image */}
+      <div className="w-full h-full frame-arch-luxury">
+        <div className="image-container">
+          <div ref={imageWrapperRef} className="w-full h-full relative">
+            <Image 
+              src={src} 
+              alt={alt} 
+              fill
+              className="object-cover transition-all duration-[10s] group-hover:scale-105" 
+              priority={priority}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          
+          {/* Very Subtle Decorative Overlay */}
+          <div className="absolute inset-0 bg-heritage/5 mix-blend-multiply z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-1000" />
+        </div>
       </div>
-      
-      {/* The Reveal Mask - Matches the background color */}
+
+      {/* The Reveal Mask - Matches the background color and covers the ENTIRE frame */}
       <div 
         ref={maskRef}
-        className={cn("absolute inset-0 z-20 pointer-events-none origin-bottom", maskColor)}
+        className={cn("absolute inset-[-10px] z-20 pointer-events-none origin-bottom", maskColor)}
       />
-
-      {/* Very Subtle Decorative Overlay */}
-      <div className="absolute inset-0 bg-heritage/5 mix-blend-multiply z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-1000" />
     </div>
   );
 }

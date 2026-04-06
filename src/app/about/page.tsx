@@ -101,8 +101,10 @@ export default function AboutPage() {
         <section id="philosophy" className="container py-16 md:py-20" data-bg="var(--color-canvas)">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center">
             <div className="lg:col-span-7 fade-up relative group">
-              <div className="relative overflow-hidden arch-mask h-[50vh] md:h-[70vh] w-full shadow-lg border-none z-10">
-                <Image src="/hero-9.jpg" alt="Our Work" fill className="object-cover" />
+              <div className="relative frame-arch-luxury h-[50vh] md:h-[70vh] w-full shadow-2xl z-10">
+                <div className="image-container">
+                  <Image src="/hero-9.jpg" alt="Our Work" fill className="object-cover" />
+                </div>
               </div>
             </div>
             <div className="lg:col-span-5 space-y-10 fade-up">
