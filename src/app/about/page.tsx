@@ -76,13 +76,13 @@ export default function AboutPage() {
         <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" className="opacity-[0.05]" />
         
         {/* Editorial Header */}
-        <section id="header" className="container py-16 md:py-20 relative text-center space-y-8" data-bg="var(--color-canvas)">
-          <div className="header-fade flex flex-col items-center gap-3">
-            <span className="text-[9px] font-mono text-heritage/50 uppercase tracking-[0.5em] small-caps">01 / STORY</span>
-            <Badge variant="solid" dot className="px-6 py-2 bg-heritage/5 text-heritage-dark uppercase tracking-widest font-bold border border-heritage/10 backdrop-blur-sm">Who We Are</Badge>
+        <section id="header" className="container py-24 md:py-32 relative text-center space-y-12" data-bg="var(--color-canvas)">
+          <div className="header-fade flex flex-col items-center gap-4">
+            <span className="text-[10px] font-mono text-heritage/50 uppercase tracking-[0.6em] small-caps">01 / OUR STORY</span>
+            <div className="h-12 w-[1px] bg-burnished/30" />
           </div>
-          <TextReveal as="h1" text="About Zing Bliss." className="text-5xl md:text-[8rem] lg:text-[9rem] font-serif tracking-tighter text-text-primary leading-[0.9] font-bold" />
-          <p className="header-fade text-lg md:text-xl text-text-secondary font-sans font-light max-w-3xl mx-auto leading-relaxed pt-4">
+          <TextReveal as="h1" text="About Zing Bliss." className="text-5xl md:text-[8rem] lg:text-[9.5rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" />
+          <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light max-w-3xl mx-auto leading-relaxed pt-6">
             We are a team of event planners dedicated to making your special moments beautiful and easy to enjoy.
           </p>
         </section>
@@ -90,7 +90,7 @@ export default function AboutPage() {
         <SectionDivider />
 
         {/* Press Marquee */}
-        <section className="py-8 border-y border-linen/50 bg-heritage-soft/20" data-bg="var(--color-heritage-soft)">
+        <section className="py-12 border-y border-linen/50 bg-white" data-bg="var(--color-canvas)">
           <InfiniteMarquee items={["Vogue", "Bazaar", "The Knot", "Brides", "Luxury Daily", "Elite Traveler"]} speed={35} />
         </section>
 
@@ -98,37 +98,36 @@ export default function AboutPage() {
         <FloatingMetric label="Our Focus" value="Real Moments" className="top-[140vh] left-[15%]" />
 
         {/* Philosophy Section */}
-        <section id="philosophy" className="container py-16 md:py-20" data-bg="var(--color-canvas)">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center">
+        <section id="philosophy" className="container py-32" data-bg="var(--color-canvas)">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center">
             <div className="lg:col-span-7 fade-up relative group">
-              <div className="relative frame-arch-luxury h-[50vh] md:h-[70vh] w-full shadow-2xl z-10">
+              <div className="relative overflow-hidden rounded-2xl h-[50vh] md:h-[75vh] w-full shadow-2xl z-10">
                 <div className="image-container">
-                  <Image src="/hero-9.jpg" alt="Our Work" fill className="object-cover" />
+                  <Image src="/hero-9.jpg" alt="Our Work" fill className="object-cover transition-transform duration-[10s] group-hover:scale-110" />
                 </div>
               </div>
             </div>
-            <div className="lg:col-span-5 space-y-10 fade-up">
+            <div className="lg:col-span-5 space-y-12 fade-up">
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <span className="text-[9px] font-mono text-heritage/50 uppercase tracking-[0.5em] small-caps">02 / WHY US</span>
-                  <Badge variant="outline" className="border-heritage/30 text-heritage uppercase tracking-widest font-bold">Our Style</Badge>
+                  <span className="text-[10px] font-mono text-heritage/50 uppercase tracking-[0.5em] small-caps">02 / WHY US</span>
                 </div>
-                <TextReveal text="Simply Beautiful." className="text-5xl md:text-7xl font-serif text-text-primary font-bold leading-[0.95] tracking-tighter" />
+                <TextReveal text="Simply Beautiful." className="text-5xl md:text-8xl font-serif text-text-primary font-bold leading-[0.9] tracking-tighter" />
               </div>
-              <div className="space-y-6 text-lg text-text-secondary font-sans font-light leading-relaxed">
+              <div className="space-y-8 text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed">
                 <p>We plan, design, and run events with care. We want to make your dreams come true without any stress.</p>
                 <p>From small parties to big weddings, we make sure every detail is just right for you and your guests.</p>
               </div>
-              <div className="grid grid-cols-2 gap-4 pt-4">
+              <div className="grid grid-cols-2 gap-6 pt-6">
                 {[
-                  { title: 'Creativity', icon: <Sparkles size={20} /> },
-                  { title: 'Care', icon: <Target size={20} /> },
-                  { title: 'Trust', icon: <ShieldCheck size={20} /> },
-                  { title: 'Energy', icon: <Zap size={20} /> },
+                  { title: 'Creativity', icon: <Sparkles size={24} /> },
+                  { title: 'Care', icon: <Target size={24} /> },
+                  { title: 'Trust', icon: <ShieldCheck size={24} /> },
+                  { title: 'Energy', icon: <Zap size={24} /> },
                 ].map((item, i) => (
-                  <div key={i} className="flex flex-col gap-3 p-6 border border-linen bg-surface/30 hover:border-heritage/20 transition-colors group">
-                    <div className="text-heritage/80 group-hover:text-heritage transition-all">{item.icon}</div>
-                    <span className="font-sans font-bold uppercase tracking-[0.3em] text-[9px] text-text-primary small-caps">{item.title}</span>
+                  <div key={i} className="flex flex-col gap-4 p-8 rounded-2xl border border-linen bg-white shadow-sm hover:border-heritage/20 hover:shadow-xl transition-all duration-700 group">
+                    <div className="text-heritage/80 group-hover:text-heritage transition-all transform group-hover:scale-110 duration-500">{item.icon}</div>
+                    <span className="font-sans font-bold uppercase tracking-[0.3em] text-[10px] text-text-primary small-caps">{item.title}</span>
                   </div>
                 ))}
               </div>
@@ -139,26 +138,30 @@ export default function AboutPage() {
         <SectionDivider className="bg-heritage-soft" />
 
         {/* Vision & Mission */}
-        <section id="vision" className="py-16 md:py-20 bg-heritage-soft/30 border-y border-linen/30 relative overflow-hidden" data-bg="var(--color-heritage-soft)">
+        <section id="vision" className="py-32 bg-surface border-y border-linen/30 relative overflow-hidden" data-bg="var(--color-surface)">
           <div className="container relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-              <div className="space-y-6 fade-up">
-                <div className="w-12 h-12 rounded-full bg-heritage/5 flex items-center justify-center text-heritage">
-                  <Target size={24} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+              <div className="space-y-8 fade-up p-12 bg-white rounded-2xl shadow-sm border border-linen/30">
+                <div className="w-16 h-16 rounded-2xl bg-heritage-soft flex items-center justify-center text-heritage">
+                  <Target size={32} />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-serif text-text-primary font-bold">Our <span className="text-heritage italic font-light">Goal.</span></h3>
-                <p className="text-text-secondary font-sans font-light leading-relaxed text-xl italic border-l-2 border-heritage/20 pl-6">
-                  To be the best at planning events by being creative, reliable, and honest.
-                </p>
+                <div className="space-y-4">
+                  <h3 className="text-4xl md:text-5xl font-serif text-text-primary font-bold">Our <span className="text-heritage italic font-light">Goal.</span></h3>
+                  <p className="text-text-secondary font-sans font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-heritage/20 pl-8">
+                    To be the best at planning events by being creative, reliable, and honest.
+                  </p>
+                </div>
               </div>
-              <div className="space-y-6 fade-up">
-                <div className="w-12 h-12 rounded-full bg-heritage/5 flex items-center justify-center text-heritage">
-                  <Compass size={24} />
+              <div className="space-y-8 fade-up p-12 bg-white rounded-2xl shadow-sm border border-linen/30">
+                <div className="w-16 h-16 rounded-2xl bg-heritage-soft flex items-center justify-center text-heritage">
+                  <Compass size={32} />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-serif text-text-primary font-bold">Our <span className="text-heritage italic font-light">Mission.</span></h3>
-                <p className="text-text-secondary font-sans font-light leading-relaxed text-xl italic border-l-2 border-heritage/20 pl-6">
-                  To create amazing experiences that you and your guests will never forget.
-                </p>
+                <div className="space-y-4">
+                  <h3 className="text-4xl md:text-5xl font-serif text-text-primary font-bold">Our <span className="text-heritage italic font-light">Mission.</span></h3>
+                  <p className="text-text-secondary font-sans font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-heritage/20 pl-8">
+                    To create amazing experiences that you and your guests will never forget.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -167,24 +170,24 @@ export default function AboutPage() {
         <SectionDivider />
 
         {/* Final CTA */}
-        <section id="cta" className="py-16 md:py-20 container text-center space-y-12" data-bg="var(--color-canvas)">
-          <div className="fade-up flex flex-col items-center gap-4">
-            <span className="text-[9px] font-mono text-heritage/50 uppercase tracking-[0.5em] small-caps">03 / CONNECT</span>
-            <h2 className="text-6xl md:text-9xl font-serif text-text-primary font-bold tracking-tighter leading-[0.85]">
+        <section id="cta" className="py-32 md:py-48 container text-center space-y-16" data-bg="var(--color-canvas)">
+          <div className="fade-up flex flex-col items-center gap-6">
+            <span className="text-[10px] font-mono text-heritage/50 uppercase tracking-[0.5em] small-caps">03 / CONNECT</span>
+            <h2 className="text-6xl md:text-[10rem] font-serif text-text-primary font-bold tracking-tighter leading-[0.85]">
               Plan Your <br/><span className="text-heritage italic font-light">Day.</span>
             </h2>
           </div>
-          <div className="pt-4 flex flex-col items-center gap-8 fade-up">
+          <div className="pt-8 flex flex-col items-center gap-10 fade-up">
             <Magnetic strength={0.2}>
               <Link href="/contact">
-                <Button size="lg" className="h-16 px-16 text-[10px] btn-prestige shadow-2xl transition-transform hover:scale-105" rightIcon={<ArrowRight size={20} />}>
-                  Book Now
+                <Button size="lg" className="h-20 px-20 text-[11px] bg-heritage text-white hover:bg-heritage-dark shadow-2xl transition-all hover:scale-105" rightIcon={<ArrowRight size={24} />}>
+                  Book Consultation
                 </Button>
               </Link>
             </Magnetic>
-            <div className="flex flex-col items-center gap-2">
-              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-[9px] font-sans uppercase tracking-[0.5em] text-heritage font-bold border-b border-heritage/20 pb-1 hover:text-text-primary transition-all small-caps">Message Us</a>
-              <p className="text-[9px] font-mono text-text-secondary/40 uppercase tracking-[0.2em] small-caps">Bespoke Planning — For You</p>
+            <div className="flex flex-col items-center gap-4">
+              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-[11px] font-sans uppercase tracking-[0.5em] text-heritage font-bold border-b border-heritage/20 pb-2 hover:text-text-primary transition-all small-caps">Message Us</a>
+              <p className="text-[10px] font-mono text-text-secondary/40 uppercase tracking-[0.2em] small-caps">Bespoke Planning — For You</p>
             </div>
           </div>
         </section>

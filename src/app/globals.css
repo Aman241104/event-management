@@ -134,7 +134,7 @@
   }
 
   .arch-mask {
-    border-radius: 1000px 1000px 0 0;
+    border-radius: 16px;
     @apply overflow-hidden relative transition-all duration-1000 border border-linen/50 bg-surface shadow-sm;
   }
 
@@ -144,25 +144,20 @@
   }
 
   .frame-editorial {
-    @apply relative p-4 bg-white border border-linen/30 shadow-xl transition-all duration-700 hover:shadow-2xl hover:border-heritage/10;
-  }
-
-  .frame-editorial::before {
-    content: "";
-    @apply absolute inset-0 border-[0.5px] border-heritage/5 pointer-events-none z-20 m-1;
+    @apply relative p-0 bg-white border-0 shadow-xl transition-all duration-700 hover:shadow-2xl overflow-hidden rounded-2xl;
   }
 
   .frame-editorial .image-container {
-    @apply overflow-hidden relative w-full h-full rounded-[2px];
+    @apply overflow-hidden relative w-full h-full rounded-[inherit];
   }
 
   .frame-arch-luxury {
-    border-radius: 1000px 1000px 0 0;
-    @apply relative p-3 bg-white border border-linen/50 shadow-md transition-all duration-1000 overflow-hidden;
+    border-radius: 16px;
+    @apply relative p-0 bg-white border border-linen/50 shadow-md transition-all duration-1000 overflow-hidden;
   }
 
   .frame-arch-luxury .image-container {
-    border-radius: 1000px 1000px 0 0;
+    border-radius: 16px;
     @apply overflow-hidden relative w-full h-full;
   }
 

@@ -10,6 +10,7 @@ interface GalleryItem {
   image: string;
   title: string;
   category: string;
+  location?: string;
   size?: 'small' | 'medium' | 'large' | 'tall';
 }
 
@@ -62,46 +63,36 @@ export function Gallery({ items, className, hasCursorLabel = true }: GalleryProp
 
   return (
     <>
-      <div className={cn("grid grid-cols-1 md:grid-cols-12 gap-y-16 md:gap-y-32 gap-x-8 lg:gap-x-12", className)}>
+      <div className={cn("grid grid-cols-1 md:grid-cols-3 gap-6", className)}>
         {items.map((item, index) => {
-          // Refined asymmetry
-          const offset = index % 2 === 0 ? 'md:mt-0' : 'md:mt-16 lg:mt-24';
-          const zIndex = index % 2 === 0 ? 'z-10' : 'z-20';
-          
-          // Mix frame types for editorial feel
-          const frameClass = index % 3 === 0 ? 'frame-editorial' : 'frame-arch-luxury';
-          
           return (
             <div 
               key={item.id} 
               onClick={() => setSelectedItemIndex(index)}
               className={cn(
-                "group relative cursor-pointer transition-all duration-1000",
-                frameClass,
-                item.size === 'large' ? "md:col-span-8 h-[400px] md:h-[680px]" : "h-[300px] md:h-[380px]",
-                item.size === 'medium' ? "md:col-span-6 h-[300px] md:h-[420px]" : "md:col-span-4",
-                item.size === 'tall' ? "md:col-span-4 h-[400px] md:h-[680px]" : "",
-                offset,
-                zIndex,
-                "hover:z-30 hover:scale-[1.02] hover:shadow-2xl"
+                "group relative cursor-pointer transition-all duration-1000 aspect-[4/5] overflow-hidden rounded-2xl",
+                "hover:scale-[1.02] hover:shadow-2xl"
               )}
               data-cursor={hasCursorLabel ? "VIEW" : undefined}
             >
-              <div className="image-container">
+              <div className="absolute inset-0 z-0">
                 <Image 
                   src={item.image} 
                   alt={item.title} 
                   fill
                   className="object-cover transition-transform duration-[10s] group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-heritage/80 via-heritage/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] flex flex-col justify-end p-8 transform translate-y-6 group-hover:translate-y-0">
-                  <span className="text-[9px] font-bold uppercase tracking-[0.5em] text-canvas/60 mb-2 transform translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-1000 delay-100">{item.category}</span>
-                  <h4 className="text-2xl md:text-3xl font-serif font-bold text-canvas transform translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-1000 delay-200">{item.title}</h4>
-                  <div className="mt-6 flex items-center gap-3 transform translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-1000 delay-300">
-                     <div className="w-10 h-px bg-canvas/30" />
-                     <span className="text-[8px] text-canvas/50 uppercase tracking-[0.4em]">Archive Reference</span>
-                  </div>
+              </div>
+
+              {/* Dark Overlay with Content */}
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out z-10 flex flex-col justify-end p-8">
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-75">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-burnished mb-2 block">{item.category}</span>
+                  <h4 className="text-2xl md:text-3xl font-serif font-bold text-white mb-2">{item.title}</h4>
+                  {item.location && (
+                    <p className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-white/60">{item.location}</p>
+                  )}
                 </div>
               </div>
             </div>

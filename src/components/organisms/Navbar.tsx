@@ -108,7 +108,7 @@ export function Navbar() {
                     "btn-outline-prestige rounded-none px-10 h-12 transition-all duration-1000 font-bold text-[9px]",
                     isScrolled ? "text-heritage border-heritage/30 hover:border-heritage" : "!text-white border-white/40 hover:border-heritage hover:text-white"
                   )}>
-                    INQUIRE
+                    BOOK CONSULTATION
                   </Button>
                 </Link>
               </Magnetic>
@@ -193,7 +193,7 @@ export function Navbar() {
               <a href="mailto:hello@zingblissevents.com" className="text-xl font-serif text-text-primary font-bold underline underline-offset-8 decoration-heritage/20 hover:decoration-heritage transition-all duration-500">hello@zingblissevents.com</a>
               <Link href="/contact" onClick={() => setIsOpen(false)}>
                 <Button variant="solid" className="w-full h-20 btn-prestige font-bold text-sm tracking-[0.3em]">
-                  BOOK A DISCOVERY CALL
+                  BOOK CONSULTATION
                 </Button>
               </Link>
             </div>

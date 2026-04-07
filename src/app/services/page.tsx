@@ -104,12 +104,13 @@ export default function ServicesPage() {
       <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.05} />
       
       {/* Header */}
-      <section id="header" className="container py-16 md:py-24 relative text-center space-y-8">
-        <div className="header-fade">
+      <section id="header" className="container py-24 md:py-32 relative text-center space-y-12">
+        <div className="header-fade flex flex-col items-center gap-4">
           <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">03 / WHAT WE DO</span>
+          <div className="h-12 w-[1px] bg-burnished/30" />
         </div>
-        <TextReveal as="h1" text="Our Services." className="text-5xl md:text-[8rem] lg:text-[9rem] font-serif tracking-tighter text-text-primary leading-[0.9] font-bold" />
-        <p className="header-fade text-lg md:text-xl text-text-secondary font-sans font-light max-w-3xl mx-auto pt-4">
+        <TextReveal as="h1" text="Our Services." className="text-5xl md:text-[8rem] lg:text-[10rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" />
+        <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light max-w-3xl mx-auto pt-6 leading-relaxed">
           We offer complete event planning and design services for weddings, business events, and private parties.
         </p>
       </section>
@@ -120,31 +121,34 @@ export default function ServicesPage() {
       <div id="list">
         {serviceCategories.map((service, index) => (
           <React.Fragment key={service.id}>
-            <section data-bg={service.bgColor} className="service-section py-16 md:py-24 relative overflow-hidden">
-              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center relative z-10">
+            <section data-bg={service.bgColor} className="service-section py-24 md:py-32 relative overflow-hidden">
+              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center relative z-10">
                 <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2' : ''} relative w-full`}>
-                  <MaskSlideImage src={service.image} alt={service.title} aspectRatio="aspect-[4/5] md:aspect-[16/10]" className="shadow-lg grayscale-0" maskColor={service.maskClass} />
+                   <div className="relative overflow-hidden rounded-2xl aspect-[4/5] md:aspect-[16/10] shadow-2xl group">
+                      <Image src={service.image} alt={service.title} fill className="object-cover transition-transform duration-[10s] group-hover:scale-110" />
+                      <div className="absolute inset-0 bg-heritage/5 group-hover:opacity-0 transition-opacity duration-700" />
+                   </div>
                 </div>
-                <div className={`lg:col-span-5 space-y-8 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                  <div className="space-y-4">
-                    <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage small-caps">{service.label}</span>
-                    <TextReveal as="h2" text={service.title} className="text-4xl md:text-7xl font-serif text-text-primary font-bold leading-[1.1]" />
-                    <p className="text-lg text-text-secondary font-sans font-light leading-relaxed">{service.description}</p>
+                <div className={`lg:col-span-5 space-y-10 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
+                  <div className="space-y-6">
+                    <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage small-caps">{service.label}</span>
+                    <TextReveal as="h2" text={service.title} className="text-5xl md:text-8xl font-serif text-text-primary font-bold leading-[1] tracking-tighter" />
+                    <p className="text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed">{service.description}</p>
                   </div>
-                  <div className="pt-6 border-t border-linen/50">
-                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-heritage font-bold mb-4 small-caps">Services Include:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3">
+                  <div className="pt-8 border-t border-linen/50">
+                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-heritage font-bold mb-6 small-caps">Services Include:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4">
                       {service.tags.map((tag) => (
-                        <li key={tag} className="text-[10px] font-sans uppercase tracking-[0.2em] text-text-primary font-light flex items-center gap-2">
-                          <div className="w-1 h-1 rounded-full bg-heritage/30" />
+                        <li key={tag} className="text-[11px] font-sans uppercase tracking-[0.2em] text-text-primary font-light flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-heritage/30" />
                           {tag}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="pt-4">
+                  <div className="pt-6">
                     <a href={generateWhatsAppLink(service.title, 'Booking')} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="btn-outline-prestige px-10 h-14 text-[10px] tracking-[0.3em] font-bold">Ask Us Anything</Button>
+                      <Button className="btn-prestige bg-heritage hover:bg-heritage-dark text-white px-12 h-16 text-[10px] tracking-[0.3em] font-bold shadow-xl">Ask Us Anything</Button>
                     </a>
                   </div>
                 </div>
@@ -158,25 +162,25 @@ export default function ServicesPage() {
       <FloatingMetric label="Our Promise" value="Smooth Events" className="top-[200vh] left-[15%]" />
 
       {/* Process Journey */}
-      <section id="process" className="relative py-16 md:py-24">
-        <div className="container mb-16 text-center space-y-4">
+      <section id="process" className="relative py-24 md:py-32">
+        <div className="container mb-24 text-center space-y-6">
           <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">06 / THE PROCESS</span>
-          <TextReveal as="h2" text="How It Works." className="text-5xl md:text-8xl font-serif text-text-primary font-bold" />
+          <TextReveal as="h2" text="How It Works." className="text-6xl md:text-9xl font-serif text-text-primary font-bold tracking-tighter" />
         </div>
-        <div className="container space-y-16">
+        <div className="container space-y-24">
           {[
             { step: '01', title: 'First Talk', desc: 'We meet to understand your ideas and what you want for your big day.' },
             { step: '02', title: 'The Plan', desc: 'We create a careful plan and design so you can see how it will look.' },
             { step: '03', title: 'Choosing Details', desc: 'We help you pick the best vendors and items to match your style.' },
             { step: '04', title: 'The Event', desc: 'We are there on the day to make sure everything runs perfectly.' },
           ].map((item, i) => (
-            <div key={i} className="process-card grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
+            <div key={i} className="process-card grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center group">
               <div className="md:col-span-5 relative text-center md:text-left">
-                <span className="text-[8rem] md:text-[12rem] font-serif font-bold text-heritage/[0.03] leading-none">{item.step}</span>
+                <span className="text-[8rem] md:text-[14rem] font-serif font-bold text-heritage leading-none group-hover:scale-110 transition-transform duration-1000 inline-block">{item.step}</span>
               </div>
-              <div className="md:col-span-7 space-y-4">
-                <h3 className="text-3xl md:text-5xl font-serif text-text-primary font-bold italic">{item.title}</h3>
-                <p className="text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed max-w-xl">{item.desc}</p>
+              <div className="md:col-span-7 space-y-6">
+                <h3 className="text-4xl md:text-6xl font-serif text-text-primary font-bold italic">{item.title}</h3>
+                <p className="text-xl md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-2xl">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -186,22 +190,22 @@ export default function ServicesPage() {
       <SectionDivider />
 
       {/* FAQ */}
-      <section id="faq" className="py-16 md:py-24 container">
-        <div className="max-w-4xl mx-auto space-y-12">
-          <div className="text-center space-y-4">
+      <section id="faq" className="py-24 md:py-32 container">
+        <div className="max-w-6xl mx-auto space-y-20">
+          <div className="text-center space-y-6">
             <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">07 / QUESTIONS</span>
-            <TextReveal as="h2" text="Common Questions." className="text-4xl md:text-6xl font-serif font-bold text-text-primary" />
+            <TextReveal as="h2" text="Common Questions." className="text-5xl md:text-7xl font-serif font-bold text-text-primary tracking-tighter" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { q: 'Do you plan events in other cities?', a: 'Yes, we plan events all over India and in other countries too.' },
               { q: 'When should we book your services?', a: 'For big events, it is best to book 8 to 12 months in advance.' },
-              { q: 'Can you help with music and artists?', a: 'Yes, we have a large network of DJs, bands, and performers.' },
-              { q: 'Is every event custom?', a: 'Yes, we plan every event specifically for you and your vision.' },
+              { q: 'Can you help with music and artists?', a: 'Yes, we have a network of top-tier DJs, bands, and performers.' },
+              { q: 'Is every event custom?', a: 'Absolutely. We believe every story is unique and deserves a bespoke celebration.' },
             ].map((faq, i) => (
-              <div key={i} className="group border border-linen/50 hover:border-heritage/20 transition-all bg-heritage-soft/5 p-8">
-                <h4 className="text-xl font-serif font-bold text-text-primary group-hover:text-heritage transition-colors italic">{faq.q}</h4>
-                <p className="mt-3 text-base text-text-secondary font-sans font-light leading-relaxed">{faq.a}</p>
+              <div key={i} className="group border border-linen/50 hover:border-heritage/20 hover:shadow-xl transition-all duration-700 bg-white p-10 rounded-2xl">
+                <h4 className="text-2xl font-serif font-bold text-text-primary group-hover:text-heritage transition-colors italic">{faq.q}</h4>
+                <p className="mt-4 text-lg text-text-secondary font-sans font-light leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -211,15 +215,15 @@ export default function ServicesPage() {
       <SectionDivider />
 
       {/* CTA */}
-      <section id="cta" className="py-16 md:py-24 relative overflow-hidden">
-        <div className="container text-center space-y-8 relative z-10">
-          <TextReveal as="h2" text="Ready to start?" className="text-5xl md:text-8xl lg:text-9xl font-serif text-text-primary font-bold tracking-tighter" />
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-4">
+      <section id="cta" className="py-32 md:py-48 relative overflow-hidden">
+        <div className="container text-center space-y-12 relative z-10">
+          <TextReveal as="h2" text="Ready to start?" className="text-6xl md:text-[10rem] lg:text-[12rem] font-serif text-text-primary font-bold tracking-tighter leading-[0.85]" />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-8">
             <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="h-16 px-16 text-[10px] btn-prestige shadow-2xl" leftIcon={<MessageCircle size={18} />}>WhatsApp Us</Button>
+              <Button size="lg" className="h-20 px-20 text-[11px] bg-heritage text-white hover:bg-heritage-dark shadow-2xl transition-all hover:scale-105" leftIcon={<MessageCircle size={24} />}>Book Consultation</Button>
             </a>
             <Link href="/contact">
-              <Button variant="outline" size="lg" className="h-16 px-16 text-[10px] btn-outline-prestige">Send a Message</Button>
+              <Button variant="outline" size="lg" className="h-20 px-20 text-[11px] border-heritage/30 text-heritage hover:bg-heritage hover:text-white transition-all shadow-xl">Send a Message</Button>
             </Link>
           </div>
         </div>
