@@ -104,9 +104,9 @@ export function Navbar() {
 
               <Magnetic strength={0.2}>
                 <Link href="/contact">
-                  <Button variant="outline" size="sm" className={cn(
-                    "btn-outline-prestige rounded-none px-10 h-12 transition-all duration-1000 font-bold text-[9px]",
-                    isScrolled ? "text-heritage border-heritage/30 hover:border-heritage" : "!text-white border-white/40 hover:border-heritage hover:text-white"
+                  <Button size="sm" className={cn(
+                    "rounded-none px-10 h-12 transition-all duration-1000 font-bold text-[9px] tracking-[0.2em] border-0 shadow-lg hover:scale-105",
+                    isScrolled ? "bg-heritage text-white hover:bg-heritage-dark" : "bg-heritage text-white hover:bg-heritage-dark shadow-white/10"
                   )}>
                     BOOK CONSULTATION
                   </Button>

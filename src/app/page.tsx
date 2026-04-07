@@ -26,6 +26,7 @@ import { FloatingDecor } from '@/components/atoms/FloatingDecor';
 import { ParallaxImage } from '@/components/atoms/ParallaxImage';
 import { SVGSpine } from '@/components/atoms/SVGSpine';
 import { TextReveal } from '@/components/atoms/TextReveal';
+import { Counter } from '@/components/atoms/Counter';
 import { BackgroundFlourish } from '@/components/atoms/BackgroundFlourish';
 import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
@@ -205,23 +206,24 @@ export default function Home() {
         </section>
 
         {/* 2. Trust Strip */}
-        <section className="bg-white border-y border-linen/30 py-16 relative z-30">
-          <div className="container">
-            <div className="flex flex-col md:flex-row justify-around items-center gap-12 md:gap-4">
+        <section className="bg-heritage pt-20 pb-12 relative z-30 overflow-hidden border-y border-white/5">
+          <div className="absolute inset-0 dot-pattern opacity-10 pointer-events-none" />
+          <div className="container relative z-10">
+            <div className="flex flex-col md:flex-row justify-around items-center gap-16 md:gap-8">
               {[
-                { label: 'Events Executed', value: '100+', icon: <Zap size={16} /> },
-                { label: 'Happy Clients', value: '100+', icon: <Heart size={16} /> },
-                { label: 'Years Experience', value: '10+', icon: <Star size={16} /> },
+                { label: 'Events Executed', value: '100+', icon: <Zap size={18} /> },
+                { label: 'Happy Clients', value: '100+', icon: <Heart size={18} /> },
+                { label: 'Years Experience', value: '10+', icon: <Star size={18} /> },
               ].map((stat, i) => (
-                <div key={stat.label} className="flex items-center gap-6 group">
-                   <div className="w-12 h-12 rounded-full bg-heritage-soft flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-white transition-all duration-700">
+                <div key={stat.label} className="flex items-center gap-8 group">
+                   <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white/90 group-hover:bg-burnished group-hover:text-white transition-all duration-1000 border border-white/5 group-hover:border-burnished/50 shadow-2xl">
                      {stat.icon}
                    </div>
                    <div className="flex flex-col">
-                      <span className="text-3xl md:text-4xl font-serif text-text-primary italic">
-                        {stat.value}
+                      <span className="text-4xl md:text-5xl lg:text-6xl font-serif text-white italic tracking-tight leading-none">
+                        <Counter value={stat.value} />
                       </span>
-                      <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-text-muted mt-1">
+                      <span className="text-[10px] font-mono uppercase tracking-[0.5em] text-white/50 mt-3 font-bold">
                         {stat.label}
                       </span>
                    </div>
@@ -232,7 +234,7 @@ export default function Home() {
         </section>
 
         {/* 3. Recent Work (Portfolio) */}
-        <section id="gallery" className="py-32 bg-canvas" data-bg="var(--color-canvas)">
+        <section id="gallery" className="pt-20 pb-32 bg-canvas" data-bg="var(--color-canvas)">
           <div className="container space-y-16">
             <div className="text-center space-y-4 fade-up">
               <span className="text-[10px] font-mono text-heritage/60 uppercase tracking-[0.6em] small-caps">Our Portfolio</span>
@@ -260,11 +262,10 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
               {[
-                { title: 'Weddings', desc: 'Luxury wedding planning that reflects your unique love story.', img: '/decor-1.jpg' },
-                { title: 'Corporate', desc: 'Professional event management for high-stakes business experiences.', img: '/decor-2.jpg' },
+                { title: 'Luxury Weddings', desc: 'Luxury wedding planning that reflects your unique love story.', img: '/decor-1.jpg' },
+                { title: 'Corporate Events', desc: 'Professional event management for high-stakes business experiences.', img: '/decor-2.jpg' },
                 { title: 'Social Events', desc: 'Intimate and grand celebrations for life\'s most precious moments.', img: '/decor-3.jpg' },
-              ].map((service, i) => (
-                <div key={i} className="bg-white p-8 space-y-6 group hover:-translate-y-2 transition-all duration-700 flex flex-col items-center text-center shadow-sm hover:shadow-xl rounded-2xl border border-linen/20">
+              ].map((service, i) => (                <div key={i} className="bg-white p-8 space-y-6 group hover:-translate-y-2 transition-all duration-700 flex flex-col items-center text-center shadow-sm hover:shadow-xl rounded-2xl border border-linen/20">
                   <div className="aspect-square w-full rounded-xl overflow-hidden mb-4">
                     <Image src={service.img} alt={service.title} width={600} height={600} className="object-cover h-full w-full grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" />
                   </div>
@@ -280,7 +281,7 @@ export default function Home() {
         </section>
 
         {/* 5. Why Choose Us */}
-        <section id="why-choose-us" className="py-32 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
+        <section id="why-choose-us" className="py-32 bg-white relative overflow-hidden" data-bg="var(--color-surface-light)">
           <div className="container space-y-24 relative z-10">
             <div className="flex flex-col items-center text-center space-y-4 fade-up">
               <span className="text-[10px] font-mono text-heritage/60 uppercase tracking-[0.6em] small-caps">Excellence</span>
@@ -309,11 +310,12 @@ export default function Home() {
         </section>
 
         {/* 6. CTA Strip (MID CTA) */}
-        <section className="bg-surface border-y border-linen/30 py-16 relative overflow-hidden">
-          <div className="container relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <h2 className="text-3xl md:text-5xl font-serif text-text-primary italic">Ready to Plan Your Event?</h2>
+        <section className="bg-heritage py-20 relative overflow-hidden border-y border-white/5">
+          <div className="absolute inset-0 dot-pattern opacity-10 pointer-events-none" />
+          <div className="container relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white italic tracking-tight">Ready to Plan Your Event?</h2>
             <Link href="/contact">
-              <Button size="lg" className="h-14 px-12 text-[10px] bg-heritage text-white hover:bg-heritage-dark transition-colors shadow-xl">
+              <Button size="lg" className="h-16 px-16 text-[10px] bg-burnished text-white hover:bg-burnished-light transition-all shadow-2xl border-0 hover:scale-105">
                 Plan Your Event
               </Button>
             </Link>
