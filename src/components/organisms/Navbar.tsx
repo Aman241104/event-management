@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Search, ArrowRight } from 'lucide-react';
+import { gsap } from 'gsap';
 import { Logo } from '@/components/atoms/Logo';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
@@ -24,14 +25,28 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 50);
+      
+      if (headerRef.current) {
+        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+          // Scrolling down
+          gsap.to(headerRef.current, { yPercent: -100, duration: 0.5, ease: 'power3.inOut' });
+        } else {
+          // Scrolling up
+          gsap.to(headerRef.current, { yPercent: 0, duration: 0.5, ease: 'power3.out' });
+        }
+      }
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   useEffect(() => {
     if (isOpen || isSearchOpen) {
@@ -53,11 +68,14 @@ export function Navbar() {
     <>
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
-      <header className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] border-b",
-        isScrolled ? "bg-canvas/90 backdrop-blur-md border-linen/30 py-3 shadow-[0_1px_10px_rgba(0,0,0,0.01)]" : "bg-transparent border-transparent py-6",
-        (isOpen || isSearchOpen) && "border-transparent bg-transparent backdrop-blur-0"
-      )}>
+      <header 
+        ref={headerRef}
+        className={cn(
+          "fixed top-0 w-full z-50 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] border-b",
+          isScrolled ? "bg-canvas/90 backdrop-blur-md border-linen/30 py-3 shadow-[0_1px_10px_rgba(0,0,0,0.01)]" : "bg-transparent border-transparent py-6",
+          (isOpen || isSearchOpen) && "border-transparent bg-transparent backdrop-blur-0"
+        )}
+      >
         <nav className="container flex items-center justify-between">
           <Magnetic strength={0.05}>
             <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[60]">

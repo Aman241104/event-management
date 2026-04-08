@@ -141,20 +141,35 @@ export default function Home() {
       });
     });
 
-    // Background color shifts - REMOVED to prevent jarring green transitions
+    // Advanced Skew-on-Scroll for sections and images
+    const skewElements = gsap.utils.toArray<HTMLElement>('.fade-up');
+    skewElements.forEach((el) => {
+      let proxy = { skew: 0 },
+          skewSetter = gsap.quickSetter(el, "skewY", "deg"),
+          clamp = gsap.utils.clamp(-10, 10);
+
+      ScrollTrigger.create({
+        onUpdate: (self) => {
+          let skew = clamp(self.getVelocity() / -300);
+          if (Math.abs(skew) > Math.abs(proxy.skew)) {
+            proxy.skew = skew;
+            gsap.to(proxy, {
+              skew: 0, 
+              duration: 0.8, 
+              ease: "power3", 
+              overwrite: true, 
+              onUpdate: () => skewSetter(proxy.skew)
+            });
+          }
+        }
+      });
+      gsap.set(el, { transformOrigin: "right center", force3D: true });
+    });
+
+    // Background color shifts - DISABLED per user request but kept structure for other scroll triggers
     /*
     const sections = gsap.utils.toArray<HTMLElement>('section');
-    sections.forEach((section, i) => {
-      const bgColor = section.dataset.bg || (i % 2 === 0 ? 'var(--color-canvas)' : 'var(--color-surface)');
-      
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top 50%',
-        end: 'bottom 50%',
-        onEnter: () => gsap.to(mainRef.current, { backgroundColor: bgColor, duration: 1, ease: 'power2.inOut' }),
-        onEnterBack: () => gsap.to(mainRef.current, { backgroundColor: bgColor, duration: 1, ease: 'power2.inOut' }),
-      });
-    });
+    ...
     */
 
   }, { scope: containerRef });
@@ -390,70 +405,78 @@ export default function Home() {
             </div>
 
             <div className="relative max-w-4xl mx-auto fade-up">
-              <div className="overflow-hidden min-h-[400px] flex items-center">
+              <div className="overflow-hidden min-h-[500px] flex items-center relative">
                 {testimonials.map((t, i) => (
                   <div 
                     key={t.id} 
                     className={cn(
-                      "w-full transition-all duration-1000 ease-expo absolute inset-0 flex flex-col items-center justify-center text-center space-y-10",
+                      "w-full transition-all duration-1000 ease-expo absolute inset-0 flex flex-col items-center justify-center text-center space-y-8",
                       i === currentTestimonial ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 translate-x-20 pointer-events-none"
                     )}
                   >
+                    <div className="w-1 h-1 rounded-full bg-heritage/40 mb-2" />
+
                     <div className="flex gap-1.5 text-burnished">
-                      {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+                      {[...Array(5)].map((_, idx) => <Star key={idx} size={14} fill="currentColor" />)}
                     </div>
                     
-                    <p className="text-2xl md:text-4xl lg:text-5xl font-serif italic text-text-primary leading-[1.3] tracking-tight">
+                    <p className="text-2xl md:text-4xl lg:text-5xl font-serif italic text-text-primary leading-[1.3] tracking-tight max-w-3xl">
                       &quot;{t.content}&quot;
                     </p>
 
-                    <div className="flex flex-col items-center gap-6 pt-8">
-                      <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-burnished/20 shadow-xl">
+                    <div className="relative w-10 h-10 flex items-center justify-center my-4">
+                      <div className="absolute inset-0 border border-linen rounded-full scale-75 opacity-40" />
+                      <div className="w-1 h-1 bg-heritage rounded-full" />
+                    </div>
+
+                    <div className="flex flex-col items-center gap-6">
+                      <div className="w-24 h-24 rounded-full overflow-hidden border border-linen/30 shadow-xl relative">
                         <Image 
                           src={t.avatar} 
                           alt={t.author} 
                           width={96} 
                           height={96} 
-                          className="object-cover w-full h-full scale-105" 
+                          className="object-cover w-full h-full" 
                         />
                       </div>
-                      <div className="space-y-1">
-                        <h4 className="text-sm font-bold uppercase tracking-[0.3em] text-text-primary">{t.author}</h4>
-                        <p className="text-[10px] uppercase tracking-[0.2em] text-heritage font-bold">{t.event}</p>
+                      
+                      <div className="relative flex items-center justify-center w-full min-w-[300px]">
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); prevTestimonial(); }}
+                          className="absolute left-0 p-4 text-text-primary/40 hover:text-heritage transition-colors duration-500"
+                          aria-label="Previous"
+                        >
+                          <ChevronLeft size={20} strokeWidth={1} />
+                        </button>
+
+                        <div className="space-y-1.5 px-16">
+                          <h4 className="text-xs font-bold uppercase tracking-[0.4em] text-text-primary">{t.author}</h4>
+                          <p className="text-[10px] uppercase tracking-[0.2em] text-heritage font-bold">{t.event}</p>
+                        </div>
+
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); nextTestimonial(); }}
+                          className="absolute right-0 p-4 text-text-primary/40 hover:text-heritage transition-colors duration-500"
+                          aria-label="Next"
+                        >
+                          <ChevronRight size={20} strokeWidth={1} />
+                        </button>
+                      </div>
+
+                      <div className="flex gap-2 pt-2">
+                        {testimonials.map((_, dotIdx) => (
+                          <div 
+                            key={dotIdx}
+                            className={cn(
+                              "h-[2px] transition-all duration-1000 ease-expo rounded-full",
+                              dotIdx === currentTestimonial ? "w-8 bg-heritage" : "w-2 bg-linen"
+                            )}
+                          />
+                        ))}
                       </div>
                     </div>
                   </div>
                 ))}
-              </div>
-
-              {/* Slider Navigation */}
-              <div className="flex justify-center items-center gap-12 mt-12">
-                <button 
-                  onClick={prevTestimonial}
-                  className="w-14 h-14 rounded-full border border-linen flex items-center justify-center text-heritage hover:bg-heritage hover:text-white hover:border-heritage transition-all duration-500 group"
-                  aria-label="Previous Testimonial"
-                >
-                  <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
-                </button>
-                <div className="flex gap-3">
-                  {testimonials.map((_, i) => (
-                    <button 
-                      key={i}
-                      onClick={() => setCurrentTestimonial(i)}
-                      className={cn(
-                        "w-2 h-2 rounded-full transition-all duration-500",
-                        i === currentTestimonial ? "w-8 bg-heritage" : "bg-linen hover:bg-heritage/30"
-                      )}
-                    />
-                  ))}
-                </div>
-                <button 
-                  onClick={nextTestimonial}
-                  className="w-14 h-14 rounded-full border border-linen flex items-center justify-center text-heritage hover:bg-heritage hover:text-white hover:border-heritage transition-all duration-500 group"
-                  aria-label="Next Testimonial"
-                >
-                  <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
-                </button>
               </div>
             </div>
           </div>
