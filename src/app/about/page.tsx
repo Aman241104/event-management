@@ -55,6 +55,7 @@ export default function AboutPage() {
         ease: 'power3.out'
       });
     });
+    /*
     const sections = gsap.utils.toArray<HTMLElement>('section[data-bg]');
     sections.forEach((section) => {
       const bgColor = section.getAttribute('data-bg');
@@ -68,6 +69,7 @@ export default function AboutPage() {
         });
       }
     });
+    */
   }, { scope: containerRef });
 
   return (
@@ -75,31 +77,54 @@ export default function AboutPage() {
       <div ref={containerRef} className="relative">
         <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" className="opacity-[0.05]" />
         
-        {/* Editorial Header */}
-        <section id="header" className="container py-24 md:py-32 relative text-center space-y-12" data-bg="var(--color-canvas)">
-          <div className="header-fade flex flex-col items-center gap-4">
-            <span className="text-[10px] font-mono text-heritage/50 uppercase tracking-[0.6em] small-caps">01 / OUR STORY</span>
-            <div className="h-12 w-[1px] bg-burnished/30" />
+        {/* 1. Hero Section */}
+        <section id="hero" className="relative h-[80vh] flex items-center overflow-hidden" data-bg="var(--color-canvas)">
+          <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90 z-10 pointer-events-none" />
+          
+          <div className="absolute inset-0 z-0">
+            <Image 
+              src="/hero-9.jpg" 
+              alt="About Zing Bliss" 
+              fill 
+              className="object-cover scale-110 animate-[ken-burns_40s_ease-in-out_infinite_alternate]" 
+              priority 
+              sizes="100vw" 
+            />
           </div>
-          <TextReveal as="h1" text="About Zing Bliss." className="text-5xl md:text-[8rem] lg:text-[9.5rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" />
-          <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light max-w-3xl mx-auto leading-relaxed pt-6">
-            We are a team of event planners dedicated to making your special moments beautiful and easy to enjoy.
-          </p>
+
+          <div className="container relative z-20 text-center flex flex-col items-center">
+            <div className="header-fade flex flex-col items-center gap-4 mb-8">
+              <span className="text-[10px] font-mono text-white/80 uppercase tracking-[0.8em] small-caps">01 / OUR STORY</span>
+              <div className="h-12 w-[1px] bg-burnished/60" />
+            </div>
+            
+            <h1 className="header-fade text-5xl md:text-[7rem] lg:text-[8.5rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl max-w-5xl">
+              About <span className="text-burnished italic font-light">Zing Bliss.</span>
+            </h1>
+
+            <p className="header-fade text-lg md:text-2xl text-white/90 max-w-2xl leading-relaxed font-sans font-light mt-10 drop-shadow-lg">
+              We are a team of event planners dedicated to making your special moments beautiful and easy to enjoy.
+            </p>
+          </div>
         </section>
 
         <SectionDivider />
 
         {/* Press Marquee */}
-        <section className="py-12 border-y border-linen/50 bg-white" data-bg="var(--color-canvas)">
-          <InfiniteMarquee items={["Vogue", "Bazaar", "The Knot", "Brides", "Luxury Daily", "Elite Traveler"]} speed={35} />
+        <section className="py-8 border-y border-linen/60 bg-white/50 backdrop-blur-sm" data-bg="var(--color-canvas)">
+          <InfiniteMarquee 
+            items={["Vogue", "Bazaar", "The Knot", "Brides", "Luxury Daily", "Elite Traveler"]} 
+            speed={35} 
+            className="text-text-primary/60 font-serif italic text-xl md:text-2xl"
+          />
         </section>
 
         <SectionDivider />
-        <FloatingMetric label="Our Focus" value="Real Moments" className="top-[140vh] left-[15%]" />
 
         {/* Philosophy Section */}
         <section id="philosophy" className="container py-32" data-bg="var(--color-canvas)">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-start">
             <div className="lg:col-span-7 fade-up relative group">
               <div className="relative overflow-hidden rounded-2xl h-[50vh] md:h-[75vh] w-full shadow-2xl z-10">
                 <div className="image-container">
@@ -107,12 +132,9 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-            <div className="lg:col-span-5 space-y-12 fade-up">
+            <div className="lg:col-span-5 space-y-12 fade-up pt-4">
               <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-mono text-heritage/50 uppercase tracking-[0.5em] small-caps">02 / WHY US</span>
-                </div>
-                <TextReveal text="Simply Beautiful." className="text-5xl md:text-8xl font-serif text-text-primary font-bold leading-[0.9] tracking-tighter" />
+                <TextReveal text="About Us" className="text-5xl md:text-8xl font-serif text-text-primary font-bold leading-[0.9] tracking-tighter" />
               </div>
               <div className="space-y-8 text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed">
                 <p>We plan, design, and run events with care. We want to make your dreams come true without any stress.</p>
@@ -138,27 +160,33 @@ export default function AboutPage() {
         <SectionDivider className="bg-heritage-soft" />
 
         {/* Vision & Mission */}
-        <section id="vision" className="py-32 bg-surface border-y border-linen/30 relative overflow-hidden" data-bg="var(--color-surface)">
-          <div className="container relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
-              <div className="space-y-8 fade-up p-12 bg-white rounded-2xl shadow-sm border border-linen/30">
-                <div className="w-16 h-16 rounded-2xl bg-heritage-soft flex items-center justify-center text-heritage">
+        <section id="vision" className="py-32 relative overflow-hidden border-y border-white/10" data-bg="var(--color-heritage)">
+          <div className="absolute inset-0 z-0">
+            <Image src="/hero-8.jpg" alt="Mission Background" fill className="object-cover" />
+            <div className="absolute inset-0 bg-black/70 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
+          </div>
+
+          <div className="container relative z-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+              <div className="space-y-8 fade-up p-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl">
+                <div className="w-16 h-16 rounded-2xl bg-burnished/20 flex items-center justify-center text-burnished">
                   <Target size={32} />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-4xl md:text-5xl font-serif text-text-primary font-bold">Our <span className="text-heritage italic font-light">Goal.</span></h3>
-                  <p className="text-text-secondary font-sans font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-heritage/20 pl-8">
+                  <h3 className="text-4xl md:text-5xl font-serif text-white font-bold">Our <span className="text-burnished italic font-light">Goal.</span></h3>
+                  <p className="text-white/80 font-serif font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-burnished/30 pl-8">
                     To be the best at planning events by being creative, reliable, and honest.
                   </p>
                 </div>
               </div>
-              <div className="space-y-8 fade-up p-12 bg-white rounded-2xl shadow-sm border border-linen/30">
-                <div className="w-16 h-16 rounded-2xl bg-heritage-soft flex items-center justify-center text-heritage">
+              <div className="space-y-8 fade-up p-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl">
+                <div className="w-16 h-16 rounded-2xl bg-burnished/20 flex items-center justify-center text-burnished">
                   <Compass size={32} />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-4xl md:text-5xl font-serif text-text-primary font-bold">Our <span className="text-heritage italic font-light">Mission.</span></h3>
-                  <p className="text-text-secondary font-sans font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-heritage/20 pl-8">
+                  <h3 className="text-4xl md:text-5xl font-serif text-white font-bold">Our <span className="text-burnished italic font-light">Mission.</span></h3>
+                  <p className="text-white/80 font-serif font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-burnished/30 pl-8">
                     To create amazing experiences that you and your guests will never forget.
                   </p>
                 </div>
@@ -170,24 +198,31 @@ export default function AboutPage() {
         <SectionDivider />
 
         {/* Final CTA */}
-        <section id="cta" className="py-32 md:py-48 container text-center space-y-16" data-bg="var(--color-canvas)">
-          <div className="fade-up flex flex-col items-center gap-6">
-            <span className="text-[10px] font-mono text-heritage/50 uppercase tracking-[0.5em] small-caps">03 / CONNECT</span>
-            <h2 className="text-6xl md:text-[10rem] font-serif text-text-primary font-bold tracking-tighter leading-[0.85]">
-              Plan Your <br/><span className="text-heritage italic font-light">Day.</span>
-            </h2>
+        <section id="cta" className="relative py-32 bg-heritage overflow-hidden" data-bg="var(--color-heritage)">
+          <div className="absolute inset-0 z-0 opacity-10">
+             <Image src="/hero10.jpg" alt="Background" fill className="object-cover" />
           </div>
-          <div className="pt-8 flex flex-col items-center gap-10 fade-up">
-            <Magnetic strength={0.2}>
-              <Link href="/contact">
-                <Button size="lg" className="h-20 px-20 text-[11px] bg-heritage text-white hover:bg-heritage-dark shadow-2xl transition-all hover:scale-105" rightIcon={<ArrowRight size={24} />}>
-                  Book Consultation
-                </Button>
-              </Link>
-            </Magnetic>
-            <div className="flex flex-col items-center gap-4">
-              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-[11px] font-sans uppercase tracking-[0.5em] text-heritage font-bold border-b border-heritage/20 pb-2 hover:text-text-primary transition-all small-caps">Message Us</a>
-              <p className="text-[10px] font-mono text-text-secondary/40 uppercase tracking-[0.2em] small-caps">Bespoke Planning — For You</p>
+          
+          <div className="container relative z-10 text-center space-y-12">
+            <div className="space-y-6">
+              <span className="text-[10px] font-mono text-white/60 uppercase tracking-[0.5em] small-caps">03 / CONNECT</span>
+              <h2 className="text-5xl md:text-8xl lg:text-[10rem] font-serif font-medium tracking-tighter text-white leading-[0.9]">
+                Plan Your <br/><span className="italic font-light text-burnished">Day.</span>
+              </h2>
+            </div>
+
+            <div className="flex flex-col items-center gap-10 fade-up">
+              <Magnetic strength={0.2}>
+                <Link href="/contact">
+                  <Button size="lg" className="h-20 px-20 text-[11px] bg-white text-heritage hover:bg-linen shadow-2xl transition-all hover:scale-105" rightIcon={<ArrowRight size={24} />}>
+                    Book Consultation
+                  </Button>
+                </Link>
+              </Magnetic>
+              <div className="flex flex-col items-center gap-4">
+                <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-[11px] font-sans uppercase tracking-[0.5em] text-white/80 font-bold border-b border-white/20 pb-2 hover:text-white transition-all small-caps">Message Us</a>
+                <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em] small-caps">Bespoke Planning — For You</p>
+              </div>
             </div>
           </div>
         </section>

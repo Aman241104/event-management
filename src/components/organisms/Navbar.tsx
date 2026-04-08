@@ -106,7 +106,7 @@ export function Navbar() {
                 <Link href="/contact">
                   <Button size="sm" className={cn(
                     "rounded-none px-10 h-12 transition-all duration-1000 font-bold text-[9px] tracking-[0.2em] border-0 shadow-lg hover:scale-105",
-                    isScrolled ? "bg-heritage text-white hover:bg-heritage-dark" : "bg-heritage text-white hover:bg-heritage-dark shadow-white/10"
+                    !isScrolled && "shadow-white/10"
                   )}>
                     BOOK CONSULTATION
                   </Button>
@@ -188,7 +188,7 @@ export function Navbar() {
                  <button onClick={openSearch} className="text-[11px] font-sans font-bold uppercase tracking-widest text-text-secondary hover:text-heritage transition-colors flex items-center gap-2">
                    <Search size={16} /> Search
                  </button>
-                 <Link href="/vault" onClick={() => setIsOpen(false)} className="text-[11px] font-sans font-bold uppercase tracking-widest text-text-secondary hover:text-heritage transition-colors">Client Vault</Link>
+                 <Link href="/quiz" onClick={() => setIsOpen(false)} className="text-[11px] font-sans font-bold uppercase tracking-widest text-text-secondary hover:text-heritage transition-colors">Aesthetic Quiz</Link>
               </div>
               <a href="mailto:hello@zingblissevents.com" className="text-xl font-serif text-text-primary font-bold underline underline-offset-8 decoration-heritage/20 hover:decoration-heritage transition-all duration-500">hello@zingblissevents.com</a>
               <Link href="/contact" onClick={() => setIsOpen(false)}>

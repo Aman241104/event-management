@@ -27,39 +27,13 @@ export function Footer() {
       <div className="absolute inset-0 dot-pattern opacity-[0.015]" />
       
       <div className="container relative z-10">
-        {/* Mad Libs CTA - Hidden on pages that already have a primary CTA */}
-        {!hideCTA && (
-          <div className="max-w-5xl mx-auto text-center mb-24 space-y-12">
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <span className="text-[9px] font-mono text-heritage/60 uppercase tracking-[0.8em]">CONTINUE THE NARRATIVE</span>
-              <div className="h-px w-16 bg-heritage/10" />
-            </div>
-            <p className="text-3xl md:text-5xl text-text-primary font-serif italic font-light leading-relaxed">
-              I&apos;m planning an exquisite <span className="border-b border-heritage/30 text-text-primary font-medium px-3 inline-block not-italic">celebration</span> and I&apos;d love to <span className="text-heritage italic">connect.</span>
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-12 pt-8">
-              <Magnetic strength={0.2}>
-                <Link href="/contact">
-                  <Button size="lg" className="h-20 px-16 text-[9px] btn-prestige shadow-2xl transition-transform hover:scale-105" rightIcon={<ArrowRight size={18} />}>
-                    Inquire Concierge
-                  </Button>
-                </Link>
-              </Magnetic>
-              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-heritage transition-colors flex items-center gap-3 text-[9px] uppercase tracking-[0.4em] font-bold">
-                <MessageCircle size={18} className="text-heritage/70" /> Private WhatsApp
-              </a>
-            </div>
-          </div>
-        )}
-
-        <div className={`grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-10 mb-20 ${!hideCTA ? 'pt-24 border-t border-linen/30' : ''}`}>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-10 mb-20">
           
           {/* Brand Col */}
           <div className="md:col-span-4 space-y-8">
             <Magnetic strength={0.05}>
               <Link href="/">
-                <Logo />
+                <Logo scrolled={true} />
               </Link>
             </Magnetic>
             <p className="text-[12px] text-text-secondary leading-[1.8] max-w-xs font-sans font-light">
@@ -97,11 +71,6 @@ export function Footer() {
           <div className="md:col-span-3">
             <h4 className="text-[9px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 mb-8">Exclusives</h4>
             <ul className="space-y-4">
-              <li>
-                <Link href="/vault" className="text-[10px] font-sans uppercase tracking-widest font-bold text-text-primary hover:text-heritage transition-colors duration-500 flex items-center gap-3 group">
-                  Client Vault <span className="text-[7px] font-sans font-bold uppercase tracking-widest text-heritage px-3 py-0.5 border border-heritage/20 rounded-full group-hover:border-heritage transition-colors">Private</span>
-                </Link>
-              </li>
               <li>
                 <Link href="/quiz" className="text-[10px] font-sans uppercase tracking-widest font-bold text-text-primary hover:text-heritage transition-colors duration-500 flex items-center gap-3 group">
                   Aesthetic Quiz <span className="text-[7px] font-sans font-bold uppercase tracking-widest text-heritage px-3 py-0.5 border border-heritage/20 rounded-full group-hover:border-heritage transition-colors">AI</span>

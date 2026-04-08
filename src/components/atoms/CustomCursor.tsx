@@ -26,23 +26,24 @@ export function CustomCursor() {
     const follower = followerRef.current;
     const label = labelRef.current;
 
+    const xSet = gsap.quickSetter(cursor, "x", "px");
+    const ySet = gsap.quickSetter(cursor, "y", "px");
+    const xLabelSet = gsap.quickSetter(label, "x", "px");
+    const yLabelSet = gsap.quickSetter(label, "y", "px");
+    
+    const xFollower = gsap.quickTo(follower, "x", { duration: 0.5, ease: 'power3.out' });
+    const yFollower = gsap.quickTo(follower, "y", { duration: 0.5, ease: 'power3.out' });
+
     const onMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
-      setIsVisible(true);
+      if (!isVisible) setIsVisible(true);
 
-      gsap.to(cursor, {
-        x: clientX,
-        y: clientY,
-        duration: 0.1,
-        ease: 'none',
-      });
-
-      gsap.to(follower, {
-        x: clientX,
-        y: clientY,
-        duration: 0.5,
-        ease: 'power3.out',
-      });
+      xSet(clientX);
+      ySet(clientY);
+      xLabelSet(clientX);
+      yLabelSet(clientY);
+      xFollower(clientX);
+      yFollower(clientY);
     };
 
     const onDocumentMouseLeave = () => setIsVisible(false);

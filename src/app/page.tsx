@@ -15,7 +15,9 @@ import {
   Users,
   MessageCircle,
   Tent,
-  Instagram as InstagramIcon
+  Instagram as InstagramIcon,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
@@ -70,9 +72,11 @@ const stats = [
 ];
 
 const testimonials = [
-  { id: 1, content: "Zing Bliss made our wedding dream come true. Everything was perfect and stress-free.", author: "Anjali & Rahul", event: "Palace Wedding", avatar: "/hero-1.jpg" },
-  { id: 2, content: "The team is professional and very creative. They handled our corporate gala with amazing care.", author: "Vikram S.", event: "Tech Summit", avatar: "/hero-2.jpg" },
-  { id: 3, content: "Simply the best. They focus on the little things that make a big difference.", author: "Sonia M.", event: "Birthday Celebration", avatar: "/hero-3.jpg" },
+  { id: 1, content: "Zing Bliss made our wedding dream come true. Every detail was curated with such finesse, and the execution was flawless.", author: "Anjali & Rahul", event: "Palace Wedding", avatar: "/hero-1.jpg" },
+  { id: 2, content: "Professionalism meets pure creativity. Our corporate tech gala was transformed into a cinematic experience.", author: "Vikram S.", event: "Tech Summit", avatar: "/hero-2.jpg" },
+  { id: 3, content: "The absolute best in the industry. They understood our intimate aesthetic and brought it to life beautifully.", author: "Sonia M.", event: "Birthday Celebration", avatar: "/hero-3.jpg" },
+  { id: 4, content: "A level of sophistication I haven't seen before. They handled the logistics so we could truly enjoy our day.", author: "Kabir & Meera", event: "Garden Wedding", avatar: "/hero-4.jpg" },
+  { id: 5, content: "Exceptional taste and incredible energy. Every guest was talking about the decor for weeks!", author: "Priya V.", event: "Private Social", avatar: "/hero-5.jpg" },
 ];
 
 const heroImages = [
@@ -105,6 +109,10 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const [currentHeroIndex, setCurrentHeroIndex] = React.useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = React.useState(0);
+
+  const nextTestimonial = () => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  const prevTestimonial = () => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -133,7 +141,8 @@ export default function Home() {
       });
     });
 
-    // Background color shifts
+    // Background color shifts - REMOVED to prevent jarring green transitions
+    /*
     const sections = gsap.utils.toArray<HTMLElement>('section');
     sections.forEach((section, i) => {
       const bgColor = section.dataset.bg || (i % 2 === 0 ? 'var(--color-canvas)' : 'var(--color-surface)');
@@ -146,6 +155,7 @@ export default function Home() {
         onEnterBack: () => gsap.to(mainRef.current, { backgroundColor: bgColor, duration: 1, ease: 'power2.inOut' }),
       });
     });
+    */
 
   }, { scope: containerRef });
 
@@ -189,7 +199,7 @@ export default function Home() {
             <div className="hero-btns flex flex-col sm:flex-row items-center gap-6">
               <Magnetic strength={0.2}>
                 <Link href="/contact">
-                  <Button size="lg" className="h-16 px-16 text-[10px] bg-heritage hover:bg-heritage-dark text-white border-0 shadow-2xl transition-all hover:scale-105" rightIcon={<ArrowRight size={16} />}>
+                  <Button size="lg" className="h-16 px-16 text-[10px] border-0 shadow-2xl transition-all hover:scale-105" rightIcon={<ArrowRight size={16} />}>
                     Plan Your Event
                   </Button>
                 </Link>
@@ -206,24 +216,29 @@ export default function Home() {
         </section>
 
         {/* 2. Trust Strip */}
-        <section className="bg-heritage pt-20 pb-12 relative z-30 overflow-hidden border-y border-white/5">
+        <section className="bg-heritage pt-24 pb-20 relative z-30 overflow-hidden border-y border-white/5">
           <div className="absolute inset-0 dot-pattern opacity-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(197,160,89,0.08)_0%,_transparent_70%)] pointer-events-none" />
+          <BackgroundFlourish type="architectural" className="bottom-[-20%] right-[-5%] w-96 h-96 text-white/5 rotate-12" parallaxSpeed={0.02} />
+          
           <div className="container relative z-10">
-            <div className="flex flex-col md:flex-row justify-around items-center gap-16 md:gap-8">
+            <div className="grid grid-cols-3 gap-4 md:gap-12">
               {[
-                { label: 'Events Executed', value: '100+', icon: <Zap size={18} /> },
-                { label: 'Happy Clients', value: '100+', icon: <Heart size={18} /> },
-                { label: 'Years Experience', value: '10+', icon: <Star size={18} /> },
+                { label: 'Events', value: '100+', icon: <Sparkles size={18} /> },
+                { label: 'Happy', value: '100%', icon: <Users size={18} /> },
+                { label: 'Years', value: '10+', icon: <Star size={18} /> },
               ].map((stat, i) => (
-                <div key={stat.label} className="flex items-center gap-8 group">
-                   <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-white/90 group-hover:bg-burnished group-hover:text-white transition-all duration-1000 border border-white/5 group-hover:border-burnished/50 shadow-2xl">
-                     {stat.icon}
+                <div key={stat.label} className="flex flex-col items-center text-center group">
+                   <div className="w-12 h-12 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center text-white/80 group-hover:bg-burnished group-hover:text-white transition-all duration-1000 border border-white/10 group-hover:border-burnished/50 shadow-2xl mb-4 md:mb-8 relative">
+                     <div className="absolute inset-0 rounded-full bg-white/5 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-0 transition-all duration-1000" />
+                     <div className="scale-75 md:scale-100">{stat.icon}</div>
                    </div>
-                   <div className="flex flex-col">
-                      <span className="text-4xl md:text-5xl lg:text-6xl font-serif text-white italic tracking-tight leading-none">
+                   <div className="flex flex-col items-center">
+                      <span className="text-2xl md:text-6xl lg:text-7xl font-serif text-white italic tracking-tighter leading-none">
                         <Counter value={stat.value} />
                       </span>
-                      <span className="text-[10px] font-mono uppercase tracking-[0.5em] text-white/50 mt-3 font-bold">
+                      <div className="h-px w-4 md:w-8 bg-burnished/30 my-2 md:my-4 group-hover:w-16 transition-all duration-1000" />
+                      <span className="text-[7px] md:text-[10px] font-mono uppercase tracking-[0.3em] md:tracking-[0.6em] text-white/40 group-hover:text-white/70 transition-colors font-bold small-caps">
                         {stat.label}
                       </span>
                    </div>
@@ -237,23 +252,21 @@ export default function Home() {
         <section id="gallery" className="pt-20 pb-32 bg-canvas" data-bg="var(--color-canvas)">
           <div className="container space-y-16">
             <div className="text-center space-y-4 fade-up">
-              <span className="text-[10px] font-mono text-heritage/60 uppercase tracking-[0.6em] small-caps">Our Portfolio</span>
-              <TextReveal text="Recent Work" className="text-5xl md:text-8xl font-serif font-medium tracking-tighter" />
+              <TextReveal text="Our Recent Work" className="text-5xl md:text-8xl font-serif font-medium tracking-tighter" />
             </div>
             <Gallery items={galleryItems} />
             <div className="flex justify-center pt-8">
               <Link href="/gallery">
-                <Button variant="outline" className="btn-outline-prestige h-16 px-16 text-[10px] border-linen hover:border-heritage">View All Projects</Button>
+                <Button className="h-16 px-16 text-[10px] shadow-lg hover:scale-105">View All Projects</Button>
               </Link>
             </div>
           </div>
         </section>
 
         {/* 4. Services Section */}
-        <section id="services" className="py-32 bg-surface relative overflow-hidden" data-bg="var(--color-surface)">
+        <section id="services" className="py-24 bg-surface relative overflow-hidden border-t border-linen/40" data-bg="var(--color-surface)">
           <div className="container space-y-16">
             <div className="flex flex-col items-center text-center space-y-4 fade-up relative z-10">
-              <span className="text-[10px] font-mono text-heritage uppercase tracking-[0.6em] small-caps">Expertise</span>
               <TextReveal text="Our Services" className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-text-primary tracking-tighter" />
               <p className="text-base text-text-secondary font-sans font-light max-w-xl leading-relaxed">
                 From luxury weddings to corporate experiences — we plan, design & execute seamlessly.
@@ -263,8 +276,8 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
               {[
                 { title: 'Luxury Weddings', desc: 'Luxury wedding planning that reflects your unique love story.', img: '/decor-1.jpg' },
-                { title: 'Corporate Events', desc: 'Professional event management for high-stakes business experiences.', img: '/decor-2.jpg' },
-                { title: 'Social Events', desc: 'Intimate and grand celebrations for life\'s most precious moments.', img: '/decor-3.jpg' },
+                { title: 'Corporate Events', desc: 'Professional event management for high-stakes business experiences.', img: '/decor-4.jpg' },
+                { title: 'Social Events', desc: 'Intimate and grand celebrations for life\'s most precious moments.', img: '/hero-7.jpg' },
               ].map((service, i) => (                <div key={i} className="bg-white p-8 space-y-6 group hover:-translate-y-2 transition-all duration-700 flex flex-col items-center text-center shadow-sm hover:shadow-xl rounded-2xl border border-linen/20">
                   <div className="aspect-square w-full rounded-xl overflow-hidden mb-4">
                     <Image src={service.img} alt={service.title} width={600} height={600} className="object-cover h-full w-full grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110" />
@@ -281,11 +294,10 @@ export default function Home() {
         </section>
 
         {/* 5. Why Choose Us */}
-        <section id="why-choose-us" className="py-32 bg-white relative overflow-hidden" data-bg="var(--color-surface-light)">
-          <div className="container space-y-24 relative z-10">
-            <div className="flex flex-col items-center text-center space-y-4 fade-up">
-              <span className="text-[10px] font-mono text-heritage/60 uppercase tracking-[0.6em] small-caps">Excellence</span>
-              <TextReveal text="Why Choose Us" className="text-5xl md:text-8xl font-serif font-medium text-text-primary tracking-tighter" />
+        <section id="why-choose-us" className="py-24 bg-white relative overflow-hidden border-t border-linen/30 shadow-[0_-20px_50px_rgba(0,0,0,0.02)]" data-bg="var(--color-surface-light)">
+          <div className="container space-y-16 relative z-10">
+            <div className="flex flex-col items-center text-center space-y-2 fade-up">
+              <TextReveal text="Why Choose Us" className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-text-primary tracking-tighter" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -310,10 +322,15 @@ export default function Home() {
         </section>
 
         {/* 6. CTA Strip (MID CTA) */}
-        <section className="bg-heritage py-20 relative overflow-hidden border-y border-white/5">
+        <section className="bg-heritage py-24 relative overflow-hidden border-y border-white/5">
           <div className="absolute inset-0 dot-pattern opacity-10 pointer-events-none" />
-          <div className="container relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white italic tracking-tight">Ready to Plan Your Event?</h2>
+          <div className="container relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div className="space-y-4 text-center lg:text-left">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white italic tracking-tight">Ready to Plan Your Event?</h2>
+              <p className="text-white/70 font-serif italic text-lg md:text-xl max-w-xl">
+                Let&apos;s turn your vision into an extraordinary reality. Connect with our concierge team to start your journey.
+              </p>
+            </div>
             <Link href="/contact">
               <Button size="lg" className="h-16 px-16 text-[10px] bg-burnished text-white hover:bg-burnished-light transition-all shadow-2xl border-0 hover:scale-105">
                 Plan Your Event
@@ -324,25 +341,35 @@ export default function Home() {
 
         {/* 7. How We Work */}
         <section id="process" className="py-32 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
-          <div className="container space-y-24 relative z-10">
+          <div className="container space-y-20 relative z-10">
             <div className="flex flex-col items-center text-center space-y-4 fade-up">
-              <span className="text-[10px] font-mono text-heritage/60 uppercase tracking-[0.6em] small-caps">Methodology</span>
               <TextReveal text="How We Work" className="text-5xl md:text-7xl font-serif font-medium tracking-tighter" />
+              <p className="text-text-secondary font-sans font-light max-w-lg mx-auto">
+                A seamless four-step journey from your initial spark of inspiration to a perfectly executed celebration.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
               {[
                 { title: 'Understand Your Vision', desc: 'We start by listening to your dreams and goals for the event.' },
                 { title: 'Plan & Design', desc: 'Our team crafts a detailed blueprint and aesthetic direction.' },
                 { title: 'Execute Seamlessly', desc: 'We manage all vendors and logistics with surgical precision.' },
-                { title: 'Deliver Memorable Experience', desc: 'You and your guests enjoy an unforgettable celebration.' },
+                { title: 'Deliver Excellence', desc: 'You and your guests enjoy an unforgettable celebration.' },
               ].map((step, i) => (
-                <div key={i} className="space-y-6 group fade-up flex flex-col items-center text-center">
-                  <div className="text-4xl font-serif italic text-heritage font-bold group-hover:scale-110 transition-transform duration-700">0{i+1}</div>
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-serif font-medium text-text-primary italic">{step.title}</h3>
+                <div key={i} className="process-card group relative bg-white p-10 border border-linen/30 hover:border-heritage/20 transition-all duration-700 hover:shadow-2xl rounded-2xl flex flex-col items-center text-center space-y-6 fade-up">
+                  <div className="absolute top-6 right-8 text-4xl font-serif italic text-heritage/5 group-hover:text-heritage/10 transition-colors font-bold">0{i+1}</div>
+                  <div className="w-16 h-16 rounded-full bg-heritage/5 flex items-center justify-center text-heritage font-serif italic text-2xl font-bold group-hover:bg-heritage group-hover:text-white transition-all duration-700">
+                    {i+1}
+                  </div>
+                  <div className="space-y-3 relative">
+                    <h3 className="text-xl md:text-2xl font-serif font-medium text-text-primary italic">{step.title}</h3>
                     <p className="text-sm text-text-secondary leading-relaxed font-light">{step.desc}</p>
                   </div>
+                  {i < 3 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-4 translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
+                      <ArrowRight size={20} className="text-linen group-hover:text-heritage transition-colors duration-700" />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -350,34 +377,84 @@ export default function Home() {
         </section>
 
         {/* 8. Testimonials */}
-        <section id="testimonials" className="py-24 bg-surface border-y border-linen/30" data-bg="var(--color-surface)">
-          <div className="container space-y-16">
+        <section id="testimonials" className="py-32 bg-surface border-y border-linen/30 relative overflow-hidden" data-bg="var(--color-surface)">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(197,160,89,0.05)_0%,_transparent_70%)] pointer-events-none" />
+          <BackgroundFlourish type="floral" className="top-[-10%] left-[-5%] w-96 h-96 text-heritage/5 -rotate-12" parallaxSpeed={0.03} />
+          
+          <div className="container relative z-10 space-y-16">
             <div className="flex flex-col items-center text-center space-y-4 fade-up">
-              <span className="text-[10px] font-mono text-heritage/60 uppercase tracking-[0.6em] small-caps">Testimonials</span>
               <TextReveal text="Happy Clients" className="text-5xl md:text-8xl font-serif font-medium text-text-primary tracking-tighter" />
               <p className="text-lg font-serif italic font-light text-text-secondary max-w-xl mx-auto">
-                "They made our wedding stress-free and unforgettable."
+                What our clients say about their bespoke event experiences.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((t) => (
-                <div key={t.id} className="bg-white p-10 space-y-6 hover:shadow-xl transition-all duration-700 rounded-2xl border border-linen/10">
-                  <div className="flex gap-1 text-heritage/40">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={8} fill="currentColor" />)}
-                  </div>
-                  <p className="text-base text-text-primary font-serif italic leading-relaxed">"{t.content}"</p>
-                  <div className="flex items-center gap-3 pt-6 border-t border-linen/30">
-                    <div className="w-12 h-12 rounded-xl overflow-hidden grayscale opacity-70">
-                      <Image src={t.avatar} alt={t.author} width={48} height={48} className="object-cover" />
+            <div className="relative max-w-4xl mx-auto fade-up">
+              <div className="overflow-hidden min-h-[400px] flex items-center">
+                {testimonials.map((t, i) => (
+                  <div 
+                    key={t.id} 
+                    className={cn(
+                      "w-full transition-all duration-1000 ease-expo absolute inset-0 flex flex-col items-center justify-center text-center space-y-10",
+                      i === currentTestimonial ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 translate-x-20 pointer-events-none"
+                    )}
+                  >
+                    <div className="flex gap-1.5 text-burnished">
+                      {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
                     </div>
-                    <div>
-                      <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-primary">{t.author}</h4>
-                      <p className="text-[9px] uppercase tracking-[0.1em] text-text-muted mt-0.5">{t.event}</p>
+                    
+                    <p className="text-2xl md:text-4xl lg:text-5xl font-serif italic text-text-primary leading-[1.3] tracking-tight">
+                      &quot;{t.content}&quot;
+                    </p>
+
+                    <div className="flex flex-col items-center gap-6 pt-8">
+                      <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-burnished/20 shadow-xl">
+                        <Image 
+                          src={t.avatar} 
+                          alt={t.author} 
+                          width={96} 
+                          height={96} 
+                          className="object-cover w-full h-full scale-105" 
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-sm font-bold uppercase tracking-[0.3em] text-text-primary">{t.author}</h4>
+                        <p className="text-[10px] uppercase tracking-[0.2em] text-heritage font-bold">{t.event}</p>
+                      </div>
                     </div>
                   </div>
+                ))}
+              </div>
+
+              {/* Slider Navigation */}
+              <div className="flex justify-center items-center gap-12 mt-12">
+                <button 
+                  onClick={prevTestimonial}
+                  className="w-14 h-14 rounded-full border border-linen flex items-center justify-center text-heritage hover:bg-heritage hover:text-white hover:border-heritage transition-all duration-500 group"
+                  aria-label="Previous Testimonial"
+                >
+                  <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+                </button>
+                <div className="flex gap-3">
+                  {testimonials.map((_, i) => (
+                    <button 
+                      key={i}
+                      onClick={() => setCurrentTestimonial(i)}
+                      className={cn(
+                        "w-2 h-2 rounded-full transition-all duration-500",
+                        i === currentTestimonial ? "w-8 bg-heritage" : "bg-linen hover:bg-heritage/30"
+                      )}
+                    />
+                  ))}
                 </div>
-              ))}
+                <button 
+                  onClick={nextTestimonial}
+                  className="w-14 h-14 rounded-full border border-linen flex items-center justify-center text-heritage hover:bg-heritage hover:text-white hover:border-heritage transition-all duration-500 group"
+                  aria-label="Next Testimonial"
+                >
+                  <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
           </div>
         </section>

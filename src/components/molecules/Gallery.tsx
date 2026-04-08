@@ -63,7 +63,7 @@ export function Gallery({ items, className, hasCursorLabel = true }: GalleryProp
 
   return (
     <>
-      <div className={cn("grid grid-cols-1 md:grid-cols-3 gap-6", className)}>
+      <div className={cn("grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6", className)}>
         {items.map((item, index) => {
           return (
             <div 

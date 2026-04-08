@@ -3,9 +3,10 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Star, Sparkles, Music, Zap, MessageCircle } from 'lucide-react';
+import { Star, Sparkles, Music, Zap, MessageCircle, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
+import { Magnetic } from '@/components/atoms/Magnetic';
 import { MaskSlideImage } from '@/components/molecules/MaskSlideImage';
 import { TextReveal } from '@/components/atoms/TextReveal';
 import { SVGSpine } from '@/components/atoms/SVGSpine';
@@ -75,6 +76,7 @@ export default function ServicesPage() {
 
   useGSAP(() => {
     gsap.from('.header-fade', { y: 30, opacity: 0, duration: 1.2, stagger: 0.1, ease: 'power2.out' });
+    /*
     const sections = gsap.utils.toArray<HTMLElement>('.service-section');
     sections.forEach((section) => {
       const bgColor = section.dataset.bg;
@@ -86,6 +88,7 @@ export default function ServicesPage() {
         onEnterBack: () => gsap.to(containerRef.current, { backgroundColor: bgColor, duration: 1.2, ease: 'power2.inOut' }),
       });
     });
+    */
     gsap.utils.toArray<HTMLElement>('.process-card').forEach((card) => {
       gsap.from(card, {
         scrollTrigger: { trigger: card, start: 'top 90%' },
@@ -103,16 +106,36 @@ export default function ServicesPage() {
       <div className="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
       <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.05} />
       
-      {/* Header */}
-      <section id="header" className="container py-24 md:py-32 relative text-center space-y-12">
-        <div className="header-fade flex flex-col items-center gap-4">
-          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">03 / WHAT WE DO</span>
-          <div className="h-12 w-[1px] bg-burnished/30" />
+      {/* 1. Hero Section */}
+      <section id="hero" className="relative h-[80vh] flex items-center overflow-hidden" data-bg="var(--color-canvas)">
+        <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90 z-10 pointer-events-none" />
+        
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/decor-1.jpg" 
+            alt="Our Services" 
+            fill 
+            className="object-cover scale-110 animate-[ken-burns_40s_ease-in-out_infinite_alternate]" 
+            priority 
+            sizes="100vw" 
+          />
         </div>
-        <TextReveal as="h1" text="Our Services." className="text-5xl md:text-[8rem] lg:text-[10rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" />
-        <p className="header-fade text-lg md:text-2xl text-text-secondary font-sans font-light max-w-3xl mx-auto pt-6 leading-relaxed">
-          We offer complete event planning and design services for weddings, business events, and private parties.
-        </p>
+
+        <div className="container relative z-20 text-center flex flex-col items-center">
+          <div className="header-fade flex flex-col items-center gap-4 mb-8">
+            <span className="text-[10px] font-mono text-white/80 uppercase tracking-[0.8em] small-caps">03 / WHAT WE DO</span>
+            <div className="h-12 w-[1px] bg-burnished/60" />
+          </div>
+          
+          <h1 className="header-fade text-5xl md:text-[7rem] lg:text-[8.5rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl max-w-5xl">
+            Our <span className="text-burnished italic font-light">Services.</span>
+          </h1>
+
+          <p className="header-fade text-lg md:text-2xl text-white/90 max-w-2xl leading-relaxed font-sans font-light mt-10 drop-shadow-lg">
+            We offer complete event planning and design services for weddings, business events, and private parties.
+          </p>
+        </div>
       </section>
 
       <SectionDivider />
@@ -162,41 +185,46 @@ export default function ServicesPage() {
       <FloatingMetric label="Our Promise" value="Smooth Events" className="top-[200vh] left-[15%]" />
 
       {/* Process Journey */}
-      <section id="process" className="relative py-24 md:py-32">
-        <div className="container mb-24 text-center space-y-6">
+      <section id="process" className="relative py-24 bg-surface border-y border-linen/30" data-bg="var(--color-surface)">
+        <div className="container mb-16 text-center space-y-4 fade-up">
           <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">06 / THE PROCESS</span>
-          <TextReveal as="h2" text="How It Works." className="text-6xl md:text-9xl font-serif text-text-primary font-bold tracking-tighter" />
+          <TextReveal as="h2" text="How It Works." className="text-5xl md:text-7xl font-serif text-text-primary font-bold tracking-tighter" />
         </div>
-        <div className="container space-y-24">
-          {[
-            { step: '01', title: 'First Talk', desc: 'We meet to understand your ideas and what you want for your big day.' },
-            { step: '02', title: 'The Plan', desc: 'We create a careful plan and design so you can see how it will look.' },
-            { step: '03', title: 'Choosing Details', desc: 'We help you pick the best vendors and items to match your style.' },
-            { step: '04', title: 'The Event', desc: 'We are there on the day to make sure everything runs perfectly.' },
-          ].map((item, i) => (
-            <div key={i} className="process-card grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center group">
-              <div className="md:col-span-5 relative text-center md:text-left">
-                <span className="text-[8rem] md:text-[14rem] font-serif font-bold text-heritage leading-none group-hover:scale-110 transition-transform duration-1000 inline-block">{item.step}</span>
+        <div className="container">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: 'Consultation', desc: 'We meet to understand your ideas and what you want for your big day.' },
+              { title: 'Conceptualization', desc: 'We create a careful plan and design so you can see how it will look.' },
+              { title: 'Coordination', desc: 'We help you pick the best vendors and items to match your style.' },
+              { title: 'Celebration', desc: 'We are there on the day to make sure everything runs perfectly.' },
+            ].map((item, i) => (
+              <div key={i} className="process-card bg-white p-10 rounded-2xl border border-linen/50 hover:border-heritage/20 shadow-sm hover:shadow-2xl transition-all duration-700 flex flex-col space-y-8 group">
+                <div className="flex justify-between items-start">
+                    <span className="text-4xl font-serif font-bold text-heritage italic">0{i+1}</span>
+                    <div className="w-10 h-10 rounded-full bg-heritage/5 flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-white transition-all duration-500">
+                        <ArrowRight size={16} />
+                    </div>
+                </div>
+                <div className="space-y-3">
+                    <h3 className="text-2xl font-serif text-text-primary font-bold italic">{item.title}</h3>
+                    <p className="text-sm text-text-secondary font-sans font-light leading-relaxed">{item.desc}</p>
+                </div>
               </div>
-              <div className="md:col-span-7 space-y-6">
-                <h3 className="text-4xl md:text-6xl font-serif text-text-primary font-bold italic">{item.title}</h3>
-                <p className="text-xl md:text-2xl text-text-secondary font-sans font-light leading-relaxed max-w-2xl">{item.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       <SectionDivider />
 
       {/* FAQ */}
-      <section id="faq" className="py-24 md:py-32 container">
-        <div className="max-w-6xl mx-auto space-y-20">
-          <div className="text-center space-y-6">
+      <section id="faq" className="py-24 container">
+        <div className="max-w-6xl mx-auto space-y-16">
+          <div className="text-center space-y-4">
             <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">07 / QUESTIONS</span>
-            <TextReveal as="h2" text="Common Questions." className="text-5xl md:text-7xl font-serif font-bold text-text-primary tracking-tighter" />
+            <TextReveal as="h2" text="Common Questions." className="text-4xl md:text-6xl font-serif font-bold text-text-primary tracking-tighter" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               { q: 'Do you plan events in other cities?', a: 'Yes, we plan events all over India and in other countries too.' },
               { q: 'When should we book your services?', a: 'For big events, it is best to book 8 to 12 months in advance.' },
@@ -214,17 +242,31 @@ export default function ServicesPage() {
 
       <SectionDivider />
 
-      {/* CTA */}
-      <section id="cta" className="py-32 md:py-48 relative overflow-hidden">
-        <div className="container text-center space-y-12 relative z-10">
-          <TextReveal as="h2" text="Ready to start?" className="text-6xl md:text-[10rem] lg:text-[12rem] font-serif text-text-primary font-bold tracking-tighter leading-[0.85]" />
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-10 pt-8">
-            <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="h-20 px-20 text-[11px] bg-heritage text-white hover:bg-heritage-dark shadow-2xl transition-all hover:scale-105" leftIcon={<MessageCircle size={24} />}>Book Consultation</Button>
-            </a>
-            <Link href="/contact">
-              <Button variant="outline" size="lg" className="h-20 px-20 text-[11px] border-heritage/30 text-heritage hover:bg-heritage hover:text-white transition-all shadow-xl">Send a Message</Button>
-            </Link>
+      {/* 10. Final CTA */}
+      <section id="cta" className="relative py-24 bg-heritage overflow-hidden border-t border-white/5" data-bg="var(--color-heritage)">
+        <div className="absolute inset-0 z-0 opacity-10">
+           <Image src="/hero10.jpg" alt="Background" fill className="object-cover" />
+        </div>
+        <BackgroundFlourish type="floral" className="bottom-[-10%] left-[-5%] w-64 h-64 text-white/5 rotate-45" />
+        
+        <div className="container relative z-10 text-center space-y-10">
+          <div className="space-y-4">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tighter text-white leading-tight">
+              Let&apos;s Create <span className="italic font-light text-burnished">Magic.</span>
+            </h2>
+            <p className="text-base md:text-lg text-white/70 font-serif italic font-light leading-relaxed max-w-xl mx-auto">
+              Ready to start planning your extraordinary event? Let&apos;s turn your vision into reality.
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <Magnetic strength={0.2}>
+              <Link href="/contact">
+                <Button className="h-16 px-16 text-[10px] bg-white text-heritage hover:bg-linen shadow-2xl transition-all hover:scale-105" rightIcon={<ArrowRight size={18} />}>
+                  Plan Your Event
+                </Button>
+              </Link>
+            </Magnetic>
           </div>
         </div>
       </section>

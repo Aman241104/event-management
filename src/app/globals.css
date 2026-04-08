@@ -3,7 +3,7 @@
 @theme {
   /* Purer & More Refined Collection - Editorial Ultra-Luxury */
   --color-canvas: #FDFCFB; /* Purer Soft Bone */
-  --color-surface: #F9F8F6; /* Minimalist Light Gray-Beige */
+  --color-surface: #F3F1ED; /* Refined Light Gray-Beige for better demarcation */
   --color-surface-light: #FFFFFF; /* Pure White */
 
   /* Heritage Green - Strictly as a Sophisticated Accent */
@@ -102,7 +102,7 @@
   }
 
   .btn-prestige {
-    @apply bg-text-primary text-canvas hover:bg-heritage transition-all duration-500 rounded-none tracking-[0.3em] font-sans uppercase text-[9px] font-bold relative overflow-hidden;
+    @apply bg-heritage text-canvas hover:bg-heritage-dark transition-all duration-500 rounded-none tracking-[0.3em] font-sans uppercase text-[9px] font-bold relative overflow-hidden;
     transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
   }
 
