@@ -167,7 +167,7 @@ export function Navbar() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'fixed inset-0 z-50 w-full h-screen bg-canvas lg:hidden transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] transform',
+          'fixed inset-0 z-50 w-full h-screen bg-canvas lg:hidden transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] transform overflow-y-auto',
           isOpen ? 'translate-x-0' : 'translate-x-full pointer-events-none'
         )}
       >
@@ -188,8 +188,8 @@ export function Navbar() {
           </button>
         </div>
 
-        <div className="flex flex-col h-full px-8 pt-40 pb-12 justify-between relative z-10">
-          <div className="flex flex-col space-y-10">
+        <div className="flex flex-col min-h-full px-8 pt-24 pb-20 justify-between relative z-10">
+          <div className="flex flex-col space-y-8">
             {navLinks.map((link, i) => (
               <Link
                 key={link.label}
@@ -213,19 +213,19 @@ export function Navbar() {
           </div>
 
           <div className={cn(
-            "space-y-12 transition-all duration-1000 delay-500",
+            "space-y-8 transition-all duration-1000 delay-500",
             isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
-            <div className="flex flex-col space-y-8 text-center">
-              <div className="flex justify-center gap-12 border-y border-linen py-8">
+            <div className="flex flex-col space-y-6 text-center">
+              <div className="flex justify-center gap-12 border-y border-linen py-6">
                  <button onClick={openSearch} className="text-[11px] font-sans font-bold uppercase tracking-widest text-text-secondary hover:text-heritage transition-colors flex items-center gap-2">
                    <Search size={16} /> Search
                  </button>
                  <Link href="/quiz" onClick={() => setIsOpen(false)} className="text-[11px] font-sans font-bold uppercase tracking-widest text-text-secondary hover:text-heritage transition-colors">Aesthetic Quiz</Link>
               </div>
-              <a href="mailto:hello@zingblissevents.com" className="text-xl font-serif text-text-primary font-bold underline underline-offset-8 decoration-heritage/20 hover:decoration-heritage transition-all duration-500">hello@zingblissevents.com</a>
+              <a href="mailto:hello@zingblissevents.com" className="text-lg font-serif text-text-primary font-bold underline underline-offset-8 decoration-heritage/20 hover:decoration-heritage transition-all duration-500">hello@zingblissevents.com</a>
               <Link href="/contact" onClick={() => setIsOpen(false)}>
-                <Button variant="solid" className="w-full h-20 btn-prestige font-bold text-sm tracking-[0.3em]">
+                <Button variant="solid" className="w-full h-16 btn-prestige font-bold text-[10px] tracking-[0.3em]">
                   BOOK CONSULTATION
                 </Button>
               </Link>
