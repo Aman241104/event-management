@@ -65,10 +65,9 @@ const steps = [
 ];
 
 const stats = [
-  { value: '500+', label: 'Events Planned' },
+  { value: '100+', label: 'Events Planned' },
   { value: '100%', label: 'Happy Clients' },
-  { value: '25+', label: 'Cities Visited' },
-  { value: '15+', label: 'Years Experience' },
+  { value: '10+', label: 'Years of Experience' },
 ];
 
 const testimonials = [
@@ -238,22 +237,22 @@ export default function Home() {
           
           <div className="container relative z-10">
             <div className="grid grid-cols-3 gap-4 md:gap-12">
-              {[
-                { label: 'Events', value: '100+', icon: <Sparkles size={18} /> },
-                { label: 'Happy', value: '100%', icon: <Users size={18} /> },
-                { label: 'Years', value: '10+', icon: <Star size={18} /> },
-              ].map((stat, i) => (
+              {stats.map((stat, i) => (
                 <div key={stat.label} className="flex flex-col items-center text-center group">
                    <div className="w-12 h-12 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center text-white/80 group-hover:bg-burnished group-hover:text-white transition-all duration-1000 border border-white/10 group-hover:border-burnished/50 shadow-2xl mb-4 md:mb-8 relative">
                      <div className="absolute inset-0 rounded-full bg-white/5 scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-0 transition-all duration-1000" />
-                     <div className="scale-75 md:scale-100">{stat.icon}</div>
+                     <div className="scale-75 md:scale-100">
+                        {i === 0 && <Sparkles size={18} />}
+                        {i === 1 && <Users size={18} />}
+                        {i === 2 && <Star size={18} />}
+                     </div>
                    </div>
                    <div className="flex flex-col items-center">
-                      <span className="text-2xl md:text-6xl lg:text-7xl font-serif text-white italic tracking-tighter leading-none">
+                      <span className="text-4xl md:text-7xl lg:text-8xl font-serif text-white italic tracking-tighter leading-none font-bold">
                         <Counter value={stat.value} />
                       </span>
-                      <div className="h-px w-4 md:w-8 bg-burnished/30 my-2 md:my-4 group-hover:w-16 transition-all duration-1000" />
-                      <span className="text-[7px] md:text-[10px] font-mono uppercase tracking-[0.3em] md:tracking-[0.6em] text-white/40 group-hover:text-white/70 transition-colors font-bold small-caps">
+                      <div className="h-px w-6 md:w-12 bg-burnished/40 my-3 md:my-5 group-hover:w-20 transition-all duration-1000" />
+                      <span className="text-[9px] md:text-[14px] font-sans uppercase tracking-[0.2em] md:tracking-[0.4em] text-white/70 group-hover:text-white transition-colors font-black">
                         {stat.label}
                       </span>
                    </div>
@@ -398,9 +397,9 @@ export default function Home() {
           
           <div className="container relative z-10 space-y-16">
             <div className="flex flex-col items-center text-center space-y-4 fade-up">
-              <TextReveal text="Happy Clients" className="text-5xl md:text-8xl font-serif font-medium text-text-primary tracking-tighter" />
+              <TextReveal text="Clients" className="text-5xl md:text-8xl font-serif font-medium text-text-primary tracking-tighter" />
               <p className="text-lg font-serif italic font-light text-text-secondary max-w-xl mx-auto">
-                What our clients say about their bespoke event experiences.
+                What they say about their bespoke event experiences.
               </p>
             </div>
 
