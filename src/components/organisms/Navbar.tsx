@@ -173,6 +173,21 @@ export function Navbar() {
       >
         <div className="absolute inset-0 dot-pattern opacity-[0.03]" />
 
+        {/* Close Button for Mobile Menu */}
+        <div className="absolute top-6 right-6 z-20">
+          <button
+            onClick={() => setIsOpen(false)}
+            className="p-4 text-text-primary hover:text-heritage transition-colors"
+            aria-label="Close Menu"
+          >
+            <div className="w-6 flex flex-col items-end gap-1.5">
+              <span className="h-px w-6 bg-current translate-y-2 rotate-45" />
+              <span className="h-px w-6 bg-current opacity-0" />
+              <span className="h-px w-6 bg-current -translate-y-2 -rotate-45" />
+            </div>
+          </button>
+        </div>
+
         <div className="flex flex-col h-full px-8 pt-40 pb-12 justify-between relative z-10">
           <div className="flex flex-col space-y-10">
             {navLinks.map((link, i) => (
