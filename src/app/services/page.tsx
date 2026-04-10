@@ -74,30 +74,118 @@ const SectionDivider = ({ className }: { className?: string }) => (
 export default function ServicesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const horizontalRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
     gsap.from('.header-fade', { y: 30, opacity: 0, duration: 1.2, stagger: 0.1, ease: 'power2.out' });
-    /*
-    const sections = gsap.utils.toArray<HTMLElement>('.service-section');
-    sections.forEach((section) => {
-      const bgColor = section.dataset.bg;
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top 50%',
-        end: 'bottom 50%',
-        onEnter: () => gsap.to(containerRef.current, { backgroundColor: bgColor, duration: 1.2, ease: 'power2.inOut' }),
-        onEnterBack: () => gsap.to(containerRef.current, { backgroundColor: bgColor, duration: 1.2, ease: 'power2.inOut' }),
+    
+    const mm = gsap.matchMedia();
+    
+    mm.add("(min-width: 1024px)", () => {
+      if (!horizontalRef.current || !containerRef.current) return;
+      
+      const cards = gsap.utils.toArray<HTMLElement>('.process-card');
+      const scrollWidth = horizontalRef.current.scrollWidth;
+      const windowWidth = window.innerWidth;
+      
+      // Calculate total scroll distance
+      const amountToScroll = scrollWidth - (windowWidth / 2) + (cards[0].offsetWidth / 2);
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#process",
+          start: "top top",
+          end: () => `+=${scrollWidth}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+        }
+      });
+
+      tl.to(horizontalRef.current, {
+        x: -(scrollWidth - windowWidth + (windowWidth * 0.1)),
+        ease: "none"
+      });
+
+      // Individual card animations as they pass the center
+      cards.forEach((card, i) => {
+        gsap.to(card, {
+          scale: 1.1,
+          boxShadow: '0 25px 50px -12px rgba(45, 76, 57, 0.15)',
+          borderColor: 'var(--color-burnished)',
+          backgroundColor: '#FFFFFF',
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: tl,
+            start: "left 60%",
+            end: "left 40%",
+            scrub: true,
+          }
+        });
+        
+        // Number reveal animation
+        const number = card.querySelector('.card-number');
+        if (number) {
+          gsap.fromTo(number, 
+            { opacity: 0.1, y: 20 },
+            { 
+              opacity: 1, 
+              y: 0, 
+              color: 'var(--color-heritage)',
+              scrollTrigger: {
+                trigger: card,
+                containerAnimation: tl,
+                start: "left 70%",
+                end: "left 50%",
+                scrub: true,
+              }
+            }
+          );
+        }
       });
     });
-    */
-    gsap.utils.toArray<HTMLElement>('.process-card').forEach((card) => {
-      gsap.from(card, {
-        scrollTrigger: { trigger: card, start: 'top 90%' },
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
+
+    mm.add("(max-width: 1023px)", () => {
+      gsap.utils.toArray<HTMLElement>('.process-card').forEach((card) => {
+        // Initial fade-up
+        gsap.from(card, {
+          scrollTrigger: { trigger: card, start: 'top 95%' },
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out'
+        });
+
+        // Focus effect as card reaches center
+        gsap.to(card, {
+          scale: 1.05,
+          borderColor: 'var(--color-burnished)',
+          backgroundColor: '#FFFFFF',
+          boxShadow: '0 20px 40px -10px rgba(45, 76, 57, 0.1)',
+          scrollTrigger: {
+            trigger: card,
+            start: "top 60%",
+            end: "top 40%",
+            scrub: true,
+          }
+        });
+
+        const number = card.querySelector('.card-number');
+        if (number) {
+          gsap.to(number, {
+            opacity: 1,
+            color: 'var(--color-heritage)',
+            scrollTrigger: {
+              trigger: card,
+              start: "top 60%",
+              end: "top 40%",
+              scrub: true,
+            }
+          });
+        }
       });
     });
+
     setTimeout(() => ScrollTrigger.refresh(), 200);
   }, { scope: containerRef });
 
@@ -185,33 +273,58 @@ export default function ServicesPage() {
       <FloatingMetric label="Our Promise" value="Smooth Events" className="top-[200vh] left-[15%]" />
 
       {/* Process Journey */}
-      <section id="process" className="relative py-24 bg-surface border-y border-linen/30" data-bg="var(--color-surface)">
-        <div className="container mb-16 text-center space-y-4 fade-up">
-          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">06 / THE PROCESS</span>
-          <TextReveal as="h2" text="How It Works." className="text-5xl md:text-7xl font-serif text-text-primary font-bold tracking-tighter" />
+      <section id="process" className="relative pt-12 lg:pt-16 pb-24 bg-surface border-y border-linen/30 flex flex-col min-h-screen" data-bg="var(--color-surface)">
+        <div className="container mb-12 lg:mb-16 text-center flex flex-col items-center space-y-4 fade-up relative z-10">
+          <div className="flex flex-col items-center gap-2">
+             <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/40 small-caps">06 / THE PROCESS</span>
+             <div className="w-px h-10 bg-gradient-to-b from-heritage/40 to-transparent" />
+             <div className="w-8 h-8 rounded-full border border-heritage/20 flex items-center justify-center bg-white shadow-inner">
+                <div className="w-1.5 h-1.5 rounded-full bg-burnished animate-pulse shadow-[0_0_10px_rgba(197,160,89,0.8)]" />
+             </div>
+          </div>
+          <TextReveal as="h2" text="How We Work." className="text-4xl md:text-8xl font-serif text-text-primary font-bold tracking-tighter" />
+          <p className="text-heritage font-serif italic text-base md:text-xl opacity-60 max-w-lg mx-auto px-4">A seamless transition from vision to reality, curated with absolute precision.</p>
         </div>
-        <div className="container">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div className="relative w-full overflow-hidden lg:overflow-visible h-auto lg:h-[55vh] flex items-center">
+          <div ref={horizontalRef} className="flex flex-col lg:flex-row gap-12 lg:gap-16 px-6 lg:px-[30vw] items-center w-full">
             {[
-              { title: 'Consultation', desc: 'We meet to understand your ideas and what you want for your big day.' },
-              { title: 'Conceptualization', desc: 'We create a careful plan and design so you can see how it will look.' },
-              { title: 'Coordination', desc: 'We help you pick the best vendors and items to match your style.' },
-              { title: 'Celebration', desc: 'We are there on the day to make sure everything runs perfectly.' },
+              { title: 'Consultation', desc: 'A private dialogue to distill your aesthetic desires and logistical requirements into a singular vision.', icon: <MessageCircle size={24} /> },
+              { title: 'Conceptualization', desc: 'Crafting a bespoke blueprint with architectural depth, ensuring every nuance reflects your personal legacy.', icon: <Sparkles size={24} /> },
+              { title: 'Coordination', desc: 'Harmonizing an elite network of artisans and vendors to execute with surgical precision and grace.', icon: <Zap size={24} /> },
+              { title: 'Celebration', desc: 'On-site direction that ensures your event unfolds like a perfectly choreographed cinematic masterpiece.', icon: <Star size={24} /> },
             ].map((item, i) => (
-              <div key={i} className="process-card bg-white p-10 rounded-2xl border border-linen/50 hover:border-heritage/20 shadow-sm hover:shadow-2xl transition-all duration-700 flex flex-col space-y-8 group">
-                <div className="flex justify-between items-start">
-                    <span className="text-4xl font-serif font-bold text-heritage italic">0{i+1}</span>
-                    <div className="w-10 h-10 rounded-full bg-heritage/5 flex items-center justify-center text-heritage group-hover:bg-heritage group-hover:text-white transition-all duration-500">
-                        <ArrowRight size={16} />
+              <div key={i} className="process-card bg-white/50 backdrop-blur-md p-10 md:p-12 rounded-[2rem] border border-linen/80 shadow-sm transition-all duration-700 flex flex-col justify-between group w-full lg:w-[500px] h-[380px] lg:h-[400px] flex-shrink-0 relative overflow-hidden">
+                {/* Decorative Background Element */}
+                <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-heritage/5 rounded-full blur-3xl group-hover:bg-burnished/10 transition-colors duration-700" />
+                
+                <div className="flex justify-between items-start relative z-10">
+                    <span className="card-number text-6xl md:text-7xl font-serif font-bold text-heritage/10 italic transition-all duration-700 leading-none">0{i+1}</span>
+                    <div className="w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-heritage border border-linen/50 group-hover:bg-heritage group-hover:text-white group-hover:scale-110 transition-all duration-500 transform group-hover:-rotate-6">
+                        {item.icon}
                     </div>
                 </div>
-                <div className="space-y-3">
-                    <h3 className="text-2xl font-serif text-text-primary font-bold italic">{item.title}</h3>
-                    <p className="text-sm text-text-secondary font-sans font-light leading-relaxed">{item.desc}</p>
+
+                <div className="space-y-4 relative z-10">
+                    <h3 className="text-2xl md:text-3xl font-serif text-text-primary font-bold italic group-hover:text-heritage transition-colors duration-500">{item.title}</h3>
+                    <p className="text-base text-text-secondary font-sans font-light leading-relaxed max-w-sm">{item.desc}</p>
+                    
+                    <div className="pt-4 flex items-center gap-4 text-heritage/40 group-hover:text-burnished transition-colors duration-500">
+                        <div className="h-px w-10 bg-current" />
+                        <span className="text-[8px] font-sans font-bold uppercase tracking-[0.3em] small-caps">Phase 0{i+1}</span>
+                    </div>
                 </div>
+
+                {/* Subtle Progress Dot */}
+                <div className="absolute bottom-8 right-8 w-1.5 h-1.5 rounded-full bg-linen group-hover:bg-burnished transition-colors" />
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Horizontal Progress Bar */}
+        <div className="hidden lg:block absolute bottom-12 left-1/2 -translate-x-1/2 w-1/4 h-px bg-linen/50 z-10">
+            <div className="h-full bg-burnished w-0 transition-all duration-300" id="process-progress" />
         </div>
       </section>
 

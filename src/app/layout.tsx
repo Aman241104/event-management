@@ -5,23 +5,24 @@ import { Navbar } from "@/components/organisms/Navbar";
 import { Footer } from "@/components/organisms/Footer";
 import { ConciergeBar } from "@/components/molecules/ConciergeBar";
 import { CustomCursor } from "@/components/atoms/CustomCursor";
-import { Preloader } from "@/components/molecules/Preloader";
 
 const montserrat = Montserrat({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -48,7 +49,6 @@ export default function RootLayout({
         <SmoothScroll>
           <div className="noise-overlay" />
           <div className="ink-bleed" />
-          <Preloader />
           <CustomCursor />
           <AudioToggle />
           <BackToTop />

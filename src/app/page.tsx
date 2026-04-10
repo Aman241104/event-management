@@ -104,6 +104,211 @@ const SectionDivider = ({ className }: { className?: string }) => (
   </div>
 );
 
+const HowItWorks = () => {
+  const [activeStep, setActiveStep] = React.useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const steps = [
+    {
+      title: 'Share your requirements',
+      desc: 'Tell us your event date, budget, location, type of venue, guest count, etc.',
+      image: '/decor-1.jpg'
+    },
+    {
+      title: 'Get a personalised proposal',
+      desc: 'Get the best deals on venue, catering, and decor as per your preferences.',
+      image: '/decor-2.jpg'
+    },
+    {
+      title: 'Confirm and book',
+      desc: 'Pay a minimum amount & lock the deal within 7 days. Leave the rest to us.',
+      image: '/decor-4.jpg'
+    }
+  ];
+
+  useGSAP(() => {
+    const steps_el = gsap.utils.toArray<HTMLElement>('.step-item');
+    
+    // Progress line animation
+    gsap.to('.step-progress-line', {
+      scaleY: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.steps-container',
+        start: 'top 50%',
+        end: 'bottom 50%',
+        scrub: true,
+      }
+    });
+
+    steps_el.forEach((step, i) => {
+      ScrollTrigger.create({
+        trigger: step,
+        start: 'top 50%',
+        end: 'bottom 50%',
+        onEnter: () => setActiveStep(i),
+        onEnterBack: () => setActiveStep(i),
+      });
+    });
+
+    // Image transition
+    gsap.to('.step-image-inner', {
+      y: `-${activeStep * 100}%`,
+      duration: 1.2,
+      ease: 'expo.out'
+    });
+
+    // Floating animation for image container
+    gsap.to('.floating-image-container', {
+      y: -20,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    });
+  }, { scope: sectionRef, dependencies: [activeStep] });
+
+  return (
+    <section ref={sectionRef} id="process" className="py-32 bg-[#FDFCF0] relative overflow-hidden min-h-screen flex items-center">
+      {/* Decorative Petals */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
+         {[...Array(6)].map((_, i) => (
+           <div key={i} className={cn("absolute w-8 h-8 bg-burnished/20 rounded-full blur-xl animate-pulse")} 
+                style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%`, animationDelay: `${i * 0.5}s` }} />
+         ))}
+      </div>
+
+      <div className="container">
+        <div className="flex flex-col items-center text-center mb-24 md:mb-32 space-y-6">
+          <div className="flex items-center gap-6 md:gap-12">
+            <div className="hidden md:block w-32 h-px bg-burnished/40 relative">
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-burnished" />
+            </div>
+            <h2 className="text-5xl md:text-8xl font-serif font-medium tracking-tighter text-text-primary">How it works</h2>
+            <div className="hidden md:block w-32 h-px bg-burnished/40 relative">
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-burnished" />
+            </div>
+          </div>
+          <p className="text-heritage font-serif italic text-xl md:text-2xl opacity-80">Book your wedding service in 3 easy steps</p>
+        </div>
+
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-32 max-w-7xl mx-auto">
+          {/* Left: Steps */}
+          <div className="steps-container flex flex-col basis-1/2 space-y-0 relative">
+            {/* Connecting Line (Dotted) */}
+            <div className="absolute left-[21px] md:left-[27px] top-6 bottom-6 w-px border-l-2 border-dotted border-burnished/20" />
+            {/* Progress Line (Solid Maroon) */}
+            <div className="step-progress-line absolute left-[21px] md:left-[27px] top-6 bottom-6 w-[3px] bg-heritage origin-top scale-y-0 z-0" />
+            
+            {steps.map((step, i) => (
+              <div 
+                key={i} 
+                className={cn(
+                  "step-item relative pl-16 md:pl-28 pb-32 md:pb-48 last:pb-0 transition-all duration-1000",
+                  activeStep === i ? "opacity-100 translate-x-2" : "opacity-20 translate-x-0"
+                )}
+              >
+                {/* Number Circle */}
+                <div className={cn(
+                  "absolute left-0 top-0 w-11 h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center text-lg md:text-2xl font-serif italic transition-all duration-700 z-10 border",
+                  activeStep === i ? "bg-heritage text-white border-heritage scale-110 shadow-2xl" : "bg-white text-burnished border-burnished/20"
+                )}>
+                  {i + 1}
+                </div>
+                
+                {/* Active Highlight Glow */}
+                <div className={cn(
+                  "absolute left-[-10px] md:left-[-15px] top-[-10px] md:top-[-15px] w-[65px] h-[65px] md:w-[85px] md:h-[85px] rounded-full bg-burnished/10 transition-all duration-1000 -z-10",
+                  activeStep === i ? "opacity-100 scale-100" : "opacity-0 scale-50"
+                )} />
+
+                <div className="space-y-6">
+                  <h3 className={cn(
+                    "font-serif font-bold tracking-tight transition-all duration-700 leading-none",
+                    activeStep === i ? "text-3xl md:text-6xl text-text-primary" : "text-2xl md:text-3xl text-text-secondary"
+                  )}>
+                    {step.title}
+                  </h3>
+                  <div className={cn(
+                    "transition-all duration-1000 ease-in-out",
+                    activeStep === i ? "max-h-60 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-8"
+                  )}>
+                    <p className="text-text-secondary text-lg md:text-2xl leading-relaxed max-w-lg italic font-light font-serif">
+                      {step.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Right: Circular Illustration Container - Sticky */}
+          <div className="relative basis-1/2 w-full lg:sticky lg:top-[20vh] flex items-center justify-center">
+            <div className="floating-image-container relative w-[320px] h-[320px] md:w-[550px] md:h-[550px]">
+              {/* Background Flourish Pattern */}
+              <div className="absolute inset-0 opacity-10 scale-150 animate-[spin_80s_linear_infinite]">
+                 <svg viewBox="0 0 200 200" className="w-full h-full text-burnished">
+                    <defs>
+                      <path id="petal" d="M100,20 Q130,60 100,100 Q70,60 100,20" />
+                    </defs>
+                    {[...Array(12)].map((_, i) => (
+                      <use key={i} href="#petal" fill="currentColor" transform={`rotate(${i * 30} 100 100)`} />
+                    ))}
+                 </svg>
+              </div>
+
+              {/* Main Circle */}
+              <div className="absolute inset-0 rounded-full border-[12px] border-white shadow-[0_30px_100px_rgba(0,0,0,0.1)] overflow-hidden bg-white p-2 md:p-4">
+                <div className="w-full h-full rounded-full overflow-hidden relative bg-canvas">
+                  <div className="step-image-inner absolute inset-0 w-full h-full transition-transform duration-1000 ease-expo">
+                    {steps.map((step, i) => (
+                      <div key={i} className="w-full h-full relative">
+                        <Image 
+                          src={step.image} 
+                          alt={step.title} 
+                          fill 
+                          className="object-cover" 
+                          sizes="(max-width: 768px) 320px, 550px"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-heritage/20 to-transparent" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative Corner Flourishes */}
+              <div className="absolute -top-10 -left-10 w-32 h-32 text-burnished opacity-20 rotate-[-15deg]">
+                 <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <path d="M10,90 Q10,10 90,10" fill="none" stroke="currentColor" strokeWidth="0.5" />
+                    <circle cx="10" cy="90" r="2" fill="currentColor" />
+                    <circle cx="90" cy="10" r="2" fill="currentColor" />
+                 </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center mt-32 space-y-12">
+          <Link href="/contact">
+            <Magnetic strength={0.2}>
+              <Button size="lg" className="h-20 px-20 text-[11px] bg-heritage text-white hover:bg-heritage-dark shadow-[0_20px_50px_rgba(45,76,57,0.3)] transition-all hover:scale-105 rounded-full tracking-[0.5em] font-bold border-0" rightIcon={<ArrowRight size={20} />}>
+                START MY WEDDING PLANNING
+              </Button>
+            </Magnetic>
+          </Link>
+          
+          <div className="flex items-center gap-4 opacity-40">
+            <div className="w-12 h-px bg-burnished" />
+            <Sparkles size={16} className="text-burnished" />
+            <div className="w-12 h-px bg-burnished" />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
@@ -113,7 +318,10 @@ export default function Home() {
   const nextTestimonial = () => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   const prevTestimonial = () => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
+  const [isMounted, setIsMounted] = React.useState(false);
+
   React.useEffect(() => {
+    setIsMounted(true);
     const timer = setInterval(() => {
       setCurrentHeroIndex((prev) => (prev + 1) % heroImages.length);
     }, 6000);
@@ -143,13 +351,13 @@ export default function Home() {
     // Advanced Skew-on-Scroll for sections and images
     const skewElements = gsap.utils.toArray<HTMLElement>('.fade-up');
     skewElements.forEach((el) => {
-      let proxy = { skew: 0 },
+      const proxy = { skew: 0 },
           skewSetter = gsap.quickSetter(el, "skewY", "deg"),
           clamp = gsap.utils.clamp(-10, 10);
 
       ScrollTrigger.create({
         onUpdate: (self) => {
-          let skew = clamp(self.getVelocity() / -300);
+          const skew = clamp(self.getVelocity() / -300);
           if (Math.abs(skew) > Math.abs(proxy.skew)) {
             proxy.skew = skew;
             gsap.to(proxy, {
@@ -188,11 +396,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 z-10 pointer-events-none" />
           
           <div className="absolute inset-0 z-0">
-            {heroImages.map((img, i) => (
-              <div key={img} className={cn("absolute inset-0 transition-opacity duration-[3000ms] ease-in-out", i === currentHeroIndex ? "opacity-100" : "opacity-0")}>
-                <Image src={img} alt="Event" fill className="object-cover brightness-[0.7] scale-110 animate-[ken-burns_40s_ease-in-out_infinite_alternate]" priority={i === 0} sizes="100vw" />
-              </div>
-            ))}
+            {heroImages.map((img, i) => {
+              if (i !== 0 && !isMounted) return null;
+              return (
+                <div key={img} className={cn("absolute inset-0 transition-opacity duration-[3000ms] ease-in-out", i === currentHeroIndex ? "opacity-100" : "opacity-0")}>
+                  <Image src={img} alt="Event" fill className="object-cover brightness-[0.7] scale-110 animate-[ken-burns_40s_ease-in-out_infinite_alternate]" priority={i === 0} sizes="100vw" />
+                </div>
+              );
+            })}
           </div>
 
           <div className="container relative z-20 text-center flex flex-col items-center">
@@ -354,41 +565,7 @@ export default function Home() {
         </section>
 
         {/* 7. How We Work */}
-        <section id="process" className="py-32 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
-          <div className="container space-y-20 relative z-10">
-            <div className="flex flex-col items-center text-center space-y-4 fade-up">
-              <TextReveal text="How We Work" className="text-5xl md:text-7xl font-serif font-medium tracking-tighter" />
-              <p className="text-text-secondary font-sans font-light max-w-lg mx-auto">
-                A seamless four-step journey from your initial spark of inspiration to a perfectly executed celebration.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-              {[
-                { title: 'Understand Your Vision', desc: 'We start by listening to your dreams and goals for the event.' },
-                { title: 'Plan & Design', desc: 'Our team crafts a detailed blueprint and aesthetic direction.' },
-                { title: 'Execute Seamlessly', desc: 'We manage all vendors and logistics with surgical precision.' },
-                { title: 'Deliver Excellence', desc: 'You and your guests enjoy an unforgettable celebration.' },
-              ].map((step, i) => (
-                <div key={i} className="process-card group relative bg-white p-10 border border-linen/30 hover:border-heritage/20 transition-all duration-700 hover:shadow-2xl rounded-2xl flex flex-col items-center text-center space-y-6 fade-up">
-                  <div className="absolute top-6 right-8 text-4xl font-serif italic text-heritage/5 group-hover:text-heritage/10 transition-colors font-bold">0{i+1}</div>
-                  <div className="w-16 h-16 rounded-full bg-heritage/5 flex items-center justify-center text-heritage font-serif italic text-2xl font-bold group-hover:bg-heritage group-hover:text-white transition-all duration-700">
-                    {i+1}
-                  </div>
-                  <div className="space-y-3 relative">
-                    <h3 className="text-xl md:text-2xl font-serif font-medium text-text-primary italic">{step.title}</h3>
-                    <p className="text-sm text-text-secondary leading-relaxed font-light">{step.desc}</p>
-                  </div>
-                  {i < 3 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-4 translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
-                      <ArrowRight size={20} className="text-linen group-hover:text-heritage transition-colors duration-700" />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <HowItWorks />
 
         {/* 8. Testimonials */}
         <section id="testimonials" className="py-32 bg-surface border-y border-linen/30 relative overflow-hidden" data-bg="var(--color-surface)">
@@ -512,10 +689,10 @@ export default function Home() {
           <div className="container relative z-10 text-center space-y-12">
             <div className="space-y-6">
               <h2 className="text-5xl md:text-8xl font-serif font-medium tracking-tighter text-white leading-[0.9]">
-                Let's Create Something <br/><span className="italic font-light text-burnished">Unforgettable</span>
+                Let&apos;s Create Something <br/><span className="italic font-light text-burnished">Unforgettable</span>
               </h2>
               <p className="text-xl md:text-2xl text-white/80 font-serif italic font-light leading-relaxed max-w-2xl mx-auto">
-                Get in touch and let's plan your perfect event.
+                Let&apos;s plan your perfect event.
               </p>
             </div>
 

@@ -56,9 +56,9 @@ export default function ContactPage() {
         <div className="header-fade">
           <Badge variant="solid" dot className="px-6 py-2 bg-heritage/10 text-heritage uppercase tracking-[0.3em] font-bold">Contact Us</Badge>
         </div>
-        <TextReveal as="h1" text="Let's Talk." className="text-5xl md:text-[7rem] lg:text-[8rem] font-serif tracking-tighter text-text-primary leading-[1.1] font-bold" />
+        <TextReveal as="h1" text="Let&apos;s Talk." className="text-5xl md:text-[7rem] lg:text-[8rem] font-serif tracking-tighter text-text-primary leading-[1.1] font-bold" />
         <p className="header-fade text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed max-w-3xl mx-auto pt-2">
-          Ready to plan your next event? Reach out to us today and let's start a conversation.
+          Ready to plan your next event? Reach out to us today and let&apos;s start a conversation.
         </p>
       </section>
 
@@ -122,7 +122,7 @@ export default function ContactPage() {
                 <div className="text-xl md:text-3xl font-serif text-text-primary leading-[1.8] font-light">
                   Hello, my name is{' '}
                   <input type="text" placeholder="YOUR NAME" className="bg-transparent border-b border-heritage/10 focus:border-heritage focus:outline-none px-2 w-[180px] md:w-[250px] placeholder:text-heritage/10 transition-colors uppercase font-medium text-heritage" />
-                  {' '}and I'm planning a{' '}
+                  {' '}and I&apos;m planning a{' '}
                   <select className="bg-transparent border-b border-heritage/10 focus:border-heritage focus:outline-none px-2 cursor-none appearance-none uppercase font-medium text-heritage">
                     <option value="wedding">Wedding</option>
                     <option value="corporate">Business Event</option>

@@ -20,9 +20,9 @@ export function FloatingDecor({ seed = 0 }: { seed?: number }) {
 
     const timer = setTimeout(() => {
       setDecorData({
-        roseSpeeds: Array.from({ length: 8 }, (_, i) => 0.01 + pseudoRandom(i * 10) * 0.02),
-        azureSpeeds: Array.from({ length: 8 }, (_, i) => 0.02 + pseudoRandom(i * 20) * 0.02),
-        goldSpeeds: Array.from({ length: 12 }, (_, i) => 0.005 + pseudoRandom(i * 30) * 0.01),
+        roseSpeeds: Array.from({ length: 4 }, (_, i) => 0.01 + pseudoRandom(i * 10) * 0.02),
+        azureSpeeds: Array.from({ length: 4 }, (_, i) => 0.02 + pseudoRandom(i * 20) * 0.02),
+        goldSpeeds: Array.from({ length: 6 }, (_, i) => 0.005 + pseudoRandom(i * 30) * 0.01),
       });
     }, 0);
     return () => clearTimeout(timer);
