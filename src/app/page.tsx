@@ -132,28 +132,29 @@ const HowItWorks = () => {
     if (!sectionRef.current || !stepsRef.current) return;
 
     const stepItems = gsap.utils.toArray<HTMLElement>('.step-item');
-    const stepNumbers = gsap.utils.toArray<HTMLElement>('.step-number');
-    const stepContents = gsap.utils.toArray<HTMLElement>('.step-content');
     
-    // Create the pinning timeline
+    // Create the pinning timeline with improved smoothness
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top top",
-        end: "+=2500",
+        start: "top 10%", // Give some breathing room at the top
+        end: "+=3000",
         pin: true,
-        scrub: 0.5,
-        anticipatePin: 1
+        scrub: 1.2, // Increase scrub for smoother momentum
+        anticipatePin: 1.5, // Better handle for fast scrolling
       }
     });
 
     // Initial state
-    gsap.set(stepItems, { opacity: 0.3 });
-    gsap.set(stepItems[0], { opacity: 1 });
+    gsap.set(stepItems, { opacity: 0.1, y: 30 });
+    gsap.set(stepItems[0], { opacity: 1, y: 0 });
     gsap.set('.step-progress-line', { scaleY: 0 });
 
     // Animate through steps
     stepItems.forEach((_, i) => {
+      // Small pause at the start of each step for readability
+      tl.to({}, { duration: 0.5 });
+
       if (i === 0) {
         tl.to('.step-progress-line', { 
             scaleY: 1 / steps.length, 
@@ -161,20 +162,36 @@ const HowItWorks = () => {
             duration: 1
         });
       } else {
-        // Fade out previous
-        tl.to(stepItems[i-1], { opacity: 0.3, duration: 0.5 }, i === 1 ? ">" : ">");
+        // Fade and slide out previous
+        tl.to(stepItems[i-1], { 
+          opacity: 0.1, 
+          y: -20, 
+          duration: 0.8,
+          ease: 'power2.inOut' 
+        }, ">-0.4");
         
-        // Image transition
+        // Image transition with a subtle scale pulse
         tl.to('.step-image-inner', { 
           y: `-${i * 100}%`, 
-          duration: 1, 
-          ease: 'power2.inOut' 
+          duration: 1.2, 
+          ease: 'expo.inOut' 
         }, "<");
 
-        // Fade in current
-        tl.to(stepItems[i], { opacity: 1, duration: 0.5 }, "<");
+        tl.fromTo('.floating-image-container', 
+          { scale: 1 }, 
+          { scale: 1.05, duration: 0.6, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 
+          "<"
+        );
+
+        // Fade and slide in current
+        tl.to(stepItems[i], { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.8,
+          ease: 'power2.out' 
+        }, "<+0.2");
         
-        // Progress line
+        // Progress line increment
         tl.to('.step-progress-line', { 
             scaleY: (i + 1) / steps.length, 
             ease: 'none',
@@ -182,14 +199,20 @@ const HowItWorks = () => {
         }, "<");
       }
 
-      // Add a small pause at each step
-      tl.to({}, { duration: 1 });
+      // Hold the step visible
+      tl.to({}, { duration: 1.5 });
     });
+
+    // Subtly fade out the entire content near the end to transition back to normal scroll
+    tl.to('.steps-container, .floating-image-container', { 
+      opacity: 0.5, 
+      duration: 0.5 
+    }, ">");
 
     // Floating animation for image container
     gsap.to('.floating-image-container', {
-      y: -20,
-      duration: 2,
+      y: -15,
+      duration: 3,
       repeat: -1,
       yoyo: true,
       ease: 'sine.inOut'
