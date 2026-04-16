@@ -197,7 +197,7 @@ const HowItWorks = () => {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} id="process" className="py-12 md:py-16 bg-[#FDFCF0] relative overflow-hidden h-screen flex items-center">
+    <section ref={sectionRef} id="process" className="py-20 md:py-24 bg-[#FDFCF0] relative overflow-hidden min-h-screen lg:h-screen flex items-center">
       {/* Decorative Petals */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
          {[...Array(6)].map((_, i) => (
@@ -207,7 +207,7 @@ const HowItWorks = () => {
       </div>
 
       <div className="container">
-        <div className="flex flex-col items-center text-center mb-12 md:mb-16 space-y-4">
+        <div className="flex flex-col items-center text-center mb-8 md:mb-16 space-y-4">
           <div className="flex items-center gap-6 md:gap-12">
             <div className="hidden md:block w-32 h-px bg-burnished/40 relative">
               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-burnished" />
@@ -253,8 +253,6 @@ const HowItWorks = () => {
           {/* Right: Circular Illustration Container */}
           <div className="relative basis-1/2 w-full flex items-center justify-center">
             <div className="floating-image-container relative w-[280px] h-[280px] md:w-[450px] md:h-[450px]">
-... (rest of the component)
-... (rest of the component)
               {/* Background Flourish Pattern */}
               <div className="absolute inset-0 opacity-10 scale-150 animate-[spin_80s_linear_infinite]">
                  <svg viewBox="0 0 200 200" className="w-full h-full text-burnished">
