@@ -41,3 +41,6 @@ The project is a high-end event management agency website ("Prestige Edition"). 
 - [x] Initial setup and project understanding.
 - [x] Revert to stable pushed state.
 - [ ] *Awaiting further instructions.*
+
+## UI/UX Rules
+- Follow all UI/UX rules defined in [rules.md](./rules.md) in the project root.

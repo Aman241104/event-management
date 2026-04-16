@@ -34,7 +34,7 @@ export default function NewEventPage() {
             <div className="space-y-10">
               <div className="space-y-3">
                 <Badge variant="outline" className="text-heritage border-heritage/20 text-[9px] py-1 px-3">Registry No. ZB-772</Badge>
-                <h2 className="text-3xl font-serif font-bold text-text-primary italic">Curate New Record</h2>
+                <h2 className="text-2xl font-serif font-bold text-text-primary italic">Curate New Record</h2>
               </div>
 
               {/* Premium inputs */}
@@ -44,7 +44,7 @@ export default function NewEventPage() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Enter event name..."
-                  className="text-2xl font-serif"
+                  className="text-xl font-serif"
                 />
 
                 <div className="grid grid-cols-2 gap-8">
@@ -114,7 +114,7 @@ export default function NewEventPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-10 left-10 right-10 text-canvas space-y-3">
                     <Badge variant="solid" className="bg-heritage text-canvas border-0 text-[8px] py-0.5 px-3">{category}</Badge>
-                    <h3 className="text-3xl font-serif font-bold leading-tight italic">{title}</h3>
+                    <h3 className="text-2xl font-serif font-bold leading-tight italic">{title}</h3>
                   </div>
                 </div>
                 <div className="px-6 pb-6 space-y-4 text-center">

@@ -33,7 +33,7 @@ export default function VaultPage() {
               <div className="space-y-4">
                 <div className="mx-auto w-12 h-12 rounded-full border border-heritage/20 flex items-center justify-center text-heritage"><Lock size={20} /></div>
                 <Badge variant="outline" className="border-heritage/20 text-heritage uppercase tracking-widest font-bold px-4 py-1 text-[9px]">Client Login</Badge>
-                <TextReveal as="h1" text="The Vault." className="text-5xl md:text-6xl font-serif text-text-primary font-bold italic" />
+                <TextReveal as="h1" text="The Vault." className="text-4xl md:text-5xl font-serif text-text-primary font-bold italic" />
                 <p className="text-text-secondary font-sans font-light text-sm">Enter your key to view your event details.</p>
               </div>
               <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setIsAuthenticated(true); }}>
@@ -53,12 +53,12 @@ export default function VaultPage() {
         <header className="flex flex-col md:flex-row justify-between items-end gap-8 border-b border-linen pb-8 fade-up">
           <div className="space-y-4">
             <Badge variant="solid" className="bg-heritage/10 text-heritage uppercase tracking-widest font-bold text-[9px] py-1 px-4">Event Live</Badge>
-            <h1 className="text-5xl md:text-7xl font-serif text-text-primary font-bold italic">Your Event</h1>
+            <h1 className="text-4xl md:text-6xl font-serif text-text-primary font-bold italic">Your Event</h1>
             <p className="text-[11px] font-sans uppercase tracking-[0.4em] text-text-secondary">Private Dashboard</p>
           </div>
           <div className="text-right">
             <p className="text-[10px] uppercase tracking-widest text-heritage font-bold">Days to Go</p>
-            <div className="text-4xl md:text-6xl font-serif text-text-primary italic">42</div>
+            <div className="text-3xl md:text-5xl font-serif text-text-primary italic">42</div>
           </div>
         </header>
 
@@ -68,7 +68,7 @@ export default function VaultPage() {
             <div className="bg-canvas border border-linen p-8 flex flex-col items-center justify-center text-center space-y-4 group cursor-pointer hover:border-heritage transition-all shadow-sm">
               <div className="w-12 h-12 rounded-full bg-surface flex items-center justify-center text-heritage group-hover:scale-110 transition-transform shadow-inner"><FileText size={24} /></div>
               <div>
-                <h4 className="text-2xl font-serif text-text-primary font-bold italic">The Plan</h4>
+                <h4 className="text-xl font-serif text-text-primary font-bold italic">The Plan</h4>
                 <p className="text-[13px] text-text-secondary mt-1">Updated recently by our team.</p>
               </div>
               <Button variant="outline" className="btn-outline-prestige text-[10px] px-8 h-10">Open File</Button>

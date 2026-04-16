@@ -56,7 +56,7 @@ export default function ContactPage() {
         <div className="header-fade">
           <Badge variant="solid" dot className="px-6 py-2 bg-heritage/10 text-heritage uppercase tracking-[0.3em] font-bold">Contact Us</Badge>
         </div>
-        <TextReveal as="h1" text="Let&apos;s Talk." className="text-5xl md:text-[7rem] lg:text-[8rem] font-serif tracking-tighter text-text-primary leading-[1.1] font-bold" />
+        <TextReveal as="h1" text="Let&apos;s Talk." className="text-4xl md:text-[5.6rem] lg:text-[6.4rem] font-serif tracking-tighter text-text-primary leading-[1.1] font-bold" />
         <p className="header-fade text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed max-w-3xl mx-auto pt-2">
           Ready to plan your next event? Reach out to us today and let&apos;s start a conversation.
         </p>
@@ -119,7 +119,7 @@ export default function ContactPage() {
           <div id="form-section" className="lg:col-span-8 form-fade">
             <div className="p-8 md:p-12 glass-card relative overflow-hidden group">
               <form className="relative z-10" onSubmit={(e) => e.preventDefault()}>
-                <div className="text-xl md:text-3xl font-serif text-text-primary leading-[1.8] font-light">
+                <div className="text-lg md:text-2xl font-serif text-text-primary leading-[1.8] font-light">
                   Hello, my name is{' '}
                   <input type="text" placeholder="YOUR NAME" className="bg-transparent border-b border-heritage/10 focus:border-heritage focus:outline-none px-2 w-[180px] md:w-[250px] placeholder:text-heritage/10 transition-colors uppercase font-medium text-heritage" />
                   {' '}and I&apos;m planning a{' '}
@@ -160,7 +160,7 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-heritage/20 z-10 flex items-center justify-center">
              <div className="text-center space-y-2">
                <MapPin size={32} className="text-canvas mx-auto" />
-               <h3 className="text-2xl font-serif text-canvas font-bold italic">Mumbai</h3>
+               <h3 className="text-xl font-serif text-canvas font-bold italic">Mumbai</h3>
                <p className="text-canvas/80 uppercase tracking-[0.4em] text-[9px]">Bandra West</p>
              </div>
           </div>

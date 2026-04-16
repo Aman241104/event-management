@@ -48,8 +48,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         className="fixed inset-0 bg-heritage z-[9999] pointer-events-none translate-y-full"
       >
         <div className="absolute inset-0 flex items-center justify-center">
-            <h2 className="text-white font-serif italic text-4xl tracking-widest opacity-20">Zing Bliss</h2>
-        </div>
+            <h2 className="text-white font-serif italic text-3xl tracking-widest opacity-20">Zing Bliss</h2>        </div>
       </div>
       <div className={cn(isTransitioning ? "opacity-0" : "opacity-100", "transition-opacity duration-500")}>
         {displayChildren}

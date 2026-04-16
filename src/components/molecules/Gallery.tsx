@@ -18,9 +18,10 @@ interface GalleryProps {
   items: GalleryItem[];
   className?: string;
   hasCursorLabel?: boolean;
+  aspectRatio?: string;
 }
 
-export function Gallery({ items, className, hasCursorLabel = true }: GalleryProps) {
+export function Gallery({ items, className, hasCursorLabel = true, aspectRatio = "aspect-[4/5]" }: GalleryProps) {
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
 
   const selectedItem = selectedItemIndex !== null ? items[selectedItemIndex] : null;
@@ -70,7 +71,8 @@ export function Gallery({ items, className, hasCursorLabel = true }: GalleryProp
               key={item.id} 
               onClick={() => setSelectedItemIndex(index)}
               className={cn(
-                "group relative cursor-pointer transition-all duration-1000 aspect-[4/5] overflow-hidden rounded-2xl",
+                "group relative cursor-pointer transition-all duration-1000 overflow-hidden rounded-2xl",
+                aspectRatio,
                 "hover:scale-[1.02] hover:shadow-2xl"
               )}
               data-cursor={hasCursorLabel ? "VIEW" : undefined}
@@ -147,7 +149,7 @@ export function Gallery({ items, className, hasCursorLabel = true }: GalleryProp
             </div>
             <div className="text-center space-y-2">
               <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-heritage/60">{selectedItem.category}</span>
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-text-primary tracking-tight italic">{selectedItem.title}</h2>
+              <h2 className="text-2xl md:text-4xl font-serif font-bold text-text-primary tracking-tight italic">{selectedItem.title}</h2>
               <div className="w-16 h-px bg-heritage/20 mx-auto mt-4" />
             </div>
           </div>

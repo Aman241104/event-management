@@ -99,7 +99,7 @@ export default function AboutPage() {
               <div className="h-12 w-[1px] bg-burnished/60" />
             </div>
             
-            <h1 className="header-fade text-5xl md:text-[7rem] lg:text-[8.5rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl max-w-5xl">
+            <h1 className="header-fade text-4xl md:text-[5.6rem] lg:text-[6.8rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl max-w-5xl">
               About <span className="text-burnished italic font-light">Zing Bliss.</span>
             </h1>
 
@@ -134,7 +134,7 @@ export default function AboutPage() {
             </div>
             <div className="lg:col-span-5 space-y-12 fade-up pt-4">
               <div className="space-y-6">
-                <TextReveal text="About Us" className="text-5xl md:text-8xl font-serif text-text-primary font-bold leading-[0.9] tracking-tighter" />
+                <TextReveal text="About Us" className="text-4xl md:text-7xl font-serif text-text-primary font-bold leading-[0.9] tracking-tighter" />
               </div>
               <div className="space-y-8 text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed">
                 <p>We plan, design, and run events with care. We want to make your dreams come true without any stress.</p>
@@ -174,7 +174,7 @@ export default function AboutPage() {
                   <Target size={32} />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-4xl md:text-5xl font-serif text-white font-bold">Our <span className="text-burnished italic font-light">Goal.</span></h3>
+                  <h3 className="text-3xl md:text-4xl font-serif text-white font-bold">Our <span className="text-burnished italic font-light">Goal.</span></h3>
                   <p className="text-white/80 font-serif font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-burnished/30 pl-8">
                     To be the best at planning events by being creative, reliable, and honest.
                   </p>
@@ -185,7 +185,7 @@ export default function AboutPage() {
                   <Compass size={32} />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-4xl md:text-5xl font-serif text-white font-bold">Our <span className="text-burnished italic font-light">Mission.</span></h3>
+                  <h3 className="text-3xl md:text-4xl font-serif text-white font-bold">Our <span className="text-burnished italic font-light">Mission.</span></h3>
                   <p className="text-white/80 font-serif font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-burnished/30 pl-8">
                     To create amazing experiences that you and your guests will never forget.
                   </p>
@@ -206,7 +206,7 @@ export default function AboutPage() {
           <div className="container relative z-10 text-center space-y-12">
             <div className="space-y-6">
               <span className="text-[10px] font-mono text-white/60 uppercase tracking-[0.5em] small-caps">03 / CONNECT</span>
-              <h2 className="text-5xl md:text-8xl lg:text-[10rem] font-serif font-medium tracking-tighter text-white leading-[0.9]">
+              <h2 className="text-4xl md:text-7xl lg:text-[8rem] font-serif font-medium tracking-tighter text-white leading-[0.9]">
                 Plan Your <br/><span className="italic font-light text-burnished">Day.</span>
               </h2>
             </div>

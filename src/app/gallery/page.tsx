@@ -85,7 +85,7 @@ function GalleryContent() {
         <div className="header-fade">
           <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">04 / THE ARCHIVE</span>
         </div>
-        <TextReveal as="h1" text="Our Work." className="text-5xl md:text-[8rem] lg:text-[9.5rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" />
+        <TextReveal as="h1" text="Our Work." className="text-4xl md:text-[6.4rem] lg:text-[7.6rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" />
         <p className="header-fade text-lg md:text-xl text-text-secondary font-sans font-light max-w-3xl mx-auto pt-4">
           Browse through our past events and see how we bring beautiful moments to life.
         </p>
@@ -99,7 +99,7 @@ function GalleryContent() {
           <div className="flex flex-col md:flex-row justify-between items-end gap-8 border-b border-linen/50 pb-6">
             <div className="space-y-2 text-left">
               <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">COLLECTIONS</span>
-              <h3 className="text-3xl md:text-4xl font-serif text-text-primary font-bold tracking-tight italic">Find Your Style</h3>
+              <h3 className="text-2xl md:text-3xl font-serif text-text-primary font-bold tracking-tight italic">Find Your Style</h3>
             </div>
             <div className="w-full md:w-[20rem] relative group">
               <Search className="absolute left-0 top-1/2 -translate-y-1/2 text-heritage/30 group-focus-within:text-heritage transition-colors duration-500" size={16} />
@@ -136,7 +136,7 @@ function GalleryContent() {
       {/* CTA */}
       <section id="cta" className="py-16 md:py-24 relative overflow-hidden text-center space-y-12" data-bg="var(--color-heritage-soft)">
         <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
-        <TextReveal as="h2" text="Ready to create yours?" className="text-5xl md:text-8xl font-serif font-bold text-text-primary leading-[0.9]" />
+        <TextReveal as="h2" text="Ready to create yours?" className="text-4xl md:text-7xl font-serif font-bold text-text-primary leading-[0.9]" />
         <div className="pt-4">
           <Link href="/contact">
             <Button size="lg" className="h-16 px-16 text-[10px] btn-prestige shadow-2xl" rightIcon={<ArrowRight size={18} />}>Contact Us</Button>

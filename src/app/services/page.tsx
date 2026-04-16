@@ -216,7 +216,7 @@ export default function ServicesPage() {
             <div className="h-12 w-[1px] bg-burnished/60" />
           </div>
           
-          <h1 className="header-fade text-5xl md:text-[7rem] lg:text-[8.5rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl max-w-5xl">
+          <h1 className="header-fade text-4xl md:text-[5.6rem] lg:text-[6.8rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl max-w-5xl">
             Our <span className="text-burnished italic font-light">Services.</span>
           </h1>
 
@@ -243,7 +243,7 @@ export default function ServicesPage() {
                 <div className={`lg:col-span-5 space-y-10 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
                   <div className="space-y-6">
                     <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage small-caps">{service.label}</span>
-                    <TextReveal as="h2" text={service.title} className="text-5xl md:text-8xl font-serif text-text-primary font-bold leading-[1] tracking-tighter" />
+                    <TextReveal as="h2" text={service.title} className="text-4xl md:text-7xl font-serif text-text-primary font-bold leading-[1] tracking-tighter" />
                     <p className="text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed">{service.description}</p>
                   </div>
                   <div className="pt-8 border-t border-linen/50">
@@ -282,7 +282,7 @@ export default function ServicesPage() {
                 <div className="w-1.5 h-1.5 rounded-full bg-burnished animate-pulse shadow-[0_0_10px_rgba(197,160,89,0.8)]" />
              </div>
           </div>
-          <TextReveal as="h2" text="How We Work." className="text-4xl md:text-8xl font-serif text-text-primary font-bold tracking-tighter" />
+          <TextReveal as="h2" text="How We Work." className="text-3xl md:text-7xl font-serif text-text-primary font-bold tracking-tighter" />
           <p className="text-heritage font-serif italic text-base md:text-xl opacity-60 max-w-lg mx-auto px-4">A seamless transition from vision to reality, curated with absolute precision.</p>
         </div>
         
@@ -306,7 +306,7 @@ export default function ServicesPage() {
                 </div>
 
                 <div className="space-y-4 relative z-10">
-                    <h3 className="text-2xl md:text-3xl font-serif text-text-primary font-bold italic group-hover:text-heritage transition-colors duration-500">{item.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-serif text-text-primary font-bold italic group-hover:text-heritage transition-colors duration-500">{item.title}</h3>
                     <p className="text-base text-text-secondary font-sans font-light leading-relaxed max-w-sm">{item.desc}</p>
                     
                     <div className="pt-4 flex items-center gap-4 text-heritage/40 group-hover:text-burnished transition-colors duration-500">
@@ -335,7 +335,7 @@ export default function ServicesPage() {
         <div className="max-w-6xl mx-auto space-y-16">
           <div className="text-center space-y-4">
             <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">07 / QUESTIONS</span>
-            <TextReveal as="h2" text="Common Questions." className="text-4xl md:text-6xl font-serif font-bold text-text-primary tracking-tighter" />
+            <TextReveal as="h2" text="Common Questions." className="text-3xl md:text-5xl font-serif font-bold text-text-primary tracking-tighter" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
@@ -345,7 +345,7 @@ export default function ServicesPage() {
               { q: 'Is every event custom?', a: 'Absolutely. We believe every story is unique and deserves a bespoke celebration.' },
             ].map((faq, i) => (
               <div key={i} className="group border border-linen/50 hover:border-heritage/20 hover:shadow-xl transition-all duration-700 bg-white p-10 rounded-2xl">
-                <h4 className="text-2xl font-serif font-bold text-text-primary group-hover:text-heritage transition-colors italic">{faq.q}</h4>
+                <h4 className="text-xl font-serif font-bold text-text-primary group-hover:text-heritage transition-colors italic">{faq.q}</h4>
                 <p className="mt-4 text-lg text-text-secondary font-sans font-light leading-relaxed">{faq.a}</p>
               </div>
             ))}
@@ -364,7 +364,7 @@ export default function ServicesPage() {
         
         <div className="container relative z-10 text-center space-y-10">
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tighter text-white leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tighter text-white leading-tight">
               Let&apos;s Create <span className="italic font-light text-burnished">Magic.</span>
             </h2>
             <p className="text-base md:text-lg text-white/70 font-serif italic font-light leading-relaxed max-w-xl mx-auto">

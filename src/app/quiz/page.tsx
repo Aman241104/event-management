@@ -112,7 +112,7 @@ export default function QuizPage() {
             <div ref={containerRef} className="container relative z-10 text-center space-y-12 max-w-4xl px-6">
                 <div className="quiz-animate flex flex-col items-center gap-6">
                     <Badge variant="outline" className="border-white/30 text-white/80 uppercase tracking-[0.5em] px-8 py-2 text-[9px] small-caps">Aesthetic Intelligence</Badge>
-                    <h1 className="text-6xl md:text-8xl lg:text-[9.5rem] font-serif font-medium text-white tracking-tighter leading-[0.9]">
+                    <h1 className="text-5xl md:text-7xl lg:text-[7.6rem] font-serif font-medium text-white tracking-tighter leading-[0.9]">
                         Discover Your <br/><span className="italic font-light text-burnished">Vision.</span>
                     </h1>
                 </div>
@@ -148,7 +148,7 @@ export default function QuizPage() {
           <Wand2 size={48} className="text-burnished animate-pulse" />
         </div>
         <div className="space-y-4 relative z-10">
-          <h2 className="text-4xl md:text-6xl font-serif text-white italic tracking-tighter">Synthesizing Your <span className="text-burnished">Aesthetic...</span></h2>
+          <h2 className="text-3xl md:text-5xl font-serif text-white italic tracking-tighter">Synthesizing Your <span className="text-burnished">Aesthetic...</span></h2>
           <p className="text-white/50 font-sans font-bold uppercase tracking-[0.6em] text-[10px] small-caps">Mapping textures, tones, and architectural flow</p>
         </div>
       </main>
@@ -167,7 +167,7 @@ export default function QuizPage() {
             <div className="flex justify-center">
                 <Badge className="bg-heritage/5 text-heritage border-heritage/10 uppercase tracking-[0.4em] font-bold px-8 py-2 text-[10px] small-caps">Curation Complete</Badge>
             </div>
-            <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-serif text-text-primary font-medium tracking-tighter leading-[0.85]">
+            <h1 className="text-5xl md:text-7xl lg:text-[7.2rem] font-serif text-text-primary font-medium tracking-tighter leading-[0.85]">
                 Your style is <br/><span className="text-heritage italic font-light">Heritage Modern.</span>
             </h1>
             <p className="text-xl md:text-2xl text-text-secondary font-serif italic font-light max-w-3xl mx-auto leading-relaxed">
@@ -222,7 +222,7 @@ export default function QuizPage() {
             <div className="lg:col-span-5 space-y-8 quiz-animate">
                 <div className="space-y-2">
                     <span className="text-[10px] font-mono text-heritage font-bold uppercase tracking-[0.5em]">Phase 0{currentStep + 1}</span>
-                    <h1 className="text-5xl md:text-7xl font-serif text-text-primary font-medium tracking-tighter leading-[0.9] italic">
+                    <h1 className="text-4xl md:text-6xl font-serif text-text-primary font-medium tracking-tighter leading-[0.9] italic">
                         {currentQ.question}
                     </h1>
                 </div>
@@ -258,7 +258,7 @@ export default function QuizPage() {
                             </div>
                             <div className="space-y-3">
                                 <h3 className={cn(
-                                    "text-2xl font-serif font-bold italic transition-colors duration-700",
+                                    "text-xl font-serif font-bold italic transition-colors duration-700",
                                     isSelected ? "text-white" : "text-text-primary"
                                 )}>
                                     {opt.label}

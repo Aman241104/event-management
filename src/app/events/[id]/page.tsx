@@ -119,7 +119,7 @@ export default function EventDetailPage() {
             <TextReveal 
               as="h1" 
               text={event.title} 
-              className="text-5xl md:text-[7rem] lg:text-[8.5rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" 
+              className="text-4xl md:text-[5.6rem] lg:text-[6.8rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" 
             />
             
             <p className="header-fade text-lg md:text-2xl font-serif italic text-heritage/60 max-w-2xl">
@@ -165,7 +165,7 @@ export default function EventDetailPage() {
                 <TextReveal
                   as="h2"
                   text={event.description}
-                  className="text-xl md:text-4xl font-serif text-text-primary font-bold leading-tight tracking-tight italic"
+                  className="text-lg md:text-3xl font-serif text-text-primary font-bold leading-tight tracking-tight italic"
                 />
                 <div className="w-full h-px bg-linen opacity-30" />
                 <p className="text-lg text-text-secondary font-sans font-light leading-relaxed max-w-3xl whitespace-pre-line first-letter:text-4xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:text-heritage">
@@ -210,7 +210,7 @@ export default function EventDetailPage() {
             <div className="space-y-12 pt-20 fade-up">
               <div className="flex items-center gap-4">
                 <span className="text-[10px] uppercase tracking-[0.5em] text-heritage">Visual Record</span>
-                <h3 className="text-3xl font-serif font-bold text-text-primary tracking-tight italic">Captured <span className="text-heritage italic font-light">Moments</span></h3>
+                <h3 className="text-2xl font-serif font-bold text-text-primary tracking-tight italic">Captured <span className="text-heritage italic font-light">Moments</span></h3>
               </div>
               <Gallery items={event.gallery} />
             </div>
@@ -296,7 +296,7 @@ function NextProjectLink() {
       <div className="container text-center space-y-6">
         <span className="text-[10px] font-mono text-heritage/60 uppercase tracking-[0.5em]">Upcoming Narrative</span>
         <Link href="/events/1" className="block">
-          <h2 className="text-5xl md:text-8xl lg:text-9xl font-serif font-bold text-text-primary tracking-tighter leading-none group-hover:text-heritage transition-colors duration-700 italic">
+          <h2 className="text-4xl md:text-7xl lg:text-8xl font-serif font-bold text-text-primary tracking-tighter leading-none group-hover:text-heritage transition-colors duration-700 italic">
             Next <span className="italic font-light">Legacy.</span>
           </h2>
         </Link>

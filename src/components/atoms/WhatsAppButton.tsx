@@ -1,34 +1,28 @@
 'use client';
 
 import React from 'react';
-import { MessageCircle } from 'lucide-react';
 import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 import { Magnetic } from '@/components/atoms/Magnetic';
 import { cn } from '@/lib/utils';
 
 export function WhatsAppButton() {
   return (
-    <div className="fixed bottom-8 right-8 z-[90]">
+    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[90] w-max">
       <Magnetic strength={0.3}>
-        <a 
-          href={getGenericWhatsAppLink()} 
-          target="_blank" 
+        <a
+          href={getGenericWhatsAppLink()}
+          target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "w-14 h-14 md:w-16 md:h-16 rounded-full bg-heritage text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-110",
-            "group relative overflow-hidden"
+            "h-14 md:h-16 px-8 md:px-12 rounded-full bg-[#9B224E] text-white flex items-center justify-center shadow-[0_20px_50px_rgba(155,34,78,0.3)] transition-all hover:scale-105 active:scale-95 group relative overflow-hidden",
+            "text-[10px] md:text-[12px] font-bold uppercase tracking-[0.2em]"
           )}
-          aria-label="Contact on WhatsApp"
+          aria-label="Start my event planning on WhatsApp"
         >
           {/* Animated Background Pulse */}
-          <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-150 rounded-full transition-transform duration-700" />
+          <div className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-150 rounded-full transition-transform duration-700" />
           
-          <MessageCircle size={24} className="relative z-10 md:w-7 md:h-7" />
-          
-          {/* Tooltip/Label */}
-          <span className="absolute right-full mr-4 bg-heritage text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 hidden md:block">
-            Chat with Concierge
-          </span>
+          <span className="relative z-10">Start my event planning</span>
         </a>
       </Magnetic>
     </div>

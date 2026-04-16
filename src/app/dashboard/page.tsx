@@ -37,7 +37,7 @@ export default function DashboardPage() {
         <header className="flex flex-col md:flex-row justify-between items-end gap-6 border-b border-linen pb-8">
           <div className="space-y-3">
             <Badge variant="solid" className="bg-heritage/10 text-heritage uppercase tracking-widest font-bold text-[9px] py-1 px-4">Owner Dashboard</Badge>
-            <h1 className="text-3xl md:text-4xl font-serif text-text-primary font-bold">Portfolio <span className="text-heritage italic font-light">Overview</span></h1>
+            <h1 className="text-2xl md:text-3xl font-serif text-text-primary font-bold">Portfolio <span className="text-heritage italic font-light">Overview</span></h1>
             <p className="text-[11px] font-sans uppercase tracking-[0.4em] text-text-secondary">Welcome back, Administrator.</p>
           </div>
           <Link href="/admin/events/new">
@@ -59,7 +59,7 @@ export default function DashboardPage() {
               <Badge variant="outline" className="text-[8px] border-heritage/20 text-heritage bg-heritage/5 font-bold">+12%</Badge>
             </div>
             <div>
-              <h3 className="text-3xl font-serif font-bold text-text-primary">1,248</h3>
+              <h3 className="text-2xl font-serif font-bold text-text-primary">1,248</h3>
               <p className="text-[9px] uppercase tracking-widest text-text-secondary mt-1">Total Monthly Inquiries</p>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function DashboardPage() {
               <TrendingUp size={18} />
             </div>
             <div>
-              <h3 className="text-3xl font-serif font-bold italic">42</h3>
+              <h3 className="text-2xl font-serif font-bold italic">42</h3>
               <p className="text-[9px] uppercase tracking-widest opacity-60 mt-1">Active Event Projects</p>
             </div>
           </div>
