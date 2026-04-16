@@ -221,14 +221,6 @@ const HowItWorks = () => {
 
   return (
     <section ref={sectionRef} id="process" className="py-20 md:py-24 bg-[#FDFCF0] relative overflow-hidden min-h-screen lg:h-screen flex items-center">
-      {/* Decorative Petals */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-         {[...Array(6)].map((_, i) => (
-           <div key={i} className={cn("absolute w-8 h-8 bg-burnished/20 rounded-full blur-xl animate-pulse")} 
-                style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%`, animationDelay: `${i * 0.5}s` }} />
-         ))}
-      </div>
-
       <div className="container">
         <div className="flex flex-col items-center text-center mb-8 md:mb-16 space-y-4">
           <div className="flex items-center gap-6 md:gap-12">
@@ -288,10 +280,10 @@ const HowItWorks = () => {
                  </svg>
               </div>
 
-              {/* Main Circle */}
-              <div className="absolute inset-0 rounded-full border-[12px] border-white shadow-[0_30px_100px_rgba(0,0,0,0.1)] overflow-hidden bg-white p-2 md:p-4">
-                <div className="w-full h-full rounded-full overflow-hidden relative bg-canvas">
-                  <div className="step-image-inner absolute inset-0 w-full h-full transition-transform duration-1000 ease-expo">
+              {/* Main Circle Frame */}
+              <div className="absolute inset-0 rounded-full border-[12px] border-white shadow-[0_30px_100px_rgba(0,0,0,0.15)] bg-white">
+                <div className="absolute inset-2 md:inset-4 rounded-full overflow-hidden bg-canvas">
+                  <div className="step-image-inner absolute inset-0 w-full h-full">
                     {steps.map((step, i) => (
                       <div key={i} className="w-full h-full relative">
                         <Image 
@@ -299,22 +291,13 @@ const HowItWorks = () => {
                           alt={step.title} 
                           fill 
                           className="object-cover" 
-                          sizes="(max-width: 768px) 320px, 550px"
+                          sizes="(max-width: 768px) 280px, 450px"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-heritage/20 to-transparent" />
                       </div>
                     ))}
                   </div>
                 </div>
-              </div>
-
-              {/* Decorative Corner Flourishes */}
-              <div className="absolute -top-10 -left-10 w-32 h-32 text-burnished opacity-20 rotate-[-15deg]">
-                 <svg viewBox="0 0 100 100" className="w-full h-full">
-                    <path d="M10,90 Q10,10 90,10" fill="none" stroke="currentColor" strokeWidth="0.5" />
-                    <circle cx="10" cy="90" r="2" fill="currentColor" />
-                    <circle cx="90" cy="10" r="2" fill="currentColor" />
-                 </svg>
               </div>
             </div>
           </div>
