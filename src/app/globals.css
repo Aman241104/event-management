@@ -3,28 +3,30 @@
 @theme {
   /* Purer & More Refined Collection - Editorial Ultra-Luxury */
   --color-canvas: #FDFCFB; /* Purer Soft Bone */
-  --color-surface: #F3F1ED; /* Refined Light Gray-Beige for better demarcation */
-  --color-surface-light: #FFFFFF; /* Pure White */
+  --color-surface: #F8F6F2; /* Softer, warmer beige */
+  --color-surface-light: #FFFFFF; 
+  --color-ivory: #FDFBF7; /* New neutral ivory */
 
-  /* Heritage Green - Strictly as a Sophisticated Accent */
-  --color-heritage: #2D4C39; /* Deep Evergreen */
-  --color-heritage-dark: #1E3326; 
-  --color-heritage-soft: rgba(45, 76, 57, 0.05); /* Very subtle background tint */
-  --color-heritage-accent: rgba(45, 76, 57, 0.15);
+  /* Heritage Green - Refined as a sophisticated anchor */
+  --color-heritage: #1B3022; /* Slightly deeper, more obsidian-green */
+  --color-heritage-dark: #122117; 
+  --color-heritage-soft: rgba(27, 48, 34, 0.03); 
+  --color-heritage-accent: rgba(27, 48, 34, 0.12);
 
   /* Royal Gold - Warm Accents */
-  --color-burnished: #C5A059; /* More Refined Champagne Gold */
-  --color-burnished-light: #EBD694;
-  --color-gold-glint: rgba(197, 160, 89, 0.2);
+  --color-burnished: #B38B4D; /* More sophisticated, deeper gold */
+  --color-burnished-light: #D4B982;
+  --color-gold-glint: rgba(179, 139, 77, 0.15);
+  --color-gold-muted: #E5D5B8; /* Muted gold/beige accent */
 
   /* UI Accents */
-  --color-linen: #F0EDE4; /* Very Subtle Border */
-  --color-prestige-gold: rgba(197, 160, 89, 0.15);
+  --color-linen: #E8E2D5; /* Slightly warmer border */
+  --color-prestige-gold: rgba(179, 139, 77, 0.1);
 
-  --color-text-primary: #1A1A1A; /* Refined Black */
-  --color-text-secondary: #666666; /* Editorial Gray */
-  --color-text-muted: #A0A0A0;
-  --color-text-heritage: #2D4C39;
+  --color-text-primary: #121212; /* Richer Black */
+  --color-text-secondary: #525252; /* Softer Gray */
+  --color-text-muted: #8E8E8E;
+  --color-text-heritage: #1B3022;
 
   --color-accent-whatsapp: #25D366;
 
@@ -64,14 +66,15 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif tracking-tight text-text-primary font-medium;
-    line-height: 1.1;
+    @apply font-serif text-text-primary font-medium;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 
   p {
     @apply text-text-secondary font-sans font-light;
-    line-height: 1.7;
-    letter-spacing: 0.01em;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
   }
 
   .small-caps {
@@ -86,7 +89,7 @@
     margin-right: auto;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    max-width: 1440px;
+    max-width: 1200px;
     width: 100%;
   }
 
@@ -102,13 +105,13 @@
   }
 
   .btn-prestige {
-    @apply bg-heritage text-canvas hover:bg-heritage-dark transition-all duration-500 rounded-none tracking-[0.3em] font-sans uppercase text-[9px] font-bold relative overflow-hidden;
-    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    @apply bg-heritage text-canvas hover:bg-heritage-dark transition-all duration-400 rounded-none tracking-[0.3em] font-sans uppercase text-[9px] font-bold relative overflow-hidden;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .btn-prestige::before {
     content: '';
-    @apply absolute inset-0 bg-heritage/10 -translate-x-full transition-transform duration-500;
+    @apply absolute inset-0 bg-heritage/10 -translate-x-full transition-transform duration-400;
   }
 
   .btn-prestige:hover::before {
@@ -116,12 +119,13 @@
   }
 
   .btn-outline-prestige {
-    @apply border border-linen text-text-primary hover:text-heritage hover:border-heritage/20 transition-all duration-500 rounded-none tracking-[0.3em] font-sans uppercase text-[9px] font-bold relative overflow-hidden bg-transparent;
+    @apply border border-linen text-text-primary hover:text-heritage hover:border-heritage/20 transition-all duration-400 rounded-none tracking-[0.3em] font-sans uppercase text-[9px] font-bold relative overflow-hidden bg-transparent;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .btn-outline-prestige::after {
     content: '';
-    @apply absolute inset-0 bg-heritage/[0.03] scale-x-0 origin-right transition-transform duration-500;
+    @apply absolute inset-0 bg-heritage/[0.03] scale-x-0 origin-right transition-transform duration-400;
     z-index: -1;
   }
 
@@ -135,7 +139,7 @@
 
   .arch-mask {
     border-radius: 16px;
-    @apply overflow-hidden relative transition-all duration-1000 border border-linen/50 bg-surface shadow-sm;
+    @apply overflow-hidden relative transition-all duration-700 border border-linen/50 bg-surface shadow-sm;
   }
 
   .arch-mask::after {
@@ -175,6 +179,10 @@
     @apply fixed right-10 top-1/2 translate-y-1/2 rotate-90 origin-right text-[11px] font-mono uppercase tracking-[0.5em] z-50 pointer-events-none hidden lg:block;
   }
 
+  .text-glow {
+    text-shadow: 0 0 30px rgba(179, 139, 77, 0.4);
+  }
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 4px;
@@ -211,5 +219,10 @@
   @keyframes ken-burns {
     0% { transform: scale(1); }
     100% { transform: scale(1.15) translate(1%, 1%); }
+  }
+
+  @keyframes hero-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
   }
 }

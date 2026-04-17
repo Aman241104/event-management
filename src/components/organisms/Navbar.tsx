@@ -71,93 +71,83 @@ export function Navbar() {
       <header 
         ref={headerRef}
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] border-b",
-          isScrolled ? "bg-canvas/90 backdrop-blur-md border-linen/30 py-3 shadow-[0_1px_10px_rgba(0,0,0,0.01)]" : "bg-transparent border-transparent py-6",
-          (isOpen || isSearchOpen) && "border-transparent bg-transparent backdrop-blur-0"
+          "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b",
+          isScrolled 
+            ? "bg-black/75 backdrop-blur-md border-white/5 py-2.5 shadow-[0_4px_30px_rgba(0,0,0,0.15)]" 
+            : "bg-black/40 backdrop-blur-sm border-transparent py-5",
+          (isOpen || isSearchOpen) && "border-transparent bg-transparent backdrop-blur-0 shadow-none"
         )}
       >
-        <nav className="container flex items-center justify-between">
-          <Magnetic strength={0.05}>
-            <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[60]">
-              <Logo scrolled={isScrolled} />
-            </Link>
-          </Magnetic>
+        <nav className="container flex items-center justify-between gap-6">
+          {/* Left: Logo */}
+          <div className="flex-1 flex justify-start items-center">
+            <Magnetic strength={0.05}>
+              <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[60] block origin-left">
+                <Logo scrolled={false} />
+              </Link>
+            </Magnetic>
+          </div>
 
-          {/* Desktop Links */}
-          <div className="hidden lg:flex items-center space-x-12">
-            {navLinks.map((link) => (
-              <Magnetic key={link.label} strength={0.1}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "text-[9px] font-sans font-bold uppercase tracking-[0.4em] transition-colors duration-700 relative group py-1.5",
-                    isScrolled ? "text-text-secondary hover:text-heritage" : "text-white/90 hover:text-heritage-light"
-                  )}
-                >
-                  {link.label}
-                  <span 
+          {/* Center: Desktop Links */}
+          <div className="hidden lg:flex items-center justify-center gap-7 xl:gap-8">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Magnetic key={link.label} strength={0.1}>
+                  <Link
+                    href={link.href}
                     className={cn(
-                      "absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-1000 cubic-bezier(0.19,1,0.22,1) group-hover:w-full",
-                      isScrolled ? "bg-heritage/40" : "bg-white/60"
-                    )} 
-                  />
-                </Link>
-              </Magnetic>
-            ))}
-            
-            <div className="flex items-center space-x-10 pl-10 border-l border-linen/30">
-              <Magnetic strength={0.2}>
-                <button 
-                  onClick={openSearch}
-                  className={cn(
-                    "transition-colors duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] flex items-center gap-3 group relative overflow-hidden py-1.5",
-                    isScrolled ? "text-text-secondary hover:text-heritage" : "text-white/90 hover:text-heritage-light"
-                  )}
-                  aria-label="Search"
-                >
-                  <Search size={14} strokeWidth={1} className="group-hover:scale-110 transition-transform duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]" />
-                  <span className="text-[8px] font-bold uppercase tracking-widest translate-x-3 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]">Search</span>
-                </button>
-              </Magnetic>
+                      "text-[9px] font-sans font-semibold uppercase tracking-[0.4em] transition-all duration-300 relative py-1 border-b",
+                      isActive ? "text-burnished border-burnished/20" : "text-white hover:text-burnished border-transparent hover:border-burnished/10"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </Magnetic>
+              );
+            })}
+          </div>
+          
+          {/* Right: Search & CTA */}
+          <div className="hidden lg:flex items-center justify-end gap-6 flex-1">
+            <Magnetic strength={0.2}>
+              <button 
+                onClick={openSearch}
+                className="text-white/70 hover:text-white transition-opacity duration-300 p-1"
+                aria-label="Search"
+              >
+                <Search size={16} strokeWidth={1.5} />
+              </button>
+            </Magnetic>
 
-              <Magnetic strength={0.2}>
-                <Link href="/contact">
-                  <Button size="sm" className={cn(
-                    "rounded-none px-10 h-12 transition-all duration-1000 font-bold text-[9px] tracking-[0.2em] border-0 shadow-lg hover:scale-105",
-                    !isScrolled && "shadow-white/10"
-                  )}>
-                    BOOK CONSULTATION
-                  </Button>
-                </Link>
-              </Magnetic>
-            </div>
+            <Magnetic strength={0.2}>
+              <Link href="/contact">
+                <Button size="sm" className="rounded-full px-7 h-10 bg-gradient-to-r from-heritage to-[#2A4D37] text-white transition-all duration-300 font-bold text-[8px] tracking-[0.2em] border-0 shadow-md hover:scale-[1.04] hover:shadow-lg active:scale-95">
+                  BOOK CONSULTATION
+                </Button>
+              </Link>
+            </Magnetic>
           </div>
 
           {/* Mobile Right Side */}
           <div className="flex items-center space-x-1 lg:hidden relative z-[60]">
             <button 
               onClick={openSearch}
-              className={cn(
-                "p-3 transition-colors",
-                isScrolled ? "text-text-primary hover:text-heritage" : "text-white hover:text-burnished"
-              )}
+              className="p-2 text-white hover:text-burnished transition-colors"
               aria-label="Search"
             >
               <Search size={20} strokeWidth={1.5} />
             </button>
             
             <button
-              className={cn(
-                "p-3 focus:outline-none transition-colors",
-                isScrolled ? "text-text-primary hover:text-heritage" : "text-white hover:text-burnished"
-              )}
+              className="p-2 text-white focus:outline-none transition-colors"
               onClick={toggleMobileMenu}
               aria-label="Toggle Menu"
             >
-              <div className="w-6 flex flex-col items-end gap-1.5">
-                <span className={cn("h-px bg-current transition-all duration-500", isOpen ? "w-6 translate-y-2 rotate-45" : "w-6")} />
+              <div className="w-6 flex flex-col items-end gap-1">
+                <span className={cn("h-px bg-current transition-all duration-500", isOpen ? "w-6 translate-y-1.5 rotate-45" : "w-6")} />
                 <span className={cn("h-px bg-current transition-all duration-500", isOpen ? "opacity-0" : "w-4")} />
-                <span className={cn("h-px bg-current transition-all duration-500", isOpen ? "w-6 -translate-y-2 -rotate-45" : "w-2")} />
+                <span className={cn("h-px bg-current transition-all duration-500", isOpen ? "w-6 -translate-y-1.5 -rotate-45" : "w-2")} />
               </div>
             </button>
           </div>

@@ -23,31 +23,34 @@ export function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-canvas pt-20 pb-8 px-8 mt-auto border-t border-linen relative overflow-hidden">
-      <div className="absolute inset-0 dot-pattern opacity-[0.015]" />
+    <footer className="w-full bg-[#F5F3EF] pt-24 pb-12 relative overflow-hidden border-t border-linen/60">
+      <div className="absolute inset-0 dot-pattern opacity-[0.02]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(179,139,77,0.02)_0%,_transparent_40%)] pointer-events-none" />
       
       <div className="container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-10 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-12 mb-24">
           
           {/* Brand Col */}
-          <div className="md:col-span-4 space-y-8">
+          <div className="lg:col-span-5 space-y-10">
             <Magnetic strength={0.05}>
               <Link href="/">
-                <Logo scrolled={true} />
+                <div className="scale-110 origin-left">
+                  <Logo scrolled={true} />
+                </div>
               </Link>
             </Magnetic>
-            <p className="text-[12px] text-text-secondary leading-[1.8] max-w-xs font-sans font-light">
+            <p className="text-sm md:text-base text-text-secondary leading-relaxed max-w-[300px] font-serif italic font-light">
               Architects of magic, dedicated to turning life&apos;s special moments into unforgettable experiences with quiet precision and refined energy.
             </p>
-            <div className="flex items-center space-x-10">
+            <div className="flex items-center space-x-12 pt-2">
               {[
-                { icon: <Instagram size={16} strokeWidth={1.5} />, href: 'https://www.instagram.com/zingblissevents/' },
-                { icon: <Twitter size={16} strokeWidth={1.5} />, href: '#' },
-                { icon: <Facebook size={16} strokeWidth={1.5} />, href: '#' },
-                { icon: <Linkedin size={16} strokeWidth={1.5} />, href: '#' },
+                { icon: <Instagram size={20} strokeWidth={1} />, href: 'https://www.instagram.com/zingblissevents/' },
+                { icon: <Twitter size={20} strokeWidth={1} />, href: '#' },
+                { icon: <Facebook size={20} strokeWidth={1} />, href: '#' },
+                { icon: <Linkedin size={20} strokeWidth={1} />, href: '#' },
               ].map((social, i) => (
                 <Magnetic key={i} strength={0.3}>
-                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-heritage transition-colors duration-700">
+                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-burnished hover:scale-110 transition-all duration-500 transform">
                     {social.icon}
                   </a>
                 </Magnetic>
@@ -55,45 +58,56 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="md:col-span-2">
-            <h4 className="text-[9px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 mb-8">Archive</h4>
-            <ul className="space-y-4">
-              {navigation.map((item) => (
-                <li key={item.label}>
-                  <Link href={item.href} className="text-[10px] font-sans uppercase tracking-widest font-bold text-text-primary hover:text-heritage transition-colors duration-500">{item.label}</Link>
+          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
+            {/* Quick Links */}
+            <div className="space-y-10">
+              <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">Quick Links</h4>
+              <ul className="space-y-6">
+                {navigation.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-[11px] font-sans uppercase tracking-[0.3em] font-bold text-text-primary hover:text-burnished transition-all duration-500">{item.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div className="space-y-10">
+              <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">Services</h4>
+              <ul className="space-y-6">
+                <li>
+                  <Link href="/services" className="text-[11px] font-sans uppercase tracking-[0.3em] font-bold text-text-primary hover:text-burnished transition-all duration-500">Luxury Weddings</Link>
                 </li>
-              ))}
-            </ul>
-          </div>
+                <li>
+                  <Link href="/services" className="text-[11px] font-sans uppercase tracking-[0.3em] font-bold text-text-primary hover:text-burnished transition-all duration-500">Corporate Events</Link>
+                </li>
+                <li>
+                  <Link href="/services" className="text-[11px] font-sans uppercase tracking-[0.3em] font-bold text-text-primary hover:text-burnished transition-all duration-500">Social Events</Link>
+                </li>
+                <li>
+                  <Link href="/quiz" className="text-[11px] font-sans uppercase tracking-[0.3em] font-bold text-text-primary hover:text-burnished transition-all duration-500 flex items-center gap-3 group">
+                    Aesthetic Quiz <span className="text-[8px] font-sans font-bold uppercase tracking-widest text-burnished px-3 py-1 border border-burnished/20 rounded-full group-hover:bg-burnished group-hover:text-white transition-all">AI</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Exclusives */}
-          <div className="md:col-span-3">
-            <h4 className="text-[9px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 mb-8">Exclusives</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link href="/quiz" className="text-[10px] font-sans uppercase tracking-widest font-bold text-text-primary hover:text-heritage transition-colors duration-500 flex items-center gap-3 group">
-                  Aesthetic Quiz <span className="text-[7px] font-sans font-bold uppercase tracking-widest text-heritage px-3 py-0.5 border border-heritage/20 rounded-full group-hover:border-heritage transition-colors">AI</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="md:col-span-3">
-            <h4 className="text-[9px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 mb-8">Coordinates</h4>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <MapPin size={14} className="text-heritage/60 shrink-0 mt-1" />
-                <p className="text-[12px] text-text-secondary leading-relaxed font-light italic">Bandra West, Mumbai, MH <br/> India — 400050</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Phone size={14} className="text-heritage/60 shrink-0" />
-                <a href="tel:+919876543210" className="text-[12px] text-text-primary font-bold tracking-tight">+91 98765 43210</a>
-              </div>
-              <div className="flex items-center gap-4">
-                <Mail size={14} className="text-heritage/60 shrink-0" />
-                <a href="mailto:hello@zingblissevents.com" className="text-[12px] text-text-primary font-bold tracking-tight">hello@zingblissevents.com</a>
+            {/* Contact Info */}
+            <div className="space-y-10">
+              <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60">Contact</h4>
+              <div className="space-y-8">
+                <div className="space-y-3">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-heritage/40">Location</p>
+                  <p className="text-sm text-text-secondary leading-relaxed font-serif italic">Bandra West, Mumbai, MH <br/> India — 400050</p>
+                </div>
+                <div className="space-y-3">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-heritage/40">Direct Line</p>
+                  <a href="tel:+919876543210" className="text-sm text-text-primary font-bold tracking-tight block hover:text-burnished transition-all hover:translate-x-1 underline decoration-transparent hover:decoration-burnished/30">+91 98765 43210</a>
+                </div>
+                <div className="space-y-3">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-heritage/40">Correspondence</p>
+                  <a href="mailto:hello@zingblissevents.com" className="text-sm text-text-primary font-bold tracking-tight block hover:text-burnished transition-all hover:translate-x-1 underline decoration-transparent hover:decoration-burnished/30">hello@zingblissevents.com</a>
+                </div>
               </div>
             </div>
           </div>
@@ -101,11 +115,11 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-10 border-t border-linen/30 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-[8px] font-mono uppercase text-text-muted tracking-[0.4em]">
-            &copy; {currentYear} Zing Bliss. <span className="text-heritage/60">Fine Art Event Architecture.</span>
+        <div className="pt-12 border-t border-linen flex flex-col md:flex-row items-center justify-between gap-8">
+          <p className="text-[9px] font-mono uppercase text-text-muted/60 tracking-[0.4em]">
+            &copy; {currentYear} Zing Bliss. <span className="text-heritage/40">Fine Art Event Architecture.</span>
           </p>
-          <div className="flex space-x-10 text-[8px] font-mono uppercase text-text-muted tracking-[0.4em]">
+          <div className="flex items-center space-x-12 text-[9px] font-mono uppercase text-text-muted/60 tracking-[0.4em]">
             <Link href="/contact" className="hover:text-text-primary transition-colors">Privacy</Link>
             <Link href="/contact" className="hover:text-text-primary transition-colors">Terms</Link>
             <Link href="/contact" className="hover:text-text-primary transition-colors">Press</Link>

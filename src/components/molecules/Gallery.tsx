@@ -64,36 +64,42 @@ export function Gallery({ items, className, hasCursorLabel = true, aspectRatio =
 
   return (
     <>
-      <div className={cn("grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6", className)}>
+      <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6", className)}>
         {items.map((item, index) => {
           return (
             <div 
               key={item.id} 
               onClick={() => setSelectedItemIndex(index)}
               className={cn(
-                "group relative cursor-pointer transition-all duration-1000 overflow-hidden rounded-2xl",
+                "group relative cursor-pointer transition-all duration-500 overflow-hidden rounded-2xl shadow-md",
                 aspectRatio,
-                "hover:scale-[1.02] hover:shadow-2xl"
+                "hover:shadow-xl"
               )}
               data-cursor={hasCursorLabel ? "VIEW" : undefined}
             >
-              <div className="absolute inset-0 z-0">
+              <div className="absolute inset-0 z-0 overflow-hidden">
                 <Image 
                   src={item.image} 
                   alt={item.title} 
                   fill
-                  className="object-cover transition-transform duration-[10s] group-hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover brightness-[0.9] transition-transform duration-700 ease-out group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
 
-              {/* Dark Overlay with Content */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out z-10 flex flex-col justify-end p-8">
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-75">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-burnished mb-2 block">{item.category}</span>
-                  <h4 className="text-2xl md:text-3xl font-serif font-bold text-white mb-2">{item.title}</h4>
+              {/* Permanent Dark Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-100 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+              
+              {/* Overlay darkening on hover */}
+              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-15" />
+
+              {/* Text Content - Always Visible */}
+              <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
+                <div className="space-y-1 transform group-hover:-translate-y-1 transition-transform duration-500">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-burnished block">{item.category}</span>
+                  <h4 className="text-xl md:text-2xl font-serif font-medium text-white leading-tight">{item.title}</h4>
                   {item.location && (
-                    <p className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-white/60">{item.location}</p>
+                    <p className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-white/50">{item.location}</p>
                   )}
                 </div>
               </div>
