@@ -31,7 +31,6 @@ export const metadata: Metadata = {
 };
 
 import { SmoothScroll } from "@/components/atoms/SmoothScroll";
-import { AudioToggle } from "@/components/atoms/AudioToggle";
 
 import { BackToTop } from "@/components/atoms/BackToTop";
 import { StickyCTA } from "@/components/molecules/StickyCTA";
@@ -50,7 +49,6 @@ export default function RootLayout({
           <div className="noise-overlay" />
           <div className="ink-bleed" />
           <CustomCursor />
-          <AudioToggle />
           <BackToTop />
           <StickyCTA />
           <Navbar />

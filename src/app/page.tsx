@@ -109,7 +109,7 @@ const FloatingMetric = ({ label, value, className }: { label: string, value: str
 );
 
 const SectionDivider = ({ className }: { className?: string }) => (
-  <div className={cn("flex flex-col items-center gap-2 py-4 relative z-10", className)}>
+  <div className={cn("flex flex-col items-center gap-2 py-2 relative z-10", className)}>
     <div className="flex items-center gap-3">
       <Sparkles size={6} className="text-heritage/20" />
       <Star size={8} className="text-heritage/30" />
@@ -428,15 +428,15 @@ export default function Home() {
         </section>
 
         {/* 2. Trust Strip */}
-        <section className="bg-surface py-20 md:py-24 relative z-30 overflow-hidden border-y border-linen/50">
+        <section className="bg-surface py-10 md:py-24 relative z-30 overflow-hidden border-y border-linen/50">
           <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(179,139,77,0.02)_0%,_transparent_70%)] pointer-events-none" />
 
           <div className="container relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-linen/60">
               {stats.map((stat, i) => (
-                <div key={stat.label} className="flex flex-col items-center text-center group py-12 md:py-8 px-4 md:px-12 fade-up">
-                   <div className="flex flex-col items-center space-y-6">
+                <div key={stat.label} className="flex flex-col items-center text-center group py-6 md:py-8 px-4 md:px-12 fade-up">
+                   <div className="flex flex-col items-center space-y-3 md:space-y-6">
                       {/* Icon above number */}
                       <div className="text-burnished/40 group-hover:text-burnished transition-colors duration-700 transform group-hover:scale-110">
                         {i === 0 && <Heart size={24} strokeWidth={1} />}
@@ -446,13 +446,13 @@ export default function Home() {
 
                       <div className="flex flex-col items-center">
                         <div className="flex items-baseline gap-1">
-                          <span className="text-7xl md:text-8xl lg:text-9xl font-serif text-text-primary italic tracking-tight leading-none">
+                          <span className="text-6xl md:text-8xl lg:text-9xl font-serif text-text-primary italic tracking-tight leading-none">
                             <Counter value={stat.value} />
                           </span>
-                          <div className="w-2.5 h-2.5 rounded-full bg-burnished opacity-60" />
+                          <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-burnished opacity-60" />
                         </div>
                         
-                        <div className="mt-8 space-y-2">
+                        <div className="mt-4 md:mt-8 space-y-1 md:space-y-2">
                           <span className="text-[11px] md:text-[13px] font-sans uppercase tracking-[0.6em] text-text-primary font-bold block">
                             {stat.label}
                           </span>

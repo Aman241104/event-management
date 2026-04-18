@@ -31,7 +31,7 @@ const FloatingMetric = ({ label, value, className }: { label: string, value: str
 );
 
 const SectionDivider = ({ className }: { className?: string }) => (
-  <div className={cn("flex flex-col items-center gap-2 py-4 relative z-10", className)}>
+  <div className={cn("flex flex-col items-center gap-2 py-2 relative z-10", className)}>
     <div className="flex items-center gap-3">
       <Sparkles size={6} className="text-heritage/20" />
       <Star size={8} className="text-heritage/30" />
@@ -58,38 +58,38 @@ export default function AboutPage() {
           .to(".hero-scroll-cue", { opacity: 0.6, duration: 1, ease: "power2.out" }, "-=0.3");
 
     // 2. Philosophy Animations
-    gsap.from(".philosophy-image-container", {
-      scale: 0.95,
-      opacity: 0,
+    gsap.to(".philosophy-image-container", {
+      scale: 1,
+      opacity: 1,
       duration: 1.5,
       ease: "power3.out",
       scrollTrigger: {
         trigger: ".philosophy-image-container",
-        start: "top 85%"
+        start: "top 90%"
       }
     });
 
-    gsap.from(".philosophy-text-block > *", {
-      y: 40,
-      opacity: 0,
+    gsap.to(".philosophy-text-block > div", {
+      y: 0,
+      opacity: 1,
       stagger: 0.15,
       duration: 1,
       ease: "power3.out",
       scrollTrigger: {
         trigger: ".philosophy-text-block",
-        start: "top 85%"
+        start: "top 95%"
       }
     });
 
-    gsap.from(".vision-block", {
-      y: 60,
-      opacity: 0,
+    gsap.to(".vision-block", {
+      y: 0,
+      opacity: 1,
       duration: 1,
       stagger: 0.2,
       ease: "power3.out",
       scrollTrigger: {
         trigger: "#vision",
-        start: "top 80%"
+        start: "top 90%"
       }
     });
 
@@ -101,7 +101,7 @@ export default function AboutPage() {
       ease: "power3.out",
       scrollTrigger: {
         trigger: "#cta",
-        start: "top 80%"
+        start: "top 90%"
       }
     });
 
@@ -158,9 +158,9 @@ export default function AboutPage() {
         
         {/* 1. Hero Section */}
         <section id="hero" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden" data-bg="var(--color-canvas)">
-          {/* Refined Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70 z-10 pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.2),transparent_70%)] z-10 pointer-events-none" />
+          {/* Refined Overlays - Darkened for readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.4),transparent_85%)] z-10 pointer-events-none" />
           
           {/* Film Grain Overlay */}
           <div className="absolute inset-0 mix-blend-overlay opacity-10 pointer-events-none z-10" 
@@ -177,26 +177,26 @@ export default function AboutPage() {
           </div>
 
           <div className="container relative z-20 text-center flex flex-col items-center">
-            {/* Soft Content Glow */}
+            {/* Soft Content Glow - Darker for contrast */}
             <div className="relative">
-              <div className="absolute inset-0 blur-3xl bg-white/5 opacity-30 -z-10" />
+              <div className="absolute inset-0 blur-[100px] bg-black/40 -z-10" />
               <div className="relative z-10 flex flex-col items-center">
                 <div className="hero-header-reveal flex flex-col items-center gap-4 mb-8 opacity-0 translate-y-8">
-                  <span className="text-[10px] font-mono text-white/60 uppercase tracking-[0.6em] small-caps">01 / OUR STORY</span>
+                  <span className="text-[10px] font-mono text-white/70 uppercase tracking-[0.6em] small-caps drop-shadow-md">01 / OUR STORY</span>
                   <div className="h-10 w-[1px] bg-gradient-to-b from-burnished/60 to-transparent" />
                 </div>
                 
-                <h1 className="hero-title text-4xl md:text-7xl lg:text-[6.8rem] font-serif font-medium tracking-[-0.02em] text-white leading-[0.95] lg:leading-[0.85] drop-shadow-2xl max-w-5xl opacity-0 translate-y-12">
-                  About <br /> <span className="text-burnished italic font-light tracking-wide">Zing Bliss.</span>
+                <h1 className="hero-title text-4xl md:text-7xl lg:text-[6.8rem] font-serif font-medium tracking-[-0.02em] text-white leading-[0.95] lg:leading-[0.85] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] max-w-5xl opacity-0 translate-y-12">
+                  About <br /> <span className="text-burnished italic font-light tracking-wide drop-shadow-[0_10px_30px_rgba(179,139,77,0.3)]">Zing Bliss.</span>
                 </h1>
 
-                <p className="hero-subtext text-lg md:text-xl text-white/80 max-w-xl leading-[1.6] font-sans font-light mt-8 md:mt-10 drop-shadow-lg opacity-0 translate-y-8">
+                <p className="hero-subtext text-lg md:text-xl text-white/90 max-w-xl leading-[1.6] font-sans font-light mt-8 md:mt-10 drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)] opacity-0 translate-y-8">
                   We craft experiences that feel effortless, refined, and deeply personal — designed with intention, executed with quiet precision.
                 </p>
 
                 {/* Scroll Indicator */}
                 <div className="hero-scroll-cue mt-16 opacity-0">
-                  <div className="w-[1px] h-10 bg-white/40 mx-auto animate-bounce" />
+                  <div className="w-[1px] h-10 bg-white/40 mx-auto animate-bounce shadow-xl" />
                 </div>
               </div>
             </div>
@@ -206,10 +206,10 @@ export default function AboutPage() {
         <SectionDivider />
 
         {/* Press Marquee */}
-        <section className="py-8 border-y border-linen/60 bg-white/50 backdrop-blur-sm" data-bg="var(--color-canvas)">
+        <section className="py-4 border-y border-linen/60 bg-white/50 backdrop-blur-sm" data-bg="var(--color-canvas)">
           <InfiniteMarquee 
-            items={["Vogue", "Bazaar", "The Knot", "Brides", "Luxury Daily", "Elite Traveler"]} 
-            speed={35} 
+            items={["Vogue", "Bazaar", "The Knot", "Brides", "Luxury Daily", "Elite Traveler"]}
+            speed={35}
             className="text-text-primary/60 font-serif italic text-xl md:text-2xl"
           />
         </section>
@@ -217,42 +217,24 @@ export default function AboutPage() {
         <SectionDivider />
 
         {/* Philosophy Section */}
-        <section id="philosophy" className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-white to-[#f8f6f2]" data-bg="var(--color-canvas)">
+        <section id="philosophy" className="relative py-10 md:py-16 overflow-hidden bg-gradient-to-b from-white to-[#f8f6f2]" data-bg="var(--color-canvas)">
           {/* Subtle Grain Overlay */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" 
                style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
 
           <div className="container relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-              {/* Image Column - Shifted Down */}
-              <div className="lg:col-span-7 mt-12 philosophy-image-container relative group">
-                <div className="relative overflow-hidden rounded-[12px] h-[50vh] md:h-[75vh] w-full shadow-[0_40px_100px_rgba(0,0,0,0.15)] z-10">
-                  <Image 
-                    src="/hero-9.jpg" 
-                    alt="Our Work" 
-                    fill 
-                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-                  
-                  {/* Floating Detail Label */}
-                  <div className="absolute top-6 left-6 text-[10px] uppercase tracking-[0.4em] bg-white/80 backdrop-blur px-4 py-2 font-mono font-bold small-caps">
-                    Since 2017 / Crafted
-                  </div>
-                </div>
-              </div>
-
-              {/* Text Column - Shifted Up */}
-              <div className="lg:col-span-5 -mt-4 philosophy-text-block space-y-10">
-                <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+              {/* Text Column - First on mobile */}
+              <div className="lg:col-span-5 order-1 lg:order-2 philosophy-text-block space-y-8 lg:space-y-10">
+                <div className="space-y-4 lg:space-y-6 opacity-0 translate-y-8">
                   <h2 className="text-5xl md:text-7xl font-serif text-text-primary font-medium leading-[0.9] tracking-tight">
                     The Art Behind <br />
                     <span className="text-burnished italic font-light">Zing Bliss.</span>
                   </h2>
-                  <div className="w-12 h-[1px] bg-burnished/40 my-6" />
+                  <div className="w-12 h-[1px] bg-burnished/40 my-4 lg:my-6" />
                 </div>
 
-                <div className="space-y-8 text-lg md:text-xl text-text-secondary/80 font-sans font-light leading-[1.7] max-w-md">
+                <div className="space-y-6 lg:space-y-8 text-lg md:text-xl text-text-secondary/80 font-sans font-light leading-[1.7] max-w-md opacity-0 translate-y-8">
                   <p>
                     We design experiences that feel effortless yet unforgettable — where every detail is intentional, and every moment carries meaning.
                   </p>
@@ -262,46 +244,62 @@ export default function AboutPage() {
                 </div>
 
                 {/* Text-based Highlights */}
-                <div className="space-y-6 pt-4">
+                <div className="space-y-4 lg:space-y-6 pt-2 lg:pt-4 opacity-0 translate-y-8">
                   {[
                     { id: '01', title: 'Bespoke Approach' },
                     { id: '02', title: 'Global Network' },
                     { id: '03', title: 'Detail-Obsessed Execution' },
                   ].map((item) => (
-                    <div key={item.id} className="flex items-center gap-4 border-t border-linen pt-6 group">
+                    <div key={item.id} className="flex items-center gap-4 border-t border-linen pt-4 lg:pt-6 group">
                       <span className="text-[10px] font-mono text-burnished opacity-60">{item.id}</span>
                       <span className="text-sm uppercase tracking-[0.3em] text-text-primary font-bold transition-all group-hover:tracking-[0.4em]">{item.title}</span>
                     </div>
                   ))}
                 </div>
               </div>
+
+              {/* Image Column - Second on mobile */}
+              <div className="lg:col-span-7 order-2 lg:order-1 mt-4 lg:mt-12 philosophy-image-container relative group opacity-0 scale-95">
+                <div className="relative overflow-hidden rounded-[12px] h-[35vh] md:h-[75vh] w-full shadow-[0_40px_100px_rgba(0,0,0,0.15)] z-10">
+                  <Image 
+                    src="/hero-9.jpg" 
+                    alt="Our Work" 
+                    fill 
+                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+
+                  {/* Floating Detail Label */}
+                  <div className="absolute top-6 left-6 text-[10px] uppercase tracking-[0.4em] bg-white/80 backdrop-blur px-4 py-2 font-mono font-bold small-caps">
+                    Since 2017 / Crafted
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
-
         <SectionDivider className="bg-heritage-soft" />
 
         {/* Vision & Mission */}
-        <section id="vision" className="py-32 md:py-48 relative overflow-hidden" data-bg="var(--color-heritage)">
-          {/* Rich Cinematic Background Overlay System */}
+        <section id="vision" className="py-12 md:py-24 relative overflow-hidden" data-bg="var(--color-heritage)">          {/* Rich Cinematic Background Overlay System */}
           <div className="absolute inset-0 z-0">
             <Image src="/hero-8.jpg" alt="Mission Background" fill className="object-cover" />
-            <div className="absolute inset-0 bg-black/60 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/90 z-10" />
-            <div className="absolute inset-0 opacity-20 z-10" style={{ backgroundColor: 'rgba(180,140,90,0.1)' }} />
-            <div className="absolute inset-0 z-10" style={{ background: 'radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.4))' }} />
+            <div className="absolute inset-0 bg-black/70 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/90 z-10" />
+            <div className="absolute inset-0 opacity-30 z-10" style={{ backgroundColor: 'rgba(180,140,90,0.1)' }} />
+            <div className="absolute inset-0 z-10" style={{ background: 'radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.6))' }} />
           </div>
 
           <div className="container relative z-20">
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-12 md:gap-20 max-w-6xl mx-auto items-center">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-10 md:gap-20 max-w-6xl mx-auto items-center">
               {/* Goal Block */}
-              <div className="vision-block space-y-4 transition-all duration-500 hover:brightness-125 group">
-                <span className="text-[10px] uppercase tracking-[0.4em] text-white/50 block">OUR GOAL</span>
-                <h3 className="text-4xl md:text-5xl font-serif text-white leading-tight">
+              <div className="vision-block space-y-4 transition-all duration-500 hover:brightness-125 group opacity-0 translate-y-12">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 block drop-shadow-md">OUR GOAL</span>
+                <h3 className="text-4xl md:text-5xl font-serif text-white leading-tight drop-shadow-2xl">
                   Effortless <br />
                   <span className="text-burnished italic font-light">Elegance.</span>
                 </h3>
-                <p className="text-white/80 font-sans font-light leading-[1.7] max-w-md text-lg md:text-xl italic border-l border-white/10 pl-6">
+                <p className="text-white/90 font-sans font-light leading-[1.7] max-w-md text-lg md:text-xl italic border-l border-white/20 pl-6 drop-shadow-lg">
                   "To craft events where elegance feels effortless and every detail reflects intention."
                 </p>
               </div>
@@ -310,13 +308,13 @@ export default function AboutPage() {
               <div className="hidden md:block w-px h-48 bg-white/10" />
 
               {/* Mission Block */}
-              <div className="vision-block space-y-4 transition-all duration-500 hover:brightness-125 group">
-                <span className="text-[10px] uppercase tracking-[0.4em] text-white/50 block">OUR MISSION</span>
-                <h3 className="text-4xl md:text-5xl font-serif text-white leading-tight">
+              <div className="vision-block space-y-4 transition-all duration-500 hover:brightness-125 group opacity-0 translate-y-12">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-white/60 block drop-shadow-md">OUR MISSION</span>
+                <h3 className="text-4xl md:text-5xl font-serif text-white leading-tight drop-shadow-2xl">
                   Quietly <br />
                   <span className="text-burnished italic font-light">Unforgettable.</span>
                 </h3>
-                <p className="text-white/80 font-sans font-light leading-[1.7] max-w-md text-lg md:text-xl italic border-l border-white/10 pl-6">
+                <p className="text-white/90 font-sans font-light leading-[1.7] max-w-md text-lg md:text-xl italic border-l border-white/20 pl-6 drop-shadow-lg">
                   "To design experiences that are deeply personal, flawlessly executed, and quietly unforgettable."
                 </p>
               </div>
@@ -325,7 +323,7 @@ export default function AboutPage() {
         </section>
 
         {/* Final CTA */}
-        <section id="cta" className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-t border-white/5" data-bg="var(--color-heritage)">
+        <section id="cta" className="relative min-h-[60vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden border-t border-white/5" data-bg="var(--color-heritage)">
           {/* Cinematic Background Layering */}
           <div className="absolute inset-0 z-0">
              <Image src="/hero10.jpg" alt="Background" fill className="cta-bg-image object-cover scale-105" />

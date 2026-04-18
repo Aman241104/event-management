@@ -28,7 +28,7 @@ const FloatingMetric = ({ label, value, className }: { label: string, value: str
 );
 
 const SectionDivider = ({ className }: { className?: string }) => (
-  <div className={cn("flex flex-col items-center gap-2 py-4 relative z-10", className)}>
+  <div className={cn("flex flex-col items-center gap-2 py-2 relative z-10", className)}>
     <div className="flex items-center gap-3">
       <Sparkles size={6} className="text-heritage/20" />
       <Star size={8} className="text-heritage/30" />

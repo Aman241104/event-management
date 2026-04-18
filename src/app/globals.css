@@ -206,11 +206,6 @@
     box-shadow: 0 0 10px rgba(42, 77, 55, 0.4);
   }
 
-  @keyframes sound-wave {
-    0%, 100% { transform: scaleY(0.5); }
-    50% { transform: scaleY(1.5); }
-  }
-
   @keyframes shimmer {
     0% { background-position: 200% center; }
     100% { background-position: -200% center; }
