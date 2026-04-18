@@ -23,31 +23,102 @@ if (typeof window !== 'undefined') {
 const serviceCategories = [
   {
     id: '01',
-    label: '01 / PLANNING',
-    title: 'Event Management',
-    description: 'We handle everything from start to finish. Our team manages all the vendors and details so your event runs perfectly.',
+    label: '01 / ETERNAL',
+    title: 'Weddings & Celebrations',
+    description: 'We specialize in bespoke wedding experiences that reflect your unique story, style, and dreams. From intimate proposals to grand palace weddings, we architect legacies of love.',
     image: '/decor-1.jpg',
-    tags: ['Weddings', 'Business Events', 'Birthdays', 'Family Parties', 'Festivals'],
+    tags: [
+      'Luxury & Theme Weddings',
+      'Destination Weddings',
+      'Mehendi & Sangeet Celebrations',
+      'Anniversary Celebrations',
+      '“Marry Me” Proposals',
+      'Hospitality & Transportation',
+      'Cinematic Videography'
+    ],
     bgColor: '#FDFCFB',
     maskClass: 'bg-canvas'
   },
   {
     id: '02',
-    label: '02 / TALENT',
-    title: 'Entertainment',
-    description: 'We bring the best music and performers to your event. From DJs to live bands, we make sure everyone has a great time.',
-    image: '/decor-2.jpg',
-    tags: ['DJs', 'Live Bands', 'Celebrity Guests', 'Kids Fun', 'Hosts'],
+    label: '02 / WHIMSICAL',
+    title: 'Birthdays & Kids',
+    description: 'From playful themes to premium setups, we create joyful celebrations filled with fun and imagination. We turn childhood dreams into vibrant, unforgettable realities.',
+    image: '/hero-7.jpg',
+    tags: [
+      'Theme-Based Birthday Parties',
+      'Balloon Décor & Styling',
+      'DJ & Emcee (Compere)',
+      'Fun Counters & Rides',
+      'Creative Activity Stations',
+      'Live Entertainment Shows',
+      'Mascots & Characters',
+      'Customized Return Gifts'
+    ],
     bgColor: '#F9F8F6',
     maskClass: 'bg-surface'
   },
   {
     id: '03',
-    label: '03 / STYLE',
-    title: 'Design & Setup',
-    description: 'We create beautiful spaces with great lighting and decor. We make sure every corner looks amazing for your guests.',
+    label: '03 / PRESTIGE',
+    title: 'Corporate Events',
+    description: 'Professional, impactful, and seamlessly executed events designed to elevate your brand. We handle the logistics so you can focus on your business vision.',
+    image: '/decor-4.jpg',
+    tags: [
+      'Product Launches & Conferences',
+      'Annual Day & Awards Night',
+      'Family Day & Engagement',
+      'Team Building Activities',
+      'Corporate Gatherings'
+    ],
+    bgColor: '#FFFFFF',
+    maskClass: 'bg-white'
+  },
+  {
+    id: '04',
+    label: '04 / INTIMATE',
+    title: 'Social & Lifestyle',
+    description: 'Elegant and intimate celebrations tailored to your special moments. We bring a touch of sophistication to your personal milestones.',
+    image: '/decor-2.jpg',
+    tags: [
+      'Baby Showers',
+      'Ring Ceremony',
+      'Get-Togethers & Private Parties',
+      'Theme Parties',
+      'Housewarming Ceremonies'
+    ],
+    bgColor: '#FDFCFB',
+    maskClass: 'bg-canvas'
+  },
+  {
+    id: '05',
+    label: '05 / HERITAGE',
+    title: 'Festival Celebrations',
+    description: 'Celebrate traditions with a touch of creativity and style. We curate festive experiences that honor culture while embracing modern elegance.',
     image: '/decor-3.jpg',
-    tags: ['Decorations', 'Lighting & Sound', 'Stage Design', 'Catering', 'Photos & Video'],
+    tags: [
+      'Diwali Décor & Events',
+      'Christmas Celebrations',
+      'Holi Events',
+      'Customized Festive Experiences'
+    ],
+    bgColor: '#F9F8F6',
+    maskClass: 'bg-surface'
+  },
+  {
+    id: '06',
+    label: '06 / ARTISTRY',
+    title: 'Artist Management',
+    description: 'We bring the best talent to your event, ensuring unforgettable entertainment. From Bollywood stars to innovative global acts, we curate the energy of your night.',
+    image: '/hero-6.jpg',
+    tags: [
+      'Bollywood & Reality Stars',
+      'Singers, Performers & Bands',
+      'DJs & Anchors',
+      'Stand-Up Comedians',
+      'International Artists',
+      'Unique & Innovative Acts'
+    ],
     bgColor: '#FFFFFF',
     maskClass: 'bg-white'
   }
@@ -186,11 +257,20 @@ export default function ServicesPage() {
       });
     });
 
-    setTimeout(() => ScrollTrigger.refresh(), 200);
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+
+    const refreshST = () => ScrollTrigger.refresh();
+    window.addEventListener('resize', refreshST);
+    
+    return () => {
+      window.removeEventListener('resize', refreshST);
+    };
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-16 pb-12 relative overflow-hidden transition-colors duration-1000">
+    <main ref={containerRef} className="min-h-screen pt-16 pb-12 relative transition-colors duration-1000">
       <div className="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
       <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.05} />
       
@@ -221,7 +301,7 @@ export default function ServicesPage() {
           </h1>
 
           <p className="header-fade text-lg md:text-2xl text-white/90 max-w-2xl leading-relaxed font-sans font-light mt-10 drop-shadow-lg">
-            We offer complete event planning and design services for weddings, business events, and private parties.
+            From bespoke weddings to high-impact corporate galas and whimsical celebrations — we architect legacies of elegance and unforgettable moments.
           </p>
         </div>
       </section>
