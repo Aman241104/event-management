@@ -172,6 +172,7 @@ export default function AboutPage() {
               alt="About Zing Bliss" 
               speed={0.2}
               className="scale-110"
+              aspectRatio="h-full w-full"
             />
           </div>
 
