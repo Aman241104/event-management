@@ -34,7 +34,7 @@ import { SmoothScroll } from "@/components/atoms/SmoothScroll";
 import { AudioToggle } from "@/components/atoms/AudioToggle";
 
 import { BackToTop } from "@/components/atoms/BackToTop";
-import { WhatsAppButton } from "@/components/atoms/WhatsAppButton";
+import { StickyCTA } from "@/components/molecules/StickyCTA";
 
 export default function RootLayout({
   children,
@@ -52,7 +52,7 @@ export default function RootLayout({
           <CustomCursor />
           <AudioToggle />
           <BackToTop />
-          <WhatsAppButton />
+          <StickyCTA />
           <Navbar />
           <div className="flex-grow main-content relative z-10">
             {children}

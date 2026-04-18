@@ -400,14 +400,26 @@ export default function Home() {
               From luxury weddings to corporate experiences — we plan, design & execute seamlessly with uncompromising elegance.
             </p>
 
-            <div className="hero-btns flex items-center justify-center">
+            <div className="hero-btns flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
               <Magnetic strength={0.2}>
                 <Link href="/contact">
                   <Button 
                     size="lg" 
-                    className="h-20 px-20 text-[11px] border-0 shadow-[0_20px_50px_rgba(179,139,77,0.3)] bg-burnished text-white hover:bg-burnished-light transition-all duration-500 hover:scale-110 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em] group"
+                    className="h-20 px-12 md:px-16 text-[10px] md:text-[11px] border-0 shadow-[0_20px_50px_rgba(179,139,77,0.3)] bg-burnished text-white hover:bg-burnished-light transition-all duration-500 hover:scale-110 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em] group"
                   >
                     Start My Event Planning
+                  </Button>
+                </Link>
+              </Magnetic>
+
+              <Magnetic strength={0.2}>
+                <Link href="/gallery">
+                  <Button 
+                    size="lg" 
+                    variant="outline"
+                    className="h-20 px-12 md:px-16 text-[10px] md:text-[11px] border-white/20 !text-white hover:bg-white hover:!text-heritage transition-all duration-500 hover:scale-110 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em]"
+                  >
+                    View Our Work
                   </Button>
                 </Link>
               </Magnetic>
@@ -472,7 +484,7 @@ export default function Home() {
         </section>
 
         {/* 4. Services Section */}
-        <section id="services" className="py-20 md:py-24 bg-surface relative overflow-hidden border-t border-linen/40" data-bg="var(--color-surface)">
+        <section id="services" className="py-20 md:py-32 bg-surface relative overflow-hidden border-t border-linen/40" data-bg="var(--color-surface)">
           <div className="container space-y-20">
             <div className="flex flex-col items-center text-center space-y-4 fade-up relative z-10">
               <TextReveal text="Our Services" className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-text-primary tracking-tight" />
@@ -481,33 +493,60 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 relative z-10">
               {[
                 { 
-                  title: 'Luxury Weddings', 
-                  desc: 'Curating bespoke wedding experiences that reflect your unique love story and cultural heritage.', 
+                  title: 'Weddings & Celebrations', 
+                  desc: 'Bespoke wedding experiences that reflect your unique story, style, and dreams.', 
                   img: '/decor-1.jpg',
                   icon: <Heart size={20} strokeWidth={1.5} />,
-                  value: 'Crafting timeless legacies of love.'
+                  value: 'Crafting Timeless Legacies',
+                  items: ['Luxury & Theme Weddings', 'Destination Weddings', 'Cinematic Videography']
+                },
+                { 
+                  title: 'Birthdays & Kids', 
+                  desc: 'From playful themes to premium setups, we create joyful celebrations filled with imagination.', 
+                  img: '/hero-7.jpg',
+                  icon: <PartyPopper size={20} strokeWidth={1.5} />,
+                  value: 'Whimsical Wonders',
+                  items: ['Theme-Based Styling', 'Live Entertainment', 'Custom Return Gifts']
                 },
                 { 
                   title: 'Corporate Events', 
-                  desc: 'Seamless event management for high-stakes business experiences, galas, and global summits.', 
+                  desc: 'Professional, impactful, and seamlessly executed events designed to elevate your brand.', 
                   img: '/decor-4.jpg',
                   icon: <Zap size={20} strokeWidth={1.5} />,
-                  value: 'Precision execution for brand excellence.'
+                  value: 'Brand Excellence',
+                  items: ['Product Launches', 'Awards & Annual Days', 'Employee Engagement']
                 },
                 { 
-                  title: 'Social Events', 
-                  desc: 'Intimate and grand celebrations for life\'s most precious milestones and private gatherings.', 
-                  img: '/hero-7.jpg',
+                  title: 'Social & Lifestyle', 
+                  desc: 'Elegant and intimate celebrations tailored to your special moments and private gatherings.', 
+                  img: '/decor-2.jpg',
                   icon: <Sparkles size={20} strokeWidth={1.5} />,
-                  value: 'Transforming moments into memories.'
+                  value: 'Intimate Elegance',
+                  items: ['Baby Showers & Proposals', 'Ring Ceremony', 'Private Theme Parties']
+                },
+                { 
+                  title: 'Festival Celebrations', 
+                  desc: 'Celebrate traditions with a touch of creativity and style, curated for every festive season.', 
+                  img: '/decor-3.jpg',
+                  icon: <Star size={20} strokeWidth={1.5} />,
+                  value: 'Traditional Artistry',
+                  items: ['Diwali Dcor', 'Christmas Celebrations', 'Custom Festive Experiences']
+                },
+                { 
+                  title: 'Artist Management', 
+                  desc: 'We bring the best talent to your event, ensuring unforgettable entertainment and energy.', 
+                  img: '/hero-6.jpg',
+                  icon: <Music size={20} strokeWidth={1.5} />,
+                  value: 'World-Class Talent',
+                  items: ['Bollywood Celebrities', 'Live Bands & Singers', 'Innovative Global Acts']
                 },
               ].map((service, i) => (
-                <div key={i} className="group bg-ivory p-8 space-y-8 transition-all duration-700 flex flex-col rounded-[2.5rem] border border-linen/50 shadow-sm hover:shadow-[0_40px_100px_rgba(0,0,0,0.08)] hover:scale-[1.03] hover:-translate-y-3 hover:border-burnished/30">
-                  <div className="aspect-[4/5] w-full rounded-[2rem] overflow-hidden relative shadow-inner">
-                    <Image src={service.img} alt={service.title} fill className="object-cover transition-transform duration-[3s] ease-out group-hover:scale-110" sizes="(max-width: 768px) 100vw, 33vw" />
+                <div key={i} className="group bg-ivory p-8 space-y-8 transition-all duration-700 flex flex-col rounded-[2.5rem] border border-linen/50 shadow-sm hover:shadow-[0_40px_100px_rgba(0,0,0,0.08)] hover:scale-[1.02] hover:-translate-y-2 hover:border-burnished/30">
+                  <div className="aspect-[16/10] w-full rounded-[2rem] overflow-hidden relative shadow-inner">
+                    <Image src={service.img} alt={service.title} fill className="object-cover transition-transform duration-[3s] ease-out group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-700" />
                     <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-burnished shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
                       {service.icon}
@@ -516,11 +555,21 @@ export default function Home() {
                   <div className="space-y-6 px-2 pb-2 flex flex-col items-center text-center">
                     <div className="space-y-3">
                       <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-burnished/60 block">{service.value}</span>
-                      <h3 className="text-3xl md:text-4xl font-serif font-medium text-text-primary italic leading-tight">{service.title}</h3>
+                      <h3 className="text-2xl md:text-3xl font-serif font-medium text-text-primary italic leading-tight">{service.title}</h3>
                     </div>
-                    <p className="text-base md:text-lg text-text-secondary leading-relaxed font-light">{service.desc}</p>
-                    <Link href="/services" className="inline-flex items-center gap-3 mt-4 text-[11px] uppercase tracking-[0.4em] font-bold text-heritage group/link">
-                      <span className="border-b border-heritage/20 pb-1 group-hover/link:border-heritage transition-all small-caps">Explore Service</span>
+                    <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">{service.desc}</p>
+                    
+                    <ul className="grid grid-cols-1 gap-2 pt-2">
+                      {service.items.map((item, idx) => (
+                        <li key={idx} className="text-[10px] md:text-[11px] uppercase tracking-widest text-text-muted font-bold flex items-center gap-2">
+                          <span className="w-1 h-1 rounded-full bg-burnished/40" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Link href="/services" className="inline-flex items-center gap-3 mt-4 text-[10px] uppercase tracking-[0.4em] font-bold text-heritage group/link">
+                      <span className="border-b border-heritage/20 pb-1 group-hover/link:border-heritage transition-all small-caps">Explore More</span>
                       <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -530,78 +579,62 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5. Why Are We Better? */}
-        <section id="why-are-we-better" className="py-20 md:py-24 bg-surface relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(179,139,77,0.05)_0%,_transparent_70%)] pointer-events-none" />
-          <div className="absolute inset-0 dot-pattern opacity-[0.02] pointer-events-none" />
-          <BackgroundFlourish type="architectural" className="top-[-10%] left-[-5%] w-96 h-96 text-burnished/5 -rotate-12" parallaxSpeed={0.03} />
+
+        {/* 5. Why Choose Us (Redesigned) */}
+        <section id="why-choose-us" className="why-section py-[100px] md:py-[140px] bg-[#f7f5f2] relative overflow-hidden">
+          {/* Subtle luxury background treatment */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,_rgba(180,140,80,0.08)_0%,_transparent_70%)] pointer-events-none" />
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" 
+            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
+          />
           
-          <div className="container space-y-20 relative z-10">
-            <div className="flex flex-col items-center text-center space-y-4 fade-up">
-              <span className="text-[11px] font-mono text-burnished uppercase tracking-[0.8em] small-caps font-bold">The Zing Bliss Advantage</span>
-              <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-text-primary tracking-tight leading-tight">
-                Why choose our <span className="text-burnished italic">artistry?</span>
+          <div className="container max-w-[1100px] md:max-w-[1200px] mx-auto relative z-10">
+            {/* Header */}
+            <div className="why-header flex flex-col items-center text-center mb-[60px] md:mb-[80px] space-y-4 fade-up">
+              <span className="text-[11px] md:text-[12px] text-[#9c9c9c] uppercase tracking-[3px] font-bold">
+                THE ZING BLISS ADVANTAGE
+              </span>
+              <h2 className="text-[48px] md:text-[60px] font-serif font-medium text-[#1a1a1a] leading-[1.2]">
+                Why choose our <span className="text-[#b8965a] italic">artistry?</span>
               </h2>
-              <p className="text-lg md:text-xl text-text-secondary font-serif italic font-light max-w-2xl mx-auto">
-                We don&apos;t just plan events; we architect legacies of elegance and unforgettable moments.
+              <p className="text-[15px] md:text-[16px] text-[#7a7a7a] leading-[1.7] max-w-[600px] mx-auto font-sans">
+                We don&apos;t just plan events; we architect legacies of elegance and unforgettable moments. Every detail is a brushstroke in your unique masterpiece.
               </p>
             </div>
 
+            {/* Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {[
                 { 
                   title: 'Bespoke Artistry', 
-                  desc: 'Every event is a unique masterpiece, meticulously curated to reflect your distinct aesthetic and personal story.', 
-                  icon: <Lightbulb size={40} strokeWidth={1.5} />,
-                  delay: 0
+                  desc: 'Every event is a unique masterpiece, meticulously curated to reflect your distinct aesthetic and personal story.'
                 },
                 { 
                   title: 'Elite Access', 
-                  desc: 'Unrivalled access to the world&apos;s most exclusive venues and a global network of premier luxury partners.', 
-                  icon: <Star size={40} strokeWidth={1.5} />,
-                  delay: 0.2
+                  desc: 'Unrivalled access to the world&apos;s most exclusive venues and a global network of premier luxury partners.'
                 },
                 { 
                   title: 'Seamless Precision', 
-                  desc: 'Invisible, expert orchestration that ensures every detail is executed with uncompromising, quiet perfection.', 
-                  icon: <Zap size={40} strokeWidth={1.5} />,
-                  delay: 0.4
+                  desc: 'Invisible, expert orchestration that ensures every detail is executed with uncompromising, quiet perfection.'
                 },
               ].map((item, i) => (
                 <div 
                   key={i} 
                   className={cn(
-                    "bg-white/50 backdrop-blur-sm p-10 md:p-12 space-y-10 rounded-[2.5rem] border border-linen/30 shadow-sm transition-all duration-700 flex flex-col items-center text-center group hover:-translate-y-4 hover:shadow-[0_40px_100px_rgba(0,0,0,0.06)] hover:bg-white hover:border-burnished/20",
-                    i === 1 ? "md:translate-y-12" : ""
+                    "why-card bg-white p-[32px] md:p-[36px] rounded-[14px] border border-black/5 flex flex-col items-start text-left transition-all duration-[0.35s] ease-in-out group fade-up",
+                    "shadow-[0_8px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.10)] hover:-translate-y-2",
+                    i === 1 ? "md:scale-[1.04] md:shadow-[0_20px_40px_rgba(0,0,0,0.08)] z-20" : "z-10"
                   )}
                 >
-                  <div className="w-20 h-20 rounded-full bg-surface flex items-center justify-center text-burnished shadow-inner transition-all duration-700 group-hover:scale-110 group-hover:bg-burnished group-hover:text-white">
-                    {item.icon}
-                  </div>
-                  <div className="space-y-6">
-                    <h3 className="text-2xl md:text-3xl font-serif font-bold text-text-primary italic tracking-tight">{item.title}</h3>
-                    <div className="h-px w-8 bg-burnished/20 mx-auto group-hover:w-16 transition-all duration-700" />
-                    <p className="text-base md:text-lg text-text-secondary leading-relaxed font-light font-sans">{item.desc}</p>
-                  </div>
+                  <div className="w-[30px] h-px bg-[#d6c3a3] mb-[16px]" />
+                  <h3 className="text-[20px] md:text-[22px] font-serif font-medium text-[#1a1a1a] mb-[10px]">{item.title}</h3>
+                  <p className="text-[14px] md:text-[15px] text-[#8a8a8a] leading-[1.7] font-sans font-light">{item.desc}</p>
                 </div>
               ))}
             </div>
-
-            <div className="flex flex-col items-center pt-10 md:pt-16 space-y-10 fade-up">
-              <div className="flex items-center justify-center gap-4 text-burnished/60">
-                 <div className="h-px w-8 bg-burnished/20" />
-                 <span className="text-[10px] font-mono uppercase tracking-[0.4em] font-bold">Trusted by 100+ Discerning Clients</span>
-                 <div className="h-px w-8 bg-burnished/20" />
-              </div>
-              
-              <Link href="/contact">
-                <Button size="lg" className="h-18 px-16 text-[10px] bg-white text-heritage hover:bg-ivory transition-all shadow-2xl border-0 hover:scale-105 rounded-full uppercase tracking-[0.3em] font-bold">
-                  Start Your Consultation
-                </Button>
-              </Link>
-            </div>
           </div>
         </section>
+
 
         {/* 6. CTA Strip (MID CTA) */}
         <section className="bg-heritage py-24 md:py-32 relative overflow-hidden border-y border-white/5">

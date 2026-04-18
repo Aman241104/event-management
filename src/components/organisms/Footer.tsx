@@ -84,11 +84,6 @@ export function Footer() {
                 <li>
                   <Link href="/services" className="text-[11px] font-sans uppercase tracking-[0.3em] font-bold text-text-primary hover:text-burnished transition-all duration-500">Social Events</Link>
                 </li>
-                <li>
-                  <Link href="/quiz" className="text-[11px] font-sans uppercase tracking-[0.3em] font-bold text-text-primary hover:text-burnished transition-all duration-500 flex items-center gap-3 group">
-                    Aesthetic Quiz <span className="text-[8px] font-sans font-bold uppercase tracking-widest text-burnished px-3 py-1 border border-burnished/20 rounded-full group-hover:bg-burnished group-hover:text-white transition-all">AI</span>
-                  </Link>
-                </li>
               </ul>
             </div>
 
