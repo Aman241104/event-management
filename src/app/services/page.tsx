@@ -148,8 +148,124 @@ export default function ServicesPage() {
   const horizontalRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.from('.header-fade', { y: 30, opacity: 0, duration: 1.2, stagger: 0.1, ease: 'power2.out' });
-    
+    // 1. Hero Animations
+    const heroTl = gsap.timeline();
+    heroTl.to(".hero-label", { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
+          .to(".hero-horiz-divider", { scaleX: 1, duration: 0.8, ease: "power3.out" }, "-=0.6")
+          .to(".hero-title", { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, "-=0.6")
+          .to(".hero-subtext", { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.8")
+          .to(".hero-divider", { scaleY: 1, duration: 1, ease: "expo.out" }, "-=0.6")
+          .to(".hero-divider-dot", { opacity: 1, duration: 0.8 }, "-=0.4")
+          .to(".hero-scroll-cue", { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, "-=0.5");
+
+    // Background slow zoom
+    gsap.to(".hero-bg-image", {
+      scale: 1.05,
+      duration: 15,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    // Scroll cue floating animation
+    gsap.to(".hero-scroll-cue", {
+      y: 15,
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut"
+    });
+
+    // Hero Parallax (Scroll-based)
+    gsap.to(".hero-bg-image", {
+      yPercent: 10,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // 2. Service List Animations
+    gsap.to(".list-intro", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".list-intro",
+        start: "top 85%"
+      }
+    });
+
+    gsap.utils.toArray<HTMLElement>('.service-section').forEach((section, i) => {
+      const isEven = i % 2 === 0;
+      const image = section.querySelector('.service-image-wrapper');
+      const content = section.querySelector('.service-content');
+
+      gsap.from(image, {
+        x: isEven ? -60 : 60,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%"
+        }
+      });
+
+      gsap.from(content, {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        delay: 0.3,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%"
+        }
+      });
+    });
+
+    // 4. FAQ Animations
+    gsap.to(".faq-card", {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#faq",
+        start: "top 75%"
+      }
+    });
+
+    // 6. Final CTA Animations
+    gsap.to(".cta-content", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#cta",
+        start: "top 80%"
+      }
+    });
+
+    gsap.to(".cta-bg-image", {
+      scale: 1.15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#cta",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // 7. Process Journey Animations
     const mm = gsap.matchMedia();
     
     mm.add("(min-width: 1024px)", () => {
@@ -275,77 +391,131 @@ export default function ServicesPage() {
       <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.05} />
       
       {/* 1. Hero Section */}
-      <section id="hero" className="relative h-[80vh] flex items-center overflow-hidden" data-bg="var(--color-canvas)">
-        <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90 z-10 pointer-events-none" />
+      <section id="hero" className="relative h-[92vh] flex items-center justify-center overflow-hidden" data-bg="var(--color-canvas)">
+        {/* Refined Overlays & Vignettes */}
+        <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,transparent_60%)] z-10 pointer-events-none" />
+        <div className="absolute inset-0 backdrop-blur-[2px] z-10 pointer-events-none" />
         
+        {/* Noise Texture Layer */}
+        <div className="absolute inset-0 opacity-[0.03] z-10 pointer-events-none mix-blend-overlay" 
+             style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
+
         <div className="absolute inset-0 z-0">
           <Image 
             src="/decor-1.jpg" 
             alt="Our Services" 
             fill 
-            className="object-cover scale-110 animate-[ken-burns_40s_ease-in-out_infinite_alternate]" 
+            className="hero-bg-image object-cover" 
             priority 
             sizes="100vw" 
           />
         </div>
 
-        <div className="container relative z-20 text-center flex flex-col items-center">
-          <div className="header-fade flex flex-col items-center gap-4 mb-8">
-            <span className="text-[10px] font-mono text-white/80 uppercase tracking-[0.8em] small-caps">03 / WHAT WE DO</span>
-            <div className="h-12 w-[1px] bg-burnished/60" />
-          </div>
-          
-          <h1 className="header-fade text-4xl md:text-[5.6rem] lg:text-[6.8rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl max-w-5xl">
-            Our <span className="text-burnished italic font-light">Services.</span>
-          </h1>
+        <div className="container relative z-20 text-center flex flex-col items-center -translate-y-[6%]">
+          <div className="max-w-[680px] w-full flex flex-col items-center">
+            {/* Micro Label */}
+            <span className="hero-label text-[11px] md:text-[12px] font-mono text-white/50 uppercase tracking-[0.4em] mb-6 opacity-0">
+              03 / WHAT WE DO
+            </span>
 
-          <p className="header-fade text-lg md:text-2xl text-white/90 max-w-2xl leading-relaxed font-sans font-light mt-10 drop-shadow-lg">
-            From bespoke weddings to high-impact corporate galas and whimsical celebrations — we architect legacies of elegance and unforgettable moments.
-          </p>
+            {/* Horizontal Anchor Divider */}
+            <div className="hero-horiz-divider w-24 h-[1px] bg-[#c6a16e]/40 mb-8 scale-x-0" />
+            
+            {/* Main Heading */}
+            <h1 className="hero-title text-[clamp(48px,7vw,82px)] font-serif font-medium tracking-tighter text-white leading-[1.1] opacity-0">
+              Our <span className="text-[#c6a16e]">Services.</span>
+            </h1>
+
+            {/* Subtext */}
+            <p className="hero-subtext text-[15px] md:text-[17px] text-white/70 max-w-[600px] leading-[1.8] font-sans font-light mt-6 opacity-0">
+              We craft experiences across weddings, celebrations, and corporate gatherings — designed with precision, executed with quiet luxury.
+            </p>
+
+            {/* Luxury Divider Detail */}
+            <div className="hero-divider-container flex flex-col items-center mt-10">
+              <div className="hero-divider w-[1px] h-[60px] bg-[#c6a16e]/50 scale-y-0" />
+              <div className="hero-divider-dot w-1.5 h-1.5 rounded-full bg-[#c6a16e]/50 mt-3 opacity-0" />
+            </div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="hero-scroll-cue absolute bottom-[-4rem] left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0">
+            <div className="w-px h-12 bg-gradient-to-b from-white/30 via-white/10 to-transparent" />
+          </div>
         </div>
       </section>
 
       <SectionDivider />
 
       {/* Services Spectrum List */}
-      <div id="list">
+      <div id="list" className="relative z-10 pt-16">
+        {/* Section Intro Block */}
+        <div className="container mb-24 text-center max-w-[600px] space-y-6 opacity-0 translate-y-8 list-intro">
+          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/50 small-caps">OUR PORTFOLIO OF EXPERIENCES</span>
+          <p className="text-xl md:text-2xl font-serif text-text-primary leading-relaxed italic">
+            "We curate experiences across celebrations, corporate events, and bespoke moments — each designed with precision and intention."
+          </p>
+          <div className="w-12 h-px bg-heritage/20 mx-auto mt-8" />
+        </div>
+
+        {/* Central Guide Line (Lists only) */}
+        <div className="absolute top-[400px] bottom-0 left-1/2 -translate-x-1/2 w-px bg-heritage/[0.06] hidden lg:block z-0" />
+
         {serviceCategories.map((service, index) => (
           <React.Fragment key={service.id}>
-            <section data-bg={service.bgColor} className="service-section py-24 md:py-32 relative overflow-hidden">
+            <section 
+              data-bg={service.bgColor} 
+              className={`service-section py-24 md:py-32 relative overflow-hidden z-10 ${index % 2 !== 0 ? 'bg-surface/30' : 'bg-transparent'}`}
+            >
               <div className="container grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center relative z-10">
-                <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2' : ''} relative w-full`}>
-                   <div className="relative overflow-hidden rounded-2xl aspect-[4/5] md:aspect-[16/10] shadow-2xl group">
-                      <Image src={service.image} alt={service.title} fill className="object-cover transition-transform duration-[10s] group-hover:scale-110" />
-                      <div className="absolute inset-0 bg-heritage/5 group-hover:opacity-0 transition-opacity duration-700" />
+                {/* Image Section */}
+                <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2' : ''} relative w-full service-image-wrapper`}>
+                   <div className="relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-[16/10] shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-black/[0.04] group">
+                      <Image 
+                        src={service.image} 
+                        alt={service.title} 
+                        fill 
+                        className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                    </div>
                 </div>
-                <div className={`lg:col-span-5 space-y-10 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                  <div className="space-y-6">
-                    <span className="text-[11px] font-sans font-bold uppercase tracking-[0.5em] text-heritage small-caps">{service.label}</span>
-                    <TextReveal as="h2" text={service.title} className="text-4xl md:text-7xl font-serif text-text-primary font-bold leading-[1] tracking-tighter" />
-                    <p className="text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed">{service.description}</p>
+
+                {/* Content Section */}
+                <div className={`lg:col-span-5 space-y-8 ${index % 2 !== 0 ? 'lg:order-1' : ''} service-content`}>
+                  <div className="space-y-4">
+                    <span className="text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-heritage/40 small-caps">{service.label}</span>
+                    <h2 className="text-3xl md:text-[34px] font-serif text-text-primary font-medium leading-[1.2] tracking-tight">{service.title}</h2>
+                    <p className="text-base md:text-[17px] text-text-secondary/75 font-sans font-light leading-[1.8]">{service.description}</p>
                   </div>
-                  <div className="pt-8 border-t border-linen/50">
-                    <h4 className="text-[10px] uppercase tracking-[0.4em] text-heritage font-bold mb-6 small-caps">Services Include:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4">
+                  
+                  <div className="pt-8 border-t border-linen/40">
+                    <h4 className="text-[9px] uppercase tracking-[0.3em] text-heritage/60 font-bold mb-5 small-caps">Key Offerings:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3">
                       {service.tags.map((tag) => (
-                        <li key={tag} className="text-[11px] font-sans uppercase tracking-[0.2em] text-text-primary font-light flex items-center gap-3">
-                          <div className="w-1.5 h-1.5 rounded-full bg-heritage/30" />
+                        <li key={tag} className="text-[11px] font-sans uppercase tracking-[0.15em] text-text-primary/80 font-light flex items-center gap-3">
+                          <div className="w-1 h-1 rounded-full bg-heritage/20" />
                           {tag}
                         </li>
                       ))}
                     </ul>
                   </div>
+
                   <div className="pt-6">
                     <a href={generateWhatsAppLink(service.title, 'Booking')} target="_blank" rel="noopener noreferrer">
-                      <Button className="btn-prestige bg-heritage hover:bg-heritage-dark text-white px-12 h-16 text-[10px] tracking-[0.3em] font-bold shadow-xl">Ask Us Anything</Button>
+                      <Button className="rounded-full bg-heritage hover:bg-heritage-dark text-white px-8 py-3 text-[11px] tracking-[0.2em] font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2 group">
+                        Plan This Event
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </Button>
                     </a>
                   </div>
                 </div>
               </div>
             </section>
-            <SectionDivider />
+            {index < serviceCategories.length - 1 && <div className="w-full h-px bg-black/[0.03] lg:hidden" />}
           </React.Fragment>
         ))}
       </div>
@@ -411,24 +581,34 @@ export default function ServicesPage() {
       <SectionDivider />
 
       {/* FAQ */}
-      <section id="faq" className="py-24 container">
-        <div className="max-w-6xl mx-auto space-y-16">
-          <div className="text-center space-y-4">
-            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">07 / QUESTIONS</span>
-            <TextReveal as="h2" text="Common Questions." className="text-3xl md:text-5xl font-serif font-bold text-text-primary tracking-tighter" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { q: 'Do you plan events in other cities?', a: 'Yes, we plan events all over India and in other countries too.' },
-              { q: 'When should we book your services?', a: 'For big events, it is best to book 8 to 12 months in advance.' },
-              { q: 'Can you help with music and artists?', a: 'Yes, we have a network of top-tier DJs, bands, and performers.' },
-              { q: 'Is every event custom?', a: 'Absolutely. We believe every story is unique and deserves a bespoke celebration.' },
-            ].map((faq, i) => (
-              <div key={i} className="group border border-linen/50 hover:border-heritage/20 hover:shadow-xl transition-all duration-700 bg-white p-10 rounded-2xl">
-                <h4 className="text-xl font-serif font-bold text-text-primary group-hover:text-heritage transition-colors italic">{faq.q}</h4>
-                <p className="mt-4 text-lg text-text-secondary font-sans font-light leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
+      <section id="faq" className="py-24 md:py-32 relative overflow-hidden" data-bg="var(--color-surface)">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f7] to-white pointer-events-none" />
+        
+        <div className="container relative z-10">
+          <div className="max-w-6xl mx-auto space-y-20">
+            <div className="text-center space-y-6">
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.6em] text-heritage/40 small-caps">07 / QUESTIONS</span>
+              <h2 className="text-4xl md:text-6xl font-serif font-medium text-text-primary tracking-tighter leading-[1.1]">
+                Common <span className="italic font-light text-burnished">Questions.</span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              {[
+                { q: 'Do you plan events in other cities?', a: 'Yes, we plan events all over India and in other countries too.' },
+                { q: 'When should we book your services?', a: 'For big events, it is best to book 8 to 12 months in advance.' },
+                { q: 'Can you help with music and artists?', a: 'Yes, we have a network of top-tier DJs, bands, and performers.' },
+                { q: 'Is every event custom?', a: 'Absolutely. We believe every story is unique and deserves a bespoke celebration.' },
+              ].map((faq, i) => (
+                <div key={i} className="faq-card group bg-white border border-black/[0.05] p-8 md:p-10 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:border-black/[0.1] transition-all duration-500 flex flex-col gap-6 opacity-0">
+                  <div className="w-6 h-[2px] bg-[#c6a16e] rounded-full opacity-60 group-hover:opacity-100 transition-opacity" />
+                  <div className="space-y-4">
+                    <h4 className="text-[18px] md:text-[20px] font-serif font-medium text-text-primary group-hover:text-heritage transition-colors leading-snug">{faq.q}</h4>
+                    <p className="text-[14px] md:text-[15px] text-text-secondary/65 font-sans font-light leading-[1.7]">{faq.a}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -436,30 +616,54 @@ export default function ServicesPage() {
       <SectionDivider />
 
       {/* 10. Final CTA */}
-      <section id="cta" className="relative py-24 bg-heritage overflow-hidden border-t border-white/5" data-bg="var(--color-heritage)">
-        <div className="absolute inset-0 z-0 opacity-10">
-           <Image src="/hero10.jpg" alt="Background" fill className="object-cover" />
+      <section id="cta" className="relative py-32 md:py-40 bg-heritage overflow-hidden border-t border-white/5" data-bg="var(--color-heritage)">
+        {/* Cinematic Background Layering */}
+        <div className="absolute inset-0 z-0">
+           <Image src="/hero10.jpg" alt="Background" fill className="cta-bg-image object-cover scale-105" />
+           <div className="absolute inset-0 bg-gradient-to-b from-black/65 to-black/85 z-10" />
+           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,80,50,0.35)_0%,transparent_70%)] z-10" />
         </div>
+
         <BackgroundFlourish type="floral" className="bottom-[-10%] left-[-5%] w-64 h-64 text-white/5 rotate-45" />
         
-        <div className="container relative z-10 text-center space-y-10">
-          <div className="space-y-4">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tighter text-white leading-tight">
-              Let&apos;s Create <span className="italic font-light text-burnished">Magic.</span>
+        <div className="container relative z-20 text-center flex flex-col items-center">
+          <div className="cta-content max-w-[800px] w-full flex flex-col items-center space-y-6 opacity-0 translate-y-12">
+            <h2 className="text-5xl md:text-7xl font-serif font-medium tracking-tighter leading-[1.1] text-white drop-shadow-2xl">
+              Let&apos;s Create <br />
+              <span className="text-[#c6a16e]">Magic.</span>
             </h2>
-            <p className="text-base md:text-lg text-white/70 font-serif italic font-light leading-relaxed max-w-xl mx-auto">
-              Ready to start planning your extraordinary event? Let&apos;s turn your vision into reality.
+            
+            <p className="text-base md:text-[16px] text-white/90 max-w-[520px] mx-auto font-sans font-light leading-[1.7] drop-shadow-lg">
+              Ready to start planning your extraordinary event? Let&apos;s turn your vision into a reality designed with precision and quiet luxury.
             </p>
-          </div>
 
-          <div className="flex justify-center">
-            <Magnetic strength={0.2}>
-              <Link href="/contact">
-                <Button className="h-16 px-16 text-[10px] bg-white text-heritage hover:bg-linen shadow-2xl transition-all hover:scale-105" rightIcon={<ArrowRight size={18} />}>
-                  Plan Your Event
-                </Button>
-              </Link>
-            </Magnetic>
+            <div className="cta-buttons flex flex-wrap justify-center gap-4 pt-6">
+              <Magnetic strength={0.1}>
+                <Link href="/contact">
+                  <Button 
+                    className="h-14 px-10 text-[11px] bg-gradient-to-br from-[#1f6f4a] to-[#2f8f62] text-white hover:shadow-[0_0_30px_rgba(31,111,74,0.4)] transition-all duration-500 rounded-full font-bold border-0"
+                    rightIcon={<ArrowRight size={16} />}
+                  >
+                    Book Consultation
+                  </Button>
+                </Link>
+              </Magnetic>
+
+              <Magnetic strength={0.1}>
+                <Link href="/gallery">
+                  <Button 
+                    variant="outline"
+                    className="h-14 px-10 text-[11px] bg-transparent text-white border-white/40 hover:bg-white/20 hover:border-white hover:text-white transition-all duration-500 rounded-full font-bold !text-white"
+                  >
+                    View Our Work
+                  </Button>
+                </Link>
+              </Magnetic>
+            </div>
+
+            <div className="pt-10 opacity-60">
+              <span className="text-[10px] uppercase tracking-[0.5em] text-white font-mono font-medium drop-shadow-md">Trusted by 150+ luxury events</span>
+            </div>
           </div>
         </div>
       </section>
