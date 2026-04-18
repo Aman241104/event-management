@@ -265,6 +265,14 @@ export default function ServicesPage() {
       }
     });
 
+    // Hide sticky components when CTA is in view
+    ScrollTrigger.create({
+      trigger: "#cta",
+      start: "top bottom-=100px",
+      onEnter: () => gsap.to(["#sticky-cta-bar", "#back-to-top"], { opacity: 0, pointerEvents: "none", duration: 0.4, ease: "power2.out" }),
+      onLeaveBack: () => gsap.to(["#sticky-cta-bar", "#back-to-top"], { opacity: 1, pointerEvents: "auto", duration: 0.4, ease: "power2.in" })
+    });
+
     // 7. Process Journey Animations
     const mm = gsap.matchMedia();
     
@@ -612,8 +620,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-      <SectionDivider />
 
       {/* 10. Final CTA */}
       <section id="cta" className="relative py-32 md:py-40 bg-heritage overflow-hidden border-t border-white/5" data-bg="var(--color-heritage)">

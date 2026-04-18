@@ -119,9 +119,9 @@ export default function AboutPage() {
     // Hide sticky components when CTA is in view
     ScrollTrigger.create({
       trigger: "#cta",
-      start: "top 90%",
-      onEnter: () => gsap.to([".sticky-cta-bar", ".back-to-top"], { opacity: 0, pointerEvents: "none", duration: 0.5 }),
-      onLeaveBack: () => gsap.to([".sticky-cta-bar", ".back-to-top"], { opacity: 1, pointerEvents: "auto", duration: 0.5 })
+      start: "top bottom-=100px", // Trigger slightly before the section fully enters
+      onEnter: () => gsap.to(["#sticky-cta-bar", "#back-to-top"], { opacity: 0, pointerEvents: "none", duration: 0.4, ease: "power2.out" }),
+      onLeaveBack: () => gsap.to(["#sticky-cta-bar", "#back-to-top"], { opacity: 1, pointerEvents: "auto", duration: 0.4, ease: "power2.in" })
     });
 
     // 4. Existing Scroll Animations
@@ -185,11 +185,11 @@ export default function AboutPage() {
                   <div className="h-10 w-[1px] bg-gradient-to-b from-burnished/60 to-transparent" />
                 </div>
                 
-                <h1 className="hero-title text-4xl md:text-[5.6rem] lg:text-[6.8rem] font-serif font-medium tracking-[-0.02em] text-white leading-[0.85] drop-shadow-2xl max-w-5xl opacity-0 translate-y-12">
+                <h1 className="hero-title text-4xl md:text-7xl lg:text-[6.8rem] font-serif font-medium tracking-[-0.02em] text-white leading-[0.95] lg:leading-[0.85] drop-shadow-2xl max-w-5xl opacity-0 translate-y-12">
                   About <br /> <span className="text-burnished italic font-light tracking-wide">Zing Bliss.</span>
                 </h1>
 
-                <p className="hero-subtext text-lg md:text-xl text-white/80 max-w-xl leading-[1.6] font-sans font-light mt-10 drop-shadow-lg opacity-0 translate-y-8">
+                <p className="hero-subtext text-lg md:text-xl text-white/80 max-w-xl leading-[1.6] font-sans font-light mt-8 md:mt-10 drop-shadow-lg opacity-0 translate-y-8">
                   We craft experiences that feel effortless, refined, and deeply personal — designed with intention, executed with quiet precision.
                 </p>
 
