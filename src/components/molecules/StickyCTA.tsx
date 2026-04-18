@@ -53,7 +53,7 @@ export const StickyCTA = () => {
     <div 
       ref={containerRef}
       className={cn(
-        "fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-8 px-8 py-3 bg-[#0a0a0a]/70 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] opacity-0 pointer-events-none scale-95"
+        "fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-8 px-8 py-3 bg-[#0a0a0a]/70 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] opacity-0 pointer-events-none scale-95 sticky-cta-bar"
       )}
     >
       <div className="flex items-center gap-8">

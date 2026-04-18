@@ -30,7 +30,7 @@ export function BackToTop() {
 
   return (
     <div className={cn(
-      "fixed bottom-24 md:bottom-8 right-8 z-[60] transition-all duration-700 transform",
+      "fixed bottom-24 md:bottom-8 right-8 z-[60] transition-all duration-700 transform back-to-top",
       isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"
     )}>
       <Magnetic strength={0.3}>

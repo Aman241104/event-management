@@ -45,7 +45,86 @@ export default function AboutPage() {
   const mainRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    gsap.from('.header-fade', { y: 30, opacity: 0, duration: 1.2, stagger: 0.1, ease: 'power2.out' });
+    // 1. Hero Animations
+    const heroTl = gsap.timeline();
+    heroTl.to(".hero-header-reveal", { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
+          .to(".hero-title", { 
+            opacity: 1, 
+            y: 0, 
+            duration: 1.2, 
+            ease: "power3.out" 
+          }, "-=0.6")
+          .to(".hero-subtext", { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.7")
+          .to(".hero-scroll-cue", { opacity: 0.6, duration: 1, ease: "power2.out" }, "-=0.3");
+
+    // 2. Philosophy Animations
+    gsap.from(".philosophy-image-container", {
+      scale: 0.95,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".philosophy-image-container",
+        start: "top 85%"
+      }
+    });
+
+    gsap.from(".philosophy-text-block > *", {
+      y: 40,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".philosophy-text-block",
+        start: "top 85%"
+      }
+    });
+
+    gsap.from(".vision-block", {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#vision",
+        start: "top 80%"
+      }
+    });
+
+    // 3. Final CTA Animations
+    gsap.to(".cta-text-reveal", {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#cta",
+        start: "top 80%"
+      }
+    });
+
+    gsap.to(".cta-bg-image", {
+      scale: 1.15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#cta",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // Hide sticky components when CTA is in view
+    ScrollTrigger.create({
+      trigger: "#cta",
+      start: "top 90%",
+      onEnter: () => gsap.to([".sticky-cta-bar", ".back-to-top"], { opacity: 0, pointerEvents: "none", duration: 0.5 }),
+      onLeaveBack: () => gsap.to([".sticky-cta-bar", ".back-to-top"], { opacity: 1, pointerEvents: "auto", duration: 0.5 })
+    });
+
+    // 4. Existing Scroll Animations
     gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
       gsap.from(el, {
         scrollTrigger: { trigger: el, start: 'top 92%' },
@@ -78,34 +157,48 @@ export default function AboutPage() {
         <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" className="opacity-[0.05]" />
         
         {/* 1. Hero Section */}
-        <section id="hero" className="relative h-[80vh] flex items-center overflow-hidden" data-bg="var(--color-canvas)">
-          <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90 z-10 pointer-events-none" />
+        <section id="hero" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden" data-bg="var(--color-canvas)">
+          {/* Refined Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70 z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.2),transparent_70%)] z-10 pointer-events-none" />
           
+          {/* Film Grain Overlay */}
+          <div className="absolute inset-0 mix-blend-overlay opacity-10 pointer-events-none z-10" 
+               style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
+
           <div className="absolute inset-0 z-0">
-            <Image 
+            <ParallaxImage 
               src="/hero-9.jpg" 
               alt="About Zing Bliss" 
-              fill 
-              className="object-cover scale-110 animate-[ken-burns_40s_ease-in-out_infinite_alternate]" 
-              priority 
-              sizes="100vw" 
+              speed={0.2}
+              className="scale-110"
             />
           </div>
 
           <div className="container relative z-20 text-center flex flex-col items-center">
-            <div className="header-fade flex flex-col items-center gap-4 mb-8">
-              <span className="text-[10px] font-mono text-white/80 uppercase tracking-[0.8em] small-caps">01 / OUR STORY</span>
-              <div className="h-12 w-[1px] bg-burnished/60" />
-            </div>
-            
-            <h1 className="header-fade text-4xl md:text-[5.6rem] lg:text-[6.8rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl max-w-5xl">
-              About <span className="text-burnished italic font-light">Zing Bliss.</span>
-            </h1>
+            {/* Soft Content Glow */}
+            <div className="relative">
+              <div className="absolute inset-0 blur-3xl bg-white/5 opacity-30 -z-10" />
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="hero-header-reveal flex flex-col items-center gap-4 mb-8 opacity-0 translate-y-8">
+                  <span className="text-[10px] font-mono text-white/60 uppercase tracking-[0.6em] small-caps">01 / OUR STORY</span>
+                  <div className="h-10 w-[1px] bg-gradient-to-b from-burnished/60 to-transparent" />
+                </div>
+                
+                <h1 className="hero-title text-4xl md:text-[5.6rem] lg:text-[6.8rem] font-serif font-medium tracking-[-0.02em] text-white leading-[0.85] drop-shadow-2xl max-w-5xl opacity-0 translate-y-12">
+                  About <br /> <span className="text-burnished italic font-light tracking-wide">Zing Bliss.</span>
+                </h1>
 
-            <p className="header-fade text-lg md:text-2xl text-white/90 max-w-2xl leading-relaxed font-sans font-light mt-10 drop-shadow-lg">
-              We are a team of event planners dedicated to making your special moments beautiful and easy to enjoy.
-            </p>
+                <p className="hero-subtext text-lg md:text-xl text-white/80 max-w-xl leading-[1.6] font-sans font-light mt-10 drop-shadow-lg opacity-0 translate-y-8">
+                  We craft experiences that feel effortless, refined, and deeply personal — designed with intention, executed with quiet precision.
+                </p>
+
+                {/* Scroll Indicator */}
+                <div className="hero-scroll-cue mt-16 opacity-0">
+                  <div className="w-[1px] h-10 bg-white/40 mx-auto animate-bounce" />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -123,35 +216,63 @@ export default function AboutPage() {
         <SectionDivider />
 
         {/* Philosophy Section */}
-        <section id="philosophy" className="container py-32" data-bg="var(--color-canvas)">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-start">
-            <div className="lg:col-span-7 fade-up relative group">
-              <div className="relative overflow-hidden rounded-2xl h-[50vh] md:h-[75vh] w-full shadow-2xl z-10">
-                <div className="image-container">
-                  <Image src="/hero-9.jpg" alt="Our Work" fill className="object-cover transition-transform duration-[10s] group-hover:scale-110" />
+        <section id="philosophy" className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-white to-[#f8f6f2]" data-bg="var(--color-canvas)">
+          {/* Subtle Grain Overlay */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" 
+               style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
+
+          <div className="container relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+              {/* Image Column - Shifted Down */}
+              <div className="lg:col-span-7 mt-12 philosophy-image-container relative group">
+                <div className="relative overflow-hidden rounded-[12px] h-[50vh] md:h-[75vh] w-full shadow-[0_40px_100px_rgba(0,0,0,0.15)] z-10">
+                  <Image 
+                    src="/hero-9.jpg" 
+                    alt="Our Work" 
+                    fill 
+                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                  
+                  {/* Floating Detail Label */}
+                  <div className="absolute top-6 left-6 text-[10px] uppercase tracking-[0.4em] bg-white/80 backdrop-blur px-4 py-2 font-mono font-bold small-caps">
+                    Since 2017 / Crafted
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="lg:col-span-5 space-y-12 fade-up pt-4">
-              <div className="space-y-6">
-                <TextReveal text="About Us" className="text-4xl md:text-7xl font-serif text-text-primary font-bold leading-[0.9] tracking-tighter" />
-              </div>
-              <div className="space-y-8 text-lg md:text-xl text-text-secondary font-sans font-light leading-relaxed">
-                <p>We plan, design, and run events with care. We want to make your dreams come true without any stress.</p>
-                <p>From small parties to big weddings, we make sure every detail is just right for you and your guests.</p>
-              </div>
-              <div className="grid grid-cols-2 gap-6 pt-6">
-                {[
-                  { title: 'Creativity', icon: <Sparkles size={24} /> },
-                  { title: 'Care', icon: <Target size={24} /> },
-                  { title: 'Trust', icon: <ShieldCheck size={24} /> },
-                  { title: 'Energy', icon: <Zap size={24} /> },
-                ].map((item, i) => (
-                  <div key={i} className="flex flex-col gap-4 p-8 rounded-2xl border border-linen bg-white shadow-sm hover:border-heritage/20 hover:shadow-xl transition-all duration-700 group">
-                    <div className="text-heritage/80 group-hover:text-heritage transition-all transform group-hover:scale-110 duration-500">{item.icon}</div>
-                    <span className="font-sans font-bold uppercase tracking-[0.3em] text-[10px] text-text-primary small-caps">{item.title}</span>
-                  </div>
-                ))}
+
+              {/* Text Column - Shifted Up */}
+              <div className="lg:col-span-5 -mt-4 philosophy-text-block space-y-10">
+                <div className="space-y-6">
+                  <h2 className="text-5xl md:text-7xl font-serif text-text-primary font-medium leading-[0.9] tracking-tight">
+                    The Art Behind <br />
+                    <span className="text-burnished italic font-light">Zing Bliss.</span>
+                  </h2>
+                  <div className="w-12 h-[1px] bg-burnished/40 my-6" />
+                </div>
+
+                <div className="space-y-8 text-lg md:text-xl text-text-secondary/80 font-sans font-light leading-[1.7] max-w-md">
+                  <p>
+                    We design experiences that feel effortless yet unforgettable — where every detail is intentional, and every moment carries meaning.
+                  </p>
+                  <p>
+                    From intimate gatherings to grand celebrations, our approach blends precision, creativity, and quiet luxury.
+                  </p>
+                </div>
+
+                {/* Text-based Highlights */}
+                <div className="space-y-6 pt-4">
+                  {[
+                    { id: '01', title: 'Bespoke Approach' },
+                    { id: '02', title: 'Global Network' },
+                    { id: '03', title: 'Detail-Obsessed Execution' },
+                  ].map((item) => (
+                    <div key={item.id} className="flex items-center gap-4 border-t border-linen pt-6 group">
+                      <span className="text-[10px] font-mono text-burnished opacity-60">{item.id}</span>
+                      <span className="text-sm uppercase tracking-[0.3em] text-text-primary font-bold transition-all group-hover:tracking-[0.4em]">{item.title}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -160,68 +281,97 @@ export default function AboutPage() {
         <SectionDivider className="bg-heritage-soft" />
 
         {/* Vision & Mission */}
-        <section id="vision" className="py-32 relative overflow-hidden border-y border-white/10" data-bg="var(--color-heritage)">
+        <section id="vision" className="py-32 md:py-48 relative overflow-hidden" data-bg="var(--color-heritage)">
+          {/* Rich Cinematic Background Overlay System */}
           <div className="absolute inset-0 z-0">
             <Image src="/hero-8.jpg" alt="Mission Background" fill className="object-cover" />
-            <div className="absolute inset-0 bg-black/70 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
+            <div className="absolute inset-0 bg-black/60 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/90 z-10" />
+            <div className="absolute inset-0 opacity-20 z-10" style={{ backgroundColor: 'rgba(180,140,90,0.1)' }} />
+            <div className="absolute inset-0 z-10" style={{ background: 'radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.4))' }} />
           </div>
 
           <div className="container relative z-20">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              <div className="space-y-8 fade-up p-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl">
-                <div className="w-16 h-16 rounded-2xl bg-burnished/20 flex items-center justify-center text-burnished">
-                  <Target size={32} />
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-3xl md:text-4xl font-serif text-white font-bold">Our <span className="text-burnished italic font-light">Goal.</span></h3>
-                  <p className="text-white/80 font-serif font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-burnished/30 pl-8">
-                    To be the best at planning events by being creative, reliable, and honest.
-                  </p>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-12 md:gap-20 max-w-6xl mx-auto items-center">
+              {/* Goal Block */}
+              <div className="vision-block space-y-4 transition-all duration-500 hover:brightness-125 group">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-white/50 block">OUR GOAL</span>
+                <h3 className="text-4xl md:text-5xl font-serif text-white leading-tight">
+                  Effortless <br />
+                  <span className="text-burnished italic font-light">Elegance.</span>
+                </h3>
+                <p className="text-white/80 font-sans font-light leading-[1.7] max-w-md text-lg md:text-xl italic border-l border-white/10 pl-6">
+                  "To craft events where elegance feels effortless and every detail reflects intention."
+                </p>
               </div>
-              <div className="space-y-8 fade-up p-12 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-2xl">
-                <div className="w-16 h-16 rounded-2xl bg-burnished/20 flex items-center justify-center text-burnished">
-                  <Compass size={32} />
-                </div>
-                <div className="space-y-4">
-                  <h3 className="text-3xl md:text-4xl font-serif text-white font-bold">Our <span className="text-burnished italic font-light">Mission.</span></h3>
-                  <p className="text-white/80 font-serif font-light leading-relaxed text-xl md:text-2xl italic border-l-4 border-burnished/30 pl-8">
-                    To create amazing experiences that you and your guests will never forget.
-                  </p>
-                </div>
+
+              {/* Vertical Divider */}
+              <div className="hidden md:block w-px h-48 bg-white/10" />
+
+              {/* Mission Block */}
+              <div className="vision-block space-y-4 transition-all duration-500 hover:brightness-125 group">
+                <span className="text-[10px] uppercase tracking-[0.4em] text-white/50 block">OUR MISSION</span>
+                <h3 className="text-4xl md:text-5xl font-serif text-white leading-tight">
+                  Quietly <br />
+                  <span className="text-burnished italic font-light">Unforgettable.</span>
+                </h3>
+                <p className="text-white/80 font-sans font-light leading-[1.7] max-w-md text-lg md:text-xl italic border-l border-white/10 pl-6">
+                  "To design experiences that are deeply personal, flawlessly executed, and quietly unforgettable."
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        <SectionDivider />
-
         {/* Final CTA */}
-        <section id="cta" className="relative py-32 bg-heritage overflow-hidden" data-bg="var(--color-heritage)">
-          <div className="absolute inset-0 z-0 opacity-10">
-             <Image src="/hero10.jpg" alt="Background" fill className="object-cover" />
+        <section id="cta" className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-t border-white/5" data-bg="var(--color-heritage)">
+          {/* Cinematic Background Layering */}
+          <div className="absolute inset-0 z-0">
+             <Image src="/hero10.jpg" alt="Background" fill className="cta-bg-image object-cover scale-105" />
+             <div className="absolute inset-0 bg-black/55 z-10" />
+             <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-transparent to-black/80 z-10" />
+             <div className="absolute inset-0 opacity-20 z-10" style={{ backgroundColor: 'rgba(180,140,90,0.08)' }} />
           </div>
-          
-          <div className="container relative z-10 text-center space-y-12">
-            <div className="space-y-6">
-              <span className="text-[10px] font-mono text-white/60 uppercase tracking-[0.5em] small-caps">03 / CONNECT</span>
-              <h2 className="text-4xl md:text-7xl lg:text-[8rem] font-serif font-medium tracking-tighter text-white leading-[0.9]">
-                Plan Your <br/><span className="italic font-light text-burnished">Day.</span>
-              </h2>
-            </div>
 
-            <div className="flex flex-col items-center gap-10 fade-up">
-              <Magnetic strength={0.2}>
-                <Link href="/contact">
-                  <Button size="lg" className="h-20 px-20 text-[11px] bg-white text-heritage hover:bg-linen shadow-2xl transition-all hover:scale-105" rightIcon={<ArrowRight size={24} />}>
-                    Book Consultation
-                  </Button>
-                </Link>
-              </Magnetic>
-              <div className="flex flex-col items-center gap-4">
-                <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="text-[11px] font-sans uppercase tracking-[0.5em] text-white/80 font-bold border-b border-white/20 pb-2 hover:text-white transition-all small-caps">Message Us</a>
-                <p className="text-[10px] font-mono text-white/30 uppercase tracking-[0.2em] small-caps">Bespoke Planning — For You</p>
+          <BackgroundFlourish type="floral" className="bottom-[-10%] left-[-5%] w-64 h-64 text-white/5 rotate-45" />
+          
+          <div className="container relative z-20 text-center flex flex-col items-center">
+            <div className="cta-text-reveal max-w-[800px] w-full flex flex-col items-center space-y-8 opacity-0 translate-y-12">
+              <div className="space-y-4">
+                <span className="text-[10px] font-mono text-white/50 uppercase tracking-[0.4em] block">03 / CONNECT</span>
+                <h2 className="text-5xl md:text-7xl font-serif text-white leading-[1.1] tracking-tighter">
+                  Plan Your <br />
+                  <span className="text-burnished italic font-light">Day.</span>
+                </h2>
+              </div>
+
+              <p className="text-white/70 max-w-xl leading-relaxed text-base md:text-lg font-sans font-light">
+                Begin your journey with a team that designs every detail with intention, elegance, and care.
+              </p>
+
+              <div className="flex flex-col items-center gap-8 pt-4">
+                <Magnetic strength={0.1}>
+                  <Link href="/contact">
+                    <Button 
+                      className="h-14 px-12 text-[11px] bg-[#1C3B2A] hover:bg-[#244F3A] text-white rounded-full font-bold shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
+                      rightIcon={<ArrowRight size={18} />}
+                    >
+                      Book Consultation
+                    </Button>
+                  </Link>
+                </Magnetic>
+                
+                <div className="flex flex-col items-center gap-4">
+                  <a 
+                    href={getGenericWhatsAppLink()} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-[11px] font-sans uppercase tracking-[0.4em] text-white/70 hover:text-white transition-all border-b border-white/20 pb-1"
+                  >
+                    Message Us
+                  </a>
+                  <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.2em]">Bespoke Planning — For You</span>
+                </div>
               </div>
             </div>
           </div>
