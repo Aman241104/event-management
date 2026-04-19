@@ -103,17 +103,20 @@ export default function AboutPage() {
 
       const lines = el.querySelectorAll(".text-line");
       if (lines.length) {
-        gsap.from(lines, {
-          y: 60,
-          opacity: 0,
-          stagger: 0.1,
-          duration: 1,
-          ease: DEFAULT_EASE,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
+        gsap.fromTo(lines, 
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 1,
+            ease: DEFAULT_EASE,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+            }
           }
-        });
+        );
       }
     });
 
@@ -154,12 +157,24 @@ export default function AboutPage() {
       }
     });
 
-    // 5. Values Divider
+    // 5. Values & Principles Animations
     gsap.from(".values-divider", {
       opacity: 0,
       scaleY: 0,
       duration: 1.5,
       ease: "power2.inOut",
+      scrollTrigger: {
+        trigger: "#values",
+        start: "top 85%"
+      }
+    });
+
+    gsap.from(".values-left, .values-right", {
+      opacity: 0,
+      y: 30,
+      stagger: 0.2,
+      duration: 1.2,
+      ease: DEFAULT_EASE,
       scrollTrigger: {
         trigger: "#values",
         start: "top 85%"
