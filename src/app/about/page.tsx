@@ -53,7 +53,7 @@ export default function AboutPage() {
 
     const DEFAULT_EASE = "power3.out";
 
-    // 1. Hero Animations
+    // 1. Hero Animations - Immediate & Reliable
     const heroTl = gsap.timeline();
     
     gsap.to(".hero-bg-wrapper", {
@@ -65,18 +65,21 @@ export default function AboutPage() {
       yoyo: true
     });
 
-    heroTl.from(".hero-header-reveal", { opacity: 0, y: 30, duration: 1, ease: DEFAULT_EASE })
-          .from(".hero-header-line", { height: 0, duration: 1, ease: "power2.inOut" }, "-=0.8")
-          .from(".hero-title .text-line", { 
+    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE })
+          .fromTo(".hero-header-line", { height: 0 }, { height: 40, duration: 1, ease: "power2.inOut" }, "-=0.8")
+          .fromTo(".hero-title .text-line", { 
             y: 80,
-            opacity: 0,
+            opacity: 0
+          }, {
+            y: 0,
+            opacity: 1,
             stagger: 0.1,
             duration: 1.2,
             ease: DEFAULT_EASE 
           }, "-=0.6")
-          .from(".hero-subtext", { opacity: 0, y: 20, duration: 1, ease: DEFAULT_EASE }, "-=0.8")
-          .from(".hero-signals", { opacity: 0, duration: 1 }, "-=0.5")
-          .from(".hero-scroll-cue", { opacity: 0, y: 20, duration: 1, ease: "power2.out" }, "-=0.6");
+          .fromTo(".hero-subtext", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE }, "-=0.8")
+          .fromTo(".hero-signals", { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.5")
+          .fromTo(".hero-scroll-cue", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=0.6");
 
     gsap.to(".hero-scroll-line", {
       height: 60,
@@ -86,141 +89,76 @@ export default function AboutPage() {
       ease: "sine.inOut"
     });
 
-    // 2. Global Section & Transition Reveals
-    const reveals = gsap.utils.toArray('.scroll-reveal, section:not(#hero)');
-    reveals.forEach((el: any) => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 30,
-        duration: 1.2,
-        ease: "power2.out",
+    // 2. CONSISTENT SECTION REVEAL SYSTEM
+    // Instead of multiple triggers, we animate per section
+    const sectionSelectors = ['#philosophy', '#difference', '#values', '#process', '#cta'];
+    
+    sectionSelectors.forEach((selector) => {
+      const section = containerRef.current?.querySelector(selector);
+      if (!section) return;
+
+      const sectionTl = gsap.timeline({
         scrollTrigger: {
-          trigger: el,
-          start: "top 92%",
-          toggleActions: "play none none reverse"
+          trigger: section,
+          start: "top 90%",
+          toggleActions: "play none none none" // Play once for stability
         }
       });
 
-      const lines = el.querySelectorAll(".text-line");
+      // Animate the section itself if needed, or its primary components
+      sectionTl.fromTo(section, { opacity: 0 }, { opacity: 1, duration: 1 });
+
+      // Stagger all headlines (text-line)
+      const lines = section.querySelectorAll(".text-line");
       if (lines.length) {
-        gsap.fromTo(lines, 
+        sectionTl.fromTo(lines, 
           { y: 60, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            stagger: 0.1,
-            duration: 1,
-            ease: DEFAULT_EASE,
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-            }
-          }
+          { y: 0, opacity: 1, stagger: 0.1, duration: 1, ease: DEFAULT_EASE },
+          "-=0.5"
         );
       }
-    });
 
-    // 3. Philosophy Specific Animations
-    gsap.from(".philosophy-fade", {
-      opacity: 0,
-      y: 30,
-      stagger: 0.15,
-      duration: 1,
-      ease: DEFAULT_EASE,
-      scrollTrigger: {
-        trigger: ".philosophy-text-block",
-        start: "top 85%"
+      // Stagger specific items based on section
+      if (selector === '#philosophy') {
+        sectionTl.fromTo(".philosophy-fade", { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.15, duration: 1 }, "-=0.5");
+        sectionTl.fromTo(".philosophy-image-container", { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.5 }, "-=1");
+      }
+      
+      if (selector === '#difference') {
+        sectionTl.fromTo(".difference-item", { y: 40, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1, duration: 1 }, "-=0.5");
+      }
+
+      if (selector === '#values') {
+        sectionTl.fromTo(".values-divider", { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 1.5, ease: "power2.inOut" }, "-=0.5");
+        sectionTl.fromTo(".values-left, .values-right", { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.2, duration: 1.2 }, "-=1");
+      }
+
+      if (selector === '#process') {
+        sectionTl.fromTo(".process-step", { y: 40, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.15, duration: 1 }, "-=0.5");
+      }
+
+      if (selector === '#cta') {
+        sectionTl.fromTo(".cta-content-reveal", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.2 }, "-=0.5");
       }
     });
 
-    gsap.from(".philosophy-image-container", {
-      scale: 0.95,
-      opacity: 0,
-      duration: 1.5,
-      ease: DEFAULT_EASE,
-      scrollTrigger: {
-        trigger: ".philosophy-image-container",
-        start: "top 90%"
-      }
+    // Handle Transition Moments separately
+    gsap.utils.toArray<HTMLElement>('.scroll-reveal').forEach((el) => {
+      gsap.fromTo(el, { opacity: 0, y: 20 }, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 95%"
+        }
+      });
     });
 
-    // 4. Signature Difference Items
-    gsap.from(".difference-item", {
-      y: 40,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 1,
-      ease: DEFAULT_EASE,
-      scrollTrigger: {
-        trigger: ".difference-items-container",
-        start: "top 85%"
-      }
-    });
-
-    // 5. Values & Principles Animations
-    gsap.from(".values-divider", {
-      opacity: 0,
-      scaleY: 0,
-      duration: 1.5,
-      ease: "power2.inOut",
-      scrollTrigger: {
-        trigger: "#values",
-        start: "top 85%"
-      }
-    });
-
-    gsap.from(".values-left, .values-right", {
-      opacity: 0,
-      y: 30,
-      stagger: 0.2,
-      duration: 1.2,
-      ease: DEFAULT_EASE,
-      scrollTrigger: {
-        trigger: "#values",
-        start: "top 85%"
-      }
-    });
-
-    // 6. Process Steps
-    gsap.from(".process-step", {
-      y: 40,
-      opacity: 0,
-      stagger: 0.15,
-      duration: 1,
-      ease: DEFAULT_EASE,
-      scrollTrigger: {
-        trigger: ".process-steps-container",
-        start: "top 85%"
-      }
-    });
-
-    // 7. Final CTA Content
-    gsap.from(".cta-content-reveal", {
-      opacity: 0,
-      y: 60,
-      duration: 1.2,
-      ease: DEFAULT_EASE,
-      scrollTrigger: {
-        trigger: "#cta",
-        start: "top 85%"
-      }
-    });
-
-    gsap.to(".cta-bg-image", {
-      scale: 1.15,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#cta",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true
-      }
-    });
-
-    // Refresh ScrollTrigger after all initializations
+    // Refresh everything
     setTimeout(() => {
       ScrollTrigger.refresh();
-    }, 1000);
+    }, 1500);
 
   }, { scope: containerRef, dependencies: [mounted] });
 
@@ -376,12 +314,12 @@ export default function AboutPage() {
           
           <div className="container max-w-7xl relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-              <div className="lg:col-span-5 space-y-10 difference-statement">
+              <div className="lg:col-span-5 space-y-10">
                 <div className="space-y-6">
                   <span className="text-[10px] tracking-[0.5em] uppercase text-text-secondary/50 block font-mono">
                     THE ZING BLISS DIFFERENCE
                   </span>
-                  <h2 className="text-4xl md:text-6xl font-serif text-text-primary leading-[1.1] font-medium">
+                  <h2 className="text-4xl md:text-6xl font-serif text-text-primary leading-[1.1] font-medium overflow-hidden">
                     <span className="block overflow-hidden">
                       <span className="text-line block">We don’t plan events.</span>
                     </span>
@@ -443,17 +381,17 @@ export default function AboutPage() {
               className="object-cover brightness-[0.35]" 
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-black/70 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 z-10" />
-            <div className="absolute inset-0 opacity-20 z-10" style={{ backgroundColor: 'rgba(180,140,90,0.06)' }} aria-hidden="true" />
+            <div className="absolute inset-0 bg-black/60 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-10" />
+            <div className="absolute inset-0 opacity-10 z-10" style={{ backgroundColor: 'rgba(180,140,90,0.04)' }} aria-hidden="true" />
           </div>
 
           <div className="container max-w-7xl relative z-20">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-16 md:gap-24 max-w-6xl mx-auto items-center text-white">
-              <div className="values-left space-y-8 transition-all duration-700 hover:brightness-110 group translate-y-0">
+              <div className="values-left space-y-8 transition-all duration-700 hover:brightness-110 group">
                 <div className="space-y-4">
                   <span className="text-[10px] uppercase tracking-[0.5em] text-white/40 block font-mono">OUR APPROACH</span>
-                  <h3 className="text-4xl md:text-6xl font-serif leading-tight drop-shadow-2xl overflow-hidden">
+                  <h3 className="text-4xl md:text-6xl font-serif leading-tight text-white drop-shadow-2xl overflow-hidden">
                     <span className="block overflow-hidden pb-1">
                       <span className="text-line block">Elegance is never loud.</span>
                     </span>
@@ -469,10 +407,10 @@ export default function AboutPage() {
 
               <div className="hidden md:block w-px h-72 bg-white/10 values-divider origin-center transition-all duration-1000 group-hover:bg-white/30" aria-hidden="true" />
 
-              <div className="values-right space-y-8 transition-all duration-700 hover:brightness-110 group translate-y-0">
+              <div className="values-right space-y-8 transition-all duration-700 hover:brightness-110 group">
                 <div className="space-y-4">
                   <span className="text-[10px] uppercase tracking-[0.5em] text-white/40 block font-mono">OUR STANDARD</span>
-                  <h3 className="text-4xl md:text-6xl font-serif leading-tight drop-shadow-2xl overflow-hidden">
+                  <h3 className="text-4xl md:text-6xl font-serif leading-tight text-white drop-shadow-2xl overflow-hidden">
                     <span className="block overflow-hidden pb-1">
                       <span className="text-line block">Precision is our language.</span>
                     </span>
