@@ -183,7 +183,7 @@ const HowItWorks = () => {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} id="process" className="py-20 md:py-24 bg-ivory relative overflow-hidden">
+    <section ref={sectionRef} id="process" className="py-16 md:py-20 bg-ivory relative overflow-hidden">
       <div className="container">
         <div className="flex flex-col items-center text-center mb-20 space-y-4">
           <div className="flex items-center gap-6 md:gap-12">
@@ -363,9 +363,9 @@ export default function Home() {
         <BackgroundFlourish type="architectural" className="top-[15%] right-[2%] w-96 h-96 text-heritage/5" parallaxSpeed={0.08} />
 
         {/* 1. Hero Section */}
-        <section id="hero" className="relative h-screen flex items-center overflow-hidden" data-bg="var(--color-canvas)">
-          <div className="absolute inset-0 bg-black/65 z-10 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/40 z-10 pointer-events-none" />
+        <section id="hero" className="relative min-h-[85vh] flex items-center overflow-hidden" data-bg="var(--color-canvas)">
+          <div className="absolute inset-0 bg-black/55 z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/40 z-10 pointer-events-none" />
           
           <div className="absolute inset-0 z-0">
             {heroImages.map((img, i) => {
@@ -385,29 +385,38 @@ export default function Home() {
             })}
           </div>
 
-          <div className="container relative z-20 text-center flex flex-col items-center hero-content">
-            <div className="hero-badge flex flex-col items-center gap-3 mb-10">
+          <div className="container relative z-20 text-center md:text-left flex flex-col items-center md:items-start hero-content">
+            <div className="hero-badge flex flex-col items-center md:items-start gap-3 mb-10">
               <span className="text-[11px] font-mono text-burnished uppercase tracking-[0.8em] small-caps font-bold">Premium Event Planners</span>
-              <div className="h-12 w-[1px] bg-burnished/40" />
+              <div className="h-10 w-[1px] md:w-20 md:h-[1px] bg-burnished/40" />
             </div>
             
-            <h1 className="hero-title flex flex-col items-center gap-2 max-w-[850px] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-              <span className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium text-white/90 tracking-tight leading-tight header-fade">We Design Events That</span>
-              <span className="text-6xl md:text-[6.5rem] lg:text-[7.5rem] font-serif font-medium text-white italic leading-[0.9] header-fade">People <span className="text-burnished text-glow">Never Forget</span></span>
+            <h1 className="hero-title flex flex-col items-center md:items-start gap-2 max-w-[950px] drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
+              <span className="text-3xl md:text-5xl lg:text-7xl font-serif font-medium text-white/90 tracking-tight leading-tight header-fade">We Design Events That</span>
+              <span className="text-6xl md:text-[8rem] lg:text-[10rem] font-serif font-medium text-white italic leading-[0.85] header-fade">People <span className="text-burnished text-glow">Never Forget</span></span>
             </h1>
 
-            <p className="hero-desc text-base md:text-xl text-white/60 max-w-[600px] leading-relaxed font-sans font-light mt-12 mb-16 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] px-4">
-              From luxury weddings to corporate experiences — we plan, design & execute seamlessly with uncompromising elegance.
-            </p>
+            <div className="flex flex-col md:flex-row md:items-center gap-8 mt-12 mb-16">
+              <p className="hero-desc text-base md:text-lg text-white/60 max-w-[480px] leading-relaxed font-sans font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                From luxury weddings to corporate experiences — we plan, design & execute seamlessly with uncompromising elegance.
+              </p>
+              
+              <div className="hidden md:block w-px h-12 bg-white/20 mx-2" aria-hidden="true" />
+              
+              <div className="flex flex-col items-center md:items-start gap-2">
+                <span className="text-[10px] tracking-[0.4em] uppercase text-white/40 font-mono font-bold">Since 2017</span>
+                <span className="text-[10px] tracking-[0.4em] uppercase text-burnished font-mono font-bold">150+ Curated Celebrations</span>
+              </div>
+            </div>
 
-            <div className="hero-btns flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
+            <div className="hero-btns flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 md:gap-8">
               <Magnetic strength={0.2}>
                 <Link href="/contact">
                   <Button 
                     size="lg" 
-                    className="h-20 px-12 md:px-16 text-[10px] md:text-[11px] border-0 shadow-[0_20px_50px_rgba(179,139,77,0.3)] bg-burnished text-white hover:bg-burnished-light transition-all duration-500 hover:scale-110 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em] group"
+                    className="h-22 px-16 text-[11px] border-0 shadow-[0_25px_60px_rgba(179,139,77,0.3)] bg-burnished text-white hover:bg-burnished-light transition-all duration-500 hover:scale-110 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em] group"
                   >
-                    Start My Event Planning
+                    Start the Dialogue
                   </Button>
                 </Link>
               </Magnetic>
@@ -417,9 +426,9 @@ export default function Home() {
                   <Button 
                     size="lg" 
                     variant="outline"
-                    className="h-20 px-12 md:px-16 text-[10px] md:text-[11px] border-white/20 !text-white hover:bg-white hover:!text-heritage transition-all duration-500 hover:scale-110 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em]"
+                    className="h-22 px-16 text-[11px] border-white/20 !text-white hover:bg-white hover:!text-heritage transition-all duration-500 hover:scale-110 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em]"
                   >
-                    View Our Work
+                    View our work
                   </Button>
                 </Link>
               </Magnetic>
@@ -468,7 +477,7 @@ export default function Home() {
           </div>
         </section>
         {/* 3. Recent Work (Portfolio) */}
-        <section id="gallery" className="py-20 md:py-24 bg-canvas" data-bg="var(--color-canvas)">
+        <section id="gallery" className="py-16 md:py-20 bg-canvas" data-bg="var(--color-canvas)">
           <div className="container space-y-16">
             <div className="text-center space-y-4 fade-up">
               <TextReveal text="Our Recent Work" className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight" />
@@ -484,7 +493,7 @@ export default function Home() {
         </section>
 
         {/* 4. Services Section */}
-        <section id="services" className="py-20 md:py-32 bg-surface relative overflow-hidden border-t border-linen/40" data-bg="var(--color-surface)">
+        <section id="services" className="py-16 md:py-24 bg-surface relative overflow-hidden border-t border-linen/40" data-bg="var(--color-surface)">
           <div className="container space-y-20">
             <div className="flex flex-col items-center text-center space-y-4 fade-up relative z-10">
               <TextReveal text="Our Services" className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-text-primary tracking-tight" />
@@ -581,7 +590,7 @@ export default function Home() {
 
 
         {/* 5. Why Choose Us (Redesigned) */}
-        <section id="why-choose-us" className="why-section py-[100px] md:py-[140px] bg-[#f7f5f2] relative overflow-hidden">
+        <section id="why-choose-us" className="why-section py-[80px] md:py-[110px] bg-[#f7f5f2] relative overflow-hidden">
           {/* Subtle luxury background treatment */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,_rgba(180,140,80,0.08)_0%,_transparent_70%)] pointer-events-none" />
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" 
@@ -637,7 +646,7 @@ export default function Home() {
 
 
         {/* 6. CTA Strip (MID CTA) */}
-        <section className="bg-heritage py-24 md:py-32 relative overflow-hidden border-y border-white/5">
+        <section className="bg-heritage py-20 md:py-24 relative overflow-hidden border-y border-white/5">
           <div className="absolute inset-0 dot-pattern opacity-10 pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(179,139,77,0.15)_0%,_transparent_60%)] pointer-events-none" />
           
@@ -668,7 +677,7 @@ export default function Home() {
         <HowItWorks />
 
         {/* 8. Testimonials */}
-        <section id="testimonials" className="py-24 bg-surface relative overflow-hidden" data-bg="var(--color-surface)">
+        <section id="testimonials" className="py-20 bg-surface relative overflow-hidden" data-bg="var(--color-surface)">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(179,139,77,0.03)_0%,_transparent_70%)] pointer-events-none" />
           <BackgroundFlourish type="floral" className="top-[-10%] left-[-5%] w-96 h-96 text-heritage/5 -rotate-12" parallaxSpeed={0.03} />
           
@@ -768,7 +777,7 @@ export default function Home() {
         </section>
 
         {/* 9. Instagram Section */}
-        <section className="py-24 md:py-32 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
+        <section className="py-20 md:py-24 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
           <div className="container space-y-24">
             <div className="text-center space-y-6 fade-up">
               <div className="flex flex-col items-center gap-4">
@@ -817,40 +826,43 @@ export default function Home() {
         {/* 10. Final CTA */}
         <section id="cta" className="relative py-24 md:py-32 bg-heritage overflow-hidden" data-bg="var(--color-heritage)">
           <div className="absolute inset-0 z-0">
-             <Image src="/hero10.jpg" alt="Background" fill className="object-cover opacity-15 scale-100 brightness-[0.4]" />
-             <div className="absolute inset-0 bg-radial-vignette opacity-60" />
-             <div className="absolute inset-0 bg-gradient-to-b from-heritage via-heritage/80 to-heritage z-10" />
+             <Image src="/hero10.jpg" alt="Background" fill className="object-cover opacity-20 scale-100 brightness-[0.3]" />
+             <div className="absolute inset-0 bg-radial-vignette opacity-70" />
+             <div className="absolute inset-0 bg-gradient-to-b from-heritage via-heritage/90 to-heritage z-10" />
           </div>
           
-          <div className="container relative z-20 text-center space-y-12">
-            <div className="space-y-8 fade-up">
-              <div className="flex flex-col items-center gap-3">
-                 <div className="flex items-center justify-center gap-3 text-burnished/40">
-                   <div className="h-px w-6 bg-burnished/20" />
-                   <span className="text-[10px] font-mono uppercase tracking-[0.4em] font-bold">Trusted by 150+ Bespoke Weddings</span>
-                   <div className="h-px w-6 bg-burnished/20" />
-                 </div>
+          <div className="container relative z-20 text-center space-y-16">
+            <div className="space-y-10 fade-up">
+              <div className="flex flex-col items-center gap-4">
+                 <span className="text-[11px] font-mono uppercase tracking-[0.6em] text-burnished font-bold">LIMITED AVAILABILITY</span>
+                 <div className="h-10 w-[1px] bg-burnished/30" />
               </div>
-              <h2 className="text-4xl md:text-6xl lg:text-8xl font-serif font-medium tracking-tight text-white leading-[1.1] drop-shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
-                Let&apos;s Create <span className="italic font-light text-burnished/90 text-glow">Something Unforgettable</span>
+              <h2 className="text-5xl md:text-8xl lg:text-[10rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl">
+                Let&apos;s Create <br />
+                <span className="italic font-light text-burnished/90 text-glow">Something Unforgettable</span>
               </h2>
-              <p className="text-lg md:text-xl text-white/50 font-serif italic font-light leading-relaxed max-w-2xl mx-auto">
-                Your vision, our architecture. Together, we orchestrate the extraordinary.
+              <p className="text-xl md:text-2xl text-white/60 font-serif italic font-light leading-relaxed max-w-3xl mx-auto">
+                "A limited number of events. Each crafted with intention. Now booking for 2026 curated celebrations."
               </p>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-6 fade-up">
+            <div className="flex flex-col items-center justify-center gap-8 fade-up">
               <Magnetic strength={0.2}>
                 <Link href="/contact">
                   <Button 
                     size="lg" 
-                    className="h-20 px-16 text-[11px] bg-white text-heritage hover:bg-ivory shadow-2xl transition-all duration-500 hover:scale-105 active:scale-95 rounded-full uppercase tracking-[0.4em] font-bold border-0 group relative overflow-hidden"
-                    rightIcon={<ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />}
+                    className="h-24 px-20 text-[11px] bg-white text-heritage hover:bg-ivory shadow-[0_30px_70px_rgba(0,0,0,0.5)] hover:scale-110 active:scale-95 rounded-full uppercase tracking-[0.4em] font-bold border-0 group relative overflow-hidden animate-luxury-pulse"
                   >
-                    <span className="relative z-10">Start My Event Planning</span>
+                    <span className="relative z-10">Start the Dialogue</span>
                   </Button>
                 </Link>
               </Magnetic>
+              
+              <div className="flex items-center gap-4 text-white/20">
+                <div className="w-8 h-px bg-current" />
+                <span className="text-[10px] uppercase tracking-widest font-mono">EST. 2017</span>
+                <div className="w-8 h-px bg-current" />
+              </div>
             </div>
           </div>
         </section>
