@@ -588,7 +588,7 @@ export default function AboutPage() {
                   <Link href="/gallery" className="w-full md:w-auto" aria-label="View our work">
                     <Button 
                       variant="outline"
-                      className="w-full md:w-auto h-16 px-12 text-[11px] border-white/30 text-white hover:bg-white/10 hover:text-white rounded-full font-bold hover:-translate-y-1 transition-all duration-300 uppercase tracking-[0.2em]"
+                      className="w-full md:w-auto h-16 px-12 text-[11px] !border-white/40 !text-white hover:bg-white/10 hover:!text-white rounded-full font-bold hover:-translate-y-0.5 transition-all duration-300 uppercase tracking-[0.2em]"
                     >
                       View Our Work
                     </Button>
