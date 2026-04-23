@@ -235,7 +235,30 @@
     animation: slow-pulse 4s ease-in-out infinite;
   }
 
-  .btn-gold {
-    @apply bg-burnished text-white hover:bg-burnished-light shadow-[0_20px_50px_rgba(179,139,77,0.3)] transition-all duration-500 rounded-full uppercase font-bold tracking-[0.5em];
+  .btn-emerald-gold {
+    background: linear-gradient(135deg, #0f3d2e 0%, #1B3022 45%, #B38B4D 100%);
+    box-shadow: 
+      inset 0 1px 1px rgba(255, 255, 255, 0.1),
+      0 10px 30px rgba(0, 0, 0, 0.3);
+    @apply relative overflow-hidden transition-all duration-500;
   }
-}
+
+  .btn-emerald-gold:hover {
+    background: linear-gradient(135deg, #155742 0%, #2D4C39 45%, #D4B982 100%);
+    box-shadow: 
+      inset 0 1px 1px rgba(255, 255, 255, 0.2),
+      0 15px 40px rgba(179, 139, 77, 0.2);
+  }
+
+  .text-glow-refined {
+    text-shadow: 0 0 25px rgba(179, 139, 77, 0.35);
+  }
+
+  .bg-vignette {
+    background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.7) 100%);
+  }
+
+  .radial-ambient-glow {
+    background: radial-gradient(circle at 30% 40%, rgba(179, 139, 77, 0.08) 0%, transparent 60%);
+  }
+  }

@@ -71,11 +71,11 @@ export function Navbar() {
       <header 
         ref={headerRef}
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out border-b",
+          "fixed top-0 w-full z-50 transition-all duration-500 ease-in-out border-b",
           isScrolled 
-            ? "bg-black/75 backdrop-blur-md border-white/5 py-2.5 shadow-[0_4px_30px_rgba(0,0,0,0.15)]" 
-            : "bg-black/40 backdrop-blur-sm border-transparent py-5",
-          (isOpen || isSearchOpen) && "border-transparent bg-transparent backdrop-blur-0 shadow-none"
+            ? "bg-black/40 backdrop-blur-sm border-white/5 py-3 shadow-none" 
+            : "bg-transparent border-transparent py-6",
+          (isOpen || isSearchOpen) && "bg-transparent backdrop-blur-0 border-transparent shadow-none"
         )}
       >
         <nav className="container flex items-center justify-between gap-6">
