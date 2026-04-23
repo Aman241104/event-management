@@ -226,7 +226,16 @@
     50% { transform: scale(1.02); opacity: 0.95; }
   }
 
+  @keyframes scroll-line {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+  }
+
   .animate-luxury-pulse {
     animation: slow-pulse 4s ease-in-out infinite;
+  }
+
+  .btn-gold {
+    @apply bg-burnished text-white hover:bg-burnished-light shadow-[0_20px_50px_rgba(179,139,77,0.3)] transition-all duration-500 rounded-full uppercase font-bold tracking-[0.5em];
   }
 }

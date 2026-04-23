@@ -302,10 +302,11 @@ export default function Home() {
     });
 
     const tl = gsap.timeline();
-    tl.from('.hero-badge', { y: 30, opacity: 0, duration: 1.5, ease: 'expo.out' })
-      .from('.header-fade', { y: 40, opacity: 0, duration: 1.5, stagger: 0.2, ease: 'expo.out' }, '-=1.2')
-      .from('.hero-desc', { y: 20, opacity: 0, duration: 1.5, ease: 'expo.out' }, '-=1.2')
-      .from('.hero-btns', { y: 20, opacity: 0, duration: 1.5, ease: 'expo.out' }, '-=1.2');
+    tl.from('.hero-badge', { y: 40, opacity: 0, duration: 1.8, ease: 'expo.out' })
+      .from('.header-fade', { y: 120, opacity: 0, duration: 2.2, stagger: 0.2, ease: 'expo.out' }, '-=1.5')
+      .from('.hero-desc', { y: 30, opacity: 0, duration: 1.8, ease: 'expo.out' }, '-=1.8')
+      .from('.hero-btns', { y: 40, opacity: 0, duration: 1.8, ease: 'expo.out' }, '-=1.8')
+      .from('.scroll-indicator', { opacity: 0, y: 20, duration: 1.5, ease: 'power2.out' }, '-=1.2');
 
     gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
       gsap.from(el, {
@@ -363,20 +364,26 @@ export default function Home() {
         <BackgroundFlourish type="architectural" className="top-[15%] right-[2%] w-96 h-96 text-heritage/5" parallaxSpeed={0.08} />
 
         {/* 1. Hero Section */}
-        <section id="hero" className="relative min-h-[85vh] flex items-center overflow-hidden" data-bg="var(--color-canvas)">
-          <div className="absolute inset-0 bg-black/55 z-10 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/40 z-10 pointer-events-none" />
+        <section id="hero" className="relative h-screen min-h-[850px] flex items-center overflow-hidden" data-bg="var(--color-canvas)">
+          {/* Grain Overlay */}
+          <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.04] mix-blend-overlay" 
+               style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+          
+          {/* Cinematic Overlays */}
+          <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-heritage-dark/95 via-heritage-dark/50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.5)_100%)] z-10 pointer-events-none" />
           
           <div className="absolute inset-0 z-0">
             {heroImages.map((img, i) => {
               if (i !== 0 && !isMounted) return null;
               return (
-                <div key={img} className={cn("absolute inset-0 transition-opacity duration-[3000ms] ease-in-out", i === currentHeroIndex ? "opacity-100" : "opacity-0")}>
+                <div key={img} className={cn("absolute inset-0 transition-opacity duration-[3500ms] ease-in-out", i === currentHeroIndex ? "opacity-100" : "opacity-0")}>
                   <Image 
                     src={img} 
-                    alt="Event" 
+                    alt="Luxury Event" 
                     fill 
-                    className="object-cover brightness-[0.45] saturate-[0.7] scale-100 animate-[hero-zoom_20s_ease-in-out_infinite_alternate]" 
+                    className="object-cover brightness-[0.75] saturate-[0.8] scale-100 animate-[hero-zoom_25s_ease-in-out_infinite_alternate]" 
                     priority={i === 0} 
                     sizes="100vw" 
                   />
@@ -385,53 +392,82 @@ export default function Home() {
             })}
           </div>
 
-          <div className="container relative z-20 text-center md:text-left flex flex-col items-center md:items-start hero-content">
-            <div className="hero-badge flex flex-col items-center md:items-start gap-3 mb-10">
-              <span className="text-[11px] font-mono text-burnished uppercase tracking-[0.8em] small-caps font-bold">Premium Event Planners</span>
-              <div className="h-10 w-[1px] md:w-20 md:h-[1px] bg-burnished/40" />
+          <div className="container relative z-30 flex flex-col items-center md:items-start text-center md:text-left hero-content">
+            <div className="hero-badge overflow-hidden mb-10 flex flex-col items-center md:items-start gap-4">
+              <div className="flex items-center gap-4 py-2.5 px-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl">
+                <div className="w-2 h-2 rounded-full bg-burnished animate-pulse shadow-[0_0_15px_rgba(179,139,77,0.8)]" />
+                <span className="text-[10px] font-mono text-white/90 uppercase tracking-[0.5em] font-bold">150+ Curated Celebrations</span>
+              </div>
+              <div className="h-12 w-[1px] bg-gradient-to-b from-burnished/60 to-transparent hidden md:block" />
             </div>
             
-            <h1 className="hero-title flex flex-col items-center md:items-start gap-2 max-w-[950px] drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
-              <span className="text-3xl md:text-5xl lg:text-7xl font-serif font-medium text-white/90 tracking-tight leading-tight header-fade">We Design Events That</span>
-              <span className="text-6xl md:text-[8rem] lg:text-[10rem] font-serif font-medium text-white italic leading-[0.85] header-fade">People <span className="text-burnished text-glow">Never Forget</span></span>
+            <h1 className="hero-title flex flex-col items-center md:items-start gap-4 md:gap-7 max-w-[1100px] drop-shadow-[0_15px_50px_rgba(0,0,0,0.9)]">
+              <div className="overflow-hidden">
+                <span className="block text-4xl md:text-6xl lg:text-7xl font-serif font-medium text-white/95 tracking-tight leading-[1.1] header-fade transform-gpu">
+                  We Design Events That
+                </span>
+              </div>
+              <div className="overflow-hidden">
+                <span className="block text-6xl md:text-[8.5rem] lg:text-[11rem] font-serif font-medium text-white italic leading-[0.8] header-fade transform-gpu">
+                  People <span className="text-burnished text-glow not-italic font-bold">Never</span> Forget
+                </span>
+              </div>
             </h1>
 
-            <div className="flex flex-col md:flex-row md:items-center gap-8 mt-12 mb-16">
-              <p className="hero-desc text-base md:text-lg text-white/60 max-w-[480px] leading-relaxed font-sans font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-                From luxury weddings to corporate experiences — we plan, design & execute seamlessly with uncompromising elegance.
-              </p>
+            <div className="flex flex-col md:flex-row md:items-center gap-12 mt-14 mb-16">
+              <div className="overflow-hidden">
+                <p className="hero-desc text-base md:text-xl text-white/70 max-w-[540px] leading-relaxed font-sans font-light drop-shadow-[0_2px_15px_rgba(0,0,0,0.6)]">
+                  Luxury event planning for those who demand uncompromising elegance, artistic vision, and flawless execution.
+                </p>
+              </div>
               
-              <div className="hidden md:block w-px h-12 bg-white/20 mx-2" aria-hidden="true" />
+              <div className="hidden md:block w-px h-16 bg-white/10 mx-4" aria-hidden="true" />
               
-              <div className="flex flex-col items-center md:items-start gap-2">
-                <span className="text-[10px] tracking-[0.4em] uppercase text-white/40 font-mono font-bold">Since 2017</span>
-                <span className="text-[10px] tracking-[0.4em] uppercase text-burnished font-mono font-bold">150+ Curated Celebrations</span>
+              <div className="flex flex-col items-center md:items-start gap-4">
+                <div className="flex -space-x-3.5">
+                  {[1, 2, 3, 4].map(i => (
+                    <div key={i} className="w-11 h-11 rounded-full border-2 border-heritage-dark overflow-hidden relative shadow-xl ring-2 ring-white/5">
+                      <Image src={`/hero-${i}.jpg`} alt="Client" fill className="object-cover" />
+                    </div>
+                  ))}
+                </div>
+                <span className="text-[10px] tracking-[0.4em] uppercase text-burnished font-bold font-mono">Bespoke Excellence Since 2017</span>
               </div>
             </div>
 
-            <div className="hero-btns flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 md:gap-8">
+            <div className="hero-btns flex flex-col sm:flex-row items-center gap-6 md:gap-10">
               <Magnetic strength={0.2}>
                 <Link href="/contact">
                   <Button 
                     size="lg" 
-                    className="h-22 px-16 text-[11px] border-0 shadow-[0_25px_60px_rgba(179,139,77,0.3)] bg-burnished text-white hover:bg-burnished-light transition-all duration-500 hover:scale-110 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em] group"
+                    className="h-24 px-22 text-[11px] bg-burnished text-white border-0 shadow-[0_25px_60px_rgba(179,139,77,0.4)] hover:bg-burnished-light transition-all duration-700 hover:scale-110 active:scale-95 rounded-full uppercase font-extrabold tracking-[0.5em] group overflow-hidden relative"
                   >
-                    Start the Dialogue
+                    <span className="relative z-10">Plan Your Event</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   </Button>
                 </Link>
               </Magnetic>
 
               <Magnetic strength={0.2}>
-                <Link href="/gallery">
+                <Link href="/contact">
                   <Button 
                     size="lg" 
                     variant="outline"
-                    className="h-22 px-16 text-[11px] border-white/20 !text-white hover:bg-white hover:!text-heritage transition-all duration-500 hover:scale-110 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em]"
+                    className="h-24 px-22 text-[11px] border-white/20 !text-white hover:bg-white hover:!text-heritage-dark transition-all duration-700 hover:scale-110 active:scale-95 rounded-full uppercase font-extrabold tracking-[0.5em] backdrop-blur-sm"
                   >
-                    View our work
+                    Book a Consultation
                   </Button>
                 </Link>
               </Magnetic>
+            </div>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-5 group cursor-pointer scroll-indicator" 
+               onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}>
+            <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.7em] group-hover:text-burnished transition-colors duration-700 [writing-mode:vertical-lr] rotate-180">Scroll</span>
+            <div className="h-20 w-px bg-white/10 relative overflow-hidden">
+               <div className="absolute top-0 left-0 w-full h-1/2 bg-burnished animate-[scroll-line_2.5s_ease-in-out_infinite]" />
             </div>
           </div>
         </section>
