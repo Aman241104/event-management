@@ -19,7 +19,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Gift,
-  Lightbulb
+  Lightbulb,
+  Gem,
+  ShieldCheck
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
@@ -616,60 +618,89 @@ export default function Home() {
         </section>
 
 
-        {/* 5. Why Choose Us (Redesigned) */}
-        <section id="why-choose-us" className="why-section py-[80px] md:py-[110px] bg-[#f7f5f2] relative overflow-hidden">
-          {/* Subtle luxury background treatment */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,_rgba(180,140,80,0.08)_0%,_transparent_70%)] pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" 
-            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
-          />
+        {/* 5. Why Choose Us (Redesigned with Image Context) */}
+        <section id="why-choose-us" className="relative pt-[120px] pb-[100px] bg-surface overflow-hidden">
+          {/* Curved Top Background Element */}
+          <div className="absolute top-0 left-0 w-full h-[100px] bg-canvas">
+            <svg 
+              viewBox="0 0 1440 100" 
+              fill="none" 
+              preserveAspectRatio="none" 
+              className="absolute bottom-0 w-full h-full text-surface fill-current"
+            >
+              <path d="M0 100 C 240 0, 480 0, 720 50 C 960 100, 1200 100, 1440 0 V 100 H 0 Z" />
+            </svg>
+          </div>
+
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,_rgba(179,139,77,0.05)_0%,_transparent_70%)] pointer-events-none" />
           
-          <div className="container max-w-[1100px] md:max-w-[1200px] mx-auto relative z-10">
+          <div className="container max-w-[1200px] mx-auto relative z-10 mt-10">
             {/* Header */}
-            <div className="why-header flex flex-col items-center text-center mb-[60px] md:mb-[80px] space-y-4 fade-up">
-              <span className="text-[11px] md:text-[12px] text-[#9c9c9c] uppercase tracking-[3px] font-bold">
-                THE ZING BLISS ADVANTAGE
+            <div className="flex flex-col items-center text-center mb-20 space-y-4 fade-up">
+              <span className="text-[11px] text-text-muted uppercase tracking-[0.4em] font-bold">
+                THE PRESTIGE ADVANTAGE
               </span>
-              <h2 className="text-[48px] md:text-[60px] font-serif font-medium text-[#1a1a1a] leading-[1.2]">
-                Why choose our <span className="text-[#b8965a] italic">artistry?</span>
+              <h2 className="text-5xl md:text-6xl font-serif font-medium text-text-primary leading-tight">
+                Why choose our <span className="text-burnished italic">artistry?</span>
               </h2>
-              <p className="text-[15px] md:text-[16px] text-[#7a7a7a] leading-[1.7] max-w-[600px] mx-auto font-sans">
-                We don&apos;t just plan events; we architect legacies of elegance and unforgettable moments. Every detail is a brushstroke in your unique masterpiece.
+              <p className="text-lg text-text-secondary max-w-2xl mx-auto font-sans font-light leading-relaxed">
+                We bring years of meticulous experience in planning and executing the world&apos;s most sophisticated celebrations.
               </p>
             </div>
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 { 
-                  title: 'Bespoke Artistry', 
-                  desc: 'Every event is a unique masterpiece, meticulously curated to reflect your distinct aesthetic and personal story.'
+                  title: 'Exclusive Access', 
+                  desc: 'Unrivalled access to the world&apos;s most exclusive venues and a global network of premier luxury partners.',
+                  icon: <Gem className="w-8 h-8" strokeWidth={1} />,
+                  accent: 'Elite Deals'
                 },
                 { 
-                  title: 'Elite Access', 
-                  desc: 'Unrivalled access to the world&apos;s most exclusive venues and a global network of premier luxury partners.'
+                  title: 'Expert Insights', 
+                  desc: 'Our senior planners bring decades of wisdom to craft the perfect atmosphere for your unique vision.',
+                  icon: <Lightbulb className="w-8 h-8" strokeWidth={1} />,
+                  accent: 'Bespoke Strategy'
                 },
                 { 
-                  title: 'Seamless Precision', 
-                  desc: 'Invisible, expert orchestration that ensures every detail is executed with uncompromising, quiet perfection.'
+                  title: 'Stress-free Journey', 
+                  desc: 'From initial concept to the final encore, we orchestrate every detail so you can remain fully present.',
+                  icon: <ShieldCheck className="w-8 h-8" strokeWidth={1} />,
+                  accent: 'Seamless Care'
                 },
               ].map((item, i) => (
                 <div 
                   key={i} 
                   className={cn(
-                    "why-card bg-white p-[32px] md:p-[36px] rounded-[14px] border border-black/5 flex flex-col items-start text-left transition-all duration-[0.35s] ease-in-out group fade-up",
-                    "shadow-[0_8px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.10)] hover:-translate-y-2",
-                    i === 1 ? "md:scale-[1.04] md:shadow-[0_20px_40px_rgba(0,0,0,0.08)] z-20" : "z-10"
+                    "bg-white p-12 rounded-[2rem] border border-linen/30 flex flex-col items-center text-center transition-all duration-700 ease-out group fade-up",
+                    "shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(179,139,77,0.1)] hover:-translate-y-3",
+                    i === 1 ? "md:scale-105 z-20 border-burnished/10" : "z-10"
                   )}
                 >
-                  <div className="w-[30px] h-px bg-[#d6c3a3] mb-[16px]" />
-                  <h3 className="text-[20px] md:text-[22px] font-serif font-medium text-[#1a1a1a] mb-[10px]">{item.title}</h3>
-                  <p className="text-[14px] md:text-[15px] text-[#8a8a8a] leading-[1.7] font-sans font-light">{item.desc}</p>
+                  {/* Icon Container with Glass Effect */}
+                  <div className="mb-10 relative">
+                    <div className="w-20 h-20 rounded-3xl bg-surface flex items-center justify-center text-burnished transform transition-transform duration-700 group-hover:rotate-[10deg] group-hover:scale-110">
+                      {item.icon}
+                    </div>
+                    {/* Subtle Glow */}
+                    <div className="absolute inset-0 bg-burnished/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  </div>
+
+                  <span className="text-[10px] font-mono text-burnished/60 uppercase tracking-widest mb-4 font-bold">{item.accent}</span>
+                  <h3 className="text-2xl font-serif font-medium text-text-primary mb-6">{item.title}</h3>
+                  <p className="text-text-secondary leading-relaxed font-sans font-light text-sm md:text-base">
+                    {item.desc}
+                  </p>
+                  
+                  {/* Decorative Line */}
+                  <div className="w-8 h-[1px] bg-linen mt-8 group-hover:w-16 group-hover:bg-burnished/30 transition-all duration-700" />
                 </div>
               ))}
             </div>
           </div>
         </section>
+
 
 
         {/* 6. CTA Strip (MID CTA) */}
