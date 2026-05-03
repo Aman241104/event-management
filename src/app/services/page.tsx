@@ -145,534 +145,277 @@ const SectionDivider = ({ className }: { className?: string }) => (
 export default function ServicesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const horizontalRef = useRef<HTMLDivElement>(null);
-
   useGSAP(() => {
+    const DEFAULT_EASE = "power3.out";
+
     // 1. Hero Animations
     const heroTl = gsap.timeline();
-    heroTl.to(".hero-label", { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
-          .to(".hero-horiz-divider", { scaleX: 1, duration: 0.8, ease: "power3.out" }, "-=0.6")
-          .to(".hero-title", { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, "-=0.6")
-          .to(".hero-subtext", { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.8")
-          .to(".hero-divider", { scaleY: 1, duration: 1, ease: "expo.out" }, "-=0.6")
-          .to(".hero-divider-dot", { opacity: 1, duration: 0.8 }, "-=0.4")
-          .to(".hero-scroll-cue", { opacity: 1, y: 0, duration: 1.5, ease: "power2.out" }, "-=0.5");
-
-    // Background slow zoom
-    gsap.to(".hero-bg-image", {
+    
+    gsap.to(".hero-bg-wrapper", {
       scale: 1.05,
-      duration: 15,
+      duration: 20,
+      ease: "sine.inOut",
       repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
+      yoyo: true
     });
 
-    // Scroll cue floating animation
-    gsap.to(".hero-scroll-cue", {
-      y: 15,
-      duration: 2.5,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut"
-    });
-
-    // Hero Parallax (Scroll-based)
-    gsap.to(".hero-bg-image", {
-      yPercent: 10,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#hero",
-        start: "top top",
-        end: "bottom top",
-        scrub: true
-      }
-    });
-
-    // 2. Service List Animations
-    gsap.to(".list-intro", {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".list-intro",
-        start: "top 85%"
-      }
-    });
-
-    gsap.utils.toArray<HTMLElement>('.service-section').forEach((section, i) => {
-      const isEven = i % 2 === 0;
-      const image = section.querySelector('.service-image-wrapper');
-      const content = section.querySelector('.service-content');
-
-      gsap.from(image, {
-        x: isEven ? -60 : 60,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%"
-        }
-      });
-
-      gsap.from(content, {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        delay: 0.3,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%"
-        }
-      });
-    });
-
-    // 4. FAQ Animations
-    gsap.to(".faq-card", {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: "#faq",
-        start: "top 75%"
-      }
-    });
-
-    // 6. Final CTA Animations
-    gsap.to(".cta-content", {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: "#cta",
-        start: "top 80%"
-      }
-    });
-
-    gsap.to(".cta-bg-image", {
-      scale: 1.15,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#cta",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true
-      }
-    });
-
-    // Hide sticky components when CTA is in view
-    ScrollTrigger.create({
-      trigger: "#cta",
-      start: "top bottom-=100px",
-      onEnter: () => gsap.to(["#sticky-cta-bar", "#back-to-top"], { opacity: 0, pointerEvents: "none", duration: 0.4, ease: "power2.out" }),
-      onLeaveBack: () => gsap.to(["#sticky-cta-bar", "#back-to-top"], { opacity: 1, pointerEvents: "auto", duration: 0.4, ease: "power2.in" })
-    });
-
-    // 7. Process Journey Animations
-    const mm = gsap.matchMedia();
-    
-    mm.add("(min-width: 1024px)", () => {
-      if (!horizontalRef.current || !containerRef.current) return;
-      
-      const cards = gsap.utils.toArray<HTMLElement>('.process-card');
-      const scrollWidth = horizontalRef.current.scrollWidth;
-      const windowWidth = window.innerWidth;
-      
-      // Calculate total scroll distance
-      const amountToScroll = scrollWidth - (windowWidth / 2) + (cards[0].offsetWidth / 2);
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#process",
-          start: "top top",
-          end: () => `+=${scrollWidth}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-        }
-      });
-
-      tl.to(horizontalRef.current, {
-        x: -(scrollWidth - windowWidth + (windowWidth * 0.1)),
-        ease: "none"
-      });
-
-      // Individual card animations as they pass the center
-      cards.forEach((card, i) => {
-        gsap.to(card, {
-          scale: 1.1,
-          boxShadow: '0 25px 50px -12px rgba(45, 76, 57, 0.15)',
-          borderColor: 'var(--color-burnished)',
-          backgroundColor: '#FFFFFF',
-          scrollTrigger: {
-            trigger: card,
-            containerAnimation: tl,
-            start: "left 60%",
-            end: "left 40%",
-            scrub: true,
-          }
-        });
-        
-        // Number reveal animation
-        const number = card.querySelector('.card-number');
-        if (number) {
-          gsap.fromTo(number, 
-            { opacity: 0.1, y: 20 },
-            { 
-              opacity: 1, 
-              y: 0, 
-              color: 'var(--color-heritage)',
-              scrollTrigger: {
-                trigger: card,
-                containerAnimation: tl,
-                start: "left 70%",
-                end: "left 50%",
-                scrub: true,
-              }
-            }
-          );
-        }
-      });
-    });
-
-    mm.add("(max-width: 1023px)", () => {
-      gsap.utils.toArray<HTMLElement>('.process-card').forEach((card) => {
-        // Initial fade-up
-        gsap.from(card, {
-          scrollTrigger: { trigger: card, start: 'top 95%' },
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: 'power3.out'
-        });
-
-        // Focus effect as card reaches center
-        gsap.to(card, {
-          scale: 1.05,
-          borderColor: 'var(--color-burnished)',
-          backgroundColor: '#FFFFFF',
-          boxShadow: '0 20px 40px -10px rgba(45, 76, 57, 0.1)',
-          scrollTrigger: {
-            trigger: card,
-            start: "top 60%",
-            end: "top 40%",
-            scrub: true,
-          }
-        });
-
-        const number = card.querySelector('.card-number');
-        if (number) {
-          gsap.to(number, {
+    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE })
+          .fromTo(".hero-title .text-line", { 
+            y: 60,
+            opacity: 0
+          }, {
+            y: 0,
             opacity: 1,
-            color: 'var(--color-heritage)',
-            scrollTrigger: {
-              trigger: card,
-              start: "top 60%",
-              end: "top 40%",
-              scrub: true,
-            }
-          });
+            stagger: 0.1,
+            duration: 1,
+            ease: DEFAULT_EASE 
+          }, "-=0.6")
+          .fromTo(".hero-subtext", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: DEFAULT_EASE }, "-=0.6");
+
+    // 2. Section Reveals
+    const sections = gsap.utils.toArray<HTMLElement>('section');
+    sections.forEach((section) => {
+      gsap.fromTo(section.querySelectorAll('.fade-up'), 
+        { y: 30, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          stagger: 0.1, 
+          duration: 1, 
+          ease: DEFAULT_EASE,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 90%",
+            toggleActions: "play none none none"
+          }
         }
-      });
+      );
     });
 
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 1000);
-
-    const refreshST = () => ScrollTrigger.refresh();
-    window.addEventListener('resize', refreshST);
-    
-    return () => {
-      window.removeEventListener('resize', refreshST);
-    };
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-16 pb-12 relative transition-colors duration-1000">
-      <div className="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
-      <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.05} />
-      
-      {/* 1. Hero Section */}
-      <section id="hero" className="relative h-[92vh] flex items-center justify-center overflow-hidden" data-bg="var(--color-canvas)">
-        {/* Refined Overlays & Vignettes */}
-        <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 z-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 z-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_0%,transparent_60%)] z-10 pointer-events-none" />
-        <div className="absolute inset-0 backdrop-blur-[2px] z-10 pointer-events-none" />
+    <main ref={containerRef} className="min-h-screen bg-[#FDFBF7] selection:bg-[#D4B982] selection:text-black overflow-hidden">
+      <div className="relative">
         
-        {/* Noise Texture Layer */}
-        <div className="absolute inset-0 opacity-[0.03] z-10 pointer-events-none mix-blend-overlay" 
-             style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
+        {/* 1. Hero Section - Compact & Atmospheric */}
+        <section id="hero" className="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden bg-heritage">
+          <div className="absolute inset-0 z-0 hero-bg-wrapper">
+            <Image 
+              src="/decor-1.jpg" 
+              alt="Services Overview" 
+              fill 
+              className="object-cover brightness-[0.25]"
+              priority
+            />
+          </div>
+          
+          {/* Cinema Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90 z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.12)_0%,_transparent_75%)] z-10" />
+          
+          <div className="container relative z-20">
+            <div className="max-w-4xl space-y-6">
+              <div className="hero-header-reveal flex items-center gap-6 opacity-0">
+                 <div className="w-12 h-px bg-[#D4B982]/40" />
+                 <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">OUR SERVICES</span>
+                 <div className="w-12 h-px bg-[#D4B982]/40" />
+              </div>
+              
+              <h1 className="hero-title text-5xl md:text-7xl lg:text-[8rem] font-serif text-white leading-[0.85] tracking-tighter">
+                <span className="block overflow-hidden">
+                  <span className="text-line block">The Art of the</span>
+                </span>
+                <span className="block overflow-hidden">
+                  <span className="text-line block italic font-script text-[#D4B982] mt-4 lowercase lg:text-[10rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Extraordinary</span>
+                </span>
+              </h1>
 
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/decor-1.jpg" 
-            alt="Our Services" 
-            fill 
-            className="hero-bg-image object-cover" 
-            priority 
-            sizes="100vw" 
-          />
-        </div>
-
-        <div className="container relative z-20 text-center flex flex-col items-center -translate-y-[6%]">
-          <div className="max-w-[680px] w-full flex flex-col items-center">
-            {/* Micro Label */}
-            <span className="hero-label text-[11px] md:text-[12px] font-mono text-white/50 uppercase tracking-[0.4em] mb-6 opacity-0">
-              03 / WHAT WE DO
-            </span>
-
-            {/* Horizontal Anchor Divider */}
-            <div className="hero-horiz-divider w-24 h-[1px] bg-[#c6a16e]/40 mb-8 scale-x-0" />
-            
-            {/* Main Heading */}
-            <h1 className="hero-title text-[clamp(48px,7vw,82px)] font-serif font-medium tracking-tighter text-white leading-[1.1] opacity-0">
-              Our <span className="text-[#c6a16e]">Services.</span>
-            </h1>
-
-            {/* Subtext */}
-            <p className="hero-subtext text-[15px] md:text-[17px] text-white/70 max-w-[600px] leading-[1.8] font-sans font-light mt-6 opacity-0">
-              We craft experiences across weddings, celebrations, and corporate gatherings — designed with precision, executed with quiet luxury.
-            </p>
-
-            {/* Luxury Divider Detail */}
-            <div className="hero-divider-container flex flex-col items-center mt-10">
-              <div className="hero-divider w-[1px] h-[60px] bg-[#c6a16e]/50 scale-y-0" />
-              <div className="hero-divider-dot w-1.5 h-1.5 rounded-full bg-[#c6a16e]/50 mt-3 opacity-0" />
+              <div className="max-w-xl hero-subtext opacity-0">
+                <p className="text-white/70 text-lg md:text-xl font-serif italic border-l border-[#D4B982]/30 pl-10 leading-relaxed">
+                  We curate atmosphere across celebrations, corporate gatherings, and bespoke moments — each designed with architectural precision.
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Scroll Indicator */}
-          <div className="hero-scroll-cue absolute bottom-[-4rem] left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0">
-            <div className="w-px h-12 bg-gradient-to-b from-white/30 via-white/10 to-transparent" />
+        {/* 2. Intro Statement - Compact */}
+        <section className="py-12 md:py-16 relative">
+          <div className="container text-center max-w-2xl mx-auto space-y-6 fade-up">
+            <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">ATMOSPHERIC CURATION</span>
+            <p className="text-xl md:text-2xl font-serif text-[#121212] leading-relaxed italic">
+              "Every event is a unique narrative, composed with intention and executed with quiet luxury."
+            </p>
+            <div className="w-12 h-px bg-[#D4B982]/30 mx-auto pt-4" />
           </div>
-        </div>
-      </section>
+        </section>
 
-      <SectionDivider />
-
-      {/* Services Spectrum List */}
-      <div id="list" className="relative z-10 pt-16">
-        {/* Section Intro Block */}
-        <div className="container mb-24 text-center max-w-[600px] space-y-6 opacity-0 translate-y-8 list-intro">
-          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/50 small-caps">OUR PORTFOLIO OF EXPERIENCES</span>
-          <p className="text-xl md:text-2xl font-serif text-text-primary leading-relaxed italic">
-            "We curate experiences across celebrations, corporate events, and bespoke moments — each designed with precision and intention."
-          </p>
-          <div className="w-12 h-px bg-heritage/20 mx-auto mt-8" />
-        </div>
-
-        {/* Central Guide Line (Lists only) */}
-        <div className="absolute top-[400px] bottom-0 left-1/2 -translate-x-1/2 w-px bg-heritage/[0.06] hidden lg:block z-0" />
-
-        {serviceCategories.map((service, index) => (
-          <React.Fragment key={service.id}>
+        {/* 3. Services Spectrum - Redesigned & Compact */}
+        <div className="space-y-4 pb-20">
+          {serviceCategories.map((service, index) => (
             <section 
-              data-bg={service.bgColor} 
-              className={`service-section py-24 md:py-32 relative overflow-hidden z-10 ${index % 2 !== 0 ? 'bg-surface/30' : 'bg-transparent'}`}
+              key={service.id}
+              className={`py-12 md:py-16 relative overflow-hidden ${index % 2 !== 0 ? 'bg-white' : 'bg-transparent'}`}
             >
-              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-center relative z-10">
-                {/* Image Section */}
-                <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2' : ''} relative w-full service-image-wrapper`}>
-                   <div className="relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-[16/10] shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-black/[0.04] group">
+              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                {/* Image Section - Sharper corners */}
+                <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2' : ''} fade-up`}>
+                   <div className="relative aspect-[16/9] rounded-sm overflow-hidden shadow-2xl group">
                       <Image 
                         src={service.image} 
                         alt={service.title} 
                         fill 
-                        className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105" 
+                        className="object-cover transition-transform duration-[1.5s] group-hover:scale-110 brightness-90 group-hover:brightness-100" 
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                      <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
                    </div>
                 </div>
 
                 {/* Content Section */}
-                <div className={`lg:col-span-5 space-y-8 ${index % 2 !== 0 ? 'lg:order-1' : ''} service-content`}>
-                  <div className="space-y-4">
-                    <span className="text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-heritage/40 small-caps">{service.label}</span>
-                    <h2 className="text-3xl md:text-[34px] font-serif text-text-primary font-medium leading-[1.2] tracking-tight">{service.title}</h2>
-                    <p className="text-base md:text-[17px] text-text-secondary/75 font-sans font-light leading-[1.8]">{service.description}</p>
+                <div className={`lg:col-span-5 space-y-6 ${index % 2 !== 0 ? 'lg:order-1' : ''} fade-up`}>
+                  <div className="space-y-3">
+                    <span className="text-[10px] text-[#D4B982] font-bold uppercase tracking-[0.4em]">{service.label}</span>
+                    <h2 className="text-3xl md:text-4xl font-serif text-[#121212] leading-tight">{service.title}</h2>
+                    <p className="text-[15px] text-[#525252] font-sans font-light leading-relaxed">{service.description}</p>
                   </div>
                   
-                  <div className="pt-8 border-t border-linen/40">
-                    <h4 className="text-[9px] uppercase tracking-[0.3em] text-heritage/60 font-bold mb-5 small-caps">Key Offerings:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3">
-                      {service.tags.map((tag) => (
-                        <li key={tag} className="text-[11px] font-sans uppercase tracking-[0.15em] text-text-primary/80 font-light flex items-center gap-3">
-                          <div className="w-1 h-1 rounded-full bg-heritage/20" />
+                  <div className="pt-6 border-t border-linen/30">
+                    <ul className="grid grid-cols-1 gap-y-2">
+                      {service.tags.slice(0, 4).map((tag) => (
+                        <li key={tag} className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#121212]/70 font-bold flex items-center gap-3">
+                          <div className="w-1 h-1 bg-[#D4B982]" />
                           {tag}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="pt-6">
-                    <a href={generateWhatsAppLink(service.title, 'Booking')} target="_blank" rel="noopener noreferrer">
-                      <Button className="rounded-full bg-heritage hover:bg-heritage-dark text-white px-8 py-3 text-[11px] tracking-[0.2em] font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2 group">
-                        Plan This Event
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <div className="pt-4">
+                    <a href={generateWhatsAppLink(service.title, 'Inquiry')} target="_blank" rel="noopener noreferrer">
+                      <Button className="h-12 px-10 bg-[#D4B982] hover:bg-[#B38B4D] text-black rounded-none tracking-[0.3em] font-bold text-[10px] uppercase transition-all duration-700">
+                        INQUIRE NOW
                       </Button>
                     </a>
                   </div>
                 </div>
               </div>
             </section>
-            {index < serviceCategories.length - 1 && <div className="w-full h-px bg-black/[0.03] lg:hidden" />}
-          </React.Fragment>
-        ))}
-      </div>
-
-      <FloatingMetric label="Our Promise" value="Smooth Events" className="top-[200vh] left-[15%]" />
-
-      {/* Process Journey */}
-      <section id="process" className="relative pt-12 lg:pt-16 pb-24 bg-surface border-y border-linen/30 flex flex-col min-h-screen" data-bg="var(--color-surface)">
-        <div className="container mb-12 lg:mb-16 text-center flex flex-col items-center space-y-4 fade-up relative z-10">
-          <div className="flex flex-col items-center gap-2">
-             <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/40 small-caps">06 / THE PROCESS</span>
-             <div className="w-px h-10 bg-gradient-to-b from-heritage/40 to-transparent" />
-             <div className="w-8 h-8 rounded-full border border-heritage/20 flex items-center justify-center bg-white shadow-inner">
-                <div className="w-1.5 h-1.5 rounded-full bg-burnished animate-pulse shadow-[0_0_10px_rgba(197,160,89,0.8)]" />
-             </div>
-          </div>
-          <TextReveal as="h2" text="How We Work." className="text-3xl md:text-7xl font-serif text-text-primary font-bold tracking-tighter" />
-          <p className="text-heritage font-serif italic text-base md:text-xl opacity-60 max-w-lg mx-auto px-4">A seamless transition from vision to reality, curated with absolute precision.</p>
-        </div>
-        
-        <div className="relative w-full overflow-hidden lg:overflow-visible h-auto lg:h-[55vh] flex items-center">
-          <div ref={horizontalRef} className="flex flex-col lg:flex-row gap-12 lg:gap-16 px-6 lg:px-[30vw] items-center w-full">
-            {[
-              { title: 'Consultation', desc: 'A private dialogue to distill your aesthetic desires and logistical requirements into a singular vision.', icon: <MessageCircle size={24} /> },
-              { title: 'Conceptualization', desc: 'Crafting a bespoke blueprint with architectural depth, ensuring every nuance reflects your personal legacy.', icon: <Sparkles size={24} /> },
-              { title: 'Coordination', desc: 'Harmonizing an elite network of artisans and vendors to execute with surgical precision and grace.', icon: <Zap size={24} /> },
-              { title: 'Celebration', desc: 'On-site direction that ensures your event unfolds like a perfectly choreographed cinematic masterpiece.', icon: <Star size={24} /> },
-            ].map((item, i) => (
-              <div key={i} className="process-card bg-white/50 backdrop-blur-md p-10 md:p-12 rounded-[2rem] border border-linen/80 shadow-sm transition-all duration-700 flex flex-col justify-between group w-full lg:w-[500px] h-[380px] lg:h-[400px] flex-shrink-0 relative overflow-hidden">
-                {/* Decorative Background Element */}
-                <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-heritage/5 rounded-full blur-3xl group-hover:bg-burnished/10 transition-colors duration-700" />
-                
-                <div className="flex justify-between items-start relative z-10">
-                    <span className="card-number text-6xl md:text-7xl font-serif font-bold text-heritage/10 italic transition-all duration-700 leading-none">0{i+1}</span>
-                    <div className="w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center text-heritage border border-linen/50 group-hover:bg-heritage group-hover:text-white group-hover:scale-110 transition-all duration-500 transform group-hover:-rotate-6">
-                        {item.icon}
-                    </div>
-                </div>
-
-                <div className="space-y-4 relative z-10">
-                    <h3 className="text-xl md:text-2xl font-serif text-text-primary font-bold italic group-hover:text-heritage transition-colors duration-500">{item.title}</h3>
-                    <p className="text-base text-text-secondary font-sans font-light leading-relaxed max-w-sm">{item.desc}</p>
-                    
-                    <div className="pt-4 flex items-center gap-4 text-heritage/40 group-hover:text-burnished transition-colors duration-500">
-                        <div className="h-px w-10 bg-current" />
-                        <span className="text-[8px] font-sans font-bold uppercase tracking-[0.3em] small-caps">Phase 0{i+1}</span>
-                    </div>
-                </div>
-
-                {/* Subtle Progress Dot */}
-                <div className="absolute bottom-8 right-8 w-1.5 h-1.5 rounded-full bg-linen group-hover:bg-burnished transition-colors" />
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
 
-        {/* Horizontal Progress Bar */}
-        <div className="hidden lg:block absolute bottom-12 left-1/2 -translate-x-1/2 w-1/4 h-px bg-linen/50 z-10">
-            <div className="h-full bg-burnished w-0 transition-all duration-300" id="process-progress" />
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* FAQ */}
-      <section id="faq" className="py-24 md:py-32 relative overflow-hidden" data-bg="var(--color-surface)">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#faf9f7] to-white pointer-events-none" />
-        
-        <div className="container relative z-10">
-          <div className="max-w-6xl mx-auto space-y-20">
-            <div className="text-center space-y-6">
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.6em] text-heritage/40 small-caps">07 / QUESTIONS</span>
-              <h2 className="text-4xl md:text-6xl font-serif font-medium text-text-primary tracking-tighter leading-[1.1]">
-                Common <span className="italic font-light text-burnished">Questions.</span>
-              </h2>
+        {/* 4. Process Journey - Cohesive Vertical Style */}
+        <section id="process" className="py-20 bg-white relative overflow-hidden">
+          <div className="container relative z-10">
+            <div className="text-center max-w-3xl mx-auto space-y-6 mb-20 fade-up">
+               <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">OUR PROCESS</span>
+               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-[#121212]">The Path to Perfection</h2>
+               <div className="w-16 h-px bg-[#D4B982]/30 mx-auto" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { q: 'Do you plan events in other cities?', a: 'Yes, we plan events all over India and in other countries too.' },
-                { q: 'When should we book your services?', a: 'For big events, it is best to book 8 to 12 months in advance.' },
-                { q: 'Can you help with music and artists?', a: 'Yes, we have a network of top-tier DJs, bands, and performers.' },
-                { q: 'Is every event custom?', a: 'Absolutely. We believe every story is unique and deserves a bespoke celebration.' },
-              ].map((faq, i) => (
-                <div key={i} className="faq-card group bg-white border border-black/[0.05] p-8 md:p-10 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:border-black/[0.1] transition-all duration-500 flex flex-col gap-6 opacity-0">
-                  <div className="w-6 h-[2px] bg-[#c6a16e] rounded-full opacity-60 group-hover:opacity-100 transition-opacity" />
-                  <div className="space-y-4">
-                    <h4 className="text-[18px] md:text-[20px] font-serif font-medium text-text-primary group-hover:text-heritage transition-colors leading-snug">{faq.q}</h4>
-                    <p className="text-[14px] md:text-[15px] text-text-secondary/65 font-sans font-light leading-[1.7]">{faq.a}</p>
+                { title: 'Discovery', desc: 'Distilling your vision into a singular direction.', icon: <MessageCircle size={24} /> },
+                { title: 'Curation', desc: 'Sourcing the finest artisans and materials.', icon: <Sparkles size={24} /> },
+                { title: 'Architecture', desc: 'Mapping every touchpoint with precision.', icon: <Zap size={24} /> },
+                { title: 'Execution', desc: 'Seamless orchestration of the extraordinary.', icon: <Star size={24} /> },
+              ].map((step, i) => (
+                <div key={i} className="bg-[#FDFBF7] p-10 space-y-8 fade-up group transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl">
+                  <div className="flex justify-between items-start">
+                    <span className="text-5xl font-serif italic text-[#D4B982]/10 group-hover:text-[#D4B982]/20 transition-colors">0{i+1}</span>
+                    <div className="text-[#D4B982] group-hover:scale-110 transition-transform duration-700">{step.icon}</div>
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-serif italic text-[#121212]">{step.title}</h3>
+                    <p className="text-[14px] text-[#525252] font-light leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 10. Final CTA */}
-      <section id="cta" className="relative py-24 md:py-32 bg-heritage overflow-hidden border-t border-white/5" data-bg="var(--color-heritage)">
-        {/* Cinematic Background Layering */}
-        <div className="absolute inset-0 z-0">
-           <Image src="/hero10.jpg" alt="Background" fill className="cta-bg-image object-cover scale-105" />
-           <div className="absolute inset-0 bg-gradient-to-b from-black/65 to-black/85 z-10" />
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,80,50,0.35)_0%,transparent_70%)] z-10" />
-        </div>
+        {/* 5. FAQ - Clean & Compact */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="container relative z-10">
+            <div className="max-w-4xl mx-auto space-y-16">
+              <div className="text-center space-y-4 fade-up">
+                <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">COMMON QUESTIONS</span>
+                <h2 className="text-3xl md:text-5xl font-serif text-[#121212]">Queries & <span className="italic font-light text-[#D4B982]">Clarifications.</span></h2>
+              </div>
 
-        <BackgroundFlourish type="floral" className="bottom-[-10%] left-[-5%] w-64 h-64 text-white/5 rotate-45" />
-        
-        <div className="container relative z-20 text-center flex flex-col items-center">
-          <div className="cta-content max-w-[800px] w-full flex flex-col items-center space-y-6 opacity-0 translate-y-12">
-            <h2 className="text-5xl md:text-7xl font-serif font-medium tracking-tighter leading-[1.1] text-white drop-shadow-2xl">
-              Let&apos;s Create <br />
-              <span className="text-[#c6a16e]">Magic.</span>
-            </h2>
-            
-            <p className="text-base md:text-[16px] text-white/90 max-w-[520px] mx-auto font-sans font-light leading-[1.7] drop-shadow-lg">
-              Ready to start planning your extraordinary event? Let&apos;s turn your vision into a reality designed with precision and quiet luxury.
-            </p>
-
-            <div className="cta-buttons flex flex-wrap justify-center gap-4 pt-6">
-              <Magnetic strength={0.1}>
-                <Link href="/contact">
-                  <Button 
-                    className="h-14 px-10 text-[11px] bg-gradient-to-br from-[#1f6f4a] to-[#2f8f62] text-white hover:shadow-[0_0_30px_rgba(31,111,74,0.4)] transition-all duration-500 rounded-full font-bold border-0"
-                    rightIcon={<ArrowRight size={16} />}
-                  >
-                    Book Consultation
-                  </Button>
-                </Link>
-              </Magnetic>
-
-              <Magnetic strength={0.1}>
-                <Link href="/gallery">
-                  <Button 
-                    variant="outline"
-                    className="h-14 px-10 text-[11px] bg-transparent text-white border-white/40 hover:bg-white/20 hover:border-white hover:text-white transition-all duration-500 rounded-full font-bold !text-white"
-                  >
-                    View Our Work
-                  </Button>
-                </Link>
-              </Magnetic>
-            </div>
-
-            <div className="pt-10 opacity-60">
-              <span className="text-[10px] uppercase tracking-[0.5em] text-white font-mono font-medium drop-shadow-md">Trusted by 150+ luxury events</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 fade-up">
+                {[
+                  { q: 'Global Reach?', a: 'Based in Ahmedabad, we orchestrate celebrations globally.' },
+                  { q: 'Timeline?', a: 'We recommend booking 8-12 months in advance for major events.' },
+                  { q: 'Entertainment?', a: 'We manage elite talent from Bollywood to global acts.' },
+                  { q: 'Customization?', a: 'Every event is a bespoke composition tailored to your legacy.' },
+                ].map((faq, i) => (
+                  <div key={i} className="space-y-4 border-l border-[#D4B982]/20 pl-8">
+                    <h4 className="text-[16px] font-serif font-bold text-[#121212]">{faq.q}</h4>
+                    <p className="text-[14px] text-[#525252] font-light leading-relaxed">{faq.a}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* 6. Final CTA - Consistent with Home */}
+        <section className="relative py-24 md:py-40 overflow-hidden bg-heritage">
+          <div className="absolute inset-0 z-0">
+            <Image 
+              src="/hero10.jpg" 
+              alt="Final CTA Background" 
+              fill 
+              className="object-cover brightness-[0.2] scale-105" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90 z-10" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.15)_0%,_transparent_75%)] z-10" />
+          </div>
+          
+          <div className="container relative z-20 text-center">
+            <div className="space-y-8 fade-up">
+              <div className="flex items-center justify-center gap-6 mb-4">
+                 <div className="w-12 h-px bg-[#D4B982]/40" />
+                 <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">READY TO BEGIN?</span>
+                 <div className="w-12 h-px bg-[#D4B982]/40" />
+              </div>
+              
+              <div className="relative inline-block">
+                <h2 className="text-4xl md:text-7xl lg:text-[7rem] font-serif text-white leading-[1.1] tracking-tighter relative z-10">
+                  Create Your Magic
+                </h2>
+                <span className="font-script text-[#D4B982] text-6xl md:text-8xl lg:text-[10rem] block -mt-4 md:-mt-8 lg:-mt-12 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
+                  With Zing Bliss.
+                </span>
+              </div>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16 fade-up" style={{ transitionDelay: '200ms' }}>
+              <Magnetic strength={0.1}>
+                <Link href="/contact">
+                  <Button className="h-16 px-16 bg-[#D4B982] hover:bg-[#B38B4D] text-black rounded-none tracking-[0.4em] font-bold text-[12px] uppercase border-0 shadow-[0_25px_80px_rgba(212,185,130,0.25)] transition-all duration-700">
+                    BOOK A CONSULTATION
+                  </Button>
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.1}>
+                <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="h-16 px-10 border-[#D4B982]/40 text-white/90 hover:text-[#D4B982] rounded-none tracking-[0.3em] font-bold text-[11px] uppercase hover:bg-white/5 transition-all duration-700 backdrop-blur-sm group">
+                     <div className="flex items-center gap-4">
+                       <div className="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366]/40 group-hover:bg-[#25D366]/30 transition-colors">
+                         <MessageCircle size={16} fill="#25D366" className="text-[#25D366]" />
+                       </div>
+                       <span className="text-white group-hover:text-[#D4B982] transition-colors">CHAT ON WHATSAPP</span>
+                     </div>
+                  </Button>
+                </a>
+              </Magnetic>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

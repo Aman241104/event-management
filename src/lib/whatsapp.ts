@@ -13,7 +13,7 @@ const WHATSAPP_NUMBER = "1234567890"; // In production, this would be an environ
  * @param type The type of inquiry (Booking, Info, Support).
  * @returns A formatted WhatsApp URL.
  */
-export function generateWhatsAppLink(eventTitle: string, type: 'Booking' | 'Info' | 'Support' = 'Booking'): string {
+export function generateWhatsAppLink(eventTitle: string, type: 'Booking' | 'Info' | 'Support' | 'Inquiry' = 'Booking'): string {
   let message = "";
 
   switch (type) {
@@ -21,7 +21,8 @@ export function generateWhatsAppLink(eventTitle: string, type: 'Booking' | 'Info
       message = `Hello, I'm interested in booking the "${eventTitle}" service. Can you provide more details on availability?`;
       break;
     case 'Info':
-      message = `Hi, I saw your event "${eventTitle}" and would like to know more about the pricing and schedule.`;
+    case 'Inquiry':
+      message = `Hi, I saw your service "${eventTitle}" and would like to know more about the pricing and schedule.`;
       break;
     case 'Support':
       message = `Hello, I have a question regarding my reservation for "${eventTitle}".`;

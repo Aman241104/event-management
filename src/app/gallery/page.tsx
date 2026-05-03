@@ -9,7 +9,9 @@ import { TextReveal } from '@/components/atoms/TextReveal';
 import { Button } from '@/components/atoms/Button';
 import { BackgroundFlourish } from '@/components/atoms/BackgroundFlourish';
 import { SVGSpine } from '@/components/atoms/SVGSpine';
-import { ArrowRight, Search, Sparkles, Star } from 'lucide-react';
+import { Magnetic } from '@/components/atoms/Magnetic';
+import { getGenericWhatsAppLink } from '@/lib/whatsapp';
+import { ArrowRight, Search, Sparkles, Star, MessageCircle } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -77,70 +79,130 @@ function GalleryContent() {
   }, { scope: containerRef });
 
   return (
-    <main ref={containerRef} className="min-h-screen pt-16 pb-12 transition-colors duration-1000 relative overflow-hidden">
-      <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" opacity={0.05} />
+    <main ref={containerRef} className="min-h-screen bg-[#FDFBF7] selection:bg-[#D4B982] selection:text-black overflow-hidden relative">
+      <div className="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
       
-      {/* Header */}
-      <section id="header" className="container py-16 md:py-24 text-center space-y-8">
-        <div className="header-fade">
-          <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">04 / THE ARCHIVE</span>
-        </div>
-        <TextReveal as="h1" text="Our Work." className="text-4xl md:text-[6.4rem] lg:text-[7.6rem] font-serif tracking-tighter text-text-primary leading-[0.85] font-bold" />
-        <p className="header-fade text-lg md:text-xl text-text-secondary font-sans font-light max-w-3xl mx-auto pt-4">
-          Browse through our past events and see how we bring beautiful moments to life.
-        </p>
-      </section>
-
-      <SectionDivider />
-
-      {/* Filter Navigation */}
-      <section id="filter" className="container py-12 md:py-16">
-        <div className="flex flex-col gap-12">
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8 border-b border-linen/50 pb-6">
-            <div className="space-y-2 text-left">
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.5em] text-heritage/60 small-caps">COLLECTIONS</span>
-              <h3 className="text-2xl md:text-3xl font-serif text-text-primary font-bold tracking-tight italic">Find Your Style</h3>
+      {/* 1. Header Section - Compact & Atmospheric */}
+      <section id="header" className="relative pt-32 md:pt-44 pb-4 overflow-hidden">
+        <div className="container relative z-20 text-center">
+          <div className="max-w-4xl mx-auto space-y-4">
+            <div className="header-fade flex items-center justify-center gap-6 opacity-0">
+               <div className="w-12 h-px bg-[#D4B982]/40" />
+               <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">THE ARCHIVE</span>
+               <div className="w-12 h-px bg-[#D4B982]/40" />
             </div>
-            <div className="w-full md:w-[20rem] relative group">
-              <Search className="absolute left-0 top-1/2 -translate-y-1/2 text-heritage/30 group-focus-within:text-heritage transition-colors duration-500" size={16} />
-              <input type="text" placeholder="Search events..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full bg-transparent border-b border-linen/50 py-3 pl-8 text-text-primary focus:border-heritage outline-none transition-all duration-500 font-sans placeholder:text-text-secondary/40 text-sm tracking-widest" />
+            
+            <h1 className="text-4xl md:text-7xl lg:text-[7.5rem] font-serif text-[#121212] leading-[0.85] tracking-tighter">
+              <span className="block overflow-hidden">
+                <span className="header-fade block">Our Curated</span>
+              </span>
+              <span className="block overflow-hidden">
+                <span className="header-fade block italic font-script text-[#D4B982] mt-2 lowercase lg:text-[9rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.3)]">Portfolio</span>
+              </span>
+            </h1>
+
+            <div className="max-w-xl mx-auto header-fade opacity-0 pt-2">
+              <p className="text-[#525252] text-[15px] md:text-lg font-serif italic border-l border-[#D4B982]/30 pl-10 leading-relaxed text-left">
+                A testament to atmospheric design. Explore our history of orchestrating the extraordinary.
+              </p>
             </div>
           </div>
-          <div className="flex flex-wrap justify-start gap-x-10 gap-y-4">
+        </div>
+      </section>
+
+      {/* 2. Filter Navigation - High Fidelity */}
+      <section id="filter" className="container py-6 border-y border-linen/20">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4">
             {categories.map((category) => (
-              <button key={category} onClick={() => setActiveCategory(category)} className={`text-[10px] font-sans font-bold uppercase tracking-[0.4em] pb-2 transition-all duration-500 relative group ${activeCategory === category ? 'text-heritage' : 'text-text-secondary hover:text-text-primary'}`}>
+              <button 
+                key={category} 
+                onClick={() => setActiveCategory(category)} 
+                className={`text-[10px] font-sans font-bold uppercase tracking-[0.4em] pb-1 transition-all duration-500 relative group ${activeCategory === category ? 'text-[#D4B982]' : 'text-[#121212]/40 hover:text-[#121212]'}`}
+              >
                 {category}
-                <span className={`absolute bottom-0 left-0 h-[1.5px] bg-heritage transition-all duration-500 ${activeCategory === category ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                <span className={`absolute bottom-0 left-0 h-px bg-[#D4B982] transition-all duration-500 ${activeCategory === category ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </button>
             ))}
           </div>
+          
+          <div className="w-full md:w-[18rem] relative group">
+            <Search className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4B982]/40 group-focus-within:text-[#D4B982] transition-colors duration-500" size={14} />
+            <input 
+              type="text" 
+              placeholder="SEARCH THE ARCHIVE..." 
+              value={searchQuery} 
+              onChange={(e) => setSearchQuery(e.target.value)} 
+              className="w-full bg-transparent border-b border-linen/50 py-2 pl-6 text-[#121212] focus:border-[#D4B982] outline-none transition-all duration-500 font-mono text-[10px] tracking-[0.2em] placeholder:text-[#121212]/20" 
+            />
+          </div>
         </div>
       </section>
 
-      <SectionDivider />
-
-      {/* Gallery Grid */}
-      <section id="grid" className="container min-h-[50vh] pb-16 md:pb-24">
+      {/* 3. Gallery Grid - Compacted */}
+      <section id="grid" className="container min-h-[60vh] py-12 md:py-16">
         {filteredItems.length > 0 ? (
-          <Gallery items={filteredItems} className="gap-6 md:gap-8" />
+          <Gallery items={filteredItems} className="gap-4 md:gap-6" />
         ) : (
           <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
-            <p className="text-2xl font-serif text-heritage italic">No events found.</p>
-            <button onClick={() => {setSearchQuery(''); setActiveCategory('All');}} className="text-[10px] uppercase tracking-[0.5em] font-bold text-text-secondary border-b border-linen pb-1 hover:text-heritage transition-all duration-500">Reset Search</button>
+            <p className="text-2xl font-serif text-[#D4B982] italic">No records found.</p>
+            <button onClick={() => {setSearchQuery(''); setActiveCategory('All');}} className="text-[10px] uppercase tracking-[0.5em] font-bold text-[#121212]/40 border-b border-linen/50 pb-1 hover:text-[#D4B982] transition-all duration-500">RESET SEARCH</button>
           </div>
         )}
       </section>
 
-      <SectionDivider />
-
-      {/* CTA */}
-      <section id="cta" className="py-16 md:py-24 relative overflow-hidden text-center space-y-12" data-bg="var(--color-heritage-soft)">
-        <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
-        <TextReveal as="h2" text="Ready to create yours?" className="text-4xl md:text-7xl font-serif font-bold text-text-primary leading-[0.9]" />
-        <div className="pt-4">
-          <Link href="/contact">
-            <Button size="lg" className="h-16 px-16 text-[10px] btn-prestige shadow-2xl" rightIcon={<ArrowRight size={18} />}>Contact Us</Button>
-          </Link>
+      {/* 4. Final CTA - Consistent with Home */}
+      <section id="cta" className="relative py-24 md:py-40 overflow-hidden bg-heritage">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/hero10.jpg" 
+            alt="Final CTA Background" 
+            fill 
+            className="object-cover brightness-[0.2] scale-105" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90 z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.15)_0%,_transparent_75%)] z-10" />
+        </div>
+        
+        <div className="container relative z-20 text-center">
+          <div className="space-y-8 fade-up">
+            <div className="flex items-center justify-center gap-6 mb-4">
+               <div className="w-12 h-px bg-[#D4B982]/40" />
+               <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">READY TO BEGIN?</span>
+               <div className="w-12 h-px bg-[#D4B982]/40" />
+            </div>
+            
+            <div className="relative inline-block">
+              <h2 className="text-4xl md:text-7xl lg:text-[7rem] font-serif text-white leading-[1.1] tracking-tighter relative z-10">
+                Compose Your Legacy
+              </h2>
+              <span className="font-script text-[#D4B982] text-6xl md:text-8xl lg:text-[10rem] block -mt-4 md:-mt-8 lg:-mt-12 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
+                With Zing Bliss.
+              </span>
+            </div>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16 fade-up">
+            <Magnetic strength={0.1}>
+              <Link href="/contact">
+                <Button className="h-16 px-16 bg-[#D4B982] hover:bg-[#B38B4D] text-black rounded-none tracking-[0.4em] font-bold text-[12px] uppercase border-0 shadow-[0_25px_80px_rgba(212,185,130,0.25)] transition-all duration-700">
+                  BOOK A CONSULTATION
+                </Button>
+              </Link>
+            </Magnetic>
+            <Magnetic strength={0.1}>
+              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="h-16 px-10 border-[#D4B982]/40 text-white/90 hover:text-[#D4B982] rounded-none tracking-[0.3em] font-bold text-[11px] uppercase hover:bg-white/5 transition-all duration-700 backdrop-blur-sm group">
+                   <div className="flex items-center gap-4">
+                     <div className="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366]/40 group-hover:bg-[#25D366]/30 transition-colors">
+                       <MessageCircle size={16} fill="#25D366" className="text-[#25D366]" />
+                     </div>
+                     <span className="text-white group-hover:text-[#D4B982] transition-colors">CHAT ON WHATSAPP</span>
+                   </div>
+                </Button>
+              </a>
+            </Magnetic>
+          </div>
         </div>
       </section>
     </main>

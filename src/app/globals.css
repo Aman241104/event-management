@@ -8,16 +8,16 @@
   --color-ivory: #FDFBF7; /* New neutral ivory */
 
   /* Heritage Green - Refined as a sophisticated anchor */
-  --color-heritage: #1B3022; /* Slightly deeper, more obsidian-green */
-  --color-heritage-dark: #122117; 
-  --color-heritage-soft: rgba(27, 48, 34, 0.03); 
-  --color-heritage-accent: rgba(27, 48, 34, 0.12);
+  --color-heritage: #0a1f13; /* Dark Obsidian Green */
+  --color-heritage-dark: #05100a; 
+  --color-heritage-soft: rgba(10, 31, 19, 0.03); 
+  --color-heritage-accent: rgba(10, 31, 19, 0.12);
 
   /* Royal Gold - Warm Accents */
-  --color-burnished: #B38B4D; /* More sophisticated, deeper gold */
-  --color-burnished-light: #D4B982;
+  --color-burnished: #B38B4D; /* Richer gold */
+  --color-burnished-light: #d4a35b;
   --color-gold-glint: rgba(179, 139, 77, 0.15);
-  --color-gold-muted: #E5D5B8; /* Muted gold/beige accent */
+  --color-gold-muted: #E5D5B8; 
 
   /* UI Accents */
   --color-linen: #E8E2D5; /* Slightly warmer border */
@@ -33,18 +33,19 @@
   /* Fonts - Connected to Next/Font variables */
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
+  --font-script: var(--font-script);
   --font-mono: var(--font-mono);
 }
 
 @layer base {
   :root {
     --canvas: #FDFCFB;
-    --heritage: #2D4C39;
-    --heritage-soft: rgba(45, 76, 57, 0.05);
+    --heritage: #0a1f13;
+    --heritage-soft: rgba(10, 31, 19, 0.05);
     --surface: #F9F8F6;
     --text-primary: #1A1A1A;
     --text-secondary: #666666;
-    --burnished: #C5A059;
+    --burnished: #B38B4D;
   }
 
   body {
@@ -80,6 +81,10 @@
   .small-caps {
     font-variant: small-caps;
     @apply tracking-[0.3em] font-bold;
+  }
+
+  .font-script {
+    font-family: var(--font-script), cursive;
   }
 }
 

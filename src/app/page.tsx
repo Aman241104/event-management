@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
@@ -10,30 +10,30 @@ import {
   PartyPopper, 
   Music, 
   Star, 
-  MoveRight,
-  Zap,
   Users,
-  MessageCircle,
-  Tent,
-  Instagram as InstagramIcon,
+  Zap,
   ChevronLeft,
   ChevronRight,
-  Gift,
-  Lightbulb,
+  Play,
+  ArrowDown,
+  Clock,
   Gem,
-  ShieldCheck
+  CheckCircle2,
+  Phone,
+  MessageCircle,
+  Calendar,
+  Layers,
+  Award,
+  Users2,
+  LucideProps,
+  Briefcase,
+  Cake,
+  CalendarRange
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
-import { Badge } from '@/components/atoms/Badge';
-import { Gallery } from '@/components/molecules/Gallery';
 import { Magnetic } from '@/components/atoms/Magnetic';
-import { FloatingDecor } from '@/components/atoms/FloatingDecor';
-import { ParallaxImage } from '@/components/atoms/ParallaxImage';
-import { SVGSpine } from '@/components/atoms/SVGSpine';
 import { TextReveal } from '@/components/atoms/TextReveal';
-import { Counter } from '@/components/atoms/Counter';
-import { BackgroundFlourish } from '@/components/atoms/BackgroundFlourish';
 import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -43,888 +43,614 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const galleryItems = [
-  { id: 1, title: 'Royal Palace Wedding', category: 'Wedding', location: 'Udaipur, Rajasthan', image: '/decor-1.jpg' },
-  { id: 2, title: 'Tech Summit 2026', category: 'Corporate', location: 'Bangalore, India', image: '/decor-2.jpg' },
-  { id: 3, title: 'Summer Garden Party', category: 'Social', location: 'Delhi, India', image: '/decor-3.jpg' },
-  { id: 5, title: 'Heritage Sangeet', category: 'Wedding', location: 'Jaipur, Rajasthan', image: '/hero-8.jpg' },
-  { id: 4, title: 'Modern Estate Gala', category: 'Corporate', location: 'Mumbai, India', image: '/decor-4.jpg' },
-  { id: 6, title: 'Private Birthday Bash', category: 'Social', location: 'Goa, India', image: '/hero-7.jpg' },
+const trustLogos = [
+  { name: 'TAJ', image: '/assets/logos/taj.png' },
+  { name: 'ITC Hotels', subtitle: 'Responsible Luxury' },
+  { name: 'THE LEELA', subtitle: 'PALACES HOTELS RESORTS' },
+  { name: 'HYATT REGENCY', image: '/assets/logos/hyatt.png' },
+  { name: 'JW MARRIOTT', image: '/assets/logos/marriott.png' },
+  { name: 'Radisson', image: '/assets/logos/radisson.png' },
 ];
 
-const eventTypes = [
-  { title: 'Weddings', icon: <Heart size={20} />, image: '/hero-2.jpg', desc: 'Beautiful weddings planned with love and care.', color: 'var(--color-burnished)' },
-  { title: 'Corporate', icon: <Sparkles size={20} />, image: '/hero-3.jpg', desc: 'Professional events for your business needs.', color: 'var(--color-heritage)' },
-  { title: 'Birthdays', icon: <PartyPopper size={20} />, image: '/hero-4.jpg', desc: 'Fun celebrations for your special day.', color: '#FDFCF0' },
-  { title: 'Family', icon: <Star size={20} />, image: '/hero-5.jpg', desc: 'Simple and elegant family gatherings.', color: 'var(--color-burnished-light)' },
-  { title: 'Festivals', icon: <Tent size={20} />, image: '/hero-6.jpg', desc: 'Large events that bring people together.', color: 'var(--color-heritage-soft)' },
-  { title: 'Private Parties', icon: <Users size={20} />, image: '/hero-7.jpg', desc: 'Intimate parties for your close friends.', color: '#F9F7F2' },
-];
-
-const steps = [
-  { title: 'Your Vision', desc: 'We listen to your ideas and find what makes your event special.', icon: <Sparkles size={20} /> },
-  { title: 'Careful Planning', desc: 'We handle all the details so you don\'t have to worry.', icon: <Zap size={20} /> },
-  { title: 'Perfect Style', desc: 'We pick the best colors and decor to match your taste.', icon: <Users size={20} /> },
-  { title: 'The Big Day', desc: 'We make sure everything runs smoothly so you can have fun.', icon: <Star size={20} /> },
-];
-
-const stats = [
-  { 
-    value: '150+', 
-    label: 'Bespoke Weddings',
-    desc: 'Crafted with precision and elegance'
+const services = [
+  {
+    title: 'WEDDINGS',
+    desc: 'Exquisite weddings that reflect your story and style.',
+    image: '/decor-1.jpg',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="9" cy="12" r="5" />
+        <circle cx="15" cy="12" r="5" />
+      </svg>
+    ),
   },
-  { 
-    value: '12+', 
-    label: 'Years of Artistry',
-    desc: 'A legacy of professional excellence'
+  {
+    title: 'CORPORATE EVENTS',
+    desc: 'Professional events that inspire, engage and leave a lasting impact.',
+    image: '/decor-4.jpg',
+    icon: <Briefcase size={22} strokeWidth={0.75} />,
   },
-  { 
-    value: '25+', 
-    label: 'Cities Worldwide',
-    desc: 'Curating luxury across the globe'
+  {
+    title: 'PRIVATE CELEBRATIONS',
+    desc: 'Birthdays, anniversaries and intimate celebrations with a personal touch.',
+    image: '/decor-2.jpg',
+    icon: <Cake size={22} strokeWidth={0.75} />,
+  },
+  {
+    title: 'EVENT PRODUCTION & ENTERTAINMENT',
+    desc: 'End-to-end production, entertainment and technical solutions.',
+    image: '/hero-6.jpg',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="4" width="18" height="16" rx="1" />
+        <path d="M12 7l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" />
+      </svg>
+    ),
+  },
+];
+
+const categories = [
+  { title: 'WEDDINGS', image: '/hero-1.jpg' },
+  { title: 'BIRTHDAYS', image: '/hero-7.jpg' },
+  { title: 'CORPORATE EVENTS', image: '/hero-3.jpg' },
+  { title: 'FLEA MARKETS', image: '/decor-5.jpg' },
+  { title: 'FESTIVALS & CULTURAL EVENTS', image: '/decor-6.jpg' },
+  { title: 'PRIVATE PARTIES', image: '/decor-7.jpg' },
+];
+
+const whyChooseUs = [
+  {
+    title: 'BESPOKE CONCEPTS',
+    desc: 'Unique ideas tailored to your vision.',
+    icon: <Sparkles size={24} strokeWidth={1.5} />,
+  },
+  {
+    title: 'SEAMLESS EXECUTION',
+    desc: 'Flawless planning and perfect execution.',
+    icon: <Zap size={24} strokeWidth={1.5} />,
+  },
+  {
+    title: 'PREMIUM VENDOR NETWORK',
+    desc: 'Trusted partners for the best quality.',
+    icon: <Users2 size={24} strokeWidth={1.5} />,
+  },
+  {
+    title: 'ATTENTION TO DETAIL',
+    desc: 'Every detail matters, and we perfect it.',
+    icon: <Layers size={24} strokeWidth={1.5} />,
+  },
+  {
+    title: 'PASSIONATE TEAM',
+    desc: 'A dedicated team that cares for your event.',
+    icon: <Heart size={24} strokeWidth={1.5} />,
   },
 ];
 
 const testimonials = [
-  { id: 1, content: "Zing Bliss made our wedding dream come true. Every detail was curated with such finesse, and the execution was flawless.", author: "Anjali & Rahul", event: "Palace Wedding", avatar: "/hero-1.jpg" },
-  { id: 2, content: "Professionalism meets pure creativity. Our corporate tech gala was transformed into a cinematic experience.", author: "Vikram S.", event: "Tech Summit", avatar: "/hero-2.jpg" },
-  { id: 3, content: "The absolute best in the industry. They understood our intimate aesthetic and brought it to life beautifully.", author: "Sonia M.", event: "Birthday Celebration", avatar: "/hero-3.jpg" },
-  { id: 4, content: "A level of sophistication I haven't seen before. They handled the logistics so we could truly enjoy our day.", author: "Kabir & Meera", event: "Garden Wedding", avatar: "/hero-4.jpg" },
-  { id: 5, content: "Exceptional taste and incredible energy. Every guest was talking about the decor for weeks!", author: "Priya V.", event: "Private Social", avatar: "/hero-5.jpg" },
+  {
+    content: "Our wedding was beyond our dreams! The team at Zing Bliss Events made everything so elegant and perfect.",
+    author: "Riya & Karan",
+    image: "/hero-8.jpg"
+  },
+  {
+    content: "Thank you Zing Bliss Events for the beautiful birthday setup. The theme and decor were exactly what we imagined!",
+    author: "Neha Malhotra",
+    image: "/hero-9.jpg"
+  },
+  {
+    content: "Absolutely loved the décor by Zing Bliss Events! Elegant, creative, and beautifully executed.",
+    author: "Arjun Mehta",
+    image: "/hero-2.jpg"
+  }
 ];
-
-const heroImages = [
-  '/hero-1.jpg',
-  '/hero-2.jpg',
-  '/hero-3.jpg',
-  '/hero-4.jpg',
-  '/hero-5.jpg',
-];
-
-const FloatingMetric = ({ label, value, className }: { label: string, value: string, className?: string }) => (
-  <div className={cn("absolute hidden lg:flex flex-col gap-1 items-center text-center opacity-40 hover:opacity-100 transition-opacity duration-1000 group z-10", className)}>
-    <span className="text-[8px] font-mono uppercase tracking-[0.4em] text-heritage/60 group-hover:text-heritage transition-colors small-caps">{label}</span>
-    <div className="h-px w-6 bg-heritage/20 group-hover:w-10 transition-all" />
-    <span className="text-xl font-serif text-text-primary italic group-hover:text-heritage transition-colors">{value}</span>
-  </div>
-);
-
-const SectionDivider = ({ className }: { className?: string }) => (
-  <div className={cn("flex flex-col items-center gap-2 py-2 relative z-10", className)}>
-    <div className="flex items-center gap-3">
-      <Sparkles size={6} className="text-heritage/20" />
-      <Star size={8} className="text-heritage/30" />
-      <Sparkles size={6} className="text-heritage/20" />
-    </div>
-  </div>
-);
-
-const HowItWorks = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const steps = [
-    {
-      title: 'Share your requirements',
-      desc: 'Tell us your event date, budget, and vision. We listen to find what makes your celebration truly unique.',
-      image: '/decor-1.jpg'
-    },
-    {
-      title: 'Get a personalised proposal',
-      desc: 'Receive curated deals on venues and catering tailored to your exact preferences and aesthetic.',
-      image: '/decor-2.jpg'
-    },
-    {
-      title: 'Confirm and book',
-      desc: 'Secure your date with a minimum deposit and lock the deal. Leave all the logistics to our expert team.',
-      image: '/decor-4.jpg'
-    }
-  ];
-
-  useGSAP(() => {
-    // Reveal steps on scroll
-    gsap.utils.toArray<HTMLElement>('.timeline-step').forEach((step, i) => {
-      gsap.from(step, {
-        scrollTrigger: {
-          trigger: step,
-          start: 'top 85%',
-        },
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
-      });
-    });
-
-    // Animate the vertical line
-    gsap.from('.timeline-line-inner', {
-      scrollTrigger: {
-        trigger: '.timeline-container',
-        start: 'top 50%',
-        end: 'bottom 50%',
-        scrub: true,
-      },
-      scaleY: 0,
-      transformOrigin: 'top center',
-      ease: 'none'
-    });
-
-    // Animate central nodes
-    gsap.utils.toArray<HTMLElement>('.timeline-node').forEach((node) => {
-      gsap.from(node, {
-        scrollTrigger: {
-          trigger: node,
-          start: 'top 60%',
-          toggleActions: 'play none none reverse'
-        },
-        scale: 0,
-        duration: 0.6,
-        ease: 'back.out(1.7)'
-      });
-    });
-  }, { scope: sectionRef });
-
-  return (
-    <section ref={sectionRef} id="process" className="py-16 md:py-20 bg-ivory relative overflow-hidden">
-      <div className="container">
-        <div className="flex flex-col items-center text-center mb-20 space-y-4">
-          <div className="flex items-center gap-6 md:gap-12">
-            <div className="hidden md:block w-32 h-px bg-burnished/20 relative">
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-burnished" />
-            </div>
-            <h2 className="text-4xl md:text-7xl font-serif font-medium tracking-tighter text-text-primary">How it works</h2>
-            <div className="hidden md:block w-32 h-px bg-burnished/20 relative">
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-burnished" />
-            </div>
-          </div>
-          <p className="text-burnished font-serif italic text-lg md:text-xl opacity-80">Your journey to an extraordinary event in 3 easy steps</p>
-        </div>
-
-        <div className="timeline-container relative max-w-5xl mx-auto px-4">
-          {/* Vertical Central Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-burnished/20 -translate-x-1/2 hidden md:block" />
-          <div className="timeline-line-inner absolute left-1/2 top-0 bottom-0 w-px bg-burnished -translate-x-1/2 hidden md:block" />
-
-          <div className="space-y-24 md:space-y-32 relative z-10">
-            {steps.map((step, i) => (
-              <div 
-                key={i} 
-                className={cn(
-                  "timeline-step relative flex flex-col md:flex-row items-center gap-10 md:gap-20",
-                  i % 2 === 1 ? "md:flex-row-reverse" : ""
-                )}
-              >
-                {/* Text Content */}
-                <div className={cn("basis-1/2 space-y-4", i % 2 === 0 ? "md:text-right" : "md:text-left")}>
-                  <div className={cn("flex flex-col", i % 2 === 0 ? "md:items-end" : "md:items-start")}>
-                    <span className="text-5xl md:text-6xl font-serif font-bold text-burnished/40 italic leading-none mb-2">0{i + 1}</span>
-                    <h3 className="text-3xl md:text-4xl font-serif font-medium text-text-primary tracking-tight leading-tight">{step.title}</h3>
-                  </div>
-                  <p className={cn("text-base md:text-lg text-text-secondary leading-relaxed font-sans", i % 2 === 0 ? "ml-auto" : "mr-auto")}>
-                    {step.desc}
-                  </p>
-                </div>
-
-                {/* Central Point (Node) */}
-                <div className="timeline-node absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-burnished hidden md:flex items-center justify-center shadow-lg z-20">
-                   <div className="w-1.5 h-1.5 rounded-full bg-burnished" />
-                </div>
-
-                {/* Visual / Image */}
-                <div className="basis-1/2 w-full">
-                  <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-xl group border-8 border-white bg-white">
-                    <Image 
-                      src={step.image} 
-                      alt={step.title} 
-                      fill 
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-burnished/10 to-transparent opacity-40" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center mt-24 space-y-8">
-          <Magnetic strength={0.2}>
-            <a 
-              href={getGenericWhatsAppLink()} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="h-16 md:h-18 px-12 md:px-16 text-[10px] bg-white text-burnished hover:bg-ivory shadow-lg transition-all hover:scale-105 rounded-full tracking-[0.3em] font-bold border border-linen flex items-center justify-center uppercase"
-            >
-              Begin Planning Now
-            </a>
-          </Magnetic>
-          <div className="flex items-center gap-4 opacity-30">
-            <div className="w-12 h-px bg-burnished" />
-            <Sparkles size={16} className="text-burnished" />
-            <div className="w-12 h-px bg-burnished" />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mainRef = useRef<HTMLElement>(null);
-  const [currentHeroIndex, setCurrentHeroIndex] = React.useState(0);
-  const [currentTestimonial, setCurrentTestimonial] = React.useState(0);
-
-  const nextTestimonial = () => setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  const prevTestimonial = () => setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-
-  const [isMounted, setIsMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsMounted(true);
-    const timer = setInterval(() => {
-      setCurrentHeroIndex((prev) => (prev + 1) % heroImages.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
 
   useGSAP(() => {
-    // Parallax effect for hero
-    gsap.to('.hero-content', {
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      },
-      y: 100,
-      opacity: 0,
-      ease: 'none'
-    });
-
-    const tl = gsap.timeline();
-    tl.from('.hero-badge', { y: 40, opacity: 0, duration: 1.8, ease: 'expo.out' })
-      .from('.header-fade', { y: 120, opacity: 0, duration: 2.2, stagger: 0.2, ease: 'expo.out' }, '-=1.5')
-      .from('.hero-desc', { y: 30, opacity: 0, duration: 1.8, ease: 'expo.out' }, '-=1.8')
-      .from('.hero-btns', { y: 40, opacity: 0, duration: 1.8, ease: 'expo.out' }, '-=1.8')
-      .from('.scroll-indicator', { opacity: 0, y: 20, duration: 1.5, ease: 'power2.out' }, '-=1.2');
-
+    // Fade up animations
     gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
       gsap.from(el, {
         scrollTrigger: {
           trigger: el,
           start: 'top 92%',
         },
-        y: 40,
+        y: 30,
         opacity: 0,
-        duration: 1.2,
-        ease: 'power3.out'
+        duration: 0.8,
+        ease: 'power2.out'
       });
     });
 
-    // Advanced Skew-on-Scroll for sections and images
-    const skewElements = gsap.utils.toArray<HTMLElement>('.fade-up');
-    skewElements.forEach((el) => {
-      const proxy = { skew: 0 },
-          skewSetter = gsap.quickSetter(el, "skewY", "deg"),
-          clamp = gsap.utils.clamp(-10, 10);
-
-      ScrollTrigger.create({
-        onUpdate: (self) => {
-          const skew = clamp(self.getVelocity() / -300);
-          if (Math.abs(skew) > Math.abs(proxy.skew)) {
-            proxy.skew = skew;
-            gsap.to(proxy, {
-              skew: 0, 
-              duration: 0.8, 
-              ease: "power3", 
-              overwrite: true, 
-              onUpdate: () => skewSetter(proxy.skew)
-            });
-          }
-        }
-      });
-      gsap.set(el, { transformOrigin: "right center", force3D: true });
-    });
-
-    // Background color shifts - DISABLED per user request but kept structure for other scroll triggers
-    /*
-    const sections = gsap.utils.toArray<HTMLElement>('section');
-    ...
-    */
+    // Hero content entrance
+    const tl = gsap.timeline();
+    tl.from('.hero-title', { y: 40, opacity: 0, duration: 1.2, ease: 'power3.out' })
+      .from('.hero-subtitle', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.8')
+      .from('.hero-btns', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6');
 
   }, { scope: containerRef });
 
   return (
-    <main ref={mainRef} className="min-h-screen bg-canvas flex flex-col overflow-x-hidden relative transition-colors duration-1000">
-      <div ref={containerRef} className="relative w-full">
-        <FloatingDecor />
-        <SVGSpine height="6000px" viewBox="0 0 20 6000" pathD="M 10 0 L 10 6000" className="opacity-[0.05]" />
+    <main ref={containerRef} className="bg-canvas overflow-x-hidden">
+      
+      {/* 1. Hero Section */}
+      <section className="relative h-[75vh] min-h-[800px] flex items-center justify-start overflow-hidden bg-heritage">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/hero-1.jpg" 
+            alt="Hero Background" 
+            fill 
+            className="object-cover brightness-[0.5] scale-105" 
+            priority
+          />
+          {/* Multi-layered Cinema Gradient for Depth */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,_rgba(212,185,130,0.05)_0%,_transparent_60%)]" />
+        </div>
         
-        <BackgroundFlourish type="floral" className="top-[5%] left-[5%] w-64 h-64 text-heritage/5" parallaxSpeed={0.05} />
-        <BackgroundFlourish type="architectural" className="top-[15%] right-[2%] w-96 h-96 text-heritage/5" parallaxSpeed={0.08} />
+        <div className="container relative z-10 pt-24 md:pt-32">
+          <div className="max-w-6xl">
+            <div className="space-y-10">
+              <h1 className="hero-title text-5xl md:text-8xl lg:text-[8.8rem] font-serif text-white leading-[0.85] tracking-tight">
+                Crafting Experiences <br />
+                That Feel Like <span className="font-script text-[#D4B982] text-7xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-4 italic relative top-6 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)]">magic</span>
+              </h1>
+              <p className="hero-subtitle text-lg md:text-xl text-white/90 font-serif italic max-w-xl leading-relaxed border-l-2 border-[#D4B982]/30 pl-10">
+                Luxury Event Planning for Weddings, <br className="hidden md:block" />
+                Corporate Gatherings & Bespoke Celebrations
+              </p>
+            </div>
 
-        {/* 1. Hero Section */}
-        <section id="hero" className="relative h-screen min-h-[850px] flex items-center overflow-hidden" data-bg="var(--color-canvas)">
-          {/* Depth & Atmosphere Layers */}
-          <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.03] mix-blend-overlay" 
-               style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
-          
-          {/* Cinematic Layered Overlays */}
-          {/* 1. Readability Gradient (Strong Left -> Light Right) */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/30 z-10 pointer-events-none" />
-          
-          {/* 2. Cinematic Vignette (Depth) */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.6))] z-10 pointer-events-none" />
-          
-          {/* 3. Strategic Radial Glow (Behind Headline) */}
-          <div className="absolute inset-0 z-10 pointer-events-none radial-ambient-glow" />
-          
-          <div className="absolute inset-0 z-0">
-            {heroImages.map((img, i) => {
-              if (i !== 0 && !isMounted) return null;
-              return (
-                <div key={img} className={cn("absolute inset-0 transition-opacity duration-[4000ms] ease-in-out", i === currentHeroIndex ? "opacity-100" : "opacity-0")}>
-                  <Image 
-                    src={img} 
-                    alt="Luxury Event" 
-                    fill 
-                    className="object-cover brightness-[0.75] contrast-[1.1] saturate-[0.9] scale-100 animate-[hero-zoom_30s_ease-in-out_infinite_alternate]" 
-                    priority={i === 0} 
-                    sizes="100vw" 
-                  />
-                  {/* Subtle blur on the far left only */}
-                  <div className="absolute left-0 top-0 w-1/3 h-full backdrop-blur-[2px] opacity-10 pointer-events-none" />
-                </div>
-              );
-            })}
+            <div className="hero-btns flex flex-wrap items-center justify-start gap-4 pt-16">
+              <Magnetic strength={0.1}>
+                <Link href="/contact">
+                  <Button className="h-15 px-14 bg-[#D4B982] hover:bg-[#B38B4D] text-white rounded-none tracking-[0.35em] font-bold text-[11px] uppercase border-0 shadow-[0_25px_60px_rgba(212,185,130,0.25)] transition-all duration-700">
+                    PLAN YOUR EVENT
+                  </Button>
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.1}>
+                <Link href="/gallery">
+                  <Button variant="outline" className="h-15 px-14 border-white/70 !text-white hover:bg-white hover:!text-black rounded-none tracking-[0.35em] font-bold text-[12px] uppercase bg-black/20 backdrop-blur-lg transition-all duration-700">
+                    VIEW OUR WORK
+                  </Button>
+                </Link>
+              </Magnetic>
+            </div>
           </div>
+        </div>
 
-          <div className="container relative z-30 flex flex-col items-center md:items-start text-center md:text-left hero-content">
-            <div className="hero-badge overflow-hidden mb-8 flex flex-col items-center md:items-start">
-               <span className="text-[10px] font-mono text-burnished/80 uppercase tracking-[0.6em] font-bold drop-shadow-sm">Est. 2017 &bull; Bespoke Artistry</span>
+        {/* Refined Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-white/40 group cursor-pointer transition-colors hover:text-[#D4B982]">
+          <ArrowDown size={18} className="animate-bounce" />
+          <span className="text-[9px] font-sans font-bold uppercase tracking-[0.6em] opacity-80 group-hover:opacity-100 transition-opacity">SCROLL TO EXPLORE</span>
+        </div>
+
+        {/* Play Showreel - Enhanced Visibility */}
+        <div className="absolute bottom-10 right-10 hidden lg:flex items-center gap-3 text-white/50 group cursor-pointer hover:text-white transition-all">
+           <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:border-[#D4B982] group-hover:bg-[#D4B982]/10 backdrop-blur-md transition-all duration-700">
+             <Play size={18} fill="currentColor" className="ml-1" />
+           </div>
+           <span className="text-[10px] font-bold uppercase tracking-[0.5em] opacity-80 group-hover:opacity-100">PLAY SHOWREEL</span>
+        </div>
+      </section>
+
+      {/* 2. Trust Strip */}
+      <section className="bg-[#05100a] py-14 md:py-16 overflow-hidden border-y border-white/5 relative">
+        {/* Subtle Ambient Glow for the strip */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.04)_0%,_transparent_70%)] pointer-events-none" />
+        
+        <div className="container relative z-10">
+          <div className="flex flex-col items-center space-y-12">
+            <div className="flex items-center gap-3 fade-up">
+               <div className="w-16 h-px bg-gradient-to-r from-transparent to-[#D4B982]/30" />
+               <span className="text-[10px] md:text-[11px] text-[#D4B982]/80 uppercase tracking-[0.6em] font-bold">
+                 TRUSTED BY FAMILIES, BRANDS & LUXURY VENUES
+               </span>
+               <div className="w-16 h-px bg-gradient-to-l from-transparent to-[#D4B982]/30" />
             </div>
             
-            <div className="max-w-[1250px] space-y-8 md:space-y-10 group-content">
-              <h1 className="hero-title flex flex-col items-center md:items-start gap-2 md:gap-4 drop-shadow-[0_20px_60px_rgba(0,0,0,1)]">
-                <div className="overflow-hidden">
-                  <span className="block text-3xl md:text-5xl lg:text-6xl font-serif font-medium text-white/90 tracking-tight leading-[1.2] header-fade transform-gpu">
-                    We Design Events That
-                  </span>
-                </div>
-                <div className="overflow-hidden">
-                  <span className="block text-6xl md:text-[9.5rem] lg:text-[12rem] font-serif font-medium text-white italic leading-[0.7] header-fade transform-gpu -mt-2">
-                    <span className="tracking-tight">People</span> <span className="text-burnished text-glow-refined not-italic font-bold">Never</span> <span className="opacity-80">Forget</span>
-                  </span>
-                </div>
-              </h1>
-
-              <div className="overflow-hidden max-w-xl md:ml-2">
-                <p className="hero-desc text-lg md:text-2xl text-white/60 leading-relaxed font-sans font-light drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)] italic">
-                  Luxury event planning for those who expect nothing less than perfection.
-                </p>
-              </div>
-            </div>
-
-            <div className="hero-btns flex flex-col sm:flex-row items-center gap-6 md:gap-10 mt-14">
-              <Magnetic strength={0.2}>
-                <Link href="/contact">
-                  <Button 
-                    size="lg" 
-                    className="h-18 px-10 text-[11px] btn-emerald-gold text-white border-0 hover:scale-[1.03] active:scale-95 rounded-full uppercase font-extrabold tracking-[0.4em] group overflow-hidden"
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                      Plan Your Event
-                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </Button>
-                </Link>
-              </Magnetic>
-
-              <Magnetic strength={0.2}>
-                <Link href="/contact">
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="h-18 px-10 text-[11px] border-white/30 border-2 !text-white/90 hover:!text-white hover:bg-white/5 transition-all duration-700 hover:scale-105 active:scale-95 rounded-full uppercase font-bold tracking-[0.4em] backdrop-blur-md"
-                  >
-                    Book Consultation
-                  </Button>
-                </Link>
-              </Magnetic>
-            </div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center group cursor-pointer scroll-indicator" 
-               onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}>
-            <div className="h-24 w-[2px] bg-white/10 relative overflow-hidden">
-               <div className="absolute top-0 left-0 w-full h-1/2 bg-burnished animate-[scroll-line_3.5s_ease-in-out_infinite]" />
-            </div>
-          </div>
-        </section>
-
-        {/* 2. Trust Strip */}
-        <section className="bg-surface py-10 md:py-24 relative z-30 overflow-hidden border-y border-linen/50">
-          <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(179,139,77,0.02)_0%,_transparent_70%)] pointer-events-none" />
-
-          <div className="container relative z-10">
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-linen/60">
-              {stats.map((stat, i) => (
-                <div key={stat.label} className="flex flex-col items-center text-center group py-6 md:py-8 px-4 md:px-12 fade-up">
-                   <div className="flex flex-col items-center space-y-3 md:space-y-6">
-                      {/* Icon above number */}
-                      <div className="text-burnished/40 group-hover:text-burnished transition-colors duration-700 transform group-hover:scale-110">
-                        {i === 0 && <Heart size={24} strokeWidth={1} />}
-                        {i === 1 && <Star size={24} strokeWidth={1} />}
-                        {i === 2 && <Users size={24} strokeWidth={1} />}
-                      </div>
-
-                      <div className="flex flex-col items-center">
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-6xl md:text-8xl lg:text-9xl font-serif text-text-primary italic tracking-tight leading-none">
-                            <Counter value={stat.value} />
-                          </span>
-                          <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-burnished opacity-60" />
-                        </div>
-                        
-                        <div className="mt-4 md:mt-8 space-y-1 md:space-y-2">
-                          <span className="text-[11px] md:text-[13px] font-sans uppercase tracking-[0.6em] text-text-primary font-bold block">
-                            {stat.label}
-                          </span>
-                          <p className="text-[10px] md:text-[11px] font-serif italic text-text-secondary opacity-80 group-hover:opacity-100 transition-opacity">
-                            {stat.desc}
-                          </p>
-                        </div>
-                      </div>
-                   </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-16 lg:gap-24 items-center justify-items-center">
+              {trustLogos.map((logo, i) => (
+                <div 
+                  key={i} 
+                  className="flex flex-col items-center text-center group fade-up w-full"
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                >
+                  {logo.image ? (
+                    <div className="relative w-28 md:w-36 h-12 md:h-14 transition-all duration-700 group-hover:scale-110 flex items-center justify-center">
+                      <Image 
+                        src={logo.image} 
+                        alt={logo.name} 
+                        fill 
+                        className="object-contain opacity-50 grayscale brightness-[200%] contrast-[100%] group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" 
+                        sizes="(max-width: 768px) 120px, 180px"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center">
+                      <span className="text-lg md:text-xl font-serif text-white/70 tracking-[0.15em] group-hover:text-[#D4B982] group-hover:scale-110 transition-all duration-700 ease-expo">
+                        {logo.name}
+                      </span>
+                      <div className="w-0 h-px bg-[#D4B982]/40 group-hover:w-full transition-all duration-700 mt-2 mb-3" />
+                      <span className="text-[10px] text-[#D4B982]/40 font-sans uppercase tracking-[0.4em] leading-tight group-hover:text-[#D4B982]/70 transition-all duration-700">
+                        {logo.subtitle}
+                      </span>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
-        </section>
-        {/* 3. Recent Work (Portfolio) */}
-        <section id="gallery" className="py-16 md:py-20 bg-canvas" data-bg="var(--color-canvas)">
-          <div className="container space-y-16">
-            <div className="text-center space-y-4 fade-up">
-              <TextReveal text="Our Recent Work" className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight" />
-              <p className="text-lg text-text-secondary font-serif italic font-light">A glimpse into our finest celebrations</p>
+        </div>
+      </section>
+
+      {/* 3. Our Services */}
+      <section id="services" className="py-12 md:py-32 bg-[#FDFBF7] relative overflow-hidden">
+        {/* Subtle Background Flourish */}
+        <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
+          <div className="w-full h-full dot-pattern" />
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="flex flex-col items-center text-center space-y-6 mb-5 fade-up">
+            <span className="text-[10px] md:text-[11px] text-[#D4B982] uppercase tracking-[0.7em] font-bold">WHAT WE DO</span>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-[#121212] tracking-tight">Our Services</h2>
+            <div className="relative pt-6 flex items-center justify-center">
+              <div className="w-24 h-px bg-[#D4B982]/40" />
+              <div className="mx-6 w-3 h-3 rotate-45 border border-[#D4B982]/60 bg-[#FDFBF7]" />
+              <div className="w-24 h-px bg-[#D4B982]/40" />
             </div>
-            <Gallery items={galleryItems} aspectRatio="aspect-[4/5]" />
-            <div className="flex justify-center pt-12">
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {services.map((service, i) => (
+              <div 
+                key={i} 
+                className="group relative flex flex-col bg-[#0a1f13] rounded-2xl overflow-hidden transition-all duration-700 hover:-translate-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:shadow-[0_40px_100px_rgba(0,0,0,0.3)] fade-up h-full" 
+                style={{ transitionDelay: `${i * 150}ms` }}
+              >
+                <div className="h-56 relative overflow-hidden">
+                  <Image 
+                    src={service.image} 
+                    alt={service.title} 
+                    fill 
+                    className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110" 
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all duration-700" />
+                </div>
+                
+                <div className="p-8 md:p-9 flex-grow flex flex-col justify-between relative">
+                   <div className="space-y-6">
+                     <div className="flex gap-4 items-center">
+                       <div className="text-[#D4B982] shrink-0">
+                         {React.cloneElement(service.icon as React.ReactElement<LucideProps>, { size: 28, strokeWidth: 1.2 })}
+                       </div>
+                       <h3 className="text-[16px] md:text-[18px] font-serif text-white tracking-[0.05em] leading-tight uppercase font-medium">
+                         {service.title}
+                       </h3>
+                     </div>
+                     <p className="text-[12px] md:text-[13px] text-white/50 font-sans font-light leading-relaxed group-hover:text-white/80 transition-colors">
+                       {service.desc}
+                     </p>
+                   </div>
+                   <div className="pt-8">
+                     <Link href="/services" className="inline-flex items-center gap-3 text-[10px] text-[#D4B982] uppercase tracking-[0.5em] font-bold group/link relative transition-all">
+                       <span className="relative z-10">EXPLORE</span>
+                       <ArrowRight size={14} className="group-hover/link:translate-x-2 transition-transform duration-500" />
+                     </Link>
+                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. About Us Section */}
+      <section className="py-12 md:py-36 bg-[#FDFBF7] relative overflow-hidden border-t border-linen/20">
+        <div className="container relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
+            {/* Images Column - Refined Editorial Layout */}
+            <div className="relative fade-up">
+              <div className="aspect-[3/4] relative rounded-none overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.12)] z-10 border border-linen/30">
+                <Image src="/hero-4.jpg" alt="Event setup" fill className="object-cover" />
+                <div className="absolute inset-0 bg-heritage/5 mix-blend-multiply" />
+              </div>
+              <div className="absolute -bottom-12 -right-12 w-3/4 aspect-[4/3] rounded-none overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.25)] z-20 border-[15px] border-white hidden md:block">
+                <Image src="/decor-3.jpg" alt="Detail" fill className="object-cover" />
+              </div>
+              
+              {/* Subtle accent line */}
+              <div className="absolute -top-10 -left-10 w-32 h-32 border-t border-l border-[#D4B982]/20 z-0" />
+            </div>
+
+            {/* Text Column - Editorial Hierarchy */}
+            <div className="space-y-12 fade-up lg:pl-12">
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-px bg-[#D4B982]" />
+                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">ABOUT US</span>
+                </div>
+                <div className="space-y-2">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-[#121212] leading-[1.1] uppercase">
+                    WE DON&apos;T PLAN EVENTS.
+                  </h2>
+                  <h3 className="font-script text-[#D4B982] text-3xl md:text-4xl lg:text-5xl lowercase leading-none italic -mt-2">
+                    We Curate Experiences.
+                  </h3>
+                </div>
+                <div className="space-y-8 text-[#525252] leading-relaxed font-sans font-light text-base md:text-lg opacity-90 max-w-xl pt-4">
+                  <p>
+                    Zing Bliss Events is dedicated to turning life&apos;s special moments into unforgettable experiences. We specialize in planning, designing and executing events with creativity, precision and professionalism.
+                  </p>
+                  <p className="italic font-serif text-heritage/70 border-l-2 border-[#D4B982] pl-8 py-2">
+                    &quot;From intimate gatherings to grand celebrations, every detail is thoughtfully curated to create magical moments.&quot;
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Link href="/about">
+                  <Button className="h-14 px-12 bg-[#0a1f13] text-white hover:bg-black rounded-none tracking-[0.4em] font-bold text-[12px] uppercase border-0 shadow-[0_25px_60px_rgba(10,31,19,0.2)] transition-all duration-700">
+                    DISCOVER OUR STORY
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Background floral decoration - Bottom Right */}
+        <div className="absolute -bottom-24 -right-24 w-[600px] h-[600px] opacity-[0.1] pointer-events-none z-0 grayscale hover:grayscale-0 transition-all duration-1000 mix-blend-multiply overflow-hidden">
+          <Image src="/flower-decor.png" alt="" fill className="object-contain object-right-bottom scale-110" />
+        </div>
+      </section>
+
+      {/* 5. Experience Categories & Why Choose Us - Combined Flow */}
+      <section className="bg-[#0a1f13] relative overflow-hidden">
+        {/* Ambient Depth Glow - Refined */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.04)_0%,_transparent_70%)] pointer-events-none" />
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        
+        {/* Experience Categories Part */}
+        <div className="pt-10 pb-2">
+          <div className="container relative z-10">
+            <div className="flex flex-col items-center text-center space-y-3 mb-5 fade-up">
+              <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.7em] font-bold">EXPERIENCE CATEGORIES</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-white tracking-tight leading-tight">Moments We Bring To Life</h2>
+              <div className="relative pt-3 flex items-center justify-center">
+                <div className="w-16 h-px bg-white/10" />
+                <div className="mx-4 w-2.5 h-2.5 rotate-45 border border-[#D4B982]/40 bg-[#0a1f13]" />
+                <div className="w-16 h-px bg-white/10" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
+              {categories.map((cat, i) => (
+                <div 
+                  key={i} 
+                  className="group relative aspect-[1.4/1] rounded-sm overflow-hidden cursor-pointer fade-up transition-all duration-700 hover:scale-[1.02] ring-1 ring-white/5 shadow-2xl" 
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                >
+                  <Image 
+                    src={cat.image} 
+                    alt={cat.title} 
+                    fill 
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-[0.55] group-hover:brightness-[0.75]" 
+                    sizes="(max-width: 768px) 50vw, 15vw"
+                  />
+                  
+                  {/* Refined Gradient Overlay - Stronger for better contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-100 group-hover:opacity-70 transition-opacity duration-700" />
+                  
+                  <div className="absolute inset-x-0 bottom-4 text-center px-2 transform group-hover:-translate-y-1 transition-transform duration-700">
+                    <span className="text-[8px] md:text-[9px] font-bold text-white uppercase tracking-[0.2em] drop-shadow-2xl group-hover:text-[#D4B982] transition-all duration-500 block">
+                      {cat.title}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex justify-center mt-8 fade-up">
               <Link href="/gallery">
-                <Button className="h-16 px-16 text-[10px] shadow-lg hover:scale-105 rounded-full uppercase font-bold tracking-[0.3em] bg-heritage text-white border-0">View All Projects</Button>
+                <Button variant="outline" className="h-10 px-8 border-white/15 !text-white hover:bg-[#D4B982] hover:!text-white hover:border-[#D4B982] rounded-none tracking-[0.4em] font-bold text-[9px] uppercase backdrop-blur-sm transition-all duration-700">
+                  VIEW ALL EVENTS
+                </Button>
               </Link>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* 4. Services Section */}
-        <section id="services" className="py-16 md:py-24 bg-surface relative overflow-hidden border-t border-linen/40" data-bg="var(--color-surface)">
-          <div className="container space-y-20">
-            <div className="flex flex-col items-center text-center space-y-4 fade-up relative z-10">
-              <TextReveal text="Our Services" className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-text-primary tracking-tight" />
-              <p className="text-lg text-text-secondary font-sans font-light max-w-2xl mx-auto">
-                From luxury weddings to corporate experiences — we plan, design & execute seamlessly.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 relative z-10">
-              {[
-                { 
-                  title: 'Weddings & Celebrations', 
-                  desc: 'Bespoke wedding experiences that reflect your unique story, style, and dreams.', 
-                  img: '/decor-1.jpg',
-                  icon: <Heart size={20} strokeWidth={1.5} />,
-                  value: 'Crafting Timeless Legacies',
-                  items: ['Luxury & Theme Weddings', 'Destination Weddings', 'Cinematic Videography']
-                },
-                { 
-                  title: 'Birthdays & Kids', 
-                  desc: 'From playful themes to premium setups, we create joyful celebrations filled with imagination.', 
-                  img: '/hero-7.jpg',
-                  icon: <PartyPopper size={20} strokeWidth={1.5} />,
-                  value: 'Whimsical Wonders',
-                  items: ['Theme-Based Styling', 'Live Entertainment', 'Custom Return Gifts']
-                },
-                { 
-                  title: 'Corporate Events', 
-                  desc: 'Professional, impactful, and seamlessly executed events designed to elevate your brand.', 
-                  img: '/decor-4.jpg',
-                  icon: <Zap size={20} strokeWidth={1.5} />,
-                  value: 'Brand Excellence',
-                  items: ['Product Launches', 'Awards & Annual Days', 'Employee Engagement']
-                },
-                { 
-                  title: 'Social & Lifestyle', 
-                  desc: 'Elegant and intimate celebrations tailored to your special moments and private gatherings.', 
-                  img: '/decor-2.jpg',
-                  icon: <Sparkles size={20} strokeWidth={1.5} />,
-                  value: 'Intimate Elegance',
-                  items: ['Baby Showers & Proposals', 'Ring Ceremony', 'Private Theme Parties']
-                },
-                { 
-                  title: 'Festival Celebrations', 
-                  desc: 'Celebrate traditions with a touch of creativity and style, curated for every festive season.', 
-                  img: '/decor-3.jpg',
-                  icon: <Star size={20} strokeWidth={1.5} />,
-                  value: 'Traditional Artistry',
-                  items: ['Diwali Dcor', 'Christmas Celebrations', 'Custom Festive Experiences']
-                },
-                { 
-                  title: 'Artist Management', 
-                  desc: 'We bring the best talent to your event, ensuring unforgettable entertainment and energy.', 
-                  img: '/hero-6.jpg',
-                  icon: <Music size={20} strokeWidth={1.5} />,
-                  value: 'World-Class Talent',
-                  items: ['Bollywood Celebrities', 'Live Bands & Singers', 'Innovative Global Acts']
-                },
-              ].map((service, i) => (
-                <div key={i} className="group bg-ivory p-8 space-y-8 transition-all duration-700 flex flex-col rounded-[2.5rem] border border-linen/50 shadow-sm hover:shadow-[0_40px_100px_rgba(0,0,0,0.08)] hover:scale-[1.02] hover:-translate-y-2 hover:border-burnished/30">
-                  <div className="aspect-[16/10] w-full rounded-[2rem] overflow-hidden relative shadow-inner">
-                    <Image src={service.img} alt={service.title} fill className="object-cover transition-transform duration-[3s] ease-out group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-700" />
-                    <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-burnished shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                      {service.icon}
-                    </div>
-                  </div>
-                  <div className="space-y-6 px-2 pb-2 flex flex-col items-center text-center">
-                    <div className="space-y-3">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-burnished/60 block">{service.value}</span>
-                      <h3 className="text-2xl md:text-3xl font-serif font-medium text-text-primary italic leading-tight">{service.title}</h3>
-                    </div>
-                    <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">{service.desc}</p>
-                    
-                    <ul className="grid grid-cols-1 gap-2 pt-2">
-                      {service.items.map((item, idx) => (
-                        <li key={idx} className="text-[10px] md:text-[11px] uppercase tracking-widest text-text-muted font-bold flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-burnished/40" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link href="/services" className="inline-flex items-center gap-3 mt-4 text-[10px] uppercase tracking-[0.4em] font-bold text-heritage group/link">
-                      <span className="border-b border-heritage/20 pb-1 group-hover/link:border-heritage transition-all small-caps">Explore More</span>
-                      <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        {/* 5. Why Choose Us (Redesigned with Image Context) */}
-        <section id="why-choose-us" className="relative pt-[120px] pb-[100px] bg-surface overflow-hidden">
-          {/* Curved Top Background Element */}
-          <div className="absolute top-0 left-0 w-full h-[100px] bg-canvas">
-            <svg 
-              viewBox="0 0 1440 100" 
-              fill="none" 
-              preserveAspectRatio="none" 
-              className="absolute bottom-0 w-full h-full text-surface fill-current"
-            >
-              <path d="M0 100 C 240 0, 480 0, 720 50 C 960 100, 1200 100, 1440 0 V 100 H 0 Z" />
-            </svg>
-          </div>
-
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_center,_rgba(179,139,77,0.05)_0%,_transparent_70%)] pointer-events-none" />
-          
-          <div className="container max-w-[1200px] mx-auto relative z-10 mt-10">
-            {/* Header */}
-            <div className="flex flex-col items-center text-center mb-20 space-y-4 fade-up">
-              <span className="text-[11px] text-text-muted uppercase tracking-[0.4em] font-bold">
-                THE PRESTIGE ADVANTAGE
+        {/* Why Choose Us Part - Integrated */}
+        <div className="pb-10 pt-2 relative">
+          <div className="container relative z-10">
+            <div className="text-center mb-5 fade-up">
+              <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.7em] font-bold opacity-80">
+                WHY CHOOSE ZING BLISS EVENTS?
               </span>
-              <h2 className="text-5xl md:text-6xl font-serif font-medium text-text-primary leading-tight">
-                Why choose our <span className="text-burnished italic">artistry?</span>
-              </h2>
-              <p className="text-lg text-text-secondary max-w-2xl mx-auto font-sans font-light leading-relaxed">
-                We bring years of meticulous experience in planning and executing the world&apos;s most sophisticated celebrations.
-              </p>
+              <div className="w-12 h-px bg-[#D4B982]/20 mx-auto mt-4" />
             </div>
 
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { 
-                  title: 'Exclusive Access', 
-                  desc: 'Unrivalled access to the world&apos;s most exclusive venues and a global network of premier luxury partners.',
-                  icon: <Gem className="w-8 h-8" strokeWidth={1} />,
-                  accent: 'Elite Deals'
-                },
-                { 
-                  title: 'Expert Insights', 
-                  desc: 'Our senior planners bring decades of wisdom to craft the perfect atmosphere for your unique vision.',
-                  icon: <Lightbulb className="w-8 h-8" strokeWidth={1} />,
-                  accent: 'Bespoke Strategy'
-                },
-                { 
-                  title: 'Stress-free Journey', 
-                  desc: 'From initial concept to the final encore, we orchestrate every detail so you can remain fully present.',
-                  icon: <ShieldCheck className="w-8 h-8" strokeWidth={1} />,
-                  accent: 'Seamless Care'
-                },
-              ].map((item, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-4 relative z-10">
+              {whyChooseUs.map((item, i) => (
                 <div 
                   key={i} 
-                  className={cn(
-                    "bg-white p-12 rounded-[2rem] border border-linen/30 flex flex-col items-center text-center transition-all duration-700 ease-out group fade-up",
-                    "shadow-[0_20px_50px_rgba(0,0,0,0.02)] hover:shadow-[0_40px_80px_rgba(179,139,77,0.1)] hover:-translate-y-3",
-                    i === 1 ? "md:scale-105 z-20 border-burnished/10" : "z-10"
-                  )}
+                  className="flex flex-row items-center lg:items-start text-left space-x-4 fade-up group" 
+                  style={{ transitionDelay: `${i * 80}ms` }}
                 >
-                  {/* Icon Container with Glass Effect */}
-                  <div className="mb-10 relative">
-                    <div className="w-20 h-20 rounded-3xl bg-surface flex items-center justify-center text-burnished transform transition-transform duration-700 group-hover:rotate-[10deg] group-hover:scale-110">
-                      {item.icon}
-                    </div>
-                    {/* Subtle Glow */}
-                    <div className="absolute inset-0 bg-burnished/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="text-[#D4B982] shrink-0 group-hover:scale-110 transition-transform duration-700 relative pt-1">
+                    <div className="absolute inset-0 blur-2xl bg-[#D4B982]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    {React.cloneElement(item.icon as React.ReactElement<LucideProps>, { 
+                      size: 32, 
+                      strokeWidth: 0.75 
+                    })}
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-[10px] md:text-[11px] font-bold text-[#D4B982] uppercase tracking-[0.2em] leading-tight">
+                      {item.title}
+                    </h3>
+                    <p className="text-[10px] md:text-[11px] text-white/50 font-sans leading-relaxed font-light group-hover:text-white/80 transition-colors duration-700">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* 7. Testimonials */}
+      <section className="py-12 md:py-10 bg-[#FDFBF7] relative overflow-hidden">
+        {/* Deep Decorative Background Rings - Matching Reference 1 */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-[#D4B982]/5 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] border border-[#D4B982]/5 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1600px] h-[1600px] border border-[#D4B982]/5 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.8)_0%,_transparent_70%)]" />
+        </div>
+
+        {/* Decorative background element - bottom line */}
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-linen/40 to-transparent" />
+        
+        <div className="container relative z-10">
+          <div className="flex flex-col items-center text-center space-y-6 mb-5 fade-up">
+            <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">CLIENT LOVE</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-[#121212] tracking-tighter">Words That Inspire Us</h2>
+            
+            {/* Refined Diamond Separator */}
+            <div className="relative pt-6 flex items-center justify-center">
+              <div className="w-20 h-px bg-[#D4B982]/30" />
+              <div className="mx-6 w-3 h-3 rotate-45 border border-[#D4B982]/40 bg-[#FDFBF7] shadow-sm flex items-center justify-center">
+                <div className="w-1 h-1 bg-[#D4B982]/60 rotate-45" />
+              </div>
+              <div className="w-20 h-px bg-[#D4B982]/30" />
+            </div>
+          </div>
+
+          <div className="relative px-0 lg:px-20">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-4">
+              {testimonials.map((t, i) => (
+                <div 
+                  key={i} 
+                  className="bg-white px-10 py-16 md:px-12 md:py-10 rounded-none shadow-[0_40px_100px_rgba(0,0,0,0.04)] border border-linen/5 flex flex-col items-center text-center space-y-10 fade-up transition-all duration-1000 hover:-translate-y-4 hover:shadow-[0_60px_120px_rgba(0,0,0,0.08)] group relative" 
+                  style={{ transitionDelay: `${i * 150}ms` }}
+                >
+                  {/* Avatar - Top Positioned Overflowing */}
+                  <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full overflow-hidden border-[6px] border-[#FDFBF7] shadow-2xl transition-transform duration-700 group-hover:scale-110">
+                    <Image src={t.image} alt={t.author} fill className="object-cover scale-110" />
                   </div>
 
-                  <span className="text-[10px] font-mono text-burnished/60 uppercase tracking-widest mb-4 font-bold">{item.accent}</span>
-                  <h3 className="text-2xl font-serif font-medium text-text-primary mb-6">{item.title}</h3>
-                  <p className="text-text-secondary leading-relaxed font-sans font-light text-sm md:text-base">
-                    {item.desc}
-                  </p>
+                  <div className="pt-4 space-y-8 flex-grow flex flex-col items-center justify-center">
+                    {/* Refined Sparkle Icon */}
+                    <div className="text-[#D4B982]/20 transform group-hover:scale-125 transition-transform duration-700">
+                       <Sparkles size={24} strokeWidth={1} />
+                    </div>
+                    
+                    <p className="text-[15px] md:text-[16px] text-[#525252] font-sans italic leading-[1.8] opacity-90 font-light max-w-[280px]">
+                      &quot;{t.content}&quot;
+                    </p>
+                    
+                    {/* Author Section with Separator Line */}
+                    <div className="flex flex-col items-center gap-3 pt-6 w-full mt-auto">
+                      <div className="w-8 h-px bg-linen group-hover:w-14 group-hover:bg-[#D4B982]/40 transition-all duration-700" />
+                      <span className="text-[11px] font-bold text-[#121212] uppercase tracking-[0.4em] block">
+                        — {t.author}
+                      </span>
+                    </div>
+                  </div>
                   
-                  {/* Decorative Line */}
-                  <div className="w-8 h-[1px] bg-linen mt-8 group-hover:w-16 group-hover:bg-burnished/30 transition-all duration-700" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-
-        {/* 6. CTA Strip (MID CTA) */}
-        <section className="bg-heritage py-20 md:py-24 relative overflow-hidden border-y border-white/5">
-          <div className="absolute inset-0 dot-pattern opacity-10 pointer-events-none" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(179,139,77,0.15)_0%,_transparent_60%)] pointer-events-none" />
-          
-          <div className="container relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16 md:gap-20">
-            <div className="space-y-6 text-center lg:text-left max-w-2xl">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif text-white italic tracking-tight leading-[1.1]">
-                Ready to Plan Your <span className="text-burnished">Dream Event?</span>
-              </h2>
-              <p className="text-white/70 font-serif italic text-xl md:text-2xl max-w-xl leading-relaxed">
-                Let&apos;s turn your vision into an unforgettable experience.
-              </p>
-            </div>
-            
-            <div className="flex flex-col items-center gap-4">
-              <Magnetic strength={0.2}>
-                <Link href="/contact">
-                  <Button size="lg" className="h-20 px-20 text-[11px] bg-white text-heritage hover:bg-ivory transition-all duration-500 shadow-[0_20px_60px_rgba(0,0,0,0.3)] hover:scale-110 active:scale-95 rounded-full uppercase tracking-[0.4em] font-bold border-0">
-                    Plan Your Event
-                  </Button>
-                </Link>
-              </Magnetic>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-white/40 italic">Takes less than 2 minutes</span>
-            </div>
-          </div>
-        </section>
-
-        {/* 7. How We Work */}
-        <HowItWorks />
-
-        {/* 8. Testimonials */}
-        <section id="testimonials" className="py-20 bg-surface relative overflow-hidden" data-bg="var(--color-surface)">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(179,139,77,0.03)_0%,_transparent_70%)] pointer-events-none" />
-          <BackgroundFlourish type="floral" className="top-[-10%] left-[-5%] w-96 h-96 text-heritage/5 -rotate-12" parallaxSpeed={0.03} />
-          
-          <div className="container relative z-10 space-y-16">
-            <div className="flex flex-col items-center text-center space-y-6 fade-up">
-              <div className="flex items-center gap-3 text-burnished/60 mb-2">
-                 <div className="h-px w-6 bg-burnished/20" />
-                 <span className="text-[10px] font-mono uppercase tracking-[0.4em] font-bold">Trusted by 100+ happy clients</span>
-                 <div className="h-px w-6 bg-burnished/20" />
-              </div>
-              <TextReveal text="Clients" className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-text-primary tracking-tight" />
-              <p className="text-lg font-serif italic font-light text-text-secondary max-w-2xl mx-auto">
-                Voices of those who have experienced the Zing Bliss artistry.
-              </p>
-            </div>
-
-            <div className="relative max-w-3xl mx-auto fade-up">
-              <div className="bg-white/40 backdrop-blur-md rounded-[2.5rem] border border-linen/30 shadow-sm p-8 md:p-16 relative overflow-hidden">
-                {/* Decorative Quote Mark */}
-                <span className="absolute top-10 left-10 text-9xl font-serif text-burnished/10 leading-none pointer-events-none select-none">&ldquo;</span>
-                
-                <div className="overflow-hidden min-h-[450px] flex items-center relative">
-                  {testimonials.map((t, i) => (
-                    <div 
-                      key={t.id} 
-                      className={cn(
-                        "w-full transition-all duration-1000 ease-expo absolute inset-0 flex flex-col items-center justify-center text-center space-y-10",
-                        i === currentTestimonial ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 translate-x-20 pointer-events-none"
-                      )}
-                    >
-                      <div className="flex flex-col items-center gap-6">
-                        <div className="flex gap-1.5 text-burnished">
-                          {[...Array(5)].map((_, idx) => <Star key={idx} size={18} fill="currentColor" strokeWidth={0} />)}
-                        </div>
-                        
-                        <p className="text-xl md:text-3xl font-serif italic text-text-primary leading-relaxed tracking-tight max-w-2xl px-4">
-                          &quot;{t.content}&quot;
-                        </p>
-                      </div>
-
-                      <div className="flex flex-col items-center gap-8">
-                        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white shadow-xl relative ring-8 ring-burnished/5">
-                          <Image 
-                            src={t.avatar} 
-                            alt={t.author} 
-                            width={80} 
-                            height={80} 
-                            className="object-cover w-full h-full" 
-                          />
-                        </div>
-                        
-                        <div className="relative flex flex-col items-center gap-2">
-                           <h4 className="text-lg font-bold uppercase tracking-[0.3em] text-text-primary">{t.author}</h4>
-                           <p className="text-[10px] uppercase tracking-[0.4em] text-burnished font-bold">{t.event}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Slider Controls */}
-                <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4 pointer-events-none">
-                  <button 
-                    onClick={(e) => { e.stopPropagation(); prevTestimonial(); }}
-                    className="p-4 text-text-primary/20 hover:text-burnished transition-colors duration-500 pointer-events-auto"
-                    aria-label="Previous"
-                  >
-                    <ChevronLeft size={32} strokeWidth={1} />
-                  </button>
-
-                  <button 
-                    onClick={(e) => { e.stopPropagation(); nextTestimonial(); }}
-                    className="p-4 text-text-primary/20 hover:text-burnished transition-colors duration-500 pointer-events-auto"
-                    aria-label="Next"
-                  >
-                    <ChevronRight size={32} strokeWidth={1} />
-                  </button>
-                </div>
-              </div>
-
-              {/* Progress Dots */}
-              <div className="flex justify-center gap-3 mt-12">
-                {testimonials.map((_, dotIdx) => (
-                  <button
-                    key={dotIdx}
-                    onClick={() => setCurrentTestimonial(dotIdx)}
-                    className={cn(
-                      "h-1 transition-all duration-700 rounded-full",
-                      dotIdx === currentTestimonial ? "w-10 bg-burnished" : "w-3 bg-linen"
-                    )}
-                    aria-label={`Go to testimonial ${dotIdx + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 9. Instagram Section */}
-        <section className="py-20 md:py-24 bg-canvas relative overflow-hidden" data-bg="var(--color-canvas)">
-          <div className="container space-y-24">
-            <div className="text-center space-y-6 fade-up">
-              <div className="flex flex-col items-center gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-                  <span className="text-[10px] font-mono text-heritage/60 uppercase tracking-[0.6em] small-caps">Live Updates</span>
-                </div>
-                <TextReveal text="See Our Events Live" className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium tracking-tight" />
-              </div>
-              
-              <div className="space-y-4">
-                <p className="text-lg text-text-secondary max-w-2xl mx-auto opacity-70">Follow our journey and real-time event moments.</p>
-                <a 
-                  href="https://www.instagram.com/zingblissevents/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-burnished hover:text-heritage transition-colors duration-500 group"
-                >
-                  <InstagramIcon size={16} />
-                  <span className="text-xs font-bold uppercase tracking-[0.3em] font-sans">@zingblissevents</span>
-                  <div className="h-px w-0 bg-heritage group-hover:w-4 transition-all duration-500" />
-                </a>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-700 fade-up">
-                  <Image 
-                    src={`/hero-${i}.jpg`} 
-                    alt="Instagram post" 
-                    fill 
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
-                    <div className="p-4 rounded-full bg-white/10 border border-white/20 scale-90 group-hover:scale-100 transition-transform duration-500">
-                      <InstagramIcon className="text-white w-6 h-6" />
-                    </div>
+                  {/* Subtle Corner Decoration - From Reference 1 */}
+                  <div className="absolute top-8 left-8 text-[#D4B982]/10 scale-50 opacity-0 group-hover:opacity-100 transition-all duration-700">
+                    <Sparkles size={16} />
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* 10. Final CTA */}
-        <section id="cta" className="relative py-24 md:py-32 bg-heritage overflow-hidden" data-bg="var(--color-heritage)">
-          <div className="absolute inset-0 z-0">
-             <Image src="/hero10.jpg" alt="Background" fill className="object-cover opacity-20 scale-100 brightness-[0.3]" />
-             <div className="absolute inset-0 bg-radial-vignette opacity-70" />
-             <div className="absolute inset-0 bg-gradient-to-b from-heritage via-heritage/90 to-heritage z-10" />
+            {/* Pagination / Dot Indicator - From Reference 1 */}
+            <div className="flex justify-center mt-8 gap-4">
+               <div className="w-1.5 h-1.5 rounded-full bg-[#D4B982]/20" />
+               <div className="relative">
+                 <div className="absolute -inset-2 border border-[#D4B982]/40 rounded-full scale-150" />
+                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4B982]" />
+               </div>
+               <div className="w-1.5 h-1.5 rounded-full bg-[#D4B982]/20" />
+            </div>
+
+            {/* Navigation Arrows - High Fidelity Version */}
+            <div className="absolute top-1/2 -left-16 lg:-left-24 -translate-y-1/2 hidden xl:block">
+              <button className="p-4 text-[#121212]/20 hover:text-[#D4B982] transition-all duration-700 group">
+                <ChevronLeft size={48} strokeWidth={0.5} className="group-hover:-translate-x-2 transition-transform duration-700" />
+              </button>
+            </div>
+            <div className="absolute top-1/2 -right-16 lg:-right-24 -translate-y-1/2 hidden xl:block">
+              <button className="p-4 text-[#121212]/20 hover:text-[#D4B982] transition-all duration-700 group">
+                <ChevronRight size={48} strokeWidth={0.5} className="group-hover:translate-x-2 transition-transform duration-700" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Final CTA */}
+      <section className="relative py-12 md:py-10 overflow-hidden bg-heritage">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/hero10.jpg" 
+            alt="CTA Background" 
+            fill 
+            className="object-cover brightness-[0.2] scale-105" 
+          />
+          {/* Multi-layered Cinematic Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-90" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.15)_0%,_transparent_75%)]" />
+        </div>
+        
+        <div className="container relative z-10 text-center">
+          <div className="space-y-8 fade-up">
+            <div className="flex items-center justify-center gap-3 mb-4">
+               <div className="w-12 h-px bg-[#D4B982]/40" />
+               <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">READY TO BEGIN?</span>
+               <div className="w-12 h-px bg-[#D4B982]/40" />
+            </div>
+            
+            <div className="relative inline-block">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white leading-[1.1] tracking-tighter relative z-10">
+                Let&apos;s Create Something
+              </h2>
+              <span className="font-script text-[#D4B982] text-5xl md:text-6xl lg:text-[7rem] block -mt-4 md:-mt-8 lg:-mt-6 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
+                Unforgettable
+              </span>
+            </div>
           </div>
           
-          <div className="container relative z-20 text-center space-y-16">
-            <div className="space-y-10 fade-up">
-              <div className="flex flex-col items-center gap-4">
-                 <span className="text-[11px] font-mono uppercase tracking-[0.6em] text-burnished font-bold">LIMITED AVAILABILITY</span>
-                 <div className="h-10 w-[1px] bg-burnished/30" />
-              </div>
-              <h2 className="text-5xl md:text-8xl lg:text-[10rem] font-serif font-medium tracking-tighter text-white leading-[0.9] drop-shadow-2xl">
-                Let&apos;s Create <br />
-                <span className="italic font-light text-burnished/90 text-glow">Something Unforgettable</span>
-              </h2>
-              <p className="text-xl md:text-2xl text-white/60 font-serif italic font-light leading-relaxed max-w-3xl mx-auto">
-                "A limited number of events. Each crafted with intention. Now booking for 2026 curated celebrations."
-              </p>
-            </div>
-
-            <div className="flex flex-col items-center justify-center gap-8 fade-up">
-              <Magnetic strength={0.2}>
-                <Link href="/contact">
-                  <Button 
-                    size="lg" 
-                    className="h-24 px-20 text-[11px] bg-white text-heritage hover:bg-ivory shadow-[0_30px_70px_rgba(0,0,0,0.5)] hover:scale-110 active:scale-95 rounded-full uppercase tracking-[0.4em] font-bold border-0 group relative overflow-hidden animate-luxury-pulse"
-                  >
-                    <span className="relative z-10">Start the Dialogue</span>
-                  </Button>
-                </Link>
-              </Magnetic>
-              
-              <div className="flex items-center gap-4 text-white/20">
-                <div className="w-8 h-px bg-current" />
-                <span className="text-[10px] uppercase tracking-widest font-mono">EST. 2017</span>
-                <div className="w-8 h-px bg-current" />
-              </div>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16 fade-up" style={{ transitionDelay: '200ms' }}>
+            <Magnetic strength={0.1}>
+              <Link href="/contact">
+                <Button className="h-16 px-16 bg-[#0a1f13] hover:bg-black text-white rounded-none tracking-[0.4em] font-bold text-[12px] uppercase border border-white/10 shadow-[0_25px_80px_rgba(0,0,0,0.4)] transition-all duration-700">
+                  BOOK A CONSULTATION
+                </Button>
+              </Link>
+            </Magnetic>
+            <Magnetic strength={0.1}>
+              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="h-16 px-10 border-white/20 text-white/90 hover:text-white rounded-none tracking-[0.3em] font-bold text-[11px] uppercase hover:bg-white/5 transition-all duration-700 backdrop-blur-sm group">
+                   <div className="flex items-center gap-4">
+                     <div className="w-8 h-8 rounded-full bg-[#25D366]/10 flex items-center justify-center border border-[#25D366]/20 group-hover:bg-[#25D366]/20 transition-colors">
+                       <MessageCircle size={16} fill="#25D366" className="text-[#25D366]" />
+                     </div>
+                     <span className="text-white">CHAT ON WHATSAPP</span>
+                   </div>
+                </Button>
+              </a>
+            </Magnetic>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
     </main>
   );
 }
