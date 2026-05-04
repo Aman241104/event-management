@@ -223,7 +223,7 @@ export default function AboutPage() {
                 { name: 'Arjun Mehta', role: 'Creative Director', image: '/hero-2.jpg' },
               ].map((member, i) => (
                 <div key={i} className="group relative aspect-[3/4] overflow-hidden rounded-sm fade-up shadow-xl" style={{ transitionDelay: `${i * 150}ms` }}>
-                  <Image src={member.image} alt={member.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-90 group-hover:brightness-100" />
+                  <Image src={member.image} alt={member.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
                   <div className="absolute inset-x-0 bottom-8 text-center space-y-2">
                     <h3 className="text-white text-2xl font-serif italic">{member.name}</h3>

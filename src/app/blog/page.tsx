@@ -176,7 +176,6 @@ export default function BlogPage() {
                     fill 
                     className="object-cover transition-transform duration-[2000ms] group-hover:scale-110" 
                   />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-700" />
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between text-[9px] font-bold text-[#D4B982] uppercase tracking-[0.2em]">

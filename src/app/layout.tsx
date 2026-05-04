@@ -4,7 +4,6 @@ import "./globals.css";
 import { Navbar } from "@/components/organisms/Navbar";
 import { Footer } from "@/components/organisms/Footer";
 import { ConciergeBar } from "@/components/molecules/ConciergeBar";
-import { CustomCursor } from "@/components/atoms/CustomCursor";
 
 const montserrat = Montserrat({
   variable: "--font-sans",
@@ -51,7 +50,7 @@ import Image from "next/image";
 import { SmoothScroll } from "@/components/atoms/SmoothScroll";
 
 import { BackToTop } from "@/components/atoms/BackToTop";
-import { StickyCTA } from "@/components/molecules/StickyCTA";
+import { FloatingWhatsApp } from "@/components/molecules/FloatingWhatsApp";
 
 export default function RootLayout({
   children,
@@ -66,10 +65,10 @@ export default function RootLayout({
         {/* Global Background Texture */}
         <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
           <div className="absolute top-0 right-0 w-[120vw] h-[120vh] opacity-[0.015] transform translate-x-[10%] -translate-y-[10%] mix-blend-multiply">
-            <Image src="/hero-5.jpg" alt="" fill className="object-cover grayscale" priority />
+            <Image src="/hero-5.jpg" alt="" fill className="object-cover" priority />
           </div>
           <div className="absolute bottom-0 left-0 w-[80vw] h-[80vh] opacity-[0.02] bg-[radial-gradient(circle_at_center,_#B38B4D_0%,_transparent_60%)] transform -translate-x-1/4 translate-y-1/4" />
-          <div className="absolute -bottom-20 -left-20 w-[600px] h-[600px] opacity-[0.04] grayscale brightness-110 transform -scale-x-100 mix-blend-multiply">
+          <div className="absolute -bottom-20 -left-20 w-[600px] h-[600px] opacity-[0.04] brightness-110 transform -scale-x-100 mix-blend-multiply">
             <Image src="/decor-8.jpg" alt="" fill className="object-contain object-bottom" />
           </div>
         </div>
@@ -77,9 +76,8 @@ export default function RootLayout({
         <SmoothScroll>
           <div className="noise-overlay" />
           <div className="ink-bleed" />
-          <CustomCursor />
           <BackToTop />
-          <StickyCTA />
+          <FloatingWhatsApp />
           <Navbar />
           <div className="flex-grow main-content relative z-10">
             {children}

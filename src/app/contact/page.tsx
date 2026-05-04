@@ -14,6 +14,8 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { WhatsAppLogo } from '@/components/atoms/WhatsAppLogo';
+
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -121,7 +123,7 @@ export default function ContactPage() {
                 <Magnetic strength={0.2}>
                   <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
                     <Button className="w-full h-14 bg-black text-white hover:bg-[#D4B982] transition-all duration-500 rounded-none text-[10px] tracking-[0.4em] font-bold uppercase">
-                       <MessageCircle size={16} className="mr-3" /> WHATSAPP US
+                       <WhatsAppLogo size={16} className="mr-3" /> WHATSAPP US
                     </Button>
                   </a>
                 </Magnetic>
@@ -171,7 +173,7 @@ export default function ContactPage() {
       {/* 3. Map Section - Cinematic */}
       <section id="map" className="container py-12 relative z-10">
         <div className="relative w-full h-[40vh] overflow-hidden rounded-sm shadow-2xl group border border-linen/20">
-          <div className="absolute inset-0 bg-black/40 z-10 flex items-center justify-center transition-all duration-1000 group-hover:bg-black/20">
+          <div className="absolute inset-0 bg-black/20 z-10 flex items-center justify-center transition-all duration-1000">
              <div className="text-center space-y-3">
                <MapPin size={40} className="text-[#D4B982] mx-auto animate-luxury-pulse" />
                <h3 className="text-3xl font-serif text-white font-bold italic tracking-tight">Ahmedabad</h3>

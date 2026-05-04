@@ -200,7 +200,7 @@ export default function QuizPage() {
       <div className="absolute inset-0 z-0">
          {questions.map((q, i) => (
              <div key={i} className={cn("absolute inset-0 transition-opacity duration-1000 ease-in-out", i === currentStep ? "opacity-20" : "opacity-0")}>
-                <Image src={q.bg} alt="Mood" fill className="object-cover grayscale-[0.5]" />
+                <Image src={q.bg} alt="Mood" fill className="object-cover" />
              </div>
          ))}
          <div className="absolute inset-0 bg-canvas/90" />

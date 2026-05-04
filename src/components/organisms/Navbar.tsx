@@ -28,27 +28,52 @@ export function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
+  const scrollThreshold = 10; // Minimum scroll distance to trigger hide/show
+
+  // Reset navbar position on route change
+  useEffect(() => {
+    if (headerRef.current) {
+      gsap.to(headerRef.current, { yPercent: 0, duration: 0.5, ease: 'power3.out', overwrite: true });
+    }
+    setIsOpen(false);
+    setIsSearchOpen(false);
+    lastScrollY.current = window.scrollY;
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      const scrollDiff = Math.abs(currentScrollY - lastScrollY.current);
+      
       setScrolled(currentScrollY > 50);
       
-      if (headerRef.current) {
-        if (currentScrollY > lastScrollY && currentScrollY > 200) {
-          // Scrolling down
-          gsap.to(headerRef.current, { yPercent: -100, duration: 0.5, ease: 'power3.inOut' });
-        } else {
-          // Scrolling up
-          gsap.to(headerRef.current, { yPercent: 0, duration: 0.5, ease: 'power3.out' });
+      if (headerRef.current && !isOpen && !isSearchOpen) {
+        // Always show at the top
+        if (currentScrollY < 50) {
+          gsap.to(headerRef.current, { yPercent: 0, duration: 0.4, ease: 'power2.out', overwrite: true });
+        } 
+        // Only trigger if we scrolled more than the threshold
+        else if (scrollDiff > scrollThreshold) {
+          if (currentScrollY > lastScrollY.current && currentScrollY > 200) {
+            // Scrolling down
+            gsap.to(headerRef.current, { yPercent: -100, duration: 0.5, ease: 'power3.inOut', overwrite: true });
+          } else if (currentScrollY < lastScrollY.current) {
+            // Scrolling up
+            gsap.to(headerRef.current, { yPercent: 0, duration: 0.5, ease: 'power3.out', overwrite: true });
+          }
         }
+      } else if ((isOpen || isSearchOpen) && headerRef.current) {
+        // Keep visible when menus are open
+        gsap.to(headerRef.current, { yPercent: 0, duration: 0.4, ease: 'power2.out', overwrite: true });
       }
-      setLastScrollY(currentScrollY);
+
+      lastScrollY.current = currentScrollY;
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, [isOpen, isSearchOpen]);
 
   useEffect(() => {
     if (isOpen || isSearchOpen) {

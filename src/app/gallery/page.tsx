@@ -40,15 +40,18 @@ const SectionDivider = ({ className }: { className?: string }) => (
 );
 
 const galleryItems = [
-  { id: 1, title: 'Royal Palace Wedding', category: 'Weddings', image: '/decor-1.jpg', size: 'large' as const },
-  { id: 2, title: 'Elegant Gala Design', category: 'Weddings', image: '/decor-2.jpg', size: 'medium' as const },
-  { id: 3, title: 'Traditional Ceremonies', category: 'Weddings', image: '/decor-3.jpg', size: 'small' as const },
-  { id: 4, title: 'Vibrant Sangeet Energy', category: 'Weddings', image: '/decor-4.jpg', size: 'medium' as const },
-  { id: 5, title: 'Milestone Celebration', category: 'Birthdays', image: '/decor-5.jpg', size: 'tall' as const },
-  { id: 6, title: 'Global Tech Summit', category: 'Corporate', image: '/hero-1.jpg', size: 'large' as const },
-  { id: 7, title: 'Tropical Royal Decor', category: 'Design', image: '/hero-2.jpg', size: 'small' as const },
-  { id: 8, title: 'Cultural Heritage', category: 'Festivals', image: '/hero-3.jpg', size: 'medium' as const },
-  { id: 9, title: 'Vibrant Rituals', category: 'Festivals', image: '/hero-4.jpg', size: 'small' as const },
+  { id: 1, title: 'Royal Palace Wedding', category: 'Weddings', image: '/hero-1.jpg', size: 'large' as const },
+  { id: 2, title: 'Elegant Gala Design', category: 'Weddings', image: '/hero-2.jpg', size: 'medium' as const },
+  { id: 3, title: 'Traditional Ceremonies', category: 'Weddings', image: '/hero-3.jpg', size: 'small' as const },
+  { id: 4, title: 'Vibrant Sangeet Energy', category: 'Weddings', image: '/hero-4.jpg', size: 'medium' as const },
+  { id: 5, title: 'Milestone Celebration', category: 'Birthdays', image: '/hero-5.jpg', size: 'tall' as const },
+  { id: 6, title: 'Global Tech Summit', category: 'Corporate', image: '/hero-6.jpg', size: 'large' as const },
+  { id: 7, title: 'Tropical Royal Decor', category: 'Design', image: '/hero-7.jpg', size: 'small' as const },
+  { id: 8, title: 'Cultural Heritage', category: 'Festivals', image: '/hero-8.jpg', size: 'medium' as const },
+  { id: 9, title: 'Vibrant Rituals', category: 'Festivals', image: '/hero-9.jpg', size: 'small' as const },
+  { id: 10, title: 'Intimate Soiree', category: 'Private', image: '/hero10.jpg', size: 'medium' as const },
+  { id: 11, title: 'Corporate Gala', category: 'Corporate', image: '/decor-1.jpg', size: 'medium' as const },
+  { id: 12, title: 'Market Showcase', category: 'Festivals', image: '/decor-2.jpg', size: 'small' as const },
 ];
 
 const categories = ['All', 'Weddings', 'Birthdays', 'Corporate', 'Festivals', 'Private'];

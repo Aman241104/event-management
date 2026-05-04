@@ -39,24 +39,111 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
+import { WhatsAppLogo } from '@/components/atoms/WhatsAppLogo';
+
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
 const trustLogos = [
-  { name: 'TAJ', image: '/assets/logos/taj.png' },
-  { name: 'ITC Hotels', subtitle: 'Responsible Luxury' },
-  { name: 'THE LEELA', subtitle: 'PALACES HOTELS RESORTS' },
-  { name: 'HYATT REGENCY', image: '/assets/logos/hyatt.png' },
-  { name: 'JW MARRIOTT', image: '/assets/logos/marriott.png' },
-  { name: 'Radisson', image: '/assets/logos/radisson.png' },
+  { 
+    name: 'TAJ', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white/40 group-hover:text-[#D4B982] transition-colors duration-700 mb-2">
+          <path d="M12 2L14.5 7H9.5L12 2Z" fill="currentColor" />
+          <path d="M12 22L9.5 17H14.5L12 22Z" fill="currentColor" />
+          <path d="M2 12L7 9.5V14.5L2 12Z" fill="currentColor" />
+          <path d="M22 12L17 14.5V9.5L22 12Z" fill="currentColor" />
+          <path d="M5 5L9 9" stroke="currentColor" strokeWidth="1" />
+          <path d="M19 19L15 15" stroke="currentColor" strokeWidth="1" />
+          <path d="M5 19L9 15" stroke="currentColor" strokeWidth="1" />
+          <path d="M19 5L15 9" stroke="currentColor" strokeWidth="1" />
+        </svg>
+        <span className="text-2xl md:text-3xl font-serif text-white/80 tracking-[0.2em] group-hover:text-white transition-all duration-700">TAJ</span>
+      </div>
+    )
+  },
+  { 
+    name: 'ITC Hotels', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+          <Image 
+            src="/assets/logos/itc.png" 
+            alt="ITC Hotels" 
+            fill 
+            className="object-contain" 
+          />
+        </div>
+      </div>
+    )
+  },
+  { 
+    name: 'THE LEELA', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+          <Image 
+            src="/assets/logos/leela.png" 
+            alt="The Leela" 
+            fill 
+            className="object-contain" 
+          />
+        </div>
+      </div>
+    )
+  },
+  { 
+    name: 'Marriott', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <div className="w-12 h-12 md:w-14 md:h-14 relative flex items-center justify-center mb-1">
+          <svg viewBox="0 0 40 40" className="w-full h-full text-white/40 group-hover:text-[#D4B982] transition-all duration-700">
+            <rect x="10" y="10" width="20" height="20" transform="rotate(45 20 20)" stroke="currentColor" strokeWidth="1" fill="none" />
+            <rect x="14" y="14" width="12" height="12" transform="rotate(45 20 20)" fill="currentColor" opacity="0.5" />
+            <circle cx="20" cy="20" r="2" fill="currentColor" />
+          </svg>
+        </div>
+        <span className="text-[10px] md:text-[11px] font-sans text-white/60 tracking-[0.4em] uppercase group-hover:text-white transition-all">Marriott</span>
+      </div>
+    )
+  },
+  { 
+    name: 'HYATT', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <span className="text-xl md:text-2xl font-sans font-light text-white/80 tracking-[0.3em] group-hover:text-white transition-all duration-700">HYATT</span>
+        <span className="text-[9px] md:text-[10px] font-sans text-[#D4B982]/60 tracking-[0.5em] mt-1 group-hover:text-[#D4B982] transition-all">REGENCY</span>
+      </div>
+    )
+  },
+  { 
+    name: 'RADISSON', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <span className="text-2xl md:text-3xl font-script text-white/60 tracking-normal group-hover:text-[#D4B982] transition-all duration-700 lowercase italic">Radisson</span>
+        <div className="flex items-center gap-2 mt-1">
+          <div className="w-4 h-px bg-white/20" />
+          <span className="text-[8px] font-sans text-white/30 tracking-[0.4em] uppercase">Hotels</span>
+          <div className="w-4 h-px bg-white/20" />
+        </div>
+      </div>
+    )
+  },
 ];
 
 const services = [
   {
     title: 'WEDDINGS',
     desc: 'Exquisite weddings that reflect your story and style.',
-    image: '/decor-1.jpg',
+    image: '/hero-1.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="9" cy="12" r="5" />
@@ -67,19 +154,19 @@ const services = [
   {
     title: 'CORPORATE EVENTS',
     desc: 'Professional events that inspire, engage and leave a lasting impact.',
-    image: '/decor-4.jpg',
+    image: '/hero-6.jpg',
     icon: <Briefcase size={22} strokeWidth={0.75} />,
   },
   {
     title: 'PRIVATE CELEBRATIONS',
     desc: 'Birthdays, anniversaries and intimate celebrations with a personal touch.',
-    image: '/decor-2.jpg',
+    image: '/private-celebrations.jpg',
     icon: <Cake size={22} strokeWidth={0.75} />,
   },
   {
     title: 'EVENT PRODUCTION & ENTERTAINMENT',
     desc: 'End-to-end production, entertainment and technical solutions.',
-    image: '/hero-6.jpg',
+    image: '/event-production.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="16" rx="1" />
@@ -90,12 +177,12 @@ const services = [
 ];
 
 const categories = [
-  { title: 'WEDDINGS', image: '/hero-1.jpg' },
-  { title: 'BIRTHDAYS', image: '/hero-7.jpg' },
-  { title: 'CORPORATE EVENTS', image: '/hero-3.jpg' },
-  { title: 'FLEA MARKETS', image: '/decor-5.jpg' },
-  { title: 'FESTIVALS & CULTURAL EVENTS', image: '/decor-6.jpg' },
-  { title: 'PRIVATE PARTIES', image: '/decor-7.jpg' },
+  { title: 'WEDDINGS', image: '/hero-2.jpg' },
+  { title: 'BIRTHDAYS', image: '/hero-5.jpg' },
+  { title: 'CORPORATE EVENTS', image: '/decor-1.jpg' },
+  { title: 'FLEA MARKETS', image: '/decor-2.jpg' },
+  { title: 'FESTIVALS & CULTURAL EVENTS', image: '/hero-8.jpg' },
+  { title: 'PRIVATE PARTIES', image: '/hero10.jpg' },
 ];
 
 const whyChooseUs = [
@@ -258,24 +345,12 @@ export default function Home() {
                   className="flex flex-col items-center text-center group fade-up w-full"
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
-                  {logo.image ? (
-                    <div className="relative w-28 md:w-36 h-12 md:h-14 transition-all duration-700 group-hover:scale-110 flex items-center justify-center">
-                      <Image 
-                        src={logo.image} 
-                        alt={logo.name} 
-                        fill 
-                        className="object-contain opacity-50 grayscale brightness-[200%] contrast-[100%] group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" 
-                        sizes="(max-width: 768px) 120px, 180px"
-                      />
-                    </div>
+                  {logo.render ? (
+                    logo.render()
                   ) : (
                     <div className="flex flex-col items-center">
                       <span className="text-lg md:text-xl font-serif text-white/70 tracking-[0.15em] group-hover:text-[#D4B982] group-hover:scale-110 transition-all duration-700 ease-expo">
                         {logo.name}
-                      </span>
-                      <div className="w-0 h-px bg-[#D4B982]/40 group-hover:w-full transition-all duration-700 mt-2 mb-3" />
-                      <span className="text-[10px] text-[#D4B982]/40 font-sans uppercase tracking-[0.4em] leading-tight group-hover:text-[#D4B982]/70 transition-all duration-700">
-                        {logo.subtitle}
                       </span>
                     </div>
                   )}
@@ -287,17 +362,17 @@ export default function Home() {
       </section>
 
       {/* 3. Our Services */}
-      <section id="services" className="py-12 md:py-32 bg-[#FDFBF7] relative overflow-hidden">
+      <section id="services" className="pt-10 pb-8 md:pt-16 md:pb-16 bg-[#FDFBF7] relative overflow-hidden">
         {/* Subtle Background Flourish */}
         <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
           <div className="w-full h-full dot-pattern" />
         </div>
         
         <div className="container relative z-10">
-          <div className="flex flex-col items-center text-center space-y-6 mb-5 fade-up">
+          <div className="flex flex-col items-center text-center space-y-4 mb-10 fade-up">
             <span className="text-[10px] md:text-[11px] text-[#D4B982] uppercase tracking-[0.7em] font-bold">WHAT WE DO</span>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-[#121212] tracking-tight">Our Services</h2>
-            <div className="relative pt-6 flex items-center justify-center">
+            <div className="relative pt-4 flex items-center justify-center">
               <div className="w-24 h-px bg-[#D4B982]/40" />
               <div className="mx-6 w-3 h-3 rotate-45 border border-[#D4B982]/60 bg-[#FDFBF7]" />
               <div className="w-24 h-px bg-[#D4B982]/40" />
@@ -349,17 +424,20 @@ export default function Home() {
       </section>
 
       {/* 4. About Us Section */}
-      <section className="py-12 md:py-36 bg-[#FDFBF7] relative overflow-hidden border-t border-linen/20">
+      <section className="pt-8 pb-12 md:pt-16 md:pb-36 bg-[#FDFBF7] relative overflow-hidden border-t border-linen/20">
         <div className="container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
             {/* Images Column - Refined Editorial Layout */}
             <div className="relative fade-up">
               <div className="aspect-[3/4] relative rounded-none overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.12)] z-10 border border-linen/30">
                 <Image src="/hero-4.jpg" alt="Event setup" fill className="object-cover" />
-                <div className="absolute inset-0 bg-heritage/5 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-heritage/10 mix-blend-multiply" />
               </div>
-              <div className="absolute -bottom-12 -right-12 w-3/4 aspect-[4/3] rounded-none overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.25)] z-20 border-[15px] border-white hidden md:block">
+              <div className="absolute -bottom-12 -right-12 w-[75%] aspect-[4/3] rounded-none overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.25)] z-20 border-[15px] border-white hidden md:block group cursor-pointer">
                 <Image src="/decor-3.jpg" alt="Detail" fill className="object-cover" />
+                <div className="absolute inset-x-0 bottom-0 bg-heritage/90 py-4 px-6 flex items-center justify-center translate-y-0 transition-transform duration-500">
+                   <span className="text-[10px] text-white uppercase tracking-[0.5em] font-bold">VIEW WORK</span>
+                </div>
               </div>
               
               {/* Subtle accent line */}
@@ -378,23 +456,28 @@ export default function Home() {
                     WE DON&apos;T PLAN EVENTS.
                   </h2>
                   <h3 className="font-script text-[#D4B982] text-3xl md:text-4xl lg:text-5xl lowercase leading-none italic -mt-2">
-                    We Curate Experiences.
+                    we curate experiences.
                   </h3>
                 </div>
                 <div className="space-y-8 text-[#525252] leading-relaxed font-sans font-light text-base md:text-lg opacity-90 max-w-xl pt-4">
                   <p>
                     Zing Bliss Events is dedicated to turning life&apos;s special moments into unforgettable experiences. We specialize in planning, designing and executing events with creativity, precision and professionalism.
                   </p>
-                  <p className="italic font-serif text-heritage/70 border-l-2 border-[#D4B982] pl-8 py-2">
-                    &quot;From intimate gatherings to grand celebrations, every detail is thoughtfully curated to create magical moments.&quot;
-                  </p>
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-0 flex flex-wrap items-center gap-4">
+                <Link href="/contact">
+                  <Button 
+                    className="h-14 px-10 bg-[#D4B982] text-[#0a1f13] hover:bg-[#B38B4D] rounded-full tracking-[0.2em] font-bold text-[11px] uppercase border-0 shadow-[0_20px_40px_rgba(212,185,130,0.2)] transition-all duration-700"
+                    rightIcon={<Star size={16} fill="currentColor" />}
+                  >
+                    BOOK CONSULTATION
+                  </Button>
+                </Link>
                 <Link href="/about">
-                  <Button className="h-14 px-12 bg-[#0a1f13] text-white hover:bg-black rounded-none tracking-[0.4em] font-bold text-[12px] uppercase border-0 shadow-[0_25px_60px_rgba(10,31,19,0.2)] transition-all duration-700">
-                    DISCOVER OUR STORY
+                  <Button className="h-14 px-10 bg-[#0a1f13] text-white hover:bg-black rounded-none tracking-[0.4em] font-bold text-[11px] uppercase border-0 transition-all duration-700">
+                    STORY
                   </Button>
                 </Link>
               </div>
@@ -403,7 +486,7 @@ export default function Home() {
         </div>
         
         {/* Background floral decoration - Bottom Right */}
-        <div className="absolute -bottom-24 -right-24 w-[600px] h-[600px] opacity-[0.1] pointer-events-none z-0 grayscale hover:grayscale-0 transition-all duration-1000 mix-blend-multiply overflow-hidden">
+        <div className="absolute -bottom-24 -right-24 w-[600px] h-[600px] opacity-[0.1] pointer-events-none z-0 transition-all duration-1000 mix-blend-multiply overflow-hidden">
           <Image src="/flower-decor.png" alt="" fill className="object-contain object-right-bottom scale-110" />
         </div>
       </section>
@@ -438,7 +521,7 @@ export default function Home() {
                     src={cat.image} 
                     alt={cat.title} 
                     fill 
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-[0.55] group-hover:brightness-[0.75]" 
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110" 
                     sizes="(max-width: 768px) 50vw, 15vw"
                   />
                   
@@ -530,66 +613,37 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative px-0 lg:px-20">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-4">
+          <div className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
               {testimonials.map((t, i) => (
                 <div 
                   key={i} 
-                  className="bg-white px-10 py-16 md:px-12 md:py-10 rounded-none shadow-[0_40px_100px_rgba(0,0,0,0.04)] border border-linen/5 flex flex-col items-center text-center space-y-10 fade-up transition-all duration-1000 hover:-translate-y-4 hover:shadow-[0_60px_120px_rgba(0,0,0,0.08)] group relative" 
+                  className="bg-white p-8 md:p-10 rounded-sm shadow-[0_20px_60px_rgba(0,0,0,0.03)] border border-linen/20 flex flex-col items-center text-center space-y-6 fade-up transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] group relative" 
                   style={{ transitionDelay: `${i * 150}ms` }}
                 >
-                  {/* Avatar - Top Positioned Overflowing */}
-                  <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full overflow-hidden border-[6px] border-[#FDFBF7] shadow-2xl transition-transform duration-700 group-hover:scale-110">
+                  {/* Avatar - Refined & Integrated */}
+                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full overflow-hidden border-4 border-[#FDFBF7] shadow-xl transition-transform duration-700 group-hover:scale-110">
                     <Image src={t.image} alt={t.author} fill className="object-cover scale-110" />
                   </div>
 
-                  <div className="pt-4 space-y-8 flex-grow flex flex-col items-center justify-center">
-                    {/* Refined Sparkle Icon */}
-                    <div className="text-[#D4B982]/20 transform group-hover:scale-125 transition-transform duration-700">
-                       <Sparkles size={24} strokeWidth={1} />
+                  <div className="pt-4 space-y-6 flex-grow flex flex-col items-center justify-center">
+                    <div className="text-[#D4B982]/20 transform group-hover:scale-110 transition-transform duration-700">
+                       <Sparkles size={20} strokeWidth={1} />
                     </div>
                     
-                    <p className="text-[15px] md:text-[16px] text-[#525252] font-sans italic leading-[1.8] opacity-90 font-light max-w-[280px]">
+                    <p className="text-[14px] md:text-[15px] text-[#525252] font-sans italic leading-relaxed opacity-90 font-light">
                       &quot;{t.content}&quot;
                     </p>
                     
-                    {/* Author Section with Separator Line */}
-                    <div className="flex flex-col items-center gap-3 pt-6 w-full mt-auto">
-                      <div className="w-8 h-px bg-linen group-hover:w-14 group-hover:bg-[#D4B982]/40 transition-all duration-700" />
-                      <span className="text-[11px] font-bold text-[#121212] uppercase tracking-[0.4em] block">
-                        — {t.author}
+                    <div className="flex flex-col items-center gap-2 pt-4 w-full mt-auto">
+                      <div className="w-6 h-px bg-linen group-hover:w-10 group-hover:bg-[#D4B982]/40 transition-all duration-700" />
+                      <span className="text-[10px] font-bold text-[#121212] uppercase tracking-[0.3em] block">
+                        {t.author}
                       </span>
                     </div>
                   </div>
-                  
-                  {/* Subtle Corner Decoration - From Reference 1 */}
-                  <div className="absolute top-8 left-8 text-[#D4B982]/10 scale-50 opacity-0 group-hover:opacity-100 transition-all duration-700">
-                    <Sparkles size={16} />
-                  </div>
                 </div>
               ))}
-            </div>
-
-            {/* Pagination / Dot Indicator - From Reference 1 */}
-            <div className="flex justify-center mt-8 gap-4">
-               <div className="w-1.5 h-1.5 rounded-full bg-[#D4B982]/20" />
-               <div className="relative">
-                 <div className="absolute -inset-2 border border-[#D4B982]/40 rounded-full scale-150" />
-                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4B982]" />
-               </div>
-               <div className="w-1.5 h-1.5 rounded-full bg-[#D4B982]/20" />
-            </div>
-
-            {/* Navigation Arrows - High Fidelity Version */}
-            <div className="absolute top-1/2 -left-16 lg:-left-24 -translate-y-1/2 hidden xl:block">
-              <button className="p-4 text-[#121212]/20 hover:text-[#D4B982] transition-all duration-700 group">
-                <ChevronLeft size={48} strokeWidth={0.5} className="group-hover:-translate-x-2 transition-transform duration-700" />
-              </button>
-            </div>
-            <div className="absolute top-1/2 -right-16 lg:-right-24 -translate-y-1/2 hidden xl:block">
-              <button className="p-4 text-[#121212]/20 hover:text-[#D4B982] transition-all duration-700 group">
-                <ChevronRight size={48} strokeWidth={0.5} className="group-hover:translate-x-2 transition-transform duration-700" />
-              </button>
             </div>
           </div>
         </div>

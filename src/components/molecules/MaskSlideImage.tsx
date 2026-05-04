@@ -76,9 +76,6 @@ export function MaskSlideImage({
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
-          
-          {/* Very Subtle Decorative Overlay */}
-          <div className="absolute inset-0 bg-heritage/5 mix-blend-multiply z-10 pointer-events-none group-hover:opacity-0 transition-opacity duration-1000" />
         </div>
       </div>
 

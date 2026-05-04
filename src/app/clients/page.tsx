@@ -19,8 +19,8 @@ if (typeof window !== 'undefined') {
 
 const partners = [
   { name: 'TAJ', subtitle: 'HOTELS PALACES RESORTS SAFARIS', image: '/assets/logos/taj.png' },
-  { name: 'ITC HOTELS', subtitle: 'RESPONSIBLE LUXURY', image: null },
-  { name: 'THE LEELA', subtitle: 'PALACES HOTELS RESORTS', image: null },
+  { name: 'ITC HOTELS', subtitle: 'RESPONSIBLE LUXURY', image: '/assets/logos/itc.png' },
+  { name: 'THE LEELA', subtitle: 'PALACES HOTELS RESORTS', image: '/assets/logos/leela.png' },
   { name: 'HYATT REGENCY', subtitle: 'LUXURY ACCOMMODATION', image: '/assets/logos/hyatt.png' },
   { name: 'JW MARRIOTT', subtitle: 'PREMIUM HOSPITALITY', image: '/assets/logos/marriott.png' },
   { name: 'RADISSON', subtitle: 'HOTEL GROUP', image: '/assets/logos/radisson.png' },
@@ -133,7 +133,7 @@ export default function ClientsPage() {
               >
                 <div className="flex-grow flex flex-col items-center justify-center space-y-6">
                   {partner.image ? (
-                    <div className="relative w-40 h-16 md:w-48 md:h-20 grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 group-hover:brightness-[200%] transition-all duration-700 transform group-hover:scale-110">
+                    <div className="relative w-40 h-16 md:w-48 md:h-20 transition-all duration-700 transform group-hover:scale-110">
                       <Image 
                         src={partner.image} 
                         alt={partner.name} 
