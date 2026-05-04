@@ -69,34 +69,35 @@ export default function AboutPage() {
       yoyo: true
     });
 
-    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE })
+    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: DEFAULT_EASE })
           .fromTo(".hero-title .text-line", { 
-            y: 60,
+            y: 80,
             opacity: 0
           }, {
             y: 0,
             opacity: 1,
-            stagger: 0.1,
-            duration: 1,
-            ease: DEFAULT_EASE 
-          }, "-=0.6")
-          .fromTo(".hero-subtext", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: DEFAULT_EASE }, "-=0.6")
-          .fromTo(".hero-signals", { opacity: 0 }, { opacity: 1, duration: 0.8 }, "-=0.4");
+            stagger: 0.15,
+            duration: 1.4,
+            ease: "expo.out" 
+          }, "-=0.8")
+          .fromTo(".hero-subtext", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE }, "-=0.8")
+          .fromTo(".hero-signals", { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.6");
 
-    // 2. Section Reveals
+    // 2. Section Reveals - Enhanced for luxury feel
     const sections = gsap.utils.toArray<HTMLElement>('section');
     sections.forEach((section) => {
       gsap.fromTo(section.querySelectorAll('.fade-up'), 
-        { y: 40, opacity: 0 },
+        { y: 50, opacity: 0 },
         { 
           y: 0, 
           opacity: 1, 
-          stagger: 0.1, 
-          duration: 1, 
+          stagger: 0.12, 
+          duration: 1.2, 
           ease: DEFAULT_EASE,
+          overwrite: 'auto',
           scrollTrigger: {
             trigger: section,
-            start: "top 90%",
+            start: "top 94%",
             toggleActions: "play none none none"
           }
         }

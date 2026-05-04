@@ -53,7 +53,8 @@ export function TextReveal({
       duration: duration,
       delay: delay,
       stagger: 0.08,
-      ease: 'power3.out'
+      ease: 'power3.out',
+      overwrite: 'auto'
     });
   }, [text, delay, duration, once]);
 

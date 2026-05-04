@@ -87,12 +87,13 @@ export default function EventDetailPage() {
       gsap.from(el, {
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
+          start: 'top 94%',
         },
-        y: 40,
+        y: 50,
         opacity: 0,
-        duration: 1.5,
-        ease: 'power2.out'
+        duration: 1.2,
+        ease: 'power3.out',
+        overwrite: 'auto'
       });
     });
   }, { scope: containerRef });

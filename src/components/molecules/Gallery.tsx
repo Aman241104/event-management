@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 interface GalleryItem {
   id: number;
@@ -23,8 +25,33 @@ interface GalleryProps {
 
 export function Gallery({ items, className, hasCursorLabel = true, aspectRatio = "aspect-[4/5]" }: GalleryProps) {
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const selectedItem = selectedItemIndex !== null ? items[selectedItemIndex] : null;
+
+  useGSAP(() => {
+    if (!gridRef.current) return;
+    
+    gsap.fromTo(gridRef.current.children, 
+      { 
+        y: 30, 
+        opacity: 0,
+        scale: 0.98
+      }, 
+      { 
+        y: 0, 
+        opacity: 1, 
+        scale: 1,
+        duration: 1.2, 
+        stagger: {
+          each: 0.08,
+          from: "start"
+        },
+        ease: 'power3.out',
+        overwrite: 'auto'
+      }
+    );
+  }, { dependencies: [items], scope: gridRef });
 
   const handleNext = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -64,7 +91,7 @@ export function Gallery({ items, className, hasCursorLabel = true, aspectRatio =
 
   return (
     <>
-      <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6", className)}>
+      <div ref={gridRef} className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6", className)}>
         {items.map((item, index) => {
           return (
             <div 

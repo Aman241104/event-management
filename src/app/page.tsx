@@ -235,25 +235,41 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Fade up animations
+    // Fade up animations - Enhanced for luxury feel
     gsap.utils.toArray<HTMLElement>('.fade-up').forEach((el) => {
       gsap.from(el, {
         scrollTrigger: {
           trigger: el,
-          start: 'top 92%',
+          start: 'top 94%', // Trigger slightly earlier for smoother flow
         },
-        y: 30,
+        y: 40,
         opacity: 0,
-        duration: 0.8,
-        ease: 'power2.out'
+        duration: 1.2,
+        ease: 'power3.out',
+        overwrite: 'auto'
       });
     });
 
-    // Hero content entrance
+    // Hero content entrance - More layered and cinematic
     const tl = gsap.timeline();
-    tl.from('.hero-title', { y: 40, opacity: 0, duration: 1.2, ease: 'power3.out' })
-      .from('.hero-subtitle', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.8')
-      .from('.hero-btns', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6');
+    tl.from('.hero-title', { 
+      y: 60, 
+      opacity: 0, 
+      duration: 1.8, 
+      ease: 'expo.out' 
+    })
+    .from('.hero-subtitle', { 
+      y: 30, 
+      opacity: 0, 
+      duration: 1.2, 
+      ease: 'power3.out' 
+    }, '-=1.2')
+    .from('.hero-btns', { 
+      y: 30, 
+      opacity: 0, 
+      duration: 1.2, 
+      ease: 'power3.out' 
+    }, '-=0.8');
 
   }, { scope: containerRef });
 
@@ -289,17 +305,17 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="hero-btns flex flex-wrap items-center justify-start gap-4 pt-16">
-              <Magnetic strength={0.1}>
-                <Link href="/contact">
-                  <Button className="h-15 px-14 bg-[#D4B982] hover:bg-[#B38B4D] text-white rounded-none tracking-[0.35em] font-bold text-[11px] uppercase border-0 shadow-[0_25px_60px_rgba(212,185,130,0.25)] transition-all duration-700">
+            <div className="hero-btns flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-12 md:pt-16">
+              <Magnetic strength={0.1} className="w-full sm:w-auto">
+                <Link href="/contact" className="block w-full sm:w-auto">
+                  <Button className="w-full h-14 md:h-15 px-8 md:px-14 bg-[#D4B982] hover:bg-[#B38B4D] text-white rounded-none tracking-[0.35em] font-bold text-[11px] uppercase border-0 shadow-[0_25px_60px_rgba(212,185,130,0.25)] transition-all duration-700">
                     PLAN YOUR EVENT
                   </Button>
                 </Link>
               </Magnetic>
-              <Magnetic strength={0.1}>
-                <Link href="/gallery">
-                  <Button variant="outline" className="h-15 px-14 border-white/70 !text-white hover:bg-white hover:!text-black rounded-none tracking-[0.35em] font-bold text-[12px] uppercase bg-black/20 backdrop-blur-lg transition-all duration-700">
+              <Magnetic strength={0.1} className="w-full sm:w-auto">
+                <Link href="/gallery" className="block w-full sm:w-auto">
+                  <Button variant="outline" className="w-full h-14 md:h-15 px-8 md:px-14 border-white/70 !text-white hover:bg-white hover:!text-black rounded-none tracking-[0.35em] font-bold text-[12px] uppercase bg-black/20 backdrop-blur-lg transition-all duration-700">
                     VIEW OUR WORK
                   </Button>
                 </Link>
@@ -308,18 +324,21 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Refined Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-white/40 group cursor-pointer transition-colors hover:text-[#D4B982]">
-          <ArrowDown size={18} className="animate-bounce" />
-          <span className="text-[9px] font-sans font-bold uppercase tracking-[0.6em] opacity-80 group-hover:opacity-100 transition-opacity">SCROLL TO EXPLORE</span>
-        </div>
+        {/* Hero Bottom Controls - Grouped to avoid overlaps */}
+        <div className="absolute bottom-10 right-10 flex items-center gap-12 z-20">
+          {/* Refined Scroll Indicator */}
+          <div className="flex flex-col items-center gap-2 text-white/40 group cursor-pointer transition-colors hover:text-[#D4B982]">
+            <ArrowDown size={16} className="animate-bounce" />
+            <span className="text-[8px] font-sans font-bold uppercase tracking-[0.6em] opacity-80 group-hover:opacity-100 transition-opacity whitespace-nowrap">SCROLL TO EXPLORE</span>
+          </div>
 
-        {/* Play Showreel - Enhanced Visibility */}
-        <div className="absolute bottom-10 right-10 hidden lg:flex items-center gap-3 text-white/50 group cursor-pointer hover:text-white transition-all">
-           <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:border-[#D4B982] group-hover:bg-[#D4B982]/10 backdrop-blur-md transition-all duration-700">
-             <Play size={18} fill="currentColor" className="ml-1" />
-           </div>
-           <span className="text-[10px] font-bold uppercase tracking-[0.5em] opacity-80 group-hover:opacity-100">PLAY SHOWREEL</span>
+          {/* Play Showreel - Enhanced Visibility */}
+          <div className="hidden lg:flex items-center gap-4 text-white/50 group cursor-pointer hover:text-white transition-all">
+             <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:border-[#D4B982] group-hover:bg-[#D4B982]/10 backdrop-blur-md transition-all duration-700">
+               <Play size={16} fill="currentColor" className="ml-1" />
+             </div>
+             <span className="text-[9px] font-bold uppercase tracking-[0.5em] opacity-80 group-hover:opacity-100 whitespace-nowrap">PLAY SHOWREEL</span>
+          </div>
         </div>
       </section>
 

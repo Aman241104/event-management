@@ -55,15 +55,16 @@ export default function ClientsPage() {
     const fadeElements = gsap.utils.toArray<HTMLElement>('.fade-up');
     fadeElements.forEach((el) => {
       gsap.fromTo(el, 
-        { y: 40, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 1.2,
           ease: 'power3.out',
+          overwrite: 'auto',
           scrollTrigger: {
             trigger: el,
-            start: 'top 92%',
+            start: 'top 94%',
             toggleActions: 'play none none none'
           }
         }

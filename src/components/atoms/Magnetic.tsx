@@ -27,8 +27,9 @@ export function Magnetic({ children, strength = 0.5, className = "" }: MagneticP
       gsap.to(el, {
         x: deltaX * strength,
         y: deltaY * strength,
-        duration: 1,
-        ease: 'power3.out'
+        duration: 1.2,
+        ease: 'power3.out',
+        overwrite: 'auto'
       });
     };
 
@@ -36,8 +37,9 @@ export function Magnetic({ children, strength = 0.5, className = "" }: MagneticP
       gsap.to(el, {
         x: 0,
         y: 0,
-        duration: 1,
-        ease: 'elastic.out(1, 0.3)'
+        duration: 1.5,
+        ease: 'power3.out',
+        overwrite: 'auto'
       });
     };
 
