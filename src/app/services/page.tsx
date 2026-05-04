@@ -26,7 +26,7 @@ const serviceCategories = [
     label: '01 / ETERNAL',
     title: 'Weddings & Celebrations',
     description: 'We specialize in bespoke wedding experiences that reflect your unique story, style, and dreams. From intimate proposals to grand palace weddings, we architect legacies of love.',
-    image: '/decor-1.jpg',
+    image: '/decor-2.jpg',
     tags: [
       'Luxury & Theme Weddings',
       'Destination Weddings',
@@ -44,7 +44,7 @@ const serviceCategories = [
     label: '02 / WHIMSICAL',
     title: 'Birthdays & Kids',
     description: 'From playful themes to premium setups, we create joyful celebrations filled with fun and imagination. We turn childhood dreams into vibrant, unforgettable realities.',
-    image: '/hero-7.jpg',
+    image: '/hero-4.jpg',
     tags: [
       'Theme-Based Birthday Parties',
       'Balloon Décor & Styling',
@@ -63,7 +63,7 @@ const serviceCategories = [
     label: '03 / PRESTIGE',
     title: 'Corporate Events',
     description: 'Professional, impactful, and seamlessly executed events designed to elevate your brand. We handle the logistics so you can focus on your business vision.',
-    image: '/decor-4.jpg',
+    image: '/hero-1.jpg',
     tags: [
       'Product Launches & Conferences',
       'Annual Day & Awards Night',
@@ -79,7 +79,7 @@ const serviceCategories = [
     label: '04 / INTIMATE',
     title: 'Social & Lifestyle',
     description: 'Elegant and intimate celebrations tailored to your special moments. We bring a touch of sophistication to your personal milestones.',
-    image: '/decor-2.jpg',
+    image: '/private-celebrations.jpg',
     tags: [
       'Baby Showers',
       'Ring Ceremony',
@@ -95,7 +95,7 @@ const serviceCategories = [
     label: '05 / HERITAGE',
     title: 'Festival Celebrations',
     description: 'Celebrate traditions with a touch of creativity and style. We curate festive experiences that honor culture while embracing modern elegance.',
-    image: '/decor-3.jpg',
+    image: '/hero-8.jpg',
     tags: [
       'Diwali Décor & Events',
       'Christmas Celebrations',

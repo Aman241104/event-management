@@ -143,7 +143,7 @@ const services = [
   {
     title: 'WEDDINGS',
     desc: 'Exquisite weddings that reflect your story and style.',
-    image: '/hero-1.jpg',
+    image: '/decor-2.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="9" cy="12" r="5" />
@@ -154,7 +154,7 @@ const services = [
   {
     title: 'CORPORATE EVENTS',
     desc: 'Professional events that inspire, engage and leave a lasting impact.',
-    image: '/hero-6.jpg',
+    image: '/hero-1.jpg',
     icon: <Briefcase size={22} strokeWidth={0.75} />,
   },
   {
@@ -178,11 +178,11 @@ const services = [
 
 const categories = [
   { title: 'WEDDINGS', image: '/hero-2.jpg' },
-  { title: 'BIRTHDAYS', image: '/hero-5.jpg' },
-  { title: 'CORPORATE EVENTS', image: '/decor-1.jpg' },
-  { title: 'FLEA MARKETS', image: '/decor-2.jpg' },
-  { title: 'FESTIVALS & CULTURAL EVENTS', image: '/hero-8.jpg' },
-  { title: 'PRIVATE PARTIES', image: '/hero10.jpg' },
+  { title: 'BIRTHDAYS', image: '/hero-4.jpg' },
+  { title: 'CORPORATE EVENTS', image: '/hero-1.jpg' },
+  { title: 'FLEA MARKETS', image: '/hero-8.jpg' },
+  { title: 'FESTIVALS & CULTURAL EVENTS', image: '/hero-6.jpg' },
+  { title: 'PRIVATE PARTIES', image: '/private-celebrations.jpg' },
 ];
 
 const whyChooseUs = [
