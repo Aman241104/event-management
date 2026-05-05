@@ -4,7 +4,7 @@
  * Provides functions to generate context-specific WhatsApp booking links.
  */
 
-const WHATSAPP_NUMBER = "1234567890"; // In production, this would be an environment variable.
+const WHATSAPP_NUMBER = "919825782685"; // In production, this would be an environment variable.
 
 /**
  * Generates a WhatsApp booking link with a pre-encoded message.

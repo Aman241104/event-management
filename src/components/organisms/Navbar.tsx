@@ -21,8 +21,6 @@ const navLinks = [
   { label: 'ABOUT US', href: '/about' },
   { label: 'SERVICES', href: '/services' },
   { label: 'GALLERY', href: '/gallery' },
-  { label: 'CLIENTS', href: '/clients' },
-  { label: 'BLOG', href: '/blog' },
   { label: 'CONTACT US', href: '/contact' },
 ];
 
@@ -111,9 +109,9 @@ export function Navbar() {
           (isOpen || isSearchOpen) && "bg-transparent shadow-none"
         )}
       >
-        <nav className="container flex items-center justify-between gap-4">
+        <nav className="container flex items-center justify-between">
           {/* Left: Logo */}
-          <div className="flex-shrink-0 flex justify-start items-center">
+          <div className="flex-1 flex justify-start items-center">
             <Magnetic strength={0.05}>
               <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[60] block origin-left">
                 <Logo scrolled={isScrolled} variant="navbar" />
@@ -122,7 +120,7 @@ export function Navbar() {
           </div>
 
           {/* Center: Desktop Links */}
-          <div className="hidden lg:flex items-center justify-center gap-4 xl:gap-6 flex-grow mx-4">
+          <div className="hidden lg:flex items-center justify-center gap-4 xl:gap-8 mx-4">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -146,7 +144,7 @@ export function Navbar() {
           </div>
           
           {/* Right: CTA & Search */}
-          <div className="hidden lg:flex items-center justify-end gap-4 xl:gap-6 flex-shrink-0">
+          <div className="flex-1 hidden lg:flex items-center justify-end gap-4 xl:gap-6">
             <button 
               onClick={openSearch}
               className="p-1.5 text-white/70 hover:text-[#D4B982] transition-all duration-500 hover:scale-110"
@@ -239,17 +237,10 @@ export function Navbar() {
           </div>
 
           <div className={cn(
-            "space-y-12 transition-all duration-1000 delay-500",
+            "space-y-12 transition-all duration-1000 delay-500 mt-auto",
             isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )}>
             <div className="flex flex-col space-y-8 text-center">
-              <div className="flex justify-center gap-12 border-y border-white/5 py-8">
-                 <button onClick={openSearch} className="text-[11px] font-sans font-bold uppercase tracking-[0.3em] text-white/50 hover:text-[#D4B982] transition-colors flex items-center gap-3">
-                   <Search size={18} /> SEARCH
-                 </button>
-                 <Link href="/quiz" onClick={() => setIsOpen(false)} className="text-[11px] font-sans font-bold uppercase tracking-[0.3em] text-white/50 hover:text-[#D4B982] transition-colors">AESTHETIC QUIZ</Link>
-              </div>
-              <a href="mailto:hello@zingblissevents.com" className="text-xl font-serif text-white font-bold underline underline-offset-8 decoration-[#D4B982]/20 hover:decoration-[#D4B982] transition-all duration-500 italic">hello@zingblissevents.com</a>
               <Link href="/contact" onClick={() => setIsOpen(false)}>
                 <Button variant="solid" className="w-full h-18 bg-[#D4B982] text-black font-bold text-[11px] tracking-[0.4em] rounded-none">
                   PLAN YOUR EVENT

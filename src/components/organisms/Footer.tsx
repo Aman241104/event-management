@@ -65,25 +65,6 @@ export function Footer() {
                 </Magnetic>
               </div>
               
-              <div className="flex items-center space-x-10 pt-4">
-                {[
-                  { icon: <Instagram size={20} strokeWidth={1} />, href: 'https://www.instagram.com/zingblissevents/' },
-                  { icon: <Twitter size={20} strokeWidth={1} />, href: '#' },
-                  { icon: <Facebook size={20} strokeWidth={1} />, href: '#' },
-                  { icon: <Linkedin size={20} strokeWidth={1} />, href: '#' },
-                ].map((social, i) => (
-                  <Magnetic key={i} strength={0.3}>
-                    <a 
-                      href={social.href} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-white/40 hover:text-[#D4B982] hover:scale-125 transition-all duration-500 transform block"
-                    >
-                      {social.icon}
-                    </a>
-                  </Magnetic>
-                ))}
-              </div>
             </div>
           </div>
 
