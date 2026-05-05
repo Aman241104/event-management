@@ -96,20 +96,20 @@ export function CustomCursor() {
       <div
         ref={cursorRef}
         className={cn(
-          "fixed top-0 left-0 w-1.5 h-1.5 bg-heritage rounded-full pointer-events-none z-[10002] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
+          "fixed top-0 left-0 w-1.5 h-1.5 bg-heritage rounded-full pointer-events-none z-[10002] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 will-change-transform",
           isVisible ? "opacity-100" : "opacity-0"
         )}
       />
       <div
         ref={followerRef}
         className={cn(
-          "fixed top-0 left-0 w-8 h-8 border border-heritage/30 rounded-full pointer-events-none z-[10001] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300",
+          "fixed top-0 left-0 w-8 h-8 border border-heritage/30 rounded-full pointer-events-none z-[10001] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 will-change-transform",
           isVisible ? "opacity-100" : "opacity-0"
         )}
       />
       <div
         ref={labelRef}
-        className="fixed top-0 left-0 pointer-events-none z-[10003] -translate-x-1/2 -translate-y-1/2 opacity-0"
+        className="fixed top-0 left-0 pointer-events-none z-[10003] -translate-x-1/2 -translate-y-1/2 opacity-0 will-change-transform"
         style={{ left: 0, top: 0 }}
       >
         <div className="transform translate-x-6 translate-y-6">

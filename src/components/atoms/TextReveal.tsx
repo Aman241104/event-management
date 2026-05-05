@@ -36,7 +36,7 @@ export function TextReveal({
     const words = text.split(' ');
     el.innerHTML = words.map(word => 
       `<span class="inline-block overflow-hidden pb-[0.1em] mb-[-0.1em]">
-        <span class="inline-block transform translate-y-[110%] rotate-[5deg] origin-left">${word}&nbsp;</span>
+        <span class="inline-block transform translate-y-[110%] rotate-[5deg] origin-left will-change-transform">${word}&nbsp;</span>
       </span>`
     ).join('');
 
@@ -54,7 +54,8 @@ export function TextReveal({
       delay: delay,
       stagger: 0.08,
       ease: 'power3.out',
-      overwrite: 'auto'
+      overwrite: 'auto',
+      force3D: true
     });
   }, [text, delay, duration, once]);
 

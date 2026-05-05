@@ -8,13 +8,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.0,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.3,
-      touchMultiplier: 2.2,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
       infinite: false,
     });
 
@@ -27,7 +27,8 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     gsap.ticker.add(update);
 
-    gsap.ticker.lagSmoothing(0);
+    // Re-enable lag smoothing with sensible defaults to prevent jumps during frame drops
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       lenis.destroy();

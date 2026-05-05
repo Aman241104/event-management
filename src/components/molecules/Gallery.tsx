@@ -138,13 +138,13 @@ export function Gallery({ items, className, hasCursorLabel = true, aspectRatio =
       {/* Lightbox Modal */}
       {selectedItem && (
         <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-canvas/98 backdrop-blur-2xl p-4 md:p-12 transition-all duration-500"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-canvas/98 p-4 md:p-12 transition-all duration-500"
           onClick={() => setSelectedItemIndex(null)}
         >
           <div className="absolute inset-0 dot-pattern opacity-[0.03] invert" />
           
           <button 
-            className="absolute top-8 right-8 p-3 text-heritage hover:text-text-primary transition-colors z-[110] bg-canvas/50 rounded-full backdrop-blur-sm"
+            className="absolute top-8 right-8 p-3 text-heritage hover:text-text-primary transition-colors z-[110] bg-canvas/50 rounded-full"
             onClick={() => setSelectedItemIndex(null)}
           >
             <X size={24} strokeWidth={1} />

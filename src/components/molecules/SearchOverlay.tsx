@@ -42,7 +42,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
     <div
       aria-hidden={!isOpen}
       className={cn(
-        "fixed inset-0 z-[100] w-full h-screen bg-canvas/98 backdrop-blur-2xl transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)]",
+        "fixed inset-0 z-[100] w-full h-screen bg-canvas/98 transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)]",
         isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       )}
     >

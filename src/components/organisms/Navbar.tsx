@@ -5,6 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Search, ArrowRight } from 'lucide-react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 import { Logo } from '@/components/atoms/Logo';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
@@ -41,38 +46,39 @@ export function Navbar() {
     lastScrollY.current = window.scrollY;
   }, [pathname]);
 
+  // Optimize scroll handling with ScrollTrigger instead of manual scroll listener
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const scrollDiff = Math.abs(currentScrollY - lastScrollY.current);
-      
-      setScrolled(currentScrollY > 50);
-      
-      if (headerRef.current && !isOpen && !isSearchOpen) {
-        // Always show at the top
-        if (currentScrollY < 50) {
-          gsap.to(headerRef.current, { yPercent: 0, duration: 0.4, ease: 'power2.out', overwrite: true });
-        } 
-        // Only trigger if we scrolled more than the threshold
-        else if (scrollDiff > scrollThreshold) {
-          if (currentScrollY > lastScrollY.current && currentScrollY > 200) {
-            // Scrolling down
-            gsap.to(headerRef.current, { yPercent: -100, duration: 0.5, ease: 'power3.inOut', overwrite: true });
-          } else if (currentScrollY < lastScrollY.current) {
-            // Scrolling up
-            gsap.to(headerRef.current, { yPercent: 0, duration: 0.5, ease: 'power3.out', overwrite: true });
+    let showAnim = gsap.from(headerRef.current, { 
+      yPercent: -100,
+      paused: true,
+      duration: 0.4,
+      ease: "power2.out"
+    }).progress(1);
+
+    const st = ScrollTrigger.create({
+      start: "top top",
+      end: 99999,
+      onUpdate: (self) => {
+        const isCurrentlyScrolled = self.scroll() > 50;
+        
+        // Only update state if it actually changed to prevent React re-renders on every tick
+        setScrolled((prev) => {
+          if (prev !== isCurrentlyScrolled) return isCurrentlyScrolled;
+          return prev;
+        });
+
+        // Hide on scroll down, show on scroll up
+        if (!isOpen && !isSearchOpen) {
+          if (self.direction === -1) {
+            showAnim.play();
+          } else if (self.direction === 1 && self.scroll() > 200) {
+            showAnim.reverse();
           }
         }
-      } else if ((isOpen || isSearchOpen) && headerRef.current) {
-        // Keep visible when menus are open
-        gsap.to(headerRef.current, { yPercent: 0, duration: 0.4, ease: 'power2.out', overwrite: true });
       }
+    });
 
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => st.kill();
   }, [isOpen, isSearchOpen]);
 
   useEffect(() => {
@@ -98,11 +104,11 @@ export function Navbar() {
       <header 
         ref={headerRef}
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-700 ease-in-out",
+          "fixed top-0 w-full z-50 transition-[background-color,padding,border-color,box-shadow] duration-700 ease-in-out",
           isScrolled 
-            ? "bg-heritage/90 backdrop-blur-xl py-2 shadow-[0_10px_50px_rgba(0,0,0,0.4)] border-b border-white/5" 
+            ? "bg-heritage/95 py-2 shadow-[0_10px_50px_rgba(0,0,0,0.4)] border-b border-white/5" 
             : "bg-transparent py-4",
-          (isOpen || isSearchOpen) && "bg-transparent backdrop-blur-0 shadow-none"
+          (isOpen || isSearchOpen) && "bg-transparent shadow-none"
         )}
       >
         <nav className="container flex items-center justify-between gap-4">
@@ -208,22 +214,22 @@ export function Navbar() {
           </button>
         </div>
 
-        <div className="flex flex-col min-h-full px-10 pt-32 pb-20 justify-between relative z-10">
-          <div className="flex flex-col space-y-10">
+        <div className="flex flex-col min-h-full px-10 pt-24 pb-20 justify-between relative z-10">
+          <div className="flex flex-col space-y-6">
             {navLinks.map((link, i) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "group flex items-center justify-between border-b border-white/5 pb-8 transition-all duration-1000",
+                  "group flex items-center justify-between border-b border-white/5 pb-6 transition-all duration-1000",
                   isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 )}
                 style={{ transitionDelay: `${(i + 1) * 80}ms` }}
               >
                 <div className="flex items-center gap-8">
                   <span className="text-[11px] font-mono text-[#D4B982]/60 group-hover:text-[#D4B982] transition-colors">0{i + 1}</span>
-                  <span className="text-5xl font-serif text-white group-hover:text-[#D4B982] transition-colors font-bold tracking-tight italic">
+                  <span className="text-3xl font-serif text-white group-hover:text-[#D4B982] transition-colors font-bold tracking-tight italic">
                     {link.label}
                   </span>
                 </div>

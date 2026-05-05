@@ -246,7 +246,8 @@ export default function Home() {
         opacity: 0,
         duration: 1.2,
         ease: 'power3.out',
-        overwrite: 'auto'
+        overwrite: 'auto',
+        force3D: true
       });
     });
 
@@ -256,19 +257,22 @@ export default function Home() {
       y: 60, 
       opacity: 0, 
       duration: 1.8, 
-      ease: 'expo.out' 
+      ease: 'expo.out',
+      force3D: true
     })
     .from('.hero-subtitle', { 
       y: 30, 
       opacity: 0, 
       duration: 1.2, 
-      ease: 'power3.out' 
+      ease: 'power3.out',
+      force3D: true
     }, '-=1.2')
     .from('.hero-btns', { 
       y: 30, 
       opacity: 0, 
       duration: 1.2, 
-      ease: 'power3.out' 
+      ease: 'power3.out',
+      force3D: true
     }, '-=0.8');
 
   }, { scope: containerRef });

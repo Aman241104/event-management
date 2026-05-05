@@ -159,7 +159,7 @@ export default function ServicesPage() {
       yoyo: true
     });
 
-    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: DEFAULT_EASE })
+    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: DEFAULT_EASE, force3D: true })
           .fromTo(".hero-title .text-line", { 
             y: 80,
             opacity: 0
@@ -168,9 +168,10 @@ export default function ServicesPage() {
             opacity: 1,
             stagger: 0.15,
             duration: 1.4,
-            ease: "expo.out" 
+            ease: "expo.out",
+            force3D: true
           }, "-=0.8")
-          .fromTo(".hero-subtext", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE }, "-=0.8");
+          .fromTo(".hero-subtext", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE, force3D: true }, "-=0.8");
 
     // 2. Section Reveals - Enhanced for luxury feel
     const sections = gsap.utils.toArray<HTMLElement>('section');
@@ -184,6 +185,7 @@ export default function ServicesPage() {
           duration: 1.2, 
           ease: DEFAULT_EASE,
           overwrite: 'auto',
+          force3D: true,
           scrollTrigger: {
             trigger: section,
             start: "top 94%",

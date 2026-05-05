@@ -45,6 +45,7 @@ export function MaskSlideImage({
       yPercent: -100,
       duration: 1.4,
       ease: 'power4.inOut',
+      force3D: true
     });
 
     // Scale the image down from 1.3 to 1 slightly overlapping the mask animation
@@ -54,6 +55,7 @@ export function MaskSlideImage({
         scale: 1,
         duration: 1.8,
         ease: 'power3.out',
+        force3D: true
       }, 0.2
     );
   }, []);
@@ -66,7 +68,7 @@ export function MaskSlideImage({
       {/* The Frame and Image */}
       <div className="w-full h-full frame-arch-luxury">
         <div className="image-container">
-          <div ref={imageWrapperRef} className="w-full h-full relative">
+          <div ref={imageWrapperRef} className="w-full h-full relative will-change-transform">
             <Image 
               src={src} 
               alt={alt} 
@@ -82,7 +84,7 @@ export function MaskSlideImage({
       {/* The Reveal Mask - Matches the background color and covers the ENTIRE frame */}
       <div 
         ref={maskRef}
-        className={cn("absolute inset-[-10px] z-20 pointer-events-none origin-bottom", maskColor)}
+        className={cn("absolute inset-[-10px] z-20 pointer-events-none origin-bottom will-change-transform", maskColor)}
       />
     </div>
   );

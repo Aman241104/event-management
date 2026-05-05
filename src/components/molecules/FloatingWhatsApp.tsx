@@ -10,7 +10,7 @@ export function FloatingWhatsApp() {
   return (
     <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[60] flex flex-col items-center gap-4">
       {/* Tooltip-style label */}
-      <div className="hidden md:block bg-white/90 backdrop-blur-md px-4 py-2 border border-linen/30 shadow-xl opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 pointer-events-none mb-2">
+      <div className="hidden md:block bg-white/95 px-4 py-2 border border-linen/30 shadow-xl opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 pointer-events-none mb-2">
         <span className="text-[10px] font-bold text-heritage uppercase tracking-[0.2em] whitespace-nowrap">
           Chat with Concierge
         </span>
