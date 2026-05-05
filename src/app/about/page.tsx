@@ -112,123 +112,157 @@ export default function AboutPage() {
     <main ref={mainRef} className="min-h-screen bg-[#FDFBF7] selection:bg-[#D4B982] selection:text-black overflow-hidden">
       <div ref={containerRef} className="relative">
         
-        {/* 1. Hero Section - Compact & Atmospheric */}
-        <section id="hero" className="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden bg-heritage">
+        {/* 1. Hero Section - Recreated from Reference */}
+        <section id="hero" className="relative h-[85vh] min-h-[700px] flex items-center justify-center overflow-hidden bg-heritage text-center">
           <div className="absolute inset-0 z-0 hero-bg-wrapper">
             <Image 
-              src="/hero-9.jpg" 
-              alt="About Zing Bliss" 
+              src="/assets/wedding/wedding-5.jpg" 
+              alt="The Story Behind Zing Bliss" 
               fill 
-              className="object-cover brightness-[0.25]"
+              className="object-cover brightness-[0.35]"
               priority
             />
           </div>
           
-          {/* Cinema Overlays - Matching Home */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90 z-10" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.12)_0%,_transparent_75%)] z-10" />
+          {/* Cinema Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80 z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.15)_0%,_transparent_80%)] z-10" />
           
-          <div className="container relative z-20">
-            <div className="max-w-4xl space-y-6">
-              <div className="hero-header-reveal flex items-center gap-6 opacity-0">
-                 <div className="w-12 h-px bg-[#D4B982]/40" />
-                 <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">ABOUT ZING BLISS</span>
+          <div className="container relative z-20 pt-32 md:pt-44">
+            <div className="max-w-4xl mx-auto space-y-8">
+              <div className="hero-header-reveal flex flex-col items-center gap-4 opacity-0">
+                 <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">ABOUT US</span>
                  <div className="w-12 h-px bg-[#D4B982]/40" />
               </div>
               
-              <h1 className="hero-title text-5xl md:text-7xl lg:text-[8rem] font-serif text-white leading-[0.85] tracking-tighter">
-                <span className="block overflow-hidden">
-                  <span className="text-line block">Our Journey of</span>
-                </span>
-                <span className="block overflow-hidden">
-                  <span className="text-line block italic font-script text-[#D4B982] mt-4 lowercase lg:text-[10rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Excellence</span>
-                </span>
-              </h1>
+              <div className="space-y-2">
+                <h1 className="hero-title text-5xl md:text-8xl lg:text-[8.5rem] font-serif text-white leading-[1.1] tracking-tight">
+                  <span className="block overflow-hidden">
+                    <span className="text-line block">The Story Behind</span>
+                  </span>
+                  <span className="block overflow-hidden">
+                    <span className="text-line block italic font-script text-[#D4B982] mt-4 lg:text-[10.5rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Zing Bliss Events</span>
+                  </span>
+                </h1>
+              </div>
 
-              <div className="max-w-xl hero-subtext opacity-0">
-                <p className="text-white/70 text-lg md:text-xl font-serif italic border-l border-[#D4B982]/30 pl-10 leading-relaxed">
-                  We don&apos;t just plan events; we compose atmospheric experiences that feel effortless, refined, and deeply personal.
+              <div className="max-w-lg mx-auto hero-subtext opacity-0 pt-6">
+                <p className="text-white/80 text-lg md:text-xl font-serif italic leading-relaxed">
+                  We are dreamers, planners and creators of <br className="hidden md:block" /> unforgettable experiences.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 2. Marquee - Reduced Padding */}
-        <section className="py-8 border-y border-linen/10 bg-white/50 backdrop-blur-md relative overflow-hidden">
-          <InfiniteMarquee 
-            items={["VOGUE", "BAZAAR", "THE KNOT", "BRIDES", "LUXURY DAILY", "ELITE TRAVELER"]}
-            speed={40}
-            className="text-[#121212]/20 font-serif italic text-xl md:text-2xl tracking-widest"
-          />
-        </section>
+        {/* 2. Our Journey Section - Recreated from Reference */}
+        <section id="journey" className="py-32 md:py-48 bg-[#FDFBF7]">
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              {/* Image Side */}
+              <div className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-sm shadow-2xl fade-up">
+                <Image 
+                  src="/decor-6.jpg" 
+                  alt="Our Journey" 
+                  fill 
+                  className="object-cover transition-transform duration-[2000ms] hover:scale-105"
+                />
+              </div>
 
-        {/* 3. Philosophy - Compacted */}
-        <section className="py-16 md:py-24 relative overflow-hidden">
-          <div className="container relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              {/* Text Side */}
               <div className="space-y-10 fade-up">
                 <div className="space-y-4">
-                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR PHILOSOPHY</span>
-                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-[#121212] leading-tight">
-                    The Art Behind <br />
-                    <span className="text-[#D4B982] italic font-script lowercase text-5xl md:text-7xl">Atmospheric Design.</span>
+                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR JOURNEY</span>
+                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#121212] leading-[1.1] tracking-tight">
+                    Turning Dreams <br />
+                    Into Beautiful <br />
+                    <span className="text-[#D4B982] italic font-script block -mt-2 text-6xl md:text-9xl">Realities</span>
                   </h2>
                 </div>
 
-                <p className="text-[#525252] text-lg font-sans font-light leading-relaxed max-w-lg">
-                  Every celebration we orchestrate is a bespoke composition. We believe luxury is found in the perfect execution of the essential, not in the accumulation of the unnecessary.
-                </p>
-
-                <div className="grid grid-cols-1 gap-6 pt-4">
-                  {[
-                    { id: '01', title: 'Bespoke Approach', desc: 'Unique ideas tailored to your vision.' },
-                    { id: '02', title: 'Precision Execution', desc: 'Flawless planning in every detail.' },
-                  ].map((item) => (
-                    <div key={item.id} className="flex gap-6 group">
-                      <span className="text-[10px] font-mono text-[#D4B982] font-bold pt-1">{item.id}</span>
-                      <div className="space-y-1">
-                        <h4 className="text-[12px] uppercase tracking-[0.3em] text-[#121212] font-bold">{item.title}</h4>
-                        <p className="text-[13px] text-[#525252] font-light leading-relaxed">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
+                <div className="space-y-8 max-w-lg">
+                  <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
+                    Zing Bliss Events was born out of a passion for design, a love for celebrations and a commitment to creating moments that stay with you forever. 
+                  </p>
+                  <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
+                    From intimate gatherings to grand celebrations, we bring creativity, precision and heart to every event we craft.
+                  </p>
                 </div>
-              </div>
 
-              <div className="relative aspect-square md:aspect-[1.2/1] overflow-hidden rounded-sm shadow-2xl fade-up">
-                <Image
-                  src="/hero-8.jpg"
-                  alt="Philosophy Visual"
-                  fill
-                  className="object-cover transition-transform duration-[2000ms] hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
+                <div className="pt-4">
+                  <Magnetic strength={0.1}>
+                    <Button className="btn-gold px-12 py-5 text-[11px]">
+                      DISCOVER OUR STORY
+                    </Button>
+                  </Magnetic>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 4. Visionaries - New Compact Section */}
-        <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-          <div className="container relative z-10">
-            <div className="text-center max-w-3xl mx-auto space-y-6 mb-12 fade-up">
-               <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">THE VISIONARIES</span>
-               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-[#121212]">Orchestrators of Elegance</h2>
-               <div className="w-16 h-px bg-[#D4B982]/30 mx-auto" />
+        {/* 3. Our Philosophy Section - Recreated from Reference */}
+        <section id="philosophy" className="py-32 md:py-48 bg-[#05100a] relative overflow-hidden">
+          {/* Subtle Background Texture */}
+          <div className="absolute inset-0 dot-pattern opacity-[0.05] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(179,139,77,0.08)_0%,_transparent_70%)] pointer-events-none" />
+          
+          <div className="container relative z-10 text-center">
+            <div className="space-y-6 mb-24 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">OUR PHILOSOPHY</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight tracking-tight">What Drives Us</h2>
+              <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8">
               {[
-                { name: 'Riya & Karan', role: 'Founding Partners', image: '/hero-1.jpg' },
-                { name: 'Arjun Mehta', role: 'Creative Director', image: '/hero-2.jpg' },
-              ].map((member, i) => (
-                <div key={i} className="group relative aspect-[3/4] overflow-hidden rounded-sm fade-up shadow-xl" style={{ transitionDelay: `${i * 150}ms` }}>
-                  <Image src={member.image} alt={member.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
-                  <div className="absolute inset-x-0 bottom-8 text-center space-y-2">
-                    <h3 className="text-white text-2xl font-serif italic">{member.name}</h3>
-                    <p className="text-[#D4B982] text-[10px] uppercase tracking-[0.4em] font-bold">{member.role}</p>
+                { 
+                  title: 'Creativity', 
+                  desc: 'Unique ideas that bring your vision to life.',
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 8v8M8 12h8" />
+                    </svg>
+                  )
+                },
+                { 
+                  title: 'Precision', 
+                  desc: 'Meticulous planning and flawless execution.',
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  )
+                },
+                { 
+                  title: 'Personalisation', 
+                  desc: 'Every detail is tailored to reflect your story.',
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                  )
+                },
+                { 
+                  title: 'Excellence', 
+                  desc: 'We go beyond expectations to deliver perfection.',
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  )
+                },
+              ].map((item, i) => (
+                <div key={i} className="space-y-10 group fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
+                  <div className="w-24 h-24 mx-auto rounded-full border border-[#D4B982]/10 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover:border-[#D4B982]/40 group-hover:bg-[#D4B982]/10 transition-all duration-700 transform group-hover:scale-110">
+                    {item.icon}
+                  </div>
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-serif text-white tracking-wide">{item.title}</h4>
+                    <p className="text-white/40 text-sm leading-relaxed max-w-[200px] mx-auto font-light">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -236,17 +270,166 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 5. Final CTA - Consistent with Home */}
-        <section className="relative py-24 md:py-40 overflow-hidden bg-heritage">
+        {/* 4. Our Process Section - Recreated from Reference */}
+        <section id="process" className="py-32 md:py-48 bg-[#FDFCFB] relative overflow-hidden">
+          <div className="container text-center">
+            <div className="space-y-6 mb-24 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR PROCESS</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">How We Create Magic</h2>
+              <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
+            </div>
+
+            <div className="relative max-w-7xl mx-auto px-4">
+              {/* Connecting Line - Precise Alignment */}
+              <div className="absolute top-12 left-0 w-full h-px border-t border-dashed border-[#D4B982]/20 hidden lg:block z-0" />
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-8">
+                {[
+                  { 
+                    id: '01', 
+                    title: 'Discovery', 
+                    desc: 'Understanding your vision and requirements.',
+                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+                  },
+                  { 
+                    id: '02', 
+                    title: 'Concept & Design', 
+                    desc: 'Crafting a creative concept that reflects your style.',
+                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="m12 19 7-7 3 3-7 7-3-3z" /><path d="m18 13-1.5-7.5L2 2l7.5 14.5L13 18l5-5z" /></svg>
+                  },
+                  { 
+                    id: '03', 
+                    title: 'Planning & Coordination', 
+                    desc: 'Managing every detail with precision and perfection.',
+                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" /></svg>
+                  },
+                  { 
+                    id: '04', 
+                    title: 'Execution', 
+                    desc: 'Bringing everything to life seamlessly on the big day.',
+                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+                  },
+                  { 
+                    id: '05', 
+                    title: 'The Experience', 
+                    desc: 'Creating memories that last a lifetime.',
+                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z" /></svg>
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="relative z-10 space-y-10 fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
+                    <div className="w-24 h-24 mx-auto rounded-full bg-white shadow-2xl border border-linen/20 flex items-center justify-center transform transition-transform duration-700 hover:scale-110">
+                      {item.icon}
+                    </div>
+                    <div className="space-y-4 px-2">
+                      <span className="text-[10px] font-mono text-[#D4B982] font-bold tracking-widest">{item.id}</span>
+                      <h4 className="text-[15px] tracking-wide text-[#121212] font-bold font-serif">{item.title}</h4>
+                      <p className="text-[#525252] text-[13px] leading-relaxed font-light">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Our Work Section - Recreated from Reference */}
+        <section id="work" className="py-32 md:py-48 bg-[#05100a] relative overflow-hidden">
+          <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
+          
+          <div className="container relative z-10 text-center">
+            <div className="space-y-6 mb-24 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">OUR WORK</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight tracking-tight">Moments We&apos;re Proud Of</h2>
+              <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+              {[
+                '/assets/wedding/wedding-1.jpg', '/assets/corporate/corporate-6.jpg', '/assets/production/production-1.jpg',
+                '/assets/corporate/corporate-1.jpg', '/assets/birthday/birthday-2.jpg', '/assets/wedding/wedding-7.jpg'
+              ].map((img, i) => (
+                <div key={i} className="group relative aspect-[4/3] overflow-hidden rounded-sm shadow-2xl fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
+                  <Image 
+                    src={img} 
+                    alt={`Work ${i + 1}`} 
+                    fill 
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-[0.9] group-hover:brightness-110"
+                  />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/0 transition-colors duration-700" />
+                  <div className="absolute inset-0 border border-white/5 pointer-events-none" />
+                </div>
+              ))}
+            </div>
+            
+            <div className="mt-20 fade-up">
+              <Magnetic strength={0.05}>
+                <Link href="/gallery" className="inline-block">
+                  <Button variant="outline" className="border-[#D4B982]/40 !text-white hover:bg-[#D4B982] hover:!text-heritage px-12 py-5 text-[10px] bg-white/5 backdrop-blur-sm transition-all duration-700">
+                    VIEW FULL GALLERY
+                  </Button>
+                </Link>
+              </Magnetic>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Trust Section - Recreated from Reference */}
+        <section id="trust" className="py-32 md:py-48 bg-[#FDFBF7] relative overflow-hidden">
+          <div className="container text-center">
+            <div className="space-y-6 mb-24 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">WHY CLIENTS TRUST US</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">Experience You Can Trust</h2>
+              <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8">
+              {[
+                { 
+                  title: 'Tailored Experiences', 
+                  desc: 'Every event is as unique as you are.',
+                  icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>
+                },
+                { 
+                  title: 'End-to-End Management', 
+                  desc: 'We handle it all, seamlessly.',
+                  icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0" /><path d="M12 3v3" /><path d="M12 18v3" /><path d="M3 12h3" /><path d="M18 12h3" /></svg>
+                },
+                { 
+                  title: 'Premium Vendor Network', 
+                  desc: 'Trusted partners for the best quality.',
+                  icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                },
+                { 
+                  title: 'Flawless Execution', 
+                  desc: 'Precision, punctuality and perfection.',
+                  icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="m12 14 4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg>
+                },
+              ].map((item, i) => (
+                <div key={i} className="space-y-8 fade-up group" style={{ transitionDelay: `${i * 100}ms` }}>
+                  <div className="w-20 h-20 mx-auto flex items-center justify-center rounded-full border border-linen/30 bg-white shadow-xl transition-all duration-700 group-hover:border-[#D4B982]/30 group-hover:scale-110">
+                    {item.icon}
+                  </div>
+                  <div className="space-y-3">
+                    <h4 className="text-[16px] font-bold text-[#121212] tracking-wide font-serif">{item.title}</h4>
+                    <p className="text-[#525252] text-[14px] leading-relaxed max-w-[220px] mx-auto font-light">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 8. Final CTA - Recreated from Reference */}
+        <section className="relative py-32 md:py-48 overflow-hidden bg-[#05100a] text-center">
           <div className="absolute inset-0 z-0">
             <Image 
-              src="/hero10.jpg" 
+              src="/assets/wedding/wedding-3.jpg" 
               alt="Final CTA Background" 
               fill 
-              className="object-cover brightness-[0.2] scale-105" 
+              className="object-cover brightness-[0.15] scale-105" 
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90 z-10" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.15)_0%,_transparent_75%)] z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#05100a] opacity-90 z-10" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.1)_0%,_transparent_75%)] z-10" />
           </div>
           
           <div className="container relative z-20 text-center">
@@ -258,19 +441,19 @@ export default function AboutPage() {
               </div>
               
               <div className="relative inline-block">
-                <h2 className="text-4xl md:text-7xl lg:text-[7rem] font-serif text-white leading-[1.1] tracking-tighter relative z-10">
-                  Compose Your Legacy
+                <h2 className="text-4xl md:text-7xl lg:text-[7.5rem] font-serif text-white leading-[1] tracking-tighter relative z-10">
+                  Let&apos;s Create Your
                 </h2>
-                <span className="font-script text-[#D4B982] text-6xl md:text-8xl lg:text-[10rem] block -mt-4 md:-mt-8 lg:-mt-12 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
-                  With Zing Bliss.
+                <span className="font-script text-[#D4B982] text-6xl md:text-9xl lg:text-[11rem] block -mt-4 md:-mt-8 lg:-mt-10 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
+                  Unforgettable Story
                 </span>
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16 fade-up" style={{ transitionDelay: '200ms' }}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-20 fade-up" style={{ transitionDelay: '200ms' }}>
               <Magnetic strength={0.1}>
                 <Link href="/contact">
-                  <Button className="h-16 px-16 bg-[#D4B982] hover:bg-[#B38B4D] text-black rounded-none tracking-[0.4em] font-bold text-[12px] uppercase border-0 shadow-[0_25px_80px_rgba(212,185,130,0.25)] transition-all duration-700">
+                  <Button className="btn-gold h-16 px-16 text-[12px]">
                     BOOK A CONSULTATION
                   </Button>
                 </Link>
@@ -282,7 +465,7 @@ export default function AboutPage() {
                        <div className="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366]/40 group-hover:bg-[#25D366]/30 transition-colors">
                          <MessageCircle size={16} fill="#25D366" className="text-[#25D366]" />
                        </div>
-                       <span className="text-white group-hover:text-[#D4B982] transition-colors">CHAT ON WHATSAPP</span>
+                       <span className="text-white group-hover:text-[#D4B982] transition-colors uppercase">Chat on WhatsApp</span>
                      </div>
                   </Button>
                 </a>

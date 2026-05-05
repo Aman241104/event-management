@@ -122,7 +122,7 @@ export default function ContactPage() {
               <div className="pt-2">
                 <Magnetic strength={0.2}>
                   <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                    <Button className="w-full h-14 bg-black text-white hover:bg-[#D4B982] transition-all duration-500 rounded-none text-[10px] tracking-[0.4em] font-bold uppercase">
+                    <Button className="btn-gold w-full h-14 text-[10px]">
                        <WhatsAppLogo size={16} className="mr-3" /> WHATSAPP US
                     </Button>
                   </a>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                   .
                 </div>
                 <div className="pt-12 flex justify-start">
-                  <Button className="h-16 px-16 bg-[#D4B982] hover:bg-[#B38B4D] text-black rounded-none tracking-[0.4em] font-bold text-[11px] uppercase border-0 shadow-2xl transition-all duration-700 group">
+                  <Button className="btn-gold h-16 px-16 text-[11px] group">
                     SEND INQUIRY <ArrowRight size={14} className="ml-4 transform group-hover:translate-x-2 transition-transform" />
                   </Button>
                 </div>

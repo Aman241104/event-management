@@ -26,7 +26,7 @@ const serviceCategories = [
     label: '01 / ETERNAL',
     title: 'Weddings & Celebrations',
     description: 'We specialize in bespoke wedding experiences that reflect your unique story, style, and dreams. From intimate proposals to grand palace weddings, we architect legacies of love.',
-    image: '/decor-2.jpg',
+    image: '/assets/wedding/wedding-7.jpg',
     tags: [
       'Luxury & Theme Weddings',
       'Destination Weddings',
@@ -44,7 +44,7 @@ const serviceCategories = [
     label: '02 / WHIMSICAL',
     title: 'Birthdays & Kids',
     description: 'From playful themes to premium setups, we create joyful celebrations filled with fun and imagination. We turn childhood dreams into vibrant, unforgettable realities.',
-    image: '/hero-4.jpg',
+    image: '/assets/birthday/birthday-2.jpg',
     tags: [
       'Theme-Based Birthday Parties',
       'Balloon Décor & Styling',
@@ -63,7 +63,7 @@ const serviceCategories = [
     label: '03 / PRESTIGE',
     title: 'Corporate Events',
     description: 'Professional, impactful, and seamlessly executed events designed to elevate your brand. We handle the logistics so you can focus on your business vision.',
-    image: '/hero-1.jpg',
+    image: '/assets/corporate/corporate-1.jpg',
     tags: [
       'Product Launches & Conferences',
       'Annual Day & Awards Night',
@@ -79,7 +79,7 @@ const serviceCategories = [
     label: '04 / INTIMATE',
     title: 'Social & Lifestyle',
     description: 'Elegant and intimate celebrations tailored to your special moments. We bring a touch of sophistication to your personal milestones.',
-    image: '/private-celebrations.jpg',
+    image: '/assets/birthday/birthday-3.jpg',
     tags: [
       'Baby Showers',
       'Ring Ceremony',
@@ -95,7 +95,7 @@ const serviceCategories = [
     label: '05 / HERITAGE',
     title: 'Festival Celebrations',
     description: 'Celebrate traditions with a touch of creativity and style. We curate festive experiences that honor culture while embracing modern elegance.',
-    image: '/hero-8.jpg',
+    image: '/assets/corporate/corporate-7.jpg',
     tags: [
       'Diwali Décor & Events',
       'Christmas Celebrations',
@@ -110,7 +110,7 @@ const serviceCategories = [
     label: '06 / ARTISTRY',
     title: 'Artist Management',
     description: 'We bring the best talent to your event, ensuring unforgettable entertainment. From Bollywood stars to innovative global acts, we curate the energy of your night.',
-    image: '/hero-6.jpg',
+    image: '/assets/production/production-1.jpg',
     tags: [
       'Bollywood & Reality Stars',
       'Singers, Performers & Bands',
@@ -199,136 +199,102 @@ export default function ServicesPage() {
     <main ref={containerRef} className="min-h-screen bg-[#FDFBF7] selection:bg-[#D4B982] selection:text-black overflow-hidden">
       <div className="relative">
         
-        {/* 1. Hero Section - Compact & Atmospheric */}
-        <section id="hero" className="relative h-[70vh] min-h-[500px] flex items-center overflow-hidden bg-heritage">
+        {/* 1. Hero Section - Recreated from Reference */}
+        <section id="hero" className="relative h-[90vh] min-h-[700px] flex items-center overflow-hidden bg-heritage">
           <div className="absolute inset-0 z-0 hero-bg-wrapper">
-            <Image 
-              src="/decor-1.jpg" 
-              alt="Services Overview" 
-              fill 
-              className="object-cover brightness-[0.25]"
+            <Image
+              src="/assets/wedding/wedding-5.jpg"
+              alt="Services Overview"
+              fill
+              className="object-cover brightness-[0.35]"
               priority
-            />
-          </div>
+            />          </div>
           
           {/* Cinema Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90 z-10" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.12)_0%,_transparent_75%)] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 z-10" />
           
-          <div className="container relative z-20">
-            <div className="max-w-4xl space-y-6">
-              <div className="hero-header-reveal flex items-center gap-6 opacity-0">
-                 <div className="w-12 h-px bg-[#D4B982]/40" />
-                 <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">OUR SERVICES</span>
-                 <div className="w-12 h-px bg-[#D4B982]/40" />
+          <div className="container relative z-20 pt-32 md:pt-48">
+            <div className="max-w-5xl space-y-10">
+              <div className="hero-header-reveal flex flex-col items-start gap-4 opacity-0">
+                 <div className="flex items-center gap-3">
+                   <div className="w-12 h-px bg-[#D4B982]/40" />
+                   <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">SERVICES</span>
+                   <div className="w-12 h-px bg-[#D4B982]/40" />
+                 </div>
               </div>
               
-              <h1 className="hero-title text-5xl md:text-7xl lg:text-[8rem] font-serif text-white leading-[0.85] tracking-tighter">
+              <h1 className="hero-title text-5xl md:text-8xl lg:text-[8.5rem] font-serif text-white leading-[1] tracking-tight">
                 <span className="block overflow-hidden">
-                  <span className="text-line block">The Art of the</span>
+                  <span className="text-line block">Celebrations Crafted</span>
                 </span>
                 <span className="block overflow-hidden">
-                  <span className="text-line block italic font-script text-[#D4B982] mt-4 lowercase lg:text-[10rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Extraordinary</span>
+                  <span className="text-line block italic font-script text-[#D4B982] mt-4 lg:text-[12rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">To Perfection</span>
                 </span>
               </h1>
 
-              <div className="max-w-xl hero-subtext opacity-0">
-                <p className="text-white/70 text-lg md:text-xl font-serif italic border-l border-[#D4B982]/30 pl-10 leading-relaxed">
-                  We curate atmosphere across celebrations, corporate gatherings, and bespoke moments — each designed with architectural precision.
+              <div className="max-w-xl hero-subtext opacity-0 pt-10">
+                <p className="text-white/80 text-lg md:text-2xl font-serif italic border-l-2 border-[#D4B982]/30 pl-12 leading-relaxed">
+                  From concept to creation, we offer a range of services designed to make your event extraordinary.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* 2. Intro Statement - Compact */}
-        <section className="py-12 md:py-16 relative">
-          <div className="container text-center max-w-2xl mx-auto space-y-6 fade-up">
-            <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">ATMOSPHERIC CURATION</span>
-            <p className="text-xl md:text-2xl font-serif text-[#121212] leading-relaxed italic">
-              "Every event is a unique narrative, composed with intention and executed with quiet luxury."
-            </p>
-            <div className="w-12 h-px bg-[#D4B982]/30 mx-auto pt-4" />
-          </div>
-        </section>
-
-        {/* 3. Services Spectrum - Redesigned & Compact */}
-        <div className="space-y-4 pb-20">
-          {serviceCategories.map((service, index) => (
-            <section 
-              key={service.id}
-              className={`py-12 md:py-16 relative overflow-hidden ${index % 2 !== 0 ? 'bg-white' : 'bg-transparent'}`}
-            >
-              <div className="container grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                {/* Image Section - Sharper corners */}
-                <div className={`lg:col-span-7 ${index % 2 !== 0 ? 'lg:order-2' : ''} fade-up`}>
-                   <div className="relative aspect-[16/9] rounded-sm overflow-hidden shadow-2xl group">
-                      <Image 
-                        src={service.image} 
-                        alt={service.title} 
-                        fill 
-                        className="object-cover transition-transform duration-[1.5s] group-hover:scale-110" 
-                      />
-                      <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
-                   </div>
-                </div>
-
-                {/* Content Section */}
-                <div className={`lg:col-span-5 space-y-6 ${index % 2 !== 0 ? 'lg:order-1' : ''} fade-up`}>
-                  <div className="space-y-3">
-                    <span className="text-[10px] text-[#D4B982] font-bold uppercase tracking-[0.4em]">{service.label}</span>
-                    <h2 className="text-3xl md:text-4xl font-serif text-[#121212] leading-tight">{service.title}</h2>
-                    <p className="text-[15px] text-[#525252] font-sans font-light leading-relaxed">{service.description}</p>
-                  </div>
-                  
-                  <div className="pt-6 border-t border-linen/30">
-                    <ul className="grid grid-cols-1 gap-y-2">
-                      {service.tags.slice(0, 4).map((tag) => (
-                        <li key={tag} className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#121212]/70 font-bold flex items-center gap-3">
-                          <div className="w-1 h-1 bg-[#D4B982]" />
-                          {tag}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="pt-4">
-                    <a href={generateWhatsAppLink(service.title, 'Inquiry')} target="_blank" rel="noopener noreferrer">
-                      <Button className="h-12 px-10 bg-[#D4B982] hover:bg-[#B38B4D] text-black rounded-none tracking-[0.3em] font-bold text-[10px] uppercase transition-all duration-700">
-                        INQUIRE NOW
-                      </Button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </section>
-          ))}
-        </div>
-
-        {/* 4. Process Journey - Cohesive Vertical Style */}
-        <section id="process" className="py-20 bg-white relative overflow-hidden">
-          <div className="container relative z-10">
-            <div className="text-center max-w-3xl mx-auto space-y-6 mb-20 fade-up">
-               <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">OUR PROCESS</span>
-               <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-[#121212]">The Path to Perfection</h2>
-               <div className="w-16 h-px bg-[#D4B982]/30 mx-auto" />
+        {/* 2. What We Do Best Section - Recreated from Reference */}
+        <section id="grid" className="py-32 md:py-56 bg-[#FDFBF7]">
+          <div className="container text-center">
+            <div className="space-y-6 mb-24 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR SERVICES</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">What We Do Best</h2>
+              <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 max-w-7xl mx-auto">
               {[
-                { title: 'Discovery', desc: 'Distilling your vision into a singular direction.', icon: <MessageCircle size={24} /> },
-                { title: 'Curation', desc: 'Sourcing the finest artisans and materials.', icon: <Sparkles size={24} /> },
-                { title: 'Architecture', desc: 'Mapping every touchpoint with precision.', icon: <Zap size={24} /> },
-                { title: 'Execution', desc: 'Seamless orchestration of the extraordinary.', icon: <Star size={24} /> },
-              ].map((step, i) => (
-                <div key={i} className="bg-[#FDFBF7] p-10 space-y-8 fade-up group transition-all duration-700 hover:-translate-y-2 hover:shadow-2xl">
-                  <div className="flex justify-between items-start">
-                    <span className="text-5xl font-serif italic text-[#D4B982]/10 group-hover:text-[#D4B982]/20 transition-colors">0{i+1}</span>
-                    <div className="text-[#D4B982] group-hover:scale-110 transition-transform duration-700">{step.icon}</div>
+                { 
+                  title: 'WEDDINGS', 
+                  desc: 'Luxury weddings designed with elegance, creativity and attention to every detail.', 
+                  image: '/hero-2.jpg',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><circle cx="9" cy="12" r="5" /><circle cx="15" cy="12" r="5" /></svg>
+                },
+                { 
+                  title: 'CORPORATE EVENTS', 
+                  desc: 'Professional events that inspire, engage and leave a lasting impact.', 
+                  image: '/hero-1.jpg',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+                },
+                { 
+                  title: 'PRIVATE CELEBRATIONS', 
+                  desc: 'Personal celebrations filled with joy, love and unforgettable moments.', 
+                  image: '/private-celebrations.jpg',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="M6 2v10a6 6 0 0 0 12 0V2" /><line x1="9" y1="2" x2="9" y2="8" /><line x1="15" y1="2" x2="15" y2="8" /><path d="M12 12v10" /><path d="M9 18h6" /></svg>
+                },
+                { 
+                  title: 'EVENT PRODUCTION & ENTERTAINMENT', 
+                  desc: 'End-to-end production, entertainment and technical solutions.', 
+                  image: '/event-production.jpg',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><rect x="3" y="4" width="18" height="16" rx="1" /><path d="M12 7l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" /></svg>
+                },
+              ].map((item, i) => (
+                <div key={i} className="group fade-up bg-white rounded-none shadow-2xl overflow-hidden text-left flex flex-col h-full border border-linen/20 transition-all duration-700 hover:shadow-[0_40px_100px_rgba(0,0,0,0.1)]">
+                  <div className="relative aspect-[3/2] overflow-hidden">
+                    <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-[2000ms] group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700" />
+                    {/* Floating Icon */}
+                    <div className="absolute bottom-8 left-8 w-16 h-16 bg-white/90 backdrop-blur-md rounded-none border border-linen/30 flex items-center justify-center shadow-2xl z-20">
+                       {item.icon}
+                    </div>
                   </div>
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-serif italic text-[#121212]">{step.title}</h3>
-                    <p className="text-[14px] text-[#525252] font-light leading-relaxed">{step.desc}</p>
+                  <div className="p-12 md:p-14 pt-16 flex flex-col flex-grow space-y-8">
+                    <div className="space-y-4">
+                      <h3 className="text-2xl md:text-3xl font-serif text-[#121212] tracking-wide">{item.title}</h3>
+                      <p className="text-[15px] md:text-[16px] text-[#525252] leading-relaxed font-light">{item.desc}</p>
+                    </div>
+                    <Link href="/contact" className="mt-auto inline-flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.4em] text-[#D4B982] hover:text-[#B38B4D] transition-colors group/link">
+                      EXPLORE <ArrowRight size={16} className="transform transition-transform group-hover/link:translate-x-2" />
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -336,67 +302,166 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* 5. FAQ - Clean & Compact */}
-        <section className="py-20 relative overflow-hidden">
-          <div className="container relative z-10">
-            <div className="max-w-4xl mx-auto space-y-16">
-              <div className="text-center space-y-4 fade-up">
-                <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">COMMON QUESTIONS</span>
-                <h2 className="text-3xl md:text-5xl font-serif text-[#121212]">Queries & <span className="italic font-light text-[#D4B982]">Clarifications.</span></h2>
-              </div>
+        {/* 3. Detailed Services Section - Recreated from Reference */}
+        <section id="details" className="py-32 md:py-56 bg-[#05100a] relative overflow-hidden">
+          {/* Subtle Background Texture */}
+          <div className="absolute inset-0 dot-pattern opacity-[0.05] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(179,139,77,0.08)_0%,_transparent_70%)] pointer-events-none" />
+          
+          <div className="container relative z-10 text-center">
+            <div className="space-y-6 mb-24 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR SERVICES IN DETAIL</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight tracking-tight">Creating Extraordinary Experiences</h2>
+              <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 fade-up">
-                {[
-                  { q: 'Global Reach?', a: 'Based in Ahmedabad, we orchestrate celebrations globally.' },
-                  { q: 'Timeline?', a: 'We recommend booking 8-12 months in advance for major events.' },
-                  { q: 'Entertainment?', a: 'We manage elite talent from Bollywood to global acts.' },
-                  { q: 'Customization?', a: 'Every event is a bespoke composition tailored to your legacy.' },
-                ].map((faq, i) => (
-                  <div key={i} className="space-y-4 border-l border-[#D4B982]/20 pl-8">
-                    <h4 className="text-[16px] font-serif font-bold text-[#121212]">{faq.q}</h4>
-                    <p className="text-[14px] text-[#525252] font-light leading-relaxed">{faq.a}</p>
+            <div className="space-y-32 md:space-y-64">
+              {[
+                { 
+                  id: '01', 
+                  title: 'WEDDINGS', 
+                  tags: ['Concept & Theme Design', 'Venue Styling & Decor', 'Floral Design', 'Hospitality & Guest Experience', 'Wedding Planning & Coordination'],
+                  image: '/assets/wedding/wedding-7.jpg'
+                },
+                { 
+                  id: '02', 
+                  title: 'CORPORATE EVENTS', 
+                  tags: ['Conferences & Seminars', 'Product Launches', 'Annual Meets', 'Brand Activations', 'Stage & Set Design'],
+                  image: '/assets/corporate/corporate-6.jpg'
+                },
+                { 
+                  id: '03', 
+                  title: 'PRIVATE CELEBRATIONS', 
+                  tags: ['Birthdays & Anniversaries', 'Engagements', 'Baby Showers', 'Festive Celebrations', 'Intimate Gatherings'],
+                  image: '/assets/wedding/wedding-1.jpg'
+                },
+                { 
+                  id: '04', 
+                  title: 'EVENT PRODUCTION & ENTERTAINMENT', 
+                  tags: ['Stage Production', 'Lighting & Sound', 'Artists & Performers', 'Technical Management', 'On-site Execution'],
+                  image: '/assets/production/production-1.jpg'
+                },
+              ].map((service, index) => (
+                <div key={service.id} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+                  {/* Image Side */}
+                  <div className={cn("lg:col-span-7 fade-up", index % 2 !== 0 ? "lg:order-2" : "")}>
+                    <div className="relative aspect-[16/9] overflow-hidden rounded-none border border-[#D4B982]/20 shadow-2xl group">
+                       <Image src={service.image} alt={service.title} fill className="object-cover transition-transform duration-[2000ms] group-hover:scale-110" />
+                       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-700" />
+                    </div>
                   </div>
-                ))}
-              </div>
+
+                  {/* Content Side */}
+                  <div className={cn("lg:col-span-5 text-left space-y-12 fade-up", index % 2 !== 0 ? "lg:order-1 lg:text-right" : "")}>
+                    <div className="space-y-6">
+                      <div className={cn("flex items-center gap-4", index % 2 !== 0 ? "justify-end" : "justify-start")}>
+                        <span className="text-[14px] font-mono text-[#D4B982] font-bold tracking-widest">{service.id}</span>
+                        <div className="w-12 h-px bg-[#D4B982]/30" />
+                      </div>
+                      <h3 className="text-3xl md:text-5xl font-serif text-white tracking-wide">{service.title}</h3>
+                    </div>
+
+                    <ul className={cn("space-y-5", index % 2 !== 0 ? "text-right" : "text-left")}>
+                      {service.tags.map((tag) => (
+                        <li key={tag} className={cn("text-[14px] text-white/80 font-light flex items-center gap-5", index % 2 !== 0 ? "flex-row-reverse" : "flex-row")}>
+                          <div className="w-1.5 h-1.5 bg-[#D4B982]/60 rounded-full shrink-0 shadow-[0_0_10px_rgba(212,185,130,0.4)]" />
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="pt-6">
+                      <Magnetic strength={0.1}>
+                        <Link href="/contact">
+                           <Button variant="outline" className="border-[#D4B982]/40 !text-white hover:bg-[#D4B982] hover:!text-heritage px-12 py-5 text-[11px] bg-heritage/20 backdrop-blur-sm shadow-[0_0_20px_rgba(212,185,130,0.1)] transition-all duration-700">
+                             INQUIRE NOW
+                           </Button>
+                        </Link>
+                      </Magnetic>
+                    </div>                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* 6. Final CTA - Consistent with Home */}
-        <section className="relative py-24 md:py-40 overflow-hidden bg-heritage">
+        {/* 4. The Zing Bliss Advantage - Recreated from Reference */}
+        <section id="advantage" className="py-32 md:py-56 bg-[#FDFBF7] relative overflow-hidden">
+          <div className="container text-center">
+            <div className="space-y-6 mb-24 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">WHY CHOOSE US</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">The Zing Bliss Advantage</h2>
+              <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-16 lg:gap-8">
+              {[
+                { 
+                  title: 'Creative Excellence', 
+                  desc: 'Innovative ideas that stand out.',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3 1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" /></svg>
+                },
+                { 
+                  title: 'Seamless Execution', 
+                  desc: 'Flawless planning and delivery.',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>
+                },
+                { 
+                  title: 'Premium Quality', 
+                  desc: 'We never compromise on quality.',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 8v8M8 12h8" /></svg>
+                },
+                { 
+                  title: 'Dedicated Team', 
+                  desc: 'A passionate team that cares.',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
+                },
+                { 
+                  title: 'Client Satisfaction', 
+                  desc: 'Your happiness is our success.',
+                  icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
+                },
+              ].map((item, i) => (
+                <div key={i} className="space-y-10 fade-up group" style={{ transitionDelay: `${i * 100}ms` }}>
+                  <div className="w-24 h-24 mx-auto flex items-center justify-center border border-[#D4B982]/10 rounded-full bg-white shadow-xl group-hover:border-[#D4B982]/40 group-hover:bg-[#D4B982]/5 transition-all duration-700 transform group-hover:scale-110">
+                    {item.icon}
+                  </div>
+                  <div className="space-y-4 px-2">
+                    <h4 className="text-xl font-bold text-[#121212] uppercase tracking-wider font-serif">{item.title}</h4>
+                    <p className="text-[#525252] text-[13px] leading-relaxed max-w-[180px] mx-auto font-light">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Final CTA - Recreated from Reference */}
+        <section className="relative py-32 md:py-48 overflow-hidden bg-[#05100a] text-center">
           <div className="absolute inset-0 z-0">
-            <Image 
-              src="/hero10.jpg" 
-              alt="Final CTA Background" 
-              fill 
-              className="object-cover brightness-[0.2] scale-105" 
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90 z-10" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.15)_0%,_transparent_75%)] z-10" />
+            <Image
+              src="/assets/wedding/wedding-3.jpg"
+              alt="Final CTA Background"
+              fill
+              className="object-cover brightness-[0.15] scale-105"
+            />            <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#05100a] opacity-90 z-10" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.1)_0%,_transparent_75%)] z-10" />
           </div>
           
           <div className="container relative z-20 text-center">
             <div className="space-y-8 fade-up">
-              <div className="flex items-center justify-center gap-6 mb-4">
-                 <div className="w-12 h-px bg-[#D4B982]/40" />
-                 <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">READY TO BEGIN?</span>
-                 <div className="w-12 h-px bg-[#D4B982]/40" />
-              </div>
-              
-              <div className="relative inline-block">
-                <h2 className="text-4xl md:text-7xl lg:text-[7rem] font-serif text-white leading-[1.1] tracking-tighter relative z-10">
-                  Create Your Magic
-                </h2>
-                <span className="font-script text-[#D4B982] text-6xl md:text-8xl lg:text-[10rem] block -mt-4 md:-mt-8 lg:-mt-12 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
-                  With Zing Bliss.
-                </span>
-              </div>
+              <h2 className="text-4xl md:text-7xl lg:text-[7.5rem] font-serif text-white leading-[1] tracking-tighter relative z-10">
+                Ready to Plan Your Perfect Event?
+              </h2>
+              <span className="font-script text-[#D4B982] text-6xl md:text-9xl lg:text-[11rem] block -mt-4 md:-mt-8 lg:-mt-10 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
+                Let&apos;s Talk
+              </span>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16 fade-up" style={{ transitionDelay: '200ms' }}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-20 fade-up" style={{ transitionDelay: '200ms' }}>
               <Magnetic strength={0.1}>
                 <Link href="/contact">
-                  <Button className="h-16 px-16 bg-[#D4B982] hover:bg-[#B38B4D] text-black rounded-none tracking-[0.4em] font-bold text-[12px] uppercase border-0 shadow-[0_25px_80px_rgba(212,185,130,0.25)] transition-all duration-700">
+                  <Button className="btn-gold h-16 px-16 text-[12px]">
                     BOOK A CONSULTATION
                   </Button>
                 </Link>
@@ -408,7 +473,7 @@ export default function ServicesPage() {
                        <div className="w-8 h-8 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366]/40 group-hover:bg-[#25D366]/30 transition-colors">
                          <MessageCircle size={16} fill="#25D366" className="text-[#25D366]" />
                        </div>
-                       <span className="text-white group-hover:text-[#D4B982] transition-colors">CHAT ON WHATSAPP</span>
+                       <span className="text-white group-hover:text-[#D4B982] transition-colors uppercase">Chat on WhatsApp</span>
                      </div>
                   </Button>
                 </a>

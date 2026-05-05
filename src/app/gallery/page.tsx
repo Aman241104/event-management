@@ -40,18 +40,18 @@ const SectionDivider = ({ className }: { className?: string }) => (
 );
 
 const galleryItems = [
-  { id: 1, title: 'Royal Palace Wedding', category: 'Weddings', image: '/decor-2.jpg', size: 'large' as const },
-  { id: 2, title: 'Elegant Gala Design', category: 'Weddings', image: '/hero-2.jpg', size: 'medium' as const },
-  { id: 3, title: 'Traditional Ceremonies', category: 'Weddings', image: '/decor-3.jpg', size: 'small' as const },
-  { id: 4, title: 'Vibrant Sangeet Energy', category: 'Weddings', image: '/decor-4.jpg', size: 'medium' as const },
-  { id: 5, title: 'Milestone Celebration', category: 'Birthdays', image: '/hero-4.jpg', size: 'tall' as const },
-  { id: 6, title: 'Global Tech Summit', category: 'Corporate', image: '/hero-1.jpg', size: 'large' as const },
-  { id: 7, title: 'Tropical Royal Decor', category: 'Design', image: '/decor-5.jpg', size: 'small' as const },
-  { id: 8, title: 'Cultural Heritage', category: 'Festivals', image: '/hero-8.jpg', size: 'medium' as const },
-  { id: 9, title: 'Vibrant Rituals', category: 'Festivals', image: '/hero-6.jpg', size: 'small' as const },
-  { id: 10, title: 'Intimate Soiree', category: 'Private', image: '/private-celebrations.jpg', size: 'medium' as const },
-  { id: 11, title: 'Corporate Gala', category: 'Corporate', image: '/hero-1.jpg', size: 'medium' as const },
-  { id: 12, title: 'Market Showcase', category: 'Festivals', image: '/event-production.jpg', size: 'small' as const },
+  { id: 1, title: 'Royal Palace Wedding', category: 'Weddings', image: '/assets/wedding/wedding-7.jpg', size: 'large' as const },
+  { id: 2, title: 'Corporate Tech Summit', category: 'Corporate', image: '/assets/corporate/corporate-1.jpg', size: 'medium' as const },
+  { id: 3, title: 'Traditional Ceremonies', category: 'Weddings', image: '/assets/wedding/wedding-3.jpg', size: 'small' as const },
+  { id: 4, title: 'Vibrant Sangeet Energy', category: 'Weddings', image: '/assets/wedding/wedding-1.jpg', size: 'medium' as const },
+  { id: 5, title: 'Milestone 30th Birthday', category: 'Birthdays', image: '/assets/birthday/birthday-1.jpg', size: 'tall' as const },
+  { id: 6, title: 'Global Leaders Meet', category: 'Corporate', image: '/assets/corporate/corporate-6.jpg', size: 'large' as const },
+  { id: 7, title: 'Production Excellence', category: 'Festivals', image: '/assets/production/production-1.jpg', size: 'small' as const },
+  { id: 8, title: 'Grand Birthday Gala', category: 'Birthdays', image: '/assets/birthday/birthday-2.jpg', size: 'medium' as const },
+  { id: 9, title: 'Live Concert Setup', category: 'Festivals', image: '/assets/production/production-2.jpg', size: 'small' as const },
+  { id: 10, title: 'Intimate Soiree', category: 'Private', image: '/assets/birthday/birthday-3.jpg', size: 'medium' as const },
+  { id: 11, title: 'Annual Awards Night', category: 'Corporate', image: '/assets/corporate/corporate-3.jpg', size: 'medium' as const },
+  { id: 12, title: 'Stage Production', category: 'Festivals', image: '/assets/production/production-3.jpg', size: 'small' as const },
 ];
 
 const categories = ['All', 'Weddings', 'Birthdays', 'Corporate', 'Festivals', 'Private'];
@@ -154,14 +154,14 @@ function GalleryContent() {
         )}
       </section>
 
-      {/* 4. Final CTA - Consistent with Home */}
-      <section id="cta" className="relative py-24 md:py-40 overflow-hidden bg-heritage">
+      {/* 4. Final CTA - Atmospheric Transition */}
+      <section className="relative py-32 md:py-48 overflow-hidden bg-heritage">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero10.jpg" 
+            src="/assets/wedding/wedding-3.jpg" 
             alt="Final CTA Background" 
             fill 
-            className="object-cover brightness-[0.2] scale-105" 
+            className="object-cover brightness-[0.15] scale-105" 
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90 z-10" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.15)_0%,_transparent_75%)] z-10" />
@@ -188,7 +188,7 @@ function GalleryContent() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16 fade-up">
             <Magnetic strength={0.1}>
               <Link href="/contact">
-                <Button className="h-16 px-16 bg-[#D4B982] hover:bg-[#B38B4D] text-black rounded-none tracking-[0.4em] font-bold text-[12px] uppercase border-0 shadow-[0_25px_80px_rgba(212,185,130,0.25)] transition-all duration-700">
+                <Button className="btn-gold h-16 px-16">
                   BOOK A CONSULTATION
                 </Button>
               </Link>

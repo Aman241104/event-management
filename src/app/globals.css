@@ -255,6 +255,19 @@
       0 15px 40px rgba(179, 139, 77, 0.2);
   }
 
+  .btn-gold {
+    background: linear-gradient(135deg, #B38B4D 0%, #D4B982 50%, #B38B4D 100%);
+    background-size: 200% auto;
+    @apply text-white border-0 shadow-[0_20px_50px_rgba(179,139,77,0.25)] transition-all duration-700 uppercase tracking-[0.3em] font-bold rounded-none;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .btn-gold:hover {
+    background-position: right center;
+    @apply shadow-[0_25px_60px_rgba(179,139,77,0.4)] scale-105;
+    color: white;
+  }
+
   .text-glow-refined {
     text-shadow: 0 0 25px rgba(179, 139, 77, 0.35);
   }

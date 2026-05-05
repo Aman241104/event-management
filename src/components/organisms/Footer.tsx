@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Twitter, Linkedin, Facebook, Instagram, Mail, Phone, MapPin, ArrowRight, MessageCircle } from 'lucide-react';
 import { Logo } from '@/components/atoms/Logo';
@@ -23,7 +24,15 @@ export function Footer() {
 
   return (
     <footer className="w-full bg-[#05100a] pt-32 pb-12 relative overflow-hidden border-t border-white/5">
-      {/* Background Textures */}
+      {/* Background Textures & Image */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="/assets/wedding/wedding-4.jpg" 
+          alt="Footer Background" 
+          fill 
+          className="object-cover opacity-[0.07] brightness-50"
+        />
+      </div>
       <div className="absolute inset-0 dot-pattern opacity-[0.03] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(179,139,77,0.05)_0%,_transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(42,77,55,0.05)_0%,_transparent_50%)] pointer-events-none" />
@@ -45,6 +54,16 @@ export function Footer() {
               <p className="text-base md:text-lg text-white/60 leading-relaxed font-serif italic font-light">
                 Architects of magic, dedicated to turning life&apos;s special moments into unforgettable experiences with quiet precision and refined energy.
               </p>
+
+              <div className="pt-4">
+                <Magnetic strength={0.1}>
+                  <Link href="/contact">
+                    <Button className="btn-gold px-10 py-4 text-[10px]">
+                      START YOUR JOURNEY
+                    </Button>
+                  </Link>
+                </Magnetic>
+              </div>
               
               <div className="flex items-center space-x-10 pt-4">
                 {[

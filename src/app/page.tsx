@@ -143,7 +143,7 @@ const services = [
   {
     title: 'WEDDINGS',
     desc: 'Exquisite weddings that reflect your story and style.',
-    image: '/decor-2.jpg',
+    image: '/assets/wedding/wedding-5.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="9" cy="12" r="5" />
@@ -154,19 +154,19 @@ const services = [
   {
     title: 'CORPORATE EVENTS',
     desc: 'Professional events that inspire, engage and leave a lasting impact.',
-    image: '/hero-1.jpg',
+    image: '/assets/corporate/corporate-6.jpg',
     icon: <Briefcase size={22} strokeWidth={0.75} />,
   },
   {
     title: 'PRIVATE CELEBRATIONS',
     desc: 'Birthdays, anniversaries and intimate celebrations with a personal touch.',
-    image: '/private-celebrations.jpg',
+    image: '/assets/birthday/birthday-1.jpg',
     icon: <Cake size={22} strokeWidth={0.75} />,
   },
   {
     title: 'EVENT PRODUCTION & ENTERTAINMENT',
     desc: 'End-to-end production, entertainment and technical solutions.',
-    image: '/event-production.jpg',
+    image: '/assets/production/production-1.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="16" rx="1" />
@@ -177,12 +177,12 @@ const services = [
 ];
 
 const categories = [
-  { title: 'WEDDINGS', image: '/hero-2.jpg' },
-  { title: 'BIRTHDAYS', image: '/hero-4.jpg' },
-  { title: 'CORPORATE EVENTS', image: '/hero-1.jpg' },
-  { title: 'FLEA MARKETS', image: '/hero-8.jpg' },
-  { title: 'FESTIVALS & CULTURAL EVENTS', image: '/hero-6.jpg' },
-  { title: 'PRIVATE PARTIES', image: '/private-celebrations.jpg' },
+  { title: 'WEDDINGS', image: '/assets/wedding/wedding-8.jpg' },
+  { title: 'BIRTHDAYS', image: '/assets/birthday/birthday-2.jpg' },
+  { title: 'CORPORATE EVENTS', image: '/assets/corporate/corporate-1.jpg' },
+  { title: 'FLEA MARKETS', image: '/assets/misc/flea-market-1.jpg' },
+  { title: 'FESTIVALS & CULTURAL EVENTS', image: '/assets/corporate/corporate-7.jpg' },
+  { title: 'PRIVATE PARTIES', image: '/assets/birthday/birthday-3.jpg' },
 ];
 
 const whyChooseUs = [
@@ -280,7 +280,7 @@ export default function Home() {
       <section className="relative h-[75vh] min-h-[800px] flex items-center justify-start overflow-hidden bg-heritage">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero-1.jpg" 
+            src="/assets/wedding/wedding-7.jpg" 
             alt="Hero Background" 
             fill 
             className="object-cover brightness-[0.5] scale-105" 
@@ -308,14 +308,14 @@ export default function Home() {
             <div className="hero-btns flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-12 md:pt-16">
               <Magnetic strength={0.1} className="w-full sm:w-auto">
                 <Link href="/contact" className="block w-full sm:w-auto">
-                  <Button className="w-full h-14 md:h-15 px-8 md:px-14 bg-[#D4B982] hover:bg-[#B38B4D] text-white rounded-none tracking-[0.35em] font-bold text-[11px] uppercase border-0 shadow-[0_25px_60px_rgba(212,185,130,0.25)] transition-all duration-700">
+                  <Button className="btn-gold w-full h-14 md:h-15 px-8 md:px-14">
                     PLAN YOUR EVENT
                   </Button>
                 </Link>
               </Magnetic>
               <Magnetic strength={0.1} className="w-full sm:w-auto">
                 <Link href="/gallery" className="block w-full sm:w-auto">
-                  <Button variant="outline" className="w-full h-14 md:h-15 px-8 md:px-14 border-white/70 !text-white hover:bg-white hover:!text-black rounded-none tracking-[0.35em] font-bold text-[12px] uppercase bg-black/20 backdrop-blur-lg transition-all duration-700">
+                  <Button variant="outline" className="w-full h-14 md:h-15 px-8 md:px-14 border-[#D4B982]/50 !text-[#D4B982] hover:bg-[#D4B982] hover:!text-white rounded-none tracking-[0.35em] font-bold text-[12px] uppercase bg-transparent transition-all duration-700">
                     VIEW OUR WORK
                   </Button>
                 </Link>
@@ -449,11 +449,11 @@ export default function Home() {
             {/* Images Column - Refined Editorial Layout */}
             <div className="relative fade-up">
               <div className="aspect-[3/4] relative rounded-none overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.12)] z-10 border border-linen/30">
-                <Image src="/hero-4.jpg" alt="Event setup" fill className="object-cover" />
+                <Image src="/assets/wedding/wedding-5.jpg" alt="Event setup" fill className="object-cover" />
                 <div className="absolute inset-0 bg-heritage/10 mix-blend-multiply" />
               </div>
               <div className="absolute -bottom-12 -right-12 w-[75%] aspect-[4/3] rounded-none overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.25)] z-20 border-[15px] border-white hidden md:block group cursor-pointer">
-                <Image src="/decor-3.jpg" alt="Detail" fill className="object-cover" />
+                <Image src="/assets/production/production-1.jpg" alt="Detail" fill className="object-cover" />
                 <div className="absolute inset-x-0 bottom-0 bg-heritage/90 py-4 px-6 flex items-center justify-center translate-y-0 transition-transform duration-500">
                    <span className="text-[10px] text-white uppercase tracking-[0.5em] font-bold">VIEW WORK</span>
                 </div>
@@ -672,7 +672,7 @@ export default function Home() {
       <section className="relative py-12 md:py-10 overflow-hidden bg-heritage">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/hero10.jpg" 
+            src="/assets/wedding/wedding-3.jpg" 
             alt="CTA Background" 
             fill 
             className="object-cover brightness-[0.2] scale-105" 
@@ -703,7 +703,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16 fade-up" style={{ transitionDelay: '200ms' }}>
             <Magnetic strength={0.1}>
               <Link href="/contact">
-                <Button className="h-16 px-16 bg-[#0a1f13] hover:bg-black text-white rounded-none tracking-[0.4em] font-bold text-[12px] uppercase border border-white/10 shadow-[0_25px_80px_rgba(0,0,0,0.4)] transition-all duration-700">
+                <Button className="btn-gold h-16 px-16">
                   BOOK A CONSULTATION
                 </Button>
               </Link>
