@@ -15,6 +15,7 @@ import { generateWhatsAppLink, getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { HowWeWork } from '@/components/organisms/HowWeWork';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -386,6 +387,9 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
+
+        {/* How We Work Section */}
+        <HowWeWork />
 
         {/* 4. The Zing Bliss Advantage - Recreated from Reference */}
         <section id="advantage" className="py-32 md:py-56 bg-[#FDFBF7] relative overflow-hidden">
