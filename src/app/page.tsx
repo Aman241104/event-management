@@ -51,17 +51,13 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white/40 group-hover:text-[#D4B982] transition-colors duration-700 mb-2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-white/40 group-hover:text-[#D4B982] transition-colors duration-700 mb-2">
           <path d="M12 2L14.5 7H9.5L12 2Z" fill="currentColor" />
           <path d="M12 22L9.5 17H14.5L12 22Z" fill="currentColor" />
           <path d="M2 12L7 9.5V14.5L2 12Z" fill="currentColor" />
           <path d="M22 12L17 14.5V9.5L22 12Z" fill="currentColor" />
-          <path d="M5 5L9 9" stroke="currentColor" strokeWidth="1" />
-          <path d="M19 19L15 15" stroke="currentColor" strokeWidth="1" />
-          <path d="M5 19L9 15" stroke="currentColor" strokeWidth="1" />
-          <path d="M19 5L15 9" stroke="currentColor" strokeWidth="1" />
         </svg>
-        <span className="text-2xl md:text-3xl font-serif text-white/80 tracking-[0.2em] group-hover:text-white transition-all duration-700">TAJ</span>
+        <span className="text-xl md:text-2xl font-serif text-white/80 tracking-[0.2em] group-hover:text-white transition-all duration-700">TAJ</span>
       </div>
     )
   },
@@ -70,7 +66,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+        <div className="relative w-24 h-12 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
           <Image 
             src="/assets/logos/itc.png" 
             alt="ITC Hotels" 
@@ -86,7 +82,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+        <div className="relative w-24 h-12 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
           <Image 
             src="/assets/logos/leela.png" 
             alt="The Leela" 
@@ -102,14 +98,13 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="w-12 h-12 md:w-14 md:h-14 relative flex items-center justify-center mb-1">
+        <div className="w-10 h-10 md:w-12 md:h-12 relative flex items-center justify-center mb-1">
           <svg viewBox="0 0 40 40" className="w-full h-full text-white/40 group-hover:text-[#D4B982] transition-all duration-700">
             <rect x="10" y="10" width="20" height="20" transform="rotate(45 20 20)" stroke="currentColor" strokeWidth="1" fill="none" />
             <rect x="14" y="14" width="12" height="12" transform="rotate(45 20 20)" fill="currentColor" opacity="0.5" />
-            <circle cx="20" cy="20" r="2" fill="currentColor" />
           </svg>
         </div>
-        <span className="text-[10px] md:text-[11px] font-sans text-white/60 tracking-[0.4em] uppercase group-hover:text-white transition-all">Marriott</span>
+        <span className="text-[9px] md:text-[10px] font-sans text-white/60 tracking-[0.4em] uppercase group-hover:text-white transition-all">Marriott</span>
       </div>
     )
   },
@@ -118,8 +113,8 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <span className="text-xl md:text-2xl font-sans font-light text-white/80 tracking-[0.3em] group-hover:text-white transition-all duration-700">HYATT</span>
-        <span className="text-[9px] md:text-[10px] font-sans text-[#D4B982]/60 tracking-[0.5em] mt-1 group-hover:text-[#D4B982] transition-all">REGENCY</span>
+        <span className="text-lg md:text-xl font-sans font-light text-white/80 tracking-[0.3em] group-hover:text-white transition-all duration-700">HYATT</span>
+        <span className="text-[8px] font-sans text-[#D4B982]/60 tracking-[0.5em] mt-1 group-hover:text-[#D4B982] transition-all">REGENCY</span>
       </div>
     )
   },
@@ -128,11 +123,61 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <span className="text-2xl md:text-3xl font-script text-white/60 tracking-normal group-hover:text-[#D4B982] transition-all duration-700 lowercase italic">Radisson</span>
-        <div className="flex items-center gap-2 mt-1">
-          <div className="w-4 h-px bg-white/20" />
-          <span className="text-[8px] font-sans text-white/30 tracking-[0.4em] uppercase">Hotels</span>
-          <div className="w-4 h-px bg-white/20" />
+        <span className="text-xl md:text-2xl font-script text-white/60 tracking-normal group-hover:text-[#D4B982] transition-all duration-700 lowercase italic">Radisson</span>
+      </div>
+    )
+  },
+  { 
+    name: 'Reliance Insurance', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <span className="text-lg md:text-xl font-serif text-white/60 tracking-[0.1em] group-hover:text-white transition-all duration-700 uppercase">Reliance</span>
+        <span className="text-[8px] font-sans text-[#D4B982]/60 tracking-[0.4em] mt-1 group-hover:text-[#D4B982]">INSURANCE</span>
+      </div>
+    )
+  },
+  { 
+    name: 'ITC (fmcg)', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <div className="border border-white/20 px-3 py-1 group-hover:border-[#D4B982]/40 transition-all duration-700">
+          <span className="text-xl md:text-2xl font-serif text-white/80 tracking-[0.3em] group-hover:text-white">ITC</span>
+        </div>
+        <span className="text-[7px] font-sans text-white/40 tracking-[0.4em] mt-2 group-hover:text-white uppercase">FMCG Division</span>
+      </div>
+    )
+  },
+  { 
+    name: 'Haas', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <span className="text-2xl md:text-3xl font-black text-white/40 tracking-tighter group-hover:text-white transition-all duration-700 italic">HAAS</span>
+      </div>
+    )
+  },
+  { 
+    name: 'Adhaan Solution', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <span className="text-lg md:text-xl font-serif text-white/60 tracking-widest group-hover:text-white transition-all duration-700">ADHAAN</span>
+        <span className="text-[8px] font-sans text-white/30 tracking-[0.3em] mt-1 group-hover:text-[#D4B982]">SOLUTIONS</span>
+      </div>
+    )
+  },
+  { 
+    name: 'Zee TV', 
+    type: 'custom',
+    render: () => (
+      <div className="flex flex-col items-center group">
+        <div className="relative">
+          <span className="text-2xl md:text-3xl font-serif text-white/80 tracking-tight group-hover:text-[#D4B982] transition-all duration-700">ZEE</span>
+          <div className="absolute -right-5 top-1 border border-[#D4B982]/40 px-1 scale-75">
+            <span className="text-[10px] text-[#D4B982]">TV</span>
+          </div>
         </div>
       </div>
     )

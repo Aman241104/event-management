@@ -115,7 +115,7 @@ export default function AboutPage() {
       <div ref={containerRef} className="relative">
         
         {/* 1. Hero Section - Recreated from Reference */}
-        <section id="hero" className="relative h-[85vh] min-h-[700px] flex items-center justify-center overflow-hidden bg-heritage text-center">
+        <section id="header" className="relative h-[85vh] min-h-[700px] flex items-center justify-center overflow-hidden bg-heritage text-center">
           <div className="absolute inset-0 z-0 hero-bg-wrapper">
             <Image 
               src="/assets/wedding/wedding-5.jpg" 
@@ -272,6 +272,71 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Visionaries Section */}
+        <section id="visionaries" className="py-32 md:py-48 bg-[#FDFBF7]">
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+              <div className="relative fade-up order-2 lg:order-1">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
+                  <Image 
+                    src="/assets/team/founder-portrait.png" 
+                    alt="Founder & Visionary" 
+                    fill 
+                    className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                  />
+                </div>
+                {/* Secondary Floating Image */}
+                <div className="absolute -bottom-12 -right-12 w-1/2 hidden md:block">
+                  <div className="relative aspect-square overflow-hidden rounded-sm shadow-2xl border-4 border-white z-10">
+                    <ParallaxImage 
+                      src="/assets/team/founder-office.png" 
+                      alt="The Founder at Work" 
+                      aspectRatio="aspect-square"
+                      speed={0.8}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-10 fade-up order-1 lg:order-2">
+                <div className="space-y-4">
+                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">THE VISIONARY</span>
+                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#121212] leading-[1.1] tracking-tight">
+                    Crafting <br />
+                    Unforgettable <br />
+                    <span className="text-[#D4B982] italic font-script block -mt-2 text-6xl md:text-9xl">Legacies</span>
+                  </h2>
+                </div>
+
+                <div className="space-y-8 max-w-lg">
+                  <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
+                    With an unwavering eye for detail and a passion for architectural elegance, our founder has redefined the landscape of luxury events. 
+                  </p>
+                  <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
+                    By merging contemporary design with timeless traditions, we create bespoke experiences that resonate with sophistication and heart.
+                  </p>
+                </div>
+
+                <div className="pt-4">
+                   <div className="flex flex-col gap-1">
+                     <span className="text-xl font-serif text-[#121212]">The Architect of Bliss</span>
+                     <span className="text-[10px] text-[#D4B982] uppercase tracking-widest font-bold">Founder & Creative Director</span>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Press & Partners Marquee */}
+        <section id="press" className="py-20 bg-heritage border-y border-[#D4B982]/10 overflow-hidden">
+          <InfiniteMarquee 
+            speed={60} 
+            direction="left"
+            items={['RELIANCE INSURANCE', 'ITC FMCG', 'HAAS AUTOMATION', 'ADHAAN SOLUTIONS', 'ZEE TV', 'TAJ HOTELS', 'THE LEELA', 'MARRIOTT']}
+          />
+        </section>
+
         {/* 4. Our Process Section - Recreated from Reference */}
         <section id="process" className="py-32 md:py-48 bg-[#FDFCFB] relative overflow-hidden">
           <div className="container text-center">
@@ -376,7 +441,7 @@ export default function AboutPage() {
         </section>
 
         {/* 6. Trust Section - Recreated from Reference */}
-        <section id="trust" className="py-32 md:py-48 bg-[#FDFBF7] relative overflow-hidden">
+        <section id="why-choose-us" className="py-32 md:py-48 bg-[#FDFBF7] relative overflow-hidden">
           <div className="container text-center">
             <div className="space-y-6 mb-24 fade-up">
               <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">WHY CLIENTS TRUST US</span>
@@ -422,7 +487,7 @@ export default function AboutPage() {
         </section>
 
         {/* 8. Final CTA - Recreated from Reference */}
-        <section className="relative py-32 md:py-48 overflow-hidden bg-[#05100a] text-center">
+        <section id="cta" className="relative py-32 md:py-48 overflow-hidden bg-[#05100a] text-center">
           <div className="absolute inset-0 z-0">
             <Image 
               src="/assets/wedding/wedding-3.jpg" 
