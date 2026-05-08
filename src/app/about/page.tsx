@@ -162,13 +162,20 @@ export default function AboutPage() {
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
               {/* Image Side */}
-              <div className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-sm shadow-2xl fade-up">
-                <Image 
-                  src="/decor-6.jpg" 
-                  alt="Our Journey" 
-                  fill 
-                  className="object-cover transition-transform duration-[2000ms] hover:scale-105"
-                />
+              <div className="fade-up">
+                <div className="relative aspect-square md:aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
+                  <Image 
+                    src="/kamna-udernani.png" 
+                    alt="Founder, Kamna Udernani" 
+                    fill 
+                    className="object-cover transition-transform duration-[2000ms] hover:scale-105"
+                  />
+                </div>
+                <div className="mt-8">
+                  <p className="text-[#121212] font-serif italic text-xl tracking-wide">
+                    Founder, Kamna Udernani
+                  </p>
+                </div>
               </div>
 
               {/* Text Side */}
