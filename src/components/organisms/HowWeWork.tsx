@@ -16,36 +16,36 @@ const steps = [
   {
     id: '01',
     label: 'DISCOVERY',
-    title: 'The Prelude',
-    description: 'We begin by capturing the essence of your vision. Through deep consultation, we uncover the subtle nuances that will make your event uniquely yours.',
+    title: 'The Research',
+    description: 'We begin by capturing the essential logistical requirements and objectives of your event. Through strategic consultation, we define the roadmap for a successful production.',
     image: '/assets/wedding/wedding-5.jpg'
   },
   {
     id: '02',
-    label: 'CONCEPT',
+    label: 'DESIGN',
     title: 'The Blueprint',
-    description: 'Our designers sculpt a bespoke aesthetic narrative, blending contemporary luxury with timeless elegance to create a visual masterpiece.',
+    description: 'Our specialists engineer a comprehensive aesthetic and technical plan, ensuring every element of the production is perfectly documented and ready for implementation.',
     image: '/assets/corporate/corporate-6.jpg'
   },
   {
     id: '03',
-    label: 'CURATION',
-    title: 'The Choreography',
-    description: 'Precision in every detail. We curate a world-class network of vendors and partners, orchestrating each element into a seamless symphony.',
+    label: 'LOGISTICS',
+    title: 'The Curation',
+    description: 'Absolute precision in detail. We coordinate an elite network of vendors and partners, managing the complex web of event logistics with clockwork accuracy.',
     image: '/assets/production/production-1.jpg'
   },
   {
     id: '04',
-    label: 'PRODUCTION',
-    title: 'The Performance',
-    description: 'The moment of transformation. Our production team brings the blueprint to life with flawless execution and unwavering attention to detail.',
+    label: 'EXECUTION',
+    title: 'The Production',
+    description: 'The moment of implementation. Our professional on-site management team brings the blueprint to life with flawless coordination and unwavering attention to detail.',
     image: '/assets/wedding/wedding-7.jpg'
   },
   {
     id: '05',
-    label: 'LEGACY',
-    title: 'The Encore',
-    description: 'Beyond the event itself, we ensure the experience resonates. We create memories that endure as a legacy of celebration.',
+    label: 'WRAP',
+    title: 'The Result',
+    description: 'Beyond the final curtain, we ensure a seamless conclusion. We manage the post-event logistics so the only thing that remains is the success of your celebration.',
     image: '/assets/wedding/wedding-3.jpg'
   }
 ];
@@ -122,17 +122,17 @@ export const HowWeWork = () => {
       });
     });
 
-    // Mobile Layout (Standard vertical scroll with fade-up)
+    // Mobile Layout (Horizontal Scroll)
     mm.add("(max-width: 1023px)", () => {
-      steps.forEach((_, index) => {
-        gsap.fromTo(`.mobile-step-${index}`,
-          { opacity: 0, y: 40 },
+      gsap.utils.toArray<HTMLElement>('.mobile-scroll-step').forEach((el) => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
             duration: 1.2,
             scrollTrigger: {
-              trigger: `.mobile-step-${index}`,
+              trigger: el,
               start: "top 90%",
               toggleActions: "play none none none"
             }
@@ -273,41 +273,49 @@ export const HowWeWork = () => {
         </div>
       </div>
 
-      {/* Mobile Layout - Refined */}
-      <div className="lg:hidden py-40 px-6 space-y-32">
-        {steps.map((step, index) => (
-          <div 
-            key={step.id}
-            className={cn("mobile-step-pill space-y-12", `mobile-step-${index}`)}
-          >
-            <div className="relative">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-none border border-white/10 shadow-2xl">
-                <Image
-                  src={step.image}
-                  alt={step.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40" />
+      {/* Mobile Layout - Refined Horizontal Scroll */}
+      <div className="lg:hidden py-40 overflow-hidden">
+        <div className="flex overflow-x-auto no-scrollbar gap-8 px-6 pb-12 snap-x snap-mandatory relative">
+          {/* Mobile Connecting Line */}
+          <div className="absolute top-[120px] left-0 w-full min-w-[1500px] h-px bg-gradient-to-r from-transparent via-[#D4B982]/30 to-transparent z-0" />
+          
+          {steps.map((step, index) => (
+            <div 
+              key={step.id}
+              className={cn(
+                "mobile-scroll-step flex-shrink-0 w-[85vw] snap-center space-y-12 relative z-10", 
+                `mobile-step-${index}`
+              )}
+            >
+              <div className="relative">
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-none border border-white/10 shadow-2xl">
+                  <Image
+                    src={step.image}
+                    alt={step.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40" />
+                </div>
+                <div className="absolute -top-6 -right-2 bg-[#121212] px-6 py-2 border-l-2 border-[#D4B982] shadow-2xl">
+                  <span className="text-[10px] font-mono text-white tracking-[0.4em] font-bold">
+                    {step.id}
+                  </span>
+                </div>
               </div>
-              <div className="absolute -top-6 -right-2 bg-[#121212] px-6 py-2 border-l-2 border-[#D4B982] shadow-2xl">
-                <span className="text-[10px] font-mono text-white tracking-[0.4em] font-bold">
-                  {step.id}
-                </span>
+              
+              <div className="space-y-6 px-4">
+                <div className="space-y-2">
+                  <span className="text-[10px] text-[#D4B982] font-mono tracking-[0.4em] uppercase">{step.label}</span>
+                  <h3 className="text-4xl font-serif text-white tracking-wide">{step.title}</h3>
+                </div>
+                <p className="text-white/60 text-[16px] leading-relaxed font-light italic border-l border-[#D4B982]/20 pl-6">
+                  {step.description}
+                </p>
               </div>
             </div>
-            
-            <div className="space-y-6 px-4">
-              <div className="space-y-2">
-                <span className="text-[10px] text-[#D4B982] font-mono tracking-[0.4em] uppercase">{step.label}</span>
-                <h3 className="text-4xl font-serif text-white tracking-wide">{step.title}</h3>
-              </div>
-              <p className="text-white/60 text-[16px] leading-relaxed font-light italic border-l border-[#D4B982]/20 pl-6">
-                {step.description}
-              </p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

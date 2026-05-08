@@ -131,8 +131,8 @@ const trustLogos = [
 
 const services = [
   {
-    title: 'WEDDINGS',
-    desc: 'Exquisite weddings that reflect your story and style.',
+    title: 'WEDDING PRODUCTION',
+    desc: 'Bespoke wedding planning and production that reflects your unique story.',
     image: '/assets/wedding/wedding-5.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
@@ -142,20 +142,20 @@ const services = [
     ),
   },
   {
-    title: 'CORPORATE EVENTS',
-    desc: 'Professional events that inspire, engage and leave a lasting impact.',
+    title: 'CORPORATE EXCELLENCE',
+    desc: 'Strategic event management for conferences, summits, and corporate galas.',
     image: '/assets/corporate/corporate-6.jpg',
     icon: <Briefcase size={22} strokeWidth={0.75} />,
   },
   {
     title: 'PRIVATE CELEBRATIONS',
-    desc: 'Birthdays, anniversaries and intimate celebrations with a personal touch.',
+    desc: 'Seamless management of birthdays, anniversaries, and intimate soirees.',
     image: '/assets/birthday/birthday-1.jpg',
     icon: <Cake size={22} strokeWidth={0.75} />,
   },
   {
-    title: 'EVENT PRODUCTION & ENTERTAINMENT',
-    desc: 'End-to-end production, entertainment and technical solutions.',
+    title: 'FULL-SCALE PRODUCTION',
+    desc: 'Technical solutions, stage design, and end-to-end event execution.',
     image: '/assets/production/production-1.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
@@ -171,34 +171,34 @@ const categories = [
   { title: 'BIRTHDAYS', image: '/assets/birthday/birthday-2.jpg' },
   { title: 'CORPORATE EVENTS', image: '/assets/corporate/corporate-1.jpg' },
   { title: 'FLEA MARKETS', image: '/assets/misc/flea-market-1.jpg' },
-  { title: 'FESTIVALS & CULTURAL EVENTS', image: '/assets/corporate/corporate-7.jpg' },
+  { title: 'FESTIVALS', image: '/assets/corporate/corporate-7.jpg' },
   { title: 'PRIVATE PARTIES', image: '/assets/birthday/birthday-3.jpg' },
 ];
 
 const whyChooseUs = [
   {
-    title: 'BESPOKE CONCEPTS',
-    desc: 'Unique ideas tailored to your vision.',
+    title: 'STRATEGIC PLANNING',
+    desc: 'Meticulous blueprints tailored to your specific goals.',
     icon: <Sparkles size={24} strokeWidth={1.5} />,
   },
   {
-    title: 'SEAMLESS EXECUTION',
-    desc: 'Flawless planning and perfect execution.',
+    title: 'FLAWLESS EXECUTION',
+    desc: 'On-site management that ensures every detail is perfect.',
     icon: <Zap size={24} strokeWidth={1.5} />,
   },
   {
-    title: 'PREMIUM VENDOR NETWORK',
-    desc: 'Trusted partners for the best quality.',
+    title: 'VENDOR MASTERY',
+    desc: 'A premium network of partners delivering absolute quality.',
     icon: <Users2 size={24} strokeWidth={1.5} />,
   },
   {
-    title: 'ATTENTION TO DETAIL',
-    desc: 'Every detail matters, and we perfect it.',
+    title: 'LOGISTICAL PRECISION',
+    desc: 'Timing, coordination, and management handled with grace.',
     icon: <Layers size={24} strokeWidth={1.5} />,
   },
   {
-    title: 'PASSIONATE TEAM',
-    desc: 'A dedicated team that cares for your event.',
+    title: 'CREATIVE DIRECTION',
+    desc: 'Designing atmospheric spaces that resonate with intent.',
     icon: <Heart size={24} strokeWidth={1.5} />,
   },
 ];
@@ -290,12 +290,12 @@ export default function Home() {
           <div className="max-w-6xl">
             <div className="space-y-6 md:space-y-10">
               <h1 className="hero-title text-[3.2rem] sm:text-7xl md:text-8xl lg:text-[8.8rem] font-serif text-white leading-[0.9] md:leading-[0.85] tracking-tight">
-                Crafting Experiences <br />
-                That Feel Like <span className="font-script text-[#D4B982] text-[5rem] sm:text-8xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-1 md:ml-4 italic relative top-4 md:top-6 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)] block md:inline">magic</span>
+                Mastering the Art <br />
+                Of Luxury <span className="font-script text-[#D4B982] text-[5rem] sm:text-8xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-1 md:ml-4 italic relative top-4 md:top-6 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)] block md:inline">events</span>
               </h1>
               <p className="hero-subtitle text-base md:text-xl text-white/90 font-serif italic max-w-xl leading-relaxed border-l-2 border-[#D4B982]/30 pl-6 md:pl-10">
-                Luxury Event Planning for Weddings, <br className="hidden md:block" />
-                Corporate Gatherings & Bespoke Celebrations
+                End-to-End Event Management for Weddings, <br className="hidden md:block" />
+                Corporate Excellence & Private Celebrations
               </p>
             </div>
 

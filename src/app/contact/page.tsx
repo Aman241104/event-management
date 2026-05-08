@@ -65,15 +65,15 @@ export default function ContactPage() {
         </div>
         <h1 className="text-4xl md:text-7xl lg:text-[8rem] font-serif tracking-tighter text-[#121212] leading-[0.85] font-medium">
           <span className="block overflow-hidden pb-1">
-             <span className="header-fade block">Let&apos;s Compose</span>
+             <span className="header-fade block">Plan Your Next</span>
           </span>
           <span className="block overflow-hidden">
-             <span className="header-fade block italic font-script text-[#D4B982] mt-2 lowercase lg:text-[10rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.3)]">Your Legacy.</span>
+             <span className="header-fade block italic font-script text-[#D4B982] mt-2 lowercase lg:text-[10rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.3)]">Elite Event.</span>
           </span>
         </h1>
         <div className="max-w-xl mx-auto header-fade opacity-0 pt-4">
           <p className="text-[#525252] text-lg font-serif italic border-l border-[#D4B982]/30 pl-10 leading-relaxed text-left">
-            Ready to plan your next extraordinary event? Reach out and let&apos;s start the conversation.
+            Ready to discuss your vision? Reach out to our professional management team and let&apos;s start the planning process.
           </p>
         </div>
       </section>

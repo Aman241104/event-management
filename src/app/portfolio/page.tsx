@@ -106,7 +106,7 @@ function PortfolioContent() {
 
             <div className="max-w-xl mx-auto header-fade opacity-0 pt-0">
               <p className="text-[#525252] text-[15px] md:text-lg font-serif italic border-l border-[#D4B982]/30 pl-10 leading-relaxed text-left">
-                A testament to atmospheric design. Explore our history of orchestrating the extraordinary.
+                A showcase of flawlessly executed weddings, corporate summits, and private celebrations.
               </p>
             </div>
           </div>
@@ -208,14 +208,14 @@ function PortfolioContent() {
                   <Search size={24} className="text-[#D4B982]" />
                 </div>
                 <div className="space-y-2">
-                  <p className="text-2xl font-serif text-[#121212] italic">The archive is silent.</p>
-                  <p className="text-sm text-[#121212]/40 tracking-widest uppercase">Try adjusting your filter or search terms</p>
+                  <p className="text-2xl font-serif text-[#121212] italic">No matching records found.</p>
+                  <p className="text-sm text-[#121212]/40 tracking-widest uppercase">Try adjusting your filter or keywords</p>
                 </div>
                 <button 
                   onClick={() => {setSearchQuery(''); setActiveCategory('All');}} 
                   className="btn-gold px-10 py-4 text-[10px]"
                 >
-                  RESET EXPLORER
+                  RESET FILTERS
                 </button>
               </div>
             )}
@@ -246,10 +246,10 @@ function PortfolioContent() {
             
             <div className="relative inline-block">
               <h2 className="text-4xl md:text-7xl lg:text-[7rem] font-serif text-white leading-[1.1] tracking-tighter relative z-10">
-                Compose Your Legacy
+                Plan Your Next
               </h2>
               <span className="font-script text-[#D4B982] text-6xl md:text-8xl lg:text-[10rem] block -mt-4 md:-mt-8 lg:-mt-12 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
-                With Zing Bliss.
+                Elite Event.
               </span>
             </div>
           </div>

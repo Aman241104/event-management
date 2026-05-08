@@ -222,23 +222,23 @@ export default function ServicesPage() {
               <div className="hero-header-reveal flex flex-col items-start gap-4 opacity-0">
                  <div className="flex items-center gap-3">
                    <div className="w-12 h-px bg-[#D4B982]/40" />
-                   <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">SERVICES</span>
+                   <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">EVENT PRODUCTION</span>
                    <div className="w-12 h-px bg-[#D4B982]/40" />
                  </div>
               </div>
               
               <h1 className="hero-title text-5xl md:text-8xl lg:text-[8.5rem] font-serif text-white leading-[1] tracking-tight">
                 <span className="block overflow-hidden">
-                  <span className="text-line block">Celebrations Crafted</span>
+                  <span className="text-line block">Engineering Elite</span>
                 </span>
                 <span className="block overflow-hidden">
-                  <span className="text-line block italic font-script text-[#D4B982] mt-4 lg:text-[12rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">To Perfection</span>
+                  <span className="text-line block italic font-script text-[#D4B982] mt-4 lg:text-[12rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Celebrations</span>
                 </span>
               </h1>
 
               <div className="max-w-xl hero-subtext opacity-0 pt-10">
                 <p className="text-white/80 text-lg md:text-2xl font-serif italic border-l-2 border-[#D4B982]/30 pl-12 leading-relaxed">
-                  From concept to creation, we offer a range of services designed to make your event extraordinary.
+                  From strategic planning to flawless execution, we provide comprehensive management for luxury events.
                 </p>
               </div>
             </div>
@@ -249,34 +249,34 @@ export default function ServicesPage() {
         <section id="grid" className="py-32 md:py-56 bg-[#FDFBF7]">
           <div className="container text-center">
             <div className="space-y-6 mb-24 fade-up">
-              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR SERVICES</span>
-              <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">What We Do Best</h2>
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR CORE SOLUTIONS</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">Professional Management</h2>
               <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 max-w-7xl mx-auto">
               {[
                 { 
-                  title: 'WEDDINGS', 
-                  desc: 'Luxury weddings designed with elegance, creativity and attention to every detail.', 
+                  title: 'WEDDING PRODUCTION', 
+                  desc: 'Luxury weddings engineered with logistical precision and bespoke creative direction.', 
                   image: '/hero-2.jpg',
                   icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><circle cx="9" cy="12" r="5" /><circle cx="15" cy="12" r="5" /></svg>
                 },
                 { 
-                  title: 'CORPORATE EVENTS', 
-                  desc: 'Professional events that inspire, engage and leave a lasting impact.', 
+                  title: 'CORPORATE EXCELLENCE', 
+                  desc: 'Strategic event management for high-impact conferences, summits, and brand launches.', 
                   image: '/hero-1.jpg',
                   icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
                 },
                 { 
                   title: 'PRIVATE CELEBRATIONS', 
-                  desc: 'Personal celebrations filled with joy, love and unforgettable moments.', 
+                  desc: 'Seamless end-to-end management for intimate milestones and exclusive private parties.', 
                   image: '/private-celebrations.jpg',
                   icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="M6 2v10a6 6 0 0 0 12 0V2" /><line x1="9" y1="2" x2="9" y2="8" /><line x1="15" y1="2" x2="15" y2="8" /><path d="M12 12v10" /><path d="M9 18h6" /></svg>
                 },
                 { 
-                  title: 'EVENT PRODUCTION & ENTERTAINMENT', 
-                  desc: 'End-to-end production, entertainment and technical solutions.', 
+                  title: 'FULL-SCALE PRODUCTION', 
+                  desc: 'Technical implementation, stage design, and comprehensive on-site event execution.', 
                   image: '/event-production.jpg',
                   icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><rect x="3" y="4" width="18" height="16" rx="1" /><path d="M12 7l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" /></svg>
                 },
@@ -296,7 +296,7 @@ export default function ServicesPage() {
                       <p className="text-[15px] md:text-[16px] text-[#525252] leading-relaxed font-light">{item.desc}</p>
                     </div>
                     <Link href="/contact" className="mt-auto inline-flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.4em] text-[#D4B982] hover:text-[#B38B4D] transition-colors group/link">
-                      EXPLORE <ArrowRight size={16} className="transform transition-transform group-hover/link:translate-x-2" />
+                      PLAN YOUR EVENT <ArrowRight size={16} className="transform transition-transform group-hover/link:translate-x-2" />
                     </Link>
                   </div>
                 </div>
@@ -313,8 +313,8 @@ export default function ServicesPage() {
           
           <div className="container relative z-10 text-center">
             <div className="space-y-6 mb-24 fade-up">
-              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR SERVICES IN DETAIL</span>
-              <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight tracking-tight">Creating Extraordinary Experiences</h2>
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">MANAGEMENT IN DETAIL</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight tracking-tight">Comprehensive Event Implementation</h2>
               <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
             </div>
 
@@ -323,25 +323,25 @@ export default function ServicesPage() {
                 { 
                   id: '01', 
                   title: 'WEDDINGS', 
-                  tags: ['Concept & Theme Design', 'Venue Styling & Decor', 'Floral Design', 'Hospitality & Guest Experience', 'Wedding Planning & Coordination'],
+                  tags: ['Bespoke Concept & Blueprints', 'Venue Sourcing & Styling', 'Logistical Coordination', 'Hospitality Management', 'On-Site Production'],
                   image: '/assets/wedding/wedding-7.jpg'
                 },
                 { 
                   id: '02', 
                   title: 'CORPORATE EVENTS', 
-                  tags: ['Conferences & Seminars', 'Product Launches', 'Annual Meets', 'Brand Activations', 'Stage & Set Design'],
+                  tags: ['Conferences & Summits', 'Product Launch Management', 'Annual Day Celebrations', 'Brand Activations', 'Technical Stage Design'],
                   image: '/assets/corporate/corporate-6.jpg'
                 },
                 { 
                   id: '03', 
                   title: 'PRIVATE CELEBRATIONS', 
-                  tags: ['Birthdays & Anniversaries', 'Engagements', 'Baby Showers', 'Festive Celebrations', 'Intimate Gatherings'],
+                  tags: ['Milestone Anniversaries', 'Elite Birthday Parties', 'Intimate Soirees', 'Festive Event Design', 'Bespoke Guest Experiences'],
                   image: '/assets/wedding/wedding-1.jpg'
                 },
                 { 
                   id: '04', 
-                  title: 'EVENT PRODUCTION & ENTERTAINMENT', 
-                  tags: ['Stage Production', 'Lighting & Sound', 'Artists & Performers', 'Technical Management', 'On-site Execution'],
+                  title: 'PRODUCTION & ENTERTAINMENT', 
+                  tags: ['Artist & Talent Management', 'Lighting & AV Engineering', 'Live Production Setup', 'Stage Management', 'Flawless Technical Execution'],
                   image: '/assets/production/production-1.jpg'
                 },
               ].map((service, index) => (
@@ -396,35 +396,35 @@ export default function ServicesPage() {
           <div className="container text-center">
             <div className="space-y-6 mb-24 fade-up">
               <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">WHY CHOOSE US</span>
-              <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">The Zing Bliss Advantage</h2>
+              <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">The Production Advantage</h2>
               <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-16 lg:gap-8">
               {[
                 { 
-                  title: 'Creative Excellence', 
-                  desc: 'Innovative ideas that stand out.',
+                  title: 'Strategic Mastery', 
+                  desc: 'Meticulous planning that aligns with your specific goals.',
                   icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3 1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" /></svg>
                 },
                 { 
-                  title: 'Seamless Execution', 
-                  desc: 'Flawless planning and delivery.',
+                  title: 'Seamless Production', 
+                  desc: 'Flawless coordination from conceptual design to wrap.',
                   icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>
                 },
                 { 
-                  title: 'Premium Quality', 
-                  desc: 'We never compromise on quality.',
+                  title: 'Absolute Quality', 
+                  desc: 'A refusal to compromise on the caliber of any detail.',
                   icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 8v8M8 12h8" /></svg>
                 },
                 { 
-                  title: 'Dedicated Team', 
-                  desc: 'A passionate team that cares.',
+                  title: 'Elite Team', 
+                  desc: 'Dedicated specialists committed to event success.',
                   icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /></svg>
                 },
                 { 
-                  title: 'Client Satisfaction', 
-                  desc: 'Your happiness is our success.',
+                  title: 'Unrivalled Focus', 
+                  desc: 'Your objectives remain our primary driving force.',
                   icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
                 },
               ].map((item, i) => (
@@ -457,10 +457,10 @@ export default function ServicesPage() {
           <div className="container relative z-20 text-center">
             <div className="space-y-8 fade-up">
               <h2 className="text-4xl md:text-7xl lg:text-[7.5rem] font-serif text-white leading-[1] tracking-tighter relative z-10">
-                Ready to Plan Your Perfect Event?
+                Ready to Plan Your Next Event?
               </h2>
               <span className="font-script text-[#D4B982] text-6xl md:text-9xl lg:text-[11rem] block -mt-4 md:-mt-8 lg:-mt-10 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
-                Let&apos;s Talk
+                Discuss Your Vision
               </span>
             </div>
             

@@ -119,7 +119,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 z-0 hero-bg-wrapper">
             <Image 
               src="/assets/wedding/wedding-5.jpg" 
-              alt="The Story Behind Zing Bliss" 
+              alt="Professional Event Management" 
               fill 
               className="object-cover brightness-[0.35]"
               priority
@@ -133,24 +133,24 @@ export default function AboutPage() {
           <div className="container relative z-20 pt-32 md:pt-44">
             <div className="max-w-4xl mx-auto space-y-8">
               <div className="hero-header-reveal flex flex-col items-center gap-4 opacity-0">
-                 <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">ABOUT US</span>
+                 <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">ABOUT ZING BLISS</span>
                  <div className="w-12 h-px bg-[#D4B982]/40" />
               </div>
               
               <div className="space-y-2">
                 <h1 className="hero-title text-5xl md:text-8xl lg:text-[8.5rem] font-serif text-white leading-[1.1] tracking-tight">
                   <span className="block overflow-hidden">
-                    <span className="text-line block">The Story Behind</span>
+                    <span className="text-line block">Mastering the Art of</span>
                   </span>
                   <span className="block overflow-hidden">
-                    <span className="text-line block italic font-script text-[#D4B982] mt-4 lg:text-[10.5rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Zing Bliss Events</span>
+                    <span className="text-line block italic font-script text-[#D4B982] mt-4 lg:text-[10.5rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Event Management</span>
                   </span>
                 </h1>
               </div>
 
-              <div className="max-w-lg mx-auto hero-subtext opacity-0 pt-6">
+              <div className="max-w-xl mx-auto hero-subtext opacity-0 pt-6">
                 <p className="text-white/80 text-lg md:text-xl font-serif italic leading-relaxed">
-                  We are dreamers, planners and creators of <br className="hidden md:block" /> unforgettable experiences.
+                  Precision in planning. Elegance in execution. <br className="hidden md:block" /> We are the architects of high-end celebrations.
                 </p>
               </div>
             </div>
@@ -181,27 +181,27 @@ export default function AboutPage() {
               {/* Text Side */}
               <div className="space-y-10 fade-up">
                 <div className="space-y-4">
-                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR JOURNEY</span>
+                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR STORY</span>
                   <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#121212] leading-[1.1] tracking-tight">
-                    Turning Dreams <br />
-                    Into Beautiful <br />
-                    <span className="text-[#D4B982] italic font-script block -mt-2 text-6xl md:text-9xl">Realities</span>
+                    A Legacy of <br />
+                    Flawless <br />
+                    <span className="text-[#D4B982] italic font-script block -mt-2 text-6xl md:text-9xl">Execution</span>
                   </h2>
                 </div>
 
                 <div className="space-y-8 max-w-lg">
                   <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
-                    Zing Bliss Events was born out of a passion for design, a love for celebrations and a commitment to creating moments that stay with you forever. 
+                    Zing Bliss Events was established with a singular focus: to redefine luxury event management through logistical precision and creative excellence.
                   </p>
                   <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
-                    From intimate gatherings to grand celebrations, we bring creativity, precision and heart to every event we craft.
+                    Our team brings decades of combined experience in venue sourcing, vendor management, and on-site production to every event we handle.
                   </p>
                 </div>
 
                 <div className="pt-4">
                   <Magnetic strength={0.1}>
                     <Button className="btn-gold px-12 py-5 text-[11px]">
-                      DISCOVER OUR STORY
+                      DISCOVER OUR PROCESS
                     </Button>
                   </Magnetic>
                 </div>
@@ -211,23 +211,23 @@ export default function AboutPage() {
         </section>
 
         {/* 3. Our Philosophy Section - Recreated from Reference */}
-        <section id="philosophy" className="py-32 md:py-48 bg-[#05100a] relative overflow-hidden">
+        <section id="philosophy" className="py-20 md:py-32 bg-[#05100a] relative overflow-hidden">
           {/* Subtle Background Texture */}
           <div className="absolute inset-0 dot-pattern opacity-[0.05] pointer-events-none" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(179,139,77,0.08)_0%,_transparent_70%)] pointer-events-none" />
           
           <div className="container relative z-10 text-center">
-            <div className="space-y-6 mb-24 fade-up">
-              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">OUR PHILOSOPHY</span>
-              <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight tracking-tight">What Drives Us</h2>
+            <div className="space-y-6 mb-16 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">OUR PILLARS</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight tracking-tight">The Core of Our Service</h2>
               <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
               {[
                 { 
-                  title: 'Creativity', 
-                  desc: 'Unique ideas that bring your vision to life.',
+                  title: 'Innovation', 
+                  desc: 'Bespoke design concepts that push the boundaries of possibility.',
                   icon: (
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10" />
@@ -236,8 +236,8 @@ export default function AboutPage() {
                   )
                 },
                 { 
-                  title: 'Precision', 
-                  desc: 'Meticulous planning and flawless execution.',
+                  title: 'Reliability', 
+                  desc: 'Punctual, professional, and prepared for every eventuality.',
                   icon: (
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10" />
@@ -246,8 +246,8 @@ export default function AboutPage() {
                   )
                 },
                 { 
-                  title: 'Personalisation', 
-                  desc: 'Every detail is tailored to reflect your story.',
+                  title: 'Mastery', 
+                  desc: 'Unrivalled logistical expertise and on-site coordination.',
                   icon: (
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
@@ -257,7 +257,7 @@ export default function AboutPage() {
                 },
                 { 
                   title: 'Excellence', 
-                  desc: 'We go beyond expectations to deliver perfection.',
+                  desc: 'A commitment to delivering perfection across every detail.',
                   icon: (
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round">
                       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -287,7 +287,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
                   <Image 
                     src="/assets/team/founder-portrait.png" 
-                    alt="Founder & Visionary" 
+                    alt="Founder & Creative Director" 
                     fill 
                     className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                   />
@@ -307,7 +307,7 @@ export default function AboutPage() {
 
               <div className="space-y-10 fade-up order-1 lg:order-2">
                 <div className="space-y-4">
-                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">THE VISIONARY</span>
+                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">THE LEADERSHIP</span>
                   <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif text-[#121212] leading-[1.1] tracking-tight">
                     Crafting <br />
                     Unforgettable <br />
@@ -317,7 +317,7 @@ export default function AboutPage() {
 
                 <div className="space-y-8 max-w-lg">
                   <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
-                    With an unwavering eye for detail and a passion for architectural elegance, our founder has redefined the landscape of luxury events. 
+                    With an unwavering eye for detail and a passion for architectural elegance, our founder has redefined the landscape of luxury events.
                   </p>
                   <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
                     By merging contemporary design with timeless traditions, we create bespoke experiences that resonate with sophistication and heart.
@@ -326,7 +326,7 @@ export default function AboutPage() {
 
                 <div className="pt-4">
                    <div className="flex flex-col gap-1">
-                     <span className="text-xl font-serif text-[#121212]">The Architect of Bliss</span>
+                     <span className="text-xl font-serif text-[#121212]">Kamna Udernani</span>
                      <span className="text-[10px] text-[#D4B982] uppercase tracking-widest font-bold">Founder & Creative Director</span>
                    </div>
                 </div>
@@ -359,15 +359,15 @@ export default function AboutPage() {
           
           {/* Ghost Background Typography */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full select-none pointer-events-none overflow-hidden whitespace-nowrap opacity-[0.02]">
-            <span className="text-[20vw] font-serif italic text-[#121212] leading-none">The Craftsmanship</span>
+            <span className="text-[20vw] font-serif italic text-[#121212] leading-none">The Production</span>
           </div>
 
           <div className="container text-center relative z-10">
             <div className="space-y-6 mb-32 fade-up">
               <span className="text-[11px] text-[#D4B982] uppercase tracking-[1em] font-bold">THE METHODOLOGY</span>
               <h2 className="text-4xl md:text-7xl lg:text-9xl font-serif text-[#121212] leading-tight tracking-tight">
-                The Anatomy of <br />
-                <span className="italic font-script text-[#D4B982] lowercase lg:text-[10rem] block -mt-4 drop-shadow-sm">Elegance</span>
+                The Lifecycle of <br />
+                <span className="italic font-script text-[#D4B982] lowercase lg:text-[10rem] block -mt-4 drop-shadow-sm">Precision</span>
               </h2>
               <div className="flex items-center justify-center gap-6 mt-12">
                 <div className="w-16 h-px bg-[#D4B982]/20" />
@@ -375,20 +375,19 @@ export default function AboutPage() {
                 <div className="w-16 h-px bg-[#D4B982]/20" />
               </div>
             </div>
+<div className="relative max-w-7xl mx-auto px-4">
+  <div className="flex overflow-x-auto no-scrollbar lg:grid lg:grid-cols-5 gap-12 lg:gap-8 pb-12 lg:pb-0 scroll-px-6 relative">
+    {/* Connecting Line - Refined with Gradient */}
+    <div className="absolute top-14 left-0 w-full min-w-[1400px] lg:min-w-0 h-px bg-gradient-to-r from-transparent via-[#D4B982]/30 to-transparent z-0" />
 
-            <div className="relative max-w-7xl mx-auto px-4">
-              {/* Connecting Line - Refined with Gradient */}
-              <div className="absolute top-14 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#D4B982]/30 to-transparent hidden lg:block z-0" />
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-16 lg:gap-8">
-                {[
-                  { 
-                    id: '01', 
-                    title: 'The Prelude', 
-                    subtitle: 'Discovery',
+    {[
+      { 
+        id: '01', 
+        title: 'The Prelude', 
+        subtitle: 'Discovery',
                     desc: 'A deep dive into your aspirations, defining the soul of your event.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
                         <circle cx="11" cy="11" r="8" />
                         <path d="m21 21-4.3-4.3" />
                       </svg>
@@ -400,7 +399,7 @@ export default function AboutPage() {
                     subtitle: 'Concept & Design',
                     desc: 'Translating dreams into a visual symphony of colors and textures.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
                         <path d="m12 19 7-7 3 3-7 7-3-3z" />
                         <path d="m18 13-1.5-7.5L2 2l7.5 14.5L13 18l5-5z" />
                       </svg>
@@ -412,7 +411,7 @@ export default function AboutPage() {
                     subtitle: 'Strategic Planning',
                     desc: 'Orchestrating every logistical detail with clockwork precision.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
                         <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
                       </svg>
                     )
@@ -423,7 +422,7 @@ export default function AboutPage() {
                     subtitle: 'Impeccable Execution',
                     desc: 'Bringing the blueprint to life with flair and flawless grace.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                         <polyline points="22 4 12 14.01 9 11.01" />
                       </svg>
@@ -435,31 +434,31 @@ export default function AboutPage() {
                     subtitle: 'The Experience',
                     desc: 'The moment where time stands still and memories take flight.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
                         <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z" />
                       </svg>
                     )
                   },
                 ].map((item, i) => (
-                  <div key={i} className="relative z-10 space-y-12 group fade-up" style={{ transitionDelay: `${i * 150}ms` }}>
+                  <div key={i} className="flex-shrink-0 w-72 lg:w-full relative z-10 space-y-12 group fade-up" style={{ transitionDelay: `${i * 150}ms` }}>
                     <div className="relative">
-                      <div className="w-28 h-28 mx-auto rounded-full bg-white/40 backdrop-blur-xl shadow-[0_20px_50px_rgba(212,185,130,0.1)] border border-white/80 flex items-center justify-center transform transition-all duration-1000 group-hover:scale-110 group-hover:border-[#D4B982]/30 group-hover:shadow-[0_30px_60px_rgba(212,185,130,0.2)]">
+                      <div className="w-28 h-28 mx-auto rounded-full bg-white/40 backdrop-blur-xl shadow-[0_20px_50px_rgba(212,185,130,0.1)] border border-white/80 flex items-center justify-center transform transition-all duration-1000 group-hover:scale-110 group-hover:border-[#25D366]/30 group-hover:shadow-[0_30px_60px_rgba(37,211,102,0.2)]">
                         {item.icon}
                         
                         {/* Orbiting Ring on Hover */}
-                        <div className="absolute inset-[-4px] rounded-full border border-dashed border-[#D4B982]/20 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-1000 group-hover:rotate-90" />
+                        <div className="absolute inset-[-4px] rounded-full border border-dashed border-[#25D366]/20 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-1000 group-hover:rotate-90" />
                       </div>
                       
                       {/* Floating ID Tag */}
-                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#121212] rounded-none border-l-2 border-[#D4B982] shadow-lg transform transition-transform duration-700 group-hover:-translate-y-2">
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#121212] rounded-none border-l-2 border-[#25D366] shadow-lg transform transition-transform duration-700 group-hover:-translate-y-2">
                          <span className="text-[9px] font-mono text-white font-bold tracking-[0.4em] uppercase">{item.id}</span>
                       </div>
                     </div>
 
                     <div className="space-y-4 px-4">
                       <div className="space-y-1">
-                        <span className="text-[10px] text-[#D4B982] font-mono tracking-[0.3em] uppercase opacity-60">{item.subtitle}</span>
-                        <h4 className="text-xl md:text-2xl tracking-wide text-[#121212] font-serif font-bold group-hover:text-[#D4B982] transition-colors duration-500">{item.title}</h4>
+                        <span className="text-[10px] text-[#25D366] font-mono tracking-[0.3em] uppercase opacity-80 whitespace-nowrap block">{item.subtitle}</span>
+                        <h4 className="text-xl md:text-2xl tracking-wide text-[#121212] font-serif font-bold group-hover:text-[#25D366] transition-colors duration-500">{item.title}</h4>
                       </div>
                       <p className="text-[#525252]/80 text-[14px] leading-relaxed font-light font-sans max-w-[220px] mx-auto italic">{item.desc}</p>
                     </div>
@@ -476,8 +475,8 @@ export default function AboutPage() {
           
           <div className="container relative z-10 text-center">
             <div className="space-y-6 mb-24 fade-up">
-              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">OUR WORK</span>
-              <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight tracking-tight">Moments We&apos;re Proud Of</h2>
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">ARCHIVE</span>
+              <h2 className="text-4xl md:text-7xl font-serif text-white leading-tight tracking-tight">Portfolio of Excellence</h2>
               <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
             </div>
 
@@ -503,7 +502,7 @@ export default function AboutPage() {
               <Magnetic strength={0.05}>
                 <Link href="/portfolio" className="inline-block">
                   <Button variant="outline" className="border-[#D4B982]/40 !text-white hover:bg-[#D4B982] hover:!text-heritage px-12 py-5 text-[10px] bg-white/5 backdrop-blur-sm transition-all duration-700">
-                    VIEW FULL PORTFOLIO
+                    VIEW ALL RECORDS
                   </Button>
                 </Link>
               </Magnetic>
@@ -512,10 +511,10 @@ export default function AboutPage() {
         </section>
 
         {/* 6. Trust Section - Recreated from Reference */}
-        <section id="why-choose-us" className="py-32 md:py-48 bg-[#FDFBF7] relative overflow-hidden">
+        <section id="why-choose-us" className="py-20 md:py-32 bg-[#FDFBF7] relative overflow-hidden">
           <div className="container text-center">
-            <div className="space-y-6 mb-24 fade-up">
-              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">WHY CLIENTS TRUST US</span>
+            <div className="space-y-6 mb-20 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">CLIENT ASSURANCE</span>
               <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">Experience You Can Trust</h2>
               <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
             </div>
@@ -523,28 +522,28 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8">
               {[
                 { 
-                  title: 'Tailored Experiences', 
-                  desc: 'Every event is as unique as you are.',
+                  title: 'Bespoke Production', 
+                  desc: 'Every event is custom-engineered to your requirements.',
                   icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>
                 },
                 { 
                   title: 'End-to-End Management', 
-                  desc: 'We handle it all, seamlessly.',
+                  desc: 'Seamless logistical oversight from concept to completion.',
                   icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0" /><path d="M12 3v3" /><path d="M12 18v3" /><path d="M3 12h3" /><path d="M18 12h3" /></svg>
                 },
                 { 
-                  title: 'Premium Vendor Network', 
-                  desc: 'Trusted partners for the best quality.',
+                  title: 'Strategic Partnerships', 
+                  desc: 'Access to an exclusive network of premium event vendors.',
                   icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
                 },
                 { 
-                  title: 'Flawless Execution', 
-                  desc: 'Precision, punctuality and perfection.',
+                  title: 'On-Site Coordination', 
+                  desc: 'Professional management ensuring flawless event delivery.',
                   icon: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4B982" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"><path d="m12 14 4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /></svg>
                 },
               ].map((item, i) => (
-                <div key={i} className="space-y-8 fade-up group" style={{ transitionDelay: `${i * 100}ms` }}>
-                  <div className="w-20 h-20 mx-auto flex items-center justify-center rounded-full border border-linen/30 bg-white shadow-xl transition-all duration-700 group-hover:border-[#D4B982]/30 group-hover:scale-110">
+                <div key={i} className="space-y-8 fade-up group" style={{ transitionDelay: `${i * 150}ms` }}>
+                  <div className="w-20 h-20 mx-auto flex items-center justify-center rounded-full border border-linen/30 bg-white shadow-xl transition-all duration-1000 group-hover:border-[#D4B982]/30 group-hover:scale-110">
                     {item.icon}
                   </div>
                   <div className="space-y-3">
@@ -562,7 +561,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 z-0">
             <Image 
               src="/assets/wedding/wedding-3.jpg" 
-              alt="Final CTA Background" 
+              alt="Professional Consultation" 
               fill 
               className="object-cover brightness-[0.15] scale-105" 
             />
@@ -574,16 +573,16 @@ export default function AboutPage() {
             <div className="space-y-8 fade-up">
               <div className="flex items-center justify-center gap-6 mb-4">
                  <div className="w-12 h-px bg-[#D4B982]/40" />
-                 <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">READY TO BEGIN?</span>
+                 <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">PLAN YOUR EVENT</span>
                  <div className="w-12 h-px bg-[#D4B982]/40" />
               </div>
               
               <div className="relative inline-block">
                 <h2 className="text-4xl md:text-7xl lg:text-[7.5rem] font-serif text-white leading-[1] tracking-tighter relative z-10">
-                  Let&apos;s Create Your
+                  Compose Your Next
                 </h2>
                 <span className="font-script text-[#D4B982] text-6xl md:text-9xl lg:text-[11rem] block -mt-4 md:-mt-8 lg:-mt-10 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
-                  Unforgettable Story
+                  Elite Celebration
                 </span>
               </div>
             </div>

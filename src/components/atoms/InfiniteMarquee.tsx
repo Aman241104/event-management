@@ -53,7 +53,7 @@ export function InfiniteMarquee({ items, direction = 'left', speed = 50, classNa
               />
             </div>
           )}
-          <span className="text-lg md:text-2xl font-sans font-bold text-white/40 group-hover:text-[#D4B982] transition-colors duration-500 cursor-default uppercase tracking-[0.6em]">
+          <span className="text-lg md:text-2xl font-sans font-bold text-white/40 group-hover:text-white/80 transition-colors duration-500 cursor-default uppercase tracking-[0.6em]">
             {label}
           </span>
         </div>
