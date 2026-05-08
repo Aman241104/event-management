@@ -47,93 +47,18 @@ if (typeof window !== 'undefined') {
 
 const trustLogos = [
   { 
-    name: 'TAJ', 
-    type: 'custom',
-    render: () => (
-      <div className="flex flex-col items-center group">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-white/40 group-hover:text-[#D4B982] transition-colors duration-700 mb-2">
-          <path d="M12 2L14.5 7H9.5L12 2Z" fill="currentColor" />
-          <path d="M12 22L9.5 17H14.5L12 22Z" fill="currentColor" />
-          <path d="M2 12L7 9.5V14.5L2 12Z" fill="currentColor" />
-          <path d="M22 12L17 14.5V9.5L22 12Z" fill="currentColor" />
-        </svg>
-        <span className="text-xl md:text-2xl font-serif text-white/80 tracking-[0.2em] group-hover:text-white transition-all duration-700">TAJ</span>
-      </div>
-    )
-  },
-  { 
-    name: 'ITC Hotels', 
-    type: 'custom',
-    render: () => (
-      <div className="flex flex-col items-center group">
-        <div className="relative w-24 h-12 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
-          <Image 
-            src="/assets/logos/itc.png" 
-            alt="ITC Hotels" 
-            fill 
-            className="object-contain" 
-          />
-        </div>
-      </div>
-    )
-  },
-  { 
-    name: 'THE LEELA', 
-    type: 'custom',
-    render: () => (
-      <div className="flex flex-col items-center group">
-        <div className="relative w-24 h-12 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
-          <Image 
-            src="/assets/logos/leela.png" 
-            alt="The Leela" 
-            fill 
-            className="object-contain" 
-          />
-        </div>
-      </div>
-    )
-  },
-  { 
-    name: 'Marriott', 
-    type: 'custom',
-    render: () => (
-      <div className="flex flex-col items-center group">
-        <div className="w-10 h-10 md:w-12 md:h-12 relative flex items-center justify-center mb-1">
-          <svg viewBox="0 0 40 40" className="w-full h-full text-white/40 group-hover:text-[#D4B982] transition-all duration-700">
-            <rect x="10" y="10" width="20" height="20" transform="rotate(45 20 20)" stroke="currentColor" strokeWidth="1" fill="none" />
-            <rect x="14" y="14" width="12" height="12" transform="rotate(45 20 20)" fill="currentColor" opacity="0.5" />
-          </svg>
-        </div>
-        <span className="text-[9px] md:text-[10px] font-sans text-white/60 tracking-[0.4em] uppercase group-hover:text-white transition-all">Marriott</span>
-      </div>
-    )
-  },
-  { 
-    name: 'HYATT', 
-    type: 'custom',
-    render: () => (
-      <div className="flex flex-col items-center group">
-        <span className="text-lg md:text-xl font-sans font-light text-white/80 tracking-[0.3em] group-hover:text-white transition-all duration-700">HYATT</span>
-        <span className="text-[8px] font-sans text-[#D4B982]/60 tracking-[0.5em] mt-1 group-hover:text-[#D4B982] transition-all">REGENCY</span>
-      </div>
-    )
-  },
-  { 
-    name: 'RADISSON', 
-    type: 'custom',
-    render: () => (
-      <div className="flex flex-col items-center group">
-        <span className="text-xl md:text-2xl font-script text-white/60 tracking-normal group-hover:text-[#D4B982] transition-all duration-700 lowercase italic">Radisson</span>
-      </div>
-    )
-  },
-  { 
     name: 'Reliance Insurance', 
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <span className="text-lg md:text-xl font-serif text-white/60 tracking-[0.1em] group-hover:text-white transition-all duration-700 uppercase">Reliance</span>
-        <span className="text-[8px] font-sans text-[#D4B982]/60 tracking-[0.4em] mt-1 group-hover:text-[#D4B982]">INSURANCE</span>
+        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+          <Image 
+            src="/assets/logos/reliance.png" 
+            alt="Reliance Insurance" 
+            fill 
+            className="object-contain" 
+          />
+        </div>
       </div>
     )
   },
@@ -142,10 +67,14 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="border border-white/20 px-3 py-1 group-hover:border-[#D4B982]/40 transition-all duration-700">
-          <span className="text-xl md:text-2xl font-serif text-white/80 tracking-[0.3em] group-hover:text-white">ITC</span>
+        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+          <Image 
+            src="/assets/logos/itc_fmcg.png" 
+            alt="ITC FMCG" 
+            fill 
+            className="object-contain" 
+          />
         </div>
-        <span className="text-[7px] font-sans text-white/40 tracking-[0.4em] mt-2 group-hover:text-white uppercase">FMCG Division</span>
       </div>
     )
   },
@@ -154,7 +83,14 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <span className="text-2xl md:text-3xl font-black text-white/40 tracking-tighter group-hover:text-white transition-all duration-700 italic">HAAS</span>
+        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+          <Image 
+            src="/assets/logos/haas.png" 
+            alt="Haas Automation" 
+            fill 
+            className="object-contain" 
+          />
+        </div>
       </div>
     )
   },
@@ -163,8 +99,14 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <span className="text-lg md:text-xl font-serif text-white/60 tracking-widest group-hover:text-white transition-all duration-700">ADHAAN</span>
-        <span className="text-[8px] font-sans text-white/30 tracking-[0.3em] mt-1 group-hover:text-[#D4B982]">SOLUTIONS</span>
+        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+          <Image 
+            src="/assets/logos/adhaan.png" 
+            alt="Adhaan Solution" 
+            fill 
+            className="object-contain" 
+          />
+        </div>
       </div>
     )
   },
@@ -173,11 +115,13 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative">
-          <span className="text-2xl md:text-3xl font-serif text-white/80 tracking-tight group-hover:text-[#D4B982] transition-all duration-700">ZEE</span>
-          <div className="absolute -right-5 top-1 border border-[#D4B982]/40 px-1 scale-75">
-            <span className="text-[10px] text-[#D4B982]">TV</span>
-          </div>
+        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+          <Image 
+            src="/assets/logos/zeetv.png" 
+            alt="Zee TV" 
+            fill 
+            className="object-contain" 
+          />
         </div>
       </div>
     )
@@ -401,12 +345,12 @@ export default function Home() {
             <div className="flex items-center gap-3 fade-up">
                <div className="w-16 h-px bg-gradient-to-r from-transparent to-[#D4B982]/30" />
                <span className="text-[10px] md:text-[11px] text-[#D4B982]/80 uppercase tracking-[0.6em] font-bold">
-                 TRUSTED BY FAMILIES, BRANDS & LUXURY VENUES
+                 OUR ESTEEMED CORPORATE CLIENTELE
                </span>
                <div className="w-16 h-px bg-gradient-to-l from-transparent to-[#D4B982]/30" />
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-16 lg:gap-24 items-center justify-items-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-16 lg:gap-24 items-center justify-items-center">
               {trustLogos.map((logo, i) => (
                 <div 
                   key={i} 

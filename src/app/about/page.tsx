@@ -333,7 +333,7 @@ export default function AboutPage() {
           <InfiniteMarquee 
             speed={60} 
             direction="left"
-            items={['RELIANCE INSURANCE', 'ITC FMCG', 'HAAS AUTOMATION', 'ADHAAN SOLUTIONS', 'ZEE TV', 'TAJ HOTELS', 'THE LEELA', 'MARRIOTT']}
+            items={['RELIANCE INSURANCE', 'ITC FMCG', 'HAAS AUTOMATION', 'ADHAAN SOLUTIONS', 'ZEE TV']}
           />
         </section>
 
