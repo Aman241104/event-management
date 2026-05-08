@@ -52,7 +52,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-70 group-hover:opacity-100 transition-all duration-700">
+        <div className="relative w-28 h-16 opacity-80 group-hover:opacity-100 transition-all duration-700 brightness-0 invert">
           <Image 
             src="/assets/logos/reliance.png" 
             alt="Reliance Insurance" 
@@ -68,7 +68,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-70 group-hover:opacity-100 transition-all duration-700">
+        <div className="relative w-28 h-16 opacity-80 group-hover:opacity-100 transition-all duration-700 brightness-125 md:brightness-100">
           <Image 
             src="/assets/logos/itc_fmcg.png" 
             alt="ITC FMCG" 
@@ -319,7 +319,7 @@ export default function Home() {
         </div>
 
         {/* Hero Bottom Controls - Grouped to avoid overlaps */}
-        <div className="absolute bottom-10 right-10 flex items-center gap-12 z-20">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:right-10 md:translate-x-0 flex items-center z-20">
           {/* Refined Scroll Indicator */}
           <div className="flex flex-col items-center gap-2 text-white/40 group cursor-pointer transition-colors hover:text-[#D4B982]">
             <ArrowDown size={16} className="animate-bounce" />
