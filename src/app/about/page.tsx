@@ -329,11 +329,17 @@ export default function AboutPage() {
         </section>
 
         {/* Press & Partners Marquee */}
-        <section id="press" className="py-20 bg-heritage border-y border-[#D4B982]/10 overflow-hidden">
+        <section id="press" className="py-8 md:py-10 bg-heritage border-y border-[#D4B982]/10 overflow-hidden">
           <InfiniteMarquee 
             speed={60} 
             direction="left"
-            items={['RELIANCE INSURANCE', 'ITC FMCG', 'HAAS AUTOMATION', 'ADHAAN SOLUTIONS', 'ZEE TV']}
+            items={[
+              { label: 'RELIANCE INSURANCE', logo: '/assets/logos/reliance.png' },
+              { label: 'ITC FMCG', logo: '/assets/logos/itc_fmcg.png' },
+              { label: 'HAAS AUTOMATION', logo: '/assets/logos/haas.png' },
+              { label: 'ADHAAN SOLUTIONS', logo: '/assets/logos/adhaan.png' },
+              { label: 'ZEE TV', logo: '/assets/logos/zeetv.png' },
+            ]}
           />
         </section>
 
