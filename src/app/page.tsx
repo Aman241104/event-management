@@ -271,7 +271,7 @@ export default function Home() {
     <main ref={containerRef} className="bg-canvas overflow-x-hidden">
       
       {/* 1. Hero Section */}
-      <section className="relative h-[85vh] min-h-[850px] flex items-start justify-start overflow-hidden bg-heritage pt-28 md:pt-44">
+      <section className="relative h-[85vh] min-h-[700px] md:min-h-[850px] flex items-start justify-start overflow-hidden bg-heritage pt-20 md:pt-44">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/assets/wedding/wedding-7.jpg" 
@@ -288,18 +288,18 @@ export default function Home() {
         
         <div className="container relative z-10">
           <div className="max-w-6xl">
-            <div className="space-y-10">
-              <h1 className="hero-title text-5xl md:text-8xl lg:text-[8.8rem] font-serif text-white leading-[0.85] tracking-tight">
+            <div className="space-y-6 md:space-y-10">
+              <h1 className="hero-title text-[3.2rem] sm:text-7xl md:text-8xl lg:text-[8.8rem] font-serif text-white leading-[0.9] md:leading-[0.85] tracking-tight">
                 Crafting Experiences <br />
-                That Feel Like <span className="font-script text-[#D4B982] text-7xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-4 italic relative top-6 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)]">magic</span>
+                That Feel Like <span className="font-script text-[#D4B982] text-[5rem] sm:text-8xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-1 md:ml-4 italic relative top-4 md:top-6 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)] block md:inline">magic</span>
               </h1>
-              <p className="hero-subtitle text-lg md:text-xl text-white/90 font-serif italic max-w-xl leading-relaxed border-l-2 border-[#D4B982]/30 pl-10">
+              <p className="hero-subtitle text-base md:text-xl text-white/90 font-serif italic max-w-xl leading-relaxed border-l-2 border-[#D4B982]/30 pl-6 md:pl-10">
                 Luxury Event Planning for Weddings, <br className="hidden md:block" />
                 Corporate Gatherings & Bespoke Celebrations
               </p>
             </div>
 
-            <div className="hero-btns flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-12 md:pt-16">
+            <div className="hero-btns flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-10 md:pt-16">
               <Magnetic strength={0.1} className="w-full sm:w-auto">
                 <Link href="/contact" className="block w-full sm:w-auto">
                   <Button className="btn-gold w-full h-14 md:h-15 px-8 md:px-14">
@@ -329,29 +329,34 @@ export default function Home() {
       </section>
 
       {/* 2. Trust Strip */}
-      <section className="bg-[#05100a] py-14 md:py-16 overflow-hidden border-y border-white/5 relative">
+      <section className="bg-[#05100a] py-16 md:py-20 overflow-hidden border-y border-white/5 relative">
         {/* Subtle Ambient Glow for the strip */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.04)_0%,_transparent_70%)] pointer-events-none" />
         
         <div className="container relative z-10">
-          <div className="flex flex-col items-center space-y-12">
-            <div className="flex items-center gap-3 fade-up">
-               <div className="w-16 h-px bg-gradient-to-r from-transparent to-[#D4B982]/30" />
-               <span className="text-[10px] md:text-[11px] text-[#D4B982]/80 uppercase tracking-[0.6em] font-bold">
+          <div className="flex flex-col items-center space-y-12 md:space-y-16">
+            <div className="flex items-center gap-4 fade-up">
+               <div className="w-8 md:w-16 h-px bg-gradient-to-r from-transparent to-[#D4B982]/30" />
+               <span className="text-[9px] md:text-[11px] text-[#D4B982]/80 uppercase tracking-[0.4em] md:tracking-[0.6em] font-bold text-center">
                  OUR ESTEEMED CORPORATE CLIENTELE
                </span>
-               <div className="w-16 h-px bg-gradient-to-l from-transparent to-[#D4B982]/30" />
+               <div className="w-8 md:w-16 h-px bg-gradient-to-l from-transparent to-[#D4B982]/30" />
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-16 lg:gap-24 items-center justify-items-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 md:gap-16 lg:gap-24 items-center justify-items-center w-full max-w-6xl">
               {trustLogos.map((logo, i) => (
                 <div 
                   key={i} 
-                  className="flex flex-col items-center text-center group fade-up w-full"
+                  className={cn(
+                    "flex flex-col items-center text-center group fade-up w-full transition-all duration-700",
+                    i === 4 && "col-span-2 md:col-span-1" // Center the last logo on mobile 2-col grid
+                  )}
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
                   {logo.render ? (
-                    logo.render()
+                    <div className="relative w-full flex justify-center scale-90 md:scale-100">
+                      {logo.render()}
+                    </div>
                   ) : (
                     <div className="flex flex-col items-center">
                       <span className="text-lg md:text-xl font-serif text-white/70 tracking-[0.15em] group-hover:text-[#D4B982] group-hover:scale-110 transition-all duration-700 ease-expo">
