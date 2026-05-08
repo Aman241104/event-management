@@ -86,7 +86,7 @@ function PortfolioContent() {
       <div className="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-heritage/5 to-transparent pointer-events-none" />
       
       {/* 1. Header Section - Compact & Atmospheric */}
-      <section id="header" className="relative pt-32 md:pt-44 pb-4 overflow-hidden">
+      <section id="header" className="relative pt-32 md:pt-40 pb-0 overflow-hidden">
         <div className="container relative z-20 text-center">
           <div className="max-w-4xl mx-auto space-y-4">
             <div className="header-fade flex items-center justify-center gap-6 opacity-0">
@@ -104,7 +104,7 @@ function PortfolioContent() {
               </span>
             </h1>
 
-            <div className="max-w-xl mx-auto header-fade opacity-0 pt-2">
+            <div className="max-w-xl mx-auto header-fade opacity-0 pt-0">
               <p className="text-[#525252] text-[15px] md:text-lg font-serif italic border-l border-[#D4B982]/30 pl-10 leading-relaxed text-left">
                 A testament to atmospheric design. Explore our history of orchestrating the extraordinary.
               </p>
@@ -113,45 +113,114 @@ function PortfolioContent() {
         </div>
       </section>
 
-      {/* 2. Filter Navigation - High Fidelity */}
-      <section id="filter" className="container py-6 border-y border-linen/20">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-4">
-            {categories.map((category) => (
-              <button 
-                key={category} 
-                onClick={() => setActiveCategory(category)} 
-                className={`text-[10px] font-sans font-bold uppercase tracking-[0.4em] pb-1 transition-all duration-500 relative group ${activeCategory === category ? 'text-[#D4B982]' : 'text-[#121212]/40 hover:text-[#121212]'}`}
-              >
-                {category}
-                <span className={`absolute bottom-0 left-0 h-px bg-[#D4B982] transition-all duration-500 ${activeCategory === category ? 'w-full' : 'w-0 group-hover:w-full'}`} />
-              </button>
-            ))}
-          </div>
+      {/* 2. Archive Explorer - Side-Nav Layout */}
+      <section id="archive" className="container pb-32">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           
-          <div className="w-full md:w-[18rem] relative group">
-            <Search className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4B982]/40 group-focus-within:text-[#D4B982] transition-colors duration-500" size={14} />
-            <input 
-              type="text" 
-              placeholder="SEARCH THE ARCHIVE..." 
-              value={searchQuery} 
-              onChange={(e) => setSearchQuery(e.target.value)} 
-              className="w-full bg-transparent border-b border-linen/50 py-2 pl-6 text-[#121212] focus:border-[#D4B982] outline-none transition-all duration-500 font-mono text-[10px] tracking-[0.2em] placeholder:text-[#121212]/20" 
-            />
+          {/* Sidebar - Sticky Filter Navigation */}
+          <aside className="lg:w-64 flex-shrink-0 lg:sticky lg:top-32 lg:h-fit z-30">
+            <div className="space-y-12">
+              {/* Desktop Categories - Vertical List */}
+              <div className="hidden lg:block space-y-8">
+                <div className="space-y-2">
+                  <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.4em] font-bold">CATEGORIES</span>
+                  <div className="w-8 h-px bg-[#D4B982]/30" />
+                </div>
+                
+                <nav className="flex flex-col items-start gap-6">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setActiveCategory(category)}
+                      className={cn(
+                        "text-[12px] font-sans font-bold uppercase tracking-[0.4em] transition-all duration-500 relative group text-left",
+                        activeCategory === category 
+                          ? "text-[#121212]" 
+                          : "text-[#121212]/30 hover:text-[#121212]"
+                      )}
+                    >
+                      <span className={cn(
+                        "absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-[#D4B982] transition-all duration-500",
+                        activeCategory === category ? "opacity-100 scale-100" : "opacity-0 scale-0 group-hover:opacity-50 group-hover:scale-75"
+                      )} />
+                      {category}
+                    </button>
+                  ))}
+                </nav>
+              </div>
+
+              {/* Mobile Categories - Horizontal Scroll Ribbon */}
+              <div className="lg:hidden -mx-6 px-6 overflow-x-auto no-scrollbar py-2 border-y border-[#D4B982]/10 bg-white/50 backdrop-blur-md sticky top-0 z-40">
+                <div className="flex items-center gap-8 min-w-max">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setActiveCategory(category)}
+                      className={cn(
+                        "text-[10px] font-sans font-bold uppercase tracking-[0.3em] transition-all duration-500 whitespace-nowrap pb-1 border-b-2",
+                        activeCategory === category 
+                          ? "text-[#121212] border-[#D4B982]" 
+                          : "text-[#121212]/30 border-transparent"
+                      )}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Search Console */}
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.4em] font-bold">ARCHIVE SEARCH</span>
+                  <div className="w-8 h-px bg-[#D4B982]/30" />
+                </div>
+                
+                <div className="relative group">
+                  <Search className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4B982]/40 group-focus-within:text-[#D4B982] transition-colors duration-500" size={14} />
+                  <input
+                    type="text"
+                    placeholder="Keywords..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-transparent border-b border-[#D4B982]/20 py-3 pl-6 text-[#121212] focus:border-[#D4B982] outline-none transition-all duration-500 font-mono text-[11px] tracking-[0.2em] placeholder:text-[#121212]/20"
+                  />
+                </div>
+                <div className="flex justify-between items-center opacity-40">
+                  <span className="text-[8px] font-mono uppercase tracking-widest">{filteredItems.length} Records found</span>
+                  <div className="flex gap-1">
+                    <div className="w-1 h-1 rounded-full bg-[#D4B982]" />
+                    <div className="w-1 h-1 rounded-full bg-[#D4B982]/40" />
+                    <div className="w-1 h-1 rounded-full bg-[#D4B982]/10" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          {/* Portfolio Grid Side */}
+          <div className="flex-1 min-w-0">
+            {filteredItems.length > 0 ? (
+              <Portfolio items={filteredItems} className="gap-6 md:gap-8 lg:gap-10" />
+            ) : (
+              <div className="flex flex-col items-center justify-center py-32 text-center space-y-8 bg-[#D4B982]/5 rounded-sm border border-dashed border-[#D4B982]/20">
+                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-sm">
+                  <Search size={24} className="text-[#D4B982]" />
+                </div>
+                <div className="space-y-2">
+                  <p className="text-2xl font-serif text-[#121212] italic">The archive is silent.</p>
+                  <p className="text-sm text-[#121212]/40 tracking-widest uppercase">Try adjusting your filter or search terms</p>
+                </div>
+                <button 
+                  onClick={() => {setSearchQuery(''); setActiveCategory('All');}} 
+                  className="btn-gold px-10 py-4 text-[10px]"
+                >
+                  RESET EXPLORER
+                </button>
+              </div>
+            )}
           </div>
         </div>
-      </section>
-
-      {/* 3. Portfolio Grid - Compacted */}
-      <section id="grid" className="container min-h-[60vh] py-12 md:py-16">
-        {filteredItems.length > 0 ? (
-          <Portfolio items={filteredItems} className="gap-4 md:gap-6" />
-        ) : (
-          <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
-            <p className="text-2xl font-serif text-[#D4B982] italic">No records found.</p>
-            <button onClick={() => {setSearchQuery(''); setActiveCategory('All');}} className="text-[10px] uppercase tracking-[0.5em] font-bold text-[#121212]/40 border-b border-linen/50 pb-1 hover:text-[#D4B982] transition-all duration-500">RESET SEARCH</button>
-          </div>
-        )}
       </section>
 
       {/* 4. Final CTA - Atmospheric Transition */}
