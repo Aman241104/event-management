@@ -41,9 +41,9 @@ export function SectionNavigator() {
           { id: 'faq', label: 'FAQ' },
           { id: 'cta', label: 'Inquire' },
         ];
-      case '/gallery':
+      case '/portfolio':
         return [
-          { id: 'header', label: 'Gallery' },
+          { id: 'header', label: 'Portfolio' },
           { id: 'highlights', label: 'Featured' },
           { id: 'filter', label: 'Collections' },
           { id: 'grid', label: 'Archives' },

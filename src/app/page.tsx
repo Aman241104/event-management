@@ -40,6 +40,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 import { WhatsAppLogo } from '@/components/atoms/WhatsAppLogo';
+import { HowWeWork } from '@/components/organisms/HowWeWork';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -51,7 +52,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+        <div className="relative w-28 h-16 opacity-70 group-hover:opacity-100 transition-all duration-700">
           <Image 
             src="/assets/logos/reliance.png" 
             alt="Reliance Insurance" 
@@ -67,7 +68,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+        <div className="relative w-28 h-16 opacity-70 group-hover:opacity-100 transition-all duration-700">
           <Image 
             src="/assets/logos/itc_fmcg.png" 
             alt="ITC FMCG" 
@@ -83,7 +84,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+        <div className="relative w-28 h-16 opacity-70 group-hover:opacity-100 transition-all duration-700">
           <Image 
             src="/assets/logos/haas.png" 
             alt="Haas Automation" 
@@ -99,7 +100,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+        <div className="relative w-28 h-16 opacity-70 group-hover:opacity-100 transition-all duration-700">
           <Image 
             src="/assets/logos/adhaan.png" 
             alt="Adhaan Solution" 
@@ -115,7 +116,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-40 group-hover:opacity-100 transition-all duration-700 brightness-0 invert group-hover:brightness-100 group-hover:invert-0">
+        <div className="relative w-28 h-16 opacity-70 group-hover:opacity-100 transition-all duration-700">
           <Image 
             src="/assets/logos/zeetv.png" 
             alt="Zee TV" 
@@ -270,7 +271,7 @@ export default function Home() {
     <main ref={containerRef} className="bg-canvas overflow-x-hidden">
       
       {/* 1. Hero Section */}
-      <section className="relative h-[75vh] min-h-[800px] flex items-center justify-start overflow-hidden bg-heritage">
+      <section className="relative h-[85vh] min-h-[850px] flex items-start justify-start overflow-hidden bg-heritage pt-28 md:pt-44">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/assets/wedding/wedding-7.jpg" 
@@ -285,7 +286,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,_rgba(212,185,130,0.05)_0%,_transparent_60%)]" />
         </div>
         
-        <div className="container relative z-10 pt-24 md:pt-32">
+        <div className="container relative z-10">
           <div className="max-w-6xl">
             <div className="space-y-10">
               <h1 className="hero-title text-5xl md:text-8xl lg:text-[8.8rem] font-serif text-white leading-[0.85] tracking-tight">
@@ -307,7 +308,7 @@ export default function Home() {
                 </Link>
               </Magnetic>
               <Magnetic strength={0.1} className="w-full sm:w-auto">
-                <Link href="/gallery" className="block w-full sm:w-auto">
+                <Link href="/portfolio" className="block w-full sm:w-auto">
                   <Button variant="outline" className="w-full h-14 md:h-15 px-8 md:px-14 border-[#D4B982]/50 !text-[#D4B982] hover:bg-[#D4B982] hover:!text-white rounded-none tracking-[0.35em] font-bold text-[12px] uppercase bg-transparent transition-all duration-700">
                     VIEW OUR WORK
                   </Button>
@@ -323,14 +324,6 @@ export default function Home() {
           <div className="flex flex-col items-center gap-2 text-white/40 group cursor-pointer transition-colors hover:text-[#D4B982]">
             <ArrowDown size={16} className="animate-bounce" />
             <span className="text-[8px] font-sans font-bold uppercase tracking-[0.6em] opacity-80 group-hover:opacity-100 transition-opacity whitespace-nowrap">SCROLL TO EXPLORE</span>
-          </div>
-
-          {/* Play Showreel - Enhanced Visibility */}
-          <div className="hidden lg:flex items-center gap-4 text-white/50 group cursor-pointer hover:text-white transition-all">
-             <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center group-hover:scale-110 group-hover:border-[#D4B982] group-hover:bg-[#D4B982]/10 backdrop-blur-md transition-all duration-700">
-               <Play size={16} fill="currentColor" className="ml-1" />
-             </div>
-             <span className="text-[9px] font-bold uppercase tracking-[0.5em] opacity-80 group-hover:opacity-100 whitespace-nowrap">PLAY SHOWREEL</span>
           </div>
         </div>
       </section>
@@ -445,12 +438,12 @@ export default function Home() {
                 <Image src="/assets/wedding/wedding-5.jpg" alt="Event setup" fill className="object-cover" />
                 <div className="absolute inset-0 bg-heritage/10 mix-blend-multiply" />
               </div>
-              <div className="absolute -bottom-12 -right-12 w-[75%] aspect-[4/3] rounded-none overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.25)] z-20 border-[15px] border-white hidden md:block group cursor-pointer">
-                <Image src="/assets/production/production-1.jpg" alt="Detail" fill className="object-cover" />
-                <div className="absolute inset-x-0 bottom-0 bg-heritage/90 py-4 px-6 flex items-center justify-center translate-y-0 transition-transform duration-500">
+              <Link href="/portfolio" className="absolute -bottom-12 -right-12 w-[75%] aspect-[4/3] rounded-none overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.25)] z-20 border-[15px] border-white hidden md:block group cursor-pointer">
+                <Image src="/assets/production/production-1.jpg" alt="Detail" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-x-0 bottom-0 bg-heritage/90 py-4 px-6 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo">
                    <span className="text-[10px] text-white uppercase tracking-[0.5em] font-bold">VIEW WORK</span>
                 </div>
-              </div>
+              </Link>
               
               {/* Subtle accent line */}
               <div className="absolute -top-10 -left-10 w-32 h-32 border-t border-l border-[#D4B982]/20 z-0" />
@@ -479,19 +472,20 @@ export default function Home() {
               </div>
 
               <div className="pt-0 flex flex-wrap items-center gap-4">
-                <Link href="/contact">
-                  <Button 
-                    className="h-14 px-10 bg-[#D4B982] text-[#0a1f13] hover:bg-[#B38B4D] rounded-full tracking-[0.2em] font-bold text-[11px] uppercase border-0 shadow-[0_20px_40px_rgba(212,185,130,0.2)] transition-all duration-700"
-                    rightIcon={<Star size={16} fill="currentColor" />}
-                  >
-                    BOOK CONSULTATION
-                  </Button>
-                </Link>
-                <Link href="/about">
-                  <Button className="h-14 px-10 bg-[#0a1f13] text-white hover:bg-black rounded-none tracking-[0.4em] font-bold text-[11px] uppercase border-0 transition-all duration-700">
-                    STORY
-                  </Button>
-                </Link>
+                <Magnetic strength={0.1}>
+                  <Link href="/contact">
+                    <Button className="btn-gold h-14 md:h-15 px-10">
+                      BOOK CONSULTATION
+                    </Button>
+                  </Link>
+                </Magnetic>
+                <Magnetic strength={0.1}>
+                  <Link href="/about">
+                    <Button variant="outline" className="h-14 md:h-15 px-10 border-[#D4B982]/50 !text-[#D4B982] hover:bg-[#D4B982] hover:!text-white rounded-none tracking-[0.4em] font-bold text-[11px] uppercase bg-transparent transition-all duration-700">
+                      STORY
+                    </Button>
+                  </Link>
+                </Magnetic>
               </div>
             </div>
           </div>
@@ -503,7 +497,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Experience Categories & Why Choose Us - Combined Flow */}
+      {/* 5. How We Work Section */}
+      <HowWeWork />
+
+      {/* 6. Experience Categories & Why Choose Us - Combined Flow */}
       <section className="bg-[#0a1f13] relative overflow-hidden">
         {/* Ambient Depth Glow - Refined */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.04)_0%,_transparent_70%)] pointer-events-none" />
@@ -550,7 +547,7 @@ export default function Home() {
             </div>
 
             <div className="flex justify-center mt-8 fade-up">
-              <Link href="/gallery">
+              <Link href="/portfolio">
                 <Button variant="outline" className="h-10 px-8 border-white/15 !text-white hover:bg-[#D4B982] hover:!text-white hover:border-[#D4B982] rounded-none tracking-[0.4em] font-bold text-[9px] uppercase backdrop-blur-sm transition-all duration-700">
                   VIEW ALL EVENTS
                 </Button>
@@ -702,16 +699,11 @@ export default function Home() {
               </Link>
             </Magnetic>
             <Magnetic strength={0.1}>
-              <a href={getGenericWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="h-16 px-10 border-white/20 text-white/90 hover:text-white rounded-none tracking-[0.3em] font-bold text-[11px] uppercase hover:bg-white/5 transition-all duration-700 backdrop-blur-sm group">
-                   <div className="flex items-center gap-4">
-                     <div className="w-8 h-8 rounded-full bg-[#25D366]/10 flex items-center justify-center border border-[#25D366]/20 group-hover:bg-[#25D366]/20 transition-colors">
-                       <MessageCircle size={16} fill="#25D366" className="text-[#25D366]" />
-                     </div>
-                     <span className="text-white">CHAT ON WHATSAPP</span>
-                   </div>
+              <Link href="/portfolio">
+                <Button variant="outline" className="h-16 px-14 border-[#D4B982]/50 !text-[#D4B982] hover:bg-[#D4B982] hover:!text-white rounded-none tracking-[0.3em] font-bold text-[11px] uppercase transition-all duration-700 backdrop-blur-md group">
+                   VIEW PORTFOLIO
                 </Button>
-              </a>
+              </Link>
             </Magnetic>
           </div>
         </div>

@@ -14,7 +14,7 @@ const quickLinks = [
   { label: 'Royal Palace Wedding', href: '/events/1' },
   { label: 'Corporate Gala Summit', href: '/events/2' },
   { label: 'Private Villa Party', href: '/events/3' },
-  { label: 'Gallery Archive', href: '/gallery' },
+  { label: 'Portfolio Archive', href: '/portfolio' },
 ];
 
 export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
@@ -100,7 +100,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                 {['Weddings', 'Corporate', 'Birthdays', 'Private', 'Festivals'].map((cat) => (
                   <Link
                     key={cat}
-                    href={`/gallery?category=${cat}`}
+                    href={`/portfolio?category=${cat}`}
                     onClick={onClose}
                     className="px-6 md:px-8 py-3 md:py-4 border border-linen text-[10px] md:text-[11px] uppercase tracking-widest font-bold text-text-secondary hover:border-heritage hover:text-heritage hover:bg-surface transition-all duration-500"
                   >

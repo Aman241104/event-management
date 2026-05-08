@@ -343,60 +343,118 @@ export default function AboutPage() {
           />
         </section>
 
-        {/* 4. Our Process Section - Recreated from Reference */}
+        {/* 4. Our Process Section - Museumcore Overhaul */}
         <section id="process" className="py-32 md:py-48 bg-[#FDFCFB] relative overflow-hidden">
-          <div className="container text-center">
-            <div className="space-y-6 mb-24 fade-up">
-              <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">OUR PROCESS</span>
-              <h2 className="text-4xl md:text-7xl font-serif text-[#121212] leading-tight tracking-tight">How We Create Magic</h2>
-              <div className="w-16 h-px bg-[#D4B982]/30 mx-auto mt-8" />
+          {/* Subtle Background Textures & Paper Grain */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')]" />
+          <div className="absolute inset-0 dot-pattern opacity-[0.02] pointer-events-none" />
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#D4B982]/20 to-transparent" />
+          
+          {/* Ghost Background Typography */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full select-none pointer-events-none overflow-hidden whitespace-nowrap opacity-[0.02]">
+            <span className="text-[20vw] font-serif italic text-[#121212] leading-none">The Craftsmanship</span>
+          </div>
+
+          <div className="container text-center relative z-10">
+            <div className="space-y-6 mb-32 fade-up">
+              <span className="text-[11px] text-[#D4B982] uppercase tracking-[1em] font-bold">THE METHODOLOGY</span>
+              <h2 className="text-4xl md:text-7xl lg:text-9xl font-serif text-[#121212] leading-tight tracking-tight">
+                The Anatomy of <br />
+                <span className="italic font-script text-[#D4B982] lowercase lg:text-[10rem] block -mt-4 drop-shadow-sm">Elegance</span>
+              </h2>
+              <div className="flex items-center justify-center gap-6 mt-12">
+                <div className="w-16 h-px bg-[#D4B982]/20" />
+                <Star size={12} className="text-[#D4B982]/40" />
+                <div className="w-16 h-px bg-[#D4B982]/20" />
+              </div>
             </div>
 
             <div className="relative max-w-7xl mx-auto px-4">
-              {/* Connecting Line - Precise Alignment */}
-              <div className="absolute top-12 left-0 w-full h-px border-t border-dashed border-[#D4B982]/20 hidden lg:block z-0" />
+              {/* Connecting Line - Refined with Gradient */}
+              <div className="absolute top-14 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#D4B982]/30 to-transparent hidden lg:block z-0" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-16 lg:gap-8">
                 {[
                   { 
                     id: '01', 
-                    title: 'Discovery', 
-                    desc: 'Understanding your vision and requirements.',
-                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+                    title: 'The Prelude', 
+                    subtitle: 'Discovery',
+                    desc: 'A deep dive into your aspirations, defining the soul of your event.',
+                    icon: (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                      </svg>
+                    )
                   },
                   { 
                     id: '02', 
-                    title: 'Concept & Design', 
-                    desc: 'Crafting a creative concept that reflects your style.',
-                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="m12 19 7-7 3 3-7 7-3-3z" /><path d="m18 13-1.5-7.5L2 2l7.5 14.5L13 18l5-5z" /></svg>
+                    title: 'The Composition', 
+                    subtitle: 'Concept & Design',
+                    desc: 'Translating dreams into a visual symphony of colors and textures.',
+                    icon: (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                        <path d="m12 19 7-7 3 3-7 7-3-3z" />
+                        <path d="m18 13-1.5-7.5L2 2l7.5 14.5L13 18l5-5z" />
+                      </svg>
+                    )
                   },
                   { 
                     id: '03', 
-                    title: 'Planning & Coordination', 
-                    desc: 'Managing every detail with precision and perfection.',
-                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" /></svg>
+                    title: 'The Orchestration', 
+                    subtitle: 'Strategic Planning',
+                    desc: 'Orchestrating every logistical detail with clockwork precision.',
+                    icon: (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                        <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+                      </svg>
+                    )
                   },
                   { 
                     id: '04', 
-                    title: 'Execution', 
-                    desc: 'Bringing everything to life seamlessly on the big day.',
-                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+                    title: 'The Manifestation', 
+                    subtitle: 'Impeccable Execution',
+                    desc: 'Bringing the blueprint to life with flair and flawless grace.',
+                    icon: (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </svg>
+                    )
                   },
                   { 
                     id: '05', 
-                    title: 'The Experience', 
-                    desc: 'Creating memories that last a lifetime.',
-                    icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z" /></svg>
+                    title: 'The Afterglow', 
+                    subtitle: 'The Experience',
+                    desc: 'The moment where time stands still and memories take flight.',
+                    icon: (
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
+                        <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z" />
+                      </svg>
+                    )
                   },
                 ].map((item, i) => (
-                  <div key={i} className="relative z-10 space-y-10 fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
-                    <div className="w-24 h-24 mx-auto rounded-full bg-white shadow-2xl border border-linen/20 flex items-center justify-center transform transition-transform duration-700 hover:scale-110">
-                      {item.icon}
+                  <div key={i} className="relative z-10 space-y-12 group fade-up" style={{ transitionDelay: `${i * 150}ms` }}>
+                    <div className="relative">
+                      <div className="w-28 h-28 mx-auto rounded-full bg-white/40 backdrop-blur-xl shadow-[0_20px_50px_rgba(212,185,130,0.1)] border border-white/80 flex items-center justify-center transform transition-all duration-1000 group-hover:scale-110 group-hover:border-[#D4B982]/30 group-hover:shadow-[0_30px_60px_rgba(212,185,130,0.2)]">
+                        {item.icon}
+                        
+                        {/* Orbiting Ring on Hover */}
+                        <div className="absolute inset-[-4px] rounded-full border border-dashed border-[#D4B982]/20 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-1000 group-hover:rotate-90" />
+                      </div>
+                      
+                      {/* Floating ID Tag */}
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#121212] rounded-none border-l-2 border-[#D4B982] shadow-lg transform transition-transform duration-700 group-hover:-translate-y-2">
+                         <span className="text-[9px] font-mono text-white font-bold tracking-[0.4em] uppercase">{item.id}</span>
+                      </div>
                     </div>
-                    <div className="space-y-4 px-2">
-                      <span className="text-[10px] font-mono text-[#D4B982] font-bold tracking-widest">{item.id}</span>
-                      <h4 className="text-[15px] tracking-wide text-[#121212] font-bold font-serif">{item.title}</h4>
-                      <p className="text-[#525252] text-[13px] leading-relaxed font-light">{item.desc}</p>
+
+                    <div className="space-y-4 px-4">
+                      <div className="space-y-1">
+                        <span className="text-[10px] text-[#D4B982] font-mono tracking-[0.3em] uppercase opacity-60">{item.subtitle}</span>
+                        <h4 className="text-xl md:text-2xl tracking-wide text-[#121212] font-serif font-bold group-hover:text-[#D4B982] transition-colors duration-500">{item.title}</h4>
+                      </div>
+                      <p className="text-[#525252]/80 text-[14px] leading-relaxed font-light font-sans max-w-[220px] mx-auto italic">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -436,9 +494,9 @@ export default function AboutPage() {
             
             <div className="mt-20 fade-up">
               <Magnetic strength={0.05}>
-                <Link href="/gallery" className="inline-block">
+                <Link href="/portfolio" className="inline-block">
                   <Button variant="outline" className="border-[#D4B982]/40 !text-white hover:bg-[#D4B982] hover:!text-heritage px-12 py-5 text-[10px] bg-white/5 backdrop-blur-sm transition-all duration-700">
-                    VIEW FULL GALLERY
+                    VIEW FULL PORTFOLIO
                   </Button>
                 </Link>
               </Magnetic>

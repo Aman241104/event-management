@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { Gallery } from '@/components/molecules/Gallery';
+import { Portfolio } from '@/components/molecules/Portfolio';
 import { TextReveal } from '@/components/atoms/TextReveal';
 import { Button } from '@/components/atoms/Button';
 import { BackgroundFlourish } from '@/components/atoms/BackgroundFlourish';
@@ -39,7 +39,7 @@ const SectionDivider = ({ className }: { className?: string }) => (
   </div>
 );
 
-const galleryItems = [
+const portfolioItems = [
   { id: 1, title: 'Royal Palace Wedding', category: 'Weddings', image: '/assets/wedding/wedding-7.jpg', size: 'large' as const },
   { id: 2, title: 'Corporate Tech Summit', category: 'Corporate', image: '/assets/corporate/corporate-1.jpg', size: 'medium' as const },
   { id: 3, title: 'Traditional Ceremonies', category: 'Weddings', image: '/assets/wedding/wedding-3.jpg', size: 'small' as const },
@@ -56,7 +56,7 @@ const galleryItems = [
 
 const categories = ['All', 'Weddings', 'Birthdays', 'Corporate', 'Festivals', 'Private'];
 
-function GalleryContent() {
+function PortfolioContent() {
   const containerRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const [activeCategory, setActiveCategory] = useState('All');
@@ -70,7 +70,7 @@ function GalleryContent() {
     }
   }, [searchParams, activeCategory]);
 
-  const filteredItems = galleryItems.filter(item => {
+  const filteredItems = portfolioItems.filter(item => {
     const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
     const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           item.category.toLowerCase().includes(searchQuery.toLowerCase());
@@ -100,7 +100,7 @@ function GalleryContent() {
                 <span className="header-fade block">Our Curated</span>
               </span>
               <span className="block overflow-hidden">
-                <span className="header-fade block italic font-script text-[#D4B982] mt-2 lowercase lg:text-[9rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.3)]">Portfolio</span>
+                <span className="header-fade block italic font-script text-[#D4B982] mt-4 lg:text-[10rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.15)]">Portfolio</span>
               </span>
             </h1>
 
@@ -142,10 +142,10 @@ function GalleryContent() {
         </div>
       </section>
 
-      {/* 3. Gallery Grid - Compacted */}
+      {/* 3. Portfolio Grid - Compacted */}
       <section id="grid" className="container min-h-[60vh] py-12 md:py-16">
         {filteredItems.length > 0 ? (
-          <Gallery items={filteredItems} className="gap-4 md:gap-6" />
+          <Portfolio items={filteredItems} className="gap-4 md:gap-6" />
         ) : (
           <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
             <p className="text-2xl font-serif text-[#D4B982] italic">No records found.</p>
@@ -212,12 +212,12 @@ function GalleryContent() {
   );
 }
 
-export default function GalleryPage() {
+export default function PortfolioPage() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-canvas pt-32 flex flex-col items-center justify-center">
       <div className="w-16 h-16 border-2 border-heritage/10 border-t-heritage rounded-full animate-spin" />
     </div>}>
-      <GalleryContent />
+      <PortfolioContent />
     </Suspense>
   );
 }

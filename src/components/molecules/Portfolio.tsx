@@ -7,7 +7,7 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-interface GalleryItem {
+interface PortfolioItem {
   id: number;
   image: string;
   title: string;
@@ -16,14 +16,14 @@ interface GalleryItem {
   size?: 'small' | 'medium' | 'large' | 'tall';
 }
 
-interface GalleryProps {
-  items: GalleryItem[];
+interface PortfolioProps {
+  items: PortfolioItem[];
   className?: string;
   hasCursorLabel?: boolean;
   aspectRatio?: string;
 }
 
-export function Gallery({ items, className, hasCursorLabel = true, aspectRatio = "aspect-[4/5]" }: GalleryProps) {
+export function Portfolio({ items, className, hasCursorLabel = true, aspectRatio = "aspect-[4/5]" }: PortfolioProps) {
   const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 

@@ -16,7 +16,7 @@ import {
 import Link from 'next/link';
 import { Button } from '@/components/atoms/Button';
 import { Badge } from '@/components/atoms/Badge';
-import { Gallery } from '@/components/molecules/Gallery';
+import { Portfolio } from '@/components/molecules/Portfolio';
 import { TextReveal } from '@/components/atoms/TextReveal';
 import { Magnetic } from '@/components/atoms/Magnetic';
 import { ParallaxImage } from '@/components/atoms/ParallaxImage';
@@ -106,9 +106,9 @@ export default function EventDetailPage() {
       {/* Editorial Header */}
       <section id="header" className="container mb-16">
         <div className="flex flex-col space-y-10">
-          <Link href="/gallery" className="header-fade text-[10px] uppercase tracking-[0.5em] text-heritage hover:text-text-primary transition-colors group inline-flex items-center gap-3">
+          <Link href="/portfolio" className="header-fade text-[10px] uppercase tracking-[0.5em] text-heritage hover:text-text-primary transition-colors group inline-flex items-center gap-3">
             <ArrowLeft size={12} className="group-hover:-translate-x-1.5 transition-transform" />
-            Return to Archive
+            Return to Portfolio
           </Link>
           
           <div className="space-y-4">
@@ -213,7 +213,7 @@ export default function EventDetailPage() {
                 <span className="text-[10px] uppercase tracking-[0.5em] text-heritage">Visual Record</span>
                 <h3 className="text-2xl font-serif font-bold text-text-primary tracking-tight italic">Captured <span className="text-heritage italic font-light">Moments</span></h3>
               </div>
-              <Gallery items={event.gallery} />
+              <Portfolio items={event.gallery} />
             </div>
           </div>
 
@@ -302,8 +302,8 @@ function NextProjectLink() {
           </h2>
         </Link>
         <div className="pt-8">
-           <Link href="/gallery">
-             <Button variant="outline" className="btn-outline-prestige px-12 h-14 text-[10px]">Return to Archive</Button>
+           <Link href="/portfolio">
+             <Button variant="outline" className="btn-outline-prestige px-12 h-14 text-[10px]">Return to Portfolio</Button>
            </Link>
         </div>
       </div>
