@@ -476,18 +476,18 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="pt-0 flex flex-wrap items-center gap-4">
-                <Magnetic strength={0.1}>
-                  <Link href="/contact">
-                    <Button className="btn-gold h-14 md:h-15 px-10">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <Magnetic strength={0.1} className="w-full sm:w-auto">
+                  <Link href="/contact" className="block w-full sm:w-auto">
+                    <Button className="btn-gold w-full h-14 md:h-15 px-10">
                       BOOK CONSULTATION
                     </Button>
                   </Link>
                 </Magnetic>
-                <Magnetic strength={0.1}>
-                  <Link href="/about">
-                    <Button variant="outline" className="h-14 md:h-15 px-10 border-[#D4B982]/50 !text-[#D4B982] hover:bg-[#D4B982] hover:!text-white rounded-none tracking-[0.4em] font-bold text-[11px] uppercase bg-transparent transition-all duration-700">
-                      STORY
+                <Magnetic strength={0.1} className="w-full sm:w-auto">
+                  <Link href="/about" className="block w-full sm:w-auto">
+                    <Button className="w-full h-14 md:h-15 px-10 bg-heritage text-white border border-[#D4B982]/20 hover:bg-black hover:border-[#D4B982]/50 rounded-none tracking-[0.4em] font-bold text-[11px] uppercase transition-all duration-700 shadow-lg">
+                      OUR STORY
                     </Button>
                   </Link>
                 </Magnetic>
