@@ -33,7 +33,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Zing Bliss | Fine Art Event Architecture",
-  description: "A bespoke event design and production agency orchestrating understated luxury and profound elegance for life's most defining moments.",
+  description: "Fine art event architecture. We craft bespoke, high-end celebrations with understated luxury and flawless precision.",
   manifest: "/manifest.json",
   icons: {
     icon: [
