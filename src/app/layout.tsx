@@ -32,17 +32,61 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zing Bliss | Fine Art Event Architecture",
-  description: "Fine art event architecture. We craft bespoke, high-end celebrations with understated luxury and flawless precision.",
+  metadataBase: new URL("https://zingblissevents.com"),
+  title: {
+    default: "Zing Bliss Events | Best Wedding Planner & Event Management in Ahmedabad",
+    template: "%s | Zing Bliss Events"
+  },
+  description: "Zing Bliss Events is the premier luxury event management and wedding planning agency in Ahmedabad, Gujarat. We specialize in high-end weddings, corporate galas, and bespoke celebrations with absolute precision.",
+  keywords: [
+    "Zing Bliss Events", 
+    "Wedding Planner in Ahmedabad", 
+    "Best Event Management Company Ahmedabad", 
+    "Luxury Wedding Decorators Ahmedabad", 
+    "Corporate Event Planner Gujarat", 
+    "Bespoke Celebrations Ahmedabad",
+    "Destination Wedding Planner Ahmedabad",
+    "Event Production Ahmedabad"
+  ],
+  authors: [{ name: "Zing Bliss Events" }],
+  creator: "Zing Bliss Events",
+  publisher: "Zing Bliss Events",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: "Zing Bliss Events | Best Wedding Planner in Ahmedabad",
+    description: "The premier luxury event management agency in Ahmedabad. We craft bespoke, high-end celebrations with understated luxury and flawless precision.",
+    url: "https://zingblissevents.com",
+    siteName: "Zing Bliss Events",
+    images: [
+      {
+        url: "/hero-5.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Zing Bliss Events - Luxury Event Production Ahmedabad",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zing Bliss Events | Premier Event Planner in Ahmedabad",
+    description: "Bespoke luxury event management in Ahmedabad, Gujarat. Engineering elite celebrations with logistical mastery.",
+    images: ["/hero-5.jpg"],
+  },
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
-      { url: "/icon-96.png", sizes: "96x96", type: "image/png" },
-      { url: "/icon-144.png", sizes: "144x144", type: "image/png" },
+      { url: "/logo.png" },
+      { url: "/logo.png", sizes: "48x48", type: "image/png" },
+      { url: "/logo.png", sizes: "96x96", type: "image/png" },
+      { url: "/logo.png", sizes: "144x144", type: "image/png" },
     ],
-    apple: "/apple-icon.png",
+    apple: "/logo.png",
   },
 };
 
@@ -74,6 +118,37 @@ export default function RootLayout({
         </div>
 
         <SmoothScroll>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Zing Bliss Events",
+                "url": "https://zingblissevents.com",
+                "logo": "https://zingblissevents.com/logo.png",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Sindhu Bhavan Road",
+                  "addressLocality": "Ahmedabad",
+                  "addressRegion": "Gujarat",
+                  "postalCode": "380054",
+                  "addressCountry": "IN"
+                },
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "+91-98765-43210",
+                  "contactType": "customer service",
+                  "areaServed": "IN",
+                  "availableLanguage": "en"
+                },
+                "sameAs": [
+                  "https://www.instagram.com/zingblissevents/",
+                  "https://www.facebook.com/zingblissevents/"
+                ]
+              })
+            }}
+          />
           <div className="noise-overlay" />
           <div className="ink-bleed" />
           <BackToTop />

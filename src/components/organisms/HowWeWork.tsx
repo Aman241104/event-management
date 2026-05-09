@@ -176,7 +176,7 @@ export const HowWeWork = () => {
 
       {/* Desktop Layout */}
       <div className="hidden lg:block h-screen w-full relative">
-        <div className="container h-full flex items-center relative z-10">
+        <div className="container h-full flex items-center pt-32 lg:pt-40 relative z-10">
           
           {/* 3. The Connecting Spine - Refined */}
           <div className="absolute left-10 md:left-16 xl:left-24 top-[25%] bottom-[25%] w-px bg-white/5 rounded-full">

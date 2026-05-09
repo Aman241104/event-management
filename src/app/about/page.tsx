@@ -142,7 +142,7 @@ export default function AboutPage() {
                   <span className="block overflow-hidden">
                     <span className="text-line block">Mastering the Art of</span>
                   </span>
-                  <span className="block overflow-hidden">
+                  <span className="block overflow-hidden pb-4">
                     <span className="text-line block italic font-script text-[#D4B982] mt-4 lg:text-[10.5rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Event Management</span>
                   </span>
                 </h1>
@@ -387,7 +387,7 @@ export default function AboutPage() {
         subtitle: 'Discovery',
                     desc: 'A deep dive into your aspirations, defining the soul of your event.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
                         <circle cx="11" cy="11" r="8" />
                         <path d="m21 21-4.3-4.3" />
                       </svg>
@@ -399,7 +399,7 @@ export default function AboutPage() {
                     subtitle: 'Concept & Design',
                     desc: 'Translating dreams into a visual symphony of colors and textures.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
                         <path d="m12 19 7-7 3 3-7 7-3-3z" />
                         <path d="m18 13-1.5-7.5L2 2l7.5 14.5L13 18l5-5z" />
                       </svg>
@@ -411,7 +411,7 @@ export default function AboutPage() {
                     subtitle: 'Strategic Planning',
                     desc: 'Orchestrating every logistical detail with clockwork precision.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
                         <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
                       </svg>
                     )
@@ -422,7 +422,7 @@ export default function AboutPage() {
                     subtitle: 'Impeccable Execution',
                     desc: 'Bringing the blueprint to life with flair and flawless grace.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                         <polyline points="22 4 12 14.01 9 11.01" />
                       </svg>
@@ -434,7 +434,7 @@ export default function AboutPage() {
                     subtitle: 'The Experience',
                     desc: 'The moment where time stands still and memories take flight.',
                     icon: (
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#25D366]">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round" className="text-[#D4B982]">
                         <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z" />
                       </svg>
                     )
@@ -442,23 +442,23 @@ export default function AboutPage() {
                 ].map((item, i) => (
                   <div key={i} className="flex-shrink-0 w-72 lg:w-full relative z-10 space-y-12 group fade-up" style={{ transitionDelay: `${i * 150}ms` }}>
                     <div className="relative">
-                      <div className="w-28 h-28 mx-auto rounded-full bg-white/40 backdrop-blur-xl shadow-[0_20px_50px_rgba(212,185,130,0.1)] border border-white/80 flex items-center justify-center transform transition-all duration-1000 group-hover:scale-110 group-hover:border-[#25D366]/30 group-hover:shadow-[0_30px_60px_rgba(37,211,102,0.2)]">
+                      <div className="w-28 h-28 mx-auto rounded-full bg-white/40 backdrop-blur-xl shadow-[0_20px_50px_rgba(212,185,130,0.15)] border border-white/80 flex items-center justify-center transform transition-all duration-1000 group-hover:scale-110 group-hover:border-[#D4B982]/40 group-hover:shadow-[0_40px_80px_rgba(212,185,130,0.35)]">
                         {item.icon}
                         
                         {/* Orbiting Ring on Hover */}
-                        <div className="absolute inset-[-4px] rounded-full border border-dashed border-[#25D366]/20 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-1000 group-hover:rotate-90" />
+                        <div className="absolute inset-[-4px] rounded-full border border-dashed border-[#D4B982]/30 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-1000 group-hover:rotate-90" />
                       </div>
                       
                       {/* Floating ID Tag */}
-                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#121212] rounded-none border-l-2 border-[#25D366] shadow-lg transform transition-transform duration-700 group-hover:-translate-y-2">
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#121212] rounded-none border-l-2 border-[#D4B982] shadow-lg transform transition-transform duration-700 group-hover:-translate-y-2">
                          <span className="text-[9px] font-mono text-white font-bold tracking-[0.4em] uppercase">{item.id}</span>
                       </div>
                     </div>
 
                     <div className="space-y-4 px-4">
                       <div className="space-y-1">
-                        <span className="text-[10px] text-[#25D366] font-mono tracking-[0.3em] uppercase opacity-80 whitespace-nowrap block">{item.subtitle}</span>
-                        <h4 className="text-xl md:text-2xl tracking-wide text-[#121212] font-serif font-bold group-hover:text-[#25D366] transition-colors duration-500">{item.title}</h4>
+                        <span className="text-[10px] text-[#D4B982] font-mono tracking-[0.3em] uppercase opacity-80 whitespace-nowrap block">{item.subtitle}</span>
+                        <h4 className="text-xl md:text-2xl tracking-wide text-[#121212] font-serif font-bold group-hover:text-[#D4B982] transition-colors duration-500">{item.title}</h4>
                       </div>
                       <p className="text-[#525252]/80 text-[14px] leading-relaxed font-light font-sans max-w-[220px] mx-auto italic">{item.desc}</p>
                     </div>

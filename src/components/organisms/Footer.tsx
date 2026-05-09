@@ -124,7 +124,7 @@ export function Footer() {
                 <div className="space-y-4">
                   <p className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/30">Location</p>
                   <p className="text-sm text-white/60 leading-relaxed font-serif italic">
-                    Bandra West, Mumbai, MH <br/> India — 400050
+                    Sindhu Bhavan Road, Ahmedabad <br/> Gujarat, India — 380054
                   </p>
                 </div>
                 <div className="space-y-4">

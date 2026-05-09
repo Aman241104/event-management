@@ -13,8 +13,8 @@ export async function generateMetadata(
   const title = id === "1" ? "The Future Tech Summit" : "Exclusive Event Archive";
 
   return {
-    title: `${title} | Prestige Event Management`,
-    description: `Detailed visual legacy and narrative for ${title}.`,
+    title: `${title}`,
+    description: `Detailed visual legacy and narrative for ${title} by Zing Bliss Events.`,
   }
 }
 
