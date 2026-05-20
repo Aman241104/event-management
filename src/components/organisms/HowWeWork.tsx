@@ -77,6 +77,9 @@ export const HowWeWork = () => {
       // Progress bar and playhead move throughout the entire timeline
       tl.to(progressRef.current, { height: "100%", ease: "none", duration: totalSteps }, 0);
       tl.to(playheadRef.current, { top: "100%", ease: "none", duration: totalSteps }, 0);
+      
+      // Parallax for ghost text
+      tl.to(".ghost-process-text", { xPercent: -20, ease: "none", duration: totalSteps }, 0);
 
       steps.forEach((_, index) => {
         const stepContent = `.step-content-${index}`;
@@ -88,19 +91,19 @@ export const HowWeWork = () => {
         // Reveal the step (except the first one which is already visible)
         if (index > 0) {
           tl.fromTo(stepContent, 
-            { autoAlpha: 0, y: 80 },
-            { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" },
-            startTime
+            { autoAlpha: 0, y: 100 },
+            { autoAlpha: 1, y: 0, duration: 0.8, ease: "expo.out" },
+            startTime - 0.2 // Overlap with previous step hiding
           );
           tl.fromTo(stepLabel,
-            { autoAlpha: 0, x: -20 },
-            { autoAlpha: 1, x: 0, duration: 0.4 },
-            startTime + 0.2
+            { autoAlpha: 0, x: -30 },
+            { autoAlpha: 1, x: 0, duration: 0.5 },
+            startTime
           );
           tl.fromTo(stepImage,
-            { clipPath: 'inset(15% 15% 15% 15%)', scale: 1.2, autoAlpha: 0 },
-            { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, autoAlpha: 1, duration: 0.8, ease: "expo.out" },
-            startTime
+            { clipPath: 'inset(20% 20% 20% 20%)', scale: 1.3, autoAlpha: 0 },
+            { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, autoAlpha: 1, duration: 1, ease: "expo.out" },
+            startTime - 0.2
           );
         }
 
@@ -108,15 +111,16 @@ export const HowWeWork = () => {
         if (index < totalSteps - 1) {
           tl.to(stepContent, {
             autoAlpha: 0,
-            y: -80,
-            duration: 0.4,
-            ease: "power2.in"
-          }, startTime + 0.6);
+            y: -100,
+            duration: 0.6,
+            ease: "expo.in"
+          }, startTime + 0.6); // Slightly later hide for more overlap
           
           tl.to(stepImage, {
             autoAlpha: 0,
-            scale: 0.95,
-            duration: 0.4
+            scale: 0.9,
+            duration: 0.6,
+            ease: "expo.in"
           }, startTime + 0.6);
         }
       });
@@ -147,7 +151,7 @@ export const HowWeWork = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="relative bg-[#05100a] overflow-hidden z-20"
+      className="relative bg-[#05100a] overflow-hidden z-20 rounded-t-[3rem] md:rounded-t-[6rem] -mt-16"
       id="how-we-work"
     >
       {/* 1. Immersive Background Elements */}
@@ -156,19 +160,19 @@ export const HowWeWork = () => {
       
       {/* Ghost Background Title */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full select-none pointer-events-none overflow-hidden whitespace-nowrap opacity-[0.03] z-0">
-        <span className="text-[25vw] font-serif italic text-white leading-none tracking-tighter">The Process</span>
+        <span className="text-[25vw] font-serif italic text-white leading-none tracking-tighter block ghost-process-text">The Process</span>
       </div>
 
       {/* 2. Section Header - Editorial Style */}
-      <div className="absolute top-12 lg:top-20 left-0 w-full z-30 pointer-events-none">
+      <div className="absolute top-10 lg:top-20 left-0 w-full z-30 pointer-events-none">
         <div className="container">
-          <div className="flex flex-col items-center lg:items-start space-y-4">
+          <div className="flex flex-col items-center lg:items-start space-y-3 md:space-y-4">
              <div className="flex items-center gap-4">
                <div className="w-8 h-px bg-[#D4B982]/40" />
-               <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">THE METHODOLOGY</span>
+               <span className="text-[9px] md:text-[10px] text-[#D4B982] uppercase tracking-[0.6em] md:tracking-[0.8em] font-bold">THE METHODOLOGY</span>
              </div>
-             <h2 className="text-4xl lg:text-7xl font-serif text-white tracking-tight">
-               Path to <span className="italic font-script text-[#D4B982] lowercase lg:text-8xl">Perfection</span>
+             <h2 className="text-3xl lg:text-7xl font-serif text-white tracking-tight">
+               Path to <span className="italic font-script text-[#D4B982] lowercase text-5xl lg:text-8xl">Perfection</span>
              </h2>
           </div>
         </div>
@@ -205,7 +209,7 @@ export const HowWeWork = () => {
           <div className="grid grid-cols-12 w-full gap-12 xl:gap-20 items-center">
             {/* Text Content Area */}
             <div className="col-span-7 lg:col-span-6 pl-20 md:pl-28 xl:pl-36">
-              <div className="relative h-[400px] flex items-center">
+              <div className="relative h-[300px] flex items-center">
                 {steps.map((step, index) => (
                   <div 
                     key={step.id}
@@ -274,14 +278,14 @@ export const HowWeWork = () => {
       </div>
 
       {/* Mobile Layout - Clean Vertical List */}
-      <div className="lg:hidden pt-48 pb-24 px-6 space-y-24 relative z-10">
+      <div className="lg:hidden pt-36 pb-16 px-6 space-y-16 relative z-10">
         {steps.map((step, index) => (
           <div 
             key={step.id}
-            className="mobile-scroll-step space-y-8"
+            className="mobile-scroll-step space-y-6"
           >
             <div className="relative">
-              <div className="relative aspect-[16/10] w-full overflow-hidden border border-white/10 shadow-2xl">
+              <div className="relative aspect-[16/9] w-full overflow-hidden border border-white/10 shadow-2xl rounded-xl">
                 <Image
                   src={step.image}
                   alt={step.title}
@@ -290,19 +294,19 @@ export const HowWeWork = () => {
                 />
                 <div className="absolute inset-0 bg-black/40" />
               </div>
-              <div className="absolute -top-4 -right-2 bg-[#121212] px-4 py-1 border-l-2 border-[#D4B982] shadow-2xl">
-                <span className="text-[10px] font-mono text-white tracking-[0.4em] font-bold">
+              <div className="absolute -top-3 -right-1 bg-[#121212] px-3 py-1 border-l-2 border-[#D4B982] shadow-2xl">
+                <span className="text-[9px] font-mono text-white tracking-[0.3em] font-bold">
                   {step.id}
                 </span>
               </div>
             </div>
             
-            <div className="space-y-4">
-              <div className="space-y-1">
-                <span className="text-[10px] text-[#D4B982] font-mono tracking-[0.4em] uppercase">{step.label}</span>
-                <h3 className="text-3xl font-serif text-white tracking-wide">{step.title}</h3>
+            <div className="space-y-3">
+              <div className="space-y-0.5">
+                <span className="text-[9px] text-[#D4B982] font-mono tracking-[0.3em] uppercase">{step.label}</span>
+                <h3 className="text-2xl font-serif text-white tracking-wide">{step.title}</h3>
               </div>
-              <p className="text-white/60 text-sm leading-relaxed font-light italic border-l border-[#D4B982]/20 pl-6">
+              <p className="text-white/60 text-xs leading-relaxed font-light italic border-l border-[#D4B982]/20 pl-4">
                 {step.description}
               </p>
             </div>

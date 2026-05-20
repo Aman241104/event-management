@@ -77,18 +77,18 @@ export const InteractiveServiceList = () => {
   };
 
   return (
-    <section ref={containerRef} className="py-32 md:py-56 bg-[#FDFBF7] relative overflow-hidden">
+    <section ref={containerRef} className="py-12 md:py-20 bg-[#FDFBF7] relative overflow-hidden">
       <div className="container relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-20 lg:gap-32">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
           {/* 1. Left: The Interactive List */}
           <div className="w-full lg:w-3/5 space-y-2">
-            <div className="mb-12 space-y-4">
+            <div className="mb-4 space-y-2">
                <div className="flex items-center gap-4">
-                 <div className="w-12 h-px bg-[#D4B982]/40" />
-                 <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">CORE SOLUTIONS</span>
+                 <div className="w-10 h-px bg-[#D4B982]/40" />
+                 <span className="text-[10px] md:text-[11px] text-[#D4B982] uppercase tracking-[0.6em] md:tracking-[0.8em] font-bold">CORE SOLUTIONS</span>
                </div>
-               <h2 className="text-4xl md:text-6xl font-serif text-[#121212] tracking-tight">Professional Services</h2>
+               <h2 className="text-3xl md:text-5xl font-serif text-[#121212] tracking-tight">Professional Services</h2>
             </div>
 
             <div className="divide-y divide-[#D4B982]/10">
@@ -98,32 +98,32 @@ export const InteractiveServiceList = () => {
                   className="group relative"
                   onMouseEnter={() => handleHover(index)}
                 >
-                  <Link href={service.href} className="block py-10 md:py-14 outline-none">
+                  <Link href={service.href} className="block py-3 md:py-6 outline-none">
                     <div className="flex items-center justify-between">
-                      <div className="space-y-4">
-                         <div className="flex items-center gap-4">
-                           <span className="text-[14px] font-mono text-[#D4B982]/60 group-hover:text-[#D4B982] transition-colors">{service.id}</span>
-                           <span className="text-[10px] text-[#525252]/40 uppercase tracking-[0.4em] font-bold group-hover:text-[#D4B982]/60 transition-colors">/ {service.category}</span>
+                      <div className="space-y-1">
+                         <div className="flex items-center gap-3">
+                           <span className="text-[11px] font-mono text-[#D4B982]/60 group-hover:text-[#D4B982] transition-colors">{service.id}</span>
+                           <span className="text-[8px] text-[#525252]/40 uppercase tracking-[0.3em] font-bold group-hover:text-[#D4B982]/60 transition-colors">/ {service.category}</span>
                          </div>
                          <h3 className={cn(
-                           "text-3xl md:text-5xl lg:text-6xl font-serif transition-all duration-700 tracking-tight",
-                           activeIndex === index ? "text-[#121212] translate-x-4" : "text-[#121212]/30"
+                           "text-xl md:text-3xl lg:text-4xl font-serif transition-all duration-700 tracking-tight",
+                           activeIndex === index ? "text-[#121212] translate-x-3" : "text-[#121212]/50"
                          )}>
                            {service.title}
                          </h3>
                       </div>
                       
                       <div className={cn(
-                        "w-16 h-16 rounded-full border border-[#D4B982]/20 flex items-center justify-center transition-all duration-700",
+                        "w-10 h-10 rounded-full border border-[#D4B982]/20 flex items-center justify-center transition-all duration-700",
                         activeIndex === index ? "bg-[#D4B982] border-[#D4B982] rotate-0" : "opacity-0 -rotate-45"
                       )}>
-                        <ArrowUpRight size={24} className="text-white" />
+                        <ArrowUpRight size={18} className="text-white" />
                       </div>
                     </div>
                   </Link>
 
                   {/* Mobile Preview Image (visible only on small screens) */}
-                  <div className="lg:hidden h-0 group-hover:h-48 overflow-hidden transition-all duration-500 rounded-lg">
+                  <div className="lg:hidden h-0 group-hover:h-40 overflow-hidden transition-all duration-500 rounded-lg">
                      <div className="relative h-full w-full">
                         <Image src={service.image} alt={service.title} fill className="object-cover" />
                      </div>
@@ -134,7 +134,7 @@ export const InteractiveServiceList = () => {
           </div>
 
           {/* 2. Right: The Image Frame (Desktop Only) */}
-          <div className="hidden lg:block w-2/5 sticky top-1/4 h-[600px]">
+          <div className="hidden lg:block w-2/5 sticky top-1/4 h-[400px]">
              <div className="relative h-full w-full overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)] border border-[#D4B982]/10 group">
                 {services.map((service, index) => (
                   <div 

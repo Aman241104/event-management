@@ -43,7 +43,7 @@ export function MaskSlideImage({
     // Animate the mask to slide up and reveal the image
     tl.to(maskRef.current, {
       yPercent: -100,
-      duration: 1.4,
+      duration: 1.1,
       ease: 'power4.inOut',
       force3D: true
     });
@@ -53,7 +53,7 @@ export function MaskSlideImage({
       { scale: 1.3 },
       {
         scale: 1,
-        duration: 1.8,
+        duration: 1.4,
         ease: 'power3.out',
         force3D: true
       }, 0.2
