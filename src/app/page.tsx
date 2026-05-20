@@ -437,7 +437,7 @@ export default function Home() {
       </section>
 
       {/* 4. About Us Section */}
-      <section className="pt-8 pb-12 md:pt-16 md:pb-36 bg-[#FDFBF7] relative overflow-hidden border-t border-linen/20">
+      <section className="pt-8 pb-32 md:pt-16 md:pb-36 bg-[#FDFBF7] relative overflow-hidden border-t border-linen/20">
         <div className="container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
             {/* Images Column - Refined Editorial Layout */}
