@@ -194,6 +194,7 @@ export const SpecializedVerticalsAccordion = () => {
                       `panel-image-${index}`,
                       index === 0 ? "opacity-40 brightness-75 grayscale-0" : "opacity-20 brightness-50 grayscale"
                     )}
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#05100a] via-[#05100a]/40 to-transparent opacity-80" />
                 </div>
@@ -264,7 +265,13 @@ export const SpecializedVerticalsAccordion = () => {
             )}
           >
             <div className="relative aspect-[16/9] overflow-hidden">
-               <Image src={item.image} alt={item.title} fill className="object-cover opacity-60 brightness-75" />
+               <Image 
+                 src={item.image} 
+                 alt={item.title} 
+                 fill 
+                 className="object-cover opacity-60 brightness-75" 
+                 sizes="(max-width: 1024px) 100vw, 33vw"
+               />
                <div className="absolute inset-0 bg-gradient-to-t from-[#05100a] to-transparent" />
                <div className="absolute top-4 left-4 flex items-center gap-3">
                   <span className="text-[9px] font-mono font-bold text-[#D4B982] tracking-widest">{item.id}</span>

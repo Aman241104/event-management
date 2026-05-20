@@ -259,6 +259,7 @@ export const HowWeWork = () => {
                       alt={step.title}
                       fill
                       className="object-cover transition-transform duration-[3000ms] group-hover:scale-110"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-transparent to-transparent opacity-60" />
                   </div>
@@ -291,6 +292,7 @@ export const HowWeWork = () => {
                   alt={step.title}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 400px"
                 />
                 <div className="absolute inset-0 bg-black/40" />
               </div>

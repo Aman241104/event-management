@@ -122,7 +122,14 @@ export default function ServicesPage() {
         {/* 1. Hero Section */}
         <section id="hero" ref={heroRef} className="relative min-h-[60vh] md:min-h-[600px] flex items-center overflow-hidden bg-heritage">
           <div className="absolute inset-0 z-0 hero-bg-wrapper scale-110">
-            <Image src="/assets/wedding/wedding-5.jpg" alt="Services Overview" fill className="object-cover brightness-[0.35]" priority />
+            <Image 
+              src="/assets/wedding/wedding-5.jpg" 
+              alt="Services Overview" 
+              fill 
+              className="object-cover brightness-[0.35]" 
+              priority 
+              sizes="100vw"
+            />
           </div>
           
           <BackgroundFlourish opacity={0.15} className="z-10 text-[#D4B982]" />
@@ -297,7 +304,13 @@ export default function ServicesPage() {
 
                  <div className="relative fade-up pt-8 md:pt-0">
                     <div className="relative aspect-[4/5] rounded-full overflow-hidden border border-[#D4B982]/20 shadow-2xl max-w-md mx-auto">
-                       <Image src="/assets/production/production-1.jpg" alt="Production mastery" fill className="object-cover brightness-50" />
+                       <Image 
+                         src="/assets/production/production-1.jpg" 
+                         alt="Production mastery" 
+                         fill 
+                         className="object-cover brightness-50" 
+                         sizes="(max-width: 768px) 100vw, 400px"
+                       />
                        <div className="absolute inset-0 bg-gradient-to-t from-[#05100a] to-transparent opacity-60" />
                     </div>
                     {/* Pulsing focal point */}
@@ -370,7 +383,13 @@ export default function ServicesPage() {
         {/* Final CTA */}
         <section className="relative py-16 md:py-32 overflow-hidden bg-[#05100a] text-center rounded-t-[2.5rem] md:rounded-t-[6rem] -mt-12 md:-mt-16 z-20">
           <div className="absolute inset-0 z-0 hero-bg-wrapper">
-            <Image src="/assets/wedding/wedding-3.jpg" alt="Final CTA" fill className="object-cover brightness-[0.2] scale-105" />
+            <Image 
+              src="/assets/wedding/wedding-3.jpg" 
+              alt="Final CTA" 
+              fill 
+              className="object-cover brightness-[0.2] scale-105" 
+              sizes="100vw"
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-[#05100a] via-transparent to-[#05100a] opacity-90 z-10" />
             <div className="absolute inset-0 bg-black/40 z-10" />
           </div>

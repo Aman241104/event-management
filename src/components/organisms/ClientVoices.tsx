@@ -95,7 +95,13 @@ export const ClientVoices = () => {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between border-t border-[#D4B982]/10 pt-5 md:pt-6 gap-4">
                    <div className="flex items-center gap-4">
                       <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-[#D4B982]/20">
-                        <Image src={testimonials[0].image} alt={testimonials[0].author} fill className="object-cover" />
+                        <Image 
+                          src={testimonials[0].image} 
+                          alt={testimonials[0].author} 
+                          fill 
+                          className="object-cover" 
+                          sizes="48px"
+                        />
                       </div>
                       <div className="flex flex-col">
                         <span className="text-xs md:text-sm font-bold text-[#121212] uppercase tracking-wider">{testimonials[0].author}</span>
@@ -122,7 +128,13 @@ export const ClientVoices = () => {
                 <div className="space-y-4 md:space-y-6 relative z-10">
                    <div className="flex items-center gap-3">
                       <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden border border-[#D4B982]/20">
-                        <Image src={testimonials[3].image} alt={testimonials[3].author} fill className="object-cover" />
+                        <Image 
+                          src={testimonials[3].image} 
+                          alt={testimonials[3].author} 
+                          fill 
+                          className="object-cover" 
+                          sizes="40px"
+                        />
                       </div>
                       <div className="flex flex-col">
                         <span className="text-xs font-bold text-white uppercase tracking-wider">{testimonials[3].author}</span>
@@ -141,7 +153,13 @@ export const ClientVoices = () => {
                 </p>
                 <div className="flex items-center gap-3">
                    <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden">
-                     <Image src={testimonials[1].image} alt={testimonials[1].author} fill className="object-cover" />
+                     <Image 
+                       src={testimonials[1].image} 
+                       alt={testimonials[1].author} 
+                       fill 
+                       className="object-cover" 
+                       sizes="40px"
+                     />
                    </div>
                    <div className="flex flex-col">
                      <span className="text-[11px] md:text-xs font-bold text-[#121212] uppercase tracking-wider">{testimonials[1].author}</span>
@@ -158,7 +176,13 @@ export const ClientVoices = () => {
                 </p>
                 <div className="flex items-center gap-3">
                    <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-full overflow-hidden">
-                     <Image src={testimonials[2].image} alt={testimonials[2].author} fill className="object-cover" />
+                     <Image 
+                       src={testimonials[2].image} 
+                       alt={testimonials[2].author} 
+                       fill 
+                       className="object-cover" 
+                       sizes="40px"
+                     />
                    </div>
                    <div className="flex flex-col">
                      <span className="text-[11px] md:text-xs font-bold text-[#121212] uppercase tracking-wider">{testimonials[2].author}</span>

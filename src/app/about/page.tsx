@@ -107,6 +107,7 @@ export default function AboutPage() {
               fill 
               className="object-cover brightness-[0.35]"
               priority
+              sizes="100vw"
             />
           </div>
           
@@ -181,6 +182,7 @@ export default function AboutPage() {
                     alt="Founder, Kamna Udernani" 
                     fill 
                     className="object-cover transition-transform duration-[2000ms] hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
                 {/* Decorative element */}
@@ -272,7 +274,13 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
               {['/assets/wedding/wedding-1.jpg', '/assets/corporate/corporate-6.jpg', '/assets/production/production-1.jpg'].map((img, i) => (
                 <div key={i} className="group relative aspect-[4/3] overflow-hidden rounded-sm shadow-2xl fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
-                  <Image src={img} alt={`Work ${i + 1}`} fill className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-[0.9]" />
+                  <Image 
+                    src={img} 
+                    alt={`Work ${i + 1}`} 
+                    fill 
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-[0.9]" 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/0 transition-colors duration-700" />
                 </div>
               ))}
@@ -298,6 +306,7 @@ export default function AboutPage() {
               alt="Professional Consultation" 
               fill 
               className="object-cover brightness-[0.15] scale-105" 
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-[#05100a] opacity-90 z-10" />
           </div>

@@ -404,6 +404,7 @@ export default function Home() {
                     alt={service.title} 
                     fill 
                     className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110" 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all duration-700" />
                 </div>
@@ -442,11 +443,23 @@ export default function Home() {
             {/* Images Column - Refined Editorial Layout */}
             <div className="relative fade-up">
               <div className="aspect-[3/4] relative rounded-none overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.12)] z-10 border border-linen/30">
-                <Image src="/kamna-udernani.png" alt="Kamna Udernani - Founder" fill className="object-cover" />
+                <Image 
+                  src="/kamna-udernani.png" 
+                  alt="Kamna Udernani - Founder" 
+                  fill 
+                  className="object-cover" 
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
                 <div className="absolute inset-0 bg-heritage/10 mix-blend-multiply" />
               </div>
               <Link href="/portfolio" className="absolute -bottom-12 -right-12 w-[75%] aspect-[4/3] rounded-none overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.25)] z-20 border-[15px] border-white hidden md:block group cursor-pointer">
-                <Image src="/assets/production/production-1.jpg" alt="Detail" fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                <Image 
+                  src="/assets/production/production-1.jpg" 
+                  alt="Detail" 
+                  fill 
+                  className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                  sizes="40vw"
+                />
                 <div className="absolute inset-x-0 bottom-0 bg-heritage/90 py-4 px-6 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo">
                    <span className="text-[10px] text-white uppercase tracking-[0.5em] font-bold">VIEW WORK</span>
                 </div>
@@ -478,7 +491,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="pt-10 md:pt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <div className="pt-6 md:pt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <Magnetic strength={0.1} className="w-full sm:w-auto">
                   <Link href="/contact" className="block w-full sm:w-auto">
                     <Button className="btn-gold w-full h-14 md:h-15 px-10">
@@ -538,7 +551,7 @@ export default function Home() {
                     alt={cat.title} 
                     fill 
                     className="object-cover transition-transform duration-1000 group-hover:scale-110" 
-                    sizes="(max-width: 768px) 50vw, 15vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 15vw"
                   />
                   
                   {/* Refined Gradient Overlay - Stronger for better contrast */}
@@ -647,7 +660,13 @@ export default function Home() {
                 >
                   {/* Avatar - Refined & Integrated */}
                   <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full overflow-hidden border-4 border-[#FDFBF7] shadow-xl transition-transform duration-700 group-hover:scale-110">
-                    <Image src={t.image} alt={t.author} fill className="object-cover scale-110" />
+                    <Image 
+                      src={t.image} 
+                      alt={t.author} 
+                      fill 
+                      className="object-cover scale-110" 
+                      sizes="64px"
+                    />
                   </div>
 
                   <div className="pt-4 space-y-6 flex-grow flex flex-col items-center justify-center">
@@ -681,6 +700,7 @@ export default function Home() {
             alt="CTA Background" 
             fill 
             className="object-cover brightness-[0.2] scale-105" 
+            sizes="100vw"
           />
           {/* Multi-layered Cinematic Overlays */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-90" />
