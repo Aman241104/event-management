@@ -273,49 +273,41 @@ export const HowWeWork = () => {
         </div>
       </div>
 
-      {/* Mobile Layout - Refined Horizontal Scroll */}
-      <div className="lg:hidden py-40 overflow-hidden">
-        <div className="flex overflow-x-auto no-scrollbar gap-8 px-6 pb-12 snap-x snap-mandatory relative">
-          {/* Mobile Connecting Line */}
-          <div className="absolute top-[120px] left-0 w-full min-w-[1500px] h-px bg-gradient-to-r from-transparent via-[#D4B982]/30 to-transparent z-0" />
-          
-          {steps.map((step, index) => (
-            <div 
-              key={step.id}
-              className={cn(
-                "mobile-scroll-step flex-shrink-0 w-[85vw] snap-center space-y-12 relative z-10", 
-                `mobile-step-${index}`
-              )}
-            >
-              <div className="relative">
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-none border border-white/10 shadow-2xl">
-                  <Image
-                    src={step.image}
-                    alt={step.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/40" />
-                </div>
-                <div className="absolute -top-6 -right-2 bg-[#121212] px-6 py-2 border-l-2 border-[#D4B982] shadow-2xl">
-                  <span className="text-[10px] font-mono text-white tracking-[0.4em] font-bold">
-                    {step.id}
-                  </span>
-                </div>
+      {/* Mobile Layout - Clean Vertical List */}
+      <div className="lg:hidden pt-48 pb-24 px-6 space-y-24 relative z-10">
+        {steps.map((step, index) => (
+          <div 
+            key={step.id}
+            className="mobile-scroll-step space-y-8"
+          >
+            <div className="relative">
+              <div className="relative aspect-[16/10] w-full overflow-hidden border border-white/10 shadow-2xl">
+                <Image
+                  src={step.image}
+                  alt={step.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/40" />
               </div>
-              
-              <div className="space-y-6 px-4">
-                <div className="space-y-2">
-                  <span className="text-[10px] text-[#D4B982] font-mono tracking-[0.4em] uppercase">{step.label}</span>
-                  <h3 className="text-4xl font-serif text-white tracking-wide">{step.title}</h3>
-                </div>
-                <p className="text-white/60 text-[16px] leading-relaxed font-light italic border-l border-[#D4B982]/20 pl-6">
-                  {step.description}
-                </p>
+              <div className="absolute -top-4 -right-2 bg-[#121212] px-4 py-1 border-l-2 border-[#D4B982] shadow-2xl">
+                <span className="text-[10px] font-mono text-white tracking-[0.4em] font-bold">
+                  {step.id}
+                </span>
               </div>
             </div>
-          ))}
-        </div>
+            
+            <div className="space-y-4">
+              <div className="space-y-1">
+                <span className="text-[10px] text-[#D4B982] font-mono tracking-[0.4em] uppercase">{step.label}</span>
+                <h3 className="text-3xl font-serif text-white tracking-wide">{step.title}</h3>
+              </div>
+              <p className="text-white/60 text-sm leading-relaxed font-light italic border-l border-[#D4B982]/20 pl-6">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

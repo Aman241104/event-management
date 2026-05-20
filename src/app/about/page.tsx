@@ -14,6 +14,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
+import { WhatsAppLogo } from '@/components/atoms/WhatsAppLogo';
+import { HowWeWork } from '@/components/organisms/HowWeWork';
+
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
@@ -83,7 +86,7 @@ export default function AboutPage() {
 
   const scrollToProcess = (e: React.MouseEvent) => {
     e.preventDefault();
-    const processSection = document.getElementById('process');
+    const processSection = document.getElementById('how-we-work');
     if (processSection) {
       processSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -253,6 +256,9 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        {/* 4.5 How We Work Section */}
+        <HowWeWork />
 
         {/* 6. Portfolio Preview */}
         <section id="work" className="py-32 md:py-48 bg-[#05100a] relative overflow-hidden">

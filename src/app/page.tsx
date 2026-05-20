@@ -100,7 +100,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-40 h-24 opacity-80 group-hover:opacity-100 transition-all duration-700">
+        <div className="relative w-56 h-32 opacity-80 group-hover:opacity-100 transition-all duration-700">
           <Image 
             src="/assets/logos/adhaan.png" 
             alt="Adhaan Solution" 
