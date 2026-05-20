@@ -46,18 +46,18 @@ export default function ServicesPage() {
       }
     });
 
-    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: DEFAULT_EASE })
+    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE })
           .fromTo(".hero-title .text-line", { 
             y: 80,
             opacity: 0
           }, {
             y: 0,
             opacity: 1,
-            stagger: 0.15,
-            duration: 1.4,
+            stagger: 0.1,
+            duration: 1.2,
             ease: "expo.out"
-          }, "-=0.8")
-          .fromTo(".hero-subtext", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE }, "-=0.8");
+          }, "-=0.7")
+          .fromTo(".hero-subtext", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: DEFAULT_EASE }, "-=0.7");
 
     // 2. Section Reveals
     const sections = gsap.utils.toArray<HTMLElement>('section:not(#verticals)');
@@ -69,8 +69,8 @@ export default function ServicesPage() {
           { 
             y: 0, 
             opacity: 1, 
-            stagger: 0.1, 
-            duration: 1.2, 
+            stagger: 0.08, 
+            duration: 0.8, 
             ease: "power2.out",
             scrollTrigger: {
               trigger: section,
@@ -388,7 +388,7 @@ export default function ServicesPage() {
                  Join the elite group of visionaries who trust Zing Bliss for their most significant milestones.
                </p>
 
-               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10 pt-6 md:pt-10">
+               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10 pt-12 md:pt-16">
                  <Magnetic strength={0.1}>
                    <Link href="/contact" className="w-full sm:w-auto">
                      <Button className="h-14 md:h-16 w-full sm:px-16 text-[10px] md:text-[12px] bg-[#D4B982] text-black hover:bg-white hover:text-black transition-all duration-700 tracking-[0.3em] md:tracking-[0.4em] font-bold uppercase rounded-none">

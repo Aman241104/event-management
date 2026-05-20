@@ -41,6 +41,7 @@ import { useGSAP } from '@gsap/react';
 
 import { WhatsAppLogo } from '@/components/atoms/WhatsAppLogo';
 import { HowWeWork } from '@/components/organisms/HowWeWork';
+import { RollingCounter } from '@/components/atoms/RollingCounter';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -234,7 +235,7 @@ export default function Home() {
         },
         y: 40,
         opacity: 0,
-        duration: 1.2,
+        duration: 0.8,
         ease: 'power3.out',
         overwrite: 'auto',
         force3D: true
@@ -246,24 +247,24 @@ export default function Home() {
     tl.from('.hero-title', { 
       y: 60, 
       opacity: 0, 
-      duration: 1.8, 
+      duration: 1.2, 
       ease: 'expo.out',
       force3D: true
     })
     .from('.hero-subtitle', { 
       y: 30, 
       opacity: 0, 
-      duration: 1.2, 
+      duration: 0.8, 
       ease: 'power3.out',
       force3D: true
-    }, '-=1.2')
+    }, '-=0.8')
     .from('.hero-btns', { 
       y: 30, 
       opacity: 0, 
-      duration: 1.2, 
+      duration: 0.8, 
       ease: 'power3.out',
       force3D: true
-    }, '-=0.8');
+    }, '-=0.6');
 
   }, { scope: containerRef });
 
@@ -279,6 +280,7 @@ export default function Home() {
             fill 
             className="object-cover brightness-[0.5] scale-105" 
             priority
+            sizes="100vw"
           />
           {/* Multi-layered Cinema Gradient for Depth */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/40 to-transparent" />
@@ -299,7 +301,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="hero-btns flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-10 md:pt-16">
+            <div className="hero-btns flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-12 md:pt-16">
               <Magnetic strength={0.1} className="w-full sm:w-auto">
                 <Link href="/contact" className="block w-full sm:w-auto">
                   <Button className="btn-gold w-full h-14 md:h-15 px-8 md:px-14">
@@ -476,7 +478,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <div className="pt-10 md:pt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <Magnetic strength={0.1} className="w-full sm:w-auto">
                   <Link href="/contact" className="block w-full sm:w-auto">
                     <Button className="btn-gold w-full h-14 md:h-15 px-10">
@@ -572,45 +574,35 @@ export default function Home() {
             </div>
 
             {/* Metrics Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20 fade-up">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-20">
               {[
                 { value: '20+', label: 'Years of Experience' },
                 { value: '500+', label: 'Events Executed' },
                 { value: '100+', label: 'Happy Clients' },
               ].map((stat, i) => (
-                <div key={i} className="flex flex-col items-center text-center group">
-                  <span className="text-6xl md:text-7xl font-serif text-[#D4B982] mb-2 drop-shadow-[0_10px_30px_rgba(212,185,130,0.2)] group-hover:scale-110 transition-transform duration-700">
-                    {stat.value}
-                  </span>
-                  <span className="text-[10px] md:text-[11px] font-bold text-white/40 uppercase tracking-[0.4em]">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
-              {whyChooseUs.map((item, i) => (
                 <div 
                   key={i} 
-                  className="flex flex-row items-center lg:items-start text-left space-x-4 fade-up group" 
-                  style={{ transitionDelay: `${i * 80}ms` }}
+                  className="fade-up group relative bg-white/5 border border-white/10 p-8 md:p-12 flex flex-col items-center text-center transition-all duration-700 hover:bg-white/[0.08] hover:border-[#D4B982]/30"
+                  style={{ transitionDelay: `${i * 100}ms` }}
                 >
-                  <div className="text-[#D4B982] shrink-0 group-hover:scale-110 transition-transform duration-700 relative pt-1">
-                    <div className="absolute inset-0 blur-2xl bg-[#D4B982]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    {React.cloneElement(item.icon as React.ReactElement<LucideProps>, { 
-                      size: 32, 
-                      strokeWidth: 0.75 
-                    })}
+                  {/* Card Glow */}
+                  <div className="absolute inset-0 bg-[#D4B982]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  
+                  {/* Animated Number */}
+                  <div className="relative z-10 mb-4">
+                    <span className="text-6xl md:text-7xl font-serif text-[#D4B982] drop-shadow-[0_10px_30px_rgba(212,185,130,0.2)]">
+                      <RollingCounter value={stat.value} />
+                    </span>
                   </div>
-                  <div className="space-y-1">
-                    <h3 className="text-[10px] md:text-[11px] font-bold text-[#D4B982] uppercase tracking-[0.2em] leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-[10px] md:text-[11px] text-white/50 font-sans leading-relaxed font-light group-hover:text-white/80 transition-colors duration-700">
-                      {item.desc}
-                    </p>
-                  </div>
+                  
+                  {/* Label */}
+                  <span className="relative z-10 text-[10px] md:text-[11px] font-bold text-white/40 uppercase tracking-[0.4em] group-hover:text-white/60 transition-colors">
+                    {stat.label}
+                  </span>
+
+                  {/* Corner Accents */}
+                  <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#D4B982]/0 group-hover:border-[#D4B982]/40 transition-all duration-700" />
+                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#D4B982]/0 group-hover:border-[#D4B982]/40 transition-all duration-700" />
                 </div>
               ))}
             </div>
@@ -713,7 +705,7 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16 fade-up" style={{ transitionDelay: '200ms' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-12 md:pt-16 fade-up" style={{ transitionDelay: '200ms' }}>
             <Magnetic strength={0.1}>
               <Link href="/contact">
                 <Button className="btn-gold h-16 px-16">

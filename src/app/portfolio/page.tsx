@@ -254,7 +254,7 @@ function PortfolioContent() {
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-16 fade-up">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-12 md:pt-16 fade-up">
             <Magnetic strength={0.1}>
               <Link href="/contact">
                 <Button className="btn-gold h-16 px-16">

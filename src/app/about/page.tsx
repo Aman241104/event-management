@@ -46,19 +46,19 @@ export default function AboutPage() {
       yoyo: true
     });
 
-    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: DEFAULT_EASE, force3D: true })
+    heroTl.fromTo(".hero-header-reveal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE, force3D: true })
           .fromTo(".hero-title .text-line", { 
             y: 80,
             opacity: 0
           }, {
             y: 0,
             opacity: 1,
-            stagger: 0.15,
-            duration: 1.4,
+            stagger: 0.1,
+            duration: 1.2,
             ease: "expo.out",
             force3D: true
-          }, "-=0.8")
-          .fromTo(".hero-subtext", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 1, ease: DEFAULT_EASE, force3D: true }, "-=0.8");
+          }, "-=0.7")
+          .fromTo(".hero-subtext", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: DEFAULT_EASE, force3D: true }, "-=0.7");
 
     // 2. Section Reveals
     const sections = gsap.utils.toArray<HTMLElement>('section');
@@ -68,8 +68,8 @@ export default function AboutPage() {
         { 
           y: 0, 
           opacity: 1, 
-          stagger: 0.12, 
-          duration: 1.2, 
+          stagger: 0.1, 
+          duration: 0.8, 
           ease: DEFAULT_EASE,
           overwrite: 'auto',
           force3D: true,
@@ -212,7 +212,7 @@ export default function AboutPage() {
                    <span className="text-[10px] text-[#D4B982] uppercase tracking-widest font-bold">Founder & Creative Director</span>
                 </div>
 
-                <div className="pt-6">
+                <div className="pt-10 md:pt-12">
                   <Magnetic strength={0.1}>
                     <Button onClick={scrollToProcess} className="btn-gold px-12 py-5 text-[11px]">
                       DISCOVER OUR PROCESS
@@ -320,7 +320,7 @@ export default function AboutPage() {
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-20 fade-up" style={{ transitionDelay: '200ms' }}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-12 md:pt-20 fade-up" style={{ transitionDelay: '200ms' }}>
               <Magnetic strength={0.1}>
                 <Link href="/contact">
                   <Button className="btn-gold h-16 px-16 text-[12px]">

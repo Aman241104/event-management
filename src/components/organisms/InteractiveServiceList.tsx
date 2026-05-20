@@ -125,7 +125,13 @@ export const InteractiveServiceList = () => {
                   {/* Mobile Preview Image (visible only on small screens) */}
                   <div className="lg:hidden h-0 group-hover:h-40 overflow-hidden transition-all duration-500 rounded-lg">
                      <div className="relative h-full w-full">
-                        <Image src={service.image} alt={service.title} fill className="object-cover" />
+                        <Image 
+                          src={service.image} 
+                          alt={service.title} 
+                          fill 
+                          className="object-cover" 
+                          sizes="(max-width: 1024px) 100vw, 400px"
+                        />
                      </div>
                   </div>
                 </div>
@@ -147,6 +153,7 @@ export const InteractiveServiceList = () => {
                       alt={service.title} 
                       fill 
                       className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 40vw"
                     />
                     <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-1000" />
                   </div>

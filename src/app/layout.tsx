@@ -109,11 +109,24 @@ export default function RootLayout({
         {/* Global Background Texture */}
         <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
           <div className="absolute top-0 right-0 w-[120vw] h-[120vh] opacity-[0.015] transform translate-x-[10%] -translate-y-[10%] mix-blend-multiply">
-            <Image src="/hero-5.jpg" alt="" fill className="object-cover" priority />
+            <Image 
+              src="/hero-5.jpg" 
+              alt="" 
+              fill 
+              className="object-cover" 
+              priority 
+              sizes="100vw"
+            />
           </div>
           <div className="absolute bottom-0 left-0 w-[80vw] h-[80vh] opacity-[0.02] bg-[radial-gradient(circle_at_center,_#B38B4D_0%,_transparent_60%)] transform -translate-x-1/4 translate-y-1/4" />
           <div className="absolute -bottom-20 -left-20 w-[600px] h-[600px] opacity-[0.04] brightness-110 transform -scale-x-100 mix-blend-multiply">
-            <Image src="/decor-8.jpg" alt="" fill className="object-contain object-bottom" />
+            <Image 
+              src="/decor-8.jpg" 
+              alt="" 
+              fill 
+              className="object-contain object-bottom" 
+              sizes="(max-width: 768px) 100vw, 600px"
+            />
           </div>
         </div>
 
