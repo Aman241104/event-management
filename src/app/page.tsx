@@ -84,7 +84,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-70 group-hover:opacity-100 transition-all duration-700">
+        <div className="relative w-32 h-20 opacity-80 group-hover:opacity-100 transition-all duration-700">
           <Image 
             src="/assets/logos/haas.png" 
             alt="Haas Automation" 
@@ -100,7 +100,7 @@ const trustLogos = [
     type: 'custom',
     render: () => (
       <div className="flex flex-col items-center group">
-        <div className="relative w-28 h-16 opacity-70 group-hover:opacity-100 transition-all duration-700">
+        <div className="relative w-40 h-24 opacity-80 group-hover:opacity-100 transition-all duration-700">
           <Image 
             src="/assets/logos/adhaan.png" 
             alt="Adhaan Solution" 
@@ -290,12 +290,12 @@ export default function Home() {
           <div className="max-w-6xl">
             <div className="space-y-6 md:space-y-10">
               <h1 className="hero-title text-[3.2rem] sm:text-7xl md:text-8xl lg:text-[8.8rem] font-serif text-white leading-[0.9] md:leading-[0.85] tracking-tight">
-                Mastering the Art <br />
-                Of Luxury <span className="font-script text-[#D4B982] text-[5rem] sm:text-8xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-1 md:ml-4 italic relative top-4 md:top-6 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)] block md:inline">events</span>
+                Crafting <br />
+                Extraordinary <span className="font-script text-[#D4B982] text-[5rem] sm:text-8xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-1 md:ml-4 italic relative top-4 md:top-6 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)] block md:inline">moments</span>
               </h1>
               <p className="hero-subtitle text-base md:text-xl text-white/90 font-serif italic max-w-xl leading-relaxed border-l-2 border-[#D4B982]/30 pl-6 md:pl-10">
-                End-to-End Event Management for Weddings, <br className="hidden md:block" />
-                Corporate Excellence & Private Celebrations
+                Exquisite event planning and production for weddings, <br className="hidden md:block" />
+                corporate excellence, and life&apos;s most precious celebrations.
               </p>
             </div>
 
@@ -440,7 +440,7 @@ export default function Home() {
             {/* Images Column - Refined Editorial Layout */}
             <div className="relative fade-up">
               <div className="aspect-[3/4] relative rounded-none overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.12)] z-10 border border-linen/30">
-                <Image src="/assets/wedding/wedding-5.jpg" alt="Event setup" fill className="object-cover" />
+                <Image src="/kamna-udernani.png" alt="Kamna Udernani - Founder" fill className="object-cover" />
                 <div className="absolute inset-0 bg-heritage/10 mix-blend-multiply" />
               </div>
               <Link href="/portfolio" className="absolute -bottom-12 -right-12 w-[75%] aspect-[4/3] rounded-none overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.25)] z-20 border-[15px] border-white hidden md:block group cursor-pointer">
@@ -562,16 +562,34 @@ export default function Home() {
         </div>
 
         {/* Why Choose Us Part - Integrated */}
-        <div className="pb-10 pt-2 relative">
+        <div className="pb-20 pt-10 relative">
           <div className="container relative z-10">
-            <div className="text-center mb-5 fade-up">
+            <div className="text-center mb-16 fade-up">
               <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.7em] font-bold opacity-80">
                 WHY CHOOSE ZING BLISS EVENTS?
               </span>
-              <div className="w-12 h-px bg-[#D4B982]/20 mx-auto mt-4" />
+              <div className="w-12 h-px bg-[#D4B982]/20 mx-auto mt-6" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-4 relative z-10">
+            {/* Metrics Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20 fade-up">
+              {[
+                { value: '20+', label: 'Years of Experience' },
+                { value: '500+', label: 'Events Executed' },
+                { value: '100+', label: 'Happy Clients' },
+              ].map((stat, i) => (
+                <div key={i} className="flex flex-col items-center text-center group">
+                  <span className="text-6xl md:text-7xl font-serif text-[#D4B982] mb-2 drop-shadow-[0_10px_30px_rgba(212,185,130,0.2)] group-hover:scale-110 transition-transform duration-700">
+                    {stat.value}
+                  </span>
+                  <span className="text-[10px] md:text-[11px] font-bold text-white/40 uppercase tracking-[0.4em]">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
               {whyChooseUs.map((item, i) => (
                 <div 
                   key={i} 

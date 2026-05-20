@@ -65,10 +65,10 @@ export default function ContactPage() {
         </div>
         <h1 className="text-4xl md:text-7xl lg:text-[8rem] font-serif tracking-tighter text-[#121212] leading-[0.85] font-medium">
           <span className="block overflow-hidden pb-1">
-             <span className="header-fade block">Plan Your Next</span>
+             <span className="header-fade block">Begin Your</span>
           </span>
           <span className="block overflow-hidden">
-             <span className="header-fade block italic font-script text-[#D4B982] mt-2 lowercase lg:text-[10rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.3)]">Elite Event.</span>
+             <span className="header-fade block italic font-script text-[#D4B982] mt-2 lowercase lg:text-[10rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.3)]">Extraordinary story.</span>
           </span>
         </h1>
         <div className="max-w-xl mx-auto header-fade opacity-0 pt-4">

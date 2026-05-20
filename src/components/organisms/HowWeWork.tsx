@@ -15,37 +15,37 @@ if (typeof window !== 'undefined') {
 const steps = [
   {
     id: '01',
-    label: 'DISCOVERY',
-    title: 'The Research',
-    description: 'We begin by capturing the essential logistical requirements and objectives of your event. Through strategic consultation, we define the roadmap for a successful production.',
+    label: 'BRIEFING',
+    title: 'The Insight',
+    description: 'We begin by understanding your vision in detail, capturing every specific requirement to set the foundation for a perfect event.',
     image: '/assets/wedding/wedding-5.jpg'
   },
   {
     id: '02',
-    label: 'DESIGN',
-    title: 'The Blueprint',
-    description: 'Our specialists engineer a comprehensive aesthetic and technical plan, ensuring every element of the production is perfectly documented and ready for implementation.',
+    label: 'PLANNING',
+    title: 'The Design',
+    description: 'Developing a comprehensive strategy and a visual mood board that brings your concepts to life through intentional design.',
     image: '/assets/corporate/corporate-6.jpg'
   },
   {
     id: '03',
-    label: 'LOGISTICS',
-    title: 'The Curation',
-    description: 'Absolute precision in detail. We coordinate an elite network of vendors and partners, managing the complex web of event logistics with clockwork accuracy.',
+    label: 'CURATION',
+    title: 'The Partners',
+    description: 'Securing the ideal venue and premium vendors, managing every booking to ensure absolute quality and logistical synergy.',
     image: '/assets/production/production-1.jpg'
   },
   {
     id: '04',
     label: 'EXECUTION',
-    title: 'The Production',
-    description: 'The moment of implementation. Our professional on-site management team brings the blueprint to life with flawless coordination and unwavering attention to detail.',
+    title: 'The Event',
+    description: 'On-site management where our team orchestrates every detail in real-time, delivering a flawless and cinematic experience.',
     image: '/assets/wedding/wedding-7.jpg'
   },
   {
     id: '05',
-    label: 'WRAP',
-    title: 'The Result',
-    description: 'Beyond the final curtain, we ensure a seamless conclusion. We manage the post-event logistics so the only thing that remains is the success of your celebration.',
+    label: 'SUCCESS',
+    title: 'The Impact',
+    description: 'A perfectly realized event that exceeds expectations, leaving your guests inspired and your milestones beautifully celebrated.',
     image: '/assets/wedding/wedding-3.jpg'
   }
 ];

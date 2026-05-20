@@ -232,13 +232,13 @@ export default function ServicesPage() {
                   <span className="text-line block">Engineering Elite</span>
                 </span>
                 <span className="block overflow-hidden">
-                  <span className="text-line block italic font-script text-[#D4B982] mt-4 lg:text-[12rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Celebrations</span>
+                  <span className="text-line block italic font-script text-[#D4B982] mt-4 lg:text-[12rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">celebrations</span>
                 </span>
               </h1>
 
-              <div className="max-w-xl hero-subtext opacity-0 pt-10">
-                <p className="text-white/80 text-lg md:text-2xl font-serif italic border-l-2 border-[#D4B982]/30 pl-12 leading-relaxed">
-                  From strategic planning to flawless execution, we provide comprehensive management for luxury events.
+              <div className="max-w-xl hero-subtext opacity-0 pt-6">
+                <p className="text-white/80 text-lg md:text-xl font-serif italic border-l border-[#D4B982]/30 pl-8 leading-relaxed">
+                  Comprehensive event management and production for those who <br className="hidden md:block" /> demand perfection in every detail.
                 </p>
               </div>
             </div>
@@ -350,7 +350,7 @@ export default function ServicesPage() {
                   <div className={cn("lg:col-span-7 fade-up", index % 2 !== 0 ? "lg:order-2" : "")}>
                     <div className="relative aspect-[16/9] overflow-hidden rounded-none border border-[#D4B982]/20 shadow-2xl group">
                        <Image src={service.image} alt={service.title} fill className="object-cover transition-transform duration-[2000ms] group-hover:scale-110" />
-                       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-700" />
+                       {/* Overlay removed for default brightness */}
                     </div>
                   </div>
 
