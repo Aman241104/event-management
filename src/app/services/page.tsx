@@ -124,7 +124,7 @@ export default function ServicesPage() {
             <Image src="/assets/wedding/wedding-5.jpg" alt="Services Overview" fill className="object-cover brightness-[0.35]" priority />
           </div>
           
-          <BackgroundFlourish color="#D4B982" opacity={0.15} className="z-10" />
+          <BackgroundFlourish opacity={0.15} className="z-10 text-[#D4B982]" />
           
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-10" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 z-10" />
