@@ -146,8 +146,10 @@ export default function ServicesPage() {
                  </div>
               </div>
               <h1 className="hero-title text-4xl sm:text-6xl md:text-8xl lg:text-[8rem] font-serif text-white leading-[0.9] tracking-tight">
-                <span className="block overflow-hidden"><span className="text-line block">Crafting Elite</span></span>
-                <span className="block overflow-hidden"><span className="text-line block italic font-script text-[#D4B982] mt-2 md:mt-4 text-6xl sm:text-8xl md:text-[10rem] lg:text-[11rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">experiences</span></span>
+                <span className="block overflow-hidden pb-2"><span className="text-line block">Crafting Elite</span></span>
+                <span className="block overflow-hidden pb-8 -mb-8">
+                  <span className="text-line block italic font-script text-[#D4B982] mt-2 md:mt-4 text-6xl sm:text-8xl md:text-[10rem] lg:text-[11rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">experiences</span>
+                </span>
               </h1>
               <div className="max-w-xl hero-subtext opacity-0 pt-4 md:pt-8">
                 <p className="text-white/80 text-lg md:text-2xl font-serif italic border-l border-[#D4B982]/30 pl-6 md:pl-10 leading-relaxed">

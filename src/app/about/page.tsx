@@ -123,10 +123,10 @@ export default function AboutPage() {
               
               <div className="space-y-4">
                 <h1 className="hero-title text-4xl md:text-7xl lg:text-[7.5rem] font-serif text-white leading-[1] tracking-tight">
-                  <span className="block overflow-hidden">
+                  <span className="block overflow-hidden pb-2">
                     <span className="text-line block">Architects of</span>
                   </span>
-                  <span className="block overflow-hidden pb-4">
+                  <span className="block overflow-hidden pb-8 -mb-8">
                     <span className="text-line block italic font-script text-[#D4B982] mt-2 lg:text-[9.5rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)]">Extraordinary moments</span>
                   </span>
                 </h1>

@@ -27,7 +27,7 @@ export function RollingCounter({
   const suffix = value.replace(/[0-9]/g, "");
   const digits = numericStr.split("");
 
-  // Create 5 cycles of 0-9 to ensure a long roll effect even for '0'
+  // Create cycles of 0-9 to ensure a long roll effect
   const cycles = 5;
   const digitsArray = Array.from({ length: 10 }, (_, i) => i);
   const repeatedDigits = Array(cycles).fill(digitsArray).flat();
@@ -40,16 +40,14 @@ export function RollingCounter({
     
     strips.forEach((strip, index) => {
       const targetDigit = parseInt(digits[index], 10);
-      // We want to land on the LAST cycle to ensure maximum rolling
+      // Land on the target digit in the last cycle
       const targetIndex = ((cycles - 1) * 10) + targetDigit;
-      const totalItems = cycles * 10;
-      const itemHeightPercentage = 100 / totalItems;
       
       gsap.fromTo(strip, 
-        { y: "0%" },
+        { y: 0 },
         {
-          y: -(targetIndex * itemHeightPercentage) + "%",
-          duration: duration + (index * 0.3), // Stagger the speed for a more organic feel
+          y: `-${targetIndex * 100}%`, // Move by percentage of its own height (100% = 1 digit height)
+          duration: duration + (index * 0.2),
           ease: "expo.out",
           scrollTrigger: {
             trigger: container,
@@ -62,16 +60,15 @@ export function RollingCounter({
   }, [digits, duration, cycles]);
 
   return (
-    <div ref={containerRef} className={cn("inline-flex items-baseline overflow-hidden", className)}>
-      <div className="flex">
+    <div ref={containerRef} className={cn("inline-flex items-baseline leading-none", className)}>
+      <div className="flex overflow-hidden h-[1em]">
         {digits.map((_, i) => (
-          <div key={i} className="relative h-[1.1em] w-[0.65em] overflow-hidden">
+          <div key={i} className="relative w-[0.6em] h-full">
             <div 
-              className="digit-strip absolute top-0 left-0 w-full flex flex-col transition-none" 
-              style={{ height: `${cycles * 10 * 100}%` }}
+              className="digit-strip absolute top-0 left-0 w-full flex flex-col"
             >
               {repeatedDigits.map((num, idx) => (
-                <div key={idx} className="h-[2%] flex items-center justify-center">
+                <div key={idx} className="h-full flex-shrink-0 flex items-center justify-center">
                   {num}
                 </div>
               ))}
@@ -79,7 +76,7 @@ export function RollingCounter({
           </div>
         ))}
       </div>
-      {suffix && <span className="ml-0.5">{suffix}</span>}
+      {suffix && <span className="ml-1 self-center">{suffix}</span>}
     </div>
   );
 }

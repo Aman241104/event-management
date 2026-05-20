@@ -96,10 +96,10 @@ function PortfolioContent() {
             </div>
             
             <h1 className="text-4xl md:text-7xl lg:text-[7.5rem] font-serif text-[#121212] leading-[0.85] tracking-tighter">
-              <span className="block overflow-hidden">
+              <span className="block overflow-hidden pb-2">
                 <span className="header-fade block">Our Archive of</span>
               </span>
-              <span className="block overflow-hidden">
+              <span className="block overflow-hidden pb-8 -mb-8">
                 <span className="header-fade block italic font-script text-[#D4B982] mt-4 lg:text-[10rem] drop-shadow-[0_15px_45px_rgba(212,185,130,0.15)]">Extraordinary moments</span>
               </span>
             </h1>
