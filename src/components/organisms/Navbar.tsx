@@ -39,14 +39,18 @@ export function Navbar() {
     if (headerRef.current) {
       gsap.to(headerRef.current, { yPercent: 0, duration: 0.5, ease: 'power3.out', overwrite: true });
     }
-    setIsOpen(false);
-    setIsSearchOpen(false);
+    // Use setTimeout to avoid synchronous state update in effect
+    const timer = setTimeout(() => {
+      setIsOpen(false);
+      setIsSearchOpen(false);
+    }, 0);
     lastScrollY.current = window.scrollY;
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   // Optimize scroll handling with ScrollTrigger instead of manual scroll listener
   useEffect(() => {
-    let showAnim = gsap.from(headerRef.current, { 
+    const showAnim = gsap.from(headerRef.current, { 
       yPercent: -100,
       paused: true,
       duration: 0.4,

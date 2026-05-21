@@ -20,7 +20,7 @@ export default function FinancialPreviewPage() {
             <span className="small-caps text-burnished mb-4 block">Institutional Grade Oversight</span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif mb-6">Financial Mastery.</h1>
             <p className="text-white/60 text-xl max-w-2xl mx-auto font-light italic">
-              "Precision in every number, integrity in every decision."
+              &quot;Precision in every number, integrity in every decision.&quot;
             </p>
           </div>
         </section>

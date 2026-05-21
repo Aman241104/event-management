@@ -151,7 +151,7 @@ export const HowWeWork = () => {
   return (
     <section 
       ref={sectionRef} 
-      className="relative bg-[#05100a] overflow-hidden z-20 rounded-t-[3rem] md:rounded-t-[6rem] -mt-16"
+      className="relative bg-[#05100a] bg-gradient-to-b from-[#05100a] via-[#021a10] to-[#05100a] overflow-hidden z-20 rounded-t-[3rem] md:rounded-t-[6rem] -mt-16"
       id="how-we-work"
     >
       {/* 1. Immersive Background Elements */}

@@ -14,7 +14,9 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     if (children !== displayChildren) {
       if (isTransitioning) return;
       
-      setIsTransitioning(true);
+      const timer = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 0);
       
       const tl = gsap.timeline({
         onComplete: () => {
@@ -30,7 +32,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
           });
         }
       });
-
+      
       // Cover page
       tl.set(overlayRef.current, { yPercent: 100 })
         .to(overlayRef.current, {
@@ -38,6 +40,8 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
           duration: 1,
           ease: 'expo.inOut'
         });
+
+      return () => clearTimeout(timer);
     }
   }, [children, pathname, displayChildren, isTransitioning]);
 

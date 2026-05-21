@@ -84,7 +84,7 @@ export default function VaultPage() {
                   <h4 className="text-sm font-bold text-text-primary">Our Team</h4>
                 </div>
                 <div className="h-32 overflow-y-auto pr-2">
-                  <div className="bg-surface p-4 rounded-lg text-[13px] text-text-secondary">We've updated your event map. Take a look!</div>
+                  <div className="bg-surface p-4 rounded-lg text-[13px] text-text-secondary">We&apos;ve updated your event map. Take a look!</div>
                 </div>
                 <div className="flex gap-2">
                   <input type="text" placeholder="Reply..." className="flex-grow bg-surface border border-linen py-2 px-4 text-[13px] outline-none focus:border-heritage" />
