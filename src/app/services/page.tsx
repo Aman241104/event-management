@@ -109,7 +109,7 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent z-10" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 z-10" />
           
-          <div className="container relative z-20 pt-28 pb-16 md:pt-32 md:pb-20">
+          <div className="container relative z-20 pt-28 pb-24 md:pt-32 md:pb-32">
             <div className="max-w-5xl space-y-6 md:space-y-10">
               <div className="hero-header-reveal flex flex-col items-start gap-4 opacity-0">
                  <div className="flex items-center gap-3">
@@ -140,7 +140,7 @@ export default function ServicesPage() {
               </section>
 
               {/* 2. Philosophy Section */}
-              <section id="philosophy" className="py-12 md:py-32 bg-[#FDFBF7] relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[6rem] -mt-12 md:-mt-16 z-20">
+              <section id="philosophy" className="py-12 md:py-32 bg-[#FDFBF7] relative overflow-hidden rounded-t-[2.5rem] md:rounded-t-[6rem] -mt-6 md:-mt-10 z-20">
                 <div className="absolute top-20 left-[5%] w-64 h-64 md:w-96 md:h-96 opacity-[0.02] pointer-events-none -rotate-12">
                   <BackgroundFlourish type="architectural" />
                 </div>
