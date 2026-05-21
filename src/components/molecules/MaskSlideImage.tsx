@@ -63,7 +63,7 @@ export function MaskSlideImage({
   return (
     <div 
       ref={containerRef}
-      className={cn("relative group", aspectRatio, className)}
+      className={cn("relative group overflow-hidden", aspectRatio, className)}
     >
       {/* The Frame and Image */}
       <div className="w-full h-full frame-arch-luxury">

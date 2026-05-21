@@ -272,7 +272,7 @@ export default function Home() {
     <main ref={containerRef} className="bg-canvas overflow-x-hidden">
       
       {/* 1. Hero Section */}
-      <section className="relative h-[85vh] min-h-[700px] md:min-h-[850px] flex items-start justify-start overflow-hidden bg-heritage pt-20 md:pt-44">
+      <section className="relative h-[85vh] min-h-[700px] md:min-h-[850px] flex items-start justify-start overflow-hidden bg-heritage pt-12 md:pt-32">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/assets/wedding/wedding-7.jpg" 
@@ -293,7 +293,7 @@ export default function Home() {
             <div className="space-y-6 md:space-y-10">
               <h1 className="hero-title text-[3.2rem] sm:text-7xl md:text-8xl lg:text-[8.8rem] font-serif text-white leading-[0.9] md:leading-[0.85] tracking-tight">
                 Crafting <br />
-                Extraordinary <span className="font-script text-[#D4B982] text-[5rem] sm:text-8xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-1 md:ml-4 italic relative top-4 md:top-6 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)] block md:inline">moments</span>
+                Extraordinary <span className="font-script text-[#D4B982] text-[5rem] sm:text-8xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-1 md:ml-4 italic relative top-2 md:top-3 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)] block md:inline">moments</span>
               </h1>
               <p className="hero-subtitle text-base md:text-xl text-white/90 font-serif italic max-w-xl leading-relaxed border-l-2 border-[#D4B982]/30 pl-6 md:pl-10">
                 Exquisite event planning and production for weddings, <br className="hidden md:block" />
@@ -301,7 +301,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="hero-btns flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-12 md:pt-16">
+            <div className="hero-btns flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 pt-10 md:pt-14">
               <Magnetic strength={0.1} className="w-full sm:w-auto">
                 <Link href="/contact" className="block w-full sm:w-auto">
                   <Button className="btn-gold w-full h-14 md:h-15 px-8 md:px-14">
