@@ -46,7 +46,7 @@ export function RollingCounter({
       gsap.fromTo(strip, 
         { y: 0 },
         {
-          y: `-${targetIndex * 100}%`, // Move by percentage of its own height (100% = 1 digit height)
+          y: `-${(targetIndex / repeatedDigits.length) * 100}%`,
           duration: duration + (index * 0.2),
           ease: "expo.out",
           scrollTrigger: {
@@ -60,7 +60,7 @@ export function RollingCounter({
   }, [digits, duration, cycles]);
 
   return (
-    <div ref={containerRef} className={cn("inline-flex items-baseline leading-none", className)}>
+    <div ref={containerRef} className={cn("inline-flex items-center leading-none", className)}>
       <div className="flex overflow-hidden h-[1em]">
         {digits.map((_, i) => (
           <div key={i} className="relative w-[0.6em] h-full">
@@ -68,7 +68,7 @@ export function RollingCounter({
               className="digit-strip absolute top-0 left-0 w-full flex flex-col"
             >
               {repeatedDigits.map((num, idx) => (
-                <div key={idx} className="h-full flex-shrink-0 flex items-center justify-center">
+                <div key={idx} className="h-[1em] flex-shrink-0 flex items-center justify-center">
                   {num}
                 </div>
               ))}

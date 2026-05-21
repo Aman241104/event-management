@@ -16,6 +16,7 @@ import { useGSAP } from '@gsap/react';
 
 import { WhatsAppLogo } from '@/components/atoms/WhatsAppLogo';
 import { HowWeWork } from '@/components/organisms/HowWeWork';
+import { RollingCounter } from '@/components/atoms/RollingCounter';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -248,7 +249,7 @@ export default function AboutPage() {
                     {stat.icon}
                   </div>
                   <span className="text-6xl md:text-7xl font-serif text-[#D4B982] mb-2 drop-shadow-[0_10px_30px_rgba(212,185,130,0.2)] group-hover:scale-110 transition-transform duration-700">
-                    {stat.value}
+                    <RollingCounter value={stat.value} />
                   </span>
                   <span className="text-[10px] md:text-[11px] font-bold text-white/40 uppercase tracking-[0.4em]">
                     {stat.label}

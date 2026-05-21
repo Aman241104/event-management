@@ -255,7 +255,7 @@ export const SpecializedVerticalsAccordion = () => {
       </div>
 
       {/* 3. Mobile Layout: High-Fidelity Cards */}
-      <div className="lg:hidden container pb-16 space-y-8">
+      <div className="lg:hidden container pb-24 space-y-8">
         {verticals.map((item, index) => (
           <div 
             key={item.id}
