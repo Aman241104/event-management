@@ -228,6 +228,7 @@ const testimonials = [
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
 
   useGSAP(() => {
     // Fade up animations - Enhanced for luxury feel
@@ -337,7 +338,10 @@ export default function Home() {
         <div className="section-divider" />
 
         {/* 2. Trust Strip */}
-        <section className="bg-[#05100a] py-24 md:py-32 overflow-hidden border-y border-white/5 relative">
+        <section className="bg-[#05100a] py-24 md:py-32 overflow-hidden relative">
+        {/* Ambient Depth Glow - Refined for Proper Gaussian Transition */}
+        <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black to-transparent opacity-60 z-10 pointer-events-none blur-[80px]" />
+        
         {/* Subtle Ambient Glow for the strip */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.04)_0%,_transparent_70%)] pointer-events-none" />
 
@@ -454,7 +458,7 @@ export default function Home() {
         <div className="section-divider" />
 
         {/* 4. About Us Section */}
-        <section className="pt-32 pb-48 md:pt-60 md:pb-80 bg-[#FDFBF7] relative overflow-hidden border-t border-linen/20">
+        <section className="pt-32 pb-48 md:pt-60 md:pb-80 bg-[#FDFBF7] relative overflow-hidden">
         <div className="container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 lg:gap-12 items-center">
             {/* Images Column - Exaggerated Proportions */}
@@ -538,10 +542,10 @@ export default function Home() {
 
         {/* 6. Experience Categories & Why Choose Us - Combined Flow */}
         <section className="bg-[#0a1f13] relative overflow-hidden">
-        {/* Ambient Depth Glow - Refined */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.04)_0%,_transparent_70%)] pointer-events-none" />
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
+        {/* Ambient Depth Glow - Refined for Proper Gaussian Transition */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.06)_0%,_transparent_70%)] pointer-events-none" />
+        <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#05100a] to-transparent opacity-100 z-10 pointer-events-none blur-[100px]" />
+        
         {/* Experience Categories Part */}
         <div className="pt-24 pb-12 md:pt-40 md:pb-24">
           <div className="container relative z-10">
@@ -644,6 +648,9 @@ export default function Home() {
 
         {/* 6.5 Cinematic Video Review */}
         <section className="py-32 md:py-60 bg-[#05100a] relative overflow-hidden">
+        {/* Ambient Depth Glow - Refined for Proper Gaussian Transition */}
+        <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#0a1f13] to-transparent opacity-100 z-10 pointer-events-none blur-[100px]" />
+        
         {/* Editorial Background Elements */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full select-none pointer-events-none opacity-[0.02] z-0">
           <span className="text-[30vw] font-script text-[#D4B982] leading-none block text-center">Zing Bliss</span>
@@ -665,38 +672,34 @@ export default function Home() {
                 <div className="absolute -inset-4 border border-[#D4B982]/10 z-0 pointer-events-none translate-x-4 translate-y-4 transition-transform duration-1000 group-hover:translate-x-0 group-hover:translate-y-0" />
 
                 <div className="relative w-full h-full overflow-hidden shadow-[0_60px_120px_rgba(0,0,0,0.6)] border border-white/5 rounded-sm z-10">
-                  <video 
-                    id="review-video"
-                    src="/masterchef-review.mp4"
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
-                  />
+                <video
+                  id="review-video"
+                  src="/masterchef-review.mp4"
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
+                />
 
-                  {/* Mute/Unmute UI - Moved to Bottom Right */}
-                  <div className="absolute bottom-8 right-8 z-30 flex items-center gap-4">
-                    <div className="flex flex-col items-end">
-                      <span id="mute-status" className="text-[8px] text-white font-bold uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        TAP TO UNMUTE
-                      </span>
-                    </div>
-                    <button 
-                      onClick={() => {
-                        const video = document.getElementById('review-video') as HTMLVideoElement;
-                        if (video) {
-                          video.muted = !video.muted;
-                          const status = document.getElementById('mute-status');
-                          if (status) status.innerHTML = video.muted ? 'TAP TO UNMUTE' : 'SOUND ON';
-                        }
-                      }}
-                      className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-[#D4B982] hover:border-[#D4B982] transition-all duration-500 group/btn"
-                    >
-                      <Volume2 className="text-white w-5 h-5 group-hover/btn:scale-110 transition-transform" />
-                    </button>
+                {/* Mute/Unmute UI - Moved to Bottom Right */}
+                <div className="absolute bottom-8 right-8 z-30 flex items-center gap-4">
+                  <div className="flex flex-col items-end">
+                    <span className="text-[8px] text-white font-bold uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      {isMuted ? 'TAP TO UNMUTE' : 'SOUND ON'}
+                    </span>
                   </div>
-
+                  <button 
+                    onClick={() => setIsMuted(!isMuted)}
+                    className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-[#D4B982] hover:border-[#D4B982] transition-all duration-500 group/btn"
+                  >
+                    {isMuted ? (
+                      <VolumeX className="text-white w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+                    ) : (
+                      <Volume2 className="text-white w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+                    )}
+                  </button>
+                </div>
                   {/* Subtle Vignette */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
                 </div>
@@ -770,6 +773,9 @@ export default function Home() {
 
         {/* 7. Testimonials */}
       <section className="py-24 md:py-48 bg-[#FDFBF7] relative overflow-hidden">
+        {/* Ambient Depth Glow - Refined for Proper Gaussian Transition */}
+        <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#05100a] to-transparent opacity-20 z-10 pointer-events-none blur-[100px]" />
+        
         {/* Deep Decorative Background Rings */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-[#D4B982]/5 rounded-full" />

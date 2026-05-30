@@ -211,10 +211,10 @@ export const HowWeWork = () => {
             />
 
             {/* Card Internal Content - Magazine Spread Style */}
-            <div className="card-inner container h-full flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-32 pt-20">
+            <div className="card-inner container h-full flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 pt-12 md:pt-16">
               
               {/* Visual Side - Editorial Frame */}
-              <div className="visual-side w-full lg:w-[45%] aspect-[3/4] lg:h-[75vh] relative group">
+              <div className="visual-side w-full lg:w-[42%] aspect-[3/4] lg:h-[65vh] relative group">
                 {/* Decorative Offset Frame */}
                 <div className="absolute -inset-4 border border-[#D4B982]/10 translate-x-4 translate-y-4 transition-transform duration-1000 group-hover:translate-x-0 group-hover:translate-y-0" />
                 
@@ -246,15 +246,15 @@ export const HowWeWork = () => {
               </div>
 
               {/* Text Side - High End Typography */}
-              <div className="text-side w-full lg:w-[50%] space-y-12 lg:space-y-20">
-                <div className="space-y-8">
+              <div className="text-side w-full lg:w-[50%] space-y-6 lg:space-y-8">
+                <div className="space-y-6">
                   <div className="flex items-center gap-6">
                     <div className="flex flex-col">
                        <span className="text-[11px] font-mono text-[#D4B982] tracking-[0.6em] font-bold uppercase">STATION {step.id}</span>
                        <div className="h-0.5 w-full bg-[#D4B982]/20 mt-2" />
                     </div>
                   </div>
-                  <h3 className="text-6xl md:text-8xl lg:text-9xl font-serif text-white tracking-tighter leading-[0.9] uppercase">
+                  <h3 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white tracking-tighter leading-[0.9] uppercase">
                     {step.title.split(' ').map((word, i) => (
                       <span key={i} className={cn("block", i === 0 ? "text-white" : "text-[#D4B982] italic")}>
                         {word}
@@ -263,12 +263,12 @@ export const HowWeWork = () => {
                   </h3>
                 </div>
 
-                <div className="space-y-10">
-                  <p className="text-white/50 text-2xl md:text-3xl lg:text-4xl leading-relaxed font-light italic max-w-2xl border-l-4 border-[#D4B982]/30 pl-12">
+                <div className="space-y-6 md:space-y-8">
+                  <p className="text-white/50 text-xl md:text-2xl lg:text-3xl leading-relaxed font-light italic max-w-2xl border-l-4 border-[#D4B982]/30 pl-8">
                     &quot;{step.description}&quot;
                   </p>
 
-                  <div className="flex flex-wrap gap-6 pt-4">
+                  <div className="flex flex-wrap gap-6 pt-2">
                      {['Luxury Experience', 'Tailored Design', 'Seamless Flow'].map((badge) => (
                        <div key={badge} className="flex items-center gap-3 group/badge cursor-default">
                           <div className="w-1.5 h-1.5 rotate-45 border border-[#D4B982] bg-transparent group-hover/badge:bg-[#D4B982] transition-colors" />
@@ -279,10 +279,13 @@ export const HowWeWork = () => {
                 </div>
 
                 {index === steps.length - 1 && (
-                  <div className="pt-12">
+                  <div className="pt-6 md:pt-10">
                     <Magnetic strength={0.1}>
                       <Link href="/contact">
-                        <Button className="btn-gold px-16 h-20 text-[12px] tracking-[0.5em] shadow-[0_30px_80px_rgba(212,185,130,0.25)]">
+                        <Button 
+                          variant="ghost" 
+                          className="btn-gold px-12 md:px-16 h-16 md:h-18 text-[11px] md:text-[12px] tracking-[0.4em] md:tracking-[0.5em] shadow-[0_20px_60px_rgba(179,139,77,0.3)] !text-black"
+                        >
                           COMMENCE YOUR JOURNEY <ArrowRight size={20} className="ml-5" />
                         </Button>
                       </Link>
