@@ -150,7 +150,7 @@ export default function RootLayout({
                 },
                 "contactPoint": {
                   "@type": "ContactPoint",
-                  "telephone": "+91-98765-43210",
+                  "telephone": "+91-98257-82685",
                   "contactType": "customer service",
                   "areaServed": "IN",
                   "availableLanguage": "en"

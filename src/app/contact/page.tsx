@@ -108,13 +108,13 @@ export default function ContactPage() {
               <div className="space-y-4 pt-4 border-t border-linen/50">
                 <h3 className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#D4B982]">SAY HELLO</h3>
                 <div className="space-y-3">
-                  <a href="tel:+919876543210" className="flex items-center gap-4 group">
+                  <a href="tel:+919825782685" className="flex items-center gap-4 group">
                     <div className="w-8 h-8 bg-[#FDFBF7] flex items-center justify-center text-[#D4B982] border border-linen/50 group-hover:bg-[#D4B982] group-hover:text-white transition-all duration-500"><Phone size={14} /></div>
-                    <span className="text-[12px] font-sans font-bold text-[#121212] tracking-[0.1em] group-hover:text-[#D4B982] transition-colors">+91 98765 43210</span>
+                    <span className="text-[12px] font-sans font-bold text-[#121212] tracking-[0.1em] group-hover:text-[#D4B982] transition-colors">+91 98257 82685</span>
                   </a>
-                  <a href="mailto:hello@zingblissevents.com" className="flex items-center gap-4 group">
+                  <a href="mailto:zingblissevent@gmail.com" className="flex items-center gap-4 group">
                     <div className="w-8 h-8 bg-[#FDFBF7] flex items-center justify-center text-[#D4B982] border border-linen/50 group-hover:bg-[#D4B982] group-hover:text-white transition-all duration-500"><Mail size={14} /></div>
-                    <span className="text-[12px] font-sans font-bold text-[#121212] tracking-[0.1em] group-hover:text-[#D4B982] transition-colors">hello@zingblissevents.com</span>
+                    <span className="text-[12px] font-sans font-bold text-[#121212] tracking-[0.1em] group-hover:text-[#D4B982] transition-colors">zingblissevent@gmail.com</span>
                   </a>
                 </div>
               </div>

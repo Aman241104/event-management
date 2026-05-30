@@ -28,12 +28,15 @@ import {
   LucideProps,
   Briefcase,
   Cake,
-  CalendarRange
+  CalendarRange,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/atoms/Button';
 import { Magnetic } from '@/components/atoms/Magnetic';
 import { TextReveal } from '@/components/atoms/TextReveal';
+import { ParallaxImage } from '@/components/atoms/ParallaxImage';
 import { getGenericWhatsAppLink } from '@/lib/whatsapp';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -42,6 +45,7 @@ import { useGSAP } from '@gsap/react';
 import { WhatsAppLogo } from '@/components/atoms/WhatsAppLogo';
 import { HowWeWork } from '@/components/organisms/HowWeWork';
 import { RollingCounter } from '@/components/atoms/RollingCounter';
+import { MaskSlideImage } from '@/components/molecules/MaskSlideImage';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -272,7 +276,7 @@ export default function Home() {
     <main ref={containerRef} className="bg-canvas overflow-x-hidden">
       
       {/* 1. Hero Section */}
-      <section className="relative h-[85vh] min-h-[700px] md:min-h-[850px] flex items-start justify-start overflow-hidden bg-heritage pt-12 md:pt-32">
+      <section className="relative h-[90vh] min-h-[750px] md:min-h-[900px] flex items-start justify-start overflow-hidden bg-heritage pt-16 md:pt-40">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/assets/wedding/wedding-7.jpg" 
@@ -328,13 +332,15 @@ export default function Home() {
             <span className="text-[8px] font-sans font-bold uppercase tracking-[0.6em] opacity-80 group-hover:opacity-100 transition-opacity whitespace-nowrap">SCROLL TO EXPLORE</span>
           </div>
         </div>
-      </section>
+        </section>
 
-      {/* 2. Trust Strip */}
-      <section className="bg-[#05100a] py-16 md:py-20 overflow-hidden border-y border-white/5 relative">
+        <div className="section-divider" />
+
+        {/* 2. Trust Strip */}
+        <section className="bg-[#05100a] py-24 md:py-32 overflow-hidden border-y border-white/5 relative">
         {/* Subtle Ambient Glow for the strip */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.04)_0%,_transparent_70%)] pointer-events-none" />
-        
+
         <div className="container relative z-10">
           <div className="flex flex-col items-center space-y-12 md:space-y-16">
             <div className="flex items-center gap-4 fade-up">
@@ -344,7 +350,7 @@ export default function Home() {
                </span>
                <div className="w-8 md:w-16 h-px bg-gradient-to-l from-transparent to-[#D4B982]/30" />
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 md:gap-16 lg:gap-24 items-center justify-items-center w-full max-w-6xl">
               {trustLogos.map((logo, i) => (
                 <div 
@@ -371,61 +377,70 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+        </section>
 
-      {/* 3. Our Services */}
-      <section id="services" className="pt-10 pb-8 md:pt-16 md:pb-16 bg-[#FDFBF7] relative overflow-hidden">
+        <div className="section-divider" />
+
+        {/* 3. Our Services */}
+        <section id="services" className="pt-24 pb-20 md:pt-48 md:pb-32 bg-[#FDFBF7] relative overflow-hidden">
         {/* Subtle Background Flourish */}
         <div className="absolute top-0 right-0 w-[40%] h-full opacity-[0.03] pointer-events-none">
           <div className="w-full h-full dot-pattern" />
         </div>
-        
+
         <div className="container relative z-10">
-          <div className="flex flex-col items-center text-center space-y-4 mb-10 fade-up">
-            <span className="text-[10px] md:text-[11px] text-[#D4B982] uppercase tracking-[0.7em] font-bold">WHAT WE DO</span>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-[#121212] tracking-tight">Our Services</h2>
-            <div className="relative pt-4 flex items-center justify-center">
-              <div className="w-24 h-px bg-[#D4B982]/40" />
-              <div className="mx-6 w-3 h-3 rotate-45 border border-[#D4B982]/60 bg-[#FDFBF7]" />
-              <div className="w-24 h-px bg-[#D4B982]/40" />
+          <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-24 md:mb-32">
+            <div className="max-w-3xl space-y-6">
+              <div className="flex items-center gap-3 fade-up">
+                <div className="w-12 h-px bg-[#D4B982]" />
+                <span className="text-[10px] md:text-[11px] text-[#D4B982] uppercase tracking-[0.7em] font-bold">WHAT WE DO</span>
+              </div>
+              <h2 className="text-5xl md:text-7xl lg:text-[7.5rem] font-serif font-medium text-[#121212] tracking-tight leading-[0.9]">
+                <TextReveal text="Our Services" />
+              </h2>
+            </div>
+            <div className="pb-4 hidden md:block fade-up">
+              <p className="text-sm md:text-base text-[#525252] font-serif italic max-w-xs leading-relaxed border-l border-[#D4B982]/30 pl-6">
+                Tailored solutions for life&apos;s most <br/> distinguished occasions.
+              </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 md:gap-y-40">
             {services.map((service, i) => (
               <div 
                 key={i} 
-                className="group relative flex flex-col bg-[#0a1f13] rounded-2xl overflow-hidden transition-all duration-700 hover:-translate-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.15)] hover:shadow-[0_40px_100px_rgba(0,0,0,0.3)] fade-up h-full" 
-                style={{ transitionDelay: `${i * 150}ms` }}
+                className={cn(
+                  "group relative flex flex-col space-y-8 fade-up",
+                  i % 2 === 1 ? "md:mt-32" : "" // Staggered grid
+                )}
+                style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <div className="h-56 relative overflow-hidden">
-                  <Image 
+                <div className="relative overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+                  <MaskSlideImage 
                     src={service.image} 
                     alt={service.title} 
-                    fill 
-                    className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-110" 
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    aspectRatio="aspect-[16/10]"
+                    className="object-cover" 
                   />
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-all duration-700" />
                 </div>
-                
-                <div className="p-8 md:p-9 flex-grow flex flex-col justify-between relative">
-                   <div className="space-y-6">
-                     <div className="flex gap-4 items-center">
-                       <div className="text-[#D4B982] shrink-0">
-                         {React.cloneElement(service.icon as React.ReactElement<LucideProps>, { size: 28, strokeWidth: 1.2 })}
-                       </div>
-                       <h3 className="text-[16px] md:text-[18px] font-serif text-white tracking-[0.05em] leading-tight uppercase font-medium">
-                         {service.title}
-                       </h3>
+
+                <div className="flex flex-col space-y-6 max-w-md">
+                   <div className="flex gap-4 items-center">
+                     <div className="text-[#D4B982] shrink-0">
+                       {React.cloneElement(service.icon as React.ReactElement<LucideProps>, { size: 32, strokeWidth: 1 })}
                      </div>
-                     <p className="text-[12px] md:text-[13px] text-white/50 font-sans font-light leading-relaxed group-hover:text-white/80 transition-colors">
-                       {service.desc}
-                     </p>
+                     <h3 className="text-2xl md:text-3xl font-serif text-[#121212] tracking-tight uppercase font-medium">
+                       {service.title}
+                     </h3>
                    </div>
-                   <div className="pt-8">
-                     <Link href="/services" className="inline-flex items-center gap-3 text-[10px] text-[#D4B982] uppercase tracking-[0.5em] font-bold group/link relative transition-all">
-                       <span className="relative z-10">EXPLORE</span>
+                   <p className="text-base md:text-lg text-[#525252] font-sans font-light leading-relaxed">
+                     {service.desc}
+                   </p>
+                   <div className="pt-4">
+                     <Link href="/services" className="inline-flex items-center gap-4 text-[10px] text-[#D4B982] uppercase tracking-[0.5em] font-bold group/link relative">
+                       <span className="relative z-10">EXPLORE SERVICE</span>
+                       <div className="w-12 h-px bg-[#D4B982]/30 group-hover/link:w-20 transition-all duration-500" />
                        <ArrowRight size={14} className="group-hover/link:translate-x-2 transition-transform duration-500" />
                      </Link>
                    </div>
@@ -434,74 +449,71 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+        </section>
 
-      {/* 4. About Us Section */}
-      <section className="pt-8 pb-32 md:pt-16 md:pb-36 bg-[#FDFBF7] relative overflow-hidden border-t border-linen/20">
+        <div className="section-divider" />
+
+        {/* 4. About Us Section */}
+        <section className="pt-32 pb-48 md:pt-60 md:pb-80 bg-[#FDFBF7] relative overflow-hidden border-t border-linen/20">
         <div className="container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
-            {/* Images Column - Refined Editorial Layout */}
-            <div className="relative fade-up">
-              <div className="aspect-[3/4] relative rounded-none overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.12)] z-10 border border-linen/30">
-                <Image 
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 lg:gap-12 items-center">
+            {/* Images Column - Exaggerated Proportions */}
+            <div className="lg:col-span-6 relative fade-up">
+              <div className="aspect-[4/5] relative rounded-none overflow-hidden shadow-[0_60px_120px_rgba(0,0,0,0.15)] z-10">
+                <ParallaxImage 
                   src="/kamna-udernani.png" 
                   alt="Kamna Udernani - Founder" 
-                  fill 
+                  aspectRatio="h-full w-full"
                   className="object-cover" 
-                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-heritage/10 mix-blend-multiply" />
               </div>
-              <Link href="/portfolio" className="absolute -bottom-12 -right-12 w-[75%] aspect-[4/3] rounded-none overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.25)] z-20 border-[15px] border-white hidden md:block group cursor-pointer">
-                <Image 
+
+              <div className="absolute -bottom-16 -right-12 w-[60%] aspect-square rounded-none overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.2)] z-20 border-[20px] border-white hidden md:block">
+                <ParallaxImage 
                   src="/assets/production/production-1.jpg" 
                   alt="Detail" 
-                  fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-110" 
-                  sizes="40vw"
+                  aspectRatio="h-full w-full"
+                  className="object-cover" 
+                  speed={0.05}
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-heritage/90 py-4 px-6 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-expo">
-                   <span className="text-[10px] text-white uppercase tracking-[0.5em] font-bold">VIEW WORK</span>
-                </div>
-              </Link>
-              
-              {/* Subtle accent line */}
-              <div className="absolute -top-10 -left-10 w-32 h-32 border-t border-l border-[#D4B982]/20 z-0" />
+              </div>
+
+              <div className="absolute -top-12 -left-12 w-48 h-48 border-t-2 border-l-2 border-[#D4B982]/20 z-0" />
             </div>
 
-            {/* Text Column - Editorial Hierarchy */}
-            <div className="space-y-12 fade-up lg:pl-12">
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-px bg-[#D4B982]" />
-                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.6em] font-bold">ABOUT US</span>
+            {/* Text Column - High Contrast Spacing */}
+            <div className="lg:col-span-5 lg:offset-1 space-y-16 fade-up lg:pl-12">
+              <div className="space-y-10">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-px bg-[#D4B982]" />
+                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">THE VISIONARY</span>
                 </div>
-                <div className="space-y-2">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-[#121212] leading-[1.1] uppercase">
-                    WE DON&apos;T PLAN EVENTS.
+                <div className="space-y-4">
+                  <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#121212] leading-[0.95] uppercase tracking-tighter">
+                    WE DON&apos;T <br/> PLAN EVENTS.
                   </h2>
-                  <h3 className="font-script text-[#D4B982] text-3xl md:text-4xl lg:text-5xl lowercase leading-none italic -mt-2">
+                  <h3 className="font-script text-[#D4B982] text-5xl md:text-6xl lg:text-7xl lowercase leading-none italic block transform -translate-x-2 md:-translate-x-4">
                     we curate experiences.
                   </h3>
                 </div>
-                <div className="space-y-8 text-[#525252] leading-relaxed font-sans font-light text-base md:text-lg opacity-90 max-w-xl pt-4">
+                <div className="pt-8 space-y-8 text-[#525252] leading-[1.8] font-sans font-light text-lg md:text-xl opacity-90 max-w-lg">
                   <p>
                     Zing Bliss Events is dedicated to turning life&apos;s special moments into unforgettable experiences. We specialize in planning, designing and executing events with creativity, precision and professionalism.
                   </p>
                 </div>
               </div>
 
-              <div className="pt-6 md:pt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-6">
                 <Magnetic strength={0.1} className="w-full sm:w-auto">
                   <Link href="/contact" className="block w-full sm:w-auto">
-                    <Button className="btn-gold w-full h-14 md:h-15 px-10">
+                    <Button className="btn-gold w-full h-16 px-12">
                       BOOK CONSULTATION
                     </Button>
                   </Link>
                 </Magnetic>
                 <Magnetic strength={0.1} className="w-full sm:w-auto">
                   <Link href="/about" className="block w-full sm:w-auto">
-                    <Button className="w-full h-14 md:h-15 px-10 bg-heritage text-white border border-[#D4B982]/20 hover:bg-black hover:border-[#D4B982]/50 rounded-none tracking-[0.4em] font-bold text-[11px] uppercase transition-all duration-700 shadow-lg">
+                    <Button className="w-full h-16 px-12 bg-heritage text-white border border-[#D4B982]/20 hover:bg-black hover:border-[#D4B982]/50 rounded-none tracking-[0.4em] font-bold text-[11px] uppercase transition-all duration-700 shadow-xl">
                       OUR STORY
                     </Button>
                   </Link>
@@ -510,84 +522,89 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
+
         {/* Background floral decoration - Bottom Right */}
         <div className="absolute -bottom-24 -right-24 w-[600px] h-[600px] opacity-[0.1] pointer-events-none z-0 transition-all duration-1000 mix-blend-multiply overflow-hidden">
           <Image src="/flower-decor.png" alt="" fill className="object-contain object-right-bottom scale-110" />
         </div>
-      </section>
+        </section>
 
-      {/* 5. How We Work Section */}
-      <HowWeWork />
+        <div className="section-divider" />
 
-      {/* 6. Experience Categories & Why Choose Us - Combined Flow */}
-      <section className="bg-[#0a1f13] relative overflow-hidden">
+        {/* 5. How We Work Section */}
+        <HowWeWork />
+
+        <div className="section-divider" />
+
+        {/* 6. Experience Categories & Why Choose Us - Combined Flow */}
+        <section className="bg-[#0a1f13] relative overflow-hidden">
         {/* Ambient Depth Glow - Refined */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.04)_0%,_transparent_70%)] pointer-events-none" />
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-        
+
         {/* Experience Categories Part */}
-        <div className="pt-10 pb-2">
+        <div className="pt-24 pb-12 md:pt-40 md:pb-24">
           <div className="container relative z-10">
-            <div className="flex flex-col items-center text-center space-y-3 mb-5 fade-up">
-              <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.7em] font-bold">EXPERIENCE CATEGORIES</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-white tracking-tight leading-tight">Moments We Bring To Life</h2>
-              <div className="relative pt-3 flex items-center justify-center">
-                <div className="w-16 h-px bg-white/10" />
-                <div className="mx-4 w-2.5 h-2.5 rotate-45 border border-[#D4B982]/40 bg-[#0a1f13]" />
-                <div className="w-16 h-px bg-white/10" />
+            <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16 fade-up">
+              <div className="space-y-4">
+                <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.7em] font-bold">EXPERIENCE CATEGORIES</span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-white tracking-tight leading-tight">Moments We <br/> Bring To Life</h2>
+              </div>
+              <div className="pb-2">
+                <Link href="/portfolio">
+                  <Button variant="outline" className="h-12 px-8 border-white/15 !text-white hover:bg-[#D4B982] hover:!text-white hover:border-[#D4B982] rounded-none tracking-[0.4em] font-bold text-[10px] uppercase backdrop-blur-sm transition-all duration-700">
+                    EXPLORE FULL PORTFOLIO
+                  </Button>
+                </Link>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[180px] md:auto-rows-[220px]">
               {categories.map((cat, i) => (
                 <div 
                   key={i} 
-                  className="group relative aspect-[1.4/1] rounded-sm overflow-hidden cursor-pointer fade-up transition-all duration-700 hover:scale-[1.02] ring-1 ring-white/5 shadow-2xl" 
+                  className={cn(
+                    "group relative overflow-hidden cursor-pointer fade-up transition-all duration-700 shadow-2xl",
+                    i === 0 ? "md:col-span-2 md:row-span-2" :
+                    (i === 1 || i === 4 || i === 5) ? "md:col-span-2 md:row-span-1" : 
+                    "md:col-span-1 md:row-span-1"
+                  )}
                   style={{ transitionDelay: `${i * 60}ms` }}
                 >
-                  <Image 
+                  <MaskSlideImage 
                     src={cat.image} 
                     alt={cat.title} 
-                    fill 
+                    aspectRatio="h-full w-full"
+                    maskColor="bg-[#0a1f13]"
                     className="object-cover transition-transform duration-1000 group-hover:scale-110" 
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 15vw"
                   />
-                  
-                  {/* Refined Gradient Overlay - Stronger for better contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-100 group-hover:opacity-70 transition-opacity duration-700" />
-                  
-                  <div className="absolute inset-x-0 bottom-4 text-center px-2 transform group-hover:-translate-y-1 transition-transform duration-700">
-                    <span className="text-[8px] md:text-[9px] font-bold text-white uppercase tracking-[0.2em] drop-shadow-2xl group-hover:text-[#D4B982] transition-all duration-500 block">
+
+                  {/* Refined Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-700" />
+
+                  <div className="absolute inset-x-0 bottom-6 px-6 transform group-hover:-translate-y-1 transition-transform duration-700">
+                    <span className="text-[9px] md:text-[10px] font-bold text-white uppercase tracking-[0.3em] group-hover:text-[#D4B982] transition-colors block">
                       {cat.title}
                     </span>
                   </div>
                 </div>
               ))}
             </div>
-
-            <div className="flex justify-center mt-8 fade-up">
-              <Link href="/portfolio">
-                <Button variant="outline" className="h-10 px-8 border-white/15 !text-white hover:bg-[#D4B982] hover:!text-white hover:border-[#D4B982] rounded-none tracking-[0.4em] font-bold text-[9px] uppercase backdrop-blur-sm transition-all duration-700">
-                  VIEW ALL EVENTS
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
 
         {/* Why Choose Us Part - Integrated */}
-        <div className="pb-20 pt-10 relative">
+        <div className="pb-32 pt-20 md:pb-48 md:pt-32 relative">
           <div className="container relative z-10">
-            <div className="text-center mb-16 fade-up">
+            <div className="text-center mb-24 fade-up">
               <span className="text-[10px] text-[#D4B982] uppercase tracking-[0.7em] font-bold opacity-80">
                 WHY CHOOSE ZING BLISS EVENTS?
               </span>
-              <div className="w-12 h-px bg-[#D4B982]/20 mx-auto mt-6" />
+              <div className="w-12 h-px bg-[#D4B982]/20 mx-auto mt-8" />
             </div>
 
             {/* Metrics Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-20">
               {[
                 { value: '20+', label: 'Years of Experience' },
                 { value: '500+', label: 'Events Executed' },
@@ -595,92 +612,221 @@ export default function Home() {
               ].map((stat, i) => (
                 <div 
                   key={i} 
-                  className="fade-up group relative bg-white/5 border border-white/10 p-8 md:p-12 flex flex-col items-center text-center transition-all duration-700 hover:bg-white/[0.08] hover:border-[#D4B982]/30"
+                  className="fade-up group relative bg-white/[0.03] border border-white/5 p-12 md:p-16 flex flex-col items-center text-center transition-all duration-1000 hover:bg-white/[0.07] hover:border-[#D4B982]/20"
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
                   {/* Card Glow */}
-                  <div className="absolute inset-0 bg-[#D4B982]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                  
+                  <div className="absolute inset-0 bg-[#D4B982]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none" />
+
                   {/* Animated Number */}
-                  <div className="relative z-10 mb-4">
-                    <span className="text-6xl md:text-7xl font-serif text-[#D4B982] drop-shadow-[0_10px_30px_rgba(212,185,130,0.2)]">
+                  <div className="relative z-10 mb-6">
+                    <span className="text-7xl md:text-8xl font-serif text-[#D4B982] drop-shadow-[0_15px_40px_rgba(212,185,130,0.2)]">
                       <RollingCounter value={stat.value} />
                     </span>
                   </div>
-                  
+
                   {/* Label */}
-                  <span className="relative z-10 text-[10px] md:text-[11px] font-bold text-white/40 uppercase tracking-[0.4em] group-hover:text-white/60 transition-colors">
+                  <span className="relative z-10 text-[11px] md:text-[12px] font-bold text-white/40 uppercase tracking-[0.5em] group-hover:text-white/60 transition-colors">
                     {stat.label}
                   </span>
 
                   {/* Corner Accents */}
-                  <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#D4B982]/0 group-hover:border-[#D4B982]/40 transition-all duration-700" />
-                  <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#D4B982]/0 group-hover:border-[#D4B982]/40 transition-all duration-700" />
+                  <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-[#D4B982]/0 group-hover:border-[#D4B982]/20 transition-all duration-1000" />
+                  <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[#D4B982]/0 group-hover:border-[#D4B982]/20 transition-all duration-1000" />
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
-      {/* 7. Testimonials */}
-      <section className="py-12 md:py-10 bg-[#FDFBF7] relative overflow-hidden">
-        {/* Deep Decorative Background Rings - Matching Reference 1 */}
+        </section>
+
+        <div className="section-divider" />
+
+        {/* 6.5 Cinematic Video Review */}
+        <section className="py-32 md:py-60 bg-[#05100a] relative overflow-hidden">
+        {/* Editorial Background Elements */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full select-none pointer-events-none opacity-[0.02] z-0">
+          <span className="text-[30vw] font-script text-[#D4B982] leading-none block text-center">Zing Bliss</span>
+        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,_rgba(212,185,130,0.05)_0%,_transparent_50%)] pointer-events-none" />
+
+        <div className="container relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32 items-center">
+
+            {/* Video Column - Editorial Frame */}
+            <div className="lg:col-span-5 relative fade-up">
+              {/* Vertical Label */}
+              <div className="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-90 origin-center hidden xl:block">
+                <span className="text-[10px] font-mono text-[#D4B982]/40 uppercase tracking-[1em] whitespace-nowrap">MASTERCHEF SERIES • 2026</span>
+              </div>
+
+              <div className="relative aspect-[9/16] w-full max-w-[420px] mx-auto group">
+                {/* Double Frame Effect */}
+                <div className="absolute -inset-4 border border-[#D4B982]/10 z-0 pointer-events-none translate-x-4 translate-y-4 transition-transform duration-1000 group-hover:translate-x-0 group-hover:translate-y-0" />
+
+                <div className="relative w-full h-full overflow-hidden shadow-[0_60px_120px_rgba(0,0,0,0.6)] border border-white/5 rounded-sm z-10">
+                  <video 
+                    id="review-video"
+                    src="/masterchef-review.mp4"
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
+                  />
+
+                  {/* Mute/Unmute UI - Moved to Bottom Right */}
+                  <div className="absolute bottom-8 right-8 z-30 flex items-center gap-4">
+                    <div className="flex flex-col items-end">
+                      <span id="mute-status" className="text-[8px] text-white font-bold uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        TAP TO UNMUTE
+                      </span>
+                    </div>
+                    <button 
+                      onClick={() => {
+                        const video = document.getElementById('review-video') as HTMLVideoElement;
+                        if (video) {
+                          video.muted = !video.muted;
+                          const status = document.getElementById('mute-status');
+                          if (status) status.innerHTML = video.muted ? 'TAP TO UNMUTE' : 'SOUND ON';
+                        }
+                      }}
+                      className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-[#D4B982] hover:border-[#D4B982] transition-all duration-500 group/btn"
+                    >
+                      <Volume2 className="text-white w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+                    </button>
+                  </div>
+
+                  {/* Subtle Vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+                </div>
+              </div>
+            </div>
+
+            {/* Content Column - Magazine Hierarchy */}
+            <div className="lg:col-span-7 space-y-16 fade-up">
+              <div className="space-y-10">
+                <div className="flex items-center gap-6">
+                  <div className="w-16 h-px bg-[#D4B982]" />
+                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[1em] font-bold">CLIENT TESTIMONIAL</span>
+                </div>
+
+                <div className="space-y-4">
+                  <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.95] tracking-tight">
+                    &quot;Kamna <span className="italic font-script text-[#D4B982] lowercase text-[1.1em] block md:inline md:ml-2">nails it</span>
+                  </h2>
+                  <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.95] tracking-tight">
+                    when it comes to <br/> Zing Bliss.&quot;
+                  </h2>
+                </div>
+              </div>
+
+              <div className="space-y-12">
+                <p className="text-white/50 text-xl md:text-3xl font-serif italic leading-relaxed max-w-2xl border-l border-[#D4B982]/20 pl-10 py-2">
+                  &quot;It&apos;s not just about the decor or the luxurious food... It&apos;s about having that <span className="text-white">emotion</span> which is connected to that event.&quot;
+                </p>
+
+                <div className="flex items-center gap-8 pt-4">
+                  <div className="relative">
+                    <div className="w-16 h-16 rounded-full overflow-hidden border border-[#D4B982]/30 p-1">
+                      <Image 
+                        src="/hero-8.jpg" 
+                        alt="Reviewer" 
+                        width={64} 
+                        height={64} 
+                        className="object-cover h-full rounded-full grayscale hover:grayscale-0 transition-all duration-700"
+                      />
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#D4B982] rounded-full flex items-center justify-center border-2 border-[#05100a]">
+                       <Sparkles size={10} className="text-[#05100a]" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-white font-serif text-2xl tracking-wide">The MasterChef Guest</p>
+                    <div className="flex items-center gap-3">
+                      <span className="text-[9px] text-[#D4B982] uppercase tracking-[0.4em] font-bold">VERIFIED EXPERIENCE</span>
+                      <div className="w-1 h-1 rounded-full bg-white/20" />
+                      <span className="text-[9px] text-white/30 uppercase tracking-[0.4em] font-bold">AHMEDABAD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-12">
+                <Magnetic strength={0.1}>
+                  <Link href="/portfolio">
+                    <Button variant="outline" className="h-18 px-16 border-white/10 !text-white hover:bg-[#D4B982] hover:!text-white hover:border-[#D4B982] rounded-none tracking-[0.5em] font-bold text-[11px] uppercase transition-all duration-1000 backdrop-blur-sm group">
+                      EXPLORE THE GALLERY <ArrowRight size={16} className="ml-4 group-hover:translate-x-2 transition-transform" />
+                    </Button>
+                  </Link>
+                </Magnetic>
+              </div>
+            </div>
+          </div>
+        </div>
+        </section>
+
+        <div className="section-divider" />
+
+        {/* 7. Testimonials */}
+      <section className="py-24 md:py-48 bg-[#FDFBF7] relative overflow-hidden">
+        {/* Deep Decorative Background Rings */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-[#D4B982]/5 rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] border border-[#D4B982]/5 rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1600px] h-[1600px] border border-[#D4B982]/5 rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.8)_0%,_transparent_70%)]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-[#D4B982]/5 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[1400px] border border-[#D4B982]/5 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.9)_0%,_transparent_80%)]" />
         </div>
 
-        {/* Decorative background element - bottom line */}
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-linen/40 to-transparent" />
-        
         <div className="container relative z-10">
-          <div className="flex flex-col items-center text-center space-y-6 mb-5 fade-up">
+          <div className="flex flex-col items-center text-center space-y-8 mb-24 fade-up">
             <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">CLIENT LOVE</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-[#121212] tracking-tighter">Words That Inspire Us</h2>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#121212] tracking-tighter leading-tight max-w-4xl">
+              Stories of <span className="italic font-script text-[1.2em] lowercase">Extraordinary</span> Celebrations
+            </h2>
             
-            {/* Refined Diamond Separator */}
-            <div className="relative pt-6 flex items-center justify-center">
-              <div className="w-20 h-px bg-[#D4B982]/30" />
-              <div className="mx-6 w-3 h-3 rotate-45 border border-[#D4B982]/40 bg-[#FDFBF7] shadow-sm flex items-center justify-center">
-                <div className="w-1 h-1 bg-[#D4B982]/60 rotate-45" />
+            <div className="relative pt-8 flex items-center justify-center">
+              <div className="w-24 h-px bg-[#D4B982]/30" />
+              <div className="mx-8 w-4 h-4 rotate-45 border border-[#D4B982]/40 bg-[#FDFBF7] shadow-sm flex items-center justify-center">
+                <div className="w-1.5 h-1.5 bg-[#D4B982]/60 rotate-45" />
               </div>
-              <div className="w-20 h-px bg-[#D4B982]/30" />
+              <div className="w-24 h-px bg-[#D4B982]/30" />
             </div>
           </div>
 
           <div className="relative">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto">
               {testimonials.map((t, i) => (
                 <div 
                   key={i} 
-                  className="bg-white p-8 md:p-10 rounded-sm shadow-[0_20px_60px_rgba(0,0,0,0.03)] border border-linen/20 flex flex-col items-center text-center space-y-6 fade-up transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] group relative" 
-                  style={{ transitionDelay: `${i * 150}ms` }}
+                  className={cn(
+                    "bg-white p-10 md:p-14 rounded-sm shadow-[0_30px_80px_rgba(0,0,0,0.04)] border border-linen/20 flex flex-col items-center text-center space-y-8 fade-up transition-all duration-1000 hover:-translate-y-4 hover:shadow-[0_50px_100px_rgba(0,0,0,0.08)] group relative",
+                    i === 1 ? "md:mt-16" : ""
+                  )}
+                  style={{ transitionDelay: `${i * 200}ms` }}
                 >
-                  {/* Avatar - Refined & Integrated */}
-                  <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full overflow-hidden border-4 border-[#FDFBF7] shadow-xl transition-transform duration-700 group-hover:scale-110">
+                  {/* Avatar */}
+                  <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full overflow-hidden border-4 border-[#FDFBF7] shadow-2xl transition-transform duration-1000 group-hover:scale-110">
                     <Image 
                       src={t.image} 
                       alt={t.author} 
                       fill 
-                      className="object-cover scale-110" 
-                      sizes="64px"
+                      className="object-cover" 
+                      sizes="80px"
                     />
                   </div>
 
-                  <div className="pt-4 space-y-6 flex-grow flex flex-col items-center justify-center">
-                    <div className="text-[#D4B982]/20 transform group-hover:scale-110 transition-transform duration-700">
-                       <Sparkles size={20} strokeWidth={1} />
+                  <div className="pt-6 space-y-8 flex-grow flex flex-col items-center justify-center">
+                    <div className="text-[#D4B982]/20 transform group-hover:scale-125 transition-transform duration-1000">
+                       <Sparkles size={24} strokeWidth={1} />
                     </div>
                     
-                    <p className="text-[14px] md:text-[15px] text-[#525252] font-sans italic leading-relaxed opacity-90 font-light">
+                    <p className="text-lg md:text-xl text-[#525252] font-sans italic leading-[1.8] opacity-90 font-light max-w-[280px]">
                       &quot;{t.content}&quot;
                     </p>
                     
-                    <div className="flex flex-col items-center gap-2 pt-4 w-full mt-auto">
-                      <div className="w-6 h-px bg-linen group-hover:w-10 group-hover:bg-[#D4B982]/40 transition-all duration-700" />
-                      <span className="text-[10px] font-bold text-[#121212] uppercase tracking-[0.3em] block">
+                    <div className="flex flex-col items-center gap-4 pt-6 w-full mt-auto">
+                      <div className="w-8 h-px bg-linen group-hover:w-16 group-hover:bg-[#D4B982]/40 transition-all duration-1000" />
+                      <span className="text-[11px] font-bold text-[#121212] uppercase tracking-[0.4em] block transition-colors group-hover:text-[#D4B982]">
                         {t.author}
                       </span>
                     </div>
@@ -693,49 +839,49 @@ export default function Home() {
       </section>
 
       {/* 8. Final CTA */}
-      <section className="relative py-12 md:py-10 overflow-hidden bg-heritage">
+      <section className="relative py-32 md:py-60 overflow-hidden bg-heritage">
         <div className="absolute inset-0 z-0">
           <Image 
             src="/assets/wedding/wedding-3.jpg" 
             alt="CTA Background" 
             fill 
-            className="object-cover brightness-[0.2] scale-105" 
+            className="object-cover brightness-[0.15] scale-110" 
             sizes="100vw"
           />
           {/* Multi-layered Cinematic Overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-90" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.15)_0%,_transparent_75%)]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black opacity-90" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,185,130,0.1)_0%,_transparent_85%)]" />
         </div>
         
         <div className="container relative z-10 text-center">
-          <div className="space-y-8 fade-up">
-            <div className="flex items-center justify-center gap-3 mb-4">
-               <div className="w-12 h-px bg-[#D4B982]/40" />
-               <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">READY TO BEGIN?</span>
-               <div className="w-12 h-px bg-[#D4B982]/40" />
+          <div className="space-y-12 fade-up">
+            <div className="flex items-center justify-center gap-4 mb-6">
+               <div className="w-16 h-px bg-[#D4B982]/30" />
+               <span className="text-[11px] text-[#D4B982] uppercase tracking-[1em] font-bold">READY TO BEGIN?</span>
+               <div className="w-16 h-px bg-[#D4B982]/30" />
             </div>
             
             <div className="relative inline-block">
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white leading-[1.1] tracking-tighter relative z-10">
-                Let&apos;s Create Something
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[1] tracking-tighter relative z-10 uppercase">
+                Let&apos;s Create Something <br/>
+                <span className="font-script text-[#D4B982] text-6xl md:text-8xl lg:text-[10rem] lowercase italic block mt-4 drop-shadow-[0_20px_60px_rgba(212,185,130,0.5)] relative z-20">
+                  Unforgettable
+                </span>
               </h2>
-              <span className="font-script text-[#D4B982] text-5xl md:text-6xl lg:text-[7rem] block -mt-4 md:-mt-8 lg:-mt-6 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
-                Unforgettable
-              </span>
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-12 md:pt-16 fade-up" style={{ transitionDelay: '200ms' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-20 md:pt-24 fade-up" style={{ transitionDelay: '200ms' }}>
             <Magnetic strength={0.1}>
-              <Link href="/contact">
-                <Button className="btn-gold h-16 px-16">
+              <Link href="/contact" className="w-full sm:w-auto">
+                <Button className="btn-gold h-18 px-16 text-[11px]">
                   BOOK A CONSULTATION
                 </Button>
               </Link>
             </Magnetic>
             <Magnetic strength={0.1}>
-              <Link href="/portfolio">
-                <Button variant="outline" className="h-16 px-14 border-[#D4B982]/50 !text-[#D4B982] hover:bg-[#D4B982] hover:!text-white rounded-none tracking-[0.3em] font-bold text-[11px] uppercase transition-all duration-700 backdrop-blur-md group">
+              <Link href="/portfolio" className="w-full sm:w-auto">
+                <Button variant="outline" className="h-18 px-16 border-[#D4B982]/30 !text-[#D4B982] hover:bg-[#D4B982] hover:!text-white rounded-none tracking-[0.4em] font-bold text-[11px] uppercase transition-all duration-700 backdrop-blur-md group shadow-2xl">
                    VIEW PORTFOLIO
                 </Button>
               </Link>

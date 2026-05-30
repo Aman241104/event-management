@@ -130,19 +130,19 @@ export function Footer() {
                 <div className="space-y-4">
                   <p className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/30">Direct Line</p>
                   <a 
-                    href="tel:+919876543210" 
+                    href="tel:+919825782685" 
                     className="text-base text-white hover:text-[#D4B982] transition-all duration-500 font-serif italic"
                   >
-                    +91 98765 43210
+                    +91 98257 82685
                   </a>
                 </div>
                 <div className="space-y-4">
                   <p className="text-[9px] font-bold uppercase tracking-[0.4em] text-white/30">Correspondence</p>
                   <a 
-                    href="mailto:hello@zingblissevents.com" 
+                    href="mailto:zingblissevent@gmail.com" 
                     className="text-base text-white hover:text-[#D4B982] transition-all duration-500 font-serif italic underline decoration-white/10 underline-offset-8 hover:decoration-[#D4B982]/40"
                   >
-                    hello@zingblissevents.com
+                    zingblissevent@gmail.com
                   </a>
                 </div>
               </div>
