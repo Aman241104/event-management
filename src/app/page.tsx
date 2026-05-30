@@ -399,9 +399,11 @@ export default function Home() {
                 <div className="w-12 h-px bg-[#D4B982]" />
                 <span className="text-[10px] md:text-[11px] text-[#D4B982] uppercase tracking-[0.7em] font-bold">WHAT WE DO</span>
               </div>
-              <h2 className="text-5xl md:text-7xl lg:text-[7.5rem] font-serif font-medium text-[#121212] tracking-tight leading-[0.9]">
-                <TextReveal text="Our Services" />
-              </h2>
+              <TextReveal 
+                text="Our Services" 
+                as="h2"
+                className="text-5xl md:text-7xl lg:text-[7.5rem] font-serif font-medium text-[#121212] tracking-tight leading-[0.9]"
+              />
             </div>
             <div className="pb-4 hidden md:block fade-up">
               <p className="text-sm md:text-base text-[#525252] font-serif italic max-w-xs leading-relaxed border-l border-[#D4B982]/30 pl-6">
