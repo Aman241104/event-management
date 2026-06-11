@@ -12,7 +12,7 @@ export function FloatingWhatsApp() {
       {/* Tooltip-style label */}
       <div className="hidden md:block bg-white/95 px-4 py-2 border border-linen/30 shadow-xl opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 pointer-events-none mb-2">
         <span className="text-[10px] font-bold text-heritage uppercase tracking-[0.2em] whitespace-nowrap">
-          Chat with Concierge
+          Chat with Us
         </span>
       </div>
 

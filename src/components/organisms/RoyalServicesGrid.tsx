@@ -12,7 +12,7 @@ const services = [
     id: '01',
     title: 'Weddings & Celebrations',
     description: 'Bespoke luxury weddings and private milestones curated with logistical mastery and creative soul.',
-    longDescription: 'From intimate destination weddings to grand milestone celebrations, we handle every detail—venue sourcing, decor orchestration, and concierge-level guest management—ensuring your legacy is beautifully celebrated.',
+    longDescription: 'From intimate destination weddings to grand milestone celebrations, we handle every detail—venue sourcing, decor orchestration, and premium guest management—ensuring your legacy is beautifully celebrated.',
     image: '/assets/wedding/wedding-2.jpg',
     icon: <Star className="w-5 h-5 md:w-6 md:h-6" />,
     features: ['Destination Weddings', 'Intimate Galas', 'Milestone Anniversaries'],
@@ -35,7 +35,7 @@ const services = [
     longDescription: 'Our technical infrastructure handles the most complex requirements. We bring precision to every layer—from sound mapping and 3D stage rendering to bespoke lighting physics.',
     image: '/assets/production/production-1.jpg',
     icon: <Sparkles className="w-5 h-5 md:w-6 md:h-6" />,
-    features: ['Concert-Grade Audio', 'Bespoke AV Solutions', 'Stage Architecture'],
+    features: ['Premium Audio Systems', 'Bespoke AV Solutions', 'Stage Architecture'],
     href: '/contact'
   },
   {

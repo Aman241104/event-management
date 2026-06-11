@@ -48,7 +48,7 @@ const portfolioItems = [
   { id: 6, title: 'Global Leaders Meet', category: 'Corporate', image: '/assets/corporate/corporate-6.jpg', size: 'large' as const },
   { id: 7, title: 'Production Excellence', category: 'Festivals', image: '/assets/production/production-1.jpg', size: 'small' as const },
   { id: 8, title: 'Grand Birthday Gala', category: 'Birthdays', image: '/assets/birthday/birthday-2.jpg', size: 'medium' as const },
-  { id: 9, title: 'Live Concert Setup', category: 'Festivals', image: '/assets/production/production-2.jpg', size: 'small' as const },
+  { id: 9, title: 'Live Event Production', category: 'Festivals', image: '/assets/production/production-2.jpg', size: 'small' as const },
   { id: 10, title: 'Intimate Soiree', category: 'Private', image: '/assets/birthday/birthday-3.jpg', size: 'medium' as const },
   { id: 11, title: 'Annual Awards Night', category: 'Corporate', image: '/assets/corporate/corporate-3.jpg', size: 'medium' as const },
   { id: 12, title: 'Stage Production', category: 'Festivals', image: '/assets/production/production-3.jpg', size: 'small' as const },

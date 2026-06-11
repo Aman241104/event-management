@@ -4,31 +4,16 @@ import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { 
-  ArrowRight, 
-  Sparkles, 
-  Heart, 
-  PartyPopper, 
-  Music, 
-  Star, 
-  Users,
+  ArrowRight,
+  Sparkles,
+  Heart,
   Zap,
-  ChevronLeft,
-  ChevronRight,
-  Play,
-  ArrowDown,
-  Clock,
-  Gem,
-  CheckCircle2,
-  Phone,
-  MessageCircle,
-  Calendar,
   Layers,
   Award,
   Users2,
   LucideProps,
   Briefcase,
   Cake,
-  CalendarRange,
   Volume2,
   VolumeX
 } from 'lucide-react';
@@ -46,6 +31,7 @@ import { WhatsAppLogo } from '@/components/atoms/WhatsAppLogo';
 import { HowWeWork } from '@/components/organisms/HowWeWork';
 import { RollingCounter } from '@/components/atoms/RollingCounter';
 import { MaskSlideImage } from '@/components/molecules/MaskSlideImage';
+import { ClientVoices } from '@/components/organisms/ClientVoices';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -208,23 +194,6 @@ const whyChooseUs = [
   },
 ];
 
-const testimonials = [
-  {
-    content: "Our wedding was beyond our dreams! The team at Zing Bliss Events made everything so elegant and perfect.",
-    author: "Riya & Karan",
-    image: "/hero-8.jpg"
-  },
-  {
-    content: "Thank you Zing Bliss Events for the beautiful birthday setup. The theme and decor were exactly what we imagined!",
-    author: "Neha Malhotra",
-    image: "/hero-9.jpg"
-  },
-  {
-    content: "Absolutely loved the décor by Zing Bliss Events! Elegant, creative, and beautifully executed.",
-    author: "Arjun Mehta",
-    image: "/hero-2.jpg"
-  }
-];
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -301,8 +270,8 @@ export default function Home() {
                 Extraordinary <span className="font-script text-[#D4B982] text-[5rem] sm:text-8xl md:text-[10rem] lg:text-[11.5rem] lowercase ml-1 md:ml-4 italic relative top-2 md:top-3 drop-shadow-[0_10px_40px_rgba(212,185,130,0.4)] block md:inline">moments</span>
               </h1>
               <p className="hero-subtitle text-base md:text-xl text-white/90 font-serif italic max-w-xl leading-relaxed border-l-2 border-[#D4B982]/30 pl-6 md:pl-10">
-                Exquisite event planning and production for weddings, <br className="hidden md:block" />
-                corporate excellence, and life&apos;s most precious celebrations.
+                From grand weddings to intimate milestones — we design moments <br className="hidden md:block" />
+                that live on long after the last guest leaves.
               </p>
             </div>
 
@@ -325,14 +294,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Hero Bottom Controls - Grouped to avoid overlaps */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:right-10 md:translate-x-0 flex items-center z-20">
-          {/* Refined Scroll Indicator */}
-          <div className="flex flex-col items-center gap-2 text-white/40 group cursor-pointer transition-colors hover:text-[#D4B982]">
-            <ArrowDown size={16} className="animate-bounce" />
-            <span className="text-[8px] font-sans font-bold uppercase tracking-[0.6em] opacity-80 group-hover:opacity-100 transition-opacity whitespace-nowrap">SCROLL TO EXPLORE</span>
-          </div>
-        </div>
         </section>
 
         <div className="section-divider" />
@@ -396,8 +357,8 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-end justify-between gap-12 mb-24 md:mb-32">
             <div className="max-w-3xl space-y-6">
               <div className="flex items-center gap-3 fade-up">
-                <div className="w-12 h-px bg-[#D4B982]" />
-                <span className="text-[10px] md:text-[11px] text-[#D4B982] uppercase tracking-[0.7em] font-bold">WHAT WE DO</span>
+                <div className="w-12 h-px bg-[#1d5c3a]" />
+                <span className="text-[10px] md:text-[11px] text-[#1d5c3a] uppercase tracking-[0.7em] font-bold">WHAT WE DO</span>
               </div>
               <TextReveal 
                 text="Our Services" 
@@ -407,7 +368,7 @@ export default function Home() {
             </div>
             <div className="pb-4 hidden md:block fade-up">
               <p className="text-sm md:text-base text-[#525252] font-serif italic max-w-xs leading-relaxed border-l border-[#D4B982]/30 pl-6">
-                Tailored solutions for life&apos;s most <br/> distinguished occasions.
+                Every celebration is different. <br/> Every detail is ours to perfect.
               </p>
             </div>
           </div>
@@ -491,8 +452,8 @@ export default function Home() {
             <div className="lg:col-span-5 lg:offset-1 space-y-16 fade-up lg:pl-12">
               <div className="space-y-10">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-px bg-[#D4B982]" />
-                  <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">THE VISIONARY</span>
+                  <div className="w-16 h-px bg-[#1d5c3a]" />
+                  <span className="text-[11px] text-[#1d5c3a] uppercase tracking-[0.8em] font-bold">THE VISIONARY</span>
                 </div>
                 <div className="space-y-4">
                   <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#121212] leading-[0.95] uppercase tracking-tighter">
@@ -504,7 +465,7 @@ export default function Home() {
                 </div>
                 <div className="pt-8 space-y-8 text-[#525252] leading-[1.8] font-sans font-light text-lg md:text-xl opacity-90 max-w-lg">
                   <p>
-                    Zing Bliss Events is dedicated to turning life&apos;s special moments into unforgettable experiences. We specialize in planning, designing and executing events with creativity, precision and professionalism.
+                    We don&apos;t follow templates — we listen to your story, then build an experience entirely around it. Every element, every emotion, deliberately designed.
                   </p>
                 </div>
               </div>
@@ -774,77 +735,7 @@ export default function Home() {
         <div className="section-divider" />
 
         {/* 7. Testimonials */}
-      <section className="py-24 md:py-48 bg-[#FDFBF7] relative overflow-hidden">
-        {/* Ambient Depth Glow - Refined for Proper Gaussian Transition */}
-        <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#05100a] to-transparent opacity-20 z-10 pointer-events-none blur-[100px]" />
-        
-        {/* Deep Decorative Background Rings */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-[#D4B982]/5 rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[1400px] border border-[#D4B982]/5 rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.9)_0%,_transparent_80%)]" />
-        </div>
-
-        <div className="container relative z-10">
-          <div className="flex flex-col items-center text-center space-y-8 mb-24 fade-up">
-            <span className="text-[11px] text-[#D4B982] uppercase tracking-[0.8em] font-bold">CLIENT LOVE</span>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[#121212] tracking-tighter leading-tight max-w-4xl">
-              Stories of <span className="italic font-script text-[1.2em] lowercase">Extraordinary</span> Celebrations
-            </h2>
-            
-            <div className="relative pt-8 flex items-center justify-center">
-              <div className="w-24 h-px bg-[#D4B982]/30" />
-              <div className="mx-8 w-4 h-4 rotate-45 border border-[#D4B982]/40 bg-[#FDFBF7] shadow-sm flex items-center justify-center">
-                <div className="w-1.5 h-1.5 bg-[#D4B982]/60 rotate-45" />
-              </div>
-              <div className="w-24 h-px bg-[#D4B982]/30" />
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto">
-              {testimonials.map((t, i) => (
-                <div 
-                  key={i} 
-                  className={cn(
-                    "bg-white p-10 md:p-14 rounded-sm shadow-[0_30px_80px_rgba(0,0,0,0.04)] border border-linen/20 flex flex-col items-center text-center space-y-8 fade-up transition-all duration-1000 hover:-translate-y-4 hover:shadow-[0_50px_100px_rgba(0,0,0,0.08)] group relative",
-                    i === 1 ? "md:mt-16" : ""
-                  )}
-                  style={{ transitionDelay: `${i * 200}ms` }}
-                >
-                  {/* Avatar */}
-                  <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full overflow-hidden border-4 border-[#FDFBF7] shadow-2xl transition-transform duration-1000 group-hover:scale-110">
-                    <Image 
-                      src={t.image} 
-                      alt={t.author} 
-                      fill 
-                      className="object-cover" 
-                      sizes="80px"
-                    />
-                  </div>
-
-                  <div className="pt-6 space-y-8 flex-grow flex flex-col items-center justify-center">
-                    <div className="text-[#D4B982]/20 transform group-hover:scale-125 transition-transform duration-1000">
-                       <Sparkles size={24} strokeWidth={1} />
-                    </div>
-                    
-                    <p className="text-lg md:text-xl text-[#525252] font-sans italic leading-[1.8] opacity-90 font-light max-w-[280px]">
-                      &quot;{t.content}&quot;
-                    </p>
-                    
-                    <div className="flex flex-col items-center gap-4 pt-6 w-full mt-auto">
-                      <div className="w-8 h-px bg-linen group-hover:w-16 group-hover:bg-[#D4B982]/40 transition-all duration-1000" />
-                      <span className="text-[11px] font-bold text-[#121212] uppercase tracking-[0.4em] block transition-colors group-hover:text-[#D4B982]">
-                        {t.author}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ClientVoices />
 
       {/* 8. Final CTA */}
       <section className="relative py-32 md:py-60 overflow-hidden bg-heritage">
@@ -865,7 +756,7 @@ export default function Home() {
           <div className="space-y-12 fade-up">
             <div className="flex items-center justify-center gap-4 mb-6">
                <div className="w-16 h-px bg-[#D4B982]/30" />
-               <span className="text-[11px] text-[#D4B982] uppercase tracking-[1em] font-bold">READY TO BEGIN?</span>
+               <span className="text-[11px] text-[#D4B982] uppercase tracking-[1em] font-bold">YOUR STORY STARTS HERE</span>
                <div className="w-16 h-px bg-[#D4B982]/30" />
             </div>
             

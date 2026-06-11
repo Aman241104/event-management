@@ -52,7 +52,7 @@ export function Footer() {
             
             <div className="space-y-8 max-w-[380px]">
               <p className="text-base md:text-lg text-white/60 leading-relaxed font-serif italic font-light">
-                Architects of magic, dedicated to turning life&apos;s special moments into unforgettable experiences with quiet precision and refined energy.
+                We don&apos;t plan events. We curate the memories people carry for a lifetime.
               </p>
 
               <div className="pt-4">
@@ -118,7 +118,7 @@ export function Footer() {
             <div className="space-y-12">
               <h4 className="text-[11px] font-sans font-bold uppercase tracking-[0.6em] text-[#D4B982] flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rotate-45 border border-[#D4B982]/40 bg-[#D4B982]/10" />
-                Concierge
+                Connect
               </h4>
               <div className="space-y-10">
                 <div className="space-y-4">
@@ -159,7 +159,7 @@ export function Footer() {
             </p>
             <div className="w-1.5 h-1.5 rotate-45 border border-white/10 hidden md:block" />
             <p className="text-[10px] font-mono uppercase text-[#D4B982]/40 tracking-[0.5em]">
-              Fine Art Event Architecture
+              Crafting Extraordinary Moments Since Day One
             </p>
           </div>
           

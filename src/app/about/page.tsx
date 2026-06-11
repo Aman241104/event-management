@@ -136,11 +136,6 @@ export default function AboutPage() {
                 </h1>
               </div>
 
-              <div className="max-w-xl mx-auto hero-subtext opacity-0 pt-6">
-                <p className="text-white/80 text-lg md:text-xl font-serif italic leading-relaxed">
-                  Dedicated to the fine details and grand visions that <br className="hidden md:block" /> make every event a unique masterpiece.
-                </p>
-              </div>
             </div>
           </div>
         </section>
@@ -206,10 +201,10 @@ export default function AboutPage() {
 
                 <div className="space-y-8 max-w-lg">
                   <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
-                    Zing Bliss Events, led by Founder & Creative Director <span className="text-[#121212] font-bold">Kamna Udernani</span>, was established to redefine luxury event management through logistical precision and creative excellence.
+                    Founded on the belief that great events aren&apos;t planned — they&apos;re felt. Zing Bliss Events, led by <span className="text-[#121212] font-bold">Kamna Udernani</span>, brings that philosophy to life for every client.
                   </p>
                   <p className="text-[#525252] text-lg font-sans font-light leading-relaxed">
-                    With an unwavering eye for detail and a passion for architectural elegance, our team brings decades of combined experience in venue sourcing, vendor management, and on-site production to every event we handle.
+                    With 20+ years of combined expertise in venue curation, vendor direction, and day-of production, we handle every layer — so you can simply enjoy the moment.
                   </p>
                 </div>
 
@@ -325,10 +320,10 @@ export default function AboutPage() {
               
               <div className="relative inline-block">
                 <h2 className="text-4xl md:text-7xl lg:text-[7.5rem] font-serif text-white leading-[1] tracking-tighter relative z-10">
-                  Compose Your Next
+                  Let&apos;s Build Something
                 </h2>
                 <span className="font-script text-[#D4B982] text-6xl md:text-9xl lg:text-[11rem] block -mt-4 md:-mt-8 lg:-mt-10 italic drop-shadow-[0_15px_45px_rgba(212,185,130,0.4)] relative z-20">
-                  Elite Celebration
+                  You&apos;ll Never Forget
                 </span>
               </div>
             </div>

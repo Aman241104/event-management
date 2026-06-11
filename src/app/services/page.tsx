@@ -125,7 +125,7 @@ export default function ServicesPage() {
               </h1>
               <div className="max-w-xl hero-subtext opacity-0 pt-4 md:pt-8 relative">
               <p className="text-white/80 text-lg md:text-2xl font-serif italic border-l border-[#D4B982]/30 pl-6 md:pl-10 leading-relaxed">
-                Translating intangible dreams into cinematic realities through logistical mastery and creative soul.
+                Your vision deserves more than execution — it deserves artistry. Here&apos;s how we deliver both.
               </p>
               <div className="absolute -bottom-4 left-6 md:left-10 w-24 h-px bg-gradient-to-r from-[#D4B982]/40 to-transparent" />
               </div>
@@ -162,7 +162,7 @@ export default function ServicesPage() {
 
                       <div className="space-y-6 md:space-y-10 max-w-2xl">
                         <p className="text-[#525252] text-lg md:text-2xl font-serif italic border-l-2 border-[#D4B982]/20 pl-6 md:pl-10 leading-relaxed">
-                          &quot;Zing Bliss&quot; is more than an agency; it is a curator of legacy. We specialize in embellishing the most significant chapters of your life with logistical mastery.
+                          We measure success not in checklists completed, but in the look on your face when it all comes together exactly as you imagined — and then some.
                         </p>
                         <p className="text-[#525252] text-base md:text-lg font-sans font-light leading-relaxed opacity-80 pl-6 md:pl-10">
                           Founded on absolute trust, we translate your intangible dreams into cinematic realities. Every milestone is engineered with perfection and heart-centered storytelling.
@@ -221,7 +221,7 @@ export default function ServicesPage() {
                </div>
                
                <p className="text-white/60 text-lg md:text-2xl font-serif italic max-w-3xl mx-auto leading-relaxed border-t border-b border-white/5 py-6 md:py-10 px-4 md:px-0">
-                 Join the elite group of visionaries who trust Zing Bliss for their most significant milestones.
+                 Your most significant moments deserve the team that treats them that way.
                </p>
 
                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10 pt-8 md:pt-12">
@@ -239,7 +239,7 @@ export default function ServicesPage() {
                          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#25D366]/20 flex items-center justify-center border border-[#25D366]/40 group-hover:bg-[#25D366]/30 transition-colors">
                            <MessageCircle fill="#25D366" className="text-[#25D366] w-4 h-4 md:w-5 md:h-5" />
                          </div>
-                         <span className="text-white group-hover:text-[#D4B982] transition-colors">WHATSAPP CONCIERGE</span>
+                         <span className="text-white group-hover:text-[#D4B982] transition-colors">WHATSAPP US</span>
                        </div>
                      </Button>
                    </a>

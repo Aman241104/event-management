@@ -73,7 +73,7 @@ export default function ContactPage() {
         </h1>
         <div className="max-w-xl mx-auto header-fade opacity-0 pt-4">
           <p className="text-[#525252] text-lg font-serif italic border-l border-[#D4B982]/30 pl-10 leading-relaxed text-left">
-            Ready to discuss your vision? Reach out to our professional management team and let&apos;s start the planning process.
+            Tell us about your dream event — we&apos;ll take it from there. No pressure, just a conversation.
           </p>
         </div>
       </section>
@@ -177,10 +177,9 @@ export default function ContactPage() {
              <div className="text-center space-y-3">
                <MapPin size={40} className="text-[#D4B982] mx-auto animate-luxury-pulse" />
                <h3 className="text-3xl font-serif text-white font-bold italic tracking-tight">Ahmedabad</h3>
-               <p className="text-[#D4B982] uppercase tracking-[0.6em] text-[10px] font-bold">CENTRAL STUDIO</p>
              </div>
           </div>
-          <Image src="/hero-8.jpg" alt="Map Location" fill className="object-cover transition-transform duration-[2000ms] group-hover:scale-105" />
+          <Image src="/ahmedabad-night.png" alt="Ahmedabad, Gujarat" fill className="object-cover transition-transform duration-[2000ms] group-hover:scale-105" />
         </div>
       </section>
     </main>

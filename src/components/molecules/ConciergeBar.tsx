@@ -14,7 +14,7 @@ export function ConciergeBar() {
             <MessageCircle size={16} strokeWidth={1.5} />
           </div>
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-text-secondary">Concierge</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-text-secondary">Connect</p>
             <p className="text-[11px] text-text-primary font-serif italic">Online</p>
           </div>
         </div>
