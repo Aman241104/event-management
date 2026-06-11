@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Zing Bliss Events | Best Wedding Planner in Ahmedabad",
     description: "The premier luxury event management agency in Ahmedabad. We craft bespoke, high-end celebrations with understated luxury and flawless precision.",
-    url: "https://zingblissevents.com",
+    url: "https://www.zingblissevents.com",
     siteName: "Zing Bliss Events",
     images: [
       {

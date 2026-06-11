@@ -397,7 +397,7 @@ export default function Home() {
                      <div className="text-[#D4B982] shrink-0">
                        {React.cloneElement(service.icon as React.ReactElement<LucideProps>, { size: 32, strokeWidth: 1 })}
                      </div>
-                     <h3 className="text-2xl md:text-3xl font-serif text-[#121212] tracking-tight uppercase font-medium">
+                     <h3 className="text-2xl md:text-3xl font-serif text-[#0a1f13] tracking-tight uppercase font-medium">
                        {service.title}
                      </h3>
                    </div>
@@ -405,9 +405,9 @@ export default function Home() {
                      {service.desc}
                    </p>
                    <div className="pt-4">
-                     <Link href="/services" className="inline-flex items-center gap-4 text-[10px] text-[#D4B982] uppercase tracking-[0.5em] font-bold group/link relative">
+                     <Link href="/services" className="inline-flex items-center gap-4 text-[10px] text-green-600 hover:text-green-700 uppercase tracking-[0.5em] font-bold group/link relative transition-colors duration-300">
                        <span className="relative z-10">EXPLORE SERVICE</span>
-                       <div className="w-12 h-px bg-[#D4B982]/30 group-hover/link:w-20 transition-all duration-500" />
+                       <div className="w-12 h-px bg-green-600/30 group-hover/link:w-20 transition-all duration-500" />
                        <ArrowRight size={14} className="group-hover/link:translate-x-2 transition-transform duration-500" />
                      </Link>
                    </div>

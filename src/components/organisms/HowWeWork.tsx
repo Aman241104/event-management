@@ -22,7 +22,7 @@ const steps = [
     label: 'VISION',
     title: 'Define Objectives',
     description: 'We begin by understanding your vision in detail, capturing every specific requirement to set the foundation for a perfect event.',
-    image: '/assets/corporate/corporate-1.jpg',
+    image: '/assets/define-objectives.jpg',
     accent: 'rgba(212, 185, 130, 0.05)'
   },
   {
@@ -30,7 +30,7 @@ const steps = [
     label: 'FINANCE',
     title: 'Budget Planning',
     description: 'Preparing a detailed budget that accounts for all major expenses while establishing protocols to monitor and control costs throughout the journey.',
-    image: '/assets/corporate/corporate-2.jpg',
+    image: '/assets/budget-planning.jpg',
     accent: 'rgba(42, 77, 55, 0.1)'
   },
   {
@@ -54,7 +54,7 @@ const steps = [
     label: 'COLLABORATION',
     title: 'Organize the Team',
     description: 'Assigning specific roles and responsibilities, appointing dedicated coordinators, and maintaining clear communication channels.',
-    image: '/assets/corporate/corporate-3.jpg',
+    image: '/assets/organize-team.jpg',
     accent: 'rgba(212, 185, 130, 0.05)'
   },
   {
@@ -62,7 +62,7 @@ const steps = [
     label: 'PARTNERSHIP',
     title: 'Vendor Management',
     description: 'Hiring and coordinating premier vendors (caterers, decorators, A/V, photographers) and ensuring the timely delivery of services.',
-    image: '/assets/production/production-1.jpg',
+    image: '/assets/vendor-management.jpg',
     accent: 'rgba(42, 77, 55, 0.1)'
   },
   {
@@ -70,7 +70,7 @@ const steps = [
     label: 'HOSPITALITY',
     title: 'Invitation & Gifting',
     description: 'Curating personalized invitations, managing guest lists with precision, and sourcing bespoke gifting experiences that resonate.',
-    image: '/assets/wedding/wedding-4.jpg',
+    image: '/assets/invitation-gifting.jpg',
     accent: 'rgba(212, 185, 130, 0.05)'
   },
   {
@@ -78,7 +78,7 @@ const steps = [
     label: 'OPERATIONS',
     title: 'Logistics Control',
     description: 'Planning all operational requirements, arranging transport, equipment, and setup, while managing registration and security.',
-    image: '/assets/corporate/corporate-4.jpg',
+    image: '/assets/logistics-control.jpg',
     accent: 'rgba(42, 77, 55, 0.1)'
   },
   {
@@ -94,7 +94,7 @@ const steps = [
     label: 'REFLECTION',
     title: 'Post-Event Review',
     description: 'Collecting invaluable feedback from attendees, reviewing the final budget, and identifying key learnings for future excellence.',
-    image: '/assets/corporate/corporate-5.jpg',
+    image: '/assets/post-event-review.jpg',
     accent: 'rgba(42, 77, 55, 0.1)'
   }
 ];
@@ -181,11 +181,11 @@ export const HowWeWork = () => {
           <div className="flex flex-col items-center gap-8 fade-up">
             <div className="flex items-center gap-6">
               <div className="w-16 h-px bg-[#D4B982]/30" />
-              <span className="text-[12px] text-[#D4B982] uppercase tracking-[1em] font-bold">THE METHODOLOGY</span>
+              <span className="text-[12px] text-[#D4B982] uppercase tracking-[1em] font-bold">OUR PROCESS</span>
               <div className="w-16 h-px bg-[#D4B982]/30" />
             </div>
             <h2 className="text-7xl md:text-9xl lg:text-[11rem] font-serif font-medium text-white tracking-tighter leading-[0.8] uppercase">
-              Our <span className="text-[#D4B982] italic font-script lowercase text-[1.1em] normal-case tracking-normal block md:inline">Signature</span> <br/> Journey
+              Our <span className="text-[#D4B982] italic font-script lowercase text-[1.1em] normal-case tracking-normal block md:inline">Creative</span> <br/> Process
             </h2>
           </div>
           <div className="flex justify-center pt-8 fade-up">
@@ -286,7 +286,7 @@ export const HowWeWork = () => {
                           variant="ghost" 
                           className="btn-gold px-12 md:px-16 h-16 md:h-18 text-[11px] md:text-[12px] tracking-[0.4em] md:tracking-[0.5em] shadow-[0_20px_60px_rgba(179,139,77,0.3)] !text-black"
                         >
-                          COMMENCE YOUR JOURNEY <ArrowRight size={20} className="ml-5" />
+                          PLAN YOUR EVENT <ArrowRight size={20} className="ml-5" />
                         </Button>
                       </Link>
                     </Magnetic>
