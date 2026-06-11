@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     siteName: "Zing Bliss Events",
     images: [
       {
-        url: "https://www.zingblissevents.com/hero-5.jpg",
+        url: "https://www.zingblissevents.com/hero-2.jpg",
         width: 1200,
         height: 630,
         alt: "Zing Bliss Events - Luxury Event Production Ahmedabad",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zing Bliss Events | Premier Event Planner in Ahmedabad",
     description: "Bespoke luxury event management in Ahmedabad, Gujarat. Engineering elite celebrations with logistical mastery.",
-    images: ["https://www.zingblissevents.com/hero-5.jpg"],
+    images: ["https://www.zingblissevents.com/hero-2.jpg"],
   },
   manifest: "/manifest.json",
   icons: {
