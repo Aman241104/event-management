@@ -3,13 +3,14 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 interface PortfolioItem {
   id: number;
   image: string;
+  video?: string;
   title: string;
   category: string;
   location?: string;
@@ -105,20 +106,38 @@ export function Portfolio({ items, className, hasCursorLabel = true, aspectRatio
               data-cursor={hasCursorLabel ? "VIEW" : undefined}
             >
               <div className="absolute inset-0 z-0 overflow-hidden">
-                <Image 
-                  src={item.image} 
-                  alt={item.title} 
-                  fill
-                  className="object-cover brightness-[0.9] transition-transform duration-700 ease-out group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
+                {item.video ? (
+                  <video
+                    src={item.video}
+                    poster={item.image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover brightness-[0.9] transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                ) : (
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover brightness-[0.9] transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                )}
               </div>
 
               {/* Permanent Dark Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-100 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-              
+
               {/* Overlay darkening on hover */}
               <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-15" />
+
+              {item.video && (
+                <div className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                  <Play size={14} className="text-white ml-0.5" fill="currentColor" />
+                </div>
+              )}
 
               {/* Text Content - Always Visible */}
               <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-8">
@@ -170,14 +189,26 @@ export function Portfolio({ items, className, hasCursorLabel = true, aspectRatio
           >
             <div className="relative w-full h-[70vh] frame-arch-luxury overflow-hidden shadow-2xl p-4">
               <div className="image-container">
-                <Image 
-                  src={selectedItem.image} 
-                  alt={selectedItem.title} 
-                  fill
-                  className="object-cover"
-                  sizes="90vw"
-                  priority
-                />
+                {selectedItem.video ? (
+                  <video
+                    src={selectedItem.video}
+                    poster={selectedItem.image}
+                    autoPlay
+                    loop
+                    controls
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <Image
+                    src={selectedItem.image}
+                    alt={selectedItem.title}
+                    fill
+                    className="object-cover"
+                    sizes="90vw"
+                    priority
+                  />
+                )}
               </div>
             </div>
             <div className="text-center space-y-2">

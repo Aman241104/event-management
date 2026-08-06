@@ -52,6 +52,20 @@ const portfolioItems = [
   { id: 10, title: 'Intimate Soiree', category: 'Private', image: '/assets/birthday/birthday-3.jpg', size: 'medium' as const },
   { id: 11, title: 'Annual Awards Night', category: 'Corporate', image: '/assets/corporate/corporate-3.jpg', size: 'medium' as const },
   { id: 12, title: 'Stage Production', category: 'Festivals', image: '/assets/production/production-3.jpg', size: 'small' as const },
+  { id: 13, title: 'Jungle Safari Themed Birthday', category: 'Birthdays', image: '/assets/birthday/birthday-4.jpg', size: 'large' as const },
+  { id: 14, title: 'Whimsical Woodland Welcome', category: 'Birthdays', image: '/assets/birthday/birthday-5.jpg', size: 'medium' as const },
+  { id: 15, title: 'MasterChef Themed 8th Birthday', category: 'Birthdays', image: '/assets/birthday/birthday-6.jpg', size: 'tall' as const },
+  { id: 16, title: 'Floral & Giraffe Decor Detail', category: 'Birthdays', image: '/assets/birthday/birthday-7.jpg', size: 'small' as const },
+  { id: 17, title: 'Garden Mandap Wedding', category: 'Weddings', image: '/assets/wedding/wedding-10.jpg', size: 'medium' as const },
+  { id: 18, title: 'Sunset Mehendi Celebration', category: 'Weddings', image: '/assets/wedding/wedding-11.jpg', size: 'large' as const },
+  { id: 19, title: 'Annual Dealer Meet', category: 'Corporate', image: '/assets/corporate/corporate-8.jpg', size: 'medium' as const },
+  { id: 20, title: 'Intimate Celebration Lounge', category: 'Private', image: '/assets/misc/lounge-1.jpg', size: 'small' as const },
+  { id: 21, title: 'Signature Celebration Showreel', category: 'Birthdays', image: '/assets/videos/posters/signature-showreel.jpg', video: '/assets/videos/signature-showreel.mp4', size: 'tall' as const },
+  { id: 22, title: 'Dealer Meet Stage Reveal', category: 'Corporate', image: '/assets/videos/posters/dealer-meet-reveal.jpg', video: '/assets/videos/dealer-meet-reveal.mp4', size: 'medium' as const },
+  { id: 23, title: 'Corporate Expo Flag Ceremony', category: 'Corporate', image: '/assets/videos/posters/corporate-expo.jpg', video: '/assets/videos/corporate-expo.mp4', size: 'large' as const },
+  { id: 24, title: 'Garden Festival Aerial', category: 'Festivals', image: '/assets/videos/posters/garden-aerial.jpg', video: '/assets/videos/garden-aerial.mp4', size: 'medium' as const },
+  { id: 25, title: 'Halloween Night Experience', category: 'Festivals', image: '/assets/videos/posters/halloween-entrance.jpg', video: '/assets/videos/halloween-entrance.mp4', size: 'small' as const },
+  { id: 26, title: 'Spooky Night Details', category: 'Festivals', image: '/assets/videos/posters/halloween-details.jpg', video: '/assets/videos/halloween-details.mp4', size: 'small' as const },
 ];
 
 const categories = ['All', 'Weddings', 'Birthdays', 'Corporate', 'Festivals', 'Private'];

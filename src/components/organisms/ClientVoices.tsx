@@ -8,34 +8,40 @@ import { useGSAP } from '@gsap/react';
 
 export const testimonials = [
   {
-    content: "Our wedding was beyond our dreams! The team at Zing Bliss Events made everything so elegant and perfect.",
-    author: "Riya & Karan",
+    content: "Our wedding was beyond our dreams! The team at Zing Bliss Events made everything so elegant and perfect, right down to the smallest detail.",
+    author: "Satyan & Monika Chopra",
     role: "Wedding Clients",
     image: "/hero-8.jpg"
   },
   {
-    content: "Thank you Zing Bliss Events for the beautiful birthday setup. The theme and decor were exactly what we imagined!",
-    author: "Neha Malhotra",
-    role: "Private Celebration",
+    content: "From the mandap to the mehendi decor, everything Zing Bliss Events created for us felt like a dream. We couldn't have asked for a better team.",
+    author: "Paras & Nitika Mittal",
+    role: "Wedding Clients",
     image: "/hero-9.jpg"
   },
   {
-    content: "Absolutely loved the décor by Zing Bliss Events! Elegant, creative, and beautifully executed.",
-    author: "Arjun Mehta",
+    content: "Our dealer meet was flawlessly executed from start to finish. Zing Bliss Events managed the entire production with true professionalism.",
+    author: "Kunal Wadhwani",
     role: "Corporate Client",
     image: "/hero-2.jpg"
   },
   {
-    content: "The level of precision Zing Bliss brought to our annual gala was simply unprecedented. Every detail felt engineered for perfection.",
-    author: "Elena Richardson",
-    role: "Director of Events",
+    content: "The team curated the most magical evening for us. Elegant, warm, and beautifully personal — exactly what we had envisioned.",
+    author: "Anita Khurana",
+    role: "Private Celebration",
     image: "/hero-3.jpg"
   },
   {
-    content: "They didn't just plan a wedding; they curated an experience that will be talked about for generations.",
-    author: "Siddharth Malhotra",
-    role: "Destination Wedding",
+    content: "Zing Bliss Events brought my daughter's birthday dreams to life with the most enchanting jungle-themed decor. Truly unforgettable!",
+    author: "Amit Patel",
+    role: "Birthday Client",
     image: "/hero-4.jpg"
+  },
+  {
+    content: "Professional, creative, and incredibly detail-oriented. Zing Bliss Events exceeded every expectation we had for our event.",
+    author: "Shreyansh Soni",
+    role: "Corporate Client",
+    image: "/hero-5.jpg"
   }
 ];
 
